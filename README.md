@@ -32,6 +32,12 @@ npx remotion render ReelXacobeo salida.mp4
 | `herramientas/motion-kit/` | El kit de cartelas y overlays |
 | `herramientas/scripts/` | Utilidades para catalogar y cortar metraje |
 
+## Para el equipo de redes
+
+Si no vas a tocar código, no necesitas clonar nada: entra en **claude.ai/code**,
+elige este repositorio y pide el vídeo por escrito. Está explicado en
+[docs/como-pedir-un-video.md](docs/como-pedir-un-video.md).
+
 ## Trabajar con Claude Code
 
 El repositorio lleva `CLAUDE.md`, con las reglas de marca y las de montaje, y

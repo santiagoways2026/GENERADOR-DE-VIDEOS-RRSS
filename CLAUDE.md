@@ -89,11 +89,10 @@ npm run dev                                   # Studio, preview editable
 npx remotion render ReelXacobeo salida.mp4    # Exportar
 ```
 
-En un entorno sin acceso a la descarga de Chrome de Remotion:
-
-```bash
-npx remotion render ReelXacobeo salida.mp4 --browser-executable=/ruta/a/chrome
-```
+No hace falta pasar ninguna opción de navegador: `remotion.config.ts` detecta
+un Chromium ya instalado si lo hay, que es lo que permite renderizar en las
+sesiones de Claude Code en la web, donde la descarga del Chrome de Remotion
+está bloqueada.
 
 ## Preparar metraje
 
