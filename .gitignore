@@ -1,3 +1,7 @@
 node_modules/
 video/out/
-video/public/brutos/
+
+# Los brutos completos se quedan fuera: pesan y se sustituyen a menudo.
+# Los planos ya recortados que usa cada pieza sí entran, en video/public/brutos/,
+# porque sin ellos el proyecto no se puede renderizar.
+brutos-originales/
