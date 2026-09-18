@@ -22,6 +22,9 @@ import { entrada } from "../componentes/entrada";
 
 const HITOS = [2021, 2027, 2032, 2038];
 const ACTUAL = 2027;
+const SIGUIENTE = 2032;
+/** Separacion entre hitos, en px. */
+const PASO = 273;
 
 /**
  * Linea de tiempo de Anos Santos. La vieira arranca en 2021 y se para en
@@ -30,7 +33,14 @@ const ACTUAL = 2027;
  * Los anos son reales: el Ano Santo cae cuando el 25 de julio es domingo,
  * lo que da un patron de 6, 5, 6 y 11 anos que se repite.
  */
-export const LineaTiempo: React.FC<{ desde?: number }> = ({ desde = 0 }) => {
+export const LineaTiempo: React.FC<{
+  desde?: number;
+  pie?: string;
+  /** Fotograma en el que se enciende el siguiente Ano Santo. Se hace
+   *  coincidir con la cifra que dice la locucion, no antes: el dato pesa
+   *  mas si el espectador lo ve y lo oye a la vez. */
+  resaltaSiguiente?: number;
+}> = ({ desde = 0, pie = "Cada 6, 5 u 11 años", resaltaSiguiente }) => {
   const frame = useCurrentFrame();
   const t = frame - desde;
   const indiceActual = HITOS.indexOf(ACTUAL);
@@ -41,6 +51,15 @@ export const LineaTiempo: React.FC<{ desde?: number }> = ({ desde = 0 }) => {
     extrapolateRight: "clamp",
     easing: Easing.bezier(...easeOut),
   });
+
+  const siguiente =
+    resaltaSiguiente === undefined
+      ? 0
+      : interpolate(frame, [resaltaSiguiente, resaltaSiguiente + 12], [0, 1], {
+          extrapolateLeft: "clamp",
+          extrapolateRight: "clamp",
+          easing: Easing.bezier(...easeOut),
+        });
 
   return (
     <Interactive.Div
@@ -77,21 +96,38 @@ export const LineaTiempo: React.FC<{ desde?: number }> = ({ desde = 0 }) => {
             height: 6,
             borderRadius: radius.pill,
             backgroundColor: brand.green,
-            width: interpolate(t, [14, 40], [0, 273], {
+            width: interpolate(t, [14, 40], [0, PASO], {
               extrapolateLeft: "clamp",
               extrapolateRight: "clamp",
               easing: Easing.bezier(...easeOut),
             }),
           }}
         />
+        {/* La espera hasta el siguiente: el tramo que el espectador no va a
+            querer aguantar. */}
+        {resaltaSiguiente === undefined ? null : (
+          <div
+            style={{
+              position: "absolute",
+              top: 108,
+              left: 70 + indiceActual * PASO,
+              height: 6,
+              borderRadius: radius.pill,
+              backgroundColor: brand.forest,
+              width: siguiente * PASO,
+            }}
+          />
+        )}
 
         {HITOS.map((anio, i) => {
-          const x = 70 + i * 273;
+          const x = 70 + i * PASO;
           const esActual = anio === ACTUAL;
+          const esSiguiente = anio === SIGUIENTE;
           const encendido = interpolate(t, [14 + i * 9, 22 + i * 9], [0, 1], {
             extrapolateLeft: "clamp",
             extrapolateRight: "clamp",
           });
+          const apagado = 0.42 + encendido * 0.1;
           return (
             <div
               key={anio}
@@ -101,24 +137,41 @@ export const LineaTiempo: React.FC<{ desde?: number }> = ({ desde = 0 }) => {
                 top: 0,
                 width: 120,
                 textAlign: "center",
-                opacity: esActual ? 1 : 0.42 + encendido * 0.1,
+                opacity: esActual
+                  ? 1
+                  : esSiguiente
+                    ? apagado + siguiente * (1 - apagado)
+                    : apagado,
               }}
             >
               <div
                 style={{
                   margin: "92px auto 0",
-                  width: esActual ? 44 : 28,
-                  height: esActual ? 44 : 28,
+                  width: esActual ? 44 : 28 + (esSiguiente ? siguiente * 12 : 0),
+                  height: esActual ? 44 : 28 + (esSiguiente ? siguiente * 12 : 0),
                   borderRadius: radius.pill,
-                  backgroundColor: esActual ? brand.green : "#CFCABB",
+                  backgroundColor: esActual
+                    ? brand.green
+                    : esSiguiente && siguiente > 0.5
+                      ? brand.forest
+                      : "#CFCABB",
                 }}
               />
               <div
                 style={{
                   marginTop: space[3],
-                  fontSize: esActual ? 60 : fontSize["2xl"],
-                  fontWeight: esActual ? weight.black : weight.medium,
-                  color: esActual ? brand.green : color.fg3,
+                  fontSize: esActual
+                    ? 60
+                    : fontSize["2xl"] + (esSiguiente ? siguiente * 18 : 0),
+                  fontWeight:
+                    esActual || (esSiguiente && siguiente > 0.5)
+                      ? weight.black
+                      : weight.medium,
+                  color: esActual
+                    ? brand.green
+                    : esSiguiente && siguiente > 0.5
+                      ? brand.forest
+                      : color.fg3,
                 }}
               >
                 {anio}
@@ -133,7 +186,7 @@ export const LineaTiempo: React.FC<{ desde?: number }> = ({ desde = 0 }) => {
           style={{
             position: "absolute",
             top: 8,
-            left: 70 + avance * 273 - 44,
+            left: 70 + avance * PASO - 44,
             width: 104,
             height: 104,
             objectFit: "contain",
@@ -156,7 +209,7 @@ export const LineaTiempo: React.FC<{ desde?: number }> = ({ desde = 0 }) => {
           color: color.fg3,
         }}
       >
-        Cada 6, 5 u 11 años
+        {pie}
       </div>
     </Interactive.Div>
   );

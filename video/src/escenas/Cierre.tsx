@@ -1,5 +1,14 @@
 import { AbsoluteFill, Easing, interpolate, useCurrentFrame } from "remotion";
-import { brand, easeOut, fontSize, space, tracking, weight } from "../brand/theme";
+import {
+  brand,
+  color,
+  easeOut,
+  fontSize,
+  radius,
+  space,
+  tracking,
+  weight,
+} from "../brand/theme";
 import { Logo } from "../componentes/Logo";
 
 /**
@@ -7,8 +16,19 @@ import { Logo } from "../componentes/Logo";
  *
  * El degradado va entre dos verdes de la paleta, no entre colores ajenos:
  * el manual descarta los gradientes que no salen de la marca.
+ *
+ * La llamada a la accion es opcional y va debajo del logo, en una sola
+ * placa. El manual solo admite un CTA por pieza, asi que si se pone aqui no
+ * puede haber otro antes.
  */
-export const Cierre: React.FC<{ duracion: number }> = ({ duracion }) => {
+export const Cierre: React.FC<{
+  duracion: number;
+  /** Llamada a la accion. Una sola, y solo en el cierre. */
+  cta?: string;
+  /** Remate bajo el CTA: donde se toca. */
+  coletilla?: string;
+  web?: string;
+}> = ({ duracion, cta, coletilla, web = "santiagoways.com" }) => {
   const frame = useCurrentFrame();
 
   return (
@@ -55,8 +75,57 @@ export const Cierre: React.FC<{ duracion: number }> = ({ duracion }) => {
           }),
         }}
       >
-        santiagoways.com
+        {web}
       </div>
+
+      {cta ? (
+        <div
+          style={{
+            marginTop: space[8],
+            backgroundColor: color.bg1,
+            color: brand.forest,
+            borderRadius: radius.md,
+            padding: `${space[4]}px ${space[7]}px`,
+            fontSize: 46,
+            fontWeight: weight.black,
+            letterSpacing: tracking.wide,
+            textTransform: "uppercase",
+            textAlign: "center",
+            // Barrido lateral, como las cartelas: la marca no usa fundidos
+            // para los bloques de texto.
+            clipPath: `inset(0 ${interpolate(frame, [26, 50], [100, 0], {
+              extrapolateLeft: "clamp",
+              extrapolateRight: "clamp",
+              easing: Easing.bezier(...easeOut),
+            })}% 0 0)`,
+          }}
+        >
+          {cta}
+        </div>
+      ) : null}
+
+      {coletilla ? (
+        <div
+          style={{
+            marginTop: space[4],
+            backgroundColor: brand.lime,
+            color: color.fgOnLime,
+            borderRadius: radius.md,
+            padding: `${space[3]}px ${space[6]}px`,
+            fontSize: fontSize.xl,
+            fontWeight: weight.black,
+            letterSpacing: tracking.loose,
+            textTransform: "uppercase",
+            clipPath: `inset(0 ${interpolate(frame, [40, 62], [100, 0], {
+              extrapolateLeft: "clamp",
+              extrapolateRight: "clamp",
+              easing: Easing.bezier(...easeOut),
+            })}% 0 0)`,
+          }}
+        >
+          {coletilla}
+        </div>
+      ) : null}
     </AbsoluteFill>
   );
 };

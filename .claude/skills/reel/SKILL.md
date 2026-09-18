@@ -100,8 +100,11 @@ python3 herramientas/scripts/catalogar.py salida.mp4 /tmp/control.jpg 6 2
 | `Bullets` | Lista de servicios, entrando de uno en uno |
 | `Clip` y `Planos` | Metraje encajado en vertical, con encuadre y zoom lento |
 | `Logo` | El archivo oficial, en blanco o verde |
-| `Calendario` | Julio de 2027 con el 25 en domingo |
+| `Calendario` | Julio de 2027 con el 25 en domingo. La semana abre en lunes o en domingo, según el mercado |
 | `LineaTiempo` | Años Santos, con la vieira que se detiene en 2027 |
+| `MapaRutas` | Las rutas convergiendo en Santiago, trazándose una a una |
+| `PuertaSanta` | La Puerta Santa, tapiada y abriéndose |
+| `CajaDato` | Una cifra con su fuente debajo |
 | `Candado` | Precio bloqueado, sin cifras |
 | `Cierre` | Degradado, logo y web |
 

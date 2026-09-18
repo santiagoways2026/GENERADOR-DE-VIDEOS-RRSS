@@ -15,15 +15,21 @@ import { entrada } from "./entrada";
 /**
  * Caja de dato del kit de motion graphics, en sus tres tonos.
  * Estructura fija: eyebrow, cifra grande, explicacion corta.
+ *
+ * El manual prohibe las cifras sin fuente en pantalla, y con mas motivo en
+ * piezas que se quedan ancladas en el perfil durante meses: para entonces el
+ * dato ya ha cambiado y lo unico que lo sostiene es de donde salio.
  */
 export const CajaDato: React.FC<{
   eyebrow: string;
   cifra: string;
   texto: string;
+  /** De donde sale el dato. Obligatoria en cuanto aparece una cifra. */
+  fuente?: string;
   tono?: "claro" | "olivo" | "bosque";
   desde?: number;
   style?: React.CSSProperties;
-}> = ({ eyebrow, cifra, texto, tono = "olivo", desde = 0, style }) => {
+}> = ({ eyebrow, cifra, texto, fuente, tono = "olivo", desde = 0, style }) => {
   const frame = useCurrentFrame();
 
   const tonos = {
@@ -39,8 +45,8 @@ export const CajaDato: React.FC<{
         backgroundColor: tonos.bg,
         borderRadius: radius.lg,
         boxShadow: shadow.card,
-        padding: space[6],
-        maxWidth: 620,
+        padding: `${space[6]}px ${space[7]}px`,
+        maxWidth: 880,
         display: "flex",
         flexDirection: "column",
         gap: space[2],
@@ -73,15 +79,29 @@ export const CajaDato: React.FC<{
       </div>
       <div
         style={{
-          fontSize: fontSize.lg,
-          fontWeight: weight.regular,
-          lineHeight: lineHeight.normal,
+          fontSize: 32,
+          fontWeight: weight.medium,
+          lineHeight: lineHeight.snug,
           color: tonos.sub,
           opacity: tono === "claro" ? 1 : 0.86,
         }}
       >
         {texto}
       </div>
+      {fuente ? (
+        <div
+          style={{
+            marginTop: space[1],
+            fontSize: fontSize.md,
+            fontWeight: weight.medium,
+            letterSpacing: tracking.wide,
+            color: tonos.sub,
+            opacity: tono === "claro" ? 0.7 : 0.72,
+          }}
+        >
+          {fuente}
+        </div>
+      ) : null}
     </Interactive.Div>
   );
 };

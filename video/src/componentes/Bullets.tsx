@@ -17,19 +17,38 @@ import {
  * Cada uno entra por su cuenta y con aire suficiente para leerse: son el
  * argumento comercial de la pieza, asi que mandan sobre el metraje en
  * lugar de acompanarlo.
+ *
+ * La marca de cada linea puede ser el numero o un check. El numero ordena
+ * una lista; el check afirma que algo ya esta resuelto, que es lo que hace
+ * falta cuando lo que se vende es no tener que ocuparse de nada.
  */
 export const Bullets: React.FC<{
   items: string[];
   desde?: number;
   /** Fotogramas entre una entrada y la siguiente. */
   relevo?: number;
-}> = ({ items, desde = 0, relevo = 26 }) => {
+  marca?: "numero" | "check";
+  /** Cuerpo del texto. Se baja en ingles, donde las frases son mas largas
+   *  que en espanol y si no se parten en dos lineas. */
+  cuerpo?: number;
+  /** Fotograma de entrada de cada linea, uno a uno. Sustituye al relevo fijo
+   *  cuando las tarjetas tienen que caer sobre las palabras de la locucion,
+   *  que no llegan a intervalos regulares. */
+  tiempos?: number[];
+}> = ({
+  items,
+  desde = 0,
+  relevo = 26,
+  marca = "numero",
+  cuerpo = 40,
+  tiempos,
+}) => {
   const frame = useCurrentFrame();
 
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "stretch", gap: space[3] }}>
       {items.map((texto, i) => {
-        const t = frame - desde - i * relevo;
+        const t = frame - (tiempos ? tiempos[i] : desde + i * relevo);
         return (
           <Interactive.Div
             key={texto}
@@ -68,11 +87,31 @@ export const Bullets: React.FC<{
                 fontWeight: weight.black,
               }}
             >
-              {i + 1}
+              {marca === "check" ? (
+                <svg width="38" height="38" viewBox="0 0 24 24">
+                  <path
+                    d="M4.5 12.5 L9.5 17.5 L19.5 6.5"
+                    fill="none"
+                    stroke={color.fgOnLime}
+                    strokeWidth="3.4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    // El trazo se dibuja con la tarjeta, no aparece de golpe.
+                    strokeDasharray="26"
+                    strokeDashoffset={interpolate(t, [8, 22], [26, 0], {
+                      extrapolateLeft: "clamp",
+                      extrapolateRight: "clamp",
+                      easing: Easing.bezier(...easeOut),
+                    })}
+                  />
+                </svg>
+              ) : (
+                i + 1
+              )}
             </div>
             <div
               style={{
-                fontSize: 40,
+                fontSize: cuerpo,
                 fontWeight: weight.extrabold,
                 letterSpacing: tracking.tight,
                 color: brand.forest,

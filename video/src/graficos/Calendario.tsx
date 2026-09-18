@@ -11,17 +11,39 @@ import {
   weight,
 } from "../brand/theme";
 
-/** Julio de 2027, con lunes como primer dia. El 0 es hueco. */
-const SEMANAS = [
-  [0, 0, 0, 1, 2, 3, 4],
-  [5, 6, 7, 8, 9, 10, 11],
-  [12, 13, 14, 15, 16, 17, 18],
-  [19, 20, 21, 22, 23, 24, 25],
-  [26, 27, 28, 29, 30, 31, 0],
-];
-const DIAS = ["L", "M", "X", "J", "V", "S", "D"];
+/**
+ * Julio de 2027 empieza en jueves, que es lo que coloca el 25 en domingo.
+ * De ahi salen las dos rejillas: en Espana la semana abre en lunes y el
+ * domingo queda en la ultima columna; en Estados Unidos abre en domingo y
+ * queda en la primera. Un calendario con la semana "al reves" se lee mal, y
+ * este grafico existe precisamente para leerse de un vistazo.
+ */
+const REJILLA = {
+  lunes: {
+    dias: ["L", "M", "X", "J", "V", "S", "D"],
+    semanas: [
+      [0, 0, 0, 1, 2, 3, 4],
+      [5, 6, 7, 8, 9, 10, 11],
+      [12, 13, 14, 15, 16, 17, 18],
+      [19, 20, 21, 22, 23, 24, 25],
+      [26, 27, 28, 29, 30, 31, 0],
+    ],
+    columnaDomingo: 6,
+  },
+  domingo: {
+    dias: ["S", "M", "T", "W", "T", "F", "S"],
+    semanas: [
+      [0, 0, 0, 0, 1, 2, 3],
+      [4, 5, 6, 7, 8, 9, 10],
+      [11, 12, 13, 14, 15, 16, 17],
+      [18, 19, 20, 21, 22, 23, 24],
+      [25, 26, 27, 28, 29, 30, 31],
+    ],
+    columnaDomingo: 0,
+  },
+} as const;
+
 const DESTACADO = 25;
-const COLUMNA_DOMINGO = 6;
 
 const CELDA = 104;
 const HUECO = 6;
@@ -34,12 +56,24 @@ const HUECO = 6;
  * La vista sigue ese orden y saca la conclusion sola, que es justo lo que
  * hace que 2027 sea Ano Santo.
  */
-export const Calendario: React.FC<{ desde?: number; hasta?: number }> = ({
+export const Calendario: React.FC<{
+  desde?: number;
+  hasta?: number;
+  titulo?: string;
+  /** Conclusion de la placa inferior. */
+  pie?: string;
+  /** Dia en el que abre la semana. Lunes en Espana, domingo en EE UU. */
+  abre?: "lunes" | "domingo";
+}> = ({
   desde = 0,
   hasta,
+  titulo = "Julio 2027",
+  pie = "El 25 cae en domingo",
+  abre = "lunes",
 }) => {
   const frame = useCurrentFrame();
   const t = frame - desde;
+  const { dias, semanas, columnaDomingo } = REJILLA[abre];
   // Salida: la tarjeta se retira antes de que acabe el bloque.
   const salida =
     hasta === undefined
@@ -91,7 +125,7 @@ export const Calendario: React.FC<{ desde?: number; hasta?: number }> = ({
           textTransform: "uppercase",
         }}
       >
-        Julio 2027
+        {titulo}
       </div>
 
       <div style={{ padding: space[6], position: "relative" }}>
@@ -99,7 +133,7 @@ export const Calendario: React.FC<{ desde?: number; hasta?: number }> = ({
         <div
           style={{
             position: "absolute",
-            left: space[6] + COLUMNA_DOMINGO * (CELDA + HUECO) - 6,
+            left: space[6] + columnaDomingo * (CELDA + HUECO) - 6,
             top: space[6],
             width: CELDA + 12,
             borderRadius: radius.md,
@@ -116,9 +150,10 @@ export const Calendario: React.FC<{ desde?: number; hasta?: number }> = ({
             gap: HUECO,
           }}
         >
-          {DIAS.map((d, i) => (
+          {dias.map((d, i) => (
             <div
-              key={d}
+              // En ingles se repiten inicial: la posicion es la clave.
+              key={i}
               style={{
                 height: CELDA * 0.62,
                 display: "flex",
@@ -127,17 +162,17 @@ export const Calendario: React.FC<{ desde?: number; hasta?: number }> = ({
                 fontSize: fontSize.lg,
                 fontWeight: weight.black,
                 letterSpacing: tracking.loose,
-                color: i === COLUMNA_DOMINGO ? brand.green : color.fg3,
+                color: i === columnaDomingo ? brand.green : color.fg3,
               }}
             >
               {d}
             </div>
           ))}
 
-          {SEMANAS.flat().map((dia, i) => {
+          {semanas.flat().map((dia, i) => {
             if (dia === 0) return <div key={i} style={{ height: CELDA }} />;
             const esDestacado = dia === DESTACADO;
-            const enColumna = i % 7 === COLUMNA_DOMINGO;
+            const enColumna = i % 7 === columnaDomingo;
             const aparece = 4 + Math.floor(i / 7) * 3;
             return (
               <div
@@ -196,7 +231,7 @@ export const Calendario: React.FC<{ desde?: number; hasta?: number }> = ({
           })}% 0 0)`,
         }}
       >
-        El 25 cae en domingo
+        {pie}
       </div>
     </Interactive.Div>
   );

@@ -89,6 +89,10 @@ npm run dev                                   # Studio, preview editable
 npx remotion render ReelXacobeo salida.mp4    # Exportar
 ```
 
+Hay dos piezas registradas: `ReelXacobeo`, en español, y `ReelXacobeoUS`, en
+inglés para el mercado estadounidense. La segunda dura el doble porque no da
+por sabido qué es el Camino: está explicada en `docs/reel-xacobeo-2027-us.md`.
+
 No hace falta pasar ninguna opción de navegador: `remotion.config.ts` detecta
 un Chromium ya instalado si lo hay, que es lo que permite renderizar en las
 sesiones de Claude Code en la web, donde la descarga del Chrome de Remotion

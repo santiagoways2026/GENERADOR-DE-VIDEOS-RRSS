@@ -5,3 +5,7 @@ video/out/
 # Los planos ya recortados que usa cada pieza sí entran, en video/public/brutos/,
 # porque sin ellos el proyecto no se puede renderizar.
 brutos-originales/
+
+# Los MP4 exportados se regeneran con un comando: no hacen falta en el repo.
+salidas/
+__pycache__/

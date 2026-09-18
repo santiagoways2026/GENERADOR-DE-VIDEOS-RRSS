@@ -29,6 +29,18 @@ export const Planos: React.FC<{
   const suma = lista.reduce((a, p) => a + p.dura, 0);
   let acumulado = 0;
 
+  // Si las tomas no cubren el bloque hay que estirar alguna, y estirar un
+  // plano significa o congelarlo o meterse en el plano siguiente del bruto.
+  // Es el error que mas veces se ha colado, asi que avisa en el Studio.
+  if (suma * 30 < total - 1) {
+    console.warn(
+      `Planos: las tomas suman ${suma.toFixed(2)}s y el bloque pide ` +
+        `${(total / 30).toFixed(2)}s. Faltan ${(total / 30 - suma).toFixed(2)}s: ` +
+        `anade una toma o acorta el bloque. ` +
+        `Tomas: ${lista.map((p) => p.src).join(", ")}`,
+    );
+  }
+
   return (
     <>
       {lista.map((p, i) => {
