@@ -116,7 +116,7 @@ export const LineaTiempo: React.FC<{ desde?: number }> = ({ desde = 0 }) => {
               <div
                 style={{
                   marginTop: space[3],
-                  fontSize: esActual ? fontSize["3xl"] : fontSize["2xl"],
+                  fontSize: esActual ? 60 : fontSize["2xl"],
                   fontWeight: esActual ? weight.black : weight.medium,
                   color: esActual ? brand.green : color.fg3,
                 }}
@@ -149,7 +149,7 @@ export const LineaTiempo: React.FC<{ desde?: number }> = ({ desde = 0 }) => {
         style={{
           marginTop: space[4],
           textAlign: "center",
-          fontSize: fontSize.lg,
+          fontSize: fontSize.xl,
           fontWeight: weight.bold,
           letterSpacing: tracking.loose,
           textTransform: "uppercase",

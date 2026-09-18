@@ -126,10 +126,11 @@ export const Cartela: React.FC<{
           <span
             style={{
               display: "block",
-              fontSize: 44,
+              fontSize: 42,
               lineHeight: 1.15,
-              fontWeight: weight.medium,
-              letterSpacing: "0.01em",
+              fontWeight: weight.black,
+              letterSpacing: tracking.wide,
+              textTransform: "uppercase",
               color: inferior.fg,
               whiteSpace: "nowrap",
             }}
