@@ -24,7 +24,7 @@ import { LineaTiempo } from "./graficos/LineaTiempo";
  */
 
 /** Arranques de frase de la locucion, en segundos. */
-const B = [0, 4.36, 12.74, 17.75, 26.15, 33.39, 38.54, 44.12];
+const B = [0, 3.89, 11.57, 16.79, 23.86, 31.72, 38.03, 41.74];
 const f = (s: number) => Math.round(s * 30);
 const dur = (i: number) => f(B[i + 1]) - f(B[i]);
 
@@ -79,8 +79,8 @@ export const ReelXacobeo: React.FC = () => {
             { src: "catedral-torres", dura: 1.7 },
             { src: "iglesia-exterior", dura: 1.35, encuadre: "56% 50%" },
             { src: "interior-velas", dura: 2.1 },
-            { src: "portico-sellado", dura: 2.0 },
-            { src: "manos-sellando", dura: 1.6 },
+            { src: "manos-sellando", dura: 1.6, encuadre: "28% 50%" },
+            { src: "portico-sellado", dura: 2.0, encuadre: "30% 50%" },
           ]}
         />
         <Inferior>
@@ -98,6 +98,7 @@ export const ReelXacobeo: React.FC = () => {
             { src: "contraluz", dura: 1.45 },
             { src: "camino-abierto", dura: 1.2 },
             { src: "tunel-vegetacion", dura: 0.85 },
+            { src: "grupo-mimosas", dura: 1.2 },
           ]}
         />
         <Inferior>
@@ -114,7 +115,6 @@ export const ReelXacobeo: React.FC = () => {
             { src: "brazos-alto", dura: 1.0, encuadre: "34% 50%" },
             { src: "brindis", dura: 2.0, encuadre: "42% 50%" },
             { src: "compostela", dura: 1.7, encuadre: "38% 50%" },
-            { src: "grupo-mimosas", dura: 1.2 },
             { src: "credencial", dura: 1.05 },
             { src: "pareja-muros", dura: 1.55, encuadre: "40% 50%" },
           ]}
@@ -128,12 +128,11 @@ export const ReelXacobeo: React.FC = () => {
           total={dur(4)}
           overlay={0.4}
           lista={[
-            { src: "casa-rural", dura: 1.2 },
-            { src: "habitacion-a", dura: 1.05 },
-            { src: "fachada-moderna", dura: 1.2 },
-            { src: "habitacion-b", dura: 1.05 },
-            { src: "terraza", dura: 2.2 },
-            { src: "mesa-exterior", dura: 1.45 },
+            { src: "casa-rural", dura: 1.2, encuadre: "38% 50%" },
+            { src: "fachada-moderna", dura: 1.2, encuadre: "40% 50%" },
+            { src: "habitacion", dura: 2.15, encuadre: "62% 50%" },
+            { src: "terraza", dura: 2.2, encuadre: "30% 50%" },
+            { src: "mesa-exterior", dura: 1.45, encuadre: "40% 50%" },
           ]}
         />
         <Inferior>
@@ -148,9 +147,10 @@ export const ReelXacobeo: React.FC = () => {
           overlay={0.46}
           lista={[
             { src: "piernas", dura: 2.25 },
-            { src: "camino-abierto", dura: 1.2 },
+            { src: "escaleras", dura: 1.2 },
             { src: "flecha", dura: 1.2, encuadre: "58% 50%" },
-            { src: "tunel-vegetacion", dura: 0.85 },
+            { src: "grupo-peregrinos", dura: 0.75 },
+            { src: "rio-piedras", dura: 1.0 },
           ]}
         />
         <AbsoluteFill

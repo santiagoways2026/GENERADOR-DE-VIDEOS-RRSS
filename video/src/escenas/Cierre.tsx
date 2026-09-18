@@ -43,6 +43,7 @@ export const Cierre: React.FC<{ duracion: number }> = ({ duracion }) => {
       <div
         style={{
           marginTop: space[6],
+          fontFamily: "Manrope, sans-serif",
           color: "#FFFFFF",
           fontSize: fontSize["2xl"],
           fontWeight: weight.bold,
