@@ -34,9 +34,20 @@ const HUECO = 6;
  * La vista sigue ese orden y saca la conclusion sola, que es justo lo que
  * hace que 2027 sea Ano Santo.
  */
-export const Calendario: React.FC<{ desde?: number }> = ({ desde = 0 }) => {
+export const Calendario: React.FC<{ desde?: number; hasta?: number }> = ({
+  desde = 0,
+  hasta,
+}) => {
   const frame = useCurrentFrame();
   const t = frame - desde;
+  // Salida: la tarjeta se retira antes de que acabe el bloque.
+  const salida =
+    hasta === undefined
+      ? 1
+      : interpolate(frame, [hasta, hasta + 12], [1, 0], {
+          extrapolateLeft: "clamp",
+          extrapolateRight: "clamp",
+        });
 
   const anchoRejilla = CELDA * 7 + HUECO * 6;
 
@@ -56,10 +67,11 @@ export const Calendario: React.FC<{ desde?: number }> = ({ desde = 0 }) => {
         boxShadow: shadow.raised,
         overflow: "hidden",
         width: anchoRejilla + space[6] * 2,
-        opacity: interpolate(t, [0, 10], [0, 1], {
-          extrapolateLeft: "clamp",
-          extrapolateRight: "clamp",
-        }),
+        opacity:
+          interpolate(t, [0, 10], [0, 1], {
+            extrapolateLeft: "clamp",
+            extrapolateRight: "clamp",
+          }) * salida,
         translate: interpolate(t, [0, 16], ["0px 24px", "0px 0px"], {
           extrapolateLeft: "clamp",
           extrapolateRight: "clamp",

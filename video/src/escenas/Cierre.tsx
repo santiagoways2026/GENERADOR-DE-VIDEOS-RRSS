@@ -1,5 +1,5 @@
 import { AbsoluteFill, Easing, interpolate, useCurrentFrame } from "remotion";
-import { brand, easeOut } from "../brand/theme";
+import { brand, easeOut, fontSize, space, tracking, weight } from "../brand/theme";
 import { Logo } from "../componentes/Logo";
 
 /**
@@ -24,7 +24,7 @@ export const Cierre: React.FC<{ duracion: number }> = ({ duracion }) => {
     >
       <Logo
         variante="blanco"
-        ancho={640}
+        ancho={620}
         style={{
           opacity: interpolate(frame, [4, 20], [0, 1], {
             extrapolateLeft: "clamp",
@@ -39,6 +39,23 @@ export const Cierre: React.FC<{ duracion: number }> = ({ duracion }) => {
           }),
         }}
       />
+
+      <div
+        style={{
+          marginTop: space[6],
+          color: "#FFFFFF",
+          fontSize: fontSize["2xl"],
+          fontWeight: weight.bold,
+          letterSpacing: tracking.loose,
+          textTransform: "lowercase",
+          opacity: interpolate(frame, [18, 34], [0, 1], {
+            extrapolateLeft: "clamp",
+            extrapolateRight: "clamp",
+          }),
+        }}
+      >
+        santiagoways.com
+      </div>
     </AbsoluteFill>
   );
 };

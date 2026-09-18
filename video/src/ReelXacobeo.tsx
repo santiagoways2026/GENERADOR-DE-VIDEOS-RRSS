@@ -67,7 +67,7 @@ export const ReelXacobeo: React.FC = () => {
             { src: "catedral-b", dura: 1.7 },
           ]}
         />
-        <Cartela eyebrow="Xacobeo" principal="2027" secundaria="Es Año Santo" desde={8} />
+        <Cartela principal="Xacobeo 2027" secundaria="Es Año Santo" desde={8} />
       </Sequence>
 
       {/* 2 · El 25 de julio cae en domingo */}
@@ -77,14 +77,14 @@ export const ReelXacobeo: React.FC = () => {
           overlay={0.42}
           lista={[
             { src: "catedral-torres", dura: 1.7 },
-            { src: "iglesia-exterior", dura: 1.35 },
+            { src: "iglesia-exterior", dura: 1.35, encuadre: "56% 50%" },
             { src: "interior-velas", dura: 2.1 },
             { src: "portico-sellado", dura: 2.0 },
             { src: "manos-sellando", dura: 1.6 },
           ]}
         />
         <Inferior>
-          <Calendario desde={24} />
+          <Calendario desde={24} hasta={dur(1) - 58} />
         </Inferior>
       </Sequence>
 
@@ -111,12 +111,12 @@ export const ReelXacobeo: React.FC = () => {
           total={dur(3)}
           overlay={0.3}
           lista={[
-            { src: "brazos-alto", dura: 1.0 },
-            { src: "brindis", dura: 2.0 },
-            { src: "compostela", dura: 1.7 },
+            { src: "brazos-alto", dura: 1.0, encuadre: "34% 50%" },
+            { src: "brindis", dura: 2.0, encuadre: "42% 50%" },
+            { src: "compostela", dura: 1.7, encuadre: "38% 50%" },
             { src: "grupo-mimosas", dura: 1.2 },
             { src: "credencial", dura: 1.05 },
-            { src: "pareja-muros", dura: 1.55 },
+            { src: "pareja-muros", dura: 1.55, encuadre: "40% 50%" },
           ]}
         />
         <Cartela principal="Así se vive" secundaria="un Año Santo" desde={6} />
@@ -128,10 +128,12 @@ export const ReelXacobeo: React.FC = () => {
           total={dur(4)}
           overlay={0.4}
           lista={[
-            { src: "habitacion", dura: 2.15 },
-            { src: "terraza", dura: 2.2 },
-            { src: "vieiras", dura: 1.3 },
             { src: "casa-rural", dura: 1.2 },
+            { src: "habitacion-a", dura: 1.05 },
+            { src: "fachada-moderna", dura: 1.2 },
+            { src: "habitacion-b", dura: 1.05 },
+            { src: "terraza", dura: 2.2 },
+            { src: "mesa-exterior", dura: 1.45 },
           ]}
         />
         <Inferior>
@@ -146,9 +148,9 @@ export const ReelXacobeo: React.FC = () => {
           overlay={0.46}
           lista={[
             { src: "piernas", dura: 2.25 },
-            { src: "pareja-muros", dura: 1.55 },
-            { src: "flecha", dura: 1.2 },
-            { src: "mesa-exterior", dura: 1.45 },
+            { src: "camino-abierto", dura: 1.2 },
+            { src: "flecha", dura: 1.2, encuadre: "58% 50%" },
+            { src: "tunel-vegetacion", dura: 0.85 },
           ]}
         />
         <AbsoluteFill
@@ -159,8 +161,15 @@ export const ReelXacobeo: React.FC = () => {
           }}
         >
           <Bullets
-            desde={4}
-            items={["Equipaje transportado", "Hoteles seleccionados", "Asistencia 24 h"]}
+            desde={2}
+            relevo={17}
+            items={[
+              "Teléfono de asistencia 24 h",
+              "Habitación y baño privados",
+              "Transporte de equipajes",
+              "Vehículo de asistencia",
+              "App de navegación",
+            ]}
           />
         </AbsoluteFill>
       </Sequence>

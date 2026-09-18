@@ -27,7 +27,7 @@ export const Bullets: React.FC<{
   const frame = useCurrentFrame();
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: space[4] }}>
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "stretch", gap: space[3] }}>
       {items.map((texto, i) => {
         const t = frame - desde - i * relevo;
         return (
@@ -41,7 +41,7 @@ export const Bullets: React.FC<{
               backgroundColor: color.bg1,
               borderRadius: radius.lg,
               boxShadow: shadow.raised,
-              padding: `${space[5]}px ${space[7]}px ${space[5]}px ${space[5]}px`,
+              padding: `${space[4]}px ${space[6]}px ${space[4]}px ${space[4]}px`,
               opacity: interpolate(t, [0, 9], [0, 1], {
                 extrapolateLeft: "clamp",
                 extrapolateRight: "clamp",
@@ -64,7 +64,7 @@ export const Bullets: React.FC<{
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                fontSize: fontSize["3xl"],
+                fontSize: fontSize["2xl"],
                 fontWeight: weight.black,
               }}
             >
@@ -72,7 +72,7 @@ export const Bullets: React.FC<{
             </div>
             <div
               style={{
-                fontSize: fontSize["3xl"],
+                fontSize: 40,
                 fontWeight: weight.extrabold,
                 letterSpacing: tracking.tight,
                 color: brand.forest,
