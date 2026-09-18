@@ -47,7 +47,7 @@ export const Candado: React.FC<{ texto?: string; desde?: number }> = ({
         translate: entrada(frame, desde).translate,
       }}
     >
-      <svg width="96" height="120" viewBox="0 0 96 120">
+      <svg width="120" height="150" viewBox="0 0 96 120">
         {/* Arco: sube fuera del cuerpo y baja al cerrarse. */}
         <path
           d={`M 26 ${58 - arco * 0} V 40 a 22 22 0 0 1 44 0 V 58`}
@@ -76,7 +76,7 @@ export const Candado: React.FC<{ texto?: string; desde?: number }> = ({
       <div style={{ maxWidth: 380 }}>
         <div
           style={{
-            fontSize: fontSize.base,
+            fontSize: fontSize.md,
             fontWeight: weight.bold,
             letterSpacing: tracking.loose,
             textTransform: "uppercase",
@@ -88,7 +88,7 @@ export const Candado: React.FC<{ texto?: string; desde?: number }> = ({
         <div
           style={{
             marginTop: space[2],
-            fontSize: fontSize["2xl"],
+            fontSize: fontSize["3xl"],
             fontWeight: weight.black,
             lineHeight: 1.15,
             color: brand.forest,

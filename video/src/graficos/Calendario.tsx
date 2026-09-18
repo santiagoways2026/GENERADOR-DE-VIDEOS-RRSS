@@ -10,7 +10,6 @@ import {
   tracking,
   weight,
 } from "../brand/theme";
-import { entrada } from "../componentes/entrada";
 
 /** Julio de 2027, con lunes como primer dia. El 0 es hueco. */
 const SEMANAS = [
@@ -22,17 +21,31 @@ const SEMANAS = [
 ];
 const DIAS = ["L", "M", "X", "J", "V", "S", "D"];
 const DESTACADO = 25;
+const COLUMNA_DOMINGO = 6;
+
+const CELDA = 104;
+const HUECO = 6;
 
 /**
  * Calendario de julio de 2027 con el 25 marcado en domingo.
- * Cuenta de un vistazo por que 2027 es Ano Santo.
  *
- * La cuadricula entra dia a dia, el 25 se enciende despues y el sello
- * cae al final: tres tiempos para que la vista sepa donde mirar.
+ * Esta pensado para entenderse sin leer: primero se ilumina la columna
+ * entera de los domingos, y solo despues se enciende el 25 dentro de ella.
+ * La vista sigue ese orden y saca la conclusion sola, que es justo lo que
+ * hace que 2027 sea Ano Santo.
  */
 export const Calendario: React.FC<{ desde?: number }> = ({ desde = 0 }) => {
   const frame = useCurrentFrame();
   const t = frame - desde;
+
+  const anchoRejilla = CELDA * 7 + HUECO * 6;
+
+  // La columna del domingo se tine antes de que se encienda el dia.
+  const columna = interpolate(t, [20, 34], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+    easing: Easing.bezier(...easeOut),
+  });
 
   return (
     <Interactive.Div
@@ -41,121 +54,137 @@ export const Calendario: React.FC<{ desde?: number }> = ({ desde = 0 }) => {
         backgroundColor: color.bg1,
         borderRadius: radius.lg,
         boxShadow: shadow.raised,
-        padding: space[6],
-        width: 760,
-        display: "flex",
-        flexDirection: "column",
-        gap: space[4],
-        opacity: entrada(frame, desde).opacity,
-        translate: entrada(frame, desde).translate,
+        overflow: "hidden",
+        width: anchoRejilla + space[6] * 2,
+        opacity: interpolate(t, [0, 10], [0, 1], {
+          extrapolateLeft: "clamp",
+          extrapolateRight: "clamp",
+        }),
+        translate: interpolate(t, [0, 16], ["0px 24px", "0px 0px"], {
+          extrapolateLeft: "clamp",
+          extrapolateRight: "clamp",
+          easing: Easing.bezier(...easeOut),
+        }),
       }}
     >
+      {/* Cabecera en placa olivo, como las cartelas del kit. */}
       <div
         style={{
+          backgroundColor: brand.green,
+          color: color.fgInverse,
+          padding: `${space[4]}px ${space[6]}px`,
           fontSize: fontSize.xl,
           fontWeight: weight.black,
           letterSpacing: tracking.loose,
           textTransform: "uppercase",
-          color: brand.green,
         }}
       >
         Julio 2027
       </div>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(7, 1fr)",
-          gap: space[2],
-        }}
-      >
-        {DIAS.map((d) => (
-          <div
-            key={d}
-            style={{
-              textAlign: "center",
-              fontSize: fontSize.base,
-              fontWeight: weight.bold,
-              letterSpacing: tracking.loose,
-              color: color.fg3,
-            }}
-          >
-            {d}
-          </div>
-        ))}
+      <div style={{ padding: space[6], position: "relative" }}>
+        {/* Banda vertical que tine la columna de los domingos. */}
+        <div
+          style={{
+            position: "absolute",
+            left: space[6] + COLUMNA_DOMINGO * (CELDA + HUECO) - 6,
+            top: space[6],
+            width: CELDA + 12,
+            borderRadius: radius.md,
+            backgroundColor: "#F4F8E6",
+            height: interpolate(columna, [0, 1], [0, 6 * (CELDA + HUECO) + 8]),
+          }}
+        />
 
-        {SEMANAS.flat().map((dia, i) => {
-          if (dia === 0) return <div key={i} />;
-          const esDestacado = dia === DESTACADO;
-          // Los dias entran en cascada, de arriba abajo y de izquierda a derecha.
-          const aparece = 6 + i * 0.6;
-          return (
+        <div
+          style={{
+            position: "relative",
+            display: "grid",
+            gridTemplateColumns: `repeat(7, ${CELDA}px)`,
+            gap: HUECO,
+          }}
+        >
+          {DIAS.map((d, i) => (
             <div
-              key={i}
+              key={d}
               style={{
-                aspectRatio: "1",
+                height: CELDA * 0.62,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                borderRadius: radius.pill,
                 fontSize: fontSize.lg,
-                fontWeight: esDestacado ? weight.black : weight.medium,
-                color: esDestacado ? color.fgInverse : color.fg1,
-                // El 25 se enciende cuando ya esta puesta toda la cuadricula.
-                backgroundColor: esDestacado
-                  ? interpolate(t, [40, 50], [0, 1], {
-                      extrapolateLeft: "clamp",
-                      extrapolateRight: "clamp",
-                    }) > 0.5
-                    ? brand.green
-                    : "transparent"
-                  : "transparent",
-                opacity: interpolate(t, [aparece, aparece + 6], [0, 1], {
-                  extrapolateLeft: "clamp",
-                  extrapolateRight: "clamp",
-                }),
-                scale: esDestacado
-                  ? interpolate(t, [40, 56], [1, 1.12], {
-                      extrapolateLeft: "clamp",
-                      extrapolateRight: "clamp",
-                      easing: Easing.bezier(...easeOut),
-                      output: "perceptual-scale",
-                    })
-                  : 1,
+                fontWeight: weight.black,
+                letterSpacing: tracking.loose,
+                color: i === COLUMNA_DOMINGO ? brand.green : color.fg3,
               }}
             >
-              {dia}
+              {d}
             </div>
-          );
-        })}
+          ))}
+
+          {SEMANAS.flat().map((dia, i) => {
+            if (dia === 0) return <div key={i} style={{ height: CELDA }} />;
+            const esDestacado = dia === DESTACADO;
+            const enColumna = i % 7 === COLUMNA_DOMINGO;
+            const aparece = 4 + Math.floor(i / 7) * 3;
+            return (
+              <div
+                key={i}
+                style={{
+                  height: CELDA,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: radius.pill,
+                  fontSize: esDestacado ? 52 : 34,
+                  fontWeight: esDestacado || enColumna ? weight.black : weight.medium,
+                  color: esDestacado
+                    ? color.fgInverse
+                    : enColumna
+                      ? brand.green
+                      : color.fg1,
+                  backgroundColor: esDestacado ? brand.green : "transparent",
+                  opacity: interpolate(t, [aparece, aparece + 8], [0, 1], {
+                    extrapolateLeft: "clamp",
+                    extrapolateRight: "clamp",
+                  }),
+                  // El 25 crece cuando la columna ya esta tenida.
+                  scale: esDestacado
+                    ? interpolate(t, [34, 48], [0.6, 1], {
+                        extrapolateLeft: "clamp",
+                        extrapolateRight: "clamp",
+                        easing: Easing.bezier(...easeOut),
+                        output: "perceptual-scale",
+                      })
+                    : 1,
+                }}
+              >
+                {dia}
+              </div>
+            );
+          })}
+        </div>
       </div>
 
-      {/* El sello: lima con texto bosque, ligeramente rotado. */}
+      {/* Conclusion, en placa lima con texto bosque. */}
       <div
         style={{
-          alignSelf: "center",
           backgroundColor: brand.lime,
           color: color.fgOnLime,
-          borderRadius: radius.md,
-          padding: `${space[3]}px ${space[6]}px`,
+          padding: `${space[4]}px ${space[6]}px`,
           fontSize: fontSize.xl,
           fontWeight: weight.black,
-          letterSpacing: tracking.loose,
+          letterSpacing: tracking.wide,
           textTransform: "uppercase",
-          rotate: "-2.5deg",
-          opacity: interpolate(t, [56, 64], [0, 1], {
-            extrapolateLeft: "clamp",
-            extrapolateRight: "clamp",
-          }),
-          scale: interpolate(t, [56, 72], [1.3, 1], {
+          textAlign: "center",
+          clipPath: `inset(0 ${interpolate(t, [48, 68], [100, 0], {
             extrapolateLeft: "clamp",
             extrapolateRight: "clamp",
             easing: Easing.bezier(...easeOut),
-            output: "perceptual-scale",
-          }),
+          })}% 0 0)`,
         }}
       >
-        Domingo
+        El 25 cae en domingo
       </div>
     </Interactive.Div>
   );

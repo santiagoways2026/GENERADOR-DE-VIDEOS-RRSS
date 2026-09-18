@@ -36,11 +36,11 @@ export const Pildora: React.FC<{
         alignSelf: "flex-start",
         display: "flex",
         alignItems: "center",
-        gap: space[3],
+        gap: space[4],
         backgroundColor: tonos.bg,
         color: tonos.fg,
         borderRadius: radius.pill,
-        padding: `${space[3]}px ${space[5]}px`,
+        padding: `${space[4]}px ${space[6]}px`,
         opacity: entrada(frame, desde).opacity,
         translate: entrada(frame, desde).translate,
         ...style,
@@ -51,7 +51,7 @@ export const Pildora: React.FC<{
           backgroundColor: tonos.chip,
           borderRadius: radius.pill,
           padding: `${space[1]}px ${space[3]}px`,
-          fontSize: fontSize.sm,
+          fontSize: fontSize.lg,
           fontWeight: weight.black,
           letterSpacing: tracking.loose,
           textTransform: "uppercase",
@@ -59,7 +59,7 @@ export const Pildora: React.FC<{
       >
         {etiqueta}
       </span>
-      <span style={{ fontSize: fontSize.lg, fontWeight: weight.bold }}>
+      <span style={{ fontSize: fontSize["2xl"], fontWeight: weight.bold }}>
         {texto}
       </span>
     </Interactive.Div>

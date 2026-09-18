@@ -5,7 +5,7 @@ import { brand, fontFamily, margin, space } from "./brand/theme";
 import { Clip } from "./componentes/Clip";
 import { Logo } from "./componentes/Logo";
 import { Pildora } from "./componentes/Pildora";
-import { Rotulo } from "./componentes/Rotulo";
+import { Cartela } from "./componentes/Cartela";
 import { Calendario } from "./graficos/Calendario";
 import { Candado } from "./graficos/Candado";
 import { LineaTiempo } from "./graficos/LineaTiempo";
@@ -46,6 +46,15 @@ export const ReelXacobeo: React.FC = () => {
     <AbsoluteFill style={{ backgroundColor: brand.forest, fontFamily }}>
       <Audio src={staticFile("locucion.mp3")} />
 
+      {/* La marca acompana toda la pieza, no solo el cierre. */}
+      <Sequence durationInFrames={f(B[6])} name="Marca">
+        <Logo
+          variante="blanco"
+          ancho={240}
+          style={{ position: "absolute", left: margin, bottom: margin, opacity: 0.92 }}
+        />
+      </Sequence>
+
       {/* 1 · Si alguna vez has pensado en hacer el Camino */}
       <Sequence durationInFrames={dur(0)} name="1 · Apertura">
         <Sequence durationInFrames={56} name="Llegada a la plaza">
@@ -54,7 +63,7 @@ export const ReelXacobeo: React.FC = () => {
         <Sequence from={56} durationInFrames={dur(0) - 56} name="Catedral">
           <Clip src="brutos/02-catedral-frontal.mp4" duracion={dur(0) - 56} overlay={0.32} />
         </Sequence>
-        <Rotulo>2027 = Año Santo</Rotulo>
+        <Cartela eyebrow="Xacobeo" principal="2027" secundaria="Es Año Santo" desde={8} />
       </Sequence>
 
       {/* 2 · El 25 de julio cae en domingo */}
@@ -65,7 +74,7 @@ export const ReelXacobeo: React.FC = () => {
         <Sequence from={132} durationInFrames={dur(1) - 132} name="Catedral frontal">
           <Clip src="brutos/02-catedral-frontal.mp4" duracion={dur(1) - 132} overlay={0.36} />
         </Sequence>
-        <Rotulo>25 de julio en domingo</Rotulo>
+        <Cartela principal="25 de julio" secundaria="cae en domingo" desde={6} />
         <Inferior>
           <Calendario desde={30} />
         </Inferior>
@@ -79,7 +88,7 @@ export const ReelXacobeo: React.FC = () => {
         <Sequence from={85} durationInFrames={dur(2) - 85} name="Credencial">
           <Clip src="brutos/14-credencial.mp4" duracion={dur(2) - 85} overlay={0.42} />
         </Sequence>
-        <Rotulo>El siguiente, en 2032</Rotulo>
+        <Cartela principal="El siguiente" secundaria="en 2032" desde={6} />
         <Inferior>
           <LineaTiempo desde={16} />
         </Inferior>
@@ -96,7 +105,7 @@ export const ReelXacobeo: React.FC = () => {
         <Sequence from={195} durationInFrames={dur(3) - 195} name="Compostela">
           <Clip src="brutos/07-compostela.mp4" duracion={dur(3) - 195} overlay={0.3} />
         </Sequence>
-        <Rotulo>Así se vive un Año Santo</Rotulo>
+        <Cartela principal="Así se vive" secundaria="un Año Santo" desde={6} />
       </Sequence>
 
       {/* 5 · Quien reserva ahora elige */}
@@ -110,7 +119,7 @@ export const ReelXacobeo: React.FC = () => {
         <Sequence from={155} durationInFrames={dur(4) - 155} name="Vieiras">
           <Clip src="brutos/10-vieiras.mp4" duracion={dur(4) - 155} overlay={0.34} />
         </Sequence>
-        <Rotulo>Eliges tú</Rotulo>
+        <Cartela principal="Reserva ahora" secundaria="y eliges tú" desde={6} />
         <Inferior>
           <Candado desde={60} />
         </Inferior>
@@ -124,7 +133,7 @@ export const ReelXacobeo: React.FC = () => {
         <Sequence from={90} durationInFrames={dur(5) - 90} name="Flecha">
           <Clip src="brutos/12-flecha.mp4" duracion={dur(5) - 90} overlay={0.36} />
         </Sequence>
-        <Rotulo>Tú solo caminas</Rotulo>
+        <Cartela principal="Tú solo" secundaria="caminas" desde={6} />
         <Inferior>
           <div style={{ display: "flex", flexDirection: "column", gap: space[3] }}>
             <Pildora etiqueta="1" texto="Equipaje transportado" desde={6} />
@@ -137,7 +146,7 @@ export const ReelXacobeo: React.FC = () => {
       {/* 7 · Escríbenos */}
       <Sequence from={f(B[6])} durationInFrames={dur(6)} name="7 · Cierre">
         <Clip src="brutos/13-cierre-cielo.mp4" duracion={dur(6)} overlay={0.4} />
-        <Rotulo>Tu Camino de 2027 empieza hoy</Rotulo>
+        <Cartela principal="Tu Camino de 2027" secundaria="empieza hoy" tono="lima" desde={6} />
         <AbsoluteFill
           style={{
             justifyContent: "flex-end",

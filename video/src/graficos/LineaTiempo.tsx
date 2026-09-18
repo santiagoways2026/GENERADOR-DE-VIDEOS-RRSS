@@ -50,7 +50,7 @@ export const LineaTiempo: React.FC<{ desde?: number }> = ({ desde = 0 }) => {
         borderRadius: radius.lg,
         boxShadow: shadow.raised,
         padding: `${space[7]}px ${space[6]}px ${space[6]}px`,
-        width: 960,
+        width: 980,
         opacity: entrada(frame, desde).opacity,
         translate: entrada(frame, desde).translate,
       }}
@@ -107,8 +107,8 @@ export const LineaTiempo: React.FC<{ desde?: number }> = ({ desde = 0 }) => {
               <div
                 style={{
                   margin: "92px auto 0",
-                  width: esActual ? 38 : 24,
-                  height: esActual ? 38 : 24,
+                  width: esActual ? 44 : 28,
+                  height: esActual ? 44 : 28,
                   borderRadius: radius.pill,
                   backgroundColor: esActual ? brand.green : "#CFCABB",
                 }}
@@ -116,7 +116,7 @@ export const LineaTiempo: React.FC<{ desde?: number }> = ({ desde = 0 }) => {
               <div
                 style={{
                   marginTop: space[3],
-                  fontSize: esActual ? fontSize["2xl"] : fontSize.xl,
+                  fontSize: esActual ? fontSize["3xl"] : fontSize["2xl"],
                   fontWeight: esActual ? weight.black : weight.medium,
                   color: esActual ? brand.green : color.fg3,
                 }}
@@ -134,8 +134,8 @@ export const LineaTiempo: React.FC<{ desde?: number }> = ({ desde = 0 }) => {
             position: "absolute",
             top: 8,
             left: 70 + avance * 273 - 44,
-            width: 88,
-            height: 88,
+            width: 104,
+            height: 104,
             objectFit: "contain",
             opacity: interpolate(t, [8, 16], [0, 1], {
               extrapolateLeft: "clamp",
@@ -149,7 +149,7 @@ export const LineaTiempo: React.FC<{ desde?: number }> = ({ desde = 0 }) => {
         style={{
           marginTop: space[4],
           textAlign: "center",
-          fontSize: fontSize.md,
+          fontSize: fontSize.lg,
           fontWeight: weight.bold,
           letterSpacing: tracking.loose,
           textTransform: "uppercase",
