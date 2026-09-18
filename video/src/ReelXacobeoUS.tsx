@@ -5,7 +5,6 @@ import { brand, fontFamily, margin } from "./brand/theme";
 import { Bullets } from "./componentes/Bullets";
 import { CajaDato } from "./componentes/CajaDato";
 import { Cartela } from "./componentes/Cartela";
-import { Logo } from "./componentes/Logo";
 import { Planos } from "./componentes/Planos";
 import { Cierre } from "./escenas/Cierre";
 import { Calendario } from "./graficos/Calendario";
@@ -96,17 +95,16 @@ export const ReelXacobeoUS: React.FC = () => {
           total={dur(0)}
           overlay={0.36}
           lista={[
-            { src: "contraluz", dura: 1.47 },
-            { src: "camino-abierto", dura: 1.2 },
-            { src: "tunel-vegetacion", dura: 0.87 },
-            { src: "campo-flores", dura: 1.7 },
-            { src: "rio-piedras", dura: 1.0 },
+            { src: "contraluz", dura: 1.47, ritmo: 0.8 },
+            { src: "campo-flores", dura: 1.6 },
+            { src: "camino-abierto", dura: 1.15, ritmo: 0.8 },
+            { src: "piernas", dura: 1.9 },
           ]}
         />
         <Cartela
-          eyebrow="In 2027"
-          principal="Spain opens a door"
-          secundaria="it keeps sealed for years"
+          eyebrow="Xacobeo 2027"
+          principal="Camino de Santiago"
+          secundaria="Spain's Holy Year"
           desde={10}
         />
       </Sequence>
@@ -118,12 +116,11 @@ export const ReelXacobeoUS: React.FC = () => {
           total={dur(1)}
           overlay={0.48}
           lista={[
-            { src: "piernas", dura: 2.27 },
-            { src: "pareja-muros", dura: 1.57, encuadre: "40% 50%" },
-            { src: "grupo-mimosas", dura: 1.2 },
-            { src: "flecha", dura: 1.2, encuadre: "58% 50%" },
-            { src: "manos-sellando", dura: 1.6, encuadre: "28% 50%" },
-            { src: "credencial", dura: 1.07 },
+            { src: "pareja-muros", dura: 1.55, encuadre: "40% 50%", ritmo: 0.8 },
+            { src: "grupo-mimosas", dura: 1.2, ritmo: 0.7 },
+            { src: "flecha", dura: 1.2, encuadre: "58% 50%", ritmo: 0.7 },
+            { src: "manos-sellando", dura: 1.6, encuadre: "28% 50%", ritmo: 0.85 },
+            { src: "credencial", dura: 1.05, ritmo: 0.7 },
           ]}
         />
         <Cartela principal="1,000 years" secundaria="of pilgrimage" desde={14} />
@@ -140,9 +137,8 @@ export const ReelXacobeoUS: React.FC = () => {
           total={dur(2)}
           overlay={0.5}
           lista={[
-            { src: "catedral-torres", dura: 1.7 },
-            { src: "iglesia-exterior", dura: 1.37 },
-            { src: "catedral-a", dura: 1.7 },
+            { src: "catedral-torres", dura: 1.7, ritmo: 0.9 },
+            { src: "iglesia-exterior", dura: 1.37, ritmo: 0.75 },
           ]}
         />
         <Inferior>
@@ -162,10 +158,9 @@ export const ReelXacobeoUS: React.FC = () => {
           total={dur(3)}
           overlay={0.46}
           lista={[
-            { src: "catedral-b", dura: 1.7 },
-            { src: "plaza", dura: 1.07 },
+            { src: "catedral-b", dura: 1.7, ritmo: 0.9 },
             { src: "portico-sellado", dura: 2.0, encuadre: "30% 50%" },
-            { src: "brazos-alto", dura: 1.0, encuadre: "34% 50%" },
+            { src: "brazos-alto", dura: 1.0, encuadre: "34% 50%", ritmo: 0.7 },
           ]}
         />
         <Cartela principal="This is" secundaria="a Holy Year" desde={8} />
@@ -181,11 +176,9 @@ export const ReelXacobeoUS: React.FC = () => {
           total={dur(4)}
           overlay={0.46}
           lista={[
-            { src: "campo-flores", dura: 1.7 },
-            { src: "grupo-peregrinos", dura: 0.77 },
-            { src: "tunel-vegetacion", dura: 0.87 },
-            { src: "rio-piedras", dura: 1.0 },
-            { src: "contraluz", dura: 1.47 },
+            { src: "campo-flores", dura: 1.7, ritmo: 0.9 },
+            { src: "rio-piedras", dura: 1.0, ritmo: 0.6 },
+            { src: "contraluz", dura: 1.47, ritmo: 0.8 },
           ]}
         />
         <Inferior>
@@ -205,10 +198,10 @@ export const ReelXacobeoUS: React.FC = () => {
           total={dur(5)}
           overlay={0.32}
           lista={[
-            { src: "catedral-torres", dura: 1.7 },
-            { src: "brindis", dura: 2.0, encuadre: "42% 50%" },
-            { src: "vieiras", dura: 1.3 },
-            { src: "iglesia-exterior", dura: 1.37 },
+            { src: "catedral-torres", dura: 1.6 },
+            { src: "brindis", dura: 1.8, encuadre: "42% 50%" },
+            { src: "vieiras", dura: 1.25, ritmo: 0.85 },
+            { src: "iglesia-exterior", dura: 1.3, ritmo: 0.9 },
           ]}
         />
         <Cartela principal="The Camino" secundaria="at its most alive" desde={6} />
@@ -221,19 +214,17 @@ export const ReelXacobeoUS: React.FC = () => {
           total={dur(6)}
           overlay={0.3}
           lista={[
-            { src: "plaza", dura: 1.07 },
-            { src: "brazos-alto", dura: 1.0, encuadre: "34% 50%" },
-            { src: "compostela", dura: 1.7, encuadre: "38% 50%" },
-            { src: "catedral-a", dura: 1.7 },
+            { src: "plaza", dura: 1.05, ritmo: 0.7 },
+            { src: "compostela", dura: 1.7, encuadre: "38% 50%", ritmo: 0.9 },
+            { src: "catedral-a", dura: 1.7, ritmo: 0.85 },
           ]}
         />
         <Inferior alto={280}>
           <CajaDato
-            desde={en(6, 37.3)}
-            eyebrow="On the Camino today"
-            cifra="Americans lead"
-            texto="the largest international group of pilgrims, and still growing"
-            fuente="Oficina del Peregrino, 2024-2026"
+            desde={en(6, 37.0)}
+            eyebrow="In a Holy Year"
+            cifra="A plenary indulgence"
+            texto="Making a pilgrimage during a Holy Year allows Christians to obtain one"
             tono="bosque"
           />
         </Inferior>
@@ -253,9 +244,8 @@ export const ReelXacobeoUS: React.FC = () => {
             total={dur(7)}
             overlay={0.42}
             lista={[
-              { src: "pareja-muros", dura: 1.57, encuadre: "40% 50%" },
-              { src: "flecha", dura: 1.2, encuadre: "58% 50%" },
-              { src: "piernas", dura: 2.27 },
+              { src: "flecha", dura: 1.2, encuadre: "58% 50%", ritmo: 0.7 },
+              { src: "piernas", dura: 2.0 },
             ]}
           />
         </Sequence>
@@ -266,8 +256,8 @@ export const ReelXacobeoUS: React.FC = () => {
             total={dur(8)}
             overlay={0.42}
             lista={[
-              { src: "habitacion", dura: 2.17, encuadre: "62% 50%" },
-              { src: "casa-rural", dura: 1.2, encuadre: "38% 50%" },
+              { src: "habitacion", dura: 1.3, encuadre: "62% 50%" },
+              { src: "casa-rural", dura: 1.2, encuadre: "38% 50%", ritmo: 0.92 },
             ]}
           />
         </Sequence>
@@ -280,11 +270,9 @@ export const ReelXacobeoUS: React.FC = () => {
         >
           <Planos
             total={dur(9)}
-            overlay={0.42}
+            overlay={0.26}
             lista={[
-              { src: "equipaje-etiquetas", dura: 0.95 },
-              { src: "equipaje-fila", dura: 0.7 },
-              { src: "equipaje-portal", dura: 1.2, encuadre: "55% 50%" },
+              { src: "equipaje-etiquetas", dura: 0.95, ritmo: 0.44 },
             ]}
           />
         </Sequence>
@@ -299,9 +287,8 @@ export const ReelXacobeoUS: React.FC = () => {
             total={dur(10)}
             overlay={0.42}
             lista={[
-              { src: "portico-sellado", dura: 2.0, encuadre: "30% 50%" },
-              { src: "manos-sellando", dura: 1.6, encuadre: "28% 50%" },
-              { src: "equipaje-grupo", dura: 1.2, encuadre: "45% 50%" },
+              { src: "portico-sellado", dura: 1.7, encuadre: "30% 50%" },
+              { src: "equipaje-grupo", dura: 1.2, encuadre: "45% 50%", ritmo: 0.75 },
             ]}
           />
         </Sequence>
@@ -337,14 +324,13 @@ export const ReelXacobeoUS: React.FC = () => {
           total={dur(11)}
           overlay={0.36}
           lista={[
-            { src: "pareja-muros", dura: 1.57, encuadre: "40% 50%" },
-            { src: "camino-abierto", dura: 1.2 },
+            { src: "pareja-muros", dura: 1.55, encuadre: "40% 50%", ritmo: 0.72 },
           ]}
         />
         <Cartela
           principal="You walk."
           secundaria="We handle the rest"
-          desde={2}
+          desde={0}
           arriba={240}
         />
       </Sequence>
@@ -356,41 +342,12 @@ export const ReelXacobeoUS: React.FC = () => {
           total={dur(12)}
           overlay={0.34}
           lista={[
-            { src: "terraza", dura: 2.2, encuadre: "30% 50%" },
-            { src: "casa-rural", dura: 1.2, encuadre: "38% 50%" },
-            { src: "mesa-exterior", dura: 1.47, encuadre: "40% 50%" },
+            { src: "terraza", dura: 2.0, encuadre: "30% 50%" },
+            { src: "mesa-exterior", dura: 1.45, encuadre: "40% 50%", ritmo: 0.8 },
           ]}
         />
       </Sequence>
 
-      {/* La marca acompana hasta el cierre, que ya es todo marca. Va al
-          final del arbol para quedar por encima del metraje, y mas arriba
-          que en la pieza espanola porque la botonera de Reels se come los
-          ultimos 200 px.
-
-          El logo blanco sobre un plano claro no se veia: debajo va una
-          franja de bosque, que es la tinta de la marca y no un gradiente
-          ajeno. Arranca por debajo de los graficos para no ensuciarlos. */}
-      <Sequence durationInFrames={f(B[13])} name="Marca">
-        <AbsoluteFill
-          style={{
-            background:
-              `linear-gradient(to bottom, rgba(24,72,52,0) 0%, ` +
-              `rgba(24,72,52,0.52) 62%, rgba(24,72,52,0.72) 100%)`,
-            top: 1640,
-          }}
-        />
-        <Logo
-          variante="blanco"
-          ancho={240}
-          style={{
-            position: "absolute",
-            left: margin,
-            bottom: 190,
-            opacity: 0.95,
-          }}
-        />
-      </Sequence>
 
       {/* 11 · Cierre de marca. El unico CTA de la pieza. */}
       <Sequence from={f(B[13])} durationInFrames={dur(13)} name="11 · Cierre">

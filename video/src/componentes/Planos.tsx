@@ -4,10 +4,16 @@ import { Clip } from "./Clip";
 export type Plano = {
   /** Nombre del archivo en public/brutos, sin extension. */
   src: string;
-  /** Duracion real del plano en el bruto, en segundos. */
+  /** Segundos de bruto que se reservan para este plano. Nunca mas de lo que
+   *  dura de verdad la toma, o se congela; puede ser menos, y entonces solo
+   *  se usa el principio. */
   dura: number;
   /** Encuadre del recorte cuando el sujeto no esta centrado. */
   encuadre?: string;
+  /** Velocidad de reproduccion. Por debajo de 1 la toma rinde mas tiempo del
+   *  que dura: `dura` sigue contando bruto, y en pantalla se ve `dura/ritmo`.
+   *  Sirve para que un bloque se cubra con menos planos y mas largos. */
+  ritmo?: number;
 };
 
 /**
@@ -26,7 +32,9 @@ export const Planos: React.FC<{
   total: number;
   overlay?: number;
 }> = ({ lista, total, overlay = 0.34 }) => {
-  const suma = lista.reduce((a, p) => a + p.dura, 0);
+  /** Lo que rinde cada toma en pantalla, ya contando el ritmo. */
+  const rinde = (p: Plano) => p.dura / (p.ritmo ?? 1);
+  const suma = lista.reduce((a, p) => a + rinde(p), 0);
   let acumulado = 0;
 
   // Si las tomas no cubren el bloque hay que estirar alguna, y estirar un
@@ -49,7 +57,7 @@ export const Planos: React.FC<{
         const fin =
           i === lista.length - 1
             ? total
-            : acumulado + Math.round((p.dura / suma) * total);
+            : acumulado + Math.round((rinde(p) / suma) * total);
         acumulado = fin;
         const duracion = fin - inicio;
         if (duracion <= 0) return null;
@@ -60,6 +68,7 @@ export const Planos: React.FC<{
               duracion={duracion}
               overlay={overlay}
               encuadre={p.encuadre}
+              ritmo={p.ritmo}
               zoom={1.05}
             />
           </Sequence>

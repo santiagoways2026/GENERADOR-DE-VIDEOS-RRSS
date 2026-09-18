@@ -183,27 +183,6 @@ export const MapaRutas: React.FC<{
             extrapolateRight: "clamp",
           })}
         />
-        <g opacity={llegada}>
-          <line
-            x1={SANTIAGO.x}
-            y1={SANTIAGO.y + 18}
-            x2={SANTIAGO.x}
-            y2={SANTIAGO.y + 44}
-            stroke={brand.forest}
-            strokeWidth={4}
-          />
-          <text
-            x={36}
-            y={SANTIAGO.y + 74}
-            textAnchor="start"
-            fill={brand.forest}
-            fontSize={26}
-            fontWeight={weight.black}
-            letterSpacing="1"
-          >
-            SANTIAGO DE COMPOSTELA
-          </text>
-        </g>
       </svg>
     </Interactive.Div>
   );

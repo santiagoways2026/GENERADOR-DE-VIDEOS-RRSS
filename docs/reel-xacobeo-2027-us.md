@@ -28,13 +28,13 @@ que tocar.
 
 | Desde | Bloque | En pantalla | Qué hace |
 | --- | --- | --- | --- |
-| 0:00 | Una puerta | In 2027 · Spain opens a door it keeps sealed for years | Gancho. No nombra el Camino todavía |
+| 0:00 | Una puerta | Xacobeo 2027 · Camino de Santiago · Spain's Holy Year | Titula la pieza. El gancho lo hace la voz |
 | 0:06 | Mapa de rutas | 1,000 years of pilgrimage | Sitúa Galicia y enseña que son varias rutas |
 | 0:15 | Calendario | July 2027 · July 25 falls on a Sunday | La regla del Año Santo, de un vistazo |
 | 0:18 | Puerta Santa | This is a Holy Year | Sealed → Open sobre la palabra "unsealed" |
 | 0:23 | Años Santos | Once a decade, more or less | 2032 se enciende con la cifra |
 | 0:29 | Un Año Santo se nota | The Camino at its most alive | Manda el metraje |
-| 0:35 | Obradoiro | Americans lead | Llegada y prueba social |
+| 0:35 | Obradoiro | A plenary indulgence | Llegada, y qué significa el Año Santo para un creyente |
 | 0:40 | Servicio | Cuatro tarjetas con check | El bloque premium, once segundos |
 | 0:52 | Una mochila | You walk. We handle the rest | Remate del servicio |
 | 0:54 | Plazas contadas | — | Alojamiento, sin texto, antes del CTA |
@@ -43,6 +43,21 @@ que tocar.
 Cada tarjeta de servicio entra sobre la frase que la nombra, y el plano
 enseña de qué habla: las maletas con etiqueta salen en "your luggage moved
 ahead every morning", el mostrador en "a dedicated advisor".
+
+Ninguna toma baja de 1,2 segundos en pantalla. Como los brutos son cortos
+(el más largo dura 2,27 s) y la pieza dura un minuto, cubrir cada bloque con
+tomas a velocidad normal obligaba a picarlo en cinco o seis planos y se
+notaba. La salida es el campo `ritmo` de `Planos`: por debajo de 1 la toma
+rinde más tiempo del que dura, sin congelarse ni invadir el plano siguiente
+del bruto. Se usa entre 0,7 y 0,9, salvo el plano de las maletas, que va a
+0,44 porque es un detalle casi quieto y aguanta el ralentí.
+
+Antes de renderizar conviene pasar el revisor, que comprueba las cuatro
+cosas que han salido mal alguna vez:
+
+```bash
+python3 herramientas/scripts/revisar-montaje.py video/src/ReelXacobeoUS.tsx
+```
 
 ## Caption
 
@@ -114,8 +129,11 @@ pregunta, se lleva a mensaje directo.
 
 ## Decisiones que conviene no deshacer
 
-- **El gancho no menciona el Camino.** Menciona una puerta que se abre, que es
-  lo único que para el scroll de alguien que no sabe nada del tema.
+- **El rótulo de entrada titula, la voz engancha.** En pantalla se lee
+  «Xacobeo 2027 · Camino de Santiago · Spain's Holy Year», que sitúa a
+  cualquiera en tres líneas; mientras, la locución habla de una puerta que
+  se abre, que es lo que para el scroll.
+- **Sin marca de agua.** El logo va solo en el cierre, que ya es todo marca.
 - **Los gráficos son la parte didáctica, no decoración.** Sin el mapa el
   espectador no sabe dónde está Galicia; sin el calendario no entiende la
   regla del Jubileo. Si hay que recortar, se recorta otra cosa.
@@ -129,16 +147,18 @@ pregunta, se lleva a mensaje directo.
 - **La semana del calendario empieza en domingo.** Un americano lee la
   cuadrícula así, y el gráfico existe para leerse de un vistazo.
 
-## Datos en pantalla, con su fuente
+## Datos en pantalla
 
-Solo aparece uno, y lleva la fuente escrita en la propia tarjeta:
+No aparece ninguna cifra, así que no hay nada que fechar ni que envejezca en
+una pieza que va a estar anclada meses. La única afirmación de la tarjeta es
+la indulgencia plenaria, que es doctrina y no un dato de temporada.
+
+Datos disponibles por si se hace una variante, siempre con la fuente escrita
+en la propia tarjeta:
 
 - Los estadounidenses son ya la primera nacionalidad extranjera del Camino y
   siguen creciendo: 7,98 % de los peregrinos en 2024, 8,28 % en 2025 y 9,75 %
   en lo que va de 2026, por delante de Italia, Alemania y Portugal.
-
-Otros datos disponibles, por si se hace una variante:
-
 - 530.987 Compostelas en 2025, récord histórico, con un 57 % de peregrinos
   internacionales.
 - Próximos Años Santos: 2027, 2032, 2038 y 2049.

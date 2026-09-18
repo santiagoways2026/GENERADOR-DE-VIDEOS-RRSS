@@ -30,6 +30,10 @@ export const Clip: React.FC<{
   /** Encuadre del recorte, en porcentaje: "50% 50%" centra, "20% 50%"
    *  se queda con la parte izquierda del plano. */
   encuadre?: string;
+  /** Velocidad de reproduccion. Por debajo de 1 el plano dura mas de lo que
+   *  dura en el bruto, que es la unica forma de dar aire a una toma corta sin
+   *  congelarla ni invadir la siguiente. */
+  ritmo?: number;
 }> = ({
   src,
   desdeSegundo = 0,
@@ -37,6 +41,7 @@ export const Clip: React.FC<{
   zoom = 1.08,
   duracion,
   encuadre = "50% 50%",
+  ritmo = 1,
 }) => {
   const frame = useCurrentFrame();
 
@@ -45,6 +50,7 @@ export const Clip: React.FC<{
       <OffthreadVideo
         src={staticFile(src)}
         trimBefore={desdeSegundo > 0 ? Math.round(desdeSegundo * 30) : undefined}
+        playbackRate={ritmo}
         style={{
           width: "100%",
           height: "100%",
