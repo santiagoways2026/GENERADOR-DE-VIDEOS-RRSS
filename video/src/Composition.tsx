@@ -1,28 +1,32 @@
 import { Composition } from "remotion";
-import { canvas } from "./brand/theme";
-import { EscenaPortada, type PortadaProps } from "./EscenaPortada";
+import { format, fps } from "./brand/theme";
+import { Reel, type ReelProps } from "./Reel";
 
 /**
- * Una <Composition> declara un video: que componente pinta cada fotograma,
- * cuantos fotogramas dura, a que velocidad y en que tamano.
- * Aparece en la barra lateral de Remotion Studio con su id.
+ * Cada <Composition> es un video registrado: que componente lo pinta,
+ * cuanto dura, a que velocidad y en que tamano. Aparece con su id en la
+ * barra lateral de Remotion Studio.
  */
 export const MyComposition = () => {
   return (
     <Composition
-      id="PortadaSW"
-      component={EscenaPortada}
-      durationInFrames={5 * canvas.fps} // 5 segundos
-      fps={canvas.fps}
-      width={canvas.width}
-      height={canvas.height}
+      id="ReelCamino"
+      component={Reel}
+      durationInFrames={10 * fps}
+      fps={fps}
+      width={format.reels.width}
+      height={format.reels.height}
       defaultProps={
         {
-          titular: "¿Cuál es tu Camino?",
-          subtitulo:
-            "Las 5 rutas que más peregrinos eligen, comparadas en un minuto.",
-          cta: "Descúbrelo",
-        } satisfies PortadaProps
+          eyebrow: "Camino Portugués",
+          titular: "Tui o Sarria",
+          lead: "Dos puntos de partida, dos Caminos distintos. Te contamos cuál encaja contigo.",
+          foto: "img/peregrinos-camino.jpg",
+          titularFoto: "El Camino empieza cuando",
+          destacado: "dejas de tener prisa",
+          pregunta: "¿Ya tienes fecha para tu Camino?",
+          cta: "Cuéntanos",
+        } satisfies ReelProps
       }
     />
   );

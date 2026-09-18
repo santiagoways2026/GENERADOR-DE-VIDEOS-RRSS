@@ -6,8 +6,8 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "@fontsource/manrope": "^5.3.0",
     "@fontsource/montserrat": "^5.3.0",
-    "@fontsource/open-sans": "^5.3.0",
     "@remotion/cli": "4.0.526",
     "@remotion/google-fonts": "^4.0.526",
     "@remotion/tailwind-v4": "4.0.526",

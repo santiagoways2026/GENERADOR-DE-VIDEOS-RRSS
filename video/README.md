@@ -1,50 +1,62 @@
 # Vídeos Santiago Ways (Remotion)
 
 Vídeo escrito como código React. Cada fotograma es un render de un componente:
-se le pregunta "¿qué frame es?" y se dibuja el estado correspondiente.
+se le pregunta "¿qué frame es?" y se dibuja el estado correspondiente. Por eso
+las animaciones CSS no sirven aquí: todo el movimiento sale de `interpolate()`.
 
 ## Estructura
 
 | Archivo | Qué contiene |
 | --- | --- |
-| `src/brand/theme.ts` | Los tokens del BrandBook: colores, fuentes, escala tipográfica, lienzo. Único sitio donde tocar la marca. |
-| `src/EscenaPortada.tsx` | Una escena de ejemplo: portada vertical para Reels, TikTok o carrusel. |
-| `src/Composition.tsx` | Declara el vídeo: duración, fps, tamaño y textos por defecto. |
-| `src/Root.tsx` | Registra todas las composiciones disponibles. |
+| `src/brand/theme.ts` | El sistema de diseño en código: color, tipografía, espaciado, radios, sombras, movimiento y formatos. Único sitio donde tocar la marca. |
+| `src/fuentes.ts` | Carga la cascada Montserrat, Manrope, Poppins, empaquetada con el proyecto. |
+| `src/componentes/Logo.tsx` | El logo oficial. La marca nunca se escribe como texto. |
+| `src/componentes/entrada.ts` | La entrada estándar: fade más slide-up, sin rebote. |
+| `src/escenas/BloqueOlivo.tsx` | Pieza gráfica: olivo sólido, titular en mayúsculas. |
+| `src/escenas/BloqueFoto.tsx` | Pieza emocional: foto real, overlay y brushstroke lima. |
+| `src/escenas/Cierre.tsx` | Cierre en bosque con el único CTA de la pieza. |
+| `src/Reel.tsx` | Une las escenas con `<Sequence>`. |
+| `src/Composition.tsx` | Declara el vídeo: duración, fps, tamaño y textos. |
 
 ## Comandos
 
 ```bash
-npm run dev        # Abre Remotion Studio: preview con línea de tiempo
-npx remotion render PortadaSW salida.mp4
+npm run dev                                  # Remotion Studio: preview editable
+npx remotion render ReelCamino salida.mp4    # Exportar
 ```
 
-## Marca
+En Studio puedes editar los textos desde la interfaz y se escriben solos en el
+código, gracias a que las escenas usan `<Interactive.Div>`.
 
-Paleta oficial, del BrandBook:
+## Reglas de marca aplicadas
 
-| Rol | Hex |
-| --- | --- |
-| Verde principal | `#7AA606` |
-| Verde oscuro | `#668814` |
-| Blanco | `#FFFFFF` |
-| Negro / gris oscuro | `#1A1A1A` |
+Las que condicionan el código, tomadas de la guía oficial:
 
-El manual especifica **Tahoma**, que no existe en el navegador headless con el
-que Remotion renderiza. Se usan sustitutas empaquetadas con el proyecto
-(Montserrat para titulares, Open Sans para cuerpo) para que el render salga
-igual en cualquier máquina y sin conexión. Se cambia en `src/brand/theme.ts`.
+- El protagonista es el verde olivo `#7AA606`. Blanco más verde en la mayoría
+  de piezas. Lima y bosque son complementarios de uso puntual.
+- Texto blanco sobre olivo, siempre. Texto bosque sobre lima, siempre.
+- Nada de negro puro: la tinta es el verde bosque `#184834`.
+- El brushstroke lima subraya de una a tres palabras clave, ligeramente
+  rotado, nunca como contenedor de párrafos.
+- "Santiago Ways" nunca se escribe como texto. Se usa el archivo de logo.
+- Un solo CTA por pieza.
+- Movimiento: fade más slide-up corto con `cubic-bezier(0.22, 0.61, 0.36, 1)`.
+  Nunca rebote.
+- Formatos: 1080x1920 reels, 1080x1080 feed, 1280x720 YouTube. Márgenes
+  de 56 px como mínimo.
 
-El isotipo (vieira) todavía no está en el repo: en `EscenaPortada.tsx` hay un
-marcador de posición. Al añadir el SVG o PNG en versión blanca a `public/`, se
-sustituye por `<CanvasImage src={staticFile("vieira.svg")} />`.
+## Tipografía
+
+La guía marca Tahoma como corporativa para PDF y material legacy, con la
+cascada Montserrat, Manrope, Poppins para web. En vídeo se usa esa cascada y
+las fuentes van empaquetadas con el proyecto: así el render sale idéntico en
+cualquier máquina y funciona sin conexión.
 
 ## Nota sobre entornos sin red
 
-Remotion descarga su propio Chrome la primera vez. Si el entorno bloquea esa
-descarga, se le puede pasar un Chromium ya instalado:
+Remotion descarga su propio Chrome la primera vez. Si el entorno lo bloquea, se
+le puede pasar un Chromium ya instalado:
 
 ```bash
-npx remotion render PortadaSW salida.mp4 \
-  --browser-executable=/ruta/a/chrome
+npx remotion render ReelCamino salida.mp4 --browser-executable=/ruta/a/chrome
 ```
