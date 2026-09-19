@@ -119,6 +119,12 @@ menudo sin sonido.
 
 - La locución manda. La música es cama: unos 15 dB por debajo, volumen 0,14,
   con una entrada corta.
+- **Igualar el nivel de la locución antes de mezclar.** Cada voz de
+  ElevenLabs sale a un nivel distinto: entre dos piezas de este repositorio
+  hay 8 dB de diferencia. Se mide el nivel de voz y el pico con
+  `envolvente.py`, y se amplifica con el `volume` del `Audio` hasta dejar el
+  pico alrededor de -1,5 dB. Sin eso la cama queda proporcionalmente alta y
+  la pieza suena floja al lado de cualquier otra del feed.
 - **El punto de entrada de la música se elige mirando su envolvente**, no por
   el principio del archivo. Casi todos los temas traen su propio fundido
   final: si se hace coincidir con el cierre de marca, no hay que inventarse
@@ -162,6 +168,27 @@ Lo mismo con el calendario: no enseña una cuadrícula que haya que leer, tiñe
 primero la columna de los domingos y solo después enciende el 25. Y la semana
 empieza donde la empieza el mercado al que va la pieza, en lunes o en domingo.
 
+**Y tiene que decir la verdad, porque se cuenta.** Si el rótulo dice «7
+routes», el mapa dibuja siete: `MapaRutas` tiene dos vistas por eso, la del
+noroeste con cinco y la peninsular con las siete principales.
+
+Los emojis no se escriben: no están en Montserrat y saldrían como una caja
+vacía. Una flecha se dibuja en SVG.
+
+## Instagram y YouTube no son lo mismo
+
+Las piezas comparten marca y componentes, pero tres cosas cambian con el
+canal y conviene no unificarlas por descuido:
+
+| | Reel de Instagram | Short de YouTube |
+| --- | --- | --- |
+| Subtítulos | No | **Quemados**: se ve mucho sin sonido |
+| CTA en pantalla | No, lo pone quien publica | **Sí**: señala los comentarios y el vídeo de debajo, y eso un pie no puede hacerlo |
+| Suelo de los gráficos | 280-320 px | **560 px**: encima van los subtítulos, que ocupan de 1420 a 1520 |
+
+En un short las dos llamadas van separadas y en orden: primero comentar,
+después el vídeo o el enlace. Nunca en el mismo rótulo.
+
 ## Comandos
 
 ```bash
@@ -171,10 +198,17 @@ npm run dev                                       # Studio, preview editable
 npx remotion render ReelXacobeoUS salida.mp4      # Exportar
 ```
 
-Piezas registradas: `ReelXacobeo` en español, `ReelXacobeoUS` en inglés para
-el mercado estadounidense, y `Grafico`, que es el banco de pruebas para ver un
-gráfico aislado. La pieza estadounidense dura el doble porque no da por sabido
-qué es el Camino: está explicada en `docs/reel-xacobeo-2027-us.md`.
+Piezas registradas:
+
+| Composición | Qué es | Ficha |
+| --- | --- | --- |
+| `ReelXacobeo` | Año Santo 2027 en español, 33 s | — |
+| `ReelXacobeoUS` | El mismo, para el mercado estadounidense, 60 s | `docs/reel-xacobeo-2027-us.md` |
+| `ShortFrancesUS` | Short de YouTube sobre el Camino Francés, 53 s | `docs/short-a-camino-frances-us.md` |
+| `Grafico` | Banco de pruebas para ver un gráfico aislado | — |
+
+La pieza estadounidense dura el doble que la española porque no da por sabido
+qué es el Camino.
 
 No hace falta pasar ninguna opción de navegador: `remotion.config.ts` detecta
 un Chromium ya instalado si lo hay, que es lo que permite renderizar en las
