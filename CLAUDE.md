@@ -9,10 +9,10 @@ mapas de ruta y gráficos de dato.
 | Carpeta | Qué hay |
 | --- | --- |
 | `video/` | El proyecto Remotion. Aquí se monta y se exporta |
-| `docs/` | La guía de marca oficial, edición 2026 |
+| `docs/` | La guía de marca oficial, edición 2026, y las decisiones tomadas |
 | `herramientas/mapas-vfx/` | Los dos configuradores de mapas animados |
 | `herramientas/motion-kit/` | El kit de cartelas y overlays |
-| `herramientas/scripts/` | Utilidades para preparar metraje |
+| `herramientas/scripts/` | Utilidades para preparar metraje y revisar montajes |
 
 ## La marca, en lo que afecta al vídeo
 
@@ -26,7 +26,6 @@ Reglas que condicionan cada pieza:
 - Nada de negro puro: la tinta es el bosque.
 - Texto blanco sobre olivo. Texto bosque sobre lima. Siempre.
 - La marca nunca se escribe como texto. Se usa el archivo de logo.
-- Un solo CTA por pieza.
 - Movimiento: fade más desplazamiento corto con `cubic-bezier(0.22,0.61,0.36,1)`.
   Nunca rebote.
 - Tipografía: Montserrat, Manrope, Poppins. Empaquetada con el proyecto.
@@ -44,8 +43,16 @@ Las cartelas replican las del kit de motion graphics, no se inventan:
   entre placas. No con un fundido.
 - Pocas por pieza. Si el bloque lleva un gráfico, el gráfico ya trae su
   titular y la cartela sobra.
+- `Cartela` admite varias líneas y ajusta el cuerpo sola. Hace falta fuera del
+  español: un rótulo en inglés puede ser el doble de largo y no cabe de una
+  tirada en 1080 px.
 
 El texto vive en la mitad superior. Los gráficos, en la inferior.
+
+**Cuánto tiene que durar un texto.** Un rótulo de dos o tres palabras se lee
+en dos segundos; una frase de setenta caracteres necesita cinco o seis. Si no
+caben en su bloque, se le da una `<Sequence>` propia que cruce al siguiente,
+no se acelera la lectura.
 
 ## Reglas de montaje aprendidas
 
@@ -55,18 +62,69 @@ Estas salieron de revisar piezas reales y ahorran repetir errores:
    ninguna toma pasa de 2,75 segundos. Un corte de cuatro segundos se come el
    plano siguiente y aparece un salto a mitad de escena.
    `python3 herramientas/scripts/planos.py bruto.mp4` da los límites exactos.
-2. **Repartir la duración, no fijarla.** El componente `Planos` reparte el
-   bloque en proporción a lo que dura de verdad cada toma, así ninguna se
-   estira más allá de su final.
-3. **Encuadrar cada plano.** Un bruto horizontal recortado a vertical pierde
+2. **Ninguna toma por debajo de 1,2 segundos en pantalla.** Es el fallo que
+   más veces se ha colado y el que primero se nota: un plano de un segundo en
+   medio de un bloque se lee como un error. Mejor pocas tomas largas que
+   muchas cortas.
+3. **Si las tomas no llegan, se estiran con `ritmo`, no se añaden más.** Por
+   debajo de 1 la toma rinde más tiempo del que dura, sin congelarse ni
+   invadir el plano siguiente del bruto. Entre 0,7 y 0,9 no se percibe; por
+   debajo de 0,6 solo en planos casi quietos, como un detalle o una mesa
+   puesta. Un plano con gente moviéndose deprisa no baja de 0,7.
+4. **Repartir la duración, no fijarla.** `Planos` reparte el bloque en
+   proporción a lo que pesa cada toma. El campo `dura` es un presupuesto, no
+   la duración del archivo: puede ser menor, y bajarlo es la forma de que una
+   toma larga no se coma el bloque.
+5. **Encuadrar cada plano.** Un bruto horizontal recortado a vertical pierde
    los laterales, y ahí es donde suele estar la gente. Revisar plano a plano y
-   poner `encuadre` donde haga falta.
-4. **Ninguna toma repetida entre bloques contiguos.** Al volver parece un
+   poner `encuadre` donde haga falta. El recorte central parte personas por la
+   mitad más a menudo de lo que parece.
+6. **Ninguna toma repetida entre bloques contiguos.** Al volver parece un
    error de montaje.
-5. **Los cortes se apoyan en la locución.** Se miden los silencios del audio y
+7. **Ni el mismo sitio en dos tomas distintas.** Un paisaje que sale por la
+   ventana de una habitación y otra vez desde una terraza es la misma
+   repetición aunque los archivos sean distintos.
+8. **Los cortes se apoyan en la locución.** Se miden los silencios del audio y
    cada bloque arranca cuando empieza la frase que ilustra.
-6. **Un gráfico no puede tapar una cara.** Si el plano tiene gente en el
+9. **Un gráfico no puede tapar una cara.** Si el plano tiene gente en el
    centro, va donde el gráfico ya se ha retirado.
+10. **No fiarse del nombre del archivo.** En `video/public/brutos/` hay
+    nombres que no corresponden con lo que se ve: `interior-velas` es un
+    sendero y `iglesia-exterior` es un interior con velas. Se elige por el
+    plano, mirándolo.
+11. **Los primerísimos planos pierden definición en vertical.** El recorte a
+    9:16 ya amplía el bruto un 78 %; un plano de detalle encima se ve blando.
+    Pasan rápido o no entran.
+12. **Lo último antes del cierre es una cara, no un sitio.** Un plano de
+    alojamiento o de paisaje informa; el de alguien celebrando la llegada es
+    el que se recuerda.
+
+## Lo que se ve de verdad en un móvil
+
+La pieza no se mira en un monitor: se mira en Instagram, en vertical y a
+menudo sin sonido.
+
+- **La botonera de Reels se come los últimos 200 px** y parte de los primeros
+  150. Nada legible ahí abajo. Los gráficos llevan `paddingBottom` de 280 a
+  320 px por eso.
+- **El logo blanco desaparece sobre un plano claro.** Si va sobre metraje,
+  necesita una franja de bosque debajo, que es tinta de marca y no un
+  gradiente ajeno.
+- **Sin marca de agua.** El logo va en el cierre, que ya es todo marca.
+- **El CTA no va en el vídeo.** El cierre se queda con el logo y la web; la
+  llamada a la acción la pone quien publica, por encima de la pieza o en el
+  pie, que es donde se puede cambiar sin volver a exportar.
+
+## Audio
+
+- La locución manda. La música es cama: unos 15 dB por debajo, volumen 0,14,
+  con una entrada corta.
+- **El punto de entrada de la música se elige mirando su envolvente**, no por
+  el principio del archivo. Casi todos los temas traen su propio fundido
+  final: si se hace coincidir con el cierre de marca, no hay que inventarse
+  ninguno. Medir con `herramientas/scripts/envolvente.py`.
+- Cambiar de locución obliga a volver a medir los silencios y a sustituir el
+  array de tiempos. No obliga a rehacer el montaje.
 
 ## Reglas técnicas de Remotion
 
@@ -79,39 +137,96 @@ Estas salieron de revisar piezas reales y ahorran repetir errores:
   Studio y se escriban solos en el código.
 - Las fuentes se empaquetan con `@fontsource`, no se descargan de Google: así
   el render sale igual en cualquier máquina y funciona sin conexión.
+- **Los momentos de una animación se cuentan en fotogramas de la escena**, no
+  relativos al `desde` del componente. Mezclar las dos escalas ya dejó una
+  Puerta Santa que nunca llegaba a abrirse.
+- **Comprobar que una animación cabe en su bloque.** Si tarda 54 fotogramas en
+  completarse y el bloque dura 151, tiene que arrancar antes del 97.
+- **La geometría de un gráfico se calcula desde su ancho, no a ojo.** Un paso
+  entre hitos clavado a mano dejó el último año 43 px fuera del raíl.
+- Lo que dependa de red o de una librería pesada se precalcula a un archivo de
+  datos. El mapa de rutas se proyecta una vez con
+  `herramientas/scripts/mapa-datos.mjs`; en render no hay ni d3 ni descargas.
+
+## Un gráfico tiene que leerse sin pensar
+
+La mayoría lo verá en silencio y de paso. Si hay que descifrarlo, no sirve,
+por fiel que sea.
+
+La Puerta Santa se dibujó primero como el muro de sillares que de verdad la
+tapia y se derriba cada Año Santo. Era lo correcto y no se entendía: unos
+bloques que se desvanecen no dicen «puerta». Dos hojas abriéndose las entiende
+cualquiera sin pensar.
+
+Lo mismo con el calendario: no enseña una cuadrícula que haya que leer, tiñe
+primero la columna de los domingos y solo después enciende el 25. Y la semana
+empieza donde la empieza el mercado al que va la pieza, en lunes o en domingo.
 
 ## Comandos
 
 ```bash
 cd video
 npm install
-npm run dev                                   # Studio, preview editable
-npx remotion render ReelXacobeo salida.mp4    # Exportar
+npm run dev                                       # Studio, preview editable
+npx remotion render ReelXacobeoUS salida.mp4      # Exportar
 ```
 
-Hay dos piezas registradas: `ReelXacobeo`, en español, y `ReelXacobeoUS`, en
-inglés para el mercado estadounidense. La segunda dura el doble porque no da
-por sabido qué es el Camino: está explicada en `docs/reel-xacobeo-2027-us.md`.
+Piezas registradas: `ReelXacobeo` en español, `ReelXacobeoUS` en inglés para
+el mercado estadounidense, y `Grafico`, que es el banco de pruebas para ver un
+gráfico aislado. La pieza estadounidense dura el doble porque no da por sabido
+qué es el Camino: está explicada en `docs/reel-xacobeo-2027-us.md`.
 
 No hace falta pasar ninguna opción de navegador: `remotion.config.ts` detecta
 un Chromium ya instalado si lo hay, que es lo que permite renderizar en las
 sesiones de Claude Code en la web, donde la descarga del Chrome de Remotion
 está bloqueada.
 
+**Remotion trae su propio ffmpeg y ffprobe**, así que no hace falta instalarlos:
+`npx remotion ffmpeg` y `npx remotion ffprobe`. Vienen con los filtros
+recortados: hay `silencedetect` y `scale`, pero no `volumedetect` ni `astats`.
+Los scripts de `herramientas/scripts/` lo localizan solos.
+
 ## Preparar metraje
 
 ```bash
-python3 herramientas/scripts/planos.py bruto.mp4      # dónde empieza cada toma
-python3 herramientas/scripts/catalogar.py bruto.mp4 hoja.jpg   # verlo de un vistazo
+python3 herramientas/scripts/planos.py bruto.mp4              # dónde empieza cada toma
+python3 herramientas/scripts/catalogar.py bruto.mp4 hoja.jpg  # verlo de un vistazo
+python3 herramientas/scripts/encuadre.py plano.mp4 comp.jpg 25,45,62  # elegir recorte
+python3 herramientas/scripts/envolvente.py musica.mp3         # dónde sube y baja un tema
 ```
 
 Los planos recortados viven en `video/public/brutos/`. Los brutos completos no
 entran en el repositorio: pesan y se sustituyen a menudo.
 
+## Antes de dar una pieza por buena
+
+Dos pasos, y ninguno es opcional:
+
+```bash
+python3 herramientas/scripts/revisar-montaje.py video/src/ReelXacobeoUS.tsx
+```
+
+Comprueba que ninguna toma se congela, que ninguna baja del mínimo legible,
+que no se repite ninguna entre bloques contiguos y que el ralentí no se pasa
+de frenada.
+
+```bash
+python3 herramientas/scripts/catalogar.py salida.mp4 control.jpg 6 2
+```
+
+Y mirar la hoja de contactos del resultado. Es la forma rápida de ver un texto
+cortado, un gráfico que tapa lo que no debe o un plano que quedó oscuro. Lo
+que no se mira, no está bien: el mapa con el nombre de la ciudad saliéndose
+del marco y la puerta que no se abría pasaron el render sin un solo error.
+
 ## Lo que no se hace
 
 - Contadores de cuenta atrás ni "últimas plazas".
 - Cifras sin fuente en pantalla, sobre todo en piezas ancladas mucho tiempo.
+  En una pieza que va a estar meses anclada, mejor ninguna cifra.
 - Promesas de precio que no se puedan sostener.
 - Gradientes ajenos a la marca, glassmorphism, texturas digitales abstractas.
 - Fotografía en blanco y negro, sobresaturada, con grano o de stock genérico.
+- Topónimos que el público de la pieza no conozca. En la versión
+  estadounidense se descartó un plano entero por llevar un cartel de
+  Portomarín legible.

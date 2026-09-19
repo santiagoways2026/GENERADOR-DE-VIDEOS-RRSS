@@ -34,7 +34,15 @@ def duracion_bruto(nombre):
 
 def main(destino):
     s = pathlib.Path(destino).read_text()
-    B = [float(m) for m in re.findall(r"^\s*([\d.]+), //", s, re.M)]
+    # El array de tiempos puede estar en una línea o comentado uno por uno,
+    # así que se lee entero y se sacan los números de dentro.
+    bloque = re.search(r"const B = \[(.*?)\];", s, re.S)
+    if not bloque:
+        raise SystemExit(f"{destino}: no encuentro el array B de tiempos.")
+    # Los comentarios que anotan qué dice la voz llevan cifras dentro
+    # ("In 2027, a door..."), así que se quitan antes de leer los tiempos.
+    limpio = re.sub(r"//[^\n]*", "", bloque.group(1))
+    B = [float(n) for n in re.findall(r"\d+(?:\.\d+)?", limpio)]
     bloques = re.findall(
         r'name="([^"]+)">\s*<Planos\s+total=\{dur\((\d+)\)\}.*?lista=\{\[(.*?)\]\}', s, re.S)
     fallos = []
@@ -42,6 +50,10 @@ def main(destino):
 
     for nombre, i, lista in bloques:
         i = int(i)
+        if i + 1 >= len(B):
+            fallos.append(f"{nombre}: el bloque {i} no tiene tiempo de final "
+                          f"en el array B")
+            continue
         D = B[i + 1] - B[i]
         planos = []
         for linea in re.findall(r"\{([^{}]*src:[^{}]*)\}", lista):

@@ -7,8 +7,8 @@ sale en los tres formatos sin recomponerla.
 ## Empezar
 
 ```bash
-git clone https://github.com/santiagoways2026/centrodecontrol
-cd centrodecontrol/video
+git clone https://github.com/santiagoways2026/GENERADOR-DE-VIDEOS-RRSS
+cd GENERADOR-DE-VIDEOS-RRSS/video
 npm install
 npm run dev
 ```
@@ -19,7 +19,7 @@ se editan desde la interfaz y se escriben solos en el código.
 Para exportar:
 
 ```bash
-npx remotion render ReelXacobeo salida.mp4
+npx remotion render ReelXacobeoUS salida.mp4
 ```
 
 ## Qué hay aquí
@@ -27,10 +27,10 @@ npx remotion render ReelXacobeo salida.mp4
 | Carpeta | Contenido |
 | --- | --- |
 | `video/` | El proyecto Remotion: escenas, componentes y tokens de marca |
-| `docs/` | La guía de marca oficial, edición 2026 |
+| `docs/` | La guía de marca, las decisiones de producción y la ficha de cada pieza |
 | `herramientas/mapas-vfx/` | Los configuradores de mapas animados de rutas |
 | `herramientas/motion-kit/` | El kit de cartelas y overlays |
-| `herramientas/scripts/` | Utilidades para catalogar y cortar metraje |
+| `herramientas/scripts/` | Utilidades para catalogar metraje, elegir encuadres y revisar montajes |
 
 ## Para el equipo de redes
 
@@ -62,5 +62,17 @@ menudo. Para preparar material nuevo, mira el paso 2 de la skill `reel`.
 
 | Composición | Qué es |
 | --- | --- |
-| `ReelXacobeo` | Reel del Año Santo 2027, vertical, con locución |
+| `ReelXacobeo` | Reel del Año Santo 2027 en español, vertical, 33 s |
+| `ReelXacobeoUS` | El mismo Año Santo para el mercado estadounidense, en inglés, 60 s. Dura el doble porque no da por sabido qué es el Camino. Ficha en [docs/reel-xacobeo-2027-us.md](docs/reel-xacobeo-2027-us.md) |
 | `Grafico` | Banco de pruebas para ver cada gráfico aislado |
+
+## Antes de dar una pieza por buena
+
+```bash
+python3 herramientas/scripts/revisar-montaje.py video/src/ReelXacobeoUS.tsx
+```
+
+Comprueba que ninguna toma se congela, que ninguna baja del mínimo legible y
+que no se repite ninguna entre bloques contiguos. Después, una hoja de
+contactos del MP4 exportado: hay fallos que renderizan sin dar ningún error y
+solo se ven mirando.

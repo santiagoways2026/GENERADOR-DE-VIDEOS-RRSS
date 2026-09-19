@@ -12,17 +12,20 @@ las animaciones CSS no sirven aquí: todo el movimiento sale de `interpolate()`.
 | `src/fuentes.ts` | Carga la cascada Montserrat, Manrope, Poppins, empaquetada con el proyecto. |
 | `src/componentes/Logo.tsx` | El logo oficial. La marca nunca se escribe como texto. |
 | `src/componentes/entrada.ts` | La entrada estándar: fade más slide-up, sin rebote. |
-| `src/escenas/BloqueOlivo.tsx` | Pieza gráfica: olivo sólido, titular en mayúsculas. |
-| `src/escenas/BloqueFoto.tsx` | Pieza emocional: foto real, overlay y brushstroke lima. |
-| `src/escenas/Cierre.tsx` | Cierre en bosque con el único CTA de la pieza. |
-| `src/Reel.tsx` | Une las escenas con `<Sequence>`. |
-| `src/Composition.tsx` | Declara el vídeo: duración, fps, tamaño y textos. |
+| `src/componentes/Cartela.tsx` | El texto de marca: placa blanca sobre placa olivo, con barrido lateral. Admite varias líneas. |
+| `src/componentes/Clip.tsx` | Una toma encajada en vertical, con encuadre, zoom lento y ritmo de reproducción. |
+| `src/componentes/Planos.tsx` | Encadena las tomas de un bloque repartiendo su duración. |
+| `src/graficos/` | Los gráficos didácticos: calendario, línea de tiempo, mapa de rutas y Puerta Santa. |
+| `src/escenas/Cierre.tsx` | Cierre en degradado con el logo y la web. |
+| `src/ReelXacobeo.tsx` | La pieza en español. |
+| `src/ReelXacobeoUS.tsx` | La pieza para el mercado estadounidense. |
+| `src/Composition.tsx` | Declara cada vídeo: duración, fps y tamaño. |
 
 ## Comandos
 
 ```bash
 npm run dev                                  # Remotion Studio: preview editable
-npx remotion render ReelCamino salida.mp4    # Exportar
+npx remotion render ReelXacobeoUS salida.mp4  # Exportar
 ```
 
 En Studio puedes editar los textos desde la interfaz y se escriben solos en el
