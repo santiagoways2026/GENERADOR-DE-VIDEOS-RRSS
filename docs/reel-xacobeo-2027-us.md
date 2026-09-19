@@ -38,8 +38,8 @@ que tocar.
 | 0:35 | Obradoiro | A plenary indulgence | Llegada, y qué significa el Año Santo para un creyente. La tarjeta cruza al bloque siguiente: son setenta caracteres y necesitan seis segundos |
 | 0:40 | Servicio | Cuatro tarjetas con check | El bloque premium, once segundos |
 | 0:52 | Una mochila | You walk. We handle the rest | Remate del servicio |
-| 0:54 | Plazas contadas | — | Alojamiento, sin texto, antes del CTA |
-| 0:57 | Cierre | Reserve your 2027 Camino · Link in bio | Único CTA de la pieza |
+| 0:54 | Plazas contadas | — | La mesa del pazo y, de remate, el peregrino celebrando la llegada |
+| 0:57 | Cierre | — | Logo y web. Sin llamada a la acción: la pone quien publica |
 
 Cada tarjeta de servicio entra sobre la frase que la nombra, y el plano
 enseña de qué habla: las maletas con etiqueta salen en "your luggage moved
@@ -157,6 +157,13 @@ pregunta, se lleva a mensaje directo.
   plano del cartel de Portomarín, que era el único con un topónimo legible.
 - **El argumento para reservar aparece una sola vez, al final, y va ligado a
   la calidad del alojamiento**, no al miedo a quedarse fuera ni al precio.
+  Lo dice la locución; en pantalla no hay ninguna llamada a la acción.
+- **El cierre va limpio.** Solo el logo y la web. La llamada a la acción la
+  pone quien publica, por encima del vídeo o en el pie, que es donde se puede
+  cambiar sin volver a exportar.
+- **Lo último antes del logo es una cara, no un sitio.** El peregrino
+  celebrando la llegada, a medio tiempo. Un plano de alojamiento informa;
+  este es el que se recuerda.
 - **Ni una palabra de descuento.** La exclusividad es honesta: las mejores
   casas de cada etapa tienen pocas habitaciones y en Año Santo se agotan.
 - **El alojamiento se enseña por la fachada y por la mesa**, no por la vista.

@@ -217,7 +217,7 @@ export const ReelXacobeoUS: React.FC = () => {
           lista={[
             { src: "catedral-torres", dura: 1.6 },
             { src: "brindis", dura: 1.8, encuadre: "42% 50%" },
-            { src: "brazos-alto", dura: 0.97, encuadre: "34% 50%", ritmo: 0.7 },
+            { src: "vieiras", dura: 1.25, ritmo: 0.85 },
             { src: "iglesia-exterior", dura: 1.3, ritmo: 0.9 },
           ]}
         />
@@ -352,11 +352,11 @@ export const ReelXacobeoUS: React.FC = () => {
           // antes del cierre y conviene que luzca.
           overlay={0.22}
           lista={[
-            // El plato es un primerisimo plano y pierde definicion al
-            // recortarlo a vertical: pasa rapido. Remata la mesa puesta del
-            // pazo, que es la imagen con la que conviene entrar al cierre.
-            { src: "vieiras", dura: 1.25, ritmo: 0.85 },
-            { src: "mesa-exterior", dura: 1.43, encuadre: "52% 50%", ritmo: 0.55 },
+            { src: "mesa-exterior", dura: 1.43, encuadre: "52% 50%", ritmo: 0.72 },
+            // Lo ultimo antes del logo es una cara, no un sitio: el peregrino
+            // celebrando la llegada, a medio tiempo. Un plano de alojamiento
+            // informa; este es el que se recuerda.
+            { src: "brazos-alto", dura: 0.97, encuadre: "34% 50%", ritmo: 0.5 },
           ]}
         />
       </Sequence>
@@ -383,11 +383,7 @@ export const ReelXacobeoUS: React.FC = () => {
 
       {/* 11 · Cierre de marca. El unico CTA de la pieza. */}
       <Sequence from={f(B[13])} durationInFrames={dur(13)} name="11 · Cierre">
-        <Cierre
-          duracion={dur(13)}
-          cta="Reserve your 2027 Camino"
-          coletilla="Link in bio"
-        />
+        <Cierre duracion={dur(13)} />
       </Sequence>
     </AbsoluteFill>
   );
