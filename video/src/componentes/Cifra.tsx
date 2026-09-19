@@ -1,5 +1,5 @@
 import { Easing, Interactive, interpolate, useCurrentFrame } from "remotion";
-import { brand, color, easeOut, radius, space, tracking, weight } from "../brand/theme";
+import { brand, color, easeOut, radius, space, tipo, tracking, weight } from "../brand/theme";
 
 /**
  * Un dato contado con la cifra como protagonista.
@@ -57,9 +57,9 @@ export const Cifra: React.FC<{
       {encima ? (
         <div
           style={{
+            ...tipo.apoyo,
             color: brand.lime,
             fontSize: Math.round(cuerpo * 0.2),
-            fontWeight: weight.black,
             letterSpacing: tracking.loose,
             textTransform: "uppercase",
             textShadow: "0 3px 14px rgba(14,44,31,0.6)",
@@ -87,10 +87,9 @@ export const Cifra: React.FC<{
       >
         <span
           style={{
+            ...tipo.cifra,
             fontSize: cuerpo,
             lineHeight: 0.95,
-            fontWeight: weight.black,
-            letterSpacing: "-0.03em",
           }}
         >
           {visible}
@@ -98,9 +97,8 @@ export const Cifra: React.FC<{
         {unidad ? (
           <span
             style={{
+              ...tipo.cifra,
               fontSize: Math.round(cuerpo * 0.36),
-              fontWeight: weight.black,
-              letterSpacing: tracking.tight,
             }}
           >
             {unidad}

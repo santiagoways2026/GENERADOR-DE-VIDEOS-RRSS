@@ -6,6 +6,7 @@ import {
   fontSize,
   radius,
   space,
+  tipo,
   tracking,
   weight,
 } from "../brand/theme";
@@ -63,11 +64,9 @@ export const Cierre: React.FC<{
       <div
         style={{
           marginTop: space[6],
-          fontFamily: "Manrope, sans-serif",
+          ...tipo.web,
           color: "#FFFFFF",
           fontSize: fontSize["2xl"],
-          fontWeight: weight.bold,
-          letterSpacing: tracking.loose,
           textTransform: "lowercase",
           opacity: interpolate(frame, [18, 34], [0, 1], {
             extrapolateLeft: "clamp",

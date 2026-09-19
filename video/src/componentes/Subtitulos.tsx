@@ -1,5 +1,5 @@
 import { Easing, interpolate, useCurrentFrame } from "remotion";
-import { brand, color, fontFamily, margin, radius, space, weight } from "../brand/theme";
+import { brand, color, margin, tipo } from "../brand/theme";
 
 export type Cue = {
   /** Segundo en el que entra. */
@@ -13,12 +13,18 @@ export type Cue = {
  * Subtitulos quemados, para las piezas de YouTube.
  *
  * En Shorts se ve mucho sin sonido, asi que el subtitulo no es un extra: es
- * la mitad del mensaje. Va en placa bosque con el texto en blanco, que es la
- * pareja del manual para fondos oscuros y la unica que se lee igual sobre un
- * camino soleado que sobre un interior.
+ * la mitad del mensaje.
  *
- * Los tiempos salen de medir el audio, no de repartir el guion a ojo:
- * `herramientas/scripts/srt-a-cues.mjs` convierte un SRT en la lista de cues.
+ * Va suelto sobre la imagen, sin banda detras. Una placa opaca ocupando el
+ * ancho tapa metraje en todos los planos para resolver la legibilidad de
+ * unos pocos, y ademas parte la pieza en dos mitades. La legibilidad la
+ * sostiene un contorno de bosque, que es la tinta de la marca: aguanta sobre
+ * un camino soleado igual que sobre un interior oscuro y no tapa nada.
+ *
+ * Tipografia de titular, Manrope extrabold, como el resto del texto de video.
+ *
+ * Los tiempos salen de medir el audio, nunca de repartir el guion a ojo:
+ * `alinear-locucion.py` cuando no hay SRT, `srt-a-cues.mjs` cuando lo hay.
  *
  * La franja de abajo la ocupa la interfaz de Shorts, asi que el bloque se
  * ancla por encima de ella y nunca se centra en pantalla.
@@ -29,11 +35,27 @@ const ALTURA = 400;
 /** Lo que tarda en entrar. Corto: un subtitulo que se hace esperar estorba. */
 const ENTRADA = 4;
 
+/**
+ * Contorno de bosque, dibujado con sombras en las ocho direcciones.
+ *
+ * `-webkit-text-stroke` engorda la letra hacia dentro y a este cuerpo se
+ * come los contrafuertes de la Manrope; ocho sombras cortas la rodean por
+ * fuera y dejan el dibujo de la letra intacto.
+ */
+const contorno = (grosor: number, tinta: string) =>
+  [
+    ...Array.from({ length: 8 }, (_, i) => {
+      const a = (i * Math.PI) / 4;
+      return `${(Math.cos(a) * grosor).toFixed(2)}px ${(Math.sin(a) * grosor).toFixed(2)}px 0 ${tinta}`;
+    }),
+    `0 6px 20px rgba(14,44,31,0.55)`,
+  ].join(", ");
+
 export const Subtitulos: React.FC<{
   cues: Cue[];
   fps?: number;
   cuerpo?: number;
-}> = ({ cues, fps = 30, cuerpo = 46 }) => {
+}> = ({ cues, fps = 30, cuerpo = 50 }) => {
   const frame = useCurrentFrame();
   const segundo = frame / fps;
   const activo = cues.find((c) => segundo >= c.desde && segundo < c.hasta);
@@ -50,20 +72,17 @@ export const Subtitulos: React.FC<{
         bottom: ALTURA,
         display: "flex",
         justifyContent: "center",
-        fontFamily,
       }}
     >
       <div
         style={{
-          backgroundColor: brand.forest,
+          ...tipo.subtitulo,
           color: color.fgInverse,
-          borderRadius: radius.md,
-          padding: `${space[3]}px ${space[5]}px`,
           fontSize: cuerpo,
-          fontWeight: weight.extrabold,
-          lineHeight: 1.2,
+          lineHeight: 1.18,
           textAlign: "center",
           textWrap: "balance",
+          textShadow: contorno(3, brand.forest),
           opacity: interpolate(t, [0, ENTRADA], [0, 1], {
             extrapolateLeft: "clamp",
             extrapolateRight: "clamp",

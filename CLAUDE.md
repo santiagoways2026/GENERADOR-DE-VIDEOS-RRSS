@@ -28,9 +28,32 @@ Reglas que condicionan cada pieza:
 - La marca nunca se escribe como texto. Se usa el archivo de logo.
 - Movimiento: fade más desplazamiento corto con `cubic-bezier(0.22,0.61,0.36,1)`.
   Nunca rebote.
-- Tipografía: Montserrat, Manrope, Poppins. Empaquetada con el proyecto.
+- Tipografía: la cascada de la guía es Montserrat, Manrope, Poppins,
+  empaquetada con el proyecto. **En vídeo el reparto está fijado**, y va
+  abajo: no se decide pieza a pieza.
 - Formatos: 1080x1920 reels, 1080x1080 feed, 1280x720 YouTube. Márgenes 56 px
   como mínimo.
+
+## Qué fuente va en cada cosa
+
+La guía da la cascada pero no reparte los usos, y en vídeo ese reparto
+importa: no es lo mismo una placa del kit que un titular a noventa puntos
+sobre un plano. **Está decidido y vive en `tipo`, dentro de
+`video/src/brand/theme.ts`.** Se usan esos tokens, no la familia y el peso
+escritos a mano.
+
+| Qué | Fuente |
+| --- | --- |
+| Placas de `Cartela`, cabeceras de gráficos, bullets | **Montserrat** 800 y 900. Son piezas calcadas del kit de motion graphics y tienen que leerse igual que en él |
+| Titulares grandes sobre la imagen | **Manrope extrabold** (800) |
+| Cifras de impacto | **Manrope extrabold** |
+| Subtítulos quemados | **Manrope extrabold** |
+| Línea de apoyo bajo un titular | **Manrope** 600-700 |
+| La web del cierre | **Manrope** 700 |
+
+Manrope abre más que Montserrat al cuerpo grande, aguanta mejor sobre
+metraje y contrasta con el logo, que es Montserrat. Su peso máximo es 800:
+no tiene 900.
 
 ## Cómo se ven los textos
 
@@ -107,6 +130,13 @@ menudo sin sonido.
 - **La botonera de Reels se come los últimos 200 px** y parte de los primeros
   150. Nada legible ahí abajo. Los gráficos llevan `paddingBottom` de 280 a
   320 px por eso.
+- **Nada por debajo de 38 px.** Un pie de titular o una fuente de dato a 30
+  px se lee en el monitor y no se lee en un móvil.
+- **El texto sobre la imagen no necesita una banda detrás.** Una placa opaca
+  tapa metraje en todos los planos para resolver la legibilidad de unos
+  pocos. Se resuelve con contorno y sombra de bosque, que es la tinta de la
+  marca: `Subtitulos` lo hace con ocho sombras cortas alrededor de la letra,
+  porque `-webkit-text-stroke` engorda hacia dentro y se come el dibujo.
 - **El logo blanco desaparece sobre un plano claro.** Si va sobre metraje,
   necesita una franja de bosque debajo, que es tinta de marca y no un
   gradiente ajeno.
@@ -185,6 +215,7 @@ canal y conviene no unificarlas por descuido:
 | Subtítulos | No | **Quemados**: se ve mucho sin sonido |
 | CTA en pantalla | No, lo pone quien publica | **Sí**: señala los comentarios y el vídeo de debajo, y eso un pie no puede hacerlo |
 | Suelo de los gráficos | 280-320 px | **560 px**: encima van los subtítulos, que ocupan de 1420 a 1520 |
+| Sincronía del texto | Por bloques | **Por tramo de voz**: los subtítulos se alinean con `alinear-locucion.py`, nunca repartiendo el guion a ojo |
 
 En un short las dos llamadas van separadas y en orden: primero comentar,
 después el vídeo o el enlace. Nunca en el mismo rótulo.

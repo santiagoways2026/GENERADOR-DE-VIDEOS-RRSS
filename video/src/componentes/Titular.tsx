@@ -1,5 +1,5 @@
 import { Easing, Interactive, interpolate, useCurrentFrame } from "remotion";
-import { brand, color, easeOut, margin, weight } from "../brand/theme";
+import { brand, color, easeOut, margin, tipo } from "../brand/theme";
 
 /**
  * Texto grande directamente sobre la imagen, sin placa debajo.
@@ -12,9 +12,10 @@ import { brand, color, easeOut, margin, weight } from "../brand/theme";
  * Las palabras entran una a una, con el fundido y el desplazamiento corto de
  * la marca. Se lee como alguien hablando, no como un cartel que aparece.
  *
- * Sin placa hay que resolver la legibilidad de otra forma: va en peso negro
- * y con sombra de bosque, que es la tinta de la marca. Sobre un plano muy
- * claro conviene subir el `overlay` de `Planos`.
+ * Va en Manrope extrabold, que es lo que el sistema reserva para los
+ * titulares de video: abre mas que Montserrat al cuerpo grande y contrasta
+ * con el logo. Sin placa, la legibilidad la sostiene la sombra de bosque;
+ * sobre un plano muy claro conviene subir el `overlay` de `Planos`.
  */
 
 /** Lo que tarda en entrar una palabra. */
@@ -84,10 +85,9 @@ export const Titular: React.FC<{
             <span
               key={`${palabra}-${i}`}
               style={{
+                ...tipo.titular,
                 fontSize: cuerpo,
                 lineHeight: 1.02,
-                fontWeight: weight.black,
-                letterSpacing: "-0.02em",
                 textTransform: "uppercase",
                 color: destacadas.includes(i) ? brand.lime : color.fgInverse,
                 // Sin placa, la sombra es lo que separa el texto del plano.
@@ -112,11 +112,12 @@ export const Titular: React.FC<{
       {pie ? (
         <div
           style={{
-            fontSize: Math.round(cuerpo * 0.34),
-            fontWeight: weight.bold,
-            letterSpacing: "0.04em",
+            ...tipo.apoyo,
+            // En un movil, por debajo de 38 px no se lee de pasada.
+            fontSize: Math.max(38, Math.round(cuerpo * 0.4)),
+            fontWeight: 700,
             color: color.fgInverse,
-            textShadow: "0 3px 16px rgba(14,44,31,0.6)",
+            textShadow: "0 3px 16px rgba(14,44,31,0.65), 0 1px 2px rgba(14,44,31,0.7)",
             opacity: interpolate(t, [palabras.length * RELEVO, palabras.length * RELEVO + 10], [0, 0.92], {
               extrapolateLeft: "clamp",
               extrapolateRight: "clamp",

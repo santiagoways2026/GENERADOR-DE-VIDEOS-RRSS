@@ -13,6 +13,25 @@ para que el render sea idéntico en cualquier máquina y funcione sin conexión.
 
 La web del cierre va en **Manrope**, que contrasta con Montserrat del logo.
 
+## Qué fuente va en cada cosa
+
+La guía fija la cascada (Montserrat → Manrope → Poppins) pero no dice qué
+usar para qué, y en vídeo hace falta decidirlo: una placa del kit y un
+titular a noventa puntos sobre un plano no piden lo mismo.
+
+**Montserrat se queda en todo lo que replica el kit**: las placas de las
+cartelas, las cabeceras de los gráficos, los bullets. Son piezas calcadas y
+tienen que leerse igual que en él.
+
+**Manrope extrabold es la de vídeo**: titulares sobre la imagen, cifras de
+impacto, subtítulos y la web del cierre. Abre más al cuerpo grande, aguanta
+mejor sobre metraje y contrasta con el logo, que es Montserrat. Su tope es
+800; no tiene 900.
+
+Está en `tipo`, dentro de `video/src/brand/theme.ts`, y se usa desde ahí. Un
+componente que escriba la familia y el peso a mano se sale del sistema sin
+que nadie lo note.
+
 ## Textos en pantalla
 
 Empezaron siendo texto blanco suelto sobre el metraje y no funcionaba: no
@@ -40,6 +59,20 @@ enciende el 25 dentro de ella, así que la vista saca la conclusión sola.
 Las cifras van siempre con su fuente en pantalla, y los gráficos que no
 necesitan número no lo llevan: el candado de precio cuenta un gesto, no una
 cantidad, y así la pieza no envejece.
+
+## Texto sobre la imagen
+
+Los subtítulos empezaron con una banda de bosque detrás. Resolvía la
+legibilidad, pero tapaba metraje en todos los planos para arreglar unos
+pocos y partía la pieza en dos mitades.
+
+Ahora van sueltos, con un contorno de bosque dibujado con ocho sombras
+cortas alrededor de la letra. `-webkit-text-stroke` habría sido más directo,
+pero engorda la letra hacia dentro y a ese cuerpo se come los contrafuertes
+de la Manrope.
+
+Lo mismo vale para los titulares: sin placa, con sombra. Si un plano es
+demasiado claro, se sube el `overlay` de `Planos` en vez de meter una caja.
 
 ## Metraje
 

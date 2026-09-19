@@ -72,17 +72,31 @@ a la derecha, `"34% 50%"` a la izquierda.
 
 ## 4. Sincronizar con la locución
 
-Mide los silencios para localizar los arranques de frase:
+**No repartas el guion entre los tramos a ojo.** Se hizo una vez y el montaje
+salió corrido casi dos segundos de la mitad en adelante: los bloques
+arrancaban antes de que la voz llegara a su frase. No lo detecta ningún
+script y en el código no se ve, solo se oye.
+
+Guarda el texto de la locución en `video/public/guiones/<pieza>.txt` y deja
+que el alineador lo reparta:
+
+```bash
+python3 herramientas/scripts/alinear-locucion.py \
+  video/public/locucion-<pieza>.mp3 video/public/guiones/<pieza>.txt <pieza>
+```
+
+Imprime qué dice la voz en cada tramo y escribe los cues de los subtítulos.
+De esa tabla salen los tiempos del array `B`: cada bloque arranca en el tramo
+donde empieza su frase. **Escribe al lado de cada tiempo qué dice la voz
+ahí**; esos comentarios son lo que permite retocar el montaje seis meses
+después.
+
+Para ver solo los silencios, sin reparto:
 
 ```bash
 npx remotion ffmpeg -i public/locucion-en.mp3 \
   -af silencedetect=noise=-30dB:d=0.28 -f null - 2>&1 | grep silence_
 ```
-
-El arranque de cada frase es `silence_start + silence_duration`. **Mapea frase
-a frase**: escribe al lado de cada tiempo qué dice la voz ahí. Esos comentarios
-son lo que hace que el montaje se pueda retocar seis meses después. Los tiempos
-van al array `B` de la composición.
 
 Cuando la voz nombre algo concreto, que la imagen lo enseñe en ese fotograma:
 la tarjeta de equipajes entra en «your luggage moved ahead», y el punto de
@@ -154,9 +168,23 @@ Debe salir parejo. Una caída brusca es un silencio que la música no tapó.
 
 ## Componentes disponibles
 
+**Varía el recurso entre bloques.** Una pieza entera a base de placas y
+listas parece una plantilla, y hace que todas las piezas de la marca
+parezcan la misma. Alterna: placas para titular, cifra grande para un dato,
+titular sobre la imagen para una frase, lista solo donde la voz enumera algo
+de verdad.
+
+Y usa los tokens de `tipo` (en `brand/theme.ts`) en lugar de escribir la
+fuente a mano: las placas del kit van en Montserrat y el texto de vídeo en
+Manrope extrabold, y eso ya está decidido.
+
 | Componente | Para qué |
 | --- | --- |
 | `Cartela` | Texto de marca: placa blanca sobre placa olivo, con barrido. Admite varias líneas |
+| `Titular` | Texto grande sobre la imagen, sin placa, entrando palabra a palabra |
+| `Cifra` | Un número como protagonista, contando desde cero si hace falta |
+| `Subtitulos` | Subtítulos quemados, sin banda. Los cues salen de medir el audio |
+| `Llamada` | Rótulo con flecha dibujada, para señalar algo de la pantalla |
 | `Bullets` | Lista de servicios, entrando de uno en uno. Con número o con check, y con tiempos de entrada propios |
 | `Clip` y `Planos` | Metraje encajado en vertical, con encuadre, zoom lento y ritmo de reproducción |
 | `Logo` | El archivo oficial, en blanco o verde |

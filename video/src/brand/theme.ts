@@ -80,6 +80,61 @@ export const color = {
  */
 export const fontFamily = "Montserrat, Manrope, Poppins, Tahoma, sans-serif";
 
+/** La misma cascada, pero encabezada por Manrope. */
+export const fontFamilyTitular = "Manrope, Montserrat, Poppins, Tahoma, sans-serif";
+
+/* ------------------------------------------------------------------ *
+ * QUE FUENTE VA EN CADA COSA
+ *
+ * La guia da la cascada (Montserrat -> Manrope -> Poppins) pero no reparte
+ * los usos, y en video ese reparto importa: no es lo mismo una placa del kit
+ * de motion graphics que un titular a sesenta puntos sobre un plano.
+ *
+ * El reparto es este, y no se decide pieza a pieza:
+ *
+ * - **Montserrat** en todo lo que replica el kit: las placas de `Cartela`,
+ *   las cabeceras de los graficos, los bullets. Son piezas calcadas del kit
+ *   y tienen que leerse igual que en el.
+ * - **Manrope extrabold** en lo que es de video y no existe en el kit: los
+ *   titulares grandes sobre la imagen, las cifras de impacto, los
+ *   subtitulos y la web del cierre. Abre mas, aguanta mejor el cuerpo
+ *   grande y contrasta con el logo, que es Montserrat.
+ *
+ * Usa estos tokens en lugar de escribir la familia y el peso a mano.
+ * ------------------------------------------------------------------ */
+export const tipo = {
+  /** Titular grande sobre el metraje. */
+  titular: {
+    fontFamily: fontFamilyTitular,
+    fontWeight: 800,
+    letterSpacing: "-0.02em",
+  },
+  /** Cifra de impacto. */
+  cifra: {
+    fontFamily: fontFamilyTitular,
+    fontWeight: 800,
+    letterSpacing: "-0.03em",
+  },
+  /** Subtitulo quemado. */
+  subtitulo: {
+    fontFamily: fontFamilyTitular,
+    fontWeight: 800,
+    letterSpacing: "-0.005em",
+  },
+  /** Linea pequena debajo de un titular. */
+  apoyo: {
+    fontFamily: fontFamilyTitular,
+    fontWeight: 600,
+    letterSpacing: "0.02em",
+  },
+  /** La web del cierre. */
+  web: {
+    fontFamily: fontFamilyTitular,
+    fontWeight: 700,
+    letterSpacing: "0.08em",
+  },
+} as const;
+
 /** Escala oficial: 12 · 14 · 16 · 18 · 22 · 28 · 36 · 48 · 64 · 88 px. */
 export const fontSize = {
   xs: 12,
