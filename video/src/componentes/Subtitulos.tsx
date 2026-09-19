@@ -21,7 +21,8 @@ export type Cue = {
  * sostiene un contorno de bosque, que es la tinta de la marca: aguanta sobre
  * un camino soleado igual que sobre un interior oscuro y no tapa nada.
  *
- * Tipografia de titular, Manrope extrabold, como el resto del texto de video.
+ * Montserrat 800. El 900 del titular, a cuerpo 50, se empasta y cierra los
+ * contornos de la letra.
  *
  * Los tiempos salen de medir el audio, nunca de repartir el guion a ojo:
  * `alinear-locucion.py` cuando no hay SRT, `srt-a-cues.mjs` cuando lo hay.
@@ -39,7 +40,7 @@ const ENTRADA = 4;
  * Contorno de bosque, dibujado con sombras en las ocho direcciones.
  *
  * `-webkit-text-stroke` engorda la letra hacia dentro y a este cuerpo se
- * come los contrafuertes de la Manrope; ocho sombras cortas la rodean por
+ * come los contrafuertes de la letra; ocho sombras cortas la rodean por
  * fuera y dejan el dibujo de la letra intacto.
  */
 const contorno = (grosor: number, tinta: string) =>

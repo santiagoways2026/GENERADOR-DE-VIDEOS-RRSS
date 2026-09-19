@@ -15,18 +15,27 @@ La web del cierre va en **Manrope**, que contrasta con Montserrat del logo.
 
 ## Qué fuente va en cada cosa
 
-La guía fija la cascada (Montserrat → Manrope → Poppins) pero no dice qué
-usar para qué, y en vídeo hace falta decidirlo: una placa del kit y un
-titular a noventa puntos sobre un plano no piden lo mismo.
+La guía fija la cascada (Montserrat → Manrope → Poppins) y, a diferencia de
+lo que se supuso durante un tiempo, **sí resuelve el titular**. Trae el
+patrón entero, comentado como *"the signature impact headline pattern —
+UPPERCASE, white on green block"*: peso 900, interlineado 0,95,
+`letter-spacing` -0,02em y mayúsculas.
 
-**Montserrat se queda en todo lo que replica el kit**: las placas de las
-cartelas, las cabeceras de los gráficos, los bullets. Son piezas calcadas y
-tienen que leerse igual que en él.
+Hubo una fase en la que el texto de vídeo se puso en **Manrope extrabold**,
+por escrito y en los tokens. Fue un invento, y encima uno que no se podía
+sostener: el patrón pide 900 y **Manrope se queda en 800**. En pantalla el
+titular parecía un pie al lado de las placas del kit, que van en Montserrat
+900. Costó dos rondas descartar que fuera un problema de carga de fuentes
+antes de ver que el tope de la familia era el techo.
 
-**Manrope extrabold es la de vídeo**: titulares sobre la imagen, cifras de
-impacto, subtítulos y la web del cierre. Abre más al cuerpo grande, aguanta
-mejor sobre metraje y contrasta con el logo, que es Montserrat. Su tope es
-800; no tiene 900.
+Ahora el reparto es este:
+
+- **Montserrat 900** en el texto de impacto: titulares sobre la imagen y
+  cifras. Es el patrón de la guía, y casa con las placas del kit.
+- **Montserrat 800** en los subtítulos quemados. A cuerpo 50 el 900 se
+  empasta y cierra los contornos.
+- **Manrope 700** en el texto de apoyo: la línea pequeña bajo un titular y la
+  web del cierre. Ahí sí abre mejor y contrasta con el logo.
 
 Está en `tipo`, dentro de `video/src/brand/theme.ts`, y se usa desde ahí. Un
 componente que escriba la familia y el peso a mano se sale del sistema sin
@@ -64,15 +73,32 @@ entera resuelta con ellos parece una plantilla, y todas las piezas de la
 marca acaban pareciendo la misma. `Titular` es el contrapunto: texto grande
 directamente sobre el metraje, sin placa.
 
-El resalte se probó primero pintando la palabra clave de lima. Se descartó
-por dos razones: se salta el manual, donde el lima es fondo y nunca color de
-letra, y sobre un plano claro la palabra resaltada se leía peor que el resto
-del titular, justo al revés de lo que se quería. Ahora es una banda de lima
-con la letra en bosque, como un subrayador. Las palabras resaltadas seguidas
-se agrupan en una sola caja: con una por palabra la banda salía a trozos, con
-un hueco en cada espacio. Y `box-decoration-break: clone`, para que al partir
-en dos líneas la banda acompañe al texto en lugar de dejar un rectángulo
-suelto.
+El resalte pasó por tres versiones antes de quedarse donde tenía que haber
+empezado, que es el patrón `.impact` de la guía:
+
+1. **La palabra pintada de lima.** Se salta el manual, donde el lima es fondo
+   y nunca color de letra, y sobre un plano claro la palabra resaltada se
+   leía peor que el resto del titular, justo al revés de lo que se quería.
+2. **Banda de lima con la letra en bosque.** Mejor, pero seguía sin ser lo
+   que dice la guía: el lima lo reserva para los *punch blocks* pequeños.
+3. **Bloque verde de marca con la letra en blanco**, que es el patrón. Es lo
+   que hay ahora.
+
+Tres detalles de implementación que dieron guerra:
+
+- **El bloque entra de una pieza, con su texto dentro.** Antes las palabras
+  entraban una a una por dentro de un bloque ya dibujado, y se veían flotando
+  dentro de la caja en lugar de formar parte de ella.
+- **El bloque es una caja entera (`inline-block`), no texto corrido.** Con el
+  bloque en línea, un titular que parte en dos deja dos fragmentos de caja y
+  el `clip-path` del barrido solo recorta el primero: la segunda línea
+  desaparecía del todo. «THE MOST WALKED» se quedó en «THE MOST» y el render
+  no dio ni un aviso. Es otro caso de lo de siempre: lo que no se mira, no
+  está bien.
+- **El cuerpo se ajusta solo.** Como el bloque no parte por dentro, tiene que
+  caber entero a lo ancho; si no, `Titular` baja el cuerpo hasta que quepa.
+  Sin eso, «the best signposted» partía dentro del bloque y dejaba un
+  rectángulo verde con medio lado vacío.
 
 ## Textos en pantalla
 
@@ -102,7 +128,7 @@ Las cifras van siempre con su fuente en pantalla, y los gráficos que no
 necesitan número no lo llevan: el candado de precio cuenta un gesto, no una
 cantidad, y así la pieza no envejece.
 
-## Texto sobre la imagen
+## Los subtítulos, sin banda
 
 Los subtítulos empezaron con una banda de bosque detrás. Resolvía la
 legibilidad, pero tapaba metraje en todos los planos para arreglar unos
@@ -111,10 +137,11 @@ pocos y partía la pieza en dos mitades.
 Ahora van sueltos, con un contorno de bosque dibujado con ocho sombras
 cortas alrededor de la letra. `-webkit-text-stroke` habría sido más directo,
 pero engorda la letra hacia dentro y a ese cuerpo se come los contrafuertes
-de la Manrope.
+de la letra.
 
-Lo mismo vale para los titulares: sin placa, con sombra. Si un plano es
-demasiado claro, se sube el `overlay` de `Planos` en vez de meter una caja.
+Lo mismo vale para el titular fuera de su bloque: sin placa, con sombra. Si
+un plano es demasiado claro, se sube el `overlay` de `Planos` en vez de meter
+una caja detrás del texto.
 
 ## Metraje
 

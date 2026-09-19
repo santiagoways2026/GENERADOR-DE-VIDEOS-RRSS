@@ -344,7 +344,7 @@ export const ShortFrancesUS: React.FC = () => {
             resalta={[0, 1]}
             desde={4}
             cuerpo={86}
-            pie="Full French Way guide — the video right below"
+            pie="Full French Way guide · the video right below"
           />
         </Alto>
       </Sequence>

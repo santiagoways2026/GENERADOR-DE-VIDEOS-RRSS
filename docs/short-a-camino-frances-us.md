@@ -24,6 +24,10 @@ renderizaba con la letra del sistema. Ahora los woff2 están en
 `video/public/fuentes/` y la pieza llama a `useFuentesDeMarca()`. Si se
 estrena otra composición, que la llame también.
 
+**Y el titular es Montserrat 900, no Manrope.** Con la carga arreglada seguía
+viéndose flojo, y no era la carga: el patrón de titular de la guía pide peso
+900 y Manrope se queda en 800. Manrope sólo sostiene el texto de apoyo.
+
 **Dura 53 s y el brief pedía 40-42.** La locución grabada dura 51,6 s, así que
 la pieza no cabe en el máximo del brief. Shorts admite hasta 3 minutos, de
 modo que se puede publicar tal cual, pero si hace falta bajar a 42 s hay que
@@ -77,7 +81,8 @@ descuido:
 
 Una pieza entera a base de listas y placas parece una plantilla, y hace que
 todas las piezas de la marca parezcan la misma. El `Titular` existe para eso:
-texto grande sobre el metraje, sin placa, con las palabras entrando una a una.
+texto grande sobre el metraje, con la frase clave en bloque verde y letra
+blanca, que es el patrón de titular de la guía.
 
 Los planos priorizan caras: `brindis`, `compostela`, `brazos-alto`,
 `pareja-muros` y `mochila-ligera` son los que tienen gente sonriendo, y van

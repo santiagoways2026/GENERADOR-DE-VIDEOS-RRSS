@@ -175,8 +175,10 @@ titular sobre la imagen para una frase, lista solo donde la voz enumera algo
 de verdad.
 
 Y usa los tokens de `tipo` (en `brand/theme.ts`) en lugar de escribir la
-fuente a mano: las placas del kit van en Montserrat y el texto de vídeo en
-Manrope extrabold, y eso ya está decidido.
+fuente a mano. El reparto ya está decidido: **Montserrat 900** en titulares y
+cifras, que es el patrón `.impact` de la guía; **Montserrat 800** en placas y
+subtítulos; **Manrope 700** solo en el texto de apoyo. Manrope no tiene 900,
+así que no sirve para un titular.
 
 **La pieza tiene que llamar a `useFuentesDeMarca()`** como primer hook de su
 componente raíz. Sin eso se renderiza con la letra del sistema y no salta
@@ -185,13 +187,15 @@ ningún error: ya pasó con tres piezas seguidas. Se comprueba con
 cascada de respaldo; si alguna sale en serif, esa fuente no está.
 
 En `Titular`, el resalte se pide con `resalta={[1, 2]}`, los índices de las
-palabras contando desde cero. Sale como banda de lima con la letra en bosque,
-y las palabras seguidas se agrupan solas en una banda continua.
+palabras contando desde cero. Sale como **bloque verde de marca con la letra
+en blanco**, que es lo que dice la guía; las palabras seguidas se agrupan
+solas en un bloque continuo, y el componente baja el cuerpo si no cabe. No lo
+pongas en lima: el lima la guía lo reserva para bloques pequeños.
 
 | Componente | Para qué |
 | --- | --- |
 | `Cartela` | Texto de marca: placa blanca sobre placa olivo, con barrido. Admite varias líneas |
-| `Titular` | Texto grande sobre la imagen, sin placa, entrando palabra a palabra |
+| `Titular` | Texto grande sobre la imagen, con la frase clave en bloque verde. Ajusta el cuerpo solo |
 | `Cifra` | Un número como protagonista, contando desde cero si hace falta |
 | `Subtitulos` | Subtítulos quemados, sin banda. Los cues salen de medir el audio |
 | `Llamada` | Rótulo con flecha dibujada, para señalar algo de la pantalla |

@@ -30,30 +30,50 @@ Reglas que condicionan cada pieza:
   Nunca rebote.
 - Tipografía: la cascada de la guía es Montserrat, Manrope, Poppins,
   empaquetada con el proyecto. **En vídeo el reparto está fijado**, y va
-  abajo: no se decide pieza a pieza.
+  abajo: no se decide pieza a pieza. El titular es el patrón `.impact` de la
+  guía: mayúsculas, peso 900 y bloque verde con la letra en blanco.
 - Formatos: 1080x1920 reels, 1080x1080 feed, 1280x720 YouTube. Márgenes 56 px
   como mínimo.
 
 ## Qué fuente va en cada cosa
 
-La guía da la cascada pero no reparte los usos, y en vídeo ese reparto
-importa: no es lo mismo una placa del kit que un titular a noventa puntos
-sobre un plano. **Está decidido y vive en `tipo`, dentro de
-`video/src/brand/theme.ts`.** Se usan esos tokens, no la familia y el peso
-escritos a mano.
+La guía da la cascada, pero además trae el patrón de titular ya resuelto, y
+es el que manda:
+
+```css
+/* The signature "impact" headline pattern - UPPERCASE, white on green block. */
+.display, .impact {
+  font-weight: var(--fw-black);   /* 900 */
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+```
+
+De ahí salen las tres cosas que no se negocian en un titular de vídeo:
+**peso 900**, **mayúsculas** y **bloque verde de marca con la letra en
+blanco**. No lima: el lima la guía lo reserva para los *punch blocks*
+pequeños, y además obliga a letra bosque, que sobre metraje pesa menos.
+
+Y de ahí sale también que el titular es **Montserrat, no Manrope**: el patrón
+pide 900 y **Manrope no llega, se queda en 800**. Un rato estuvo en Manrope
+800 y se veía flojo al lado de las placas del kit, que van en Montserrat 900.
+No era que la fuente no cargara: ése es el tope de Manrope.
+
+El reparto está en `tipo`, dentro de `video/src/brand/theme.ts`. Se usan esos
+tokens, no la familia y el peso escritos a mano.
 
 | Qué | Fuente |
 | --- | --- |
-| Placas de `Cartela`, cabeceras de gráficos, bullets | **Montserrat** 800 y 900. Son piezas calcadas del kit de motion graphics y tienen que leerse igual que en él |
-| Titulares grandes sobre la imagen | **Manrope extrabold** (800) |
-| Cifras de impacto | **Manrope extrabold** |
-| Subtítulos quemados | **Manrope extrabold** |
-| Línea de apoyo bajo un titular | **Manrope** 600-700 |
-| La web del cierre | **Manrope** 700 |
+| Titulares sobre la imagen | **Montserrat 900**. Es el patrón `.impact` de la guía |
+| Cifras de impacto | **Montserrat 900** |
+| Placas de `Cartela`, cabeceras de gráficos, bullets | **Montserrat** 800 y 900. Son piezas calcadas del kit de motion graphics |
+| Subtítulos quemados | **Montserrat 800**. A cuerpo 50 el 900 se empasta y cierra los contornos |
+| Línea de apoyo bajo un titular | **Manrope 700** |
+| La web del cierre | **Manrope 700** |
 
-Manrope abre más que Montserrat al cuerpo grande, aguanta mejor sobre
-metraje y contrasta con el logo, que es Montserrat. Su peso máximo es 800:
-no tiene 900.
+Manrope se queda en el texto de apoyo, que es donde abre mejor y contrasta
+con el logo. El texto de impacto es Montserrat.
 
 ### Comprobar que la fuente está puesta de verdad
 
@@ -94,17 +114,29 @@ Las cartelas replican las del kit de motion graphics, no se inventan:
 
 Una pieza entera a base de placas y listas parece una plantilla, y hace que
 todas las piezas de la marca parezcan la misma. Para eso está `Titular`:
-texto grande directamente sobre el metraje, en Manrope extrabold y en
+texto grande directamente sobre el metraje, en Montserrat 900 y en
 mayúsculas, con las palabras entrando una a una en orden de lectura.
 
-**El resalte de `Titular` es una banda, no una palabra pintada.** Se le pasan
-los índices de las palabras que van resaltadas y el componente agrupa las
-seguidas en una sola caja, para que la banda salga continua y no a trozos con
-un hueco en cada espacio. Va en lima con la letra en bosque, que es la regla
-de la marca: el lima no es color de letra, es fondo. Sobre olivo iría en
-blanco, pero contrasta peor y conviene reservarlo. Dentro de la banda no hay
-sombra, que ahí solo ensucia; fuera la legibilidad la sostiene la sombra de
-bosque, y sobre un plano muy claro se sube el `overlay` de `Planos`.
+**El resalte de `Titular` es un bloque verde de marca con la letra en
+blanco**, que es el patrón `.impact` de la guía. Se le pasan los índices de
+las palabras que van dentro y el componente agrupa las seguidas en una sola
+caja, para que el bloque salga continuo y no a trozos con un hueco en cada
+espacio.
+
+Tres cosas que costaron un render entero y conviene no volver a tocar:
+
+- **El bloque y su texto entran juntos**, con un barrido lateral, como las
+  cartelas del kit. Antes las palabras entraban una a una por dentro de un
+  bloque ya dibujado y se veían flotando dentro de la caja.
+- **El barrido dura 16 fotogramas, no 27.** Un titular aguanta en pantalla
+  mucho menos que una cartela: con 27, un rótulo de 41 fotogramas llegaba
+  entero solo los últimos diez.
+- **El bloque es una caja entera, no texto corrido.** Con el bloque en línea,
+  un titular que parte en dos deja dos trozos de caja y el `clip-path` del
+  barrido solo recorta el primero: la segunda línea **desaparecía del todo**,
+  y el rótulo se quedaba en «THE MOST» sin que saltara ningún error. Por eso
+  el bloque no parte por dentro y `Titular` **baja el cuerpo solo** hasta que
+  quepa, como hace `Cartela`.
 
 El texto vive en la mitad superior. Los gráficos, en la inferior.
 

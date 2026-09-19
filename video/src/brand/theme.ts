@@ -35,14 +35,55 @@ export const brand = {
 
 /** Escalas completas, por si hace falta un paso intermedio. */
 export const scale = {
-  green: ["#F4F8E6", "#E6F0CC", "#CDE199", "#B0CC66", "#94B833",
-          "#7AA606", "#668814", "#4F6B0F", "#38500B", "#243607"],
-  lime: ["#F5FDE0", "#ECFBC2", "#D7F784", "#C5F446", "#B0F808",
-         "#9DDB07", "#7DAE05", "#5E8404", "#3F5902", "#1F2C01"],
-  forest: ["#E8F0EC", "#CDDFD5", "#9BBFAA", "#68A07F", "#408561",
-           "#2A6447", "#184834", "#133A2A", "#0E2C1F", "#081B13"],
-  neutral: ["#FFFFFF", "#FAF8F2", "#F3F0E7", "#E6E2D6", "#CFCABB",
-            "#A8A498", "#76736A", "#4F4D47", "#353330", "#22211F", "#15140F"],
+  green: [
+    "#F4F8E6",
+    "#E6F0CC",
+    "#CDE199",
+    "#B0CC66",
+    "#94B833",
+    "#7AA606",
+    "#668814",
+    "#4F6B0F",
+    "#38500B",
+    "#243607",
+  ],
+  lime: [
+    "#F5FDE0",
+    "#ECFBC2",
+    "#D7F784",
+    "#C5F446",
+    "#B0F808",
+    "#9DDB07",
+    "#7DAE05",
+    "#5E8404",
+    "#3F5902",
+    "#1F2C01",
+  ],
+  forest: [
+    "#E8F0EC",
+    "#CDDFD5",
+    "#9BBFAA",
+    "#68A07F",
+    "#408561",
+    "#2A6447",
+    "#184834",
+    "#133A2A",
+    "#0E2C1F",
+    "#081B13",
+  ],
+  neutral: [
+    "#FFFFFF",
+    "#FAF8F2",
+    "#F3F0E7",
+    "#E6E2D6",
+    "#CFCABB",
+    "#A8A498",
+    "#76736A",
+    "#4F4D47",
+    "#353330",
+    "#22211F",
+    "#15140F",
+  ],
 } as const;
 
 /** Tokens semanticos. Usa estos en las escenas, no los colores crudos. */
@@ -80,56 +121,77 @@ export const color = {
  */
 export const fontFamily = "Montserrat, Manrope, Poppins, Tahoma, sans-serif";
 
-/** La misma cascada, pero encabezada por Manrope. */
-export const fontFamilyTitular = "Manrope, Montserrat, Poppins, Tahoma, sans-serif";
+/**
+ * La misma cascada, encabezada por Manrope.
+ *
+ * Es la del texto de apoyo, no la del titular: el titular va en Montserrat,
+ * porque el patron de la guia pide peso 900 y Manrope se queda en 800.
+ */
+export const fontFamilyApoyo =
+  "Manrope, Montserrat, Poppins, Tahoma, sans-serif";
 
 /* ------------------------------------------------------------------ *
  * QUE FUENTE VA EN CADA COSA
  *
- * La guia da la cascada (Montserrat -> Manrope -> Poppins) pero no reparte
- * los usos, y en video ese reparto importa: no es lo mismo una placa del kit
- * de motion graphics que un titular a sesenta puntos sobre un plano.
+ * La guia da la cascada (Montserrat -> Manrope -> Poppins) y ademas trae el
+ * patron de titular resuelto, que es el que manda aqui:
+ *
+ *   .display, .impact {            // "the signature impact headline
+ *     font-weight: var(--fw-black) //  pattern - UPPERCASE, white on
+ *     line-height: 0.95;           //  green block"
+ *     letter-spacing: -0.02em;
+ *     text-transform: uppercase;
+ *   }
+ *
+ * De ahi salen las tres cosas que no se negocian en un titular de video:
+ * **peso 900**, mayusculas y **bloque verde de marca con la letra en
+ * blanco**. No lima: el lima es para los "punch blocks" pequenos.
+ *
+ * Y de ahi sale tambien que el titular es **Montserrat**, no Manrope: el
+ * patron pide 900 y Manrope no llega, se queda en 800. Un rato estuvo en
+ * Manrope 800 y se veia flojo al lado de las placas del kit, que van en
+ * Montserrat 900. No era que la fuente no cargara: es que ese es el tope de
+ * Manrope.
  *
  * El reparto es este, y no se decide pieza a pieza:
  *
- * - **Montserrat** en todo lo que replica el kit: las placas de `Cartela`,
- *   las cabeceras de los graficos, los bullets. Son piezas calcadas del kit
- *   y tienen que leerse igual que en el.
- * - **Manrope extrabold** en lo que es de video y no existe en el kit: los
- *   titulares grandes sobre la imagen, las cifras de impacto, los
- *   subtitulos y la web del cierre. Abre mas, aguanta mejor el cuerpo
- *   grande y contrasta con el logo, que es Montserrat.
+ * - **Montserrat 900** en el texto de impacto: titulares sobre la imagen y
+ *   cifras. Es el patron de la guia, y case con las placas del kit.
+ * - **Montserrat 800** en los subtitulos quemados. A cuerpo 50 el 900 se
+ *   empasta y cierra los contornos.
+ * - **Manrope** en el texto de apoyo: la linea pequena bajo un titular y la
+ *   web del cierre. Ahi si abre mejor y contrasta con el logo.
  *
  * Usa estos tokens en lugar de escribir la familia y el peso a mano.
  * ------------------------------------------------------------------ */
 export const tipo = {
-  /** Titular grande sobre el metraje. */
+  /** Titular grande sobre el metraje. El patron `.impact` de la guia. */
   titular: {
-    fontFamily: fontFamilyTitular,
-    fontWeight: 800,
+    fontFamily,
+    fontWeight: 900,
     letterSpacing: "-0.02em",
   },
   /** Cifra de impacto. */
   cifra: {
-    fontFamily: fontFamilyTitular,
-    fontWeight: 800,
+    fontFamily,
+    fontWeight: 900,
     letterSpacing: "-0.03em",
   },
   /** Subtitulo quemado. */
   subtitulo: {
-    fontFamily: fontFamilyTitular,
+    fontFamily,
     fontWeight: 800,
     letterSpacing: "-0.005em",
   },
   /** Linea pequena debajo de un titular. */
   apoyo: {
-    fontFamily: fontFamilyTitular,
-    fontWeight: 600,
+    fontFamily: fontFamilyApoyo,
+    fontWeight: 700,
     letterSpacing: "0.02em",
   },
   /** La web del cierre. */
   web: {
-    fontFamily: fontFamilyTitular,
+    fontFamily: fontFamilyApoyo,
     fontWeight: 700,
     letterSpacing: "0.08em",
   },
@@ -179,7 +241,16 @@ export const tracking = {
 
 /** Grid de 8 pt. */
 export const space = {
-  1: 4, 2: 8, 3: 12, 4: 16, 5: 24, 6: 32, 7: 48, 8: 64, 9: 96, 10: 128,
+  1: 4,
+  2: 8,
+  3: 12,
+  4: 16,
+  5: 24,
+  6: 32,
+  7: 48,
+  8: 64,
+  9: 96,
+  10: 128,
 } as const;
 
 export const radius = {
@@ -194,7 +265,8 @@ export const radius = {
 /** Sombras tintadas hacia bosque, nunca negro. */
 export const shadow = {
   card: "0 4px 12px rgba(24, 72, 52, 0.10), 0 1px 2px rgba(24, 72, 52, 0.05)",
-  raised: "0 12px 28px rgba(24, 72, 52, 0.14), 0 2px 6px rgba(24, 72, 52, 0.06)",
+  raised:
+    "0 12px 28px rgba(24, 72, 52, 0.14), 0 2px 6px rgba(24, 72, 52, 0.06)",
   brand: "0 12px 24px rgba(122, 166, 6, 0.28)",
 } as const;
 
