@@ -1,0 +1,134 @@
+{
+  "brazos-alto": {
+    "fin": 0.966667,
+    "sello": "36c4ddaa2b5e726d"
+  },
+  "brindis": {
+    "fin": 2.0,
+    "sello": "9e67455eef8d0ed3"
+  },
+  "camino-abierto": {
+    "fin": 1.166667,
+    "sello": "509cb9f7fb31bb4f"
+  },
+  "campo-flores": {
+    "fin": 1.666667,
+    "sello": "71a0f6b71adcc70f"
+  },
+  "casa-rural": {
+    "fin": 1.166667,
+    "sello": "788200a53ae92685"
+  },
+  "catedral-a": {
+    "fin": 1.7,
+    "sello": "4f599ca5ce7aab7d"
+  },
+  "catedral-b": {
+    "fin": 1.7,
+    "sello": "e43c024f44a9c3f5"
+  },
+  "catedral-torres": {
+    "fin": 1.7,
+    "sello": "708b2fe17a563ea4"
+  },
+  "compostela": {
+    "fin": 1.7,
+    "sello": "ba722c81d2d9f785"
+  },
+  "contraluz": {
+    "fin": 1.433333,
+    "sello": "2172f149d8729d1c"
+  },
+  "credencial": {
+    "fin": 0.9296875,
+    "sello": "b8f459ca7046ae15"
+  },
+  "equipaje-etiquetas": {
+    "fin": 0.933333,
+    "sello": "2e95641f735a21eb"
+  },
+  "equipaje-grupo": {
+    "fin": 1.2,
+    "sello": "e7bf30d71f8be767"
+  },
+  "equipaje-portal": {
+    "fin": 1.2,
+    "sello": "885d1df4011a8afd"
+  },
+  "escaleras": {
+    "fin": 1.2,
+    "sello": "8c5d18a349c37c3b"
+  },
+  "fachada-moderna": {
+    "fin": 1.166667,
+    "sello": "1a1083420fdeb218"
+  },
+  "flecha": {
+    "fin": 1.166667,
+    "sello": "e6e133b9dc4ab118"
+  },
+  "grupo-mimosas": {
+    "fin": 1.166667,
+    "sello": "b97450736f52a57a"
+  },
+  "grupo-peregrinos": {
+    "fin": 0.733333,
+    "sello": "3789cbdd7312bec7"
+  },
+  "habitacion": {
+    "fin": 2.166667,
+    "sello": "31c90ebebc3e8e17"
+  },
+  "iglesia-exterior": {
+    "fin": 1.1640625,
+    "sello": "7f73b16d866bc899"
+  },
+  "interior-velas": {
+    "fin": 1.86328125,
+    "sello": "b7a3ffddd4880e6b"
+  },
+  "manos-sellando": {
+    "fin": 1.46484375,
+    "sello": "f02e5daad2b8082d"
+  },
+  "mesa-exterior": {
+    "fin": 1.433333,
+    "sello": "1c95de83143632c7"
+  },
+  "mochila-ligera": {
+    "fin": 2.0,
+    "sello": "bd0e17982d61b9f8"
+  },
+  "pareja-muros": {
+    "fin": 1.566667,
+    "sello": "f75846293a953d36"
+  },
+  "piernas": {
+    "fin": 2.233333,
+    "sello": "ba957820cc2f2504"
+  },
+  "plaza": {
+    "fin": 0.19921875,
+    "sello": "0763970bf27a233a"
+  },
+  "portico-sellado": {
+    "fin": 1.966667,
+    "sello": "59a04a42108c2e27"
+  },
+  "rio-piedras": {
+    "fin": 1.0,
+    "sello": "3ca8a976ac66ddf1"
+  },
+  "terraza": {
+    "fin": 2.2,
+    "sello": "f41d7598ece2ff73"
+  },
+  "tunel-vegetacion": {
+    "fin": 0.833333,
+    "sello": "4695725479f06bee"
+  },
+  "vieiras": {
+    "fin": 1.266667,
+    "sello": "62c201e9bd0594f1"
+  }
+}

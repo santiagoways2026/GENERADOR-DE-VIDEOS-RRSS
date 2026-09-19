@@ -253,8 +253,8 @@ export const ShortFrancesUS: React.FC = () => {
           lista={[
             { src: "contraluz", dura: 1.39, ritmo: 0.58 },
             { src: "campo-flores", dura: 1.6, ritmo: 0.64 },
-            { src: "credencial", dura: 1.02, ritmo: 0.54 },
-            { src: "manos-sellando", dura: 1.52, encuadre: "28% 50%", ritmo: 0.68 },
+            { src: "credencial", dura: 0.89, ritmo: 0.47 },
+            { src: "manos-sellando", dura: 1.42, encuadre: "28% 50%", ritmo: 0.63 },
           ]}
         />
         {/* Entra con "The last stretch, Sarria to Santiago". */}
@@ -310,9 +310,9 @@ export const ShortFrancesUS: React.FC = () => {
           overlay={0.44}
           lista={[
             { src: "brazos-alto", dura: 0.95, encuadre: "34% 50%", ritmo: 0.5 },
-            { src: "camino-abierto", dura: 1.14, ritmo: 0.52 },
-            { src: "catedral-torres", dura: 1.66, ritmo: 0.64 },
-            { src: "iglesia-exterior", dura: 1.32, ritmo: 0.6 },
+            { src: "camino-abierto", dura: 1.13, ritmo: 0.5 },
+            { src: "catedral-torres", dura: 1.66, ritmo: 0.6 },
+            { src: "iglesia-exterior", dura: 1.12, ritmo: 0.56 },
           ]}
         />
         <Alto desde={260}>
@@ -333,9 +333,9 @@ export const ShortFrancesUS: React.FC = () => {
           total={dur(6)}
           overlay={0.46}
           lista={[
-            { src: "rio-piedras", dura: 0.97, encuadre: "75% 50%", ritmo: 0.54 },
-            { src: "equipaje-grupo", dura: 1.17, encuadre: "65% 50%", ritmo: 0.56 },
-            { src: "interior-velas", dura: 2.04, ritmo: 0.68 },
+            { src: "rio-piedras", dura: 0.96, encuadre: "75% 50%", ritmo: 0.52 },
+            { src: "equipaje-grupo", dura: 1.16, encuadre: "65% 50%", ritmo: 0.54 },
+            { src: "interior-velas", dura: 1.82, ritmo: 0.63 },
           ]}
         />
         <Alto desde={260}>

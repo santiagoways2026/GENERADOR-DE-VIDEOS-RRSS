@@ -143,6 +143,29 @@ Lo mismo vale para el titular fuera de su bloque: sin placa, con sombra. Si
 un plano es demasiado claro, se sube el `overlay` de `Planos` en vez de meter
 una caja detrás del texto.
 
+## Un bruto no dura lo que dice el archivo
+
+En el short del Francés, en el segundo 43, aparecía un fotograma en blanco y
+medio segundo de un plano que no tocaba, justo antes del cambio de bloque.
+
+La causa: `iglesia-exterior.mp4` dura 1,37 s, pero su toma se corta en 1,16 y
+lo que viene detrás es otra escena. El montaje pedía 1,32 s. Los brutos son
+compilaciones y a varios les quedó pegado el arranque de la toma siguiente;
+`plaza.mp4` es el peor, dura 1 s y su toma se acaba en 0,20.
+
+Lo que dejó pasarlo fue el verificador: comprobaba el `dura` contra la
+duración del archivo, que incluye ese rabo de otra escena, así que daba el
+visto bueno. Ahora mide el final real de la toma con `fin_de_toma()`, que
+busca el corte a saltos y luego lo afina partiendo el intervalo por la mitad
+—a saltos de 0,25 s el corte puede estar un cuarto de segundo antes de donde
+se detecta, que es demasiado para tomas de uno o dos segundos—. Las medidas
+se guardan en `.tomas.json` porque cada una cuesta una docena de
+extracciones.
+
+Con la comprobación buena salen cuatro planos pasados en el short, cinco en
+el reel del Xacobeo US y tres en el español. Ninguno lo dijo ningún script
+hasta ahora.
+
 ## Una toma no se repite en la misma pieza
 
 La regla empezó siendo «no repetir entre bloques contiguos», y el verificador

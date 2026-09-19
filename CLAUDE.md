@@ -153,10 +153,16 @@ no se acelera la lectura.
 
 Estas salieron de revisar piezas reales y ahorran repetir errores:
 
-1. **Comprobar los planos antes de cortar.** Los brutos son compilaciones y
-   ninguna toma pasa de 2,75 segundos. Un corte de cuatro segundos se come el
-   plano siguiente y aparece un salto a mitad de escena.
-   `python3 herramientas/scripts/planos.py bruto.mp4` da los límites exactos.
+1. **El `dura` de un plano se mide contra su toma, no contra el archivo.**
+   Los brutos son compilaciones y a varios les queda pegado el arranque de la
+   toma siguiente: `iglesia-exterior.mp4` dura 1,37 s y su toma se acaba en
+   1,16; `plaza.mp4` dura 1 s y la suya en 0,20. Pasarse de ahí mete en
+   pantalla un fotograma en blanco y medio segundo de otra escena. En el short
+   del Francés eso puso, en el segundo 43, un plano que no pintaba nada allí.
+   `python3 herramientas/scripts/planos.py bruto.mp4` enseña los cortes, y
+   `revisar-montaje.py` lo comprueba solo: mide el final real de la toma con
+   `fin_de_toma()`, no la duración del archivo, porque medir el archivo daba
+   el visto bueno a todos estos.
 2. **Ninguna toma por debajo de 1,2 segundos en pantalla.** Es el fallo que
    más veces se ha colado y el que primero se nota: un plano de un segundo en
    medio de un bloque se lee como un error. Mejor pocas tomas largas que

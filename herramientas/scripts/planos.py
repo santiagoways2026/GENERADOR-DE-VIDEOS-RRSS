@@ -83,3 +83,59 @@ if __name__ == "__main__":
     paso = float(sys.argv[2]) if len(sys.argv) > 2 else 0.25
     umbral = float(sys.argv[3]) if len(sys.argv) > 3 else 0.22
     planos(src, paso, umbral)
+
+
+def fin_de_toma(src, umbral=0.22, paso=0.25):
+    """Segundo en el que se acaba la primera toma del archivo.
+
+    Es el limite real de un plano, y no siempre es donde acaba el archivo:
+    `iglesia-exterior.mp4` dura 1,37 s pero su toma se corta en 1,25 y lo que
+    viene detras es otra escena. Un `dura` por encima de ese limite mete en
+    pantalla un fotograma en blanco y un trozo de la toma siguiente. Paso de
+    un segundo en el short del Frances, y no lo vio nadie hasta verlo.
+
+    Primero busca el corte a saltos, como `planos()`, y luego lo afina
+    partiendo el intervalo por la mitad: a saltos de 0,25 s el corte puede
+    estar hasta un cuarto de segundo antes de donde se detecta, que es
+    demasiado margen para tomas que duran uno o dos segundos.
+    """
+    dur = duracion(src)
+    tmp = tempfile.mkdtemp()
+
+    def muestra(t):
+        p = os.path.join(tmp, f"{int(t*1000):07d}.jpg")
+        if not os.path.exists(p):
+            subprocess.run([FF, "-v", "error", "-ss", f"{t:.3f}", "-i", src,
+                            "-frames:v", "1", "-vf", "scale=160:-1", p, "-y"],
+                           check=False)
+        return firma(p) if os.path.exists(p) else None
+
+    ancla = muestra(0.0)
+    if ancla is None:
+        return dur
+
+    antes, previa, t, corte = 0.0, ancla, paso, None
+    while t < dur:
+        actual = muestra(t)
+        if actual is not None:
+            if distancia(previa, actual) > umbral:
+                corte = (antes, t)
+                break
+            antes, previa = t, actual
+        t += paso
+
+    if corte is None:
+        return dur
+
+    lo, hi = corte
+    referencia = muestra(lo)
+    for _ in range(6):
+        medio = (lo + hi) / 2
+        actual = muestra(medio)
+        if actual is None or referencia is None:
+            break
+        if distancia(referencia, actual) > umbral:
+            hi = medio
+        else:
+            lo = medio
+    return lo

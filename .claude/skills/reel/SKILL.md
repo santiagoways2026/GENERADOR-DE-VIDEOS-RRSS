@@ -40,6 +40,12 @@ El primero da los límites exactos de cada toma; el segundo, una hoja de
 contactos para ver qué hay. **Ninguna toma suele pasar de 2,75 segundos**, así
 que todo corte más largo cruza dos planos y produce un salto.
 
+Esto vale también para los planos ya recortados de `video/public/brutos/`:
+a varios les quedó pegado el arranque de la toma siguiente, así que **su
+`dura` se mide contra el final de la toma, no contra el del archivo**.
+`iglesia-exterior.mp4` dura 1,37 s y su toma acaba en 1,16; `plaza.mp4` dura
+1 s y la suya en 0,20. `revisar-montaje.py` lo comprueba solo.
+
 Extrae cada plano con 0,15 s de margen por dentro de sus límites:
 
 ```bash

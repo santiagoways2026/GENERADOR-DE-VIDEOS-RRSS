@@ -3,8 +3,10 @@
 
 Comprueba las cuatro cosas que han salido mal alguna vez:
 
-  1. Que ninguna toma se estire mas alla de lo que dura en el bruto, porque
-     entonces se congela o se mete en el plano siguiente del bruto.
+  1. Que ninguna toma se estire mas alla de donde se acaba de verdad, que no
+     es donde se acaba el archivo: a varios brutos les queda pegado el
+     arranque de la toma siguiente, y pasarse de ahi mete medio segundo de
+     otra escena en mitad del bloque.
   2. Que ninguna baje del minimo legible. Un plano de menos de un segundo
      en medio de un bloque se lee como un error de montaje.
   3. Que no se repita ninguna toma en toda la pieza. Empezo mirando solo
@@ -16,23 +18,46 @@ Comprueba las cuatro cosas que han salido mal alguna vez:
 
     python3 herramientas/scripts/revisar-montaje.py video/src/ReelXacobeoUS.tsx
 """
-import re, sys, pathlib, subprocess, json
+import re, sys, pathlib, subprocess, json, hashlib
 
 RAIZ = pathlib.Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(RAIZ / "herramientas/scripts"))
-from planos import FP
+from planos import FP, fin_de_toma
 
 MINIMO = 1.15
 RITMO_MINIMO = 0.42
 
 
+CACHE = RAIZ / "herramientas/scripts/.tomas.json"
+_cache = json.loads(CACHE.read_text()) if CACHE.exists() else {}
+
+
 def duracion_bruto(nombre):
+    """Hasta donde se puede tirar de un bruto: el final de su primera toma.
+
+    No es lo que dura el archivo. Los brutos son compilaciones y a algunos
+    les queda pegado el arranque de la toma siguiente: `iglesia-exterior.mp4`
+    dura 1,37 s y su toma se acaba en 1,16. Medir el archivo daba el visto
+    bueno a un `dura` de 1,32 que metia en pantalla un fotograma en blanco y
+    medio segundo de otra escena, justo antes del corte de bloque. Se veia al
+    mirar la pieza y ningun script lo decia.
+
+    Cada medida cuesta una docena de extracciones, asi que se guardan en
+    `.tomas.json`, que va al repositorio. La clave es el hash del archivo, no
+    su fecha: git no conserva las fechas, y con la fecha el cache no servia de
+    nada en cuanto alguien clonaba.
+    """
     ruta = RAIZ / "video/public/brutos" / f"{nombre}.mp4"
     if not ruta.exists():
         return None
-    out = subprocess.run([FP, "-v", "error", "-show_entries", "format=duration",
-                          "-of", "json", str(ruta)], capture_output=True, text=True, check=True)
-    return float(json.loads(out.stdout)["format"]["duration"])
+    sello = hashlib.sha1(ruta.read_bytes()).hexdigest()[:16]
+    guardado = _cache.get(nombre)
+    if guardado and guardado.get("sello") == sello:
+        return guardado["fin"]
+    fin = fin_de_toma(str(ruta))
+    _cache[nombre] = {"sello": sello, "fin": fin}
+    CACHE.write_text(json.dumps(_cache, indent=2, sort_keys=True))
+    return fin
 
 
 def main(destino):
@@ -78,13 +103,14 @@ def main(destino):
             bruto = duracion_bruto(src)
             # Lo que se consume de bruto es lo que dura en pantalla por el
             # ritmo: a media velocidad, dos segundos de plano gastan uno de
-            # metraje. Pasarse de ahi es lo que congela la imagen.
+            # metraje. Pasarse de ahi congela la imagen, o peor: si al bruto
+            # le sigue otra toma, la mete en pantalla.
             gasto = x * ritmo
             if bruto is None:
                 fallos.append(f"{nombre}: no existe el bruto {src}")
-            elif gasto > bruto + 0.04:
-                fallos.append(f"{nombre}/{src}: gasta {gasto:.2f}s de una toma "
-                              f"que dura {bruto:.2f}s, asi que se congela")
+            elif gasto > bruto + 0.02:
+                fallos.append(f"{nombre}/{src}: gasta {gasto:.2f}s y la toma "
+                              f"se acaba en {bruto:.2f}s")
             if x < MINIMO:
                 fallos.append(f"{nombre}/{src}: solo {x:.2f}s en pantalla")
             if ritmo < RITMO_MINIMO:
