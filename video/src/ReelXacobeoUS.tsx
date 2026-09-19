@@ -1,4 +1,4 @@
-import { AbsoluteFill, Sequence, staticFile } from "remotion";
+import { AbsoluteFill, interpolate, Sequence, staticFile } from "remotion";
 import { Audio } from "@remotion/media";
 import "./fuentes";
 import { brand, fontFamily, margin } from "./brand/theme";
@@ -59,6 +59,17 @@ const B = [
   60.45, // 14 · fin del audio
 ];
 
+/**
+ * La cama musical entra por el final de la cancion, no por el principio.
+ *
+ * El tema dura 116 s y se apaga solo entre el segundo 106 y el 112; el resto
+ * es silencio. Arrancando en 51,55 s ese fundido cae justo en el cierre de
+ * marca, y el tramo pleno de la cancion coincide con la parte que mas pesa,
+ * de la explicacion a la llegada a la plaza. No hace falta inventarse un
+ * fundido: la cancion trae el suyo y encaja.
+ */
+const MUSICA = { desdeSegundo: 51.55, volumen: 0.14 };
+
 const f = (s: number) => Math.round(s * 30);
 const dur = (i: number) => f(B[i + 1]) - f(B[i]);
 /** Fotograma de un instante de la locucion, dentro del bloque `i`. */
@@ -86,6 +97,17 @@ export const ReelXacobeoUS: React.FC = () => {
   return (
     <AbsoluteFill style={{ backgroundColor: brand.forest, fontFamily }}>
       <Audio src={staticFile("locucion-en.mp3")} />
+      <Audio
+        src={staticFile("musica.mp3")}
+        trimBefore={f(MUSICA.desdeSegundo)}
+        // Por debajo de la voz: la cama sostiene, no acompana a la par.
+        volume={(frame) =>
+          interpolate(frame, [0, 24], [0, MUSICA.volumen], {
+            extrapolateLeft: "clamp",
+            extrapolateRight: "clamp",
+          })
+        }
+      />
 
 
       {/* 1 · El gancho: una puerta que se abre. Todavia no se nombra el
@@ -183,11 +205,7 @@ export const ReelXacobeoUS: React.FC = () => {
         />
         <Inferior>
           {/* 2032 se enciende con la cifra, no antes. */}
-          <LineaTiempo
-            desde={8}
-            pie="Once a decade, more or less"
-            resaltaSiguiente={en(4, 27.15)}
-          />
+          <LineaTiempo desde={8} resaltaSiguiente={en(4, 27.15)} />
         </Inferior>
       </Sequence>
 
@@ -215,7 +233,7 @@ export const ReelXacobeoUS: React.FC = () => {
           overlay={0.3}
           lista={[
             { src: "plaza", dura: 1.05, ritmo: 0.7 },
-            { src: "compostela", dura: 1.7, encuadre: "38% 50%", ritmo: 0.9 },
+            { src: "compostela", dura: 1.7, encuadre: "50% 50%", ritmo: 0.9 },
             { src: "catedral-a", dura: 1.7, ritmo: 0.85 },
           ]}
         />

@@ -6,6 +6,7 @@ sabido. De ahí que dure el doble.
 
 - **Composición:** `ReelXacobeoUS` · 1080x1920 · 30 fps · 60,5 s
 - **Locución:** `video/public/locucion-en.mp3` (ElevenLabs, voz Lara)
+- **Música:** `video/public/musica.mp3`, entrando por el segundo 51,55
 - **Salida:** `salidas/reel-xacobeo-2027-us.mp4`
 
 ```bash
@@ -32,7 +33,7 @@ que tocar.
 | 0:06 | Mapa de rutas | 1,000 years of pilgrimage | Sitúa Galicia y enseña que son varias rutas |
 | 0:15 | Calendario | July 2027 · July 25 falls on a Sunday | La regla del Año Santo, de un vistazo |
 | 0:18 | Puerta Santa | This is a Holy Year | Sealed → Open sobre la palabra "unsealed" |
-| 0:23 | Años Santos | Once a decade, more or less | 2032 se enciende con la cifra |
+| 0:23 | Años Santos | 2021 · 2027 · 2032 · 2038 | 2032 se enciende con la cifra |
 | 0:29 | Un Año Santo se nota | The Camino at its most alive | Manda el metraje |
 | 0:35 | Obradoiro | A plenary indulgence | Llegada, y qué significa el Año Santo para un creyente |
 | 0:40 | Servicio | Cuatro tarjetas con check | El bloque premium, once segundos |
@@ -58,6 +59,20 @@ cosas que han salido mal alguna vez:
 ```bash
 python3 herramientas/scripts/revisar-montaje.py video/src/ReelXacobeoUS.tsx
 ```
+
+## La música
+
+La cama entra por el final del tema, no por el principio. La canción dura
+116 s y se apaga sola entre el segundo 106 y el 112; el resto es silencio.
+Arrancando en 51,55 s ese fundido cae justo en el cierre de marca, y el
+tramo pleno coincide con la parte que más pesa, de la explicación a la
+llegada a la plaza. No hace falta inventarse un fundido: la canción trae el
+suyo y encaja.
+
+Va a 0,14 de volumen, unos 15 dB por debajo de la locución: se oye en los
+silencios de la voz y no compite con ella. Si se cambia de tema hay que
+volver a mirar dónde empieza su fundido, que es lo que fija el punto de
+entrada.
 
 ## Caption
 
@@ -146,6 +161,11 @@ pregunta, se lleva a mensaje directo.
   casas de cada etapa tienen pocas habitaciones y en Año Santo se agotan.
 - **La semana del calendario empieza en domingo.** Un americano lee la
   cuadrícula así, y el gráfico existe para leerse de un vistazo.
+- **La Puerta Santa son dos hojas que se abren.** Se probó antes con el muro
+  de sillares que de verdad la tapia y se derriba cada Año Santo, pero en
+  pantalla no se leía: unos bloques que se desvanecen no dicen «puerta». Dos
+  hojas abriéndose las entiende cualquiera sin pensar, que es lo que hace
+  falta en cinco segundos.
 
 ## Datos en pantalla
 

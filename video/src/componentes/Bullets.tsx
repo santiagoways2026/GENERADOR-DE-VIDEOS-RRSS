@@ -78,8 +78,8 @@ export const Bullets: React.FC<{
                 width: 76,
                 height: 76,
                 borderRadius: radius.pill,
-                backgroundColor: brand.lime,
-                color: color.fgOnLime,
+                backgroundColor: brand.green,
+                color: color.fgInverse,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -92,7 +92,7 @@ export const Bullets: React.FC<{
                   <path
                     d="M4.5 12.5 L9.5 17.5 L19.5 6.5"
                     fill="none"
-                    stroke={color.fgOnLime}
+                    stroke={color.fgInverse}
                     strokeWidth="3.4"
                     strokeLinecap="round"
                     strokeLinejoin="round"

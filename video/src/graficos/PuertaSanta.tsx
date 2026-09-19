@@ -13,7 +13,7 @@ import {
 } from "../brand/theme";
 
 /**
- * La Puerta Santa, en sus dos estados: tapiada y abierta.
+ * La Puerta Santa, en sus dos estados: cerrada y abierta.
  *
  * Es la metafora con la que abre la pieza ("a door that has stayed sealed"),
  * asi que conviene cerrarla en imagen cuando la locucion explica que en Ano
@@ -21,17 +21,18 @@ import {
  * foto de archivo estaria prohibida por el manual, de modo que se dibuja:
  * ademas asi se puede animar el gesto, que es lo que cuenta la idea.
  *
- * El sillar de arriba es el ultimo en caer, para que la vista siga el
- * desmontaje de abajo arriba y acabe mirando el vano ya abierto.
+ * Son dos hojas que se abren hacia dentro. Se probo antes con el muro de
+ * sillares que de verdad tapia la puerta y se derriba cada Ano Santo, pero
+ * en pantalla no se leia: unos bloques que se desvanecen no dicen "puerta".
+ * Dos hojas abriendose las entiende cualquiera sin pensar, que es lo que
+ * hace falta en cinco segundos.
  */
 
-/** Filas de sillares que tapian el vano. */
-const SILLARES = 7;
-/** Lo que tarda en retirarse un sillar. */
-const CAIDA = 12;
-/** Solape entre un sillar y el siguiente: sin el, desmontar siete tardaria
- *  casi tres segundos y el bloque no da para tanto. */
-const SOLAPE = 0.45;
+/** Lo que tarda en abrirse del todo. */
+const GIRO = 34;
+/** Cuanto se repliega cada hoja. No llega a 1: el canto se queda a la vista,
+ *  que es lo que da el grosor de la madera. */
+const REPLIEGUE = 0.88;
 
 export const PuertaSanta: React.FC<{
   desde?: number;
@@ -50,17 +51,18 @@ export const PuertaSanta: React.FC<{
     extrapolateRight: "clamp",
   });
 
-  /** 0 tapiada, 1 abierta del todo. */
-  const apertura = interpolate(
-    frame,
-    [abre, abre + CAIDA * SILLARES * SOLAPE],
-    [0, 1],
-    {
-      extrapolateLeft: "clamp",
-      extrapolateRight: "clamp",
-      easing: Easing.bezier(...easeOut),
-    },
-  );
+  /** 0 cerrada, 1 abierta del todo. */
+  const apertura = interpolate(frame, [abre, abre + GIRO], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+    easing: Easing.bezier(...easeOut),
+  });
+
+  /** Una hoja vista de frente se acorta al abrirse. */
+  const hoja = 1 - apertura * REPLIEGUE;
+
+  /** Casetones de cada hoja, en proporcion del alto. */
+  const paneles = [0.06, 0.29, 0.52, 0.75];
 
   return (
     <Interactive.Div
@@ -86,74 +88,100 @@ export const PuertaSanta: React.FC<{
           <clipPath id="vano">
             <path d="M90 600 V280 A170 170 0 0 1 430 280 V600 Z" />
           </clipPath>
-          <radialGradient id="luz" cx="50%" cy="62%" r="62%">
-            <stop offset="0%" stopColor={brand.lime} />
-            <stop offset="58%" stopColor={brand.limeSoft} />
+          {/* La luz de dentro: calida, no el lima de marca, que a pantalla
+              completa se come el resto del grafico. */}
+          <radialGradient id="luz" cx="50%" cy="58%" r="70%">
+            <stop offset="0%" stopColor="#FFFFFF" />
+            <stop offset="42%" stopColor={brand.cream} />
             <stop offset="100%" stopColor={scale.green[1]} />
           </radialGradient>
+          {/* Cada hoja se oscurece hacia el canto interior: es lo que da la
+              sensacion de que gira y no de que se encoge. */}
+          <linearGradient id="hojaIzq" x1="0" x2="1">
+            <stop offset="0%" stopColor={scale.green[6]} />
+            <stop offset="100%" stopColor={scale.green[8]} />
+          </linearGradient>
+          <linearGradient id="hojaDer" x1="0" x2="1">
+            <stop offset="0%" stopColor={scale.green[8]} />
+            <stop offset="100%" stopColor={scale.green[6]} />
+          </linearGradient>
         </defs>
 
-        {/* Jamba: el grosor del muro. */}
+        <g clipPath="url(#vano)">
+          {/* El interior, que solo se ve cuando las hojas se apartan. */}
+          <rect x="90" y="100" width="340" height="510" fill="url(#luz)" />
+          {/* Una nave insinuada al fondo, para que se lea profundidad. */}
+          <path
+            d="M215 610 V330 A45 45 0 0 1 305 330 V610 Z"
+            fill={scale.green[2]}
+            opacity={apertura * 0.5}
+          />
+
+          {[
+            { lado: "izq", x: 90, ancho: 170, eje: 90 },
+            { lado: "der", x: 260, ancho: 170, eje: 430 },
+          ].map(({ lado, x, ancho, eje }) => (
+            <g
+              key={lado}
+              // El eje de giro es el canto exterior, contra la jamba.
+              transform={`translate(${eje} 0) scale(${hoja} 1) translate(${-eje} 0)`}
+            >
+              <rect
+                x={x}
+                y="100"
+                width={ancho}
+                height="510"
+                fill={lado === "izq" ? "url(#hojaIzq)" : "url(#hojaDer)"}
+              />
+              {paneles.map((p) => (
+                <rect
+                  key={p}
+                  x={x + 26}
+                  y={130 + p * 470}
+                  width={ancho - 52}
+                  height={92}
+                  rx="4"
+                  fill="none"
+                  stroke={scale.green[5]}
+                  strokeWidth="5"
+                  opacity={0.7}
+                />
+              ))}
+              {/* Aldaba, junto al canto que se abre. */}
+              <circle
+                cx={lado === "izq" ? x + ancho - 34 : x + 34}
+                cy="390"
+                r="13"
+                fill="none"
+                stroke={brand.lime}
+                strokeWidth="7"
+              />
+            </g>
+          ))}
+
+          {/* Sombra que arroja cada hoja sobre el umbral al abrirse. */}
+          <rect
+            x="90"
+            y="100"
+            width="340"
+            height="510"
+            fill={brand.forest}
+            opacity={(1 - apertura) * 0.12}
+          />
+        </g>
+
+        {/* Jamba: el grosor del muro, por delante de las hojas. */}
         <path
           d="M40 620 V280 A220 220 0 0 1 480 280 V620 H430 V280 A170 170 0 0 0 90 280 V620 Z"
           fill={brand.forest}
         />
-
-        {/* El vano, que es lo que se abre. */}
-        <g clipPath="url(#vano)">
-          {/* La luz de dentro, que solo se ve cuando cae el sillar. */}
-          <rect x="90" y="100" width="340" height="510" fill="url(#luz)" />
-
-          {/* Sillares que tapian, de abajo arriba. El de mas abajo cae
-              primero: la vista sube con el desmontaje. */}
-          {Array.from({ length: SILLARES }, (_, i) => {
-            const alto = 510 / SILLARES;
-            const y = 610 - (i + 1) * alto;
-            const cae = interpolate(
-              frame,
-              [abre + i * CAIDA * SOLAPE, abre + i * CAIDA * SOLAPE + CAIDA],
-              [0, 1],
-              {
-                extrapolateLeft: "clamp",
-                extrapolateRight: "clamp",
-                easing: Easing.bezier(...easeOut),
-              },
-            );
-            return (
-              <g key={i} opacity={1 - cae}>
-                <rect
-                  x="88"
-                  y={y}
-                  width="344"
-                  height={alto - 3}
-                  fill={scale.neutral[3]}
-                  stroke={scale.neutral[4]}
-                  strokeWidth="2"
-                  // Se retira hacia dentro, no hacia un lado.
-                  style={{ translate: `0px ${cae * -18}px` }}
-                />
-                {/* Junta vertical alterna, para que lea como sillería. */}
-                <rect
-                  x={i % 2 ? 258 : 172}
-                  y={y}
-                  width="3"
-                  height={alto - 3}
-                  fill={scale.neutral[4]}
-                  opacity={1 - cae}
-                />
-              </g>
-            );
-          })}
-        </g>
-
-        {/* Arco de dovelas por encima del vano. */}
+        {/* Arco de dovelas. */}
         <path
           d="M90 280 A170 170 0 0 1 430 280"
           fill="none"
           stroke={brand.green}
           strokeWidth="14"
         />
-
         {/* Umbral. */}
         <rect x="40" y="600" width="440" height="20" fill={brand.forest} />
       </svg>
