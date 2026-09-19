@@ -7,11 +7,34 @@ y acaba cada uno antes de elegir el trozo.
 
     python3 planos.py entrada.mp4 [paso_en_segundos] [umbral]
 """
-import subprocess, sys, tempfile, os, json
+import subprocess, sys, tempfile, os, json, pathlib, shutil
 from PIL import Image
 
-FF = "/home/user/centrodecontrol/video/node_modules/@remotion/compositor-linux-x64-gnu/ffmpeg"
-FP = "/home/user/centrodecontrol/video/node_modules/@remotion/compositor-linux-x64-gnu/ffprobe"
+
+def _compositor():
+    """Localiza el ffmpeg que Remotion empaqueta, sin rutas fijas.
+
+    El paquete del compositor cambia de nombre según la libc (gnu o musl) y
+    el proyecto puede estar clonado en cualquier carpeta, así que se busca
+    desde este archivo hacia arriba en lugar de escribir la ruta a mano.
+    """
+    aqui = pathlib.Path(__file__).resolve()
+    for base in [aqui.parent, *aqui.parents]:
+        for mods in (base / "video" / "node_modules", base / "node_modules"):
+            for pkg in sorted(mods.glob("@remotion/compositor-*")):
+                ff, fp = pkg / "ffmpeg", pkg / "ffprobe"
+                if ff.exists() and fp.exists():
+                    return str(ff), str(fp)
+    for nombre in ("ffmpeg", "ffprobe"):
+        if shutil.which(nombre) is None:
+            raise SystemExit(
+                "No encuentro ffmpeg. Ejecuta 'npm install' dentro de video/ "
+                "para que Remotion instale el suyo."
+            )
+    return shutil.which("ffmpeg"), shutil.which("ffprobe")
+
+
+FF, FP = _compositor()
 
 
 def duracion(src):
@@ -52,16 +75,20 @@ def planos(src, paso=0.25, umbral=0.22):
             cortes.append(tiempos[i])
     cortes.append(dur)
 
-    print(f"{os.path.basename(src)}  ·  {dur:.1f}s")
+    tramos = []
     for i in range(len(cortes) - 1):
         ini, fin = cortes[i], cortes[i + 1]
         if fin - ini < 0.4:
             continue
-        print(f"  plano {i+1:2d}:  {ini:6.2f}s → {fin:6.2f}s   ({fin-ini:.2f}s)")
+        tramos.append((ini, fin))
+    return dur, tramos
 
 
 if __name__ == "__main__":
     src = sys.argv[1]
     paso = float(sys.argv[2]) if len(sys.argv) > 2 else 0.25
     umbral = float(sys.argv[3]) if len(sys.argv) > 3 else 0.22
-    planos(src, paso, umbral)
+    dur, tramos = planos(src, paso, umbral)
+    print(f"{os.path.basename(src)}  ·  {dur:.1f}s")
+    for i, (ini, fin) in enumerate(tramos, 1):
+        print(f"  plano {i:2d}:  {ini:6.2f}s → {fin:6.2f}s   ({fin-ini:.2f}s)")

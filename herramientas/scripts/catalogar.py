@@ -7,11 +7,34 @@ uno.
 
     python3 catalogar.py entrada.mp4 salida.jpg [columnas] [filas]
 """
-import subprocess, sys, tempfile, os, json
+import subprocess, sys, tempfile, os, json, pathlib, shutil
 from PIL import Image, ImageDraw
 
-FF = "/home/user/centrodecontrol/video/node_modules/@remotion/compositor-linux-x64-gnu/ffmpeg"
-FP = "/home/user/centrodecontrol/video/node_modules/@remotion/compositor-linux-x64-gnu/ffprobe"
+
+def _compositor():
+    """Localiza el ffmpeg que Remotion empaqueta, sin rutas fijas.
+
+    El paquete del compositor cambia de nombre según la libc (gnu o musl) y
+    el proyecto puede estar clonado en cualquier carpeta, así que se busca
+    desde este archivo hacia arriba en lugar de escribir la ruta a mano.
+    """
+    aqui = pathlib.Path(__file__).resolve()
+    for base in [aqui.parent, *aqui.parents]:
+        for mods in (base / "video" / "node_modules", base / "node_modules"):
+            for pkg in sorted(mods.glob("@remotion/compositor-*")):
+                ff, fp = pkg / "ffmpeg", pkg / "ffprobe"
+                if ff.exists() and fp.exists():
+                    return str(ff), str(fp)
+    for nombre in ("ffmpeg", "ffprobe"):
+        if shutil.which(nombre) is None:
+            raise SystemExit(
+                "No encuentro ffmpeg. Ejecuta 'npm install' dentro de video/ "
+                "para que Remotion instale el suyo."
+            )
+    return shutil.which("ffmpeg"), shutil.which("ffprobe")
+
+
+FF, FP = _compositor()
 
 
 def duracion(src):
