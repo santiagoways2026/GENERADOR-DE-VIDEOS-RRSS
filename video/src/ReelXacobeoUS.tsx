@@ -3,7 +3,6 @@ import { Audio } from "@remotion/media";
 import "./fuentes";
 import { brand, fontFamily, margin } from "./brand/theme";
 import { Bullets } from "./componentes/Bullets";
-import { CajaDato } from "./componentes/CajaDato";
 import { Cartela } from "./componentes/Cartela";
 import { Planos } from "./componentes/Planos";
 import { Cierre } from "./escenas/Cierre";
@@ -362,24 +361,6 @@ export const ReelXacobeoUS: React.FC = () => {
       </Sequence>
 
 
-      {/* La indulgencia cruza el final de la llegada y el principio del
-          bloque de servicio, que hasta la primera tarjeta no lleva texto.
-          Son setenta caracteres: en los tres segundos que duraba su bloque
-          no daba tiempo a leerlos. */}
-      <Sequence
-        from={f(36.0)}
-        durationInFrames={f(41.9) - f(36.0)}
-        name="Indulgencia"
-      >
-        <Inferior alto={280}>
-          <CajaDato
-            eyebrow="In a Holy Year"
-            cifra="A plenary indulgence"
-            texto="Making a pilgrimage during a Holy Year allows Christians to obtain one"
-            tono="bosque"
-          />
-        </Inferior>
-      </Sequence>
 
       {/* 11 · Cierre de marca. El unico CTA de la pieza. */}
       <Sequence from={f(B[13])} durationInFrames={dur(13)} name="11 · Cierre">

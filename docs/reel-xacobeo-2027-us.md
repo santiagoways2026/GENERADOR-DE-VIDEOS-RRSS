@@ -35,7 +35,7 @@ que tocar.
 | 0:18 | Puerta Santa | This is a Holy Year | Sealed → Open sobre la palabra "unsealed" |
 | 0:23 | Años Santos | 2021 · 2027 · 2032 · 2038 | 2032 se enciende con la cifra |
 | 0:29 | Un Año Santo se nota | The Camino at its most alive | Manda el metraje |
-| 0:35 | Obradoiro | A plenary indulgence | Llegada, y qué significa el Año Santo para un creyente. La tarjeta cruza al bloque siguiente: son setenta caracteres y necesitan seis segundos |
+| 0:35 | Obradoiro | — | La llegada a la plaza. Sin texto: es donde más trabaja la locución |
 | 0:40 | Servicio | Cuatro tarjetas con check | El bloque premium, once segundos |
 | 0:52 | Una mochila | You walk. We handle the rest | Remate del servicio |
 | 0:54 | Plazas contadas | — | La mesa del pazo y, de remate, el peregrino celebrando la llegada |
@@ -180,9 +180,8 @@ pregunta, se lleva a mensaje directo.
 
 ## Datos en pantalla
 
-No aparece ninguna cifra, así que no hay nada que fechar ni que envejezca en
-una pieza que va a estar anclada meses. La única afirmación de la tarjeta es
-la indulgencia plenaria, que es doctrina y no un dato de temporada.
+No aparece ninguno. Nada que fechar ni que envejezca en una pieza que va a
+estar anclada meses.
 
 Datos disponibles por si se hace una variante, siempre con la fuente escrita
 en la propia tarjeta:
