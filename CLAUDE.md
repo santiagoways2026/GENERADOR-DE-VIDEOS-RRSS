@@ -75,6 +75,10 @@ tokens, no la familia y el peso escritos a mano.
 Manrope se queda en el texto de apoyo, que es donde abre mejor y contrasta
 con el logo. El texto de impacto es Montserrat.
 
+**Esto está cerrado y aprobado: no se vuelve a proponer otra cosa.** Costó
+tres rondas llegar aquí, dos de ellas persiguiendo un problema que no era el
+que parecía.
+
 ### Comprobar que la fuente está puesta de verdad
 
 Esto no es paranoia: durante todas las piezas anteriores **no se cargó ni una
@@ -170,8 +174,12 @@ Estas salieron de revisar piezas reales y ahorran repetir errores:
    los laterales, y ahí es donde suele estar la gente. Revisar plano a plano y
    poner `encuadre` donde haga falta. El recorte central parte personas por la
    mitad más a menudo de lo que parece.
-6. **Ninguna toma repetida entre bloques contiguos.** Al volver parece un
-   error de montaje.
+6. **Ninguna toma repetida en toda la pieza.** Empezó siendo «entre bloques
+   contiguos» y no bastaba: en el short del Francés, la toma de las mujeres
+   con la Compostela salía en el bloque 5 y otra vez en el 7, con un bloque
+   de por medio, y se notaba igual. En una pieza de menos de un minuto una
+   cara repetida se reconoce aunque pasen quince segundos. Con 34 planos en
+   `brutos/` y 25 en la pieza, casi siempre hay de dónde tirar.
 7. **Ni el mismo sitio en dos tomas distintas.** Un paisaje que sale por la
    ventana de una habitación y otra vez desde una terraza es la misma
    repetición aunque los archivos sean distintos.

@@ -121,8 +121,10 @@ El resto de reglas de contenido:
 
 - **Pocas cartelas.** Si el bloque lleva un gráfico, el gráfico ya trae su
   titular.
-- **Ninguna toma repetida** entre bloques contiguos, ni el mismo sitio en dos
-  tomas distintas.
+- **Ninguna toma repetida en toda la pieza**, ni el mismo sitio en dos tomas
+  distintas. No basta con separarlas un bloque: una cara se reconoce aunque
+  pasen quince segundos. `revisar-montaje.py` marca las tomas; el mismo sitio
+  en archivos distintos hay que verlo mirando.
 - **Un gráfico no tapa una cara**: si el plano tiene gente en el centro, va
   donde el gráfico ya se ha retirado.
 - El texto arriba, los gráficos abajo.

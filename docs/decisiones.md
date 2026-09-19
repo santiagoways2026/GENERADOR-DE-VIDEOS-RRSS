@@ -143,6 +143,25 @@ Lo mismo vale para el titular fuera de su bloque: sin placa, con sombra. Si
 un plano es demasiado claro, se sube el `overlay` de `Planos` en vez de meter
 una caja detrás del texto.
 
+## Una toma no se repite en la misma pieza
+
+La regla empezó siendo «no repetir entre bloques contiguos», y el verificador
+la comprobaba así. No bastaba. En el short del Francés la toma de las cuatro
+mujeres enseñando la Compostela salía en el bloque 5 y otra vez en el 7, con
+un bloque entero de por medio, y al verla se leyó como un fallo de montaje.
+
+En una pieza de menos de un minuto, una cara se reconoce aunque pasen quince
+segundos. Lo que separa los bloques no es suficiente distancia. Ahora
+`revisar-montaje.py` marca cualquier toma que aparezca dos veces en la pieza,
+esté donde esté.
+
+Lo mismo vale para el sitio, aunque los archivos sean distintos: el short
+llevaba tres planos de la misma fachada de la catedral (`plaza`,
+`catedral-torres` y `catedral-a`), dos de ellos seguidos. Eso el script no lo
+ve, hay que mirarlo.
+
+Hay de dónde tirar: 34 planos en `video/public/brutos/` y 25 en la pieza.
+
 ## Metraje
 
 Los brutos son compilaciones de tomas cortas. **Ninguna pasa de 2,75

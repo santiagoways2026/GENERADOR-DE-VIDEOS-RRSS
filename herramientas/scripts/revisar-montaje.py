@@ -7,8 +7,11 @@ Comprueba las cuatro cosas que han salido mal alguna vez:
      entonces se congela o se mete en el plano siguiente del bruto.
   2. Que ninguna baje del minimo legible. Un plano de menos de un segundo
      en medio de un bloque se lee como un error de montaje.
-  3. Que no se repita una toma entre bloques contiguos, que al volver parece
-     un fallo.
+  3. Que no se repita ninguna toma en toda la pieza. Empezo mirando solo
+     bloques contiguos y no bastaba: en el short del Frances, la toma de las
+     mujeres con la Compostela salia en el bloque 5 y otra vez en el 7, con
+     un bloque de por medio, y se notaba igual. En una pieza de menos de un
+     minuto, una cara repetida se reconoce aunque pasen quince segundos.
   4. Que el ralenti no se pase de frenada.
 
     python3 herramientas/scripts/revisar-montaje.py video/src/ReelXacobeoUS.tsx
@@ -93,10 +96,14 @@ def main(destino):
               "  ".join(f"{a}:{b:.2f}" + (f"@{c}" if c != 1 else "")
                         for a, b, c in reparto))
 
-    for (n1, p1), (n2, p2) in zip(usados, usados[1:]):
-        for repe in set(p1) & set(p2):
-            fallos.append(f"{repe} se repite entre «{n1}» y «{n2}», que van "
-                          f"seguidos")
+    donde = {}
+    for nombre, planos in usados:
+        for src in planos:
+            donde.setdefault(src, []).append(nombre)
+    for src, bloques in donde.items():
+        if len(bloques) > 1:
+            fallos.append(f"{src} sale {len(bloques)} veces, en "
+                          + " y ".join(f"«{b}»" for b in bloques))
 
     print()
     if fallos:
@@ -105,7 +112,7 @@ def main(destino):
             print(f"  · {f}")
         return 1
     print(f"Bien: {sum(len(p) for _, p in usados)} tomas, ninguna por debajo "
-          f"de {MINIMO:.2f}s y sin repeticiones seguidas.")
+          f"de {MINIMO:.2f}s y ninguna repetida.")
     return 0
 
 

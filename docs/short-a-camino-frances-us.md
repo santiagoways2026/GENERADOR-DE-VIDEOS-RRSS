@@ -85,8 +85,15 @@ texto grande sobre el metraje, con la frase clave en bloque verde y letra
 blanca, que es el patrón de titular de la guía.
 
 Los planos priorizan caras: `brindis`, `compostela`, `brazos-alto`,
-`pareja-muros` y `mochila-ligera` son los que tienen gente sonriendo, y van
-donde más pesa la emoción.
+`pareja-muros`, `mochila-ligera` e `interior-velas` son los que tienen gente,
+y van donde más pesa la emoción. La pieza **cierra con `interior-velas`**, dos
+peregrinos caminando hacia cámara: lo último antes del cierre de marca es una
+cara, no un sitio.
+
+**Ninguna toma se repite.** En la primera versión, `compostela` salía en el
+bloque 5 y otra vez en el 7, y `pareja-muros` y `mochila-ligera` en el 1 y en
+el 4. Con un bloque de por medio se notaba igual. También había tres planos
+de la misma fachada de la catedral: ahora solo queda `catedral-torres`.
 
 ## Subtítulos, y por qué el montaje estaba corrido
 
