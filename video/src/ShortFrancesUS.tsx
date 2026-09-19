@@ -3,11 +3,11 @@ import { Audio } from "@remotion/media";
 import "./fuentes";
 import { brand, fontFamily, margin } from "./brand/theme";
 import { Bullets } from "./componentes/Bullets";
-import { CajaDato } from "./componentes/CajaDato";
 import { Cartela } from "./componentes/Cartela";
-import { Llamada } from "./componentes/Llamada";
+import { Cifra } from "./componentes/Cifra";
 import { Planos } from "./componentes/Planos";
 import { Subtitulos } from "./componentes/Subtitulos";
+import { Titular } from "./componentes/Titular";
 import { Cierre } from "./escenas/Cierre";
 import { MapaRutas } from "./graficos/MapaRutas";
 import { SUBTITULOS_FRANCES } from "./subtitulos/frances";
@@ -29,24 +29,33 @@ import { SUBTITULOS_FRANCES } from "./subtitulos/frances";
  * - **Los mapas son apoyo, no protagonistas**: dos inserciones y ninguna
  *   pasa de cuatro segundos, aunque su bloque dure mas.
  *
- * Los cortes caen en los arranques de frase de la locucion, medidos con
- * `silencedetect` sobre `locucion-frances.mp3`.
+ * **Cada bloque resuelve el texto de una forma distinta**: placas, cifra
+ * grande, titular sobre la imagen, lista con checks. Una pieza entera a base
+ * de listas parece una plantilla, y hace que todas las piezas de la marca
+ * parezcan la misma.
  */
 
 /**
- * Arranques de bloque, en segundos. Salen de los veintinueve tramos de voz
- * del audio:
+ * Arranques de bloque, en segundos.
  *
- *   npx remotion ffmpeg -i public/locucion-frances.mp3 \
- *     -af silencedetect=noise=-30dB:d=0.25 -f null -
+ * Salen de alinear el guion con los veintinueve tramos de voz del audio:
+ *
+ *   python3 herramientas/scripts/alinear-locucion.py \
+ *     video/public/locucion-frances.mp3 video/public/guiones/frances.txt frances
+ *
+ * La primera version de este montaje reparti el guion a ojo entre los tramos
+ * y salio corrida casi dos segundos de la mitad en adelante. El ancla que lo
+ * destapa son las tres preguntas sueltas ("Saint Jean? Sarria? Somewhere in
+ * between?"): son los tres unicos tramos de medio segundo del audio y van
+ * seguidos, asi que solo encajan en un sitio.
  */
 const B = [
   0, //     0 · "Seven routes lead to Santiago. Only one is called the French Way."
-  3.924, // 1 · "780 kilometres from Saint Jean Pied de Port to Santiago. 33 stages."
+  3.924, // 1 · "780 km from Saint Jean Pied de Port to Santiago. 33 stages."
   10.175, // 2 · "Why is it THE one? Most walked. Best signposted. A village every few km."
-  17.118, // 3 · "You don't have to walk all of it. The last stretch, Sarria to Santiago."
-  25.319, // 4 · "Same route. Same Compostela. Bag ahead, room waiting, phone answered."
-  32.739, // 5 · "If you've walked it, tell us where you started."
+  18.651, // 3 · "You don't have to walk all of it. The last stretch, Sarria to Santiago."
+  27.691, // 4 · "Same route. Same Compostela. Bag ahead, room waiting, phone answered."
+  34.811, // 5 · "If you've walked the French Way, tell us where you started."
   43.712, // 6 · "Every stage... it's all in our full French Way guide."
   50.588, // 7 · "Buen Camino."
   53.0, //  8 · fin de la pieza: el cierre respira algo mas que la voz
@@ -61,12 +70,8 @@ const MUSICA = { desdeSegundo: 112 - 53.0, volumen: 0.14 };
  * Ganancia de la locucion.
  *
  * Esta voz viene grabada 8 dB por debajo de la del reel del Xacobeo: cada
- * voz de ElevenLabs sale a su nivel y hay que igualarlas, o la cama musical
- * queda proporcionalmente demasiado alta y la pieza suena floja al lado de
- * cualquier otra del feed.
- *
- * Su pico esta en -8,4 dB, asi que 2,2 lo deja en -1,4 dB, con margen y sin
- * recortar. Medido con `herramientas/scripts/envolvente.py`.
+ * voz de ElevenLabs sale a su nivel y hay que igualarlas. Su pico esta en
+ * -8,4 dB, asi que 2,2 lo deja en -1,4 dB, con margen y sin recortar.
  */
 const VOZ = 2.2;
 
@@ -76,13 +81,12 @@ const dur = (i: number) => f(B[i + 1]) - f(B[i]);
 const en = (i: number, segundo: number) => f(segundo) - f(B[i]);
 
 /**
- * Zona de los graficos.
+ * Suelo de todo lo que se pinta encima del metraje.
  *
- * Mucho mas alta que en un reel: en Shorts la interfaz se come la franja de
- * abajo y por encima de ella van los subtitulos, que ocupan de 1420 a 1520.
- * Todo lo demas tiene que terminar antes de 1400, asi que el suelo de esta
- * zona no baja de 560. Con menos, el subtitulo se come la ultima linea del
- * grafico, que suele ser justo el dato.
+ * En Shorts la interfaz se come la franja de abajo y por encima de ella van
+ * los subtitulos, que ocupan de 1420 a 1520. Todo lo demas termina antes de
+ * 1400. Con menos, el subtitulo se come la ultima linea, que suele ser justo
+ * el dato.
  */
 const SUELO = 560;
 
@@ -98,6 +102,16 @@ const Centro: React.FC<{ children: React.ReactNode; alto?: number }> = ({
       paddingBottom: alto,
     }}
   >
+    {children}
+  </AbsoluteFill>
+);
+
+/** Zona de los titulares sobre la imagen: mas arriba, donde hay aire. */
+const Alto: React.FC<{ children: React.ReactNode; desde?: number }> = ({
+  children,
+  desde = 300,
+}) => (
+  <AbsoluteFill style={{ justifyContent: "flex-start", paddingTop: desde }}>
     {children}
   </AbsoluteFill>
 );
@@ -122,10 +136,10 @@ export const ShortFrancesUS: React.FC = () => {
       <Sequence durationInFrames={dur(0)} name="1 · Siete rutas">
         <Planos
           total={dur(0)}
-          overlay={0.52}
+          overlay={0.5}
           lista={[
-            { src: "contraluz", dura: 1.43, ritmo: 0.65 },
-            { src: "camino-abierto", dura: 1.17, ritmo: 0.6 },
+            { src: "pareja-muros", dura: 1.53, encuadre: "40% 50%", ritmo: 0.62 },
+            { src: "mochila-ligera", dura: 1.97, encuadre: "78% 50%", ritmo: 0.82 },
           ]}
         />
         <Centro>
@@ -141,7 +155,8 @@ export const ShortFrancesUS: React.FC = () => {
       </Sequence>
 
       {/* 2 · Cuanto mide. El mapa se retira a los cuatro segundos aunque el
-             bloque siga: es apoyo, no protagonista. */}
+             bloque siga, y la cifra toma el relevo: dos formas distintas de
+             contar el mismo dato, no dos placas iguales. */}
       <Sequence from={f(B[1])} durationInFrames={dur(1)} name="2 · 780 km">
         <Planos
           total={dur(1)}
@@ -149,7 +164,7 @@ export const ShortFrancesUS: React.FC = () => {
           lista={[
             { src: "piernas", dura: 2.23, ritmo: 0.95 },
             { src: "grupo-mimosas", dura: 1.17, ritmo: 0.7 },
-            { src: "pareja-muros", dura: 1.53, encuadre: "40% 50%", ritmo: 0.68 },
+            { src: "brindis", dura: 1.97, encuadre: "42% 50%", ritmo: 0.85 },
           ]}
         />
         <Sequence durationInFrames={f(4.0)} name="Mapa del Francés">
@@ -165,75 +180,105 @@ export const ShortFrancesUS: React.FC = () => {
             />
           </Centro>
         </Sequence>
-        {/* El rotulo entra con "33 stages", que es cuando el dato esta
-            completo y el mapa ya se ha ido. */}
-        <Cartela
-          principal="780 km"
-          secundaria="33 stages"
-          desde={en(1, 8.30)}
-          arriba={130}
-        />
+        {/* La cifra entra cuando el mapa ya se ha ido, con "33 stages". */}
+        <Sequence from={f(4.2)} name="Cifra">
+          <Centro alto={700}>
+            <Cifra
+              encima="Saint Jean → Santiago"
+              cifra="780"
+              unidad="km"
+              debajo="33 stages"
+              cuenta={26}
+            />
+          </Centro>
+        </Sequence>
       </Sequence>
 
-      {/* 3 · Por que esa. Cada bullet cae sobre la palabra que lo nombra. */}
+      {/* 3 · Por que esa. Tres titulares sobre la imagen, uno cada vez: aqui
+             la lista sobra, porque la voz ya las enumera. */}
       <Sequence from={f(B[2])} durationInFrames={dur(2)} name="3 · Por qué esa">
         <Planos
           total={dur(2)}
-          overlay={0.44}
+          overlay={0.52}
           lista={[
-            { src: "tunel-vegetacion", dura: 0.83, ritmo: 0.55 },
-            { src: "flecha", dura: 1.17, encuadre: "58% 50%", ritmo: 0.65 },
-            { src: "casa-rural", dura: 1.17, encuadre: "62% 50%", ritmo: 0.65 },
-            { src: "mesa-exterior", dura: 1.43, encuadre: "52% 50%", ritmo: 0.7 },
+            { src: "grupo-peregrinos", dura: 0.73, ritmo: 0.5 },
+            { src: "flecha", dura: 1.17, encuadre: "58% 50%", ritmo: 0.6 },
+            { src: "casa-rural", dura: 1.17, encuadre: "62% 50%", ritmo: 0.6 },
+            { src: "mesa-exterior", dura: 1.43, encuadre: "52% 50%", ritmo: 0.65 },
+            { src: "tunel-vegetacion", dura: 0.83, ritmo: 0.6 },
           ]}
         />
-        <AbsoluteFill
-          style={{ justifyContent: "center", padding: margin, paddingBottom: SUELO }}
+        {/* Cada titular va dentro de su propia Sequence, y el margen se
+            aplica dentro: una Sequence anidada crea su propio lienzo a
+            pantalla completa y se salta el padding del contenedor, que es
+            lo que sacaba el texto fuera de cuadro. */}
+        <Sequence
+          from={en(2, 11.386)}
+          durationInFrames={en(2, 12.76) - en(2, 11.386)}
+          name="Most walked"
         >
-          <Bullets
-            marca="check"
-            cuerpo={34}
-            items={["Most walked", "Best signposted", "Village · bed · café every few km"]}
-            tiempos={[en(2, 11.386), en(2, 12.76), en(2, 14.436)]}
-          />
-        </AbsoluteFill>
+          <Alto>
+            <Titular texto="The most walked" destacadas={[2]} />
+          </Alto>
+        </Sequence>
+        <Sequence
+          from={en(2, 12.76)}
+          durationInFrames={en(2, 14.436) - en(2, 12.76)}
+          name="Best signposted"
+        >
+          <Alto>
+            <Titular texto="The best signposted" destacadas={[2]} />
+          </Alto>
+        </Sequence>
+        <Sequence from={en(2, 14.436)} name="Village, bed, café">
+          <Alto>
+            <Titular
+              texto="A village, a bed, a café"
+              cuerpo={78}
+              pie="every few kilometres"
+            />
+          </Alto>
+        </Sequence>
       </Sequence>
 
       {/* 4 · El tramo corto. Sin mapa: el de Sarria se reserva para el Short
-             B, y aqui el dato va en tarjeta sobre el metraje. */}
+             B. La cifra manda y el detalle va debajo. */}
       <Sequence from={f(B[3])} durationInFrames={dur(3)} name="4 · Sarria">
         <Planos
           total={dur(3)}
-          overlay={0.44}
+          overlay={0.46}
           lista={[
-            { src: "mochila-ligera", dura: 1.97, encuadre: "78% 50%", ritmo: 0.75 },
-            { src: "equipaje-grupo", dura: 1.17, encuadre: "45% 50%", ritmo: 0.65 },
-            { src: "credencial", dura: 1.03, ritmo: 0.55 },
-            { src: "manos-sellando", dura: 1.57, encuadre: "28% 50%", ritmo: 0.7 },
+            { src: "mochila-ligera", dura: 1.97, encuadre: "78% 50%", ritmo: 0.72 },
+            { src: "pareja-muros", dura: 1.53, encuadre: "40% 50%", ritmo: 0.6 },
+            { src: "credencial", dura: 1.03, ritmo: 0.52 },
+            { src: "manos-sellando", dura: 1.57, encuadre: "28% 50%", ritmo: 0.66 },
           ]}
         />
-        <Centro>
-          {/* Entra con "The last stretch, Sarria to Santiago". */}
-          <CajaDato
-            desde={en(3, 20.526)}
-            eyebrow="The short Camino"
-            cifra="Sarria → Santiago"
-            texto="115 km · 5 stages · one week"
-            tono="bosque"
-          />
-        </Centro>
+        {/* Entra con "The last stretch, Sarria to Santiago". */}
+        <Sequence from={en(3, 22.661)} name="Cifra de Sarria">
+          <Centro alto={700}>
+            <Cifra
+              encima="Sarria → Santiago"
+              cifra="115"
+              unidad="km"
+              debajo="5 stages · one week"
+              cuenta={22}
+            />
+          </Centro>
+        </Sequence>
       </Sequence>
 
-      {/* 5 · Lo que resuelve la agencia, sobre el plano que lo enseña. */}
+      {/* 5 · Lo que resuelve la agencia. Aqui si es una lista: son tres
+             servicios y la voz los enumera uno detras de otro. */}
       <Sequence from={f(B[4])} durationInFrames={dur(4)} name="5 · Mismo Camino">
         <Planos
           total={dur(4)}
           overlay={0.44}
           lista={[
             { src: "compostela", dura: 1.67, encuadre: "50% 50%", ritmo: 0.85 },
-            { src: "equipaje-etiquetas", dura: 0.92, ritmo: 0.55 },
+            { src: "equipaje-etiquetas", dura: 0.92, ritmo: 0.5 },
             { src: "habitacion", dura: 2.13, encuadre: "62% 50%" },
-            { src: "brindis", dura: 1.97, encuadre: "42% 50%", ritmo: 0.95 },
+            { src: "equipaje-portal", dura: 1.17, encuadre: "55% 50%", ritmo: 0.62 },
           ]}
         />
         <AbsoluteFill
@@ -243,38 +288,39 @@ export const ShortFrancesUS: React.FC = () => {
             marca="check"
             cuerpo={34}
             items={["Bag transfer", "Private room", "24/7 support"]}
-            tiempos={[en(4, 27.691), en(4, 28.786), en(4, 30.204)]}
+            tiempos={[en(4, 30.204), en(4, 31.564), en(4, 32.739)]}
           />
         </AbsoluteFill>
         <Cartela
           principal="Same route."
           secundaria="Same Compostela"
           desde={2}
-          arriba={150}
+          arriba={130}
         />
       </Sequence>
 
-      {/* 6 · La llamada a comentar. Va sola: no se mezcla con la de la guia. */}
+      {/* 6 · La llamada a comentar. Va sola y va sobre la imagen: una placa
+             de color aqui parecia un banner pegado encima del video. */}
       <Sequence from={f(B[5])} durationInFrames={dur(5)} name="6 · Comentarios">
         <Planos
           total={dur(5)}
-          overlay={0.4}
+          overlay={0.44}
           lista={[
-            { src: "plaza", dura: 1.03, ritmo: 0.5 },
-            { src: "catedral-torres", dura: 1.67, ritmo: 0.72 },
             { src: "brazos-alto", dura: 0.97, encuadre: "34% 50%", ritmo: 0.42 },
-            { src: "catedral-a", dura: 1.67, ritmo: 0.72 },
+            { src: "plaza", dura: 1.03, ritmo: 0.48 },
+            { src: "catedral-torres", dura: 1.67, ritmo: 0.72 },
             { src: "iglesia-exterior", dura: 1.33, ritmo: 0.6 },
           ]}
         />
-        <Centro>
-          <Llamada
-            texto={"Walked it?\nWhere did you start?"}
-            desde={en(5, 34.811)}
-            tono="lima"
-            cuerpo={50}
+        <Alto desde={260}>
+          <Titular
+            texto="Where did you start?"
+            destacadas={[3]}
+            desde={en(5, 36.0)}
+            cuerpo={104}
+            pie="Saint Jean · Sarria · somewhere in between?"
           />
-        </Centro>
+        </Alto>
       </Sequence>
 
       {/* 7 · La llamada a la guia, que es el destino de la pieza. Aguanta en
@@ -282,16 +328,22 @@ export const ShortFrancesUS: React.FC = () => {
       <Sequence from={f(B[6])} durationInFrames={dur(6)} name="7 · La guía">
         <Planos
           total={dur(6)}
-          overlay={0.42}
+          overlay={0.46}
           lista={[
-            { src: "catedral-b", dura: 1.67, ritmo: 0.72 },
-            { src: "campo-flores", dura: 1.67, ritmo: 0.75 },
-            { src: "contraluz", dura: 1.43, ritmo: 0.6 },
+            { src: "catedral-a", dura: 1.67, ritmo: 0.72 },
+            { src: "compostela", dura: 1.67, encuadre: "50% 50%", ritmo: 0.78 },
+            { src: "contraluz", dura: 1.43, ritmo: 0.56 },
           ]}
         />
-        <Centro>
-          <Llamada texto="Full French Way guide" desde={6} cuerpo={50} />
-        </Centro>
+        <Alto desde={260}>
+          <Titular
+            texto="Every stage, start to finish"
+            destacadas={[1]}
+            desde={4}
+            cuerpo={88}
+            pie="Full French Way guide — the video right below"
+          />
+        </Alto>
       </Sequence>
 
       {/* 8 · Cierre de marca. */}

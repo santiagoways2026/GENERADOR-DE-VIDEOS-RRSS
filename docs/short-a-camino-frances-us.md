@@ -58,16 +58,49 @@ descuido:
 3. **Las flechas se dibujan, no se escriben.** Los emojis y los caracteres
    geométricos no están en Montserrat y saldrían como una caja vacía.
 
-## Subtítulos
+## Cada bloque cuenta el texto de otra manera
 
-Los tiempos salen de medir el audio: veintinueve tramos de voz localizados con
-`silencedetect`, veintinueve cues. El reparto del texto dentro de cada tramo
-sale del guion del brief, y la estructura encaja sin forzar nada (los dos
-tramos de medio segundo son «Saint Jean?» y «Sarria?»).
+| Bloque | Recurso |
+| --- | --- |
+| 1 · Siete rutas | Placas de marca sobre el mapa |
+| 2 · 780 km | Mapa con cuentakilómetros, y después la cifra grande contando desde cero |
+| 3 · Por qué esa | Tres titulares sobre la imagen, uno cada vez |
+| 4 · Sarria | Cifra grande, con el detalle en placa debajo |
+| 5 · Mismo Camino | Lista con checks: es el único sitio donde la voz enumera servicios |
+| 6 y 7 · Llamadas | Titular sobre la imagen, con una línea pequeña debajo |
 
-Aun así **conviene repasarlos con el vídeo delante**: si la locutora se separó
-del guion en alguna frase, es ahí donde se vería. Con un SRT de verdad se
-regeneran y no se tocan a mano:
+Una pieza entera a base de listas y placas parece una plantilla, y hace que
+todas las piezas de la marca parezcan la misma. El `Titular` existe para eso:
+texto grande sobre el metraje, sin placa, con las palabras entrando una a una.
+
+Los planos priorizan caras: `brindis`, `compostela`, `brazos-alto`,
+`pareja-muros` y `mochila-ligera` son los que tienen gente sonriendo, y van
+donde más pesa la emoción.
+
+## Subtítulos, y por qué el montaje estaba corrido
+
+La primera versión repartió el guion entre los tramos de voz a ojo y salió
+corrida casi dos segundos de la mitad en adelante: los bloques 4, 5 y 6
+arrancaban antes de que la voz llegara a su frase. No se veía en el código ni
+lo detectaba ningún script, solo se oía.
+
+Ahora lo reparte un alineador. Localiza los tramos de voz, cuenta las sílabas
+de cada palabra y busca con programación dinámica el corte que mejor ajusta
+el peso del texto a la duración de cada tramo, penalizando los cortes que no
+caen en un punto o una coma:
+
+```bash
+python3 herramientas/scripts/alinear-locucion.py \
+  video/public/locucion-frances.mp3 video/public/guiones/frances.txt frances
+```
+
+Lo que valida el resultado son las tres preguntas sueltas del guion («Saint
+Jean? Sarria? Somewhere in between?»): son los tres únicos tramos de medio
+segundo del audio y van seguidos, así que solo encajan en un sitio. El
+alineador los coloca ahí, y de ese ancla salen los tiempos de todos los
+bloques.
+
+Si algún día llega un SRT de verdad, lo sustituye y es mejor todavía:
 
 ```bash
 node herramientas/scripts/srt-a-cues.mjs captions.srt frances

@@ -4,7 +4,11 @@
   "canal": "YouTube Shorts",
   "idioma": "en",
   "mercado": "US",
-  "formato": { "ancho": 1080, "alto": 1920, "fps": 30 },
+  "formato": {
+    "ancho": 1080,
+    "alto": 1920,
+    "fps": 30
+  },
   "duracion_s": 53.0,
   "audio": {
     "locucion": "video/public/locucion-frances.mp3",
@@ -15,22 +19,26 @@
     "musica_volumen": 0.14
   },
   "notas": {
-    "tiempos": "Medidos sobre la locución con silencedetect, no repartidos desde el guion. Cada bloque arranca en un arranque de frase real.",
+    "tiempos": "Salen de alinear el guion con los 29 tramos de voz del audio (herramientas/scripts/alinear-locucion.py). La primera version repartio el guion a ojo y salio corrida casi dos segundos de la mitad en adelante.",
     "duracion": "El brief pedía 40-42 s y la locución grabada dura 51,6 s. La pieza sale de 53 s, que entra en Shorts pero se sale del brief.",
     "mapas": "Dos inserciones, ninguna de más de 4 s, como pide el brief. No se usa el mapa de Sarria: queda para el Short B.",
-    "subtitulos": "Los tiempos son medidos; el reparto del texto dentro de cada tramo sale del guion. Conviene repasarlos con el vídeo delante por si la locutora se separó del guion."
+    "subtitulos": "Generados por el alineador, no escritos a mano. El ancla que valida el reparto son las tres preguntas sueltas (Saint Jean? Sarria? Somewhere in between?): son los tres unicos tramos de medio segundo del audio y van seguidos.",
+    "rotulos": "Cada bloque resuelve el texto de una forma distinta: placas, cifra grande, titular sobre la imagen, lista con checks. Una pieza entera a base de listas parece una plantilla."
   },
   "bloques": [
     {
       "n": 1,
       "nombre": "Siete rutas",
-      "desde_s": 0.0,
+      "desde_s": 0,
       "hasta_s": 3.924,
       "locucion": "Seven routes lead to Santiago. Only one is called the French Way.",
       "grafico": "MapaRutas · vista peninsular · las 7 rutas trazándose",
       "rotulo": "7 routes. · 1 FRENCH WAY",
       "bullets": [],
-      "planos": ["contraluz", "camino-abierto"]
+      "planos": [
+        "pareja-muros",
+        "mochila-ligera"
+      ]
     },
     {
       "n": 2,
@@ -38,62 +46,92 @@
       "desde_s": 3.924,
       "hasta_s": 10.175,
       "locucion": "780 kilometres from Saint Jean Pied de Port to Santiago. 33 stages.",
-      "grafico": "MapaRutas · solo el Francés · cuentakilómetros 0→780 · se retira a los 4 s",
-      "rotulo": "780 km · 33 STAGES (entra en 8,30 s, con el mapa ya fuera)",
+      "grafico": "MapaRutas solo el Frances con cuentakilometros (4 s) y despues Cifra 780 km contando desde cero",
+      "rotulo": "Saint Jean → Santiago · 780 km · 33 STAGES",
       "bullets": [],
-      "planos": ["piernas", "grupo-mimosas", "pareja-muros"]
+      "planos": [
+        "piernas",
+        "grupo-mimosas",
+        "brindis"
+      ]
     },
     {
       "n": 3,
       "nombre": "Por qué esa",
       "desde_s": 10.175,
-      "hasta_s": 17.118,
+      "hasta_s": 18.651,
       "locucion": "Why is it THE one? It's the most walked. The best signposted. And there's a village, a bed and a café every few kilometres.",
-      "grafico": null,
-      "rotulo": null,
-      "bullets": [
-        { "texto": "Most walked", "entra_s": 11.386 },
-        { "texto": "Best signposted", "entra_s": 12.76 },
-        { "texto": "Village · bed · café every few km", "entra_s": 14.436 }
-      ],
-      "planos": ["tunel-vegetacion", "flecha", "casa-rural", "mesa-exterior"]
+      "grafico": "Tres titulares sobre la imagen, uno cada vez",
+      "rotulo": "THE MOST WALKED / THE BEST SIGNPOSTED / A VILLAGE, A BED, A CAFÉ",
+      "bullets": [],
+      "planos": [
+        "grupo-peregrinos",
+        "flecha",
+        "casa-rural",
+        "mesa-exterior",
+        "tunel-vegetacion"
+      ]
     },
     {
       "n": 4,
       "nombre": "Sarria",
-      "desde_s": 17.118,
-      "hasta_s": 25.319,
+      "desde_s": 18.651,
+      "hasta_s": 27.691,
       "locucion": "And here's what most people don't know: you don't have to walk all of it. The last stretch, Sarria to Santiago, is the part most pilgrims actually do.",
-      "grafico": "CajaDato · sin mapa, como pide el brief · entra en 20,526 s con «The last stretch»",
-      "rotulo": "THE SHORT CAMINO · Sarria → Santiago · 115 km · 5 stages · one week",
+      "grafico": "Cifra 115 km contando desde cero, entra con «The last stretch»",
+      "rotulo": "Sarria → Santiago · 115 km · 5 STAGES · ONE WEEK",
       "bullets": [],
-      "planos": ["mochila-ligera", "equipaje-grupo", "credencial", "manos-sellando"]
+      "planos": [
+        "mochila-ligera",
+        "pareja-muros",
+        "credencial",
+        "manos-sellando"
+      ]
     },
     {
       "n": 5,
       "nombre": "Mismo Camino",
-      "desde_s": 25.319,
-      "hasta_s": 32.739,
+      "desde_s": 27.691,
+      "hasta_s": 34.811,
       "locucion": "Same route. Same Compostela. Your bag travels ahead, your room is waiting, and someone picks up the phone if you need it.",
       "grafico": null,
       "rotulo": "Same route. · SAME COMPOSTELA",
       "bullets": [
-        { "texto": "Bag transfer", "entra_s": 27.691 },
-        { "texto": "Private room", "entra_s": 28.786 },
-        { "texto": "24/7 support", "entra_s": 30.204 }
+        {
+          "texto": "Bag transfer",
+          "entra_s": 30.204
+        },
+        {
+          "texto": "Private room",
+          "entra_s": 31.564
+        },
+        {
+          "texto": "24/7 support",
+          "entra_s": 32.739
+        }
       ],
-      "planos": ["compostela", "equipaje-etiquetas", "habitacion", "brindis"]
+      "planos": [
+        "compostela",
+        "equipaje-etiquetas",
+        "habitacion",
+        "equipaje-portal"
+      ]
     },
     {
       "n": 6,
       "nombre": "Comentarios",
-      "desde_s": 32.739,
+      "desde_s": 34.811,
       "hasta_s": 43.712,
       "locucion": "If you've walked the French Way, tell us in the comments where you started. Saint Jean? Sarria? Somewhere in between? And if you're planning it, ask us anything.",
-      "grafico": "Llamada · lima · flecha hacia abajo · entra en 34,811 s",
-      "rotulo": "WALKED IT? WHERE DID YOU START?",
+      "grafico": "Titular sobre la imagen, entra en 36,0 s",
+      "rotulo": "WHERE DID YOU START? · Saint Jean · Sarria · somewhere in between?",
       "bullets": [],
-      "planos": ["plaza", "catedral-torres", "brazos-alto", "catedral-a", "iglesia-exterior"]
+      "planos": [
+        "brazos-alto",
+        "plaza",
+        "catedral-torres",
+        "iglesia-exterior"
+      ]
     },
     {
       "n": 7,
@@ -101,10 +139,14 @@
       "desde_s": 43.712,
       "hasta_s": 50.588,
       "locucion": "Every stage, where to start, what it costs and when to go: it's all in our full French Way guide. The video right below this one.",
-      "grafico": "Llamada · olivo · flecha hacia abajo · en pantalla los 6,9 s enteros",
-      "rotulo": "FULL FRENCH WAY GUIDE",
+      "grafico": "Titular sobre la imagen, en pantalla los 6,9 s",
+      "rotulo": "EVERY STAGE, START TO FINISH · Full French Way guide — the video right below",
       "bullets": [],
-      "planos": ["catedral-b", "campo-flores", "contraluz"]
+      "planos": [
+        "catedral-a",
+        "compostela",
+        "contraluz"
+      ]
     },
     {
       "n": 8,
