@@ -1,6 +1,6 @@
 import { AbsoluteFill, interpolate, Sequence, staticFile } from "remotion";
 import { Audio } from "@remotion/media";
-import "./fuentes";
+import { useFuentesDeMarca } from "./fuentes";
 import { brand, fontFamily, margin } from "./brand/theme";
 import { Bullets } from "./componentes/Bullets";
 import { Cartela } from "./componentes/Cartela";
@@ -93,6 +93,8 @@ const Inferior: React.FC<{ children: React.ReactNode; alto?: number }> = ({
 );
 
 export const ReelXacobeoUS: React.FC = () => {
+  useFuentesDeMarca();
+
   return (
     <AbsoluteFill style={{ backgroundColor: brand.forest, fontFamily }}>
       <Audio src={staticFile("locucion-en.mp3")} />

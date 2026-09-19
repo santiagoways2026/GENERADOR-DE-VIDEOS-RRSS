@@ -1,6 +1,6 @@
 import { AbsoluteFill, interpolate, Sequence, staticFile } from "remotion";
 import { Audio } from "@remotion/media";
-import "./fuentes";
+import { useFuentesDeMarca } from "./fuentes";
 import { brand, fontFamily, margin } from "./brand/theme";
 import { Bullets } from "./componentes/Bullets";
 import { Cartela } from "./componentes/Cartela";
@@ -117,6 +117,8 @@ const Alto: React.FC<{ children: React.ReactNode; desde?: number }> = ({
 );
 
 export const ShortFrancesUS: React.FC = () => {
+  useFuentesDeMarca();
+
   return (
     <AbsoluteFill style={{ backgroundColor: brand.forest, fontFamily }}>
       <Audio src={staticFile("locucion-frances.mp3")} volume={VOZ} />
@@ -218,7 +220,7 @@ export const ShortFrancesUS: React.FC = () => {
           name="Most walked"
         >
           <Alto>
-            <Titular texto="The most walked" destacadas={[2]} />
+            <Titular texto="The most walked" resalta={[1, 2]} />
           </Alto>
         </Sequence>
         <Sequence
@@ -227,13 +229,14 @@ export const ShortFrancesUS: React.FC = () => {
           name="Best signposted"
         >
           <Alto>
-            <Titular texto="The best signposted" destacadas={[2]} />
+            <Titular texto="The best signposted" resalta={[1, 2]} />
           </Alto>
         </Sequence>
         <Sequence from={en(2, 14.436)} name="Village, bed, café">
           <Alto>
             <Titular
               texto="A village, a bed, a café"
+              resalta={[1]}
               cuerpo={78}
               pie="every few kilometres"
             />
@@ -315,9 +318,9 @@ export const ShortFrancesUS: React.FC = () => {
         <Alto desde={260}>
           <Titular
             texto="Where did you start?"
-            destacadas={[3]}
+            resalta={[2, 3]}
             desde={en(5, 36.0)}
-            cuerpo={104}
+            cuerpo={100}
             pie="Saint Jean · Sarria · somewhere in between?"
           />
         </Alto>
@@ -338,9 +341,9 @@ export const ShortFrancesUS: React.FC = () => {
         <Alto desde={260}>
           <Titular
             texto="Every stage, start to finish"
-            destacadas={[1]}
+            resalta={[0, 1]}
             desde={4}
-            cuerpo={88}
+            cuerpo={86}
             pie="Full French Way guide — the video right below"
           />
         </Alto>

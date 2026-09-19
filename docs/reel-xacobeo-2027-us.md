@@ -14,6 +14,13 @@ cd video
 npx remotion render ReelXacobeoUS ../salidas/reel-xacobeo-2027-us.mp4 --crf=23
 ```
 
+## Re-exportada por las fuentes
+
+La primera versión entregada salió con la sans-serif del sistema: las fuentes
+de marca no llegaron a cargarse nunca y no avisó ningún error. El MP4 de
+`salidas/` está rehecho ya con Montserrat de verdad. Cualquier copia anterior
+a eso hay que sustituirla, aunque a simple vista pase por buena.
+
 ## Cómo está montado
 
 Los cortes caen en los arranques de frase de la locución, medidos así:

@@ -1,10 +1,12 @@
 import { AbsoluteFill, Composition } from "remotion";
-import "./fuentes";
+import { useFuentesDeMarca } from "./fuentes";
 import { brand, fontFamily, format, fps } from "./brand/theme";
 import { Calendario } from "./graficos/Calendario";
 
 /** Banco de pruebas: cada grafico aislado sobre un fondo neutro de marca. */
-const Banco: React.FC = () => (
+const Banco: React.FC = () => {
+  useFuentesDeMarca();
+  return (
   <AbsoluteFill
     style={{
       backgroundColor: brand.forest,
@@ -15,7 +17,8 @@ const Banco: React.FC = () => (
   >
     <Calendario />
   </AbsoluteFill>
-);
+  );
+};
 
 export const PruebaGrafico = () => (
   <Composition

@@ -18,6 +18,12 @@ npx remotion render ShortFrancesUS ../salidas/short-frances-us.mp4 --crf=23
 
 ## Lo que hay que saber antes de tocarlo
 
+**Las fuentes.** Esta pieza es la primera que sale con la tipografía de marca
+puesta de verdad. Hasta ella, los `@fontsource` no cargaban nada y todo se
+renderizaba con la letra del sistema. Ahora los woff2 están en
+`video/public/fuentes/` y la pieza llama a `useFuentesDeMarca()`. Si se
+estrena otra composición, que la llame también.
+
 **Dura 53 s y el brief pedía 40-42.** La locución grabada dura 51,6 s, así que
 la pieza no cabe en el máximo del brief. Shorts admite hasta 3 minutos, de
 modo que se puede publicar tal cual, pero si hace falta bajar a 42 s hay que

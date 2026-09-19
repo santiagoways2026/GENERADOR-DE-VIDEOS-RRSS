@@ -55,6 +55,28 @@ Manrope abre más que Montserrat al cuerpo grande, aguanta mejor sobre
 metraje y contrasta con el logo, que es Montserrat. Su peso máximo es 800:
 no tiene 900.
 
+### Comprobar que la fuente está puesta de verdad
+
+Esto no es paranoia: durante todas las piezas anteriores **no se cargó ni una
+sola fuente de marca** y no lo dijo nadie. Los `import "@fontsource/..."`
+compilaban sin una queja y el CSS no llegaba al documento, así que todo salió
+con la sans-serif del sistema. En pantalla colaba, porque la de respaldo
+también es una grotesca.
+
+Se comprueba con la composición `Fuente`, que pinta el mismo texto en
+Montserrat y en Manrope **sin cascada de respaldo** e imprime cuántas caras
+hay registradas. Si el texto sale en serif, no hay fuente: es lo que dibuja el
+navegador cuando la familia pedida no existe. `document.fonts.check()` no
+sirve para esto, devuelve `true` igual.
+
+```bash
+cd video
+npx remotion still Fuente ../salidas/fuente.png
+```
+
+Mirar esa imagen cuando se añade un peso, se toca `fuentes.ts` o se estrena
+una pieza.
+
 ## Cómo se ven los textos
 
 Las cartelas replican las del kit de motion graphics, no se inventan:
@@ -69,6 +91,20 @@ Las cartelas replican las del kit de motion graphics, no se inventan:
 - `Cartela` admite varias líneas y ajusta el cuerpo sola. Hace falta fuera del
   español: un rótulo en inglés puede ser el doble de largo y no cabe de una
   tirada en 1080 px.
+
+Una pieza entera a base de placas y listas parece una plantilla, y hace que
+todas las piezas de la marca parezcan la misma. Para eso está `Titular`:
+texto grande directamente sobre el metraje, en Manrope extrabold y en
+mayúsculas, con las palabras entrando una a una en orden de lectura.
+
+**El resalte de `Titular` es una banda, no una palabra pintada.** Se le pasan
+los índices de las palabras que van resaltadas y el componente agrupa las
+seguidas en una sola caja, para que la banda salga continua y no a trozos con
+un hueco en cada espacio. Va en lima con la letra en bosque, que es la regla
+de la marca: el lima no es color de letra, es fondo. Sobre olivo iría en
+blanco, pero contrasta peor y conviene reservarlo. Dentro de la banda no hay
+sombra, que ahí solo ensucia; fuera la legibilidad la sostiene la sombra de
+bosque, y sobre un plano muy claro se sube el `overlay` de `Planos`.
 
 El texto vive en la mitad superior. Los gráficos, en la inferior.
 
@@ -171,8 +207,11 @@ menudo sin sonido.
 - `interpolate` va dentro del `style`, para que se pueda editar desde Studio.
 - Las escenas usan `Interactive.Div` para que los textos se puedan cambiar en
   Studio y se escriban solos en el código.
-- Las fuentes se empaquetan con `@fontsource`, no se descargan de Google: así
-  el render sale igual en cualquier máquina y funciona sin conexión.
+- **Toda pieza llama a `useFuentesDeMarca()`**, el primer hook del componente
+  raíz. Las fuentes se registran desde `video/public/fuentes/` con la API
+  `FontFace` y el render espera a que estén listas: sale igual en cualquier
+  máquina y sin conexión. Si una pieza se olvida del hook, se renderiza con
+  la letra del sistema y no avisa nadie.
 - **Los momentos de una animación se cuentan en fotogramas de la escena**, no
   relativos al `desde` del componente. Mezclar las dos escalas ya dejó una
   Puerta Santa que nunca llegaba a abrirse.

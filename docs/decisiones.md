@@ -32,6 +32,48 @@ Está en `tipo`, dentro de `video/src/brand/theme.ts`, y se usa desde ahí. Un
 componente que escriba la familia y el peso a mano se sale del sistema sin
 que nadie lo note.
 
+## Cómo se cargan las fuentes, y por qué no se cargaban
+
+Durante las tres primeras piezas **ninguna fuente de marca llegó a cargarse**.
+El proyecto tenía los `import "@fontsource/montserrat/800.css"` de rigor,
+compilaban sin una queja y el CSS nunca llegaba al documento: `document.fonts`
+estaba vacío y todo se renderizó con la sans-serif por defecto del sistema.
+No saltó ningún error y en pantalla pasaba por bueno, porque la de respaldo
+también es una grotesca. Se descubrió porque el rótulo «no tenía la pinta de
+Manrope» tres revisiones seguidas, y lo confirmó pintar el mismo texto en las
+dos familias **sin cascada de respaldo**: las dos salieron en serif, que es lo
+que dibuja el navegador cuando la familia pedida no existe.
+
+Dos lecciones, y las dos están montadas:
+
+1. **Los woff2 viven en `video/public/fuentes/`** y se registran con la API
+   `FontFace` desde `video/src/fuentes.ts`. Ocho caras, 148 KB. No depende del
+   bundler ni de la red.
+2. **Se comprueba, no se supone.** La composición `Fuente` pinta las muestras
+   sin fallback e imprime cuántas caras hay registradas. `document.fonts.check()`
+   no vale para esto: devuelve `true` aunque no haya nada cargado.
+
+El `delayRender` a nivel de módulo no funciona; tiene que ser el hook
+`useFuentesDeMarca()`, llamado en el componente raíz de cada pieza. Si una
+pieza se lo salta, se renderiza con otra letra y no lo dice nadie.
+
+## El titular sobre la imagen
+
+`Cartela` y `Bullets` vienen del kit y son reconocibles, pero una pieza
+entera resuelta con ellos parece una plantilla, y todas las piezas de la
+marca acaban pareciendo la misma. `Titular` es el contrapunto: texto grande
+directamente sobre el metraje, sin placa.
+
+El resalte se probó primero pintando la palabra clave de lima. Se descartó
+por dos razones: se salta el manual, donde el lima es fondo y nunca color de
+letra, y sobre un plano claro la palabra resaltada se leía peor que el resto
+del titular, justo al revés de lo que se quería. Ahora es una banda de lima
+con la letra en bosque, como un subrayador. Las palabras resaltadas seguidas
+se agrupan en una sola caja: con una por palabra la banda salía a trozos, con
+un hueco en cada espacio. Y `box-decoration-break: clone`, para que al partir
+en dos líneas la banda acompañe al texto en lugar de dejar un rectángulo
+suelto.
+
 ## Textos en pantalla
 
 Empezaron siendo texto blanco suelto sobre el metraje y no funcionaba: no
