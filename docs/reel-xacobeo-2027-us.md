@@ -29,13 +29,13 @@ que tocar.
 
 | Desde | Bloque | En pantalla | Qué hace |
 | --- | --- | --- | --- |
-| 0:00 | Una puerta | Xacobeo 2027 · Camino de Santiago · Spain's Holy Year | Titula la pieza. El gancho lo hace la voz |
+| 0:00 | Una puerta | Holy Year 2027 · Camino de Santiago | Titula la pieza. El gancho lo hace la voz |
 | 0:06 | Mapa de rutas | 1,000 years of pilgrimage | Sitúa Galicia y enseña que son varias rutas |
 | 0:15 | Calendario | July 2027 · July 25 falls on a Sunday | La regla del Año Santo, de un vistazo |
 | 0:18 | Puerta Santa | This is a Holy Year | Sealed → Open sobre la palabra "unsealed" |
 | 0:23 | Años Santos | 2021 · 2027 · 2032 · 2038 | 2032 se enciende con la cifra |
 | 0:29 | Un Año Santo se nota | The Camino at its most alive | Manda el metraje |
-| 0:35 | Obradoiro | A plenary indulgence | Llegada, y qué significa el Año Santo para un creyente |
+| 0:35 | Obradoiro | A plenary indulgence | Llegada, y qué significa el Año Santo para un creyente. La tarjeta cruza al bloque siguiente: son setenta caracteres y necesitan seis segundos |
 | 0:40 | Servicio | Cuatro tarjetas con check | El bloque premium, once segundos |
 | 0:52 | Una mochila | You walk. We handle the rest | Remate del servicio |
 | 0:54 | Plazas contadas | — | Alojamiento, sin texto, antes del CTA |
@@ -145,9 +145,9 @@ pregunta, se lleva a mensaje directo.
 ## Decisiones que conviene no deshacer
 
 - **El rótulo de entrada titula, la voz engancha.** En pantalla se lee
-  «Xacobeo 2027 · Camino de Santiago · Spain's Holy Year», que sitúa a
-  cualquiera en tres líneas; mientras, la locución habla de una puerta que
-  se abre, que es lo que para el scroll.
+  «Holy Year 2027 · Camino de Santiago»: lo que hace única a la fecha en la
+  placa blanca y el nombre de la ruta debajo. Mientras, la locución habla de
+  una puerta que se abre, que es lo que para el scroll.
 - **Sin marca de agua.** El logo va solo en el cierre, que ya es todo marca.
 - **Los gráficos son la parte didáctica, no decoración.** Sin el mapa el
   espectador no sabe dónde está Galicia; sin el calendario no entiende la
@@ -159,6 +159,10 @@ pregunta, se lleva a mensaje directo.
   la calidad del alojamiento**, no al miedo a quedarse fuera ni al precio.
 - **Ni una palabra de descuento.** La exclusividad es honesta: las mejores
   casas de cada etapa tienen pocas habitaciones y en Año Santo se agotan.
+- **El alojamiento se enseña por la fachada y por la mesa**, no por la vista.
+  Se descartó el plano de la terraza: es medio cielo vacío, sillas de
+  plástico, y repetía el mismo embalse que ya se ve por la ventana de la
+  habitación.
 - **La semana del calendario empieza en domingo.** Un americano lee la
   cuadrícula así, y el gráfico existe para leerse de un vistazo.
 - **La Puerta Santa son dos hojas que se abren.** Se probó antes con el muro

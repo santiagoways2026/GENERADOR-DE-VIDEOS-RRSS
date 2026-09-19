@@ -23,10 +23,31 @@ import { entrada } from "../componentes/entrada";
 const HITOS = [2021, 2027, 2032, 2038];
 const ACTUAL = 2027;
 const SIGUIENTE = 2032;
-/** Separacion entre hitos, en px. */
-const PASO = 273;
+
+/* ------------------------------------------------------------------ *
+ * GEOMETRIA
+ *
+ * Todo se calcula desde el ancho de la tarjeta en lugar de fijarse a ojo.
+ * Antes el paso entre hitos estaba clavado a 273 px y el ultimo ano caia
+ * 43 px por fuera del final del rail, asi que el conjunto salia descentrado
+ * y la vieira montaba sobre las cifras.
+ * ------------------------------------------------------------------ */
+
+const ANCHO = 980;
+const PADDING = space[6];
+/** Aire entre el borde del contenido y los hitos de los extremos. */
+const MARGEN = 96;
+const LARGO = ANCHO - PADDING * 2 - MARGEN * 2;
+const PASO = LARGO / (HITOS.length - 1);
+
+/** Altura del rail dentro del area del grafico. */
+const RAIL = 78;
+const GROSOR = 6;
 /** Disco que lleva la vieira y monta sobre el rail. */
-const DISCO = 96;
+const DISCO = 88;
+/** Los anos empiezan por debajo del disco, sin tocarlo. */
+const ANOS = RAIL + 52;
+const ALTO = ANOS + 68;
 
 /**
  * Linea de tiempo de Anos Santos. La vieira arranca en 2021 y se para en
@@ -65,6 +86,14 @@ export const LineaTiempo: React.FC<{
           easing: Easing.bezier(...easeOut),
         });
 
+  /** Tramo del rail, comun a los tres que se pintan encima. */
+  const tramo = {
+    position: "absolute" as const,
+    top: RAIL - GROSOR / 2,
+    height: GROSOR,
+    borderRadius: radius.pill,
+  };
+
   return (
     <Interactive.Div
       name="LineaTiempo"
@@ -72,33 +101,22 @@ export const LineaTiempo: React.FC<{
         backgroundColor: color.bg1,
         borderRadius: radius.lg,
         boxShadow: shadow.raised,
-        padding: `${space[7]}px ${space[6]}px ${space[6]}px`,
-        width: 980,
+        padding: PADDING,
+        width: ANCHO,
         opacity: entrada(frame, desde).opacity,
         translate: entrada(frame, desde).translate,
       }}
     >
-      <div style={{ position: "relative", height: 190 }}>
-        {/* Raíl */}
+      <div style={{ position: "relative", height: ALTO }}>
+        {/* Raíl completo */}
         <div
-          style={{
-            position: "absolute",
-            top: 108,
-            left: 70,
-            right: 70,
-            height: 6,
-            borderRadius: radius.pill,
-            backgroundColor: "#E6E2D6",
-          }}
+          style={{ ...tramo, left: MARGEN, width: LARGO, backgroundColor: "#E6E2D6" }}
         />
-        {/* Tramo recorrido */}
+        {/* Lo ya recorrido, hasta 2027 */}
         <div
           style={{
-            position: "absolute",
-            top: 108,
-            left: 70,
-            height: 6,
-            borderRadius: radius.pill,
+            ...tramo,
+            left: MARGEN,
             backgroundColor: brand.green,
             width: interpolate(t, [14, 40], [0, PASO], {
               extrapolateLeft: "clamp",
@@ -107,16 +125,12 @@ export const LineaTiempo: React.FC<{
             }),
           }}
         />
-        {/* La espera hasta el siguiente: el tramo que el espectador no va a
-            querer aguantar. */}
+        {/* La espera hasta el siguiente: el tramo que nadie quiere aguantar. */}
         {resaltaSiguiente === undefined ? null : (
           <div
             style={{
-              position: "absolute",
-              top: 108,
-              left: 70 + indiceActual * PASO,
-              height: 6,
-              borderRadius: radius.pill,
+              ...tramo,
+              left: MARGEN + indiceActual * PASO,
               backgroundColor: brand.forest,
               width: siguiente * PASO,
             }}
@@ -124,7 +138,7 @@ export const LineaTiempo: React.FC<{
         )}
 
         {HITOS.map((anio, i) => {
-          const x = 70 + i * PASO;
+          const x = MARGEN + i * PASO;
           const esActual = anio === ACTUAL;
           const esSiguiente = anio === SIGUIENTE;
           const encendido = interpolate(t, [14 + i * 9, 22 + i * 9], [0, 1], {
@@ -132,15 +146,13 @@ export const LineaTiempo: React.FC<{
             extrapolateRight: "clamp",
           });
           const apagado = 0.42 + encendido * 0.1;
+          const punto = esActual ? 44 : 28 + (esSiguiente ? siguiente * 12 : 0);
+          // El siguiente se enciende cuando la locucion dice la cifra.
+          const vivo = esActual || (esSiguiente && siguiente > 0.5);
           return (
             <div
               key={anio}
               style={{
-                position: "absolute",
-                left: x - 60,
-                top: 0,
-                width: 120,
-                textAlign: "center",
                 opacity: esActual
                   ? 1
                   : esSiguiente
@@ -150,30 +162,34 @@ export const LineaTiempo: React.FC<{
             >
               <div
                 style={{
-                  margin: "92px auto 0",
-                  width: esActual ? 44 : 28 + (esSiguiente ? siguiente * 12 : 0),
-                  height: esActual ? 44 : 28 + (esSiguiente ? siguiente * 12 : 0),
+                  position: "absolute",
+                  left: x - punto / 2,
+                  top: RAIL - punto / 2,
+                  width: punto,
+                  height: punto,
                   borderRadius: radius.pill,
                   backgroundColor: esActual
                     ? brand.green
-                    : esSiguiente && siguiente > 0.5
+                    : vivo
                       ? brand.forest
                       : "#CFCABB",
                 }}
               />
               <div
                 style={{
-                  marginTop: space[3],
+                  position: "absolute",
+                  left: x - 90,
+                  top: ANOS,
+                  width: 180,
+                  textAlign: "center",
+                  lineHeight: 1,
                   fontSize: esActual
                     ? 60
                     : fontSize["2xl"] + (esSiguiente ? siguiente * 18 : 0),
-                  fontWeight:
-                    esActual || (esSiguiente && siguiente > 0.5)
-                      ? weight.black
-                      : weight.medium,
+                  fontWeight: vivo ? weight.black : weight.medium,
                   color: esActual
                     ? brand.green
-                    : esSiguiente && siguiente > 0.5
+                    : vivo
                       ? brand.forest
                       : color.fg3,
                 }}
@@ -184,12 +200,13 @@ export const LineaTiempo: React.FC<{
           );
         })}
 
-        {/* La vieira avanza por el raíl, dentro de su disco. */}
+        {/* La vieira avanza por el raíl, dentro de su disco: monta sobre la
+            línea en lugar de apoyarse en ella. */}
         <div
           style={{
             position: "absolute",
-            top: 111 - DISCO / 2,
-            left: 70 + avance * PASO - DISCO / 2,
+            left: MARGEN + avance * PASO - DISCO / 2,
+            top: RAIL - DISCO / 2,
             width: DISCO,
             height: DISCO,
             borderRadius: radius.pill,
@@ -207,7 +224,7 @@ export const LineaTiempo: React.FC<{
         >
           <CanvasImage
             src={staticFile(logo.isotipo)}
-            style={{ width: 62, height: 62, objectFit: "contain" }}
+            style={{ width: 56, height: 56, objectFit: "contain" }}
           />
         </div>
       </div>
@@ -215,7 +232,7 @@ export const LineaTiempo: React.FC<{
       {pie ? (
         <div
           style={{
-            marginTop: space[4],
+            marginTop: space[3],
             textAlign: "center",
             fontSize: fontSize.xl,
             fontWeight: weight.bold,

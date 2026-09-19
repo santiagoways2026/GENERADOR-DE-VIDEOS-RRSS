@@ -124,9 +124,8 @@ export const ReelXacobeoUS: React.FC = () => {
           ]}
         />
         <Cartela
-          eyebrow="Xacobeo 2027"
-          principal="Camino de Santiago"
-          secundaria="Spain's Holy Year"
+          principal="Holy Year 2027"
+          secundaria="Camino de Santiago"
           desde={10}
         />
       </Sequence>
@@ -218,7 +217,7 @@ export const ReelXacobeoUS: React.FC = () => {
           lista={[
             { src: "catedral-torres", dura: 1.6 },
             { src: "brindis", dura: 1.8, encuadre: "42% 50%" },
-            { src: "vieiras", dura: 1.25, ritmo: 0.85 },
+            { src: "brazos-alto", dura: 0.97, encuadre: "34% 50%", ritmo: 0.7 },
             { src: "iglesia-exterior", dura: 1.3, ritmo: 0.9 },
           ]}
         />
@@ -237,15 +236,6 @@ export const ReelXacobeoUS: React.FC = () => {
             { src: "catedral-a", dura: 1.7, ritmo: 0.85 },
           ]}
         />
-        <Inferior alto={280}>
-          <CajaDato
-            desde={en(6, 37.0)}
-            eyebrow="In a Holy Year"
-            cifra="A plenary indulgence"
-            texto="Making a pilgrimage during a Holy Year allows Christians to obtain one"
-            tono="bosque"
-          />
-        </Inferior>
       </Sequence>
 
       {/* 8 · El bloque de servicio. Es el mas largo de la pieza a proposito:
@@ -275,7 +265,7 @@ export const ReelXacobeoUS: React.FC = () => {
             overlay={0.42}
             lista={[
               { src: "habitacion", dura: 1.3, encuadre: "62% 50%" },
-              { src: "casa-rural", dura: 1.2, encuadre: "38% 50%", ritmo: 0.92 },
+              { src: "casa-rural", dura: 1.2, encuadre: "62% 50%", ritmo: 0.92 },
             ]}
           />
         </Sequence>
@@ -358,14 +348,38 @@ export const ReelXacobeoUS: React.FC = () => {
       <Sequence from={f(B[12])} durationInFrames={dur(12)} name="10 · Plazas contadas">
         <Planos
           total={dur(12)}
-          overlay={0.34}
+          // Sin texto encima no hace falta velar tanto: es el ultimo plano
+          // antes del cierre y conviene que luzca.
+          overlay={0.22}
           lista={[
-            { src: "terraza", dura: 2.0, encuadre: "30% 50%" },
-            { src: "mesa-exterior", dura: 1.45, encuadre: "40% 50%", ritmo: 0.8 },
+            // El plato es un primerisimo plano y pierde definicion al
+            // recortarlo a vertical: pasa rapido. Remata la mesa puesta del
+            // pazo, que es la imagen con la que conviene entrar al cierre.
+            { src: "vieiras", dura: 1.25, ritmo: 0.85 },
+            { src: "mesa-exterior", dura: 1.43, encuadre: "52% 50%", ritmo: 0.55 },
           ]}
         />
       </Sequence>
 
+
+      {/* La indulgencia cruza el final de la llegada y el principio del
+          bloque de servicio, que hasta la primera tarjeta no lleva texto.
+          Son setenta caracteres: en los tres segundos que duraba su bloque
+          no daba tiempo a leerlos. */}
+      <Sequence
+        from={f(36.0)}
+        durationInFrames={f(41.9) - f(36.0)}
+        name="Indulgencia"
+      >
+        <Inferior alto={280}>
+          <CajaDato
+            eyebrow="In a Holy Year"
+            cifra="A plenary indulgence"
+            texto="Making a pilgrimage during a Holy Year allows Christians to obtain one"
+            tono="bosque"
+          />
+        </Inferior>
+      </Sequence>
 
       {/* 11 · Cierre de marca. El unico CTA de la pieza. */}
       <Sequence from={f(B[13])} durationInFrames={dur(13)} name="11 · Cierre">
