@@ -14,16 +14,20 @@ import { LineaTiempo } from "./graficos/LineaTiempo";
 /**
  * English text version of ReelXacobeo (vertical, 1080x1920).
  *
- * Same cuts, same footage as the Spanish original: `B` still holds the
- * phrase starts measured from the SPANISH narration, because that is the
- * only audio we have. It still points at `locucion.mp3`.
+ * Uses the English voiceover (public/locucion-en.mp3, "US Female
+ * Voiceover — Lara"), which runs 71.6s, much slower than the Spanish
+ * original's 41.7s. `B` was re-measured from this file's own silences
+ * (ffmpeg silencedetect, noise=-30dB:d=0.28) rather than scaled from the
+ * Spanish cuts, since the pacing between blocks isn't uniform.
  *
- * Swap in the English voiceover at public/locucion-en.mp3, then re-measure
- * its silences (see herramientas/scripts or the `reel` skill's step 4) and
- * update `B` below to match its own pacing before treating this as final.
+ * Several blocks now run well past the real length of their footage
+ * (e.g. Book and Services roughly double it), so those clips hold on
+ * their last frame for part of the block instead of playing live the
+ * whole time. Worth trimming the VO's pacing or sourcing longer takes
+ * for those beats if the freeze reads as a mistake once you watch it.
  */
 
-const B = [0, 3.89, 11.57, 16.79, 23.86, 31.72, 38.03, 41.74];
+const B = [0, 6.827, 19.848, 28.549, 40.505, 55.301, 69.824, 71.63];
 const f = (s: number) => Math.round(s * 30);
 const dur = (i: number) => f(B[i + 1]) - f(B[i]);
 
@@ -43,7 +47,7 @@ const Inferior: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 export const ReelXacobeoEN: React.FC = () => {
   return (
     <AbsoluteFill style={{ backgroundColor: brand.forest, fontFamily }}>
-      <Audio src={staticFile("locucion.mp3")} />
+      <Audio src={staticFile("locucion-en.mp3")} />
 
       <Sequence durationInFrames={f(B[6])} name="Brand">
         <Logo

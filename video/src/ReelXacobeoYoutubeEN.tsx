@@ -15,13 +15,13 @@ import { LineaTiempo } from "./graficos/LineaTiempo";
  * English text version of ReelXacobeoYoutube (horizontal, 1280x720).
  *
  * Same layout adaptation as the Spanish horizontal cut (cartela top-left,
- * graphics centered and scaled to fit 720px of height). `B` still holds the
- * phrase starts measured from the SPANISH narration and the audio still
- * points at `locucion.mp3` — see the note in ReelXacobeoEN.tsx: swap in the
- * English voiceover and re-sync `B` to its own pacing before this is final.
+ * graphics centered and scaled to fit 720px of height). Uses the English
+ * voiceover (public/locucion-en.mp3, "US Female Voiceover — Lara"); see the
+ * note in ReelXacobeoEN.tsx for how `B` was re-measured from its own
+ * silences and where it now outruns the available footage per block.
  */
 
-const B = [0, 3.89, 11.57, 16.79, 23.86, 31.72, 38.03, 41.74];
+const B = [0, 6.827, 19.848, 28.549, 40.505, 55.301, 69.824, 71.63];
 const f = (s: number) => Math.round(s * 30);
 const dur = (i: number) => f(B[i + 1]) - f(B[i]);
 
@@ -40,7 +40,7 @@ const Centro: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 export const ReelXacobeoYoutubeEN: React.FC = () => {
   return (
     <AbsoluteFill style={{ backgroundColor: brand.forest, fontFamily }}>
-      <Audio src={staticFile("locucion.mp3")} />
+      <Audio src={staticFile("locucion-en.mp3")} />
 
       <Sequence durationInFrames={f(B[6])} name="Brand">
         <Logo
