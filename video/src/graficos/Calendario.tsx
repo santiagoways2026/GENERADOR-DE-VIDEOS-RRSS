@@ -19,7 +19,7 @@ const SEMANAS = [
   [19, 20, 21, 22, 23, 24, 25],
   [26, 27, 28, 29, 30, 31, 0],
 ];
-const DIAS = ["L", "M", "X", "J", "V", "S", "D"];
+const DIAS_ES = ["L", "M", "X", "J", "V", "S", "D"];
 const DESTACADO = 25;
 const COLUMNA_DOMINGO = 6;
 
@@ -34,9 +34,21 @@ const HUECO = 6;
  * La vista sigue ese orden y saca la conclusion sola, que es justo lo que
  * hace que 2027 sea Ano Santo.
  */
-export const Calendario: React.FC<{ desde?: number; hasta?: number }> = ({
+export const Calendario: React.FC<{
+  desde?: number;
+  hasta?: number;
+  /** Cabecera del mes. */
+  mes?: string;
+  /** Iniciales de los siete dias, lunes primero. */
+  dias?: string[];
+  /** Frase de conclusion, en la placa lima. */
+  conclusion?: string;
+}> = ({
   desde = 0,
   hasta,
+  mes = "Julio 2027",
+  dias = DIAS_ES,
+  conclusion = "El 25 cae en domingo",
 }) => {
   const frame = useCurrentFrame();
   const t = frame - desde;
@@ -91,7 +103,7 @@ export const Calendario: React.FC<{ desde?: number; hasta?: number }> = ({
           textTransform: "uppercase",
         }}
       >
-        Julio 2027
+        {mes}
       </div>
 
       <div style={{ padding: space[6], position: "relative" }}>
@@ -116,7 +128,7 @@ export const Calendario: React.FC<{ desde?: number; hasta?: number }> = ({
             gap: HUECO,
           }}
         >
-          {DIAS.map((d, i) => (
+          {dias.map((d, i) => (
             <div
               key={d}
               style={{
@@ -196,7 +208,7 @@ export const Calendario: React.FC<{ desde?: number; hasta?: number }> = ({
           })}% 0 0)`,
         }}
       >
-        El 25 cae en domingo
+        {conclusion}
       </div>
     </Interactive.Div>
   );

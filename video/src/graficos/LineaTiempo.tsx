@@ -30,7 +30,10 @@ const ACTUAL = 2027;
  * Los anos son reales: el Ano Santo cae cuando el 25 de julio es domingo,
  * lo que da un patron de 6, 5, 6 y 11 anos que se repite.
  */
-export const LineaTiempo: React.FC<{ desde?: number }> = ({ desde = 0 }) => {
+export const LineaTiempo: React.FC<{ desde?: number; pie?: string }> = ({
+  desde = 0,
+  pie = "Cada 6, 5 u 11 años",
+}) => {
   const frame = useCurrentFrame();
   const t = frame - desde;
   const indiceActual = HITOS.indexOf(ACTUAL);
@@ -156,7 +159,7 @@ export const LineaTiempo: React.FC<{ desde?: number }> = ({ desde = 0 }) => {
           color: color.fg3,
         }}
       >
-        Cada 6, 5 u 11 años
+        {pie}
       </div>
     </Interactive.Div>
   );
