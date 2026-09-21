@@ -1,4 +1,5 @@
 import { Sequence } from "remotion";
+import { fps } from "../brand/theme";
 import { Clip } from "./Clip";
 
 export type Plano = {
@@ -41,6 +42,10 @@ export const Planos: React.FC<{
         acumulado = fin;
         const duracion = fin - inicio;
         if (duracion <= 0) return null;
+        // Si el bloque le pide al plano mas tiempo del que dura de verdad,
+        // se estira en camara lenta en vez de pedirle a OffthreadVideo
+        // fotogramas que no existen (eso cuelga el render).
+        const playbackRate = Math.min(1, (p.dura * fps) / duracion);
         return (
           <Sequence key={p.src} from={inicio} durationInFrames={duracion} name={p.src}>
             <Clip
@@ -49,6 +54,7 @@ export const Planos: React.FC<{
               overlay={overlay}
               encuadre={p.encuadre}
               zoom={1.05}
+              playbackRate={playbackRate}
             />
           </Sequence>
         );

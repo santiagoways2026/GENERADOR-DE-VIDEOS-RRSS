@@ -30,6 +30,10 @@ export const Clip: React.FC<{
   /** Encuadre del recorte, en porcentaje: "50% 50%" centra, "20% 50%"
    *  se queda con la parte izquierda del plano. */
   encuadre?: string;
+  /** Velocidad de reproduccion. Por debajo de 1 estira el plano en cámara
+   *  lenta cuando el bloque dura mas que el metraje real disponible, para
+   *  no pedirle a OffthreadVideo fotogramas que no existen. */
+  playbackRate?: number;
 }> = ({
   src,
   desdeSegundo = 0,
@@ -37,6 +41,7 @@ export const Clip: React.FC<{
   zoom = 1.08,
   duracion,
   encuadre = "50% 50%",
+  playbackRate = 1,
 }) => {
   const frame = useCurrentFrame();
 
@@ -45,6 +50,7 @@ export const Clip: React.FC<{
       <OffthreadVideo
         src={staticFile(src)}
         trimBefore={desdeSegundo > 0 ? Math.round(desdeSegundo * 30) : undefined}
+        playbackRate={playbackRate}
         style={{
           width: "100%",
           height: "100%",
