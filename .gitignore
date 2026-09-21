@@ -8,3 +8,6 @@ brutos-originales/
 
 # Cachés de Python de los scripts de metraje.
 __pycache__/
+
+# La salida del render no se versiona.
+salida/
