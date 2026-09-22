@@ -82,19 +82,19 @@ const SUSTITUCIONES: Sustitucion[] = [
  * ------------------------------------------------------------------ */
 
 /* ------------------------------------------------------------------ *
- * Cartelas: las placas del kit, adaptadas a 1280x720
+ * Cartelas: texto blanco, con el verde subrayando lo que importa
  * ------------------------------------------------------------------ */
 
 /** 896 ms del kit, a 30 fps. */
 const BARRIDO = 27;
-/** 480 ms de relevo entre placas. */
+/** 480 ms de relevo entre lineas. */
 const RELEVO = 14;
-/** Salida: el mismo barrido al reves, mas corto. */
+/** Salida: el mismo barrido, mas corto. */
 const CIERRE_BARRIDO = 12;
 
 /**
- * Barrido de izquierda a derecha para entrar y de izquierda a derecha para
- * salir, de forma que la placa se descubre y se recoge por el mismo lado.
+ * Barrido lateral del kit: la linea se descubre de izquierda a derecha y se
+ * recoge por el mismo lado. No es un fundido, que es lo que pide el manual.
  */
 const barrido = (frame: number, desde: number, total: number) => {
   const entra = interpolate(frame, [desde, desde + BARRIDO], [100, 0], {
@@ -110,119 +110,192 @@ const barrido = (frame: number, desde: number, total: number) => {
   return `inset(0 ${entra}% 0 ${sale}%)`;
 };
 
+/** Un trozo de linea. Si va destacado, se le pone la caja verde detras. */
+type Trozo = { texto: string; destacado?: boolean };
+
 /**
- * Dos placas encajadas, como en el kit: la blanca manda y lleva el dato en
- * bosque; la de abajo remata en olivo, o en lima cuando cierra.
+ * Una linea de cartela.
  *
- * Van abajo a la izquierda y no arriba, que es donde las pone el manual para
- * los reels verticales: en horizontal la franja superior es donde caen las
- * caras de los entrevistados, y taparlas seria perder la pieza.
+ * Todo el texto va en blanco. El verde no hace de fondo de la linea entera,
+ * solo recuadra las palabras que sostienen el mensaje, que es lo que deja
+ * leer la frase de un vistazo sin que el rotulo se coma el plano.
  */
-const Bloque: React.FC<{
-  principal: string;
-  secundaria?: string;
+const Linea: React.FC<{
+  trozos: Trozo[];
+  tam: number;
+  frame: number;
+  desde: number;
   total: number;
-  tono?: "olivo" | "lima";
-}> = ({ principal, secundaria, total, tono = "olivo" }) => {
+}> = ({ trozos, tam, frame, desde, total }) => (
+  <div
+    style={{
+      display: "flex",
+      flexWrap: "nowrap",
+      alignItems: "center",
+      clipPath: barrido(frame, desde, total),
+      marginTop: 6,
+    }}
+  >
+    {trozos.map((t, i) => (
+      <span
+        key={i}
+        style={{
+          fontFamily: FUENTE,
+          fontSize: tam,
+          lineHeight: 1.06,
+          fontWeight: 800,
+          letterSpacing: "-0.005em",
+          textTransform: "uppercase",
+          color: brand.white,
+          whiteSpace: "pre",
+          backgroundColor: t.destacado ? brand.green : "transparent",
+          padding: t.destacado ? `${Math.round(tam * 0.14)}px ${Math.round(tam * 0.26)}px` : 0,
+          borderRadius: t.destacado ? 6 : 0,
+          marginRight: i < trozos.length - 1 ? Math.round(tam * 0.22) : 0,
+          textShadow: t.destacado ? "none" : "0 2px 16px rgba(8,22,15,0.55)",
+        }}
+      >
+        {t.texto}
+      </span>
+    ))}
+  </div>
+);
+
+/** Cartela de dos lineas, abajo a la izquierda, con un pie opcional. */
+const Cartela: React.FC<{
+  arriba: Trozo[];
+  abajo: Trozo[];
+  pie?: string;
+  total: number;
+  tam?: number;
+}> = ({ arriba, abajo, pie, total, tam = 50 }) => {
   const frame = useCurrentFrame();
-  const abajo =
-    tono === "lima"
-      ? { bg: brand.lime, fg: brand.forest }
-      : { bg: brand.green, fg: brand.white };
-
   return (
-    <>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-        <div
-          style={{
-            backgroundColor: brand.white,
-            padding: "13px 30px 16px",
-            borderRadius: "6px 6px 0 0",
-            clipPath: barrido(frame, 0, total),
-          }}
-        >
-          <span
-            style={{
-              display: "block",
-              fontFamily: FUENTE,
-              fontSize: 44,
-              lineHeight: 1,
-              fontWeight: 800,
-              letterSpacing: "-0.015em",
-              color: brand.forest,
-              whiteSpace: "nowrap",
-            }}
-          >
-            {principal}
-          </span>
-        </div>
-
-        {secundaria ? (
+    <AbsoluteFill
+      style={{ justifyContent: "flex-end", alignItems: "flex-start", padding: MARGEN }}
+    >
+      {/* Un velo muy suave: sin el, el blanco se pierde sobre un cielo claro. */}
+      <AbsoluteFill
+        style={{
+          background:
+            "linear-gradient(to top, rgba(10,26,18,0.55) 0%, rgba(10,26,18,0.26) 30%, rgba(10,26,18,0) 58%)",
+        }}
+      />
+      <div style={{ position: "relative" }}>
+        <Linea trozos={arriba} tam={tam} frame={frame} desde={0} total={total} />
+        <Linea trozos={abajo} tam={tam} frame={frame} desde={RELEVO} total={total} />
+        {pie ? (
           <div
             style={{
-              backgroundColor: abajo.bg,
-              padding: "10px 30px 12px",
-              borderRadius: "0 6px 6px 6px",
-              clipPath: barrido(frame, RELEVO, total),
+              marginTop: 14,
+              fontFamily: FUENTE,
+              fontSize: 19,
+              fontWeight: 600,
+              letterSpacing: "0.10em",
+              textTransform: "uppercase",
+              color: brand.white,
+              opacity: 0.88,
+              clipPath: barrido(frame, RELEVO * 2, total),
+              textShadow: "0 2px 14px rgba(8,22,15,0.55)",
             }}
           >
-            <span
-              style={{
-                display: "block",
-                fontFamily: FUENTE,
-                fontSize: 21,
-                lineHeight: 1.15,
-                fontWeight: 900,
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
-                color: abajo.fg,
-                whiteSpace: "nowrap",
-              }}
-            >
-              {secundaria}
-            </span>
+            {pie}
           </div>
         ) : null}
       </div>
-    </>
+    </AbsoluteFill>
   );
 };
 
-/** El bloque colocado abajo a la izquierda, que es como va en la pieza. */
-const Placas: React.FC<{
-  principal: string;
-  secundaria?: string;
-  total: number;
-  tono?: "olivo" | "lima";
-}> = (props) => (
-  <AbsoluteFill
-    style={{ justifyContent: "flex-end", alignItems: "flex-start", padding: MARGEN }}
-  >
-    <Bloque {...props} />
-  </AbsoluteFill>
-);
-
 /**
- * Cierre. Las mismas placas, con la de abajo en lima, que es el uso que el
- * manual le reserva: rematar.
+ * Cierre de marca.
  *
- * Encima queda el hueco del logo, que coloca el equipo. La banda derecha se
- * deja libre para la pantalla final de YouTube, y no se dibuja ningun boton:
- * un boton pintado dentro del video invita a pulsar donde no hay nada.
+ * Vuelve al overlay de la version anterior, que dejaba la catedral detras y
+ * el bloque de marca delante, pero con el mismo lenguaje de las cartelas
+ * nuevas: blanco con el verde recuadrando lo que remata.
+ *
+ * Arriba, "Buen Camino", que es literalmente lo ultimo que dice una viajera
+ * en la pieza. Debajo queda el hueco del logo, que coloca el equipo.
+ * La banda derecha se deja libre para la pantalla final de YouTube, y no se
+ * dibuja ningun boton: uno pintado dentro del video invita a pulsar donde no
+ * hay nada.
  */
-const Cierre: React.FC<{ total: number }> = ({ total }) => (
-  <AbsoluteFill style={{ justifyContent: "flex-end", alignItems: "flex-start", padding: MARGEN }}>
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-      {/*
-        Hueco reservado para el logo: 230 x 58 px, la proporcion 4:1 del
-        archivo oficial. Se deja vacio a proposito, para que al colocarlo no
-        haya que recolocar las placas.
-      */}
-      <div style={{ width: 230, height: 58, marginBottom: 26 }} />
-      <Bloque principal="Your Camino starts here." secundaria="santiagoways.com" total={total} tono="lima" />
-    </div>
-  </AbsoluteFill>
-);
+const Cierre: React.FC<{ total: number }> = ({ total }) => {
+  const frame = useCurrentFrame();
+  const o = interpolate(frame, [0, 10], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+
+  return (
+    <AbsoluteFill style={{ opacity: o }}>
+      <AbsoluteFill
+        style={{
+          background:
+            "linear-gradient(105deg, rgba(10,26,18,0.80) 0%, rgba(10,26,18,0.62) 46%, rgba(10,26,18,0.18) 100%)",
+        }}
+      />
+      <AbsoluteFill
+        style={{
+          justifyContent: "center",
+          alignItems: "flex-start",
+          padding: MARGEN,
+          paddingRight: 420,
+        }}
+      >
+        <div
+          style={{
+            fontFamily: FUENTE,
+            fontSize: 20,
+            fontWeight: 800,
+            letterSpacing: "0.22em",
+            textTransform: "uppercase",
+            color: brand.lime,
+            clipPath: barrido(frame, 0, total),
+          }}
+        >
+          Buen Camino
+        </div>
+
+        {/*
+          Hueco reservado para el logo: 230 x 58 px, la proporcion 4:1 del
+          archivo oficial. Vacio a proposito, para que al colocarlo no haya
+          que recolocar nada.
+        */}
+        <div style={{ width: 230, height: 58, marginTop: 22, marginBottom: 22 }} />
+
+        <Linea
+          trozos={[{ texto: "Your Camino" }]}
+          tam={54}
+          frame={frame}
+          desde={RELEVO}
+          total={total}
+        />
+        <Linea
+          trozos={[{ texto: "starts here", destacado: true }]}
+          tam={54}
+          frame={frame}
+          desde={RELEVO * 2}
+          total={total}
+        />
+
+        <div
+          style={{
+            marginTop: 26,
+            fontFamily: FUENTE,
+            fontSize: 26,
+            fontWeight: 700,
+            letterSpacing: "0.06em",
+            color: brand.white,
+            clipPath: barrido(frame, RELEVO * 3, total),
+          }}
+        >
+          santiagoways.com
+        </div>
+      </AbsoluteFill>
+    </AbsoluteFill>
+  );
+};
 
 /* ------------------------------------------------------------------ */
 
@@ -257,15 +330,29 @@ export const SWCaminoStoriesEN: React.FC = () => {
       ))}
 
       <Sequence from={f(0)} durationInFrames={f(4.1)} name="1 · Some journeys stay with you">
-        <Placas principal="Some journeys stay with you." secundaria="Camino de Santiago · Spain" total={f(4.1)} />
+        <Cartela
+          arriba={[{ texto: "Some journeys" }]}
+          abajo={[{ texto: "stay with you", destacado: true }]}
+          pie="Camino de Santiago · Spain"
+          total={f(4.1)}
+        />
       </Sequence>
 
       <Sequence from={f(14.6)} durationInFrames={f(19.6) - f(14.6)} name="2 · You walk">
-        <Placas principal="You walk." secundaria="We take care of the details" total={f(19.6) - f(14.6)} />
+        <Cartela
+          arriba={[{ texto: "You walk." }]}
+          abajo={[{ texto: "We take care of the details", destacado: true }]}
+          total={f(19.6) - f(14.6)}
+          tam={46}
+        />
       </Sequence>
 
       <Sequence from={f(35.633)} durationInFrames={f(39.5) - f(35.633)} name="3 · Luggage transfers">
-        <Placas principal="Luggage transfers included." secundaria="From one hotel to the next" total={f(39.5) - f(35.633)} />
+        <Cartela
+          arriba={[{ texto: "Luggage transfers" }]}
+          abajo={[{ texto: "included", destacado: true }, { texto: "hotel to hotel" }]}
+          total={f(39.5) - f(35.633)}
+        />
       </Sequence>
 
       {/*
@@ -274,21 +361,35 @@ export const SWCaminoStoriesEN: React.FC = () => {
         nice clean bed and a shower after a long day of hiking".
       */}
       <Sequence from={f(47.833)} durationInFrames={f(52.3) - f(47.833)} name="4 · Private room">
-        <Placas principal="Always a private room." secundaria="And a private bathroom" total={f(52.3) - f(47.833)} />
+        <Cartela
+          arriba={[{ texto: "Always a" }]}
+          abajo={[{ texto: "private room & bathroom", destacado: true }]}
+          total={f(52.3) - f(47.833)}
+          tam={46}
+        />
       </Sequence>
 
       {/*
-        Sobre el patio de piedra y la terraza, que son alojamiento. Empieza en
-        56,5 y no antes: entre 54,9 y 56,5 hay un plano de campo, y una cartela
-        de hoteles encima de un prado no la sostiene nadie.
+        Sobre el patio de piedra y la terraza. Empieza en 56,5 y no antes:
+        entre 54,9 y 56,5 hay un plano de campo, y una cartela de hoteles
+        encima de un prado no la sostiene nadie.
       */}
       <Sequence from={f(56.5)} durationInFrames={f(60.8) - f(56.5)} name="5 · Hand-picked hotels">
-        <Placas principal="Hand-picked hotels." secundaria="Tested by our own team" total={f(60.8) - f(56.5)} />
+        <Cartela
+          arriba={[{ texto: "Hotels" }]}
+          abajo={[{ texto: "hand-picked & tested", destacado: true }]}
+          pie="By our own team"
+          total={f(60.8) - f(56.5)}
+        />
       </Sequence>
 
       {/* Reubicada: donde se pedia pisaba el testimonio de la pareja. */}
       <Sequence from={f(104.35)} durationInFrames={f(107.65) - f(104.35)} name="6 · 24/7 support">
-        <Placas principal="24/7 support." secundaria="All along the way" total={f(107.65) - f(104.35)} />
+        <Cartela
+          arriba={[{ texto: "24/7 support" }]}
+          abajo={[{ texto: "all along the way", destacado: true }]}
+          total={f(107.65) - f(104.35)}
+        />
       </Sequence>
 
       <Sequence from={finCierre} durationInFrames={total - finCierre} name="7 · Cierre de marca">

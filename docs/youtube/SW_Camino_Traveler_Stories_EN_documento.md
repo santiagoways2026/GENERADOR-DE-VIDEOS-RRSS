@@ -76,8 +76,8 @@ coloqueis vosotros sin recolocar el texto:
 
 | | |
 | --- | --- |
-| Caja del logo | x = 64, y = 453, ancho 230, alto 58 px |
-| Hueco libre total | 58 px de alto, con 26 px de aire hasta la placa |
+| Caja del logo | x = 64, y = 234, ancho 230, alto 58 px |
+| Hueco libre total | 127 px de alto, entre BUEN CAMINO y el titular |
 | Entra en | 00:02:03:00, y dura hasta el final |
 
 La caja mantiene la proporcion 4:1 del archivo oficial `santiago-ways-blanco.png`.
@@ -101,9 +101,10 @@ tapan, para que el audio no se mueva ni un fotograma:
 
 Ningun plano se repite: cada sustitucion trae consigo su propio relevo.
 
-**Siete cartelas**, con las placas del kit: blanca arriba con el dato en bosque,
-olivo debajo con el complemento en mayusculas, barrido lateral de entrada. La
-septima, el cierre, remata en lima y lleva **santiagoways.com**.
+**Siete cartelas** en blanco sobre el plano, sin placa de fondo, con el verde de
+marca recuadrando solo las palabras clave. Entran con el barrido lateral del kit.
+El cierre recupera el overlay de la primera version y lleva **BUEN CAMINO** de
+antetitulo, el hueco del logo, el titular y **santiagoways.com**.
 
 ---
 
