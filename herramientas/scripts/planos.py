@@ -7,17 +7,50 @@ y acaba cada uno antes de elegir el trozo.
 
     python3 planos.py entrada.mp4 [paso_en_segundos] [umbral]
 """
-import subprocess, sys, tempfile, os, json
+import subprocess, sys, tempfile, os, json, shutil, re
 from PIL import Image
 
-FF = "/home/user/centrodecontrol/video/node_modules/@remotion/compositor-linux-x64-gnu/ffmpeg"
-FP = "/home/user/centrodecontrol/video/node_modules/@remotion/compositor-linux-x64-gnu/ffprobe"
+def binarios():
+    """Busca un ffmpeg y un ffprobe completos.
+
+    El que trae Remotion en node_modules sirve para renderizar, pero es una
+    compilacion recortada: le faltan filtros que aqui hacen falta. Asi que va
+    el ultimo, solo por si no hay otro.
+    """
+    ff = None
+    try:
+        import imageio_ffmpeg
+        ff = imageio_ffmpeg.get_ffmpeg_exe()
+    except ImportError:
+        ff = shutil.which("ffmpeg")
+    if not ff:
+        aqui = os.path.dirname(os.path.abspath(__file__))
+        cand = os.path.join(aqui, "..", "..", "video", "node_modules",
+                            "@remotion", "compositor-linux-x64-gnu", "ffmpeg")
+        if os.path.exists(cand):
+            ff = cand
+    if not ff:
+        sys.exit("no hay ffmpeg: pip install imageio-ffmpeg")
+
+    return ff
+
+
+FF = binarios()
 
 
 def duracion(src):
-    out = subprocess.run([FP, "-v", "error", "-show_entries", "format=duration",
-                          "-of", "json", src], capture_output=True, text=True, check=True)
-    return float(json.loads(out.stdout)["format"]["duration"])
+    """Duracion en segundos, leida de lo que ffmpeg escribe por stderr.
+
+    No se usa ffprobe: el ffmpeg que trae imageio viene solo, y en muchas
+    maquinas no hay un ffprobe en el PATH.
+    """
+    out = subprocess.run([FF, "-hide_banner", "-i", src],
+                         capture_output=True, text=True).stderr
+    m = re.search(r"Duration:\s*(\d+):(\d+):(\d+\.?\d*)", out)
+    if not m:
+        sys.exit(f"no se puede leer la duracion de {src}")
+    h, mi, s = m.groups()
+    return int(h) * 3600 + int(mi) * 60 + float(s)
 
 
 def firma(path):

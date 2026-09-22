@@ -50,7 +50,7 @@ El texto vive en la mitad superior. Los gráficos, en la inferior.
 Esto vale para los **reels verticales**. Las piezas horizontales de marca van
 en otro registro, el de abajo.
 
-### Piezas horizontales de marca, en inglés
+### Piezas horizontales de marca
 
 Las de YouTube son más editoriales. No llevan las placas del kit: el texto va
 suelto sobre el plano y el verde recuadra sólo lo que importa.
@@ -90,8 +90,19 @@ Se usa `santiago-ways-blanco.png`, que tiene 2500 px de ancho. El verde sólo
 tiene 507 y no aguanta un logo grande. Durante el resto de la pieza no hay
 logo: la marca cierra, no acompaña.
 
-La referencia viva es `video/src/SWCaminoStoriesEN.tsx`. Para volver a decidir
+Cuando el último plano es un primer plano de alguien, el titular del cierre
+baja al sitio de las cartelas. A media altura el recuadro verde cae justo
+sobre la cara, y un rótulo no tapa una cara.
+
+Todo esto vive en `video/src/componentes/CartelaMarca.tsx`, que es de donde
+tiran las piezas de la línea: `Cartela`, `CierreMarca` y `PlacaMarca`. Las
+referencias vivas son `SWCaminoStoriesEN.tsx`, en inglés para YouTube, y
+`SWSocialCaminoES.tsx`, en español para redes. Para volver a decidir
 tipografía hay una muestra de las tres oficiales en `SWMuestraFuentes`.
+
+**En español funciona igual**, sólo cambia el registro: frases cortas y
+llanas, sin adornos. "Tú caminas. Nosotros nos ocupamos del resto",
+"Tu mochila viaja sola", "Tu Camino empieza aquí".
 
 ## Reglas de montaje aprendidas
 
@@ -113,6 +124,20 @@ Estas salieron de revisar piezas reales y ahorran repetir errores:
    cada bloque arranca cuando empieza la frase que ilustra.
 6. **Un gráfico no puede tapar una cara.** Si el plano tiene gente en el
    centro, va donde el gráfico ya se ha retirado.
+7. **Darle ritmo a un testimonio es quitar, no acelerar.** Se transcribe con
+   los silencios finos (`max_speech_duration=4`, `min_silence_duration=0.16`)
+   y se leen las frases una a una: en una entrevista siempre hay un tramo que
+   dice dos veces lo mismo o que se queda a medias. Ése se va entero, cortando
+   por el silencio entre frases. En la pieza social en español eran 9,6
+   segundos de 57,3.
+8. **La juntura del corte se tapa con imagen.** Un corte de audio limpio
+   sigue viéndose si cae a mitad de plano. Encima va un plano de recurso, y
+   sale gratis: los planos que ese mismo corte deja fuera sirven, y así no se
+   repite ninguna toma.
+9. **Antes de cortar, contar cuántos hablan.** El tono no distingue a dos
+   hombres de edad parecida; la envolvente espectral promediada sí. Merece la
+   pena comprobarlo: si en pantalla aparece alguien distinto del que se oye,
+   no es un segundo testimonio, es un plano de recurso.
 
 ## Reglas técnicas de Remotion
 

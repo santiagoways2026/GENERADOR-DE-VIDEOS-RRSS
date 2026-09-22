@@ -40,18 +40,25 @@ from PIL import Image
 
 
 def binarios():
-    """ffmpeg y ffprobe: los de Remotion si estan, si no los del sistema."""
-    aqui = os.path.dirname(os.path.abspath(__file__))
-    comp = os.path.join(aqui, "..", "..", "video", "node_modules",
-                        "@remotion", "compositor-linux-x64-gnu")
-    ff, fp = os.path.join(comp, "ffmpeg"), os.path.join(comp, "ffprobe")
-    if os.path.exists(ff) and os.path.exists(fp):
-        return ff, fp
+    """Busca un ffmpeg completo.
+
+    El que trae Remotion en node_modules sirve para renderizar, pero es una
+    compilacion recortada: le faltan filtros que aqui hacen falta, entre ellos
+    `fps`. Asi que va el ultimo, solo por si no hay otro.
+    """
+    ff = None
     try:
         import imageio_ffmpeg
         ff = imageio_ffmpeg.get_ffmpeg_exe()
     except ImportError:
         ff = shutil.which("ffmpeg")
+    if not ff:
+        aqui = os.path.dirname(os.path.abspath(__file__))
+        comp = os.path.join(aqui, "..", "..", "video", "node_modules",
+                            "@remotion", "compositor-linux-x64-gnu")
+        cand = os.path.join(comp, "ffmpeg")
+        if os.path.exists(cand):
+            ff = cand
     if not ff:
         sys.exit("no encuentro ffmpeg")
     fp = shutil.which("ffprobe")
@@ -137,7 +144,7 @@ def muestrear(src, zona, n, desde, hasta):
     tmp = tempfile.mkdtemp()
     fps = max(n / max(hasta - desde, 0.1), 0.1)
     cmd = [FF, "-v", "error", "-ss", str(desde), "-t", str(hasta - desde), "-i", src,
-           "-vf", f"fps={fps:.4f},crop={w}:{h}:{x}:{y}", "-y",
+           "-vf", f"fps=fps={fps:.4f},crop={w}:{h}:{x}:{y}", "-y",
            os.path.join(tmp, "m_%05d.png")]
     subprocess.run(cmd, check=True)
     fs = sorted(os.listdir(tmp))
