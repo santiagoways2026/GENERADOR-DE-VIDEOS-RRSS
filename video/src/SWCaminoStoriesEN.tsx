@@ -9,8 +9,7 @@ import {
   useCurrentFrame,
 } from "remotion";
 import "./fuentes";
-import "@fontsource/manrope/latin-600.css";
-import "@fontsource/manrope/latin-800.css";
+
 import { brand } from "./brand/theme";
 
 /**
@@ -52,7 +51,9 @@ const RECORTE = 11.3;
 /** Duracion final, en segundos. */
 const DURACION = 130.17;
 
-const FUENTE = "Manrope, Montserrat, Poppins, sans-serif";
+/** Montserrat extrabold para los titulares: es la primera de la cascada
+ *  oficial y la que pide el equipo para esta pieza. */
+const FUENTE = "Montserrat, Manrope, Poppins, sans-serif";
 const MARGEN = 64;
 
 /* ------------------------------------------------------------------ *
@@ -214,8 +215,7 @@ const Cartela: React.FC<{
  * el bloque de marca delante, pero con el mismo lenguaje de las cartelas
  * nuevas: blanco con el verde recuadrando lo que remata.
  *
- * Arriba, "Buen Camino", que es literalmente lo ultimo que dice una viajera
- * en la pieza. Debajo queda el hueco del logo, que coloca el equipo.
+ * Arriba queda el hueco del logo, que coloca el equipo.
  * La banda derecha se deja libre para la pantalla final de YouTube, y no se
  * dibuja ningun boton: uno pintado dentro del video invita a pulsar donde no
  * hay nada.
@@ -243,39 +243,25 @@ const Cierre: React.FC<{ total: number }> = ({ total }) => {
           paddingRight: 420,
         }}
       >
-        <div
-          style={{
-            fontFamily: FUENTE,
-            fontSize: 20,
-            fontWeight: 800,
-            letterSpacing: "0.22em",
-            textTransform: "uppercase",
-            color: brand.lime,
-            clipPath: barrido(frame, 0, total),
-          }}
-        >
-          Buen Camino
-        </div>
-
         {/*
           Hueco reservado para el logo: 230 x 58 px, la proporcion 4:1 del
           archivo oficial. Vacio a proposito, para que al colocarlo no haya
           que recolocar nada.
         */}
-        <div style={{ width: 230, height: 58, marginTop: 22, marginBottom: 22 }} />
+        <div style={{ width: 230, height: 58, marginBottom: 30 }} />
 
         <Linea
           trozos={[{ texto: "Your Camino" }]}
           tam={54}
           frame={frame}
-          desde={RELEVO}
+          desde={0}
           total={total}
         />
         <Linea
           trozos={[{ texto: "starts here", destacado: true }]}
           tam={54}
           frame={frame}
-          desde={RELEVO * 2}
+          desde={RELEVO}
           total={total}
         />
 
@@ -287,7 +273,7 @@ const Cierre: React.FC<{ total: number }> = ({ total }) => {
             fontWeight: 700,
             letterSpacing: "0.06em",
             color: brand.white,
-            clipPath: barrido(frame, RELEVO * 3, total),
+            clipPath: barrido(frame, RELEVO * 2, total),
           }}
         >
           santiagoways.com

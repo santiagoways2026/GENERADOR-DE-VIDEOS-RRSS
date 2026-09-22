@@ -1,7 +1,6 @@
 import { AbsoluteFill, Composition, OffthreadVideo, staticFile } from "remotion";
 import "./fuentes";
-import "@fontsource/manrope/latin-600.css";
-import "@fontsource/manrope/latin-800.css";
+
 import { brand } from "./brand/theme";
 import { Logo } from "./componentes/Logo";
 
@@ -15,7 +14,7 @@ import { Logo } from "./componentes/Logo";
  * El texto va abajo porque las caras ocupan la banda central: taparlas seria
  * perder justo lo que hace clicar.
  */
-const FUENTE = "Manrope, Montserrat, Poppins, sans-serif";
+const FUENTE = "Montserrat, Manrope, Poppins, sans-serif";
 
 export const SWMiniaturaEN: React.FC<{ sinLogo?: boolean }> = ({ sinLogo }) => (
   <AbsoluteFill style={{ backgroundColor: brand.forest }}>

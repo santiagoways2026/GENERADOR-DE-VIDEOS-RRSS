@@ -31,7 +31,7 @@ Desplazamiento respecto al origen, desde el primer testimonio: **menos 00:00:11:
 
 ## Cartelas
 
-Texto blanco en mayusculas, sin placa de fondo. El verde no hace de fondo de la
+Montserrat extrabold, peso 800, en blanco y mayusculas, sin placa de fondo. El verde no hace de fondo de la
 linea entera: solo recuadra las palabras que sostienen el mensaje, que es lo que
 deja leer la frase de un vistazo sin que el rotulo se coma el plano. Lo que va
 entre corchetes en esta tabla es lo que lleva recuadro verde.
@@ -48,7 +48,7 @@ franja de arriba es donde caen las caras.
 | 4 | 00:00:47:25 | 00:00:52:09 | ALWAYS A | [PRIVATE ROOM & BATHROOM] | — | Sobre la habitacion, en pantalla desde 00:00:50:00 |
 | 5 | 00:00:56:15 | 00:01:00:24 | HOTELS | [HAND-PICKED & TESTED] | By our own team | NUEVA. Sobre el patio y la terraza |
 | 6 | 00:01:44:10 | 00:01:47:20 | 24/7 SUPPORT | [ALL ALONG THE WAY] | — | Reubicada: donde se pedia pisaba un testimonio |
-| 7 | 00:02:03:00 | 00:02:10:05 | YOUR CAMINO | [STARTS HERE] | santiagoways.com | Cierre. Encima: BUEN CAMINO en lima y el hueco del logo |
+| 7 | 00:02:03:00 | 00:02:10:05 | YOUR CAMINO | [STARTS HERE] | santiagoways.com | Cierre. Encima, el hueco del logo |
 
 ## Cierre
 
@@ -58,7 +58,6 @@ degradado diagonal, y el bloque de marca delante, a la izquierda.
 | | |
 | --- | --- |
 | Entra en | 00:02:03:00, hasta el final |
-| Antetitulo | BUEN CAMINO, en lima. Es lo ultimo que dice una viajera en la pieza |
-| Hueco del logo | x = 64, y = 234, ancho 230, alto 58 px. Hay 127 px libres |
+| Hueco del logo | x = 64, y = 228, ancho 230, alto 58 px |
 | Web | santiagoways.com, debajo del titular |
 | Banda derecha | libre para la pantalla final de YouTube |
