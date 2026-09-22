@@ -32,51 +32,47 @@ Desplazamiento respecto al origen, desde el primer testimonio: **menos 00:00:11:
 ## Cartelas
 
 **Montserrat en peso 900**, el negro, que es el grosor maximo de la familia.
-En minuscula con la inicial en mayuscula, no en caja alta: en mayusculas la misma
-fuente se lee mas estrecha y mas plana, porque se pierden los ascendentes y
-descendentes.
+En minuscula con la inicial en mayuscula, no en caja alta.
 
-Todas las letras en blanco, tambien las recuadradas. El verde no hace de fondo de
-la linea entera: solo recuadra las palabras que sostienen el mensaje. Lo que va
-entre corchetes aqui es lo que lleva recuadro. El pie va en lima.
+Todas las letras en blanco. El verde no hace de fondo de la linea entera: solo
+recuadra la frase que sostiene el mensaje, que es la que va entre corchetes en
+esta tabla. Cuando la promesa esta en la primera linea, se recuadra esa, no el
+complemento. Los pies van en blanco, no en lima.
 
 Cuerpo de 72 px, 66 en las lineas mas largas. Las frases se parten en varias
-lineas antes que encogerse para caber en una: ahi esta la contundencia.
+lineas antes que encogerse para caber en una.
 
 Entran con el barrido lateral del kit, 27 fotogramas y 14 de relevo entre lineas,
-y salen con el mismo barrido en 12. Van abajo a la izquierda: en horizontal la
-franja de arriba es donde caen las caras.
+y salen con el mismo barrido en 12. Van abajo a la izquierda.
 
-| # | TC final IN | TC final OUT | Linea 1 | Lineas recuadradas | Pie | Nota |
-| --- | --- | --- | --- | --- | --- | --- |
-| 1 | 00:00:00:00 | 00:00:04:03 | Some journeys | [stay with you] | Camino de Santiago · Spain | — |
-| 2 | 00:00:14:18 | 00:00:19:18 | You walk. | [We take care] / [of the details] | — | — |
-| 3 | 00:00:35:19 | 00:00:39:15 | Luggage transfers | [included] | Hotel to hotel | — |
-| 4 | 00:00:47:25 | 00:00:52:09 | Always a private | [room & bathroom] | — | Sobre la habitacion, en pantalla desde 00:00:50:00 |
-| 5 | 00:00:56:15 | 00:01:00:24 | Hotels | [hand-picked & tested] | By our own team | Sobre el patio y la terraza |
-| 6 | 00:01:44:10 | 00:01:47:20 | 24/7 support | [all along the way] | — | Reubicada: donde se pedia pisaba un testimonio |
-| 7 | 00:02:03:00 | 00:02:10:05 | Your Camino | [starts here] | santiagoways.com | Cierre. Encima, el hueco del logo |
+| # | TC final IN | TC final OUT | Titular | Pie | Nota |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 00:00:00:00 | 00:00:04:03 | Some journeys / [stay with you] | Camino de Santiago / Spain | — |
+| 2 | 00:00:14:18 | 00:00:19:18 | [You walk.] / We take care / of the details | — | — |
+| 3 | 00:00:35:19 | 00:00:39:15 | Luggage transfers / [included] | Hotel to hotel | — |
+| 4 | 00:00:47:25 | 00:00:52:09 | Always a private / [room & bathroom] | — | Sobre la habitacion, en pantalla desde 00:00:50:00 |
+| 5 | 00:00:56:15 | 00:01:00:24 | Hotels / [hand-picked & tested] | By our own team | Sobre el patio y la terraza |
+| 6 | 00:01:44:10 | 00:01:47:20 | [24/7 support] / all along the way | — | Reubicada: donde se pedia pisaba un testimonio |
+| 7 | 00:02:03:00 | 00:02:06:24 | Your Camino / [starts here] | — | Sobre la catedral, con overlay |
+
+Lo que va entre corchetes lleva el recuadro verde.
 
 ## Cierre
 
-Va en dos tiempos.
+**00:02:03:00 a 00:02:06:24.** Overlay diagonal sobre la catedral, con el titular
+a la izquierda.
 
-**00:02:03:00 a 00:02:06:24.** Overlay diagonal sobre la catedral y el titular a
-la izquierda: *Your Camino* / *starts here*, con el recuadro verde en la segunda
-linea.
-
-**00:02:06:24 al final.** El logo de Santiago Ways, **centrado en el centro exacto
-del cuadro**, entrando con un desvanecimiento sobre un fondo verde bosque que se
-funde encima de la catedral. Debajo, santiagoways.com en lima. La pieza termina
-ahi, en la marca, sin fundido a negro.
+**00:02:06:24 al final.** Placa de marca: el logo centrado en el centro exacto del
+cuadro, entrando con un desvanecimiento, y santiagoways.com debajo en blanco.
+La pieza termina ahi, sin fundido a negro.
 
 | | |
 | --- | --- |
 | Logo | `santiago-ways-blanco.png`, 460 px de ancho, centrado |
-| Fondo | verde bosque `#184834`, entra en 22 fotogramas |
-| Logo y web | entran 10 fotogramas despues, en 24, con una subida de 10 px |
-| Banda derecha | ya no hace falta reservarla: el cierre es simetrico |
+| Fondo | degradado a 145 grados dentro de la escala de verdes de la guia: olivo `#7AA606`, verde oscuro `#668814` y `#4F6B0F` |
+| Web | santiagoways.com, en blanco |
+| Entradas | el fondo en 22 fotogramas; logo y web 10 despues, en 24, con una subida de 10 px |
 
 Se usa el logo blanco y no el verde porque el blanco es el archivo de alta
-resolucion, 2500 px de ancho, y a 460 px no se amplia nada. El verde solo tiene
-507 px. Blanco sobre bosque es ademas lo que manda el manual.
+resolucion, 2500 px de ancho. El verde solo tiene 507 px. Blanco sobre olivo es
+ademas lo que manda el manual.

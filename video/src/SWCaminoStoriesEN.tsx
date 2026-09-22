@@ -10,7 +10,7 @@ import {
 } from "remotion";
 import "./fuentes";
 
-import { brand } from "./brand/theme";
+import { brand, scale } from "./brand/theme";
 import { Logo } from "./componentes/Logo";
 
 /**
@@ -181,7 +181,8 @@ const Linea: React.FC<{
  */
 const Cartela: React.FC<{
   lineas: Trozo[][];
-  pie?: string;
+  /** Pie al pie del titular. Varias entradas, varias lineas. */
+  pie?: string[];
   total: number;
   tam?: number;
 }> = ({ lineas, pie, total, tam = 72 }) => {
@@ -208,13 +209,16 @@ const Cartela: React.FC<{
               fontFamily: FUENTE,
               fontSize: 21,
               fontWeight: 700,
+              lineHeight: 1.3,
               letterSpacing: "0.01em",
-              color: brand.lime,
+              color: brand.white,
               clipPath: barrido(frame, RELEVO * lineas.length, total),
               textShadow: "0 2px 14px rgba(8,22,15,0.55)",
             }}
           >
-            {pie}
+            {pie.map((l) => (
+              <div key={l}>{l}</div>
+            ))}
           </div>
         ) : null}
       </div>
@@ -281,9 +285,13 @@ const Cierre: React.FC<{ total: number; salidaTexto: number }> = ({ total, salid
  * Placa de marca final.
  *
  * El logo va centrado y entra con un desvanecimiento sobre la catedral, que
- * se apaga detras. Blanco sobre bosque, que es lo que manda el manual: el
- * archivo blanco es ademas el de alta resolucion, 2500 px de ancho, asi que
- * aguanta el tamano grande sin ampliarse.
+ * se apaga detras. Blanco sobre el verde olivo de marca, que es lo que manda
+ * el manual: el archivo blanco es ademas el de alta resolucion, 2500 px de
+ * ancho, asi que aguanta el tamano grande sin ampliarse.
+ *
+ * El fondo lleva un degradado suave dentro de la propia escala de verdes de
+ * la guia, del olivo al verde oscuro, para que la placa no sea un plano de
+ * color liso.
  *
  * La pieza termina aqui, en la marca, sin fundido a negro.
  */
@@ -307,7 +315,12 @@ const PlacaMarca: React.FC<{ total: number }> = ({ total }) => {
 
   return (
     <AbsoluteFill>
-      <AbsoluteFill style={{ backgroundColor: brand.forest, opacity: fondo }} />
+      <AbsoluteFill
+        style={{
+          background: `linear-gradient(145deg, ${brand.green} 0%, ${brand.greenDark} 52%, ${scale.green[7]} 100%)`,
+          opacity: fondo,
+        }}
+      />
       {/* El logo, centrado en el centro exacto del cuadro. */}
       <AbsoluteFill
         style={{
@@ -336,7 +349,7 @@ const PlacaMarca: React.FC<{ total: number }> = ({ total }) => {
             fontSize: 26,
             fontWeight: 700,
             letterSpacing: "0.06em",
-            color: brand.lime,
+            color: brand.white,
           }}
         >
           santiagoways.com
@@ -381,7 +394,7 @@ export const SWCaminoStoriesEN: React.FC = () => {
       <Sequence from={f(0)} durationInFrames={f(4.1)} name="1 · Some journeys stay with you">
         <Cartela
           lineas={[[{ texto: "Some journeys" }], [{ texto: "stay with you", destacado: true }]]}
-          pie="Camino de Santiago · Spain"
+          pie={["Camino de Santiago", "Spain"]}
           total={f(4.1)}
         />
       </Sequence>
@@ -389,9 +402,9 @@ export const SWCaminoStoriesEN: React.FC = () => {
       <Sequence from={f(14.6)} durationInFrames={f(19.6) - f(14.6)} name="2 · You walk">
         <Cartela
           lineas={[
-            [{ texto: "You walk." }],
-            [{ texto: "We take care", destacado: true }],
-            [{ texto: "of the details", destacado: true }],
+            [{ texto: "You walk.", destacado: true }],
+            [{ texto: "We take care" }],
+            [{ texto: "of the details" }],
           ]}
           total={f(19.6) - f(14.6)}
         />
@@ -400,7 +413,7 @@ export const SWCaminoStoriesEN: React.FC = () => {
       <Sequence from={f(35.633)} durationInFrames={f(39.5) - f(35.633)} name="3 · Luggage transfers">
         <Cartela
           lineas={[[{ texto: "Luggage transfers" }], [{ texto: "included", destacado: true }]]}
-          pie="Hotel to hotel"
+          pie={["Hotel to hotel"]}
           total={f(39.5) - f(35.633)}
         />
       </Sequence>
@@ -426,7 +439,7 @@ export const SWCaminoStoriesEN: React.FC = () => {
       <Sequence from={f(56.5)} durationInFrames={f(60.8) - f(56.5)} name="5 · Hand-picked hotels">
         <Cartela
           lineas={[[{ texto: "Hotels" }], [{ texto: "hand-picked & tested", destacado: true }]]}
-          pie="By our own team"
+          pie={["By our own team"]}
           tam={66}
           total={f(60.8) - f(56.5)}
         />
@@ -435,7 +448,7 @@ export const SWCaminoStoriesEN: React.FC = () => {
       {/* Reubicada: donde se pedia pisaba el testimonio de la pareja. */}
       <Sequence from={f(104.35)} durationInFrames={f(107.65) - f(104.35)} name="6 · 24/7 support">
         <Cartela
-          lineas={[[{ texto: "24/7 support" }], [{ texto: "all along the way", destacado: true }]]}
+          lineas={[[{ texto: "24/7 support", destacado: true }], [{ texto: "all along the way" }]]}
           total={f(107.65) - f(104.35)}
           tam={64}
         />

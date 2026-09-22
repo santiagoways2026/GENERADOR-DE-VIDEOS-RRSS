@@ -72,7 +72,7 @@ Se entregan como archivo aparte, sin incrustar, como pediste.
 
 **El cierre lleva el logo.** La pieza termina con el logo de Santiago Ways
 centrado en el centro del cuadro, entrando con un desvanecimiento sobre un fondo
-verde bosque, y santiagoways.com debajo. Se usa el archivo blanco porque es el de
+verde de marca con un degradado suave, y santiagoways.com debajo en blanco. Se usa el archivo blanco porque es el de
 alta resolucion; el verde solo tiene 507 px de ancho y no aguanta ese tamano.
 
 Durante el resto de la pieza no hay logo, como pediste.
