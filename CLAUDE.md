@@ -47,6 +47,52 @@ Las cartelas replican las del kit de motion graphics, no se inventan:
 
 El texto vive en la mitad superior. Los gráficos, en la inferior.
 
+Esto vale para los **reels verticales**. Las piezas horizontales de marca van
+en otro registro, el de abajo.
+
+### Piezas horizontales de marca, en inglés
+
+Las de YouTube son más editoriales. No llevan las placas del kit: el texto va
+suelto sobre el plano y el verde recuadra sólo lo que importa.
+
+- **Montserrat en peso 900**, el negro. Es el grosor máximo de la familia:
+  Manrope no pasa de 800 y Poppins es más estrecha. Si piden "más gruesa", el
+  margen está en el cuerpo, no en el peso, que ya está al tope.
+- **En minúscula con la inicial en mayúscula**, nunca en caja alta. En
+  mayúsculas la misma fuente se lee más estrecha y más plana, porque se
+  pierden ascendentes y descendentes. Es lo que más veces hubo que corregir.
+- **Cuerpo grande**: 72 px sobre lienzo de 1280x720, 66 en las líneas largas.
+  Las frases se parten en varias líneas antes que encogerse para caber en una;
+  ahí está la contundencia. Interletraje `-0.025em`, interlínea `1.02`.
+- **Todas las letras en blanco**, también las que llevan recuadro.
+- **El recuadro verde `#7AA606` va sobre la frase que lleva la promesa**, no
+  sobre el complemento. En "You walk. We take care of the details" se recuadra
+  "You walk."; en "24/7 support all along the way", "24/7 support". Esquinas
+  de 6 px.
+- **Los pies van en blanco**, no en lima. 21 px, peso 700.
+- Abajo a la izquierda, margen de 64 px. Lo de la mitad superior es regla de
+  vertical: en horizontal esa franja es donde caen las caras de los
+  entrevistados.
+- Entran con el barrido lateral del kit, 27 fotogramas y 14 de relevo, y salen
+  con el mismo barrido en 12.
+- Un velo inferior muy suave detrás del texto. Sin él el blanco se pierde en
+  los planos de cielo claro.
+
+**El cierre** es una placa de marca, no un rótulo más:
+
+1. Primero el titular sobre el último plano, con un overlay diagonal.
+2. Después, el logo **centrado en el centro exacto del cuadro**, entrando con
+   un desvanecimiento sobre un degradado a 145 grados dentro de la escala de
+   verdes de la guía: `#7AA606`, `#668814` y `#4F6B0F`.
+3. Debajo, la web en blanco. La pieza termina ahí, sin fundido a negro.
+
+Se usa `santiago-ways-blanco.png`, que tiene 2500 px de ancho. El verde sólo
+tiene 507 y no aguanta un logo grande. Durante el resto de la pieza no hay
+logo: la marca cierra, no acompaña.
+
+La referencia viva es `video/src/SWCaminoStoriesEN.tsx`. Para volver a decidir
+tipografía hay una muestra de las tres oficiales en `SWMuestraFuentes`.
+
 ## Reglas de montaje aprendidas
 
 Estas salieron de revisar piezas reales y ahorran repetir errores:
@@ -144,6 +190,26 @@ blanda que se ve.
 Un aviso más, por no repetir el trabajo: **no se puede deshacer la mezcla.** Se
 probó, que sería lo elegante. Como el logo es casi opaco, dividir por
 `1 - alfa` multiplica por ocho el ruido de compresión y salen colorines.
+
+## Lo que el entorno permite y lo que no
+
+Comprobado en sesiones de Claude Code en la web, para no volver a averiguarlo:
+
+- **Transcribir audio sí se puede**, y conviene: los cortes se deciden con la
+  transcripción delante, no a ojo. Hugging Face y el CDN de OpenAI están
+  bloqueados, pero los modelos de `k2-fsa/sherpa-onnx` se bajan de las
+  releases de GitHub, que sí pasa. `pip install sherpa-onnx` y el modelo
+  `sherpa-onnx-whisper-small.en`, más `silero_vad.onnx` para trocear por voz.
+- **Drive**: se pueden crear carpetas, pero no subir vídeos. El conector pasa
+  el contenido como texto dentro de la conversación y un MP4 de 80 MB no cabe
+  ni de lejos. `drive.google.com` además está denegado por la política de
+  salida.
+- **El chat admite 30 MiB por archivo.** Para entregar un máster hay que
+  trocearlo con `split -b 23m` y que lo peguen con `cat` o `copy /b`. Conviene
+  mandar además una copia comprimida de un solo archivo para revisar.
+- **Remotion renderiza** sin tocar nada: `remotion.config.ts` encuentra el
+  Chromium de `/opt/pw-browsers`. Un montaje de dos minutos a 720p tarda unos
+  diez minutos.
 
 ## Lo que no se hace
 
