@@ -51,8 +51,11 @@ const RECORTE = 11.3;
 /** Duracion final, en segundos. */
 const DURACION = 130.17;
 
-/** Montserrat extrabold para los titulares: es la primera de la cascada
- *  oficial y la que pide el equipo para esta pieza. */
+/**
+ * Montserrat para los titulares: es la primera de la cascada oficial del
+ * manual. Van en peso 900, el negro, que es el grosor de la referencia que
+ * paso el equipo. Todas las letras en blanco, tambien las recuadradas.
+ */
 const FUENTE = "Montserrat, Manrope, Poppins, sans-serif";
 const MARGEN = 64;
 
@@ -143,9 +146,9 @@ const Linea: React.FC<{
         style={{
           fontFamily: FUENTE,
           fontSize: tam,
-          lineHeight: 1.06,
-          fontWeight: 800,
-          letterSpacing: "-0.005em",
+          lineHeight: 1.02,
+          fontWeight: 900,
+          letterSpacing: "-0.02em",
           textTransform: "uppercase",
           color: brand.white,
           whiteSpace: "pre",
@@ -169,7 +172,7 @@ const Cartela: React.FC<{
   pie?: string;
   total: number;
   tam?: number;
-}> = ({ arriba, abajo, pie, total, tam = 50 }) => {
+}> = ({ arriba, abajo, pie, total, tam = 54 }) => {
   const frame = useCurrentFrame();
   return (
     <AbsoluteFill
@@ -252,14 +255,14 @@ const Cierre: React.FC<{ total: number }> = ({ total }) => {
 
         <Linea
           trozos={[{ texto: "Your Camino" }]}
-          tam={54}
+          tam={58}
           frame={frame}
           desde={0}
           total={total}
         />
         <Linea
           trozos={[{ texto: "starts here", destacado: true }]}
-          tam={54}
+          tam={58}
           frame={frame}
           desde={RELEVO}
           total={total}
@@ -329,7 +332,7 @@ export const SWCaminoStoriesEN: React.FC = () => {
           arriba={[{ texto: "You walk." }]}
           abajo={[{ texto: "We take care of the details", destacado: true }]}
           total={f(19.6) - f(14.6)}
-          tam={46}
+          tam={50}
         />
       </Sequence>
 
@@ -351,7 +354,7 @@ export const SWCaminoStoriesEN: React.FC = () => {
           arriba={[{ texto: "Always a" }]}
           abajo={[{ texto: "private room & bathroom", destacado: true }]}
           total={f(52.3) - f(47.833)}
-          tam={46}
+          tam={50}
         />
       </Sequence>
 

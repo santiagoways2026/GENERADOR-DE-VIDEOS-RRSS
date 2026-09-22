@@ -36,7 +36,7 @@ export const SWMiniaturaEN: React.FC<{ sinLogo?: boolean }> = ({ sinLogo }) => (
       <div
         style={{
           fontFamily: FUENTE,
-          fontWeight: 800,
+          fontWeight: 900,
           fontSize: 76,
           lineHeight: 1.02,
           letterSpacing: "-0.02em",

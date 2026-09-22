@@ -76,7 +76,7 @@ coloqueis vosotros sin recolocar el texto:
 
 | | |
 | --- | --- |
-| Caja del logo | x = 64, y = 228, ancho 230, alto 58 px |
+| Caja del logo | x = 64, y = 226, ancho 230, alto 58 px |
 | Hueco libre total | 88 px de alto, encima del titular |
 | Entra en | 00:02:03:00, y dura hasta el final |
 
@@ -103,8 +103,10 @@ Ningun plano se repite: cada sustitucion trae consigo su propio relevo.
 
 **Siete cartelas** en blanco sobre el plano, sin placa de fondo, con el verde de
 marca recuadrando solo las palabras clave. Entran con el barrido lateral del kit.
-Tipografia **Montserrat extrabold**, peso 800, que es la primera de la cascada
-oficial del manual. El cierre recupera el overlay de la primera version: el hueco
+Tipografia **Montserrat en peso 900**, el negro, que es el grosor maximo que tiene
+la familia y el de la referencia que paso el equipo. Montserrat es ademas la
+primera de la cascada oficial del manual. Todas las letras en blanco, tambien las
+que van recuadradas en verde. El cierre recupera el overlay de la primera version: el hueco
 del logo, el titular y **santiagoways.com**.
 
 ---

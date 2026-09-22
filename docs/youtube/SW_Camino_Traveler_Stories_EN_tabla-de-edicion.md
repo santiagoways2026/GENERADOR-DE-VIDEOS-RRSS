@@ -31,7 +31,7 @@ Desplazamiento respecto al origen, desde el primer testimonio: **menos 00:00:11:
 
 ## Cartelas
 
-Montserrat extrabold, peso 800, en blanco y mayusculas, sin placa de fondo. El verde no hace de fondo de la
+Montserrat en peso 900, el negro, en blanco y mayusculas, sin placa de fondo. El verde no hace de fondo de la
 linea entera: solo recuadra las palabras que sostienen el mensaje, que es lo que
 deja leer la frase de un vistazo sin que el rotulo se coma el plano. Lo que va
 entre corchetes en esta tabla es lo que lleva recuadro verde.
@@ -58,6 +58,6 @@ degradado diagonal, y el bloque de marca delante, a la izquierda.
 | | |
 | --- | --- |
 | Entra en | 00:02:03:00, hasta el final |
-| Hueco del logo | x = 64, y = 228, ancho 230, alto 58 px |
+| Hueco del logo | x = 64, y = 226, ancho 230, alto 58 px |
 | Web | santiagoways.com, debajo del titular |
 | Banda derecha | libre para la pantalla final de YouTube |
