@@ -5,3 +5,6 @@ dist
 
 # Ignore the output video from Git but not videos you import into src/.
 out
+
+# Montajes de origen: pesan y no son planos recortados
+public/montajes/
