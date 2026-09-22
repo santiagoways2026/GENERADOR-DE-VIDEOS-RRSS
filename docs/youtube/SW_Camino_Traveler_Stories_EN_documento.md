@@ -76,8 +76,8 @@ coloqueis vosotros sin recolocar el texto:
 
 | | |
 | --- | --- |
-| Caja del logo | x = 64, y = 368, ancho 230, alto 58 px |
-| Hueco libre total | de y = 338 a y = 463, 126 px de alto |
+| Caja del logo | x = 64, y = 453, ancho 230, alto 58 px |
+| Hueco libre total | 58 px de alto, con 26 px de aire hasta la placa |
 | Entra en | 00:02:03:00, y dura hasta el final |
 
 La caja mantiene la proporcion 4:1 del archivo oficial `santiago-ways-blanco.png`.
@@ -101,17 +101,21 @@ tapan, para que el audio no se mueva ni un fotograma:
 
 Ningun plano se repite: cada sustitucion trae consigo su propio relevo.
 
-**Seis cartelas**, las que pediste, con dos cambios que explico abajo.
+**Siete cartelas**, con las placas del kit: blanca arriba con el dato en bosque,
+olivo debajo con el complemento en mayusculas, barrido lateral de entrada. La
+septima, el cierre, remata en lima y lleva **santiagoways.com**.
 
 ---
 
 ## 6. Donde me he apartado del briefing, y por que
 
-**1. "Your own room" no la he puesto.** Dice: "Si el producto especifico que se
-presenta no lo garantiza, deten esa afirmacion". No puedo verificar que el viaje
-garantice habitacion individual: el material no lo dice y yo no tengo acceso al
-producto. He usado tu alternativa, **"Comfortable stays. / Time to recharge."**
-Si me confirmas que la habitacion privada esta garantizada, lo cambio en un minuto.
+**1. La habitacion privada ya va, porque la confirmaste.** En la primera version
+puse "Comfortable stays" porque no podia verificar la garantia. Al confirmarme que
+los hoteles estan seleccionados y testados por el equipo y que siempre llevan
+habitacion y bano privados, la afirmacion pasa a ser tuya y la pieza la dice:
+**"Always a private room. / AND A PRIVATE BATHROOM"**, justo sobre el plano de la
+habitacion. Y se suma una segunda, **"Hand-picked hotels. / TESTED BY OUR OWN
+TEAM"**, sobre los exteriores de los alojamientos.
 
 **2. La cartela de "24/7 support" la he movido.** La pedias sobre 00:01:46:14 a
 00:01:50:07 del origen. Ahi, segun la transcripcion, esta sonando el testimonio mas

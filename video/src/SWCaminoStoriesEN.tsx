@@ -27,7 +27,10 @@ import { brand } from "./brand/theme";
  *    momento: sigue siendo la pista original, continua, sin un solo corte.
  *    Por eso los planos sustituidos duran exactamente lo mismo que el hueco
  *    que tapan.
- * 3. Pone seis cartelas en ingles.
+ * 3. Pone siete cartelas en ingles, con las placas del kit de motion
+ *    graphics: blanca con el dato en bosque, olivo o lima debajo con el
+ *    complemento en mayusculas. Entran con el barrido lateral del kit,
+ *    27 fotogramas y 14 de relevo, no con un fundido.
  * 4. NO lleva logo: lo coloca el equipo despues. En el cierre queda el hueco
  *    reservado, 230 x 58 px, para que entre sin recolocar el texto.
  *
@@ -78,164 +81,148 @@ const SUSTITUCIONES: Sustitucion[] = [
  * Cartelas
  * ------------------------------------------------------------------ */
 
-/** Entradas y salidas suaves, 7 fotogramas. Sin rebote. */
-const suave = (frame: number, total: number, fade = 7) =>
-  interpolate(frame, [0, fade, total - fade, total], [0, 1, 1, 0], {
+/* ------------------------------------------------------------------ *
+ * Cartelas: las placas del kit, adaptadas a 1280x720
+ * ------------------------------------------------------------------ */
+
+/** 896 ms del kit, a 30 fps. */
+const BARRIDO = 27;
+/** 480 ms de relevo entre placas. */
+const RELEVO = 14;
+/** Salida: el mismo barrido al reves, mas corto. */
+const CIERRE_BARRIDO = 12;
+
+/**
+ * Barrido de izquierda a derecha para entrar y de izquierda a derecha para
+ * salir, de forma que la placa se descubre y se recoge por el mismo lado.
+ */
+const barrido = (frame: number, desde: number, total: number) => {
+  const entra = interpolate(frame, [desde, desde + BARRIDO], [100, 0], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
     easing: Easing.bezier(0.22, 0.61, 0.36, 1),
   });
-
-/** Degradado suave por detras del texto, en vez de una caja opaca. */
-const Velo: React.FC<{ lado: "abajo" | "todo"; opacidad: number }> = ({ lado, opacidad }) => (
-  <AbsoluteFill
-    style={{
-      background:
-        lado === "abajo"
-          ? `linear-gradient(to top, rgba(10,26,18,${opacidad}) 0%, rgba(10,26,18,${
-              opacidad * 0.55
-            }) 34%, rgba(10,26,18,0) 62%)`
-          : `linear-gradient(105deg, rgba(10,26,18,${opacidad}) 0%, rgba(10,26,18,${
-              opacidad * 0.6
-            }) 45%, rgba(10,26,18,0.12) 100%)`,
-    }}
-  />
-);
-
-const Cartela: React.FC<{
-  titular: string;
-  apoyo?: string;
-  total: number;
-  /** El titular a dos lineas se parte aqui, no por ancho de caja. */
-  segunda?: string;
-}> = ({ titular, segunda, apoyo, total }) => {
-  const frame = useCurrentFrame();
-  const o = suave(frame, total);
-  const y = interpolate(frame, [0, 10], [14, 0], {
+  const sale = interpolate(frame, [total - CIERRE_BARRIDO, total], [0, 100], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
     easing: Easing.bezier(0.22, 0.61, 0.36, 1),
   });
-
-  return (
-    <AbsoluteFill style={{ opacity: o }}>
-      <Velo lado="abajo" opacidad={0.62} />
-      <AbsoluteFill
-        style={{
-          justifyContent: "flex-end",
-          alignItems: "flex-start",
-          padding: MARGEN,
-          transform: `translateY(${y}px)`,
-        }}
-      >
-        <div style={{ maxWidth: 820 }}>
-          <div
-            style={{
-              fontFamily: FUENTE,
-              fontWeight: 800,
-              fontSize: 46,
-              lineHeight: 1.12,
-              color: brand.white,
-              letterSpacing: "-0.015em",
-              textShadow: "0 2px 18px rgba(8,22,15,0.45)",
-            }}
-          >
-            {titular}
-            {segunda ? (
-              <>
-                <br />
-                {segunda}
-              </>
-            ) : null}
-          </div>
-          {apoyo ? (
-            <div
-              style={{
-                marginTop: 12,
-                fontFamily: FUENTE,
-                fontWeight: 600,
-                fontSize: 21,
-                letterSpacing: "0.04em",
-                color: brand.white,
-                opacity: 0.86,
-              }}
-            >
-              <span style={{ color: brand.lime, marginRight: 10 }}>—</span>
-              {apoyo}
-            </div>
-          ) : null}
-        </div>
-      </AbsoluteFill>
-    </AbsoluteFill>
-  );
+  return `inset(0 ${entra}% 0 ${sale}%)`;
 };
 
 /**
- * Cierre. Se deja libre la banda inferior derecha del cuadro para la
- * pantalla final de YouTube: aqui no se dibuja ningun boton, porque un boton
- * pintado dentro del video invita a pulsar donde no hay nada.
+ * Dos placas encajadas, como en el kit: la blanca manda y lleva el dato en
+ * bosque; la de abajo remata en olivo, o en lima cuando cierra.
+ *
+ * Van abajo a la izquierda y no arriba, que es donde las pone el manual para
+ * los reels verticales: en horizontal la franja superior es donde caen las
+ * caras de los entrevistados, y taparlas seria perder la pieza.
  */
-const Cierre: React.FC<{ total: number }> = ({ total }) => {
+const Bloque: React.FC<{
+  principal: string;
+  secundaria?: string;
+  total: number;
+  tono?: "olivo" | "lima";
+}> = ({ principal, secundaria, total, tono = "olivo" }) => {
   const frame = useCurrentFrame();
-  const o = suave(frame, total, 8);
-  const y = interpolate(frame, [0, 14], [16, 0], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: Easing.bezier(0.22, 0.61, 0.36, 1),
-  });
+  const abajo =
+    tono === "lima"
+      ? { bg: brand.lime, fg: brand.forest }
+      : { bg: brand.green, fg: brand.white };
 
   return (
-    <AbsoluteFill style={{ opacity: o }}>
-      <Velo lado="todo" opacidad={0.68} />
-      <AbsoluteFill
-        style={{
-          justifyContent: "center",
-          alignItems: "flex-start",
-          padding: MARGEN,
-          paddingRight: 470,
-          transform: `translateY(${y}px)`,
-        }}
-      >
+    <>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
         <div
           style={{
-            fontFamily: FUENTE,
-            fontWeight: 800,
-            fontSize: 52,
-            lineHeight: 1.1,
-            color: brand.white,
-            letterSpacing: "-0.015em",
-            textShadow: "0 2px 20px rgba(8,22,15,0.5)",
+            backgroundColor: brand.white,
+            padding: "13px 30px 16px",
+            borderRadius: "6px 6px 0 0",
+            clipPath: barrido(frame, 0, total),
           }}
         >
-          Your Camino
-          <br />
-          starts here.
+          <span
+            style={{
+              display: "block",
+              fontFamily: FUENTE,
+              fontSize: 44,
+              lineHeight: 1,
+              fontWeight: 800,
+              letterSpacing: "-0.015em",
+              color: brand.forest,
+              whiteSpace: "nowrap",
+            }}
+          >
+            {principal}
+          </span>
         </div>
 
-        {/*
-          Hueco reservado para el logo, que se coloca fuera de aqui.
-          Caja de 230 x 58 px, la proporcion 4:1 del archivo oficial, pegada
-          al margen izquierdo de 64 px. Se deja vacia a proposito: asi el
-          texto de arriba y el de abajo no se mueven cuando entre.
-        */}
-        <div style={{ marginTop: 30, width: 230, height: 58 }} />
-
-        <div
-          style={{
-            marginTop: 22,
-            fontFamily: FUENTE,
-            fontWeight: 600,
-            fontSize: 22,
-            letterSpacing: "0.05em",
-            color: brand.lime,
-          }}
-        >
-          Explore our Camino trips
-        </div>
-      </AbsoluteFill>
-    </AbsoluteFill>
+        {secundaria ? (
+          <div
+            style={{
+              backgroundColor: abajo.bg,
+              padding: "10px 30px 12px",
+              borderRadius: "0 6px 6px 6px",
+              clipPath: barrido(frame, RELEVO, total),
+            }}
+          >
+            <span
+              style={{
+                display: "block",
+                fontFamily: FUENTE,
+                fontSize: 21,
+                lineHeight: 1.15,
+                fontWeight: 900,
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                color: abajo.fg,
+                whiteSpace: "nowrap",
+              }}
+            >
+              {secundaria}
+            </span>
+          </div>
+        ) : null}
+      </div>
+    </>
   );
 };
+
+/** El bloque colocado abajo a la izquierda, que es como va en la pieza. */
+const Placas: React.FC<{
+  principal: string;
+  secundaria?: string;
+  total: number;
+  tono?: "olivo" | "lima";
+}> = (props) => (
+  <AbsoluteFill
+    style={{ justifyContent: "flex-end", alignItems: "flex-start", padding: MARGEN }}
+  >
+    <Bloque {...props} />
+  </AbsoluteFill>
+);
+
+/**
+ * Cierre. Las mismas placas, con la de abajo en lima, que es el uso que el
+ * manual le reserva: rematar.
+ *
+ * Encima queda el hueco del logo, que coloca el equipo. La banda derecha se
+ * deja libre para la pantalla final de YouTube, y no se dibuja ningun boton:
+ * un boton pintado dentro del video invita a pulsar donde no hay nada.
+ */
+const Cierre: React.FC<{ total: number }> = ({ total }) => (
+  <AbsoluteFill style={{ justifyContent: "flex-end", alignItems: "flex-start", padding: MARGEN }}>
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+      {/*
+        Hueco reservado para el logo: 230 x 58 px, la proporcion 4:1 del
+        archivo oficial. Se deja vacio a proposito, para que al colocarlo no
+        haya que recolocar las placas.
+      */}
+      <div style={{ width: 230, height: 58, marginBottom: 26 }} />
+      <Bloque principal="Your Camino starts here." secundaria="santiagoways.com" total={total} tono="lima" />
+    </div>
+  </AbsoluteFill>
+);
 
 /* ------------------------------------------------------------------ */
 
@@ -270,31 +257,41 @@ export const SWCaminoStoriesEN: React.FC = () => {
       ))}
 
       <Sequence from={f(0)} durationInFrames={f(4.1)} name="1 · Some journeys stay with you">
-        <Cartela
-          titular="Some journeys stay with you."
-          apoyo="Camino de Santiago, Spain"
-          total={f(4.1)}
-        />
+        <Placas principal="Some journeys stay with you." secundaria="Camino de Santiago · Spain" total={f(4.1)} />
       </Sequence>
 
       <Sequence from={f(14.6)} durationInFrames={f(19.6) - f(14.6)} name="2 · You walk">
-        <Cartela titular="You walk." segunda="We take care of the details." total={f(19.6) - f(14.6)} />
+        <Placas principal="You walk." secundaria="We take care of the details" total={f(19.6) - f(14.6)} />
       </Sequence>
 
       <Sequence from={f(35.633)} durationInFrames={f(39.5) - f(35.633)} name="3 · Luggage transfers">
-        <Cartela titular="Luggage transfers included." total={f(39.5) - f(35.633)} />
+        <Placas principal="Luggage transfers included." secundaria="From one hotel to the next" total={f(39.5) - f(35.633)} />
       </Sequence>
 
-      <Sequence from={f(47.833)} durationInFrames={f(52.467) - f(47.833)} name="4 · Comfortable stays">
-        <Cartela titular="Comfortable stays." segunda="Time to recharge." total={f(52.467) - f(47.833)} />
+      {/*
+        Cae sobre la habitacion, que entra en pantalla en 00:00:50:00, y sobre
+        la frase del viajero: "there's nothing better than laying down in a
+        nice clean bed and a shower after a long day of hiking".
+      */}
+      <Sequence from={f(47.833)} durationInFrames={f(52.3) - f(47.833)} name="4 · Private room">
+        <Placas principal="Always a private room." secundaria="And a private bathroom" total={f(52.3) - f(47.833)} />
+      </Sequence>
+
+      {/*
+        Sobre el patio de piedra y la terraza, que son alojamiento. Empieza en
+        56,5 y no antes: entre 54,9 y 56,5 hay un plano de campo, y una cartela
+        de hoteles encima de un prado no la sostiene nadie.
+      */}
+      <Sequence from={f(56.5)} durationInFrames={f(60.8) - f(56.5)} name="5 · Hand-picked hotels">
+        <Placas principal="Hand-picked hotels." secundaria="Tested by our own team" total={f(60.8) - f(56.5)} />
       </Sequence>
 
       {/* Reubicada: donde se pedia pisaba el testimonio de la pareja. */}
-      <Sequence from={f(104.45)} durationInFrames={f(107.6) - f(104.45)} name="5 · 24/7 support">
-        <Cartela titular="24/7 support along the way." total={f(107.6) - f(104.45)} />
+      <Sequence from={f(104.35)} durationInFrames={f(107.65) - f(104.35)} name="6 · 24/7 support">
+        <Placas principal="24/7 support." secundaria="All along the way" total={f(107.65) - f(104.35)} />
       </Sequence>
 
-      <Sequence from={finCierre} durationInFrames={total - finCierre} name="6 · Cierre de marca">
+      <Sequence from={finCierre} durationInFrames={total - finCierre} name="7 · Cierre de marca">
         <Cierre total={total - finCierre} />
       </Sequence>
     </AbsoluteFill>

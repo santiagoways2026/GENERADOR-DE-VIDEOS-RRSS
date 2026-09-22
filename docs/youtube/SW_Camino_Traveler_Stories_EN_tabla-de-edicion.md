@@ -31,11 +31,28 @@ Desplazamiento respecto al origen, desde el primer testimonio: **menos 00:00:11:
 
 ## Cartelas
 
-| # | TC final IN | TC final OUT | Texto | Nota |
-| --- | --- | --- | --- | --- |
-| 1 | 00:00:00:00 | 00:00:04:03 | Some journeys stay with you. / Camino de Santiago, Spain | Como se pidio |
-| 2 | 00:00:14:18 | 00:00:19:18 | You walk. / We take care of the details. | Como se pidio |
-| 3 | 00:00:35:19 | 00:00:39:15 | Luggage transfers included. | Como se pidio |
-| 4 | 00:00:47:25 | 00:00:52:14 | Comfortable stays. / Time to recharge. | CAMBIADA: no puedo verificar que el producto garantice habitacion individual |
-| 5 | 00:01:44:14 | 00:01:47:18 | 24/7 support along the way. | REUBICADA: donde se pedia pisaba el testimonio de la pareja |
-| 6 | 00:02:03:00 | 00:02:10:05 | Your Camino starts here. / [logo] / Explore our Camino trips | Como se pidio |
+Placas del kit de motion graphics: la blanca lleva el dato en bosque y peso 800,
+la de abajo el complemento en mayusculas y peso negro. Entran con el barrido
+lateral de 27 fotogramas, con 14 de relevo entre placas, y salen con el mismo
+barrido en 12. Van abajo a la izquierda: en horizontal la franja de arriba es
+donde caen las caras.
+
+| # | TC final IN | TC final OUT | Placa blanca | Placa inferior | Tono | Nota |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | 00:00:00:00 | 00:00:04:03 | Some journeys stay with you. | CAMINO DE SANTIAGO · SPAIN | olivo | — |
+| 2 | 00:00:14:18 | 00:00:19:18 | You walk. | WE TAKE CARE OF THE DETAILS | olivo | — |
+| 3 | 00:00:35:19 | 00:00:39:15 | Luggage transfers included. | FROM ONE HOTEL TO THE NEXT | olivo | — |
+| 4 | 00:00:47:25 | 00:00:52:09 | Always a private room. | AND A PRIVATE BATHROOM | olivo | Cae sobre la habitacion, en pantalla desde 00:00:50:00 |
+| 5 | 00:00:56:15 | 00:01:00:24 | Hand-picked hotels. | TESTED BY OUR OWN TEAM | olivo | NUEVA. Sobre el patio y la terraza |
+| 6 | 00:01:44:10 | 00:01:47:20 | 24/7 support. | ALL ALONG THE WAY | olivo | Reubicada: donde se pedia pisaba un testimonio |
+| 7 | 00:02:03:00 | 00:02:10:05 | Your Camino starts here. | SANTIAGOWAYS.COM | lima | Placa inferior en lima. Encima, el hueco del logo |
+
+## Hueco del logo
+
+| | |
+| --- | --- |
+| Caja | x = 64, y = 453, ancho 230, alto 58 px |
+| Aparece en | 00:02:03:00, hasta el final |
+
+Queda justo encima de la placa blanca del cierre, con 26 px de aire. La caja
+mantiene la proporcion 4:1 de `santiago-ways-blanco.png`.
