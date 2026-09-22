@@ -12,7 +12,6 @@ import "./fuentes";
 import "@fontsource/manrope/latin-600.css";
 import "@fontsource/manrope/latin-800.css";
 import { brand } from "./brand/theme";
-import { Logo } from "./componentes/Logo";
 
 /**
  * Santiago Ways · Camino de Santiago · Traveler Stories.
@@ -29,7 +28,8 @@ import { Logo } from "./componentes/Logo";
  *    Por eso los planos sustituidos duran exactamente lo mismo que el hueco
  *    que tapan.
  * 3. Pone seis cartelas en ingles.
- * 4. Lleva el logo real, discreto, desde el primer fotograma.
+ * 4. NO lleva logo: lo coloca el equipo despues. En el cierre queda el hueco
+ *    reservado, 230 x 58 px, para que entre sin recolocar el texto.
  *
  * Por que el audio no se corta: la pista trae voz y musica mezcladas en el
  * mismo canal. Cualquier corte dentro de una frase se oye, y cualquier corte
@@ -212,7 +212,13 @@ const Cierre: React.FC<{ total: number }> = ({ total }) => {
           starts here.
         </div>
 
-        <Logo variante="blanco" ancho={230} style={{ marginTop: 30, opacity: 0.98 }} />
+        {/*
+          Hueco reservado para el logo, que se coloca fuera de aqui.
+          Caja de 230 x 58 px, la proporcion 4:1 del archivo oficial, pegada
+          al margen izquierdo de 64 px. Se deja vacia a proposito: asi el
+          texto de arriba y el de abajo no se mueven cuando entre.
+        */}
+        <div style={{ marginTop: 30, width: 230, height: 58 }} />
 
         <div
           style={{
@@ -262,13 +268,6 @@ export const SWCaminoStoriesEN: React.FC = () => {
           />
         </Sequence>
       ))}
-
-      {/* La marca acompana discreta hasta que entra el cierre, que ya es marca. */}
-      <Sequence durationInFrames={finCierre} name="Logo discreto">
-        <AbsoluteFill style={{ padding: MARGEN, justifyContent: "flex-start", alignItems: "flex-end" }}>
-          <Logo variante="blanco" ancho={132} style={{ opacity: 0.82 }} />
-        </AbsoluteFill>
-      </Sequence>
 
       <Sequence from={f(0)} durationInFrames={f(4.1)} name="1 · Some journeys stay with you">
         <Cartela

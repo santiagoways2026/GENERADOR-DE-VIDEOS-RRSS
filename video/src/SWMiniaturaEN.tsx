@@ -17,7 +17,7 @@ import { Logo } from "./componentes/Logo";
  */
 const FUENTE = "Manrope, Montserrat, Poppins, sans-serif";
 
-export const SWMiniaturaEN: React.FC = () => (
+export const SWMiniaturaEN: React.FC<{ sinLogo?: boolean }> = ({ sinLogo }) => (
   <AbsoluteFill style={{ backgroundColor: brand.forest }}>
     <OffthreadVideo
       src={staticFile("montajes/testimonios-EN.mp4")}
@@ -50,11 +50,13 @@ export const SWMiniaturaEN: React.FC = () => (
         <span style={{ color: brand.lime }}>STARTS HERE</span>
       </div>
     </AbsoluteFill>
-    <AbsoluteFill
-      style={{ justifyContent: "flex-start", alignItems: "flex-end", padding: 44 }}
-    >
-      <Logo variante="blanco" ancho={188} style={{ opacity: 0.95 }} />
-    </AbsoluteFill>
+    {sinLogo ? null : (
+      <AbsoluteFill
+        style={{ justifyContent: "flex-start", alignItems: "flex-end", padding: 44 }}
+      >
+        <Logo variante="blanco" ancho={188} style={{ opacity: 0.95 }} />
+      </AbsoluteFill>
+    )}
   </AbsoluteFill>
 );
 

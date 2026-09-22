@@ -46,6 +46,12 @@ los que propusiste, sin cambios.
 
 `SW_Camino_Traveler_Stories_EN_thumbnail.png`, 1280x720.
 
+Se entregan **dos versiones**, con logo y sin el, porque la marca la poneis
+vosotros y no se si eso alcanza tambien a la miniatura:
+
+- `SW_Camino_Traveler_Stories_EN_thumbnail.png`, con el logo arriba a la derecha.
+- `SW_Camino_Traveler_Stories_EN_thumbnail_sin-logo.png`, con esa esquina libre.
+
 Sale del fotograma que indicaste, las viajeras ensenando su Compostela, tomado en
 00:02:11:27 del montaje de origen. Ninguna cara esta retocada ni recolocada.
 
@@ -63,6 +69,19 @@ Se entregan como archivo aparte, sin incrustar, como pediste.
 ---
 
 ## 5. Que he cambiado
+
+**Sin logo.** La pieza sale sin marca, como pediste: ni el logo discreto de la
+esquina ni el del cierre. En el cierre queda el hueco reservado para que lo
+coloqueis vosotros sin recolocar el texto:
+
+| | |
+| --- | --- |
+| Caja del logo | x = 64, y = 368, ancho 230, alto 58 px |
+| Hueco libre total | de y = 338 a y = 463, 126 px de alto |
+| Entra en | 00:02:03:00, y dura hasta el final |
+
+La caja mantiene la proporcion 4:1 del archivo oficial `santiago-ways-blanco.png`.
+Si lo poneis mas grande, hay 126 px de alto libres antes de tocar el texto.
 
 **Apertura.** Fuera los 11,30 s de cabecera. El montaje entra por el segundo 11,30
 del original, asi que el primer testimonio pasa de 00:00:15:23 a 00:00:04:14.
