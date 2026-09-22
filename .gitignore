@@ -5,3 +5,6 @@ video/out/
 # Los planos ya recortados que usa cada pieza sí entran, en video/public/brutos/,
 # porque sin ellos el proyecto no se puede renderizar.
 brutos-originales/
+
+# Python
+__pycache__/

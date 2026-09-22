@@ -99,10 +99,29 @@ está bloqueada.
 ```bash
 python3 herramientas/scripts/planos.py bruto.mp4      # dónde empieza cada toma
 python3 herramientas/scripts/catalogar.py bruto.mp4 hoja.jpg   # verlo de un vistazo
+python3 herramientas/scripts/marca-agua.py viejo.mp4 limpio.mp4 \
+    --zona 410,290,230,70 --desde 1.335 --hasta 59.27   # quitar un logo pegado
 ```
 
 Los planos recortados viven en `video/public/brutos/`. Los brutos completos no
 entran en el repositorio: pesan y se sustituyen a menudo.
+
+### Reaprovechar piezas antiguas
+
+Las piezas viejas de la agencia llevan el logo pegado en una esquina durante
+todo el metraje y cartelas de marca al principio y al final. `marca-agua.py`
+aprende el logo del propio vídeo, dibuja su silueta y la rellena con lo que hay
+alrededor, y de paso recorta por donde se le diga.
+
+Dos avisos, por no repetir el trabajo:
+
+- **No se puede deshacer la mezcla.** Se probó: como el logo es casi opaco,
+  dividir por `1 - alfa` multiplica por ocho el ruido de compresión y salen
+  colorines. Rellenar la silueta es menos vistoso y es lo que queda limpio.
+- **El relleno se nota sobre fondos con mucho contraste.** Un plano de bosque a
+  contraluz deja una banda blanda donde estaba el logo. Si la pieza es
+  importante, sale mejor recortar con un poco de zoom y perder el borde
+  inferior que rellenar.
 
 ## Lo que no se hace
 
