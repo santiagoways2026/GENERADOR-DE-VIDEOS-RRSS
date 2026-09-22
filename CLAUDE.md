@@ -110,6 +110,20 @@ por dónde cortar las cartelas.
 Los planos recortados viven en `video/public/brutos/`. Los brutos completos no
 entran en el repositorio: pesan y se sustituyen a menudo.
 
+Hay dos juegos de planos y conviene saber cuál se coge:
+
+| Carpeta | Qué es | Resolución |
+| --- | --- | --- |
+| `brutos/` | Los 29 planos del reel original | 1920x1080 |
+| `brutos/testimonios/` | 83 planos recurso de las piezas de testimonios | 1280x720 |
+
+Los de `testimonios/` dan variedad, sobre todo de alojamiento, gastronomía y
+llegada a Santiago, pero son de menos resolución: para un primer plano grande o
+un encuadre que recorte mucho, mejor los de 1080p. Se usan poniendo la
+subcarpeta delante, `src: "testimonios/prado-flores"`, porque `Planos` compone
+la ruta sola. La lista completa, agrupada por tema, está en el README de esa
+carpeta.
+
 ### Reaprovechar piezas antiguas
 
 Las piezas viejas de la agencia llevan el logo pegado en una esquina durante
