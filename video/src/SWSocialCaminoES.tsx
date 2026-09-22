@@ -53,6 +53,15 @@ const f = (s: number) => Math.round(s * FPS);
 /** Duracion final, en segundos: 47,15 de montaje mas la placa de marca. */
 const DURACION = 50.2;
 
+/**
+ * Cuerpo de las cartelas. Mas pequeno que los 72 px de la pieza en ingles:
+ * ahi el entrevistado esta a media altura y aqui en primer plano, asi que
+ * un titular de tres lineas a 72 le llega a la barbilla. Con este cuerpo
+ * todas caben en dos lineas y el texto se queda por debajo de la cara.
+ * El titular del cierre si va a 72: detras tiene la catedral, no una cara.
+ */
+const TAM = 58;
+
 /** El montaje ya recortado, con el audio continuo. */
 const BASE = "montajes/social-ES.mp4";
 /**
@@ -61,6 +70,8 @@ const BASE = "montajes/social-ES.mp4";
  * ve una sola vez en la pieza, solo que en otro sitio.
  */
 const RECURSOS = "montajes/social-ES-limpio.mp4";
+/** La fachada del Obradoiro, de la biblioteca de planos recurso. */
+const OBRADOIRO = "brutos/testimonios/fachada-obradoiro.mp4";
 
 /* ------------------------------------------------------------------ *
  * Planos de recurso. Solo imagen: el audio de debajo sigue corriendo.
@@ -71,8 +82,10 @@ type Insercion = {
   desde: number;
   /** Salida en el montaje final, en segundos. */
   hasta: number;
-  /** Segundo del archivo limpio del que sale la imagen. */
+  /** Segundo del archivo del que sale la imagen. */
   origen: number;
+  /** De donde sale. Por defecto, el limpio entero. */
+  fuente?: string;
   nombre: string;
 };
 
@@ -86,6 +99,18 @@ const INSERCIONES: Insercion[] = [
   // Rompe los 4,2 s de entrevista seguida, justo sobre "con la mochila y
   // toda la ropa para varios dias".
   { desde: 34.6, hasta: 36.4, origen: 26.7, nombre: "Mochila · caminante con equipaje" },
+  // El cierre no se dice sobre la cara del peregrino, se dice sobre la
+  // catedral. La fachada del Obradoiro viene de la biblioteca de recursos,
+  // que no la ha usado nadie en esta pieza: los dos planos de catedral que
+  // ya lleva son mas abiertos y desde otro sitio, asi que esto es un
+  // acercamiento, no una toma repetida.
+  {
+    desde: 42.35,
+    hasta: 47.15,
+    origen: 0.15,
+    fuente: OBRADOIRO,
+    nombre: "Cierre · fachada del Obradoiro",
+  },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -116,7 +141,7 @@ export const SWSocialCaminoES: React.FC = () => {
           name={s.nombre}
         >
           <OffthreadVideo
-            src={staticFile(RECURSOS)}
+            src={staticFile(s.fuente ?? RECURSOS)}
             trimBefore={f(s.origen)}
             muted
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
@@ -125,11 +150,12 @@ export const SWSocialCaminoES: React.FC = () => {
       ))}
 
       {/* 1 · "venir al Camino de Santiago era un desafio personal" */}
-      <Sequence from={f(0.4)} durationInFrames={f(5.3) - f(0.4)} name="1 · Nunca es tarde">
+      <Sequence from={f(0.4)} durationInFrames={f(5.3) - f(0.4)} name="1 · Algunos viajes">
         <Cartela
-          lineas={[[{ texto: "Nunca es tarde" }], [{ texto: "para el Camino", destacado: true }]]}
+          lineas={[[{ texto: "Algunos viajes" }], [{ texto: "dejan huella", destacado: true }]]}
           pie={["Camino de Santiago", "España"]}
           total={f(5.3) - f(0.4)}
+          tam={TAM}
         />
       </Sequence>
 
@@ -138,20 +164,20 @@ export const SWSocialCaminoES: React.FC = () => {
         <Cartela
           lineas={[
             [{ texto: "Tú caminas.", destacado: true }],
-            [{ texto: "Nosotros nos ocupamos" }],
-            [{ texto: "del resto" }],
+            [{ texto: "Nosotros nos ocupamos del resto" }],
           ]}
           total={f(15.8) - f(11.2)}
+          tam={TAM}
         />
       </Sequence>
 
       {/* 3 · "como con los dos alojamientos que llevamos" */}
       <Sequence from={f(17.4)} durationInFrames={f(21.6) - f(17.4)} name="3 · Hoteles">
         <Cartela
-          lineas={[[{ texto: "Hoteles" }], [{ texto: "elegidos y probados", destacado: true }]]}
-          pie={["Por nuestro propio equipo", "Habitación y baño privados"]}
+          lineas={[[{ texto: "Hoteles" }], [{ texto: "seleccionados", destacado: true }]]}
+          pie={["Habitación y baño privados"]}
           total={f(21.6) - f(17.4)}
-          tam={66}
+          tam={TAM}
         />
       </Sequence>
 
@@ -163,16 +189,8 @@ export const SWSocialCaminoES: React.FC = () => {
       <Sequence from={f(26.8)} durationInFrames={f(31.0) - f(26.8)} name="4 · Tu mochila">
         <Cartela
           lineas={[[{ texto: "Tu mochila" }], [{ texto: "viaja sola", destacado: true }]]}
-          pie={["Transporte de equipaje, de hotel a hotel"]}
           total={f(31.0) - f(26.8)}
-        />
-      </Sequence>
-
-      {/* 5 · Sobre la catedral, que es donde acaba el camino que cuenta. */}
-      <Sequence from={f(37.7)} durationInFrames={f(42.0) - f(37.7)} name="5 · Y al final, Santiago">
-        <Cartela
-          lineas={[[{ texto: "Y al final," }], [{ texto: "Santiago", destacado: true }]]}
-          total={f(42.0) - f(37.7)}
+          tam={TAM}
         />
       </Sequence>
 

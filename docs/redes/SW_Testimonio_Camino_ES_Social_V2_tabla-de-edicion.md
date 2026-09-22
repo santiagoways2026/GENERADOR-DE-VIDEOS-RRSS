@@ -1,4 +1,4 @@
-# Testimonio del Camino · español · redes · V1
+# Testimonio del Camino · español · redes · V2
 
 Pieza de 50,2 s, 1280x720 a 30 fps. Sale de la pieza social antigua, que
 duraba 60,1 s con cartela de agencia, fundido final y dos marcas de agua.
@@ -46,24 +46,35 @@ repite ninguna.
 | 5,80 s | 7,75 s | Camino abierto con una peregrina | La apertura se quedaba 6,2 s en el mismo contraluz |
 | 24,55 s | 26,35 s | Dos peregrinas con mochila | Tapa la juntura del corte, que cae en 25,10 |
 | 34,60 s | 36,40 s | Peregrino con mochila grande | Rompe 4,2 s de entrevista seguida |
+| 42,35 s | 47,15 s | Fachada del Obradoiro | El cierre se dice sobre la catedral, no sobre la cara |
+
+Los tres primeros salen del propio metraje. El cuarto viene de
+`video/public/brutos/testimonios/fachada-obradoiro.mp4`, de la biblioteca de
+planos recurso: los dos planos de catedral que la pieza ya lleva son más
+abiertos y desde otro sitio, así que esto es un acercamiento y no una toma
+repetida. La pieza cierra con tres planos de la catedral encadenados, de lo
+general al detalle.
 
 ## Cartelas
 
 | Entra | Sale | Texto | Pie | Sobre qué |
 | --- | --- | --- | --- | --- |
-| 0,40 s | 5,30 s | Nunca es tarde / **para el Camino** | Camino de Santiago · España | «venir al Camino era un desafío personal» |
-| 11,20 s | 15,80 s | **Tú caminas.** / Nosotros nos ocupamos / del resto | — | «estamos muy contentos con la organización» |
-| 17,40 s | 21,60 s | Hoteles / **elegidos y probados** | Por nuestro propio equipo · Habitación y baño privados | «los dos alojamientos que llevamos» |
-| 26,80 s | 31,00 s | Tu mochila / **viaja sola** | Transporte de equipaje, de hotel a hotel | «el servicio de recogida de equipaje», sobre el plano de las maletas |
-| 37,70 s | 42,00 s | Y al final, / **Santiago** | — | Sobre la catedral |
+| 0,40 s | 5,30 s | Algunos viajes / **dejan huella** | Camino de Santiago · España | «venir al Camino era un desafío personal» |
+| 11,20 s | 15,80 s | **Tú caminas.** / Nosotros nos ocupamos del resto | — | «estamos muy contentos con la organización» |
+| 17,40 s | 21,60 s | Hoteles / **seleccionados** | Habitación y baño privados | «los dos alojamientos que llevamos» |
+| 26,80 s | 31,00 s | Tu mochila / **viaja sola** | — | «el servicio de recogida de equipaje», sobre el plano de las maletas |
 
 En negrita, lo que lleva el recuadro verde.
 
+Todas a 58 px y en dos líneas. En la pieza en inglés el cuerpo es de 72, pero
+allí el entrevistado está a media altura; aquí está en primer plano y una
+tercera línea le llega a la barbilla.
+
 ## Cierre
 
-1. 43,60 s · «Tu Camino / **empieza aquí**» sobre el último plano, con el
-   overlay diagonal. Va abajo y no a media altura: el último plano es un
-   primer plano y a media altura el recuadro cae sobre la cara.
+1. 43,60 s · «Tu Camino / **empieza aquí**» sobre la fachada del Obradoiro,
+   con el overlay diagonal. La voz del peregrino sigue sonando por debajo:
+   lo que se sustituye es sólo la imagen.
 2. 46,55 s · Placa de marca. Logo blanco centrado sobre el degradado de
    verdes de la guía, y `santiagoways.com` debajo en blanco.
 
@@ -77,7 +88,7 @@ Termina en la marca, sin fundido a negro.
   tramo de voz. Es una sola: los dos hombres distintos que salen en pantalla
   son planos de recurso, no un segundo testimonio.
 - Ninguna toma se repite, ni entre bloques contiguos ni en toda la pieza.
-- Ninguna cartela cae sobre una cara.
+- Ninguna cartela cae sobre una cara, comprobado fotograma a fotograma.
 
 ## Lo que falta decidir
 

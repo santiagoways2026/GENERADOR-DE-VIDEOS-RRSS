@@ -90,9 +90,18 @@ Se usa `santiago-ways-blanco.png`, que tiene 2500 px de ancho. El verde sólo
 tiene 507 y no aguanta un logo grande. Durante el resto de la pieza no hay
 logo: la marca cierra, no acompaña.
 
-Cuando el último plano es un primer plano de alguien, el titular del cierre
-baja al sitio de las cartelas. A media altura el recuadro verde cae justo
-sobre la cara, y un rótulo no tapa una cara.
+**El cierre se dice sobre el sitio, no sobre la cara.** Si la pieza termina
+con el entrevistado en primer plano, se sustituye sólo la imagen por un plano
+de la catedral o del Obradoiro, que es lo que remata. La voz sigue corriendo
+por debajo. Y aun así el titular del cierre va abajo, al sitio de las
+cartelas: a media altura el recuadro verde cae justo sobre la cara si el plano
+cambia, y un rótulo no tapa una cara.
+
+**Dos líneas por cartela como máximo, y el cuerpo según lo cerca que esté la
+gente.** 72 px valen cuando el entrevistado está a media altura; con él en
+primer plano hay que bajar a 58 y partir la frase en dos, no en tres. Una
+tercera línea le llega a la barbilla. Antes de dar una cartela por buena, se
+mira el fotograma.
 
 Todo esto vive en `video/src/componentes/CartelaMarca.tsx`, que es de donde
 tiran las piezas de la línea: `Cartela`, `CierreMarca` y `PlacaMarca`. Las
@@ -101,8 +110,11 @@ referencias vivas son `SWCaminoStoriesEN.tsx`, en inglés para YouTube, y
 tipografía hay una muestra de las tres oficiales en `SWMuestraFuentes`.
 
 **En español funciona igual**, sólo cambia el registro: frases cortas y
-llanas, sin adornos. "Tú caminas. Nosotros nos ocupamos del resto",
-"Tu mochila viaja sola", "Tu Camino empieza aquí".
+llanas, sin adornos, y el pie sólo cuando añade algo que el titular no dice.
+Las aprobadas: "Algunos viajes dejan huella", "Tú caminas. Nosotros nos
+ocupamos del resto", "Hoteles seleccionados" con "Habitación y baño privados"
+de pie, "Tu mochila viaja sola" a secas, y "Tu Camino empieza aquí" en el
+cierre.
 
 ## Reglas de montaje aprendidas
 
