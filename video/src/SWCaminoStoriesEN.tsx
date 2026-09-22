@@ -11,6 +11,7 @@ import {
 import "./fuentes";
 
 import { brand } from "./brand/theme";
+import { Logo } from "./componentes/Logo";
 
 /**
  * Santiago Ways · Camino de Santiago · Traveler Stories.
@@ -53,8 +54,14 @@ const DURACION = 130.17;
 
 /**
  * Montserrat para los titulares: es la primera de la cascada oficial del
- * manual. Van en peso 900, el negro, que es el grosor de la referencia que
- * paso el equipo. Todas las letras en blanco, tambien las recuadradas.
+ * manual. Van en peso 900, el negro, que es el grosor maximo de la familia.
+ *
+ * En minuscula con la inicial en mayuscula, no en caja alta. Es lo que pide
+ * el equipo y ademas es lo que da el carater de la referencia: en mayusculas
+ * la misma fuente se lee mas estrecha y mas plana, porque se pierden los
+ * ascendentes y descendentes.
+ *
+ * Todas las letras en blanco, tambien las que van recuadradas en verde.
  */
 const FUENTE = "Montserrat, Manrope, Poppins, sans-serif";
 const MARGEN = 64;
@@ -148,8 +155,7 @@ const Linea: React.FC<{
           fontSize: tam,
           lineHeight: 1.02,
           fontWeight: 900,
-          letterSpacing: "-0.02em",
-          textTransform: "uppercase",
+          letterSpacing: "-0.025em",
           color: brand.white,
           whiteSpace: "pre",
           backgroundColor: t.destacado ? brand.green : "transparent",
@@ -165,14 +171,20 @@ const Linea: React.FC<{
   </div>
 );
 
-/** Cartela de dos lineas, abajo a la izquierda, con un pie opcional. */
+/**
+ * Cartela de una a tres lineas, abajo a la izquierda, con un pie opcional.
+ *
+ * El cuerpo es grande a proposito: en las referencias del equipo el titular
+ * ocupa el doble de alto respecto al cuadro que un rotulo normal, y ahi es
+ * donde esta la contundencia, no solo en el peso de la fuente. Por eso las
+ * frases se parten en varias lineas en vez de encogerse para caber en una.
+ */
 const Cartela: React.FC<{
-  arriba: Trozo[];
-  abajo: Trozo[];
+  lineas: Trozo[][];
   pie?: string;
   total: number;
   tam?: number;
-}> = ({ arriba, abajo, pie, total, tam = 54 }) => {
+}> = ({ lineas, pie, total, tam = 72 }) => {
   const frame = useCurrentFrame();
   return (
     <AbsoluteFill
@@ -182,24 +194,23 @@ const Cartela: React.FC<{
       <AbsoluteFill
         style={{
           background:
-            "linear-gradient(to top, rgba(10,26,18,0.55) 0%, rgba(10,26,18,0.26) 30%, rgba(10,26,18,0) 58%)",
+            "linear-gradient(to top, rgba(10,26,18,0.58) 0%, rgba(10,26,18,0.28) 34%, rgba(10,26,18,0) 64%)",
         }}
       />
       <div style={{ position: "relative" }}>
-        <Linea trozos={arriba} tam={tam} frame={frame} desde={0} total={total} />
-        <Linea trozos={abajo} tam={tam} frame={frame} desde={RELEVO} total={total} />
+        {lineas.map((l, i) => (
+          <Linea key={i} trozos={l} tam={tam} frame={frame} desde={RELEVO * i} total={total} />
+        ))}
         {pie ? (
           <div
             style={{
-              marginTop: 14,
+              marginTop: 18,
               fontFamily: FUENTE,
-              fontSize: 19,
-              fontWeight: 600,
-              letterSpacing: "0.10em",
-              textTransform: "uppercase",
-              color: brand.white,
-              opacity: 0.88,
-              clipPath: barrido(frame, RELEVO * 2, total),
+              fontSize: 21,
+              fontWeight: 700,
+              letterSpacing: "0.01em",
+              color: brand.lime,
+              clipPath: barrido(frame, RELEVO * lineas.length, total),
               textShadow: "0 2px 14px rgba(8,22,15,0.55)",
             }}
           >
@@ -223,7 +234,7 @@ const Cartela: React.FC<{
  * dibuja ningun boton: uno pintado dentro del video invita a pulsar donde no
  * hay nada.
  */
-const Cierre: React.FC<{ total: number }> = ({ total }) => {
+const Cierre: React.FC<{ total: number; salidaTexto: number }> = ({ total, salidaTexto }) => {
   const frame = useCurrentFrame();
   const o = interpolate(frame, [0, 10], [0, 1], {
     extrapolateLeft: "clamp",
@@ -246,37 +257,86 @@ const Cierre: React.FC<{ total: number }> = ({ total }) => {
           paddingRight: 420,
         }}
       >
-        {/*
-          Hueco reservado para el logo: 230 x 58 px, la proporcion 4:1 del
-          archivo oficial. Vacio a proposito, para que al colocarlo no haya
-          que recolocar nada.
-        */}
-        <div style={{ width: 230, height: 58, marginBottom: 30 }} />
-
         <Linea
           trozos={[{ texto: "Your Camino" }]}
-          tam={58}
+          tam={72}
           frame={frame}
           desde={0}
-          total={total}
+          total={salidaTexto}
         />
         <Linea
           trozos={[{ texto: "starts here", destacado: true }]}
-          tam={58}
+          tam={72}
           frame={frame}
           desde={RELEVO}
-          total={total}
+          total={salidaTexto}
         />
 
+      </AbsoluteFill>
+    </AbsoluteFill>
+  );
+};
+
+/**
+ * Placa de marca final.
+ *
+ * El logo va centrado y entra con un desvanecimiento sobre la catedral, que
+ * se apaga detras. Blanco sobre bosque, que es lo que manda el manual: el
+ * archivo blanco es ademas el de alta resolucion, 2500 px de ancho, asi que
+ * aguanta el tamano grande sin ampliarse.
+ *
+ * La pieza termina aqui, en la marca, sin fundido a negro.
+ */
+const PlacaMarca: React.FC<{ total: number }> = ({ total }) => {
+  const frame = useCurrentFrame();
+  const fondo = interpolate(frame, [0, 22], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+    easing: Easing.bezier(0.22, 0.61, 0.36, 1),
+  });
+  const marca = interpolate(frame, [10, 34], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+    easing: Easing.bezier(0.22, 0.61, 0.36, 1),
+  });
+  const sube = interpolate(frame, [10, 34], [10, 0], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+    easing: Easing.bezier(0.22, 0.61, 0.36, 1),
+  });
+
+  return (
+    <AbsoluteFill>
+      <AbsoluteFill style={{ backgroundColor: brand.forest, opacity: fondo }} />
+      {/* El logo, centrado en el centro exacto del cuadro. */}
+      <AbsoluteFill
+        style={{
+          justifyContent: "center",
+          alignItems: "center",
+          opacity: marca,
+          transform: `translateY(${sube}px)`,
+        }}
+      >
+        <Logo variante="blanco" ancho={460} />
+      </AbsoluteFill>
+
+      {/* La web cuelga debajo sin desplazar el logo. */}
+      <AbsoluteFill
+        style={{
+          justifyContent: "center",
+          alignItems: "center",
+          paddingTop: 210,
+          opacity: marca,
+          transform: `translateY(${sube}px)`,
+        }}
+      >
         <div
           style={{
-            marginTop: 26,
             fontFamily: FUENTE,
             fontSize: 26,
             fontWeight: 700,
             letterSpacing: "0.06em",
-            color: brand.white,
-            clipPath: barrido(frame, RELEVO * 2, total),
+            color: brand.lime,
           }}
         >
           santiagoways.com
@@ -320,8 +380,7 @@ export const SWCaminoStoriesEN: React.FC = () => {
 
       <Sequence from={f(0)} durationInFrames={f(4.1)} name="1 · Some journeys stay with you">
         <Cartela
-          arriba={[{ texto: "Some journeys" }]}
-          abajo={[{ texto: "stay with you", destacado: true }]}
+          lineas={[[{ texto: "Some journeys" }], [{ texto: "stay with you", destacado: true }]]}
           pie="Camino de Santiago · Spain"
           total={f(4.1)}
         />
@@ -329,17 +388,19 @@ export const SWCaminoStoriesEN: React.FC = () => {
 
       <Sequence from={f(14.6)} durationInFrames={f(19.6) - f(14.6)} name="2 · You walk">
         <Cartela
-          arriba={[{ texto: "You walk." }]}
-          abajo={[{ texto: "We take care of the details", destacado: true }]}
+          lineas={[
+            [{ texto: "You walk." }],
+            [{ texto: "We take care", destacado: true }],
+            [{ texto: "of the details", destacado: true }],
+          ]}
           total={f(19.6) - f(14.6)}
-          tam={50}
         />
       </Sequence>
 
       <Sequence from={f(35.633)} durationInFrames={f(39.5) - f(35.633)} name="3 · Luggage transfers">
         <Cartela
-          arriba={[{ texto: "Luggage transfers" }]}
-          abajo={[{ texto: "included", destacado: true }, { texto: "hotel to hotel" }]}
+          lineas={[[{ texto: "Luggage transfers" }], [{ texto: "included", destacado: true }]]}
+          pie="Hotel to hotel"
           total={f(39.5) - f(35.633)}
         />
       </Sequence>
@@ -351,10 +412,9 @@ export const SWCaminoStoriesEN: React.FC = () => {
       */}
       <Sequence from={f(47.833)} durationInFrames={f(52.3) - f(47.833)} name="4 · Private room">
         <Cartela
-          arriba={[{ texto: "Always a" }]}
-          abajo={[{ texto: "private room & bathroom", destacado: true }]}
+          lineas={[[{ texto: "Always a private" }], [{ texto: "room & bathroom", destacado: true }]]}
           total={f(52.3) - f(47.833)}
-          tam={50}
+          tam={66}
         />
       </Sequence>
 
@@ -365,9 +425,9 @@ export const SWCaminoStoriesEN: React.FC = () => {
       */}
       <Sequence from={f(56.5)} durationInFrames={f(60.8) - f(56.5)} name="5 · Hand-picked hotels">
         <Cartela
-          arriba={[{ texto: "Hotels" }]}
-          abajo={[{ texto: "hand-picked & tested", destacado: true }]}
+          lineas={[[{ texto: "Hotels" }], [{ texto: "hand-picked & tested", destacado: true }]]}
           pie="By our own team"
+          tam={66}
           total={f(60.8) - f(56.5)}
         />
       </Sequence>
@@ -375,14 +435,18 @@ export const SWCaminoStoriesEN: React.FC = () => {
       {/* Reubicada: donde se pedia pisaba el testimonio de la pareja. */}
       <Sequence from={f(104.35)} durationInFrames={f(107.65) - f(104.35)} name="6 · 24/7 support">
         <Cartela
-          arriba={[{ texto: "24/7 support" }]}
-          abajo={[{ texto: "all along the way", destacado: true }]}
+          lineas={[[{ texto: "24/7 support" }], [{ texto: "all along the way", destacado: true }]]}
           total={f(107.65) - f(104.35)}
+          tam={64}
         />
       </Sequence>
 
-      <Sequence from={finCierre} durationInFrames={total - finCierre} name="7 · Cierre de marca">
-        <Cierre total={total - finCierre} />
+      <Sequence from={finCierre} durationInFrames={total - finCierre} name="7 · Your Camino starts here">
+        <Cierre total={total - finCierre} salidaTexto={f(126.8) - finCierre} />
+      </Sequence>
+
+      <Sequence from={f(126.8)} durationInFrames={total - f(126.8)} name="8 · Placa de marca">
+        <PlacaMarca total={total - f(126.8)} />
       </Sequence>
     </AbsoluteFill>
   );

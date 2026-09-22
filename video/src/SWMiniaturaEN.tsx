@@ -37,16 +37,25 @@ export const SWMiniaturaEN: React.FC<{ sinLogo?: boolean }> = ({ sinLogo }) => (
         style={{
           fontFamily: FUENTE,
           fontWeight: 900,
-          fontSize: 76,
-          lineHeight: 1.02,
-          letterSpacing: "-0.02em",
+          fontSize: 78,
+          lineHeight: 1.12,
+          letterSpacing: "-0.025em",
           color: brand.white,
           textShadow: "0 3px 24px rgba(8,22,15,0.6)",
         }}
       >
-        YOUR CAMINO
+        Your Camino
         <br />
-        <span style={{ color: brand.lime }}>STARTS HERE</span>
+        <span
+          style={{
+            backgroundColor: brand.green,
+            padding: "6px 18px",
+            borderRadius: 8,
+            display: "inline-block",
+          }}
+        >
+          starts here
+        </span>
       </div>
     </AbsoluteFill>
     {sinLogo ? null : (

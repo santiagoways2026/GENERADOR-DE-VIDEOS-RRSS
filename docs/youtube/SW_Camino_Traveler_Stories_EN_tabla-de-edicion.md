@@ -31,33 +31,52 @@ Desplazamiento respecto al origen, desde el primer testimonio: **menos 00:00:11:
 
 ## Cartelas
 
-Montserrat en peso 900, el negro, en blanco y mayusculas, sin placa de fondo. El verde no hace de fondo de la
-linea entera: solo recuadra las palabras que sostienen el mensaje, que es lo que
-deja leer la frase de un vistazo sin que el rotulo se coma el plano. Lo que va
-entre corchetes en esta tabla es lo que lleva recuadro verde.
+**Montserrat en peso 900**, el negro, que es el grosor maximo de la familia.
+En minuscula con la inicial en mayuscula, no en caja alta: en mayusculas la misma
+fuente se lee mas estrecha y mas plana, porque se pierden los ascendentes y
+descendentes.
+
+Todas las letras en blanco, tambien las recuadradas. El verde no hace de fondo de
+la linea entera: solo recuadra las palabras que sostienen el mensaje. Lo que va
+entre corchetes aqui es lo que lleva recuadro. El pie va en lima.
+
+Cuerpo de 72 px, 66 en las lineas mas largas. Las frases se parten en varias
+lineas antes que encogerse para caber en una: ahi esta la contundencia.
 
 Entran con el barrido lateral del kit, 27 fotogramas y 14 de relevo entre lineas,
 y salen con el mismo barrido en 12. Van abajo a la izquierda: en horizontal la
 franja de arriba es donde caen las caras.
 
-| # | TC final IN | TC final OUT | Linea 1 | Linea 2 | Pie | Nota |
+| # | TC final IN | TC final OUT | Linea 1 | Lineas recuadradas | Pie | Nota |
 | --- | --- | --- | --- | --- | --- | --- |
-| 1 | 00:00:00:00 | 00:00:04:03 | SOME JOURNEYS | [STAY WITH YOU] | Camino de Santiago · Spain | — |
-| 2 | 00:00:14:18 | 00:00:19:18 | YOU WALK. | [WE TAKE CARE OF THE DETAILS] | — | — |
-| 3 | 00:00:35:19 | 00:00:39:15 | LUGGAGE TRANSFERS | [INCLUDED] HOTEL TO HOTEL | — | — |
-| 4 | 00:00:47:25 | 00:00:52:09 | ALWAYS A | [PRIVATE ROOM & BATHROOM] | — | Sobre la habitacion, en pantalla desde 00:00:50:00 |
-| 5 | 00:00:56:15 | 00:01:00:24 | HOTELS | [HAND-PICKED & TESTED] | By our own team | NUEVA. Sobre el patio y la terraza |
-| 6 | 00:01:44:10 | 00:01:47:20 | 24/7 SUPPORT | [ALL ALONG THE WAY] | — | Reubicada: donde se pedia pisaba un testimonio |
-| 7 | 00:02:03:00 | 00:02:10:05 | YOUR CAMINO | [STARTS HERE] | santiagoways.com | Cierre. Encima, el hueco del logo |
+| 1 | 00:00:00:00 | 00:00:04:03 | Some journeys | [stay with you] | Camino de Santiago · Spain | — |
+| 2 | 00:00:14:18 | 00:00:19:18 | You walk. | [We take care] / [of the details] | — | — |
+| 3 | 00:00:35:19 | 00:00:39:15 | Luggage transfers | [included] | Hotel to hotel | — |
+| 4 | 00:00:47:25 | 00:00:52:09 | Always a private | [room & bathroom] | — | Sobre la habitacion, en pantalla desde 00:00:50:00 |
+| 5 | 00:00:56:15 | 00:01:00:24 | Hotels | [hand-picked & tested] | By our own team | Sobre el patio y la terraza |
+| 6 | 00:01:44:10 | 00:01:47:20 | 24/7 support | [all along the way] | — | Reubicada: donde se pedia pisaba un testimonio |
+| 7 | 00:02:03:00 | 00:02:10:05 | Your Camino | [starts here] | santiagoways.com | Cierre. Encima, el hueco del logo |
 
 ## Cierre
 
-Vuelve al overlay de la primera version: la catedral detras, atenuada con un
-degradado diagonal, y el bloque de marca delante, a la izquierda.
+Va en dos tiempos.
+
+**00:02:03:00 a 00:02:06:24.** Overlay diagonal sobre la catedral y el titular a
+la izquierda: *Your Camino* / *starts here*, con el recuadro verde en la segunda
+linea.
+
+**00:02:06:24 al final.** El logo de Santiago Ways, **centrado en el centro exacto
+del cuadro**, entrando con un desvanecimiento sobre un fondo verde bosque que se
+funde encima de la catedral. Debajo, santiagoways.com en lima. La pieza termina
+ahi, en la marca, sin fundido a negro.
 
 | | |
 | --- | --- |
-| Entra en | 00:02:03:00, hasta el final |
-| Hueco del logo | x = 64, y = 226, ancho 230, alto 58 px |
-| Web | santiagoways.com, debajo del titular |
-| Banda derecha | libre para la pantalla final de YouTube |
+| Logo | `santiago-ways-blanco.png`, 460 px de ancho, centrado |
+| Fondo | verde bosque `#184834`, entra en 22 fotogramas |
+| Logo y web | entran 10 fotogramas despues, en 24, con una subida de 10 px |
+| Banda derecha | ya no hace falta reservarla: el cierre es simetrico |
+
+Se usa el logo blanco y no el verde porque el blanco es el archivo de alta
+resolucion, 2500 px de ancho, y a 460 px no se amplia nada. El verde solo tiene
+507 px. Blanco sobre bosque es ademas lo que manda el manual.

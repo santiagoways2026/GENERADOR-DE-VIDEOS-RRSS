@@ -70,18 +70,12 @@ Se entregan como archivo aparte, sin incrustar, como pediste.
 
 ## 5. Que he cambiado
 
-**Sin logo.** La pieza sale sin marca, como pediste: ni el logo discreto de la
-esquina ni el del cierre. En el cierre queda el hueco reservado para que lo
-coloqueis vosotros sin recolocar el texto:
+**El cierre lleva el logo.** La pieza termina con el logo de Santiago Ways
+centrado en el centro del cuadro, entrando con un desvanecimiento sobre un fondo
+verde bosque, y santiagoways.com debajo. Se usa el archivo blanco porque es el de
+alta resolucion; el verde solo tiene 507 px de ancho y no aguanta ese tamano.
 
-| | |
-| --- | --- |
-| Caja del logo | x = 64, y = 226, ancho 230, alto 58 px |
-| Hueco libre total | 88 px de alto, encima del titular |
-| Entra en | 00:02:03:00, y dura hasta el final |
-
-La caja mantiene la proporcion 4:1 del archivo oficial `santiago-ways-blanco.png`.
-Si lo poneis mas grande, hay 126 px de alto libres antes de tocar el texto.
+Durante el resto de la pieza no hay logo, como pediste.
 
 **Apertura.** Fuera los 11,30 s de cabecera. El montaje entra por el segundo 11,30
 del original, asi que el primer testimonio pasa de 00:00:15:23 a 00:00:04:14.
@@ -103,10 +97,12 @@ Ningun plano se repite: cada sustitucion trae consigo su propio relevo.
 
 **Siete cartelas** en blanco sobre el plano, sin placa de fondo, con el verde de
 marca recuadrando solo las palabras clave. Entran con el barrido lateral del kit.
-Tipografia **Montserrat en peso 900**, el negro, que es el grosor maximo que tiene
-la familia y el de la referencia que paso el equipo. Montserrat es ademas la
-primera de la cascada oficial del manual. Todas las letras en blanco, tambien las
-que van recuadradas en verde. El cierre recupera el overlay de la primera version: el hueco
+Tipografia **Montserrat en peso 900**, el negro, que es el grosor maximo de la
+familia y la primera de la cascada oficial del manual. **En minuscula con la
+inicial en mayuscula**, no en caja alta: en mayusculas la misma fuente se lee mas
+estrecha y mas plana. Cuerpo grande, de 72 px, partiendo las frases en varias
+lineas antes que encogerlas para caber en una. Todas las letras en blanco, tambien
+las que van recuadradas en verde. El cierre recupera el overlay de la primera version: el hueco
 del logo, el titular y **santiagoways.com**.
 
 ---
