@@ -103,6 +103,10 @@ python3 herramientas/scripts/marca-agua.py viejo.mp4 limpio.mp4 \
     --zona 410,290,230,70 --desde 1.335 --hasta 59.27   # quitar un logo pegado
 ```
 
+`--zona` es la esquina donde vive el logo, con margen de sobra: no hace falta
+afinarla, el script encuentra la silueta dentro. `--desde` y `--hasta` marcan
+por dónde cortar las cartelas.
+
 Los planos recortados viven en `video/public/brutos/`. Los brutos completos no
 entran en el repositorio: pesan y se sustituyen a menudo.
 
@@ -113,15 +117,19 @@ todo el metraje y cartelas de marca al principio y al final. `marca-agua.py`
 aprende el logo del propio vídeo, dibuja su silueta y la rellena con lo que hay
 alrededor, y de paso recorta por donde se le diga.
 
-Dos avisos, por no repetir el trabajo:
+Hay dos modos y **el bueno es `--modo recorte`**, que es el que va por defecto:
+saca la marca de cuadro cortando por el borde que menos imagen se lleva y
+devuelve el formato original con un zoom corto. Sale limpio del todo. En la
+pieza de 640x360 se comió el 12% por abajo.
 
-- **No se puede deshacer la mezcla.** Se probó: como el logo es casi opaco,
-  dividir por `1 - alfa` multiplica por ocho el ruido de compresión y salen
-  colorines. Rellenar la silueta es menos vistoso y es lo que queda limpio.
-- **El relleno se nota sobre fondos con mucho contraste.** Un plano de bosque a
-  contraluz deja una banda blanda donde estaba el logo. Si la pieza es
-  importante, sale mejor recortar con un poco de zoom y perder el borde
-  inferior que rellenar.
+`--modo relleno` mantiene el encuadre y reconstruye el hueco. Se usa solo si la
+composición no aguanta perder ese borde, porque sobre fondos con mucho
+contraste, un bosque a contraluz o la fachada de la catedral, deja una banda
+blanda que se ve.
+
+Un aviso más, por no repetir el trabajo: **no se puede deshacer la mezcla.** Se
+probó, que sería lo elegante. Como el logo es casi opaco, dividir por
+`1 - alfa` multiplica por ocho el ruido de compresión y salen colorines.
 
 ## Lo que no se hace
 

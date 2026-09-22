@@ -243,6 +243,69 @@ class Borrador:
 
 
 # --------------------------------------------------------------------------
+# recorte: en vez de rellenar, quitar de cuadro la franja donde vive la marca
+
+def calcular_recorte(sil, zona, tam, margen=4):
+    """Decide que recorte deja la marca fuera y devuelve (x, y, ancho, alto).
+
+    Se corta por el borde mas cercano al logo, el que menos imagen se lleva, y
+    luego se reajusta al mismo formato que traia el video para no deformar.
+    Devuelve las coordenadas sobre el fotograma original.
+    """
+    zx, zy, _, _ = zona
+    W, H = tam
+    ys, xs = np.nonzero(sil)
+    ly0, ly1 = ys.min() + zy - margen, ys.max() + zy + margen
+    lx0, lx1 = xs.min() + zx - margen, xs.max() + zx + margen
+
+    # cuanto cuesta sacar la marca por cada lado, en proporcion
+    costes = {"abajo": (H - ly0) / H, "arriba": ly1 / H,
+              "derecha": (W - lx0) / W, "izquierda": lx1 / W}
+    lado = min(costes, key=costes.get)
+    x, y, w, h = 0, 0, W, H
+    if lado == "abajo":
+        h = max(ly0, 1)
+    elif lado == "arriba":
+        y, h = ly1, max(H - ly1, 1)
+    elif lado == "derecha":
+        w = max(lx0, 1)
+    else:
+        x, w = lx1, max(W - lx1, 1)
+
+    # volver al formato original recortando el otro eje, centrado
+    objetivo = W / H
+    if w / h > objetivo:
+        nw = int(round(h * objetivo))
+        x, w = x + (w - nw) // 2, nw
+    else:
+        nh = int(round(w / objetivo))
+        y, h = y + (h - nh) // 2, nh
+
+    w, h = w - (w % 2), h - (h % 2)                 # pares, que x264 lo pide
+    return x, y, w, h, lado, costes[lado]
+
+
+def recortar(src, dst, caja, tam, desde, hasta, calidad,
+             fundido_entrada, fundido_salida):
+    x, y, w, h = caja
+    W, H = tam
+    dur = hasta - desde
+    vf = f"crop={w}:{h}:{x}:{y},scale={W}:{H}:flags=lanczos,setsar=1"
+    af = []
+    if fundido_entrada > 0:
+        af.append(f"afade=t=in:st=0:d={fundido_entrada}")
+    if fundido_salida > 0:
+        af.append(f"afade=t=out:st={max(dur - fundido_salida, 0):.3f}:d={fundido_salida}")
+    cmd = [FF, "-v", "error", "-y", "-ss", str(desde), "-t", str(dur), "-i", src,
+           "-vf", vf, "-c:v", "libx264", "-preset", "slow", "-crf", str(calidad),
+           "-pix_fmt", "yuv420p", "-movflags", "+faststart",
+           "-c:a", "aac", "-b:a", "160k"]
+    if af:
+        cmd += ["-af", ",".join(af)]
+    subprocess.run(cmd + [dst], check=True)
+
+
+# --------------------------------------------------------------------------
 
 def procesar(src, dst, zona, desde, hasta, borrador, tam, fps, calidad,
              fundido_entrada, fundido_salida):
@@ -302,6 +365,9 @@ def main():
     p.add_argument("--aprender-desde", type=float, default=0.0,
                    help="tramo del que se aprende la marca, por defecto el video entero")
     p.add_argument("--aprender-hasta", type=float, default=None)
+    p.add_argument("--modo", choices=("recorte", "relleno"), default="recorte",
+                   help="recorte deja la marca fuera de cuadro y hace un zoom corto; "
+                        "relleno mantiene el encuadre y reconstruye el hueco")
     p.add_argument("--calidad", type=int, default=18, help="crf de x264, menos es mejor")
     p.add_argument("--fundido-entrada", type=float, default=0.0, help="fundido de audio, en segundos")
     p.add_argument("--fundido-salida", type=float, default=0.0)
@@ -321,8 +387,18 @@ def main():
     alfa, color, sil = aprender(A)
     print(f"  silueta {int(sil.sum())} px, opacidad media {alfa[sil].mean():.2f}, "
           f"maxima {alfa.max():.2f}")
-    borrador = Borrador(sil)
 
+    if a.modo == "recorte":
+        x, y, w, h, lado, coste = calcular_recorte(sil, zona, (W, H))
+        print(f"  la marca sale por {lado}: recorte {w}x{h} desde ({x},{y}), "
+              f"zoom {W / w:.3f}x, se pierde el {coste * 100:.1f}% por ese lado")
+        print("recortando...")
+        recortar(a.entrada, a.salida, (x, y, w, h), (W, H), a.desde, a.hasta,
+                 a.calidad, a.fundido_entrada, a.fundido_salida)
+        print(f"listo: {a.salida}")
+        return
+
+    borrador = Borrador(sil)
     if a.vista:
         i = len(A) // 2
         antes = A[i].astype(np.uint8)
