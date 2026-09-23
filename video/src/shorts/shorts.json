@@ -55,36 +55,42 @@
     "desde": 51.0,
     "dur": 2.12,
     "en": 0.0,
+    "src": "hilary/tramos/51.000-53.120.mp4",
     "zoom": 1.0
    },
    {
     "desde": 53.42,
     "dur": 5.91,
     "en": 2.12,
+    "src": "hilary/tramos/53.420-59.330.mp4",
     "zoom": 1.14
    },
    {
     "desde": 79.0,
     "dur": 8.44,
     "en": 8.03,
+    "src": "hilary/tramos/79.000-87.440.mp4",
     "zoom": 1.0
    },
    {
     "desde": 87.58,
     "dur": 14.04,
     "en": 16.47,
+    "src": "hilary/tramos/87.580-101.620.mp4",
     "zoom": 1.14
    },
    {
     "desde": 102.1,
     "dur": 3.58,
     "en": 30.51,
+    "src": "hilary/tramos/102.100-105.680.mp4",
     "zoom": 1.0
    },
    {
     "desde": 674.32,
     "dur": 10.9,
     "en": 34.09,
+    "src": "hilary/tramos/674.320-685.220.mp4",
     "zoom": 1.14
    }
   ],
@@ -872,24 +878,28 @@
     "desde": 148.2,
     "dur": 3.76,
     "en": 0.0,
+    "src": "hilary/tramos/148.200-151.960.mp4",
     "zoom": 1.0
    },
    {
     "desde": 152.58,
     "dur": 6.42,
     "en": 3.76,
+    "src": "hilary/tramos/152.580-159.000.mp4",
     "zoom": 1.14
    },
    {
     "desde": 94.28,
     "dur": 7.34,
     "en": 10.18,
+    "src": "hilary/tramos/94.280-101.620.mp4",
     "zoom": 1.0
    },
    {
     "desde": 674.32,
     "dur": 10.9,
     "en": 17.52,
+    "src": "hilary/tramos/674.320-685.220.mp4",
     "zoom": 1.14
    }
   ],
@@ -1431,24 +1441,28 @@
     "desde": 153.7,
     "dur": 12.78,
     "en": 0.0,
+    "src": "hilary/tramos/153.700-166.480.mp4",
     "zoom": 1.0
    },
    {
     "desde": 166.84,
     "dur": 14.56,
     "en": 12.78,
+    "src": "hilary/tramos/166.840-181.400.mp4",
     "zoom": 1.14
    },
    {
     "desde": 181.76,
     "dur": 6.26,
     "en": 27.34,
+    "src": "hilary/tramos/181.760-188.020.mp4",
     "zoom": 1.0
    },
    {
     "desde": 674.32,
     "dur": 10.9,
     "en": 33.6,
+    "src": "hilary/tramos/674.320-685.220.mp4",
     "zoom": 1.14
    }
   ],
@@ -2226,18 +2240,21 @@
     "desde": 196.32,
     "dur": 22.63,
     "en": 0.0,
+    "src": "hilary/tramos/196.320-218.950.mp4",
     "zoom": 1.0
    },
    {
     "desde": 229.1,
     "dur": 17.18,
     "en": 22.63,
+    "src": "hilary/tramos/229.100-246.280.mp4",
     "zoom": 1.14
    },
    {
     "desde": 674.32,
     "dur": 10.9,
     "en": 39.81,
+    "src": "hilary/tramos/674.320-685.220.mp4",
     "zoom": 1.0
    }
   ],
@@ -3118,18 +3135,21 @@
     "desde": 208.08,
     "dur": 10.87,
     "en": 0.0,
+    "src": "hilary/tramos/208.080-218.950.mp4",
     "zoom": 1.0
    },
    {
     "desde": 218.9,
     "dur": 9.92,
     "en": 10.87,
+    "src": "hilary/tramos/218.900-228.820.mp4",
     "zoom": 1.14
    },
    {
     "desde": 674.32,
     "dur": 10.9,
     "en": 20.79,
+    "src": "hilary/tramos/674.320-685.220.mp4",
     "zoom": 1.0
    }
   ],
@@ -3711,24 +3731,28 @@
     "desde": 266.34,
     "dur": 4.74,
     "en": 0.0,
+    "src": "hilary/tramos/266.340-271.080.mp4",
     "zoom": 1.0
    },
    {
     "desde": 271.28,
     "dur": 18.84,
     "en": 4.74,
+    "src": "hilary/tramos/271.280-290.120.mp4",
     "zoom": 1.14
    },
    {
     "desde": 302.16,
     "dur": 4.94,
     "en": 23.58,
+    "src": "hilary/tramos/302.160-307.100.mp4",
     "zoom": 1.0
    },
    {
     "desde": 674.32,
     "dur": 10.9,
     "en": 28.52,
+    "src": "hilary/tramos/674.320-685.220.mp4",
     "zoom": 1.14
    }
   ],
@@ -4415,24 +4439,28 @@
     "desde": 290.96,
     "dur": 11.25,
     "en": 0.0,
+    "src": "hilary/tramos/290.960-302.210.mp4",
     "zoom": 1.0
    },
    {
     "desde": 274.36,
     "dur": 7.54,
     "en": 11.25,
+    "src": "hilary/tramos/274.360-281.900.mp4",
     "zoom": 1.14
    },
    {
     "desde": 302.16,
     "dur": 4.94,
     "en": 18.79,
+    "src": "hilary/tramos/302.160-307.100.mp4",
     "zoom": 1.0
    },
    {
     "desde": 674.32,
     "dur": 10.9,
     "en": 23.73,
+    "src": "hilary/tramos/674.320-685.220.mp4",
     "zoom": 1.14
    }
   ],
@@ -5054,42 +5082,49 @@
     "desde": 311.4,
     "dur": 4.42,
     "en": 0.0,
+    "src": "hilary/tramos/311.400-315.820.mp4",
     "zoom": 1.0
    },
    {
     "desde": 316.3,
     "dur": 3.82,
     "en": 4.42,
+    "src": "hilary/tramos/316.300-320.120.mp4",
     "zoom": 1.14
    },
    {
     "desde": 335.72,
     "dur": 6.44,
     "en": 8.24,
+    "src": "hilary/tramos/335.720-342.160.mp4",
     "zoom": 1.0
    },
    {
     "desde": 356.86,
     "dur": 8.16,
     "en": 14.68,
+    "src": "hilary/tramos/356.860-365.020.mp4",
     "zoom": 1.14
    },
    {
     "desde": 380.88,
     "dur": 4.24,
     "en": 22.84,
+    "src": "hilary/tramos/380.880-385.120.mp4",
     "zoom": 1.0
    },
    {
     "desde": 397.7,
     "dur": 5.85,
     "en": 27.08,
+    "src": "hilary/tramos/397.700-403.550.mp4",
     "zoom": 1.14
    },
    {
     "desde": 674.32,
     "dur": 10.9,
     "en": 32.93,
+    "src": "hilary/tramos/674.320-685.220.mp4",
     "zoom": 1.0
    }
   ],
@@ -5863,12 +5898,14 @@
     "desde": 356.86,
     "dur": 23.82,
     "en": 0.0,
+    "src": "hilary/tramos/356.860-380.680.mp4",
     "zoom": 1.0
    },
    {
     "desde": 674.32,
     "dur": 10.9,
     "en": 23.82,
+    "src": "hilary/tramos/674.320-685.220.mp4",
     "zoom": 1.14
    }
   ],
@@ -6470,12 +6507,14 @@
     "desde": 397.7,
     "dur": 36.26,
     "en": 0.0,
+    "src": "hilary/tramos/397.700-433.960.mp4",
     "zoom": 1.0
    },
    {
     "desde": 674.32,
     "dur": 10.9,
     "en": 36.26,
+    "src": "hilary/tramos/674.320-685.220.mp4",
     "zoom": 1.14
    }
   ],
@@ -7199,18 +7238,21 @@
     "desde": 438.08,
     "dur": 24.48,
     "en": 0.0,
+    "src": "hilary/tramos/438.080-462.560.mp4",
     "zoom": 1.0
    },
    {
     "desde": 462.8,
     "dur": 7.86,
     "en": 24.48,
+    "src": "hilary/tramos/462.800-470.660.mp4",
     "zoom": 1.14
    },
    {
     "desde": 674.32,
     "dur": 10.9,
     "en": 32.34,
+    "src": "hilary/tramos/674.320-685.220.mp4",
     "zoom": 1.0
    }
   ],
@@ -7862,24 +7904,28 @@
     "desde": 474.34,
     "dur": 5.42,
     "en": 0.0,
+    "src": "hilary/tramos/474.340-479.760.mp4",
     "zoom": 1.0
    },
    {
     "desde": 479.8,
     "dur": 17.06,
     "en": 5.42,
+    "src": "hilary/tramos/479.800-496.860.mp4",
     "zoom": 1.14
    },
    {
     "desde": 505.16,
     "dur": 7.95,
     "en": 22.48,
+    "src": "hilary/tramos/505.160-513.110.mp4",
     "zoom": 1.0
    },
    {
     "desde": 674.32,
     "dur": 10.9,
     "en": 30.43,
+    "src": "hilary/tramos/674.320-685.220.mp4",
     "zoom": 1.14
    }
   ],
@@ -8627,24 +8673,28 @@
     "desde": 474.34,
     "dur": 5.42,
     "en": 0.0,
+    "src": "hilary/tramos/474.340-479.760.mp4",
     "zoom": 1.0
    },
    {
     "desde": 489.66,
     "dur": 7.2,
     "en": 5.42,
+    "src": "hilary/tramos/489.660-496.860.mp4",
     "zoom": 1.14
    },
    {
     "desde": 497.34,
     "dur": 7.32,
     "en": 12.62,
+    "src": "hilary/tramos/497.340-504.660.mp4",
     "zoom": 1.0
    },
    {
     "desde": 674.32,
     "dur": 10.9,
     "en": 19.94,
+    "src": "hilary/tramos/674.320-685.220.mp4",
     "zoom": 1.14
    }
   ],
@@ -9246,12 +9296,14 @@
     "desde": 529.41,
     "dur": 28.15,
     "en": 0.0,
+    "src": "hilary/tramos/529.410-557.560.mp4",
     "zoom": 1.0
    },
    {
     "desde": 674.32,
     "dur": 10.9,
     "en": 28.15,
+    "src": "hilary/tramos/674.320-685.220.mp4",
     "zoom": 1.14
    }
   ],
@@ -9895,24 +9947,28 @@
     "desde": 557.94,
     "dur": 3.8,
     "en": 0.0,
+    "src": "hilary/tramos/557.940-561.740.mp4",
     "zoom": 1.0
    },
    {
     "desde": 562.06,
     "dur": 22.95,
     "en": 3.8,
+    "src": "hilary/tramos/562.060-585.010.mp4",
     "zoom": 1.14
    },
    {
     "desde": 584.96,
     "dur": 14.88,
     "en": 26.75,
+    "src": "hilary/tramos/584.960-599.840.mp4",
     "zoom": 1.0
    },
    {
     "desde": 674.32,
     "dur": 10.9,
     "en": 41.63,
+    "src": "hilary/tramos/674.320-685.220.mp4",
     "zoom": 1.14
    }
   ],
@@ -10794,24 +10850,28 @@
     "desde": 569.24,
     "dur": 7.44,
     "en": 0.0,
+    "src": "hilary/tramos/569.240-576.680.mp4",
     "zoom": 1.0
    },
    {
     "desde": 577.18,
     "dur": 7.83,
     "en": 7.44,
+    "src": "hilary/tramos/577.180-585.010.mp4",
     "zoom": 1.14
    },
    {
     "desde": 563.94,
     "dur": 4.74,
     "en": 15.27,
+    "src": "hilary/tramos/563.940-568.680.mp4",
     "zoom": 1.0
    },
    {
     "desde": 674.32,
     "dur": 10.9,
     "en": 20.01,
+    "src": "hilary/tramos/674.320-685.220.mp4",
     "zoom": 1.14
    }
   ],
@@ -11414,12 +11474,14 @@
     "desde": 609.84,
     "dur": 34.39,
     "en": 0.0,
+    "src": "hilary/tramos/609.840-644.230.mp4",
     "zoom": 1.0
    },
    {
     "desde": 674.32,
     "dur": 10.9,
     "en": 34.39,
+    "src": "hilary/tramos/674.320-685.220.mp4",
     "zoom": 1.14
    }
   ],
@@ -12178,24 +12240,28 @@
     "desde": 10.9,
     "dur": 7.75,
     "en": 0.0,
+    "src": "hilary/tramos/10.900-18.650.mp4",
     "zoom": 1.0
    },
    {
     "desde": 311.4,
     "dur": 4.42,
     "en": 7.75,
+    "src": "hilary/tramos/311.400-315.820.mp4",
     "zoom": 1.14
    },
    {
     "desde": 631.22,
     "dur": 13.01,
     "en": 12.17,
+    "src": "hilary/tramos/631.220-644.230.mp4",
     "zoom": 1.0
    },
    {
     "desde": 674.32,
     "dur": 10.9,
     "en": 25.18,
+    "src": "hilary/tramos/674.320-685.220.mp4",
     "zoom": 1.14
    }
   ],
@@ -12815,12 +12881,14 @@
     "desde": 248.44,
     "dur": 17.22,
     "en": 0.0,
+    "src": "hilary/tramos/248.440-265.660.mp4",
     "zoom": 1.0
    },
    {
     "desde": 674.32,
     "dur": 10.9,
     "en": 17.22,
+    "src": "hilary/tramos/674.320-685.220.mp4",
     "zoom": 1.14
    }
   ],
@@ -13342,12 +13410,14 @@
     "desde": 124.5,
     "dur": 20.04,
     "en": 0.0,
+    "src": "hilary/tramos/124.500-144.540.mp4",
     "zoom": 1.0
    },
    {
     "desde": 674.32,
     "dur": 10.9,
     "en": 20.04,
+    "src": "hilary/tramos/674.320-685.220.mp4",
     "zoom": 1.14
    }
   ],
@@ -13857,12 +13927,14 @@
     "desde": 644.18,
     "dur": 30.04,
     "en": 0.0,
+    "src": "hilary/tramos/644.180-674.220.mp4",
     "zoom": 1.0
    },
    {
     "desde": 674.32,
     "dur": 10.9,
     "en": 30.04,
+    "src": "hilary/tramos/674.320-685.220.mp4",
     "zoom": 1.14
    }
   ],
@@ -14525,12 +14597,14 @@
     "desde": -0.06,
     "dur": 26.4,
     "en": 0.0,
+    "src": "hilary/tramos/-0.060-26.340.mp4",
     "zoom": 1.0
    },
    {
     "desde": 674.32,
     "dur": 10.9,
     "en": 26.4,
+    "src": "hilary/tramos/674.320-685.220.mp4",
     "zoom": 1.14
    }
   ],

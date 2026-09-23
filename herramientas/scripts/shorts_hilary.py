@@ -158,7 +158,10 @@ def construir(tx, spec, outro, idx):
         dur = round(b - a, 3)
         voz.append(dict(desde=a, dur=dur, en=round(t_out, 3)))
         mapa.append((a, b, t_out))
+        # Cada tramo se corta del vídeo limpio con su imagen y su audio en un
+        # mismo archivo: cortar y pegar, sin posibilidad de descuadre.
         video.append(dict(desde=a, dur=dur, en=round(t_out, 3),
+                          src=f"hilary/tramos/{a:.3f}-{b:.3f}.mp4",
                           zoom=1.0 if k % 2 == 0 else 1.14))
         es_outro = k >= n_principal
         if not es_outro:

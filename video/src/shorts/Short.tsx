@@ -1,5 +1,6 @@
 import {
   AbsoluteFill,
+  Audio,
   Easing,
   Img,
   Interactive,
@@ -9,7 +10,6 @@ import {
   staticFile,
   useCurrentFrame,
 } from "remotion";
-import { Audio } from "@remotion/media";
 import "../fuentes";
 import { brand, easeOut, fontFamily, fps, margin } from "../brand/theme";
 import { Cartela } from "../componentes/Cartela";
@@ -44,7 +44,6 @@ const salida = Easing.bezier(...easeOut);
 
 /** Hildary queda algo a la derecha del centro en el bruto horizontal. */
 const ENCUADRE = "55% 38%";
-const LIMPIO = "hilary/limpio.mp4";
 
 /** Barrido lateral del kit: 27 fotogramas. */
 const BARRIDO = 27;
@@ -56,11 +55,14 @@ export const Short: React.FC<{ id: string }> = ({ id }) => {
 
   return (
     <AbsoluteFill style={{ backgroundColor: brand.forest, fontFamily }}>
-      {/* Hildary hablando. Cada tramo alterna el encuadre para que el salto
-          de corte se lea como un cambio de plano. */}
+      {/* Hildary hablando, cortada y pegada del vídeo limpio con su propio
+          audio: imagen y voz salen del mismo clip, así que no pueden
+          descuadrarse. El B-roll va encima y la voz sigue sonando debajo.
+          Cada tramo alterna el encuadre para que el corte se lea como un
+          cambio de plano. */}
       {d.video.map((v, i) => (
         <Sequence key={`v${i}`} {...tramo(v.en, v.dur)} name={`Plano ${i + 1}`}>
-          <PlanoHabla desde={v.desde} zoom={v.zoom} dur={f(v.dur)} />
+          <PlanoHabla src={v.src} zoom={v.zoom} dur={f(v.en + v.dur) - f(v.en)} />
         </Sequence>
       ))}
 
@@ -99,21 +101,7 @@ export const Short: React.FC<{ id: string }> = ({ id }) => {
         <Cierre duracion={total - finVoz} />
       </Sequence>
 
-      {/* Sonido: voz del vídeo limpio, música de fondo y efectos. */}
-      {d.voz.map((v, i) => {
-        const t = tramo(v.en, v.dur);
-        return (
-          <Sequence key={`a${i}`} {...t} name={`Voz ${i + 1}`}>
-            <Audio
-              src={staticFile(LIMPIO)}
-              trimBefore={f(v.desde)}
-              volume={(fr) =>
-                interpolate(fr, [0, 2, t.durationInFrames - 2, t.durationInFrames], [0, 1, 1, 0], clamp)
-              }
-            />
-          </Sequence>
-        );
-      })}
+      {/* Música de fondo y efectos. La voz no va aquí: sale de cada plano. */}
       <Audio
         src={staticFile(d.musica.src)}
         trimBefore={f(d.musica.desde)}
@@ -133,14 +121,15 @@ export const Short: React.FC<{ id: string }> = ({ id }) => {
 
 /* ------------------------------------------------------------------ */
 
-const PlanoHabla: React.FC<{ desde: number; zoom: number; dur: number }> = ({ desde, zoom, dur }) => {
+/** Un tramo ya cortado del vídeo limpio, con su voz. Se pega tal cual. */
+const PlanoHabla: React.FC<{ src: string; zoom: number; dur: number }> = ({ src, zoom, dur }) => {
   const frame = useCurrentFrame();
   return (
     <AbsoluteFill style={{ overflow: "hidden" }}>
       <OffthreadVideo
-        src={staticFile(LIMPIO)}
-        trimBefore={f(desde)}
-        muted
+        src={staticFile(src)}
+        // Fundido de dos fotogramas en cada corte para que no chasquee.
+        volume={(fr) => interpolate(fr, [0, 2, dur - 2, dur], [0, 1, 1, 0], clamp)}
         style={{
           width: "100%",
           height: "100%",

@@ -72,6 +72,13 @@ Estas salieron de revisar piezas reales y ahorran repetir errores:
 
 - **Usar `OffthreadVideo`, no el `Video` de `@remotion/media`**: este último
   ignora `objectFit` y el clip sale en banda en lugar de recortado.
+- **La voz de un plano sale del propio plano.** Se corta cada tramo con
+  imagen y audio juntos (`herramientas/scripts/cortar_tramos.py`) y se pega
+  tal cual. El `Audio` de `@remotion/media` ignora `trimBefore` al renderizar:
+  con él la voz sonaba desde el segundo 0 y no casaba con la imagen.
+- `package.json` declara `sideEffects`: cualquier módulo que solo se importe
+  por su efecto (como `fuentes.ts`) tiene que estar en esa lista o el
+  empaquetador lo descarta y el render sale con la fuente de sistema.
 - Las animaciones CSS no se renderizan. Todo el movimiento sale de
   `interpolate()` sobre `useCurrentFrame()`.
 - `interpolate` va dentro del `style`, para que se pueda editar desde Studio.
