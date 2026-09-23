@@ -5,3 +5,10 @@ video/out/
 # Los planos ya recortados que usa cada pieza sí entran, en video/public/brutos/,
 # porque sin ellos el proyecto no se puede renderizar.
 brutos-originales/
+
+# Shorts de Hildary: medios pesados que se regeneran desde el Drive
+# (ver herramientas/scripts/SHORTS_HILARY.md). Las cartelas sí entran.
+video/public/hilary/*.mp4
+video/public/hilary/mapas/
+video/public/hilary/recortes/
+video/public/musica/
