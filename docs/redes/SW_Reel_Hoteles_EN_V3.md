@@ -1,4 +1,4 @@
-# Reel de hoteles · testimonio en inglés · vertical · V2
+# Reel de hoteles · testimonio en inglés · vertical · V3
 
 Pieza de 47,6 s, 1080x1920 a 30 fps, para stories y TikTok.
 
@@ -11,7 +11,7 @@ Son **dos voces, padre e hijo**, y la diferencia se mide:
 | Quién | Tramo | Tono | Centroide |
 | --- | --- | --- | --- |
 | El padre, camiseta turquesa | 0 – 24,9 s | 150 Hz | 550 – 770 Hz |
-| El hijo, camiseta «Blaze» | 25,9 – 43,1 s | 110 Hz | 890 Hz |
+| El hijo, camiseta granate de Arizona State, **el primero por la izquierda** | 25,9 – 43,1 s | 110 Hz | 890 Hz |
 
 **Lo de los hoteles y la cama limpia lo cuenta el hijo**, no el padre. Eso
 decide a quién se enfoca en cada momento, que en vertical no es un detalle:
@@ -19,7 +19,7 @@ el grupo son cuatro de lado a lado y el recorte a 9:16 sólo deja ver el
 33,75 % del ancho, así que hay que elegir a uno.
 
 Cuando habla el padre se mira al 79 % de la imagen; cuando habla el hijo, al
-62 %.
+19 %.
 
 ## De dónde sale
 
@@ -89,38 +89,42 @@ recortados a 9:16.
 
 | Entra | Sale | Plano |
 | --- | --- | --- |
-| 4,6 s | 6,0 s | `contraluz` (1080p) |
-| 6,0 s | 7,5 s | `pareja-muros` (1080p) |
-| 7,5 s | 9,4 s | `piezas-viejas/peregrinos-calzada` |
-| 9,4 s | 11,2 s | `piezas-viejas/peregrinos-campo` |
-| 11,2 s | 13,6 s | `piezas-viejas/sendero-peregrinos` |
-| 13,6 s | 15,6 s | `piezas-viejas/sendero-pareja` · tapa la juntura del corte |
-| 15,6 s | 17,4 s | `piezas-viejas/grupo-calle` |
+| 4,6 s | 6,6 s | `piezas-viejas/peregrinos-calzada` |
+| 6,6 s | 8,1 s | `pareja-muros` (1080p) |
+| 8,1 s | 10,4 s | `piezas-viejas/peregrinos-campo` |
+| 10,4 s | 12,9 s | `piezas-viejas/sendero-peregrinos` |
+| 12,9 s | 15,4 s | `piezas-viejas/grupo-calle` · tapa la juntura del corte |
+| 15,4 s | 17,4 s | `piezas-viejas/calle-aldea` |
 
 ### Equipaje, sobre «having somebody Sherpa your belongings»
 
 | Entra | Sale | Plano |
 | --- | --- | --- |
 | 17,4 s | 18,4 s | `testimonios/maletas-portal` |
-| 19,7 s | 21,5 s | `piezas-viejas/maletas-etiqueta` |
-| 21,5 s | 22,6 s | `testimonios/etiquetas-maletas` |
-| 22,6 s | 24,2 s | `piezas-viejas/maleta-concha` |
-| 24,2 s | 25,0 s | `testimonios/maletas-fila` |
+| 19,7 s | 21,8 s | `piezas-viejas/maletas-etiqueta` |
+| 21,8 s | 23,5 s | `piezas-viejas/maleta-concha` |
+
+Eran cinco y son tres. Dos de los que se han ido, `etiquetas-maletas` y
+`maletas-fila`, salen casi negros en vertical y duraban menos de un segundo:
+el tramo parecía un parpadeo.
 
 ### Alojamiento, sobre lo que cuenta el hijo
 
 | Entra | Sale | Plano |
 | --- | --- | --- |
-| 25,0 s | 26,7 s | `piezas-viejas/pazo-blanco` · fachada |
-| 26,7 s | 27,7 s | `piezas-viejas/hotel-arzua` · fachada |
-| 29,9 s | 32,0 s | `terraza` (1080p) · sobre el embalse |
-| 32,0 s | 34,0 s | `habitacion` (1080p) · la mejor cama que hay |
-| 34,0 s | 35,1 s | `testimonios/bano-ducha` |
-| 35,1 s | 36,5 s | `piezas-viejas/habitacion-ventanal` |
-| 37,4 s | 39,1 s | `piezas-viejas/habitacion-granate` |
-| 39,1 s | 40,5 s | `piezas-viejas/bano-lavabo` |
-| 40,5 s | 42,4 s | `piezas-viejas/casa-calixtino` · fachada |
-| 42,4 s | 43,6 s | `piezas-viejas/galeria-hotel` |
+| 23,5 s | 25,2 s | `piezas-viejas/pazo-blanco` · fachada |
+| 25,2 s | 27,7 s | `piezas-viejas/galeria-hotel` |
+| 29,9 s | 31,9 s | `habitacion` (1080p) · la mejor cama que hay |
+| 31,9 s | 33,0 s | `testimonios/bano-ducha` |
+| 33,0 s | 34,7 s | `piezas-viejas/habitacion-ventanal` |
+| 34,7 s | 36,5 s | `piezas-viejas/terraza-comida` |
+| 37,4 s | 39,2 s | `piezas-viejas/habitacion-granate` |
+| 39,2 s | 40,7 s | `piezas-viejas/bano-lavabo` |
+| 40,7 s | 42,5 s | `piezas-viejas/casa-calixtino` · fachada |
+| 42,5 s | 43,6 s | `testimonios/lounge-hotel` |
+
+Fuera `hotel-arzua`, que en vertical es una cristalera oscura sin nada que
+mirar, y fuera `terraza`, que se queda en dos tercios de cielo.
 
 **No hay ningún plano de piscina en la biblioteca.** Lo más parecido es
 `terraza`, que da a un embalse y desde el encuadre parece una lámina de agua.

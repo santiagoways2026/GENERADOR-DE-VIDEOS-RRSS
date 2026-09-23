@@ -19,13 +19,14 @@ import { Cartela, PlacaMarca } from "./componentes/CartelaMarca";
  *
  * - **El padre**, el de la camiseta turquesa, cuenta por que vino y lo del
  *   transporte de equipaje. Tono de 150 Hz, centroide entre 550 y 770 Hz.
- * - **El hijo**, el de la camiseta "Blaze", es el que habla de los hoteles y
- *   de dormir en una cama limpia. Tono de 110 Hz, centroide de 890.
+ * - **El hijo**, el de la camiseta granate de Arizona State, el primero por la
+ *   izquierda, es el que habla de los hoteles y de dormir en una cama limpia.
+ *   Tono de 110 Hz, centroide de 890.
  *
  * La diferencia se mide, no se supone, y decide a quien se enfoca: el grupo
  * son cuatro de lado a lado del cuadro y un recorte a 9:16 solo deja ver el
  * 33,75 % del ancho, asi que hay que elegir. Cuando habla el padre se mira al
- * 79 % de la imagen y cuando habla el hijo, al 62 %.
+ * 79 % de la imagen y cuando habla el hijo, al 19 %.
  *
  * La pista la monta `herramientas/scripts/audio-reel-hoteles.py`, que hace
  * dos cosas que aqui no se pueden hacer: quita 11,95 s por dentro y le pone
@@ -58,8 +59,8 @@ const V = "brutos/piezas-viejas/";
 const MARGEN = 72;
 /** En stories y TikTok los ultimos 300 px los tapa la interfaz. */
 const MARGEN_ABAJO = 330;
-const TAM = 58;
-const TAM_PIE = 30;
+const TAM = 76;
+const TAM_PIE = 34;
 
 /**
  * De "donde esta esto en la imagen" a `objectPosition`.
@@ -73,7 +74,7 @@ const mirar = (p: number) => `${(((p - VENTANA / 2) / (1 - VENTANA)) * 100).toFi
 
 /** Donde cae la cara de cada uno en el plano de grupo. */
 const PADRE = mirar(0.79);
-const HIJO = mirar(0.62);
+const HIJO = mirar(0.19);
 
 /* ------------------------------------------------------------------ */
 
@@ -94,42 +95,48 @@ const CARAS: Insercion[] = [
   { desde: 0.0, hasta: 4.63, origen: 15.3, encuadre: PADRE, nombre: "Padre 1" },
   { desde: 18.38, hasta: 19.68, origen: 45.63, encuadre: PADRE, nombre: "Padre 2 · equipaje" },
   { desde: 27.65, hasta: 29.85, origen: 54.9, encuadre: HIJO, nombre: "Hijo 1 · hoteles" },
-  { desde: 36.52, hasta: 37.38, origen: 63.77, encuadre: HIJO, nombre: "Hijo 2 · hoteles" },
+  { desde: 36.52, hasta: 37.42, origen: 63.77, encuadre: HIJO, nombre: "Hijo 2 · hoteles" },
 ];
 
-/** Camino, sobre lo que cuenta el padre de por que vino. */
+/**
+ * Camino, sobre lo que cuenta el padre. Menos planos y mas largos que en la
+ * version anterior: a un segundo y pico cada uno el arranque iba a tirones.
+ */
 const CAMINO: Insercion[] = [
-  { desde: 4.63, hasta: 6.0, origen: 0.03, fuente: B + "contraluz.mp4", nombre: "Contraluz" },
-  { desde: 6.0, hasta: 7.5, origen: 0.03, fuente: B + "pareja-muros.mp4", nombre: "Pareja entre muros" },
-  { desde: 7.5, hasta: 9.4, origen: 0.1, fuente: V + "peregrinos-calzada.mp4", nombre: "Calzada" },
-  { desde: 9.4, hasta: 11.2, origen: 0.1, fuente: V + "peregrinos-campo.mp4", nombre: "Campo" },
-  { desde: 11.2, hasta: 13.6, origen: 0.1, fuente: V + "sendero-peregrinos.mp4", nombre: "Sendero" },
+  { desde: 4.63, hasta: 6.55, origen: 0.1, fuente: V + "peregrinos-calzada.mp4", nombre: "Calzada" },
+  { desde: 6.55, hasta: 8.05, origen: 0.03, fuente: B + "pareja-muros.mp4", nombre: "Pareja entre muros" },
+  { desde: 8.05, hasta: 10.35, origen: 0.1, fuente: V + "peregrinos-campo.mp4", nombre: "Campo" },
+  { desde: 10.35, hasta: 12.9, origen: 0.1, fuente: V + "sendero-peregrinos.mp4", nombre: "Sendero" },
   // Tapa la juntura del corte, que cae en 15,15.
-  { desde: 13.6, hasta: 15.6, origen: 0.03, fuente: V + "sendero-pareja.mp4", nombre: "Juntura · sendero en pareja" },
-  { desde: 15.6, hasta: 17.4, origen: 0.1, fuente: V + "grupo-calle.mp4", nombre: "Grupo por la calle" },
+  { desde: 12.9, hasta: 15.4, origen: 0.1, fuente: V + "grupo-calle.mp4", nombre: "Juntura · grupo por la calle" },
+  { desde: 15.4, hasta: 17.4, origen: 0.1, fuente: V + "calle-aldea.mp4", nombre: "Calle de aldea" },
 ];
 
-/** Equipaje, sobre "having somebody Sherpa your belongings from town to town". */
+/**
+ * Equipaje. Solo tres planos: de los cinco de antes, dos eran casi negros y
+ * duraban menos de un segundo, y el tramo parecia un parpadeo.
+ */
 const EQUIPAJE: Insercion[] = [
   { desde: 17.4, hasta: 18.38, origen: 0.05, fuente: T + "maletas-portal.mp4", nombre: "Maletas · portal" },
-  { desde: 19.68, hasta: 21.5, origen: 0.1, fuente: V + "maletas-etiqueta.mp4", nombre: "Maletas · etiqueta" },
-  { desde: 21.5, hasta: 22.6, origen: 0.03, fuente: T + "etiquetas-maletas.mp4", nombre: "Etiquetas" },
-  { desde: 22.6, hasta: 24.2, origen: 0.03, fuente: V + "maleta-concha.mp4", nombre: "Maleta · concha" },
-  { desde: 24.2, hasta: 25.0, origen: 0.02, fuente: T + "maletas-fila.mp4", nombre: "Maletas en fila" },
+  { desde: 19.68, hasta: 21.84, origen: 0.05, fuente: V + "maletas-etiqueta.mp4", nombre: "Maletas · etiqueta" },
+  { desde: 21.84, hasta: 23.52, origen: 0.03, fuente: V + "maleta-concha.mp4", nombre: "Maleta · concha" },
 ];
 
-/** Alojamiento, sobre lo que cuenta el hijo. Fachadas, camas y banos. */
+/**
+ * Alojamiento. Fuera `hotel-arzua`, que en vertical es una cristalera oscura
+ * sin nada que mirar, y fuera `terraza`, que se queda en dos tercios de cielo.
+ */
 const HOTELES: Insercion[] = [
-  { desde: 25.0, hasta: 26.7, origen: 0.05, fuente: V + "pazo-blanco.mp4", nombre: "Fachada · pazo" },
-  { desde: 26.7, hasta: 27.65, origen: 0.05, fuente: V + "hotel-arzua.mp4", nombre: "Fachada · hotel Arzua" },
-  { desde: 29.85, hasta: 32.0, origen: 0.03, fuente: B + "terraza.mp4", nombre: "Terraza sobre el agua" },
-  { desde: 32.0, hasta: 34.0, origen: 0.08, fuente: B + "habitacion.mp4", encuadre: mirar(0.66), nombre: "Cama · ventanal 1080p" },
-  { desde: 34.0, hasta: 35.1, origen: 0.03, fuente: T + "bano-ducha.mp4", nombre: "Ducha" },
-  { desde: 35.1, hasta: 36.52, origen: 0.05, fuente: V + "habitacion-ventanal.mp4", nombre: "Cama · ventanal" },
-  { desde: 37.38, hasta: 39.05, origen: 0.05, fuente: V + "habitacion-granate.mp4", nombre: "Cama · granate" },
-  { desde: 39.05, hasta: 40.45, origen: 0.05, fuente: V + "bano-lavabo.mp4", nombre: "Bano · lavabo" },
-  { desde: 40.45, hasta: 42.4, origen: 0.05, fuente: V + "casa-calixtino.mp4", nombre: "Fachada · casona" },
-  { desde: 42.4, hasta: 43.55, origen: 0.1, fuente: V + "galeria-hotel.mp4", nombre: "Galeria del hotel" },
+  { desde: 23.52, hasta: 25.22, origen: 0.05, fuente: V + "pazo-blanco.mp4", nombre: "Fachada · pazo" },
+  { desde: 25.22, hasta: 27.65, origen: 0.1, fuente: V + "galeria-hotel.mp4", nombre: "Galeria del hotel" },
+  { desde: 29.85, hasta: 31.85, origen: 0.08, fuente: B + "habitacion.mp4", encuadre: mirar(0.66), nombre: "Cama · ventanal 1080p" },
+  { desde: 31.85, hasta: 33.0, origen: 0.03, fuente: T + "bano-ducha.mp4", nombre: "Ducha" },
+  { desde: 33.0, hasta: 34.7, origen: 0.05, fuente: V + "habitacion-ventanal.mp4", nombre: "Cama · ventanal" },
+  { desde: 34.7, hasta: 36.52, origen: 0.05, fuente: V + "terraza-comida.mp4", nombre: "Terraza del hotel" },
+  { desde: 37.42, hasta: 39.15, origen: 0.03, fuente: V + "habitacion-granate.mp4", nombre: "Cama · granate" },
+  { desde: 39.15, hasta: 40.7, origen: 0.03, fuente: V + "bano-lavabo.mp4", nombre: "Bano · lavabo" },
+  { desde: 40.7, hasta: 42.45, origen: 0.05, fuente: V + "casa-calixtino.mp4", nombre: "Fachada · casona" },
+  { desde: 42.45, hasta: 43.55, origen: 0.03, fuente: T + "lounge-hotel.mp4", nombre: "Lounge del hotel" },
 ];
 
 const INSERCIONES = [...CARAS, ...CAMINO, ...EQUIPAJE, ...HOTELES];
@@ -194,7 +201,7 @@ export const SWReelHotelesEN: React.FC = () => {
         <Cartela
           lineas={[[{ texto: "Camino de Santiago" }], [{ texto: "fully organised", destacado: true }]]}
           total={f(7.4) - f(0.7)}
-          tam={52}
+          tam={TAM}
           margen={MARGEN}
           margenAbajo={MARGEN_ABAJO}
           tamPie={TAM_PIE}
@@ -202,11 +209,11 @@ export const SWReelHotelesEN: React.FC = () => {
       </Sequence>
 
       {/* 2 · sobre "having somebody Sherpa your belongings from town to town" */}
-      <Sequence from={f(17.6)} durationInFrames={f(24.8) - f(17.6)} name="2 · Tu equipaje">
+      <Sequence from={f(17.6)} durationInFrames={f(23.4) - f(17.6)} name="2 · Tu equipaje">
         <Cartela
           lineas={[[{ texto: "Your luggage" }], [{ texto: "travels for you", destacado: true }]]}
           pie={["Hotel to hotel, every stage"]}
-          total={f(24.8) - f(17.6)}
+          total={f(23.4) - f(17.6)}
           tam={TAM}
           margen={MARGEN}
           margenAbajo={MARGEN_ABAJO}
