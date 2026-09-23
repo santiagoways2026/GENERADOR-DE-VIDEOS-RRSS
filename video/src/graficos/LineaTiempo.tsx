@@ -29,11 +29,16 @@ const ACTUAL = 2027;
  *
  * Los anos son reales: el Ano Santo cae cuando el 25 de julio es domingo,
  * lo que da un patron de 6, 5, 6 y 11 anos que se repite.
+ *
+ * Cabecera en placa olivo y conclusion en placa lima, igual que Calendario:
+ * es el mismo kit, asi que lee como la misma pieza en vez de una tarjeta
+ * generica.
  */
-export const LineaTiempo: React.FC<{ desde?: number; pie?: string }> = ({
-  desde = 0,
-  pie = "Cada 6, 5 u 11 años",
-}) => {
+export const LineaTiempo: React.FC<{
+  desde?: number;
+  titulo?: string;
+  pie?: string;
+}> = ({ desde = 0, titulo = "Años Santos", pie = "Cada 6, 5 u 11 años" }) => {
   const frame = useCurrentFrame();
   const t = frame - desde;
   const indiceActual = HITOS.indexOf(ACTUAL);
@@ -52,13 +57,33 @@ export const LineaTiempo: React.FC<{ desde?: number; pie?: string }> = ({
         backgroundColor: color.bg1,
         borderRadius: radius.lg,
         boxShadow: shadow.raised,
-        padding: `${space[7]}px ${space[6]}px ${space[6]}px`,
+        overflow: "hidden",
         width: 980,
         opacity: entrada(frame, desde).opacity,
         translate: entrada(frame, desde).translate,
       }}
     >
-      <div style={{ position: "relative", height: 190 }}>
+      {/* Cabecera en placa olivo, como Calendario. */}
+      <div
+        style={{
+          backgroundColor: brand.green,
+          color: color.fgInverse,
+          padding: `${space[4]}px ${space[6]}px`,
+          fontSize: fontSize.xl,
+          fontWeight: weight.black,
+          letterSpacing: tracking.loose,
+          textTransform: "uppercase",
+        }}
+      >
+        {titulo}
+      </div>
+
+      <div
+        style={{
+          padding: `${space[7]}px ${space[6]}px ${space[6]}px`,
+          position: "relative",
+          height: 190,
+        }}>
         {/* Raíl */}
         <div
           style={{
@@ -148,15 +173,22 @@ export const LineaTiempo: React.FC<{ desde?: number; pie?: string }> = ({
         />
       </div>
 
+      {/* Conclusion, en placa lima con texto bosque -- como Calendario. */}
       <div
         style={{
-          marginTop: space[4],
-          textAlign: "center",
+          backgroundColor: brand.lime,
+          color: color.fgOnLime,
+          padding: `${space[4]}px ${space[6]}px`,
           fontSize: fontSize.xl,
-          fontWeight: weight.bold,
-          letterSpacing: tracking.loose,
+          fontWeight: weight.black,
+          letterSpacing: tracking.wide,
           textTransform: "uppercase",
-          color: color.fg3,
+          textAlign: "center",
+          clipPath: `inset(0 ${interpolate(t, [50, 70], [100, 0], {
+            extrapolateLeft: "clamp",
+            extrapolateRight: "clamp",
+            easing: Easing.bezier(...easeOut),
+          })}% 0 0)`,
         }}
       >
         {pie}

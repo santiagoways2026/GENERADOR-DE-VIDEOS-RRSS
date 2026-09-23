@@ -104,7 +104,11 @@ export const ReelXacobeoYoutubeEN: React.FC = () => {
           ]}
         />
         <Centro>
-          <LineaTiempo desde={12} pie="Every 6, 5, or 11 years" />
+          <LineaTiempo
+            desde={12}
+            titulo="Holy Years"
+            pie="Every 6, 5, or 11 years"
+          />
         </Centro>
       </Sequence>
 
@@ -142,13 +146,19 @@ export const ReelXacobeoYoutubeEN: React.FC = () => {
        * plaza — the cathedral/square shot — goes second, not first, to sit
        * under those words instead of before them. */}
       <Sequence from={f(BOUNDS[5])} durationInFrames={dur(5)} name="6 · Arrival">
+        {/* Este bloque estira poco metraje real (3.35s) sobre 7.9s de
+         * pantalla -- a un zoom normal (1.05) se nota casi congelado,
+         * sobre todo grupo-peregrinos (plano abierto, gente alejandose,
+         * ya de por si con poco movimiento propio). Zoom mas fuerte para
+         * que el empuje, que corre a su propio ritmo, lea como que la
+         * escena sigue viva. */}
         <Planos
           total={dur(5)}
           overlay={0.3}
           lista={[
-            { src: "pareja-muros", dura: 1.55, encuadre: "40% 50%" },
-            { src: "plaza", dura: 1.05 },
-            { src: "grupo-peregrinos", dura: 0.75 },
+            { src: "pareja-muros", dura: 1.55, encuadre: "40% 50%", zoom: 1.18 },
+            { src: "plaza", dura: 1.05, zoom: 1.22 },
+            { src: "grupo-peregrinos", dura: 0.75, zoom: 1.28 },
           ]}
         />
         <Cartela principal="This is what" secundaria="a Holy Year feels like" desde={149} />

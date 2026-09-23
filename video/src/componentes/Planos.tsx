@@ -9,6 +9,11 @@ export type Plano = {
   dura: number;
   /** Encuadre del recorte cuando el sujeto no esta centrado. */
   encuadre?: string;
+  /** Zoom lento de principio a fin. Por defecto 1.05. Subirlo ayuda cuando
+   *  el plano va muy en camara lenta (playbackRate bajo): el zoom corre a
+   *  su propio ritmo, no al de la camara lenta, asi que un empuje mas
+   *  visible es lo que salva que el plano lea como congelado. */
+  zoom?: number;
 };
 
 /**
@@ -68,7 +73,7 @@ export const Planos: React.FC<{
               duracion={duracion}
               overlay={overlay}
               encuadre={p.encuadre}
-              zoom={1.05}
+              zoom={p.zoom ?? 1.05}
               playbackRate={playbackRate}
               fundeEntrada={!esPrimero}
               fundeSalida={!esUltimo}
