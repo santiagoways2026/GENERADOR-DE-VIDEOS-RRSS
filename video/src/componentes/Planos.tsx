@@ -1,5 +1,5 @@
 import { Sequence } from "remotion";
-import { fps } from "../brand/theme";
+import { fps, medioCruce } from "../brand/theme";
 import { Clip } from "./Clip";
 
 export type Plano = {
@@ -20,6 +20,12 @@ export type Plano = {
  * que dura de verdad, de modo que ninguno se estira mas alla de su final.
  *
  * Basta con que la suma de duraciones reales cubra el bloque.
+ *
+ * Los cortes internos (entre planos de la misma lista) se funden entre si
+ * en vez de cortar en seco: cada Sequence se solapa `medioCruce` fotogramas
+ * con la siguiente y Clip hace un fundido cruzado real (los dos videos se
+ * ven a la vez, no un fundido a un color). El primer y el ultimo plano no
+ * funden por ningun lado: ese borde lo corta el bloque de fuera.
  */
 export const Planos: React.FC<{
   lista: Plano[];
@@ -40,14 +46,23 @@ export const Planos: React.FC<{
             ? total
             : acumulado + Math.round((p.dura / suma) * total);
         acumulado = fin;
-        const duracion = fin - inicio;
-        if (duracion <= 0) return null;
+        const duracionLogica = fin - inicio;
+        if (duracionLogica <= 0) return null;
+
+        const esPrimero = i === 0;
+        const esUltimo = i === lista.length - 1;
+        const from = inicio - (esPrimero ? 0 : medioCruce);
+        const duracion =
+          duracionLogica +
+          (esPrimero ? 0 : medioCruce) +
+          (esUltimo ? 0 : medioCruce);
+
         // Si el bloque le pide al plano mas tiempo del que dura de verdad,
         // se estira en camara lenta en vez de pedirle a OffthreadVideo
         // fotogramas que no existen (eso cuelga el render).
         const playbackRate = Math.min(1, (p.dura * fps) / duracion);
         return (
-          <Sequence key={p.src} from={inicio} durationInFrames={duracion} name={p.src}>
+          <Sequence key={p.src} from={from} durationInFrames={duracion} name={p.src}>
             <Clip
               src={`brutos/${p.src}.mp4`}
               duracion={duracion}
@@ -55,6 +70,8 @@ export const Planos: React.FC<{
               encuadre={p.encuadre}
               zoom={1.05}
               playbackRate={playbackRate}
+              fundeEntrada={!esPrimero}
+              fundeSalida={!esUltimo}
             />
           </Sequence>
         );

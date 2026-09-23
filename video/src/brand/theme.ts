@@ -163,6 +163,16 @@ export const duration = {
   slow: 18,
 } as const;
 
+/**
+ * Fotogramas de cruce a cada lado de un corte interno entre planos.
+ *
+ * El fundido visible que se aprecia es solo el de entrada del plano que
+ * llega (el de salida del que se va queda tapado detras, a la misma
+ * opacidad plena): con 8 fotogramas (~0,27 s) el cruce se nota suave sin
+ * dejar de ser un corte rapido.
+ */
+export const medioCruce = 8;
+
 /** Desplazamiento vertical de entrada. La guia pide 8-12 px en web;
  *  en un lienzo de 1080 px de ancho equivale a este rango. */
 export const slideUp = 24;

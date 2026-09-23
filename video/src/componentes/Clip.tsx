@@ -6,7 +6,7 @@ import {
   staticFile,
   useCurrentFrame,
 } from "remotion";
-import { brand, easeOut } from "../brand/theme";
+import { easeOut, medioCruce } from "../brand/theme";
 
 /**
  * Un clip de metraje encajado en el lienzo del reel.
@@ -18,12 +18,12 @@ import { brand, easeOut } from "../brand/theme";
  * 608 px de ancho reales, asi que llenar un lienzo de 1080 lo amplia un 78 %.
  * Se nota en las texturas finas, no tanto en un plano general.
  *
- * El corte entre planos es seco (los Sequence de Planos no se solapan), asi
- * que aqui se funde un respiro corto de entrada y salida hacia el bosque de
- * la marca -- nunca a negro puro -- para que no lea como un salto. Se nota
- * mas cuanto mas lento va el plano en camara lenta.
+ * `fundeEntrada`/`fundeSalida` hacen un fundido cruzado real con el plano
+ * vecino: Planos solapa las Sequence `medioCruce` fotogramas a cada lado
+ * del corte, asi que durante el solape los dos videos estan montados a la
+ * vez y uno se funde sobre el otro. No es un fundido a un color -- eso lee
+ * como una pausa, no como un corte suave.
  */
-const FUNDIDO = 5;
 export const Clip: React.FC<{
   src: string;
   /** Segundo del archivo por el que entra el corte. */
@@ -40,6 +40,10 @@ export const Clip: React.FC<{
    *  lenta cuando el bloque dura mas que el metraje real disponible, para
    *  no pedirle a OffthreadVideo fotogramas que no existen. */
   playbackRate?: number;
+  /** Funde de entrada sobre el plano anterior, en vez de empezar de golpe. */
+  fundeEntrada?: boolean;
+  /** Funde de salida bajo el plano siguiente, en vez de cortar de golpe. */
+  fundeSalida?: boolean;
 }> = ({
   src,
   desdeSegundo = 0,
@@ -48,20 +52,26 @@ export const Clip: React.FC<{
   duracion,
   encuadre = "50% 50%",
   playbackRate = 1,
+  fundeEntrada = false,
+  fundeSalida = false,
 }) => {
   const frame = useCurrentFrame();
 
-  const entra = interpolate(frame, [0, FUNDIDO], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
-  const sale = interpolate(frame, [duracion - FUNDIDO, duracion], [1, 0], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
+  const entra = fundeEntrada
+    ? interpolate(frame, [0, medioCruce], [0, 1], {
+        extrapolateLeft: "clamp",
+        extrapolateRight: "clamp",
+      })
+    : 1;
+  const sale = fundeSalida
+    ? interpolate(frame, [duracion - medioCruce, duracion], [1, 0], {
+        extrapolateLeft: "clamp",
+        extrapolateRight: "clamp",
+      })
+    : 1;
 
   return (
-    <AbsoluteFill style={{ overflow: "hidden", backgroundColor: brand.forest }}>
+    <AbsoluteFill style={{ overflow: "hidden" }}>
       <AbsoluteFill style={{ opacity: Math.min(entra, sale) }}>
         <OffthreadVideo
           src={staticFile(src)}

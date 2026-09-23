@@ -112,7 +112,6 @@ export const ReelXacobeoEN: React.FC = () => {
           overlay={0.42}
           lista={[
             { src: "campo-flores", dura: 1.7 },
-            { src: "contraluz", dura: 1.45 },
             { src: "camino-abierto", dura: 1.2 },
             { src: "tunel-vegetacion", dura: 0.85 },
             { src: "grupo-mimosas", dura: 1.2 },
@@ -135,14 +134,19 @@ export const ReelXacobeoEN: React.FC = () => {
         />
       </Sequence>
 
-      {/* 5 · "A history of friendship, or simply time for yourself..." */}
+      {/* 5 · "A history of friendship, or simply time for yourself...".
+       * "time for yourself" (33.47-35.09s, local ~2.2-3.8s) needs a solo
+       * shot under it, not a group one -- brindis (a big table toast) was
+       * there before and read as a mistake, so it's out of this beat
+       * entirely. contraluz (a lone silhouette) moved here from the
+       * Timeline beat instead. */}
       <Sequence from={f(BOUNDS[4])} durationInFrames={dur(4)} name="5 · Friendship">
         <Planos
           total={dur(4)}
           overlay={0.3}
           lista={[
             { src: "brazos-alto", dura: 1.0, encuadre: "34% 50%" },
-            { src: "brindis", dura: 2.0, encuadre: "42% 50%" },
+            { src: "contraluz", dura: 1.45 },
           ]}
         />
       </Sequence>
