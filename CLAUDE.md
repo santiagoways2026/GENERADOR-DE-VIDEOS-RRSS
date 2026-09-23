@@ -182,7 +182,13 @@ Estas salieron de revisar piezas reales y ahorran repetir errores:
    hecho. Los brutos duran entre 1 y 2,2 segundos, así que pasa enseguida.
    `python3 herramientas/scripts/comprobar-inserciones.py <escena.tsx>` mide
    cada inserción contra el archivo y avisa. Se pasa antes de cada render.
-13. **El primer plano se elige aparte.** El que abre una pieza no es el que
+13. **Un plano nuevo se compara contra toda la biblioteca, no contra su
+   tanda.** La firma es la mediana de nueve fotogramas del plano, no un
+   fotograma suelto: la mediana borra a la gente que cruza y deja el fondo,
+   que es lo que identifica una toma. Por encima de 0,92 de parecido es la
+   misma toma; entre 0,85 y 0,92 hay que mirarla. Y si la misma toma aparece
+   dos veces, se queda la que no esté recortada.
+14. **El primer plano se elige aparte.** El que abre una pieza no es el que
    venía primero en el bruto: se mira si aguanta solo. Un contraluz velado
    con un muro al fondo no abre nada. Para eso están los brutos de 1080p, que
    además entran más nítidos que una base recortada con zoom.
@@ -235,7 +241,7 @@ Hay dos juegos de planos y conviene saber cuál se coge:
 | --- | --- | --- |
 | `brutos/` | Los 29 planos del reel original | 1920x1080 |
 | `brutos/testimonios/` | 83 planos recurso de las piezas de testimonios | 1280x720 |
-| `brutos/piezas-viejas/` | 28 planos de tres piezas viejas de la agencia | 1280x720 |
+| `brutos/piezas-viejas/` | 42 planos de cuatro piezas viejas de la agencia | 1280x720 |
 
 Los de `testimonios/` dan variedad, sobre todo de alojamiento, gastronomía y
 llegada a Santiago, pero son de menos resolución: para un primer plano grande o
