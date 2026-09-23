@@ -6,7 +6,7 @@ import {
   staticFile,
   useCurrentFrame,
 } from "remotion";
-import { easeOut } from "../brand/theme";
+import { brand, easeOut } from "../brand/theme";
 
 /**
  * Un clip de metraje encajado en el lienzo del reel.
@@ -17,7 +17,13 @@ import { easeOut } from "../brand/theme";
  * Aviso de calidad: un bruto de 1920x1080 recortado a vertical solo aporta
  * 608 px de ancho reales, asi que llenar un lienzo de 1080 lo amplia un 78 %.
  * Se nota en las texturas finas, no tanto en un plano general.
+ *
+ * El corte entre planos es seco (los Sequence de Planos no se solapan), asi
+ * que aqui se funde un respiro corto de entrada y salida hacia el bosque de
+ * la marca -- nunca a negro puro -- para que no lea como un salto. Se nota
+ * mas cuanto mas lento va el plano en camara lenta.
  */
+const FUNDIDO = 5;
 export const Clip: React.FC<{
   src: string;
   /** Segundo del archivo por el que entra el corte. */
@@ -45,30 +51,41 @@ export const Clip: React.FC<{
 }) => {
   const frame = useCurrentFrame();
 
+  const entra = interpolate(frame, [0, FUNDIDO], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+  const sale = interpolate(frame, [duracion - FUNDIDO, duracion], [1, 0], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+
   return (
-    <AbsoluteFill style={{ overflow: "hidden" }}>
-      <OffthreadVideo
-        src={staticFile(src)}
-        trimBefore={desdeSegundo > 0 ? Math.round(desdeSegundo * 30) : undefined}
-        playbackRate={playbackRate}
-        style={{
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          objectPosition: encuadre,
-          scale: interpolate(frame, [0, duracion], [1, zoom], {
-            extrapolateLeft: "clamp",
-            extrapolateRight: "clamp",
-            easing: Easing.bezier(...easeOut),
-            output: "perceptual-scale",
-          }),
-        }}
-      />
-      {overlay > 0 ? (
-        <AbsoluteFill
-          style={{ backgroundColor: `rgba(14, 44, 31, ${overlay})` }}
+    <AbsoluteFill style={{ overflow: "hidden", backgroundColor: brand.forest }}>
+      <AbsoluteFill style={{ opacity: Math.min(entra, sale) }}>
+        <OffthreadVideo
+          src={staticFile(src)}
+          trimBefore={desdeSegundo > 0 ? Math.round(desdeSegundo * 30) : undefined}
+          playbackRate={playbackRate}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: encuadre,
+            scale: interpolate(frame, [0, duracion], [1, zoom], {
+              extrapolateLeft: "clamp",
+              extrapolateRight: "clamp",
+              easing: Easing.bezier(...easeOut),
+              output: "perceptual-scale",
+            }),
+          }}
         />
-      ) : null}
+        {overlay > 0 ? (
+          <AbsoluteFill
+            style={{ backgroundColor: `rgba(14, 44, 31, ${overlay})` }}
+          />
+        ) : null}
+      </AbsoluteFill>
     </AbsoluteFill>
   );
 };

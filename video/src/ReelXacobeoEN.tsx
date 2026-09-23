@@ -147,14 +147,17 @@ export const ReelXacobeoEN: React.FC = () => {
         />
       </Sequence>
 
-      {/* 6 · "...the moment you finally arrive in Santiago — this is what a Holy Year feels like" */}
+      {/* 6 · "...that moment you finally arrive in Santiago — this is what a Holy Year feels like".
+       * "arrive in Santiago" lands around 41.8-43.1s (local ~3.2-4.5s), so
+       * plaza — the cathedral/square shot — goes second, not first, to sit
+       * under those words instead of before them. */}
       <Sequence from={f(BOUNDS[5])} durationInFrames={dur(5)} name="6 · Arrival">
         <Planos
           total={dur(5)}
           overlay={0.3}
           lista={[
-            { src: "plaza", dura: 1.05 },
             { src: "pareja-muros", dura: 1.55, encuadre: "40% 50%" },
+            { src: "plaza", dura: 1.05 },
             { src: "grupo-peregrinos", dura: 0.75 },
           ]}
         />
