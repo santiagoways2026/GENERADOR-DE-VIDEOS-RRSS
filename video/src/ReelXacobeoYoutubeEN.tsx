@@ -58,7 +58,6 @@ export const ReelXacobeoYoutubeEN: React.FC = () => {
           total={dur(0)}
           overlay={0.34}
           lista={[
-            { src: "plaza", dura: 1.05 },
             { src: "catedral-a", dura: 1.7 },
             { src: "catedral-b", dura: 1.7 },
           ]}
@@ -140,6 +139,7 @@ export const ReelXacobeoYoutubeEN: React.FC = () => {
           total={dur(5)}
           overlay={0.3}
           lista={[
+            { src: "plaza", dura: 1.05 },
             { src: "pareja-muros", dura: 1.55, encuadre: "40% 50%" },
             { src: "grupo-peregrinos", dura: 0.75 },
           ]}
