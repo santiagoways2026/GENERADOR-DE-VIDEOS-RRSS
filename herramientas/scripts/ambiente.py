@@ -1,21 +1,25 @@
 #!/usr/bin/env python3
-"""Construye una cama de ambiente con los silencios del propio montaje.
+"""Cama de ambiente sintetizada a partir del propio montaje.
 
 Cuando un bloque se monta sin voz, planos de recurso o una apertura, hace
 falta algo debajo o el corte suena a mute. Si la pieza no lleva música, meter
 una sólo en ese tramo suena a parche: lo que funciona es ambiente de la misma
 grabación.
 
-Se cogen los huecos entre frases, se encadenan en palíndromo (hacia delante y
-hacia atrás) y se cruzan con fundidos, que es lo que evita el tic del bucle.
+**No se hace con un bucle.** Se probó encadenando los silencios en palíndromo,
+con fundidos cruzados, y se oye: los huecos entre frases duran medio segundo,
+así que el ciclo vuelve cada segundo y medio, y las mitades invertidas suenan
+al revés, que es justo lo que delata el truco. Lo que sí funciona es sacar la
+huella espectral de esos silencios, que es el color de la sala, y sintetizar
+con fase aleatoria. Sale un ambiente continuo, sin ciclo y sin nada
+reconocible dentro.
 
     python3 ambiente.py montaje.mp4 cama.wav 7.0  0.05,0.62 19.62,20.42
 
 Los huecos hay que elegirlos midiendo, no de oído. En la pieza social en
 español uno medía lo mismo que la voz y tenía un pico de 0,88: era una
-respiración, y colada en la cama sonaba a que había alguien andando por la
-habitación del hotel. Sirve el factor de cresta, pico entre rms: por debajo de
-5 es ambiente, por encima hay algo dentro.
+respiración. Sirve el factor de cresta, pico entre rms: por debajo de 5 es
+ambiente, por encima hay algo dentro. `--listar` los mide y no sintetiza nada.
 """
 import os
 import shutil
@@ -25,8 +29,8 @@ import sys
 import numpy as np
 
 SR = 44100
-CRUCE_S = 0.12
-ENTRADA_S = 0.08
+VENTANA = 2048
+SALTO = VENTANA // 2
 
 
 def binarios():
@@ -47,49 +51,83 @@ def binarios():
     sys.exit("no hay ffmpeg: pip install imageio-ffmpeg")
 
 
-def pega(p, q, cruce):
-    """Encadena dos trozos con un fundido cruzado."""
-    n = min(cruce, len(p) // 2, len(q) // 2)
-    r = np.linspace(0, 1, n)[:, None]
-    return np.concatenate([p[:-n], p[-n:] * (1 - r) + q[:n] * r, q[n:]])
+def leer(ff, src, canales=2):
+    crudo = subprocess.run([ff, "-v", "error", "-i", src, "-ac", str(canales),
+                            "-ar", str(SR), "-f", "f32le", "-"],
+                           capture_output=True).stdout
+    return np.frombuffer(crudo, np.float32).reshape(-1, canales)
 
 
-def cama(audio, huecos, segundos):
-    trozos = [audio[int(x * SR):int(y * SR)] for x, y in huecos]
-    cruce = int(CRUCE_S * SR)
-    salida, i = trozos[0], 1
-    while len(salida) < segundos * SR + 2 * cruce:
-        t = trozos[i % len(trozos)]
-        # Uno de cada dos va del revés: el ambiente no tiene dirección, y así
-        # el bucle no se oye repetir.
-        salida = pega(salida, t if i % 2 else t[::-1], cruce)
-        i += 1
-    salida = salida[:int(segundos * SR)].copy()
+def cresta(x):
+    rms = float(np.sqrt((x ** 2).mean()))
+    return float(np.abs(x).max()) / max(rms, 1e-9), rms
 
-    n = int(ENTRADA_S * SR)
-    salida[:n] *= np.linspace(0, 1, n)[:, None]
-    salida[-n:] *= np.linspace(1, 0, n)[:, None]
-    # Red de seguridad: un pico que se haya colado se dobla en vez de
-    # recortarse, que es lo que suena a chasquido.
-    return np.tanh(salida * 3.0) / 3.0
+
+def huella(audio, huecos):
+    """Magnitud media por banda de los silencios, canal a canal."""
+    ven = np.hanning(VENTANA)[:, None]
+    acc, n = 0.0, 0
+    for x, y in huecos:
+        t = audio[int(x * SR):int(y * SR)]
+        for i in range(0, len(t) - VENTANA, SALTO):
+            acc = acc + np.abs(np.fft.rfft(t[i:i + VENTANA] * ven, axis=0))
+            n += 1
+    if not n:
+        sys.exit("los huecos no dan ni una ventana: son demasiado cortos")
+    return acc / n
+
+
+def sintetiza(h, segundos, canales):
+    """Superposición y suma con fase aleatoria. Sin ciclo: cada ventana es
+    ruido distinto y sólo comparten el color."""
+    total = int(segundos * SR)
+    salida = np.zeros((total + VENTANA, canales))
+    peso = np.zeros((total + VENTANA, 1))
+    ven = np.hanning(VENTANA)[:, None]
+    rng = np.random.default_rng(20260923)
+    for i in range(0, total, SALTO):
+        fase = rng.uniform(0, 2 * np.pi, h.shape)
+        trozo = np.fft.irfft(h * np.exp(1j * fase), n=VENTANA, axis=0) * ven
+        salida[i:i + VENTANA] += trozo
+        peso[i:i + VENTANA] += ven
+    salida = salida[:total] / np.maximum(peso[:total], 1e-9)
+
+    # Una deriva muy lenta de nivel, para que no suene a ruido de cinta.
+    t = np.arange(total) / SR
+    salida *= (1 + 0.10 * np.sin(2 * np.pi * 0.17 * t + 0.6))[:, None]
+    return salida
 
 
 def main():
-    if len(sys.argv) < 5:
-        sys.exit("uso: ambiente.py entrada.mp4 cama.wav segundos x1,y1 x2,y2 ...")
+    args = [a for a in sys.argv[1:] if a != "--listar"]
+    listar = "--listar" in sys.argv
+    if len(args) < (2 if listar else 4):
+        sys.exit("uso: ambiente.py entrada.mp4 cama.wav segundos x1,y1 x2,y2 ...\n"
+                 "     ambiente.py entrada.mp4 --listar x1,y1 x2,y2 ...")
     ff = binarios()
-    src, destino, segundos = sys.argv[1], sys.argv[2], float(sys.argv[3])
-    huecos = [tuple(float(v) for v in a.split(",")) for a in sys.argv[4:]]
+    src = args[0]
+    a = leer(ff, src)
 
-    crudo = subprocess.run([ff, "-v", "error", "-i", src, "-ac", "2", "-ar", str(SR),
-                            "-f", "f32le", "-"], capture_output=True).stdout
-    a = np.frombuffer(crudo, np.float32).reshape(-1, 2)
+    if listar:
+        huecos = [tuple(float(v) for v in h.split(",")) for h in args[1:]]
+        print("hueco            rms      cresta")
+        for x, y in huecos:
+            c, r = cresta(a[int(x * SR):int(y * SR)])
+            print(f"{x:6.2f}-{y:6.2f}   {r:.5f}  {c:6.1f}"
+                  f"   {'ambiente' if c < 5 else 'lleva algo dentro'}")
+        return
 
-    c = cama(a, huecos, segundos)
+    destino, segundos = args[1], float(args[2])
+    huecos = [tuple(float(v) for v in h.split(",")) for h in args[3:]]
+    nivel = float(np.median([np.sqrt((a[int(x * SR):int(y * SR)] ** 2).mean())
+                             for x, y in huecos]))
+    c = sintetiza(huella(a, huecos), segundos, a.shape[1])
+    c *= nivel / max(float(np.sqrt((c ** 2).mean())), 1e-9)
+
     print(f"cama de {segundos:.2f} s, pico {float(np.abs(c).max()):.4f}, "
           f"rms {float(np.sqrt((c ** 2).mean())):.5f}")
-    subprocess.run([ff, "-v", "error", "-y", "-f", "f32le", "-ar", str(SR), "-ac", "2",
-                    "-i", "-", "-c:a", "pcm_s16le", destino],
+    subprocess.run([ff, "-v", "error", "-y", "-f", "f32le", "-ar", str(SR), "-ac",
+                    str(a.shape[1]), "-i", "-", "-c:a", "pcm_s16le", destino],
                    input=c.astype(np.float32).tobytes(), check=True)
 
 

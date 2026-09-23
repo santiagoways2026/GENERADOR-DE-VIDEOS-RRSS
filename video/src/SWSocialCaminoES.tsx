@@ -55,7 +55,7 @@ const FPS = 30;
 const f = (s: number) => Math.round(s * FPS);
 
 /** Duracion final, en segundos: 47,15 de montaje mas la placa de marca. */
-const DURACION = 55.1;
+const DURACION = 54.9;
 
 /**
  * Cuerpo de las cartelas. Mas pequeno que los 72 px de la pieza en ingles:
@@ -105,13 +105,19 @@ const INSERCIONES: Insercion[] = [
   // Rompe 4,2 s de entrevista seguida, justo sobre "con la mochila y toda
   // la ropa para varios dias".
   { desde: 39.45, hasta: 41.25, origen: 26.7, nombre: "Mochila · caminante con equipaje" },
-  // Llegada a Santiago. El montaje encadenaba tres planos de la catedral
-  // casi iguales, todos torres contra nubes, y el corte de en medio se veia.
-  // Este pone gente a pie de plaza entre el general y el detalle.
-  { desde: 45.0, hasta: 47.05, origen: 0.0, fuente: T + "obradoiro.mp4", nombre: "Llegada · plaza del Obradoiro" },
+  // Llegada a Santiago. El montaje encadenaba tres planos de la catedral casi
+  // iguales, todos torres contra nubes, y los cortes se veian como saltos.
+  // Ahora va de lejos a cerca y con gente en medio: la calle, la plaza y la
+  // fachada.
+  //
+  // Los tres duran justo lo que tiene el plano, sin pasarse. Un plano mas
+  // corto que su hueco no avisa: se congela el ultimo fotograma y parece un
+  // corte raro. `comprobar-inserciones.py` lo mide.
+  { desde: 44.4, hasta: 45.7, origen: 0.0, fuente: T + "rua-santiago.mp4", nombre: "Llegada · calle de Santiago" },
+  { desde: 45.7, hasta: 47.0, origen: 0.0, fuente: T + "obradoiro.mp4", nombre: "Llegada · plaza del Obradoiro" },
   // El cierre no se dice sobre la cara del peregrino, se dice sobre la
   // catedral.
-  { desde: 47.05, hasta: 52.0, origen: 0.15, fuente: T + "fachada-obradoiro.mp4", nombre: "Cierre · fachada del Obradoiro" },
+  { desde: 47.0, hasta: 52.02, origen: 0.0, fuente: T + "fachada-obradoiro.mp4", nombre: "Cierre · fachada del Obradoiro" },
 ];
 
 
@@ -121,7 +127,7 @@ export const SWSocialCaminoES: React.FC = () => {
   const total = f(DURACION);
   /** El montaje dura 52,02 s. La placa entra antes de que se acabe. */
   const finMontaje = f(52.02);
-  const entraPlaca = f(51.4);
+  const entraPlaca = f(51.2);
   const entraCierre = f(48.45);
 
   return (
@@ -199,7 +205,7 @@ export const SWSocialCaminoES: React.FC = () => {
       <Sequence from={entraCierre} durationInFrames={total - entraCierre} name="6 · Tu Camino empieza aquí">
         <CierreMarca
           lineas={[[{ texto: "Tu Camino" }], [{ texto: "empieza aquí", destacado: true }]]}
-          salidaTexto={f(51.3) - entraCierre}
+          salidaTexto={f(51.1) - entraCierre}
           abajo
         />
       </Sequence>

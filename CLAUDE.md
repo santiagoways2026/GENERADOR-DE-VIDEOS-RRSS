@@ -161,11 +161,28 @@ Estas salieron de revisar piezas reales y ahorran repetir errores:
    a error, no a segundo testimonio.
 11. **Los tramos sin voz llevan cama de ambiente, no silencio.** Y si la
    pieza no tiene música, tampoco se le mete una sólo ahí: suena a parche.
-   `herramientas/scripts/ambiente.py` hace la cama con los propios silencios
-   del montaje. Los huecos se eligen midiendo el factor de cresta, pico entre
-   rms: por debajo de 5 es ambiente, por encima hay una respiración o un
-   golpe de aire dentro, y colado en el bucle se oye a alguien andando.
-12. **El primer plano se elige aparte.** El que abre una pieza no es el que
+   `herramientas/scripts/ambiente.py` la hace con los propios silencios del
+   montaje, y tiene tres reglas metidas dentro, las tres aprendidas a base de
+   que se oyera el truco:
+   - **No se hace con un bucle.** Los huecos entre frases duran medio segundo,
+     así que el ciclo vuelve cada segundo y medio y se nota. Se saca la huella
+     espectral, que es el color de la sala, y se sintetiza con fase aleatoria.
+   - **Los huecos se eligen midiendo**, con el factor de cresta, pico entre
+     rms: por debajo de 5 es ambiente, por encima hay una respiración o un
+     golpe de aire dentro. `--listar` los mide.
+   - **La cama se nivela contra el ambiente con el que empalma**, no contra la
+     media de la pieza. La media salía de 3 a 8 dB por encima, y una cama que
+     entra más alta que lo que viene detrás se oye como un escalón.
+   Las junturas se montan con fundido cruzado de verdad, con material de los
+   dos lados: pegando a hueso hay chasquido, y fundiendo cada trozo a silencio
+   se oye el bache.
+12. **Un plano más corto que su hueco no avisa.** `OffthreadVideo` no falla
+   cuando se le pide más metraje del que tiene: congela el último fotograma.
+   En la pieza social fueron 0,72 s de imagen parada que parecían un corte mal
+   hecho. Los brutos duran entre 1 y 2,2 segundos, así que pasa enseguida.
+   `python3 herramientas/scripts/comprobar-inserciones.py <escena.tsx>` mide
+   cada inserción contra el archivo y avisa. Se pasa antes de cada render.
+13. **El primer plano se elige aparte.** El que abre una pieza no es el que
    venía primero en el bruto: se mira si aguanta solo. Un contraluz velado
    con un muro al fondo no abre nada. Para eso están los brutos de 1080p, que
    además entran más nítidos que una base recortada con zoom.

@@ -1,6 +1,6 @@
-# Testimonio del Camino · español · redes · V3
+# Testimonio del Camino · español · redes · V4
 
-Pieza de 55,1 s, 1280x720 a 30 fps. Sale de la pieza social antigua, que
+Pieza de 54,9 s, 1280x720 a 30 fps. Sale de la pieza social antigua, que
 duraba 60,1 s con cartela de agencia, fundido final y dos marcas de agua.
 
 Fuentes vivas:
@@ -8,6 +8,7 @@ Fuentes vivas:
 - `video/src/SWSocialCaminoES.tsx` · la escena
 - `herramientas/scripts/montaje-social-ES.py` · la base, `social-ES-v3.mp4`
 - `herramientas/scripts/ambiente.py` · las camas de ambiente
+- `herramientas/scripts/comprobar-inserciones.py` · mide que cada plano llega
 
 ## Qué se quitó del original
 
@@ -55,6 +56,15 @@ del propio montaje. La pieza no lleva música: poner una sólo en esos diez
 segundos sonaría a parche. Si se quiere una cama musical, hace falta una pista
 con licencia y se monta debajo de toda la pieza, no de un trozo.
 
+La cama **no es un bucle**. Se probó encadenando los silencios y se oía: duran
+medio segundo, así que el ciclo volvía cada segundo y medio, y las mitades
+invertidas sonaban al revés. Ahora se saca la huella espectral de esos
+silencios, que es el color de la sala, y se sintetiza con fase aleatoria: sale
+continuo, sin ciclo y sin nada reconocible dentro. Cada cama va nivelada
+contra el ambiente con el que empalma, no contra la media de la pieza, y las
+junturas llevan fundido cruzado de verdad, con material de los dos lados del
+corte.
+
 ## Planos de recurso
 
 Van mudos, solo imagen: el audio que suena es siempre el continuo de la base.
@@ -70,13 +80,19 @@ Van mudos, solo imagen: el audio que suena es siempre el continuo de la base.
 | 9,80 s | 10,75 s | Paso de piedras sobre el río | `brutos/rio-piedras` | Apertura |
 | 23,00 s | 30,00 s | Casa rural · habitación · baño · mesa de piedra · terraza | `brutos/` y `brutos/testimonios/` | Bloque de alojamiento |
 | 39,45 s | 41,25 s | Peregrino con mochila grande | base | Rompe 4,2 s de entrevista seguida |
-| 45,00 s | 47,05 s | Plaza del Obradoiro con peregrinos | `testimonios/obradoiro` | Arregla el corte del segundo 40 |
-| 47,05 s | 52,00 s | Fachada del Obradoiro | `testimonios/fachada-obradoiro` | El cierre se dice sobre la catedral |
+| 44,40 s | 45,70 s | Calle de Santiago con peregrinos entrando | `testimonios/rua-santiago` | Llegada |
+| 45,70 s | 47,00 s | Plaza del Obradoiro con peregrinos | `testimonios/obradoiro` | Llegada |
+| 47,00 s | 52,02 s | Fachada del Obradoiro | `testimonios/fachada-obradoiro` | El cierre se dice sobre la catedral |
 
-Sobre el corte del segundo 40: el montaje encadenaba tres planos de la
-catedral casi iguales, los tres torres contra nubes, y el del medio se veía
-como un salto. El plano de la plaza pone gente a pie de calle entre el general
-y el detalle, y la llegada queda como una secuencia.
+Sobre los cortes del final: el montaje encadenaba tres planos de la catedral
+casi iguales, los tres torres contra nubes. Ahora la llegada va de lejos a
+cerca y con gente en medio, la calle y la plaza, y se lee como una secuencia.
+
+Y había un fallo de bulto que arreglar: al plano de la plaza se le pedían
+2,05 s y sólo tiene 1,33. `OffthreadVideo` no avisa de eso, congela el último
+fotograma, así que había 0,72 s de imagen parada en el segundo 46. De ahí sale
+`comprobar-inserciones.py`, que mide cada inserción contra su archivo. Ahora
+todas tienen holgura.
 
 Los planos de `brutos/` son de 1920x1080 y se ven más nítidos que la base, que
 viene de un recorte con zoom. En la apertura y en el cierre eso juega a favor.
@@ -101,7 +117,7 @@ tercera línea le llega a la barbilla.
 1. 48,45 s · «Tu Camino / **empieza aquí**» sobre la fachada del Obradoiro,
    con el overlay diagonal. La voz del peregrino sigue sonando por debajo: lo
    que se sustituye es sólo la imagen.
-2. 51,40 s · Placa de marca. Logo blanco centrado sobre el degradado de verdes
+2. 51,20 s · Placa de marca. Logo blanco centrado sobre el degradado de verdes
    de la guía, y `santiagoways.com` debajo en blanco.
 
 Termina en la marca, sin fundido a negro.
@@ -113,8 +129,14 @@ Termina en la marca, sin fundido a negro.
 - Se midió el timbre de cada tramo de voz contra los tramos en los que al
   peregrino se le ve hablando en cámara. El tramo que se quitó estaba en
   582 Hz de centroide; los suyos, entre 631 y 770.
-- Las camas de ambiente se hicieron eligiendo huecos por factor de cresta. Uno
-  de los candidatos llevaba una respiración dentro y se descartó.
+- Las camas de ambiente se hicieron eligiendo huecos por factor de cresta. Dos
+  de los candidatos llevaban algo dentro, una respiración y un golpe de aire,
+  y se descartaron.
+- La autocorrelación de la cama de apertura da 0,06 fuera del cero: no hay
+  ciclo audible. Y cada cama queda a menos de 1,5 dB del ambiente con el que
+  empalma.
+- Todas las inserciones tienen holgura sobre la duración real de su archivo,
+  medida en fotogramas.
 - Ninguna toma se repite, ni entre bloques contiguos ni en toda la pieza.
 - Ninguna cartela cae sobre una cara, comprobado fotograma a fotograma.
 
