@@ -235,7 +235,7 @@ Hay dos juegos de planos y conviene saber cuál se coge:
 | --- | --- | --- |
 | `brutos/` | Los 29 planos del reel original | 1920x1080 |
 | `brutos/testimonios/` | 83 planos recurso de las piezas de testimonios | 1280x720 |
-| `brutos/orbis/` | 15 planos de una pieza vieja de la agencia | 1280x720 |
+| `brutos/piezas-viejas/` | 28 planos de tres piezas viejas de la agencia | 1280x720 |
 
 Los de `testimonios/` dan variedad, sobre todo de alojamiento, gastronomía y
 llegada a Santiago, pero son de menos resolución: para un primer plano grande o
