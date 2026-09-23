@@ -93,7 +93,9 @@ logo: la marca cierra, no acompaña.
 **El cierre se dice sobre el sitio, no sobre la cara.** Si la pieza termina
 con el entrevistado en primer plano, se sustituye sólo la imagen por un plano
 de la catedral o del Obradoiro, que es lo que remata. La voz sigue corriendo
-por debajo. Y aun así el titular del cierre va abajo, al sitio de las
+por debajo. Y si el final encadena varios planos del mismo monumento, que
+vayan de lo general al detalle y con gente en medio: tres encuadres seguidos
+de torres contra nubes se ven como un salto, no como una secuencia. Y aun así el titular del cierre va abajo, al sitio de las
 cartelas: a media altura el recuadro verde cae justo sobre la cara si el plano
 cambia, y un rótulo no tapa una cara.
 
@@ -146,10 +148,27 @@ Estas salieron de revisar piezas reales y ahorran repetir errores:
    sigue viéndose si cae a mitad de plano. Encima va un plano de recurso, y
    sale gratis: los planos que ese mismo corte deja fuera sirven, y así no se
    repite ninguna toma.
-9. **Antes de cortar, contar cuántos hablan.** El tono no distingue a dos
-   hombres de edad parecida; la envolvente espectral promediada sí. Merece la
-   pena comprobarlo: si en pantalla aparece alguien distinto del que se oye,
-   no es un segundo testimonio, es un plano de recurso.
+9. **Antes de cortar, contar cuántos hablan, y hacerlo bien.** El tono no
+   distingue a dos hombres de edad parecida, y la envolvente espectral
+   promediada tampoco es concluyente. Lo que sí funciona es comparar cada
+   tramo de voz contra los tramos en los que se ve a alguien hablando en
+   cámara, midiendo el centroide espectral entre 300 y 3400 Hz, que es donde
+   caen los formantes. En la pieza social en español un tramo estaba en
+   582 Hz y los del peregrino que sí sale, entre 631 y 770: era otro señor.
+   Si una prueba sale dudosa, es dudosa, no negativa.
+10. **Una voz sin cara no se deja.** Si al que habla no se le ve nunca,
+   porque su plano cayó en un recorte anterior, ese tramo se va entero. Suena
+   a error, no a segundo testimonio.
+11. **Los tramos sin voz llevan cama de ambiente, no silencio.** Y si la
+   pieza no tiene música, tampoco se le mete una sólo ahí: suena a parche.
+   `herramientas/scripts/ambiente.py` hace la cama con los propios silencios
+   del montaje. Los huecos se eligen midiendo el factor de cresta, pico entre
+   rms: por debajo de 5 es ambiente, por encima hay una respiración o un
+   golpe de aire dentro, y colado en el bucle se oye a alguien andando.
+12. **El primer plano se elige aparte.** El que abre una pieza no es el que
+   venía primero en el bruto: se mira si aguanta solo. Un contraluz velado
+   con un muro al fondo no abre nada. Para eso están los brutos de 1080p, que
+   además entran más nítidos que una base recortada con zoom.
 
 ## Reglas técnicas de Remotion
 
