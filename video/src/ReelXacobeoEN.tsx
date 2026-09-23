@@ -29,9 +29,11 @@ import { LineaTiempo } from "./graficos/LineaTiempo";
  * Footage is reassigned per beat by theme rather than reusing the Spanish
  * cut's block-for-block mapping, since this script has more beats (10)
  * than the Spanish one (7) and two beats (Holy Door / friendship-and-time)
- * have no equivalent there. `credencial` and `compostela` appear in two
- * non-contiguous beats (3 and 5) because there isn't enough distinct
- * footage to cover every beat once — never in two contiguous beats.
+ * have no equivalent there. The five clips from the Spanish "Ambiente"
+ * block (brazos-alto, brindis, compostela, credencial, pareja-muros) plus
+ * one borrowed from "Servicios" (grupo-peregrinos) are split two-per-beat
+ * across beats 3-5 (Holy Door, Friendship, Arrival) so none of them
+ * repeats — even a dozen seconds apart, a repeat reads as a mistake.
  */
 
 const BOUNDS = [
@@ -142,7 +144,6 @@ export const ReelXacobeoEN: React.FC = () => {
           lista={[
             { src: "brazos-alto", dura: 1.0, encuadre: "34% 50%" },
             { src: "brindis", dura: 2.0, encuadre: "42% 50%" },
-            { src: "pareja-muros", dura: 1.55, encuadre: "40% 50%" },
           ]}
         />
       </Sequence>
@@ -153,8 +154,7 @@ export const ReelXacobeoEN: React.FC = () => {
           total={dur(5)}
           overlay={0.3}
           lista={[
-            { src: "credencial", dura: 1.05 },
-            { src: "compostela", dura: 1.7, encuadre: "38% 50%" },
+            { src: "pareja-muros", dura: 1.55, encuadre: "40% 50%" },
             { src: "grupo-peregrinos", dura: 0.75 },
           ]}
         />
