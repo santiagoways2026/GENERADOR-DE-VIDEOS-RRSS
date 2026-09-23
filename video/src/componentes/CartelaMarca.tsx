@@ -111,11 +111,34 @@ export const Cartela: React.FC<{
   pie?: string[];
   total: number;
   tam?: number;
-}> = ({ lineas, pie, total, tam = 72 }) => {
+  /** El margen del lienzo. 64 en horizontal; en vertical hay que subirlo. */
+  margen?: number;
+  /**
+   * Margen inferior aparte. En vertical hay que separarse mucho mas del
+   * borde: en stories y en TikTok los ultimos 300 px los tapa la interfaz,
+   * la barra de "enviar mensaje" y los botones de la derecha.
+   */
+  margenAbajo?: number;
+  /** Cuerpo del pie. En vertical se queda pequeno con el valor de siempre. */
+  tamPie?: number;
+}> = ({
+  lineas,
+  pie,
+  total,
+  tam = 72,
+  margen = MARGEN,
+  margenAbajo,
+  tamPie = 21,
+}) => {
   const frame = useCurrentFrame();
   return (
     <AbsoluteFill
-      style={{ justifyContent: "flex-end", alignItems: "flex-start", padding: MARGEN }}
+      style={{
+        justifyContent: "flex-end",
+        alignItems: "flex-start",
+        padding: margen,
+        paddingBottom: margenAbajo ?? margen,
+      }}
     >
       {/* Un velo muy suave: sin el, el blanco se pierde sobre un cielo claro. */}
       <AbsoluteFill
@@ -133,7 +156,7 @@ export const Cartela: React.FC<{
             style={{
               marginTop: 18,
               fontFamily: FUENTE,
-              fontSize: 21,
+              fontSize: tamPie,
               fontWeight: 700,
               lineHeight: 1.3,
               letterSpacing: "0.01em",
@@ -224,7 +247,9 @@ export const CierreMarca: React.FC<{
 export const PlacaMarca: React.FC<{
   web?: string;
   ancho?: number;
-}> = ({ web = "santiagoways.com", ancho = 460 }) => {
+  /** Separacion de la web respecto al centro. Mas en vertical. */
+  hueco?: number;
+}> = ({ web = "santiagoways.com", ancho = 460, hueco = 210 }) => {
   const frame = useCurrentFrame();
   const fondo = interpolate(frame, [0, 22], [0, 1], {
     extrapolateLeft: "clamp",
@@ -267,7 +292,7 @@ export const PlacaMarca: React.FC<{
         style={{
           justifyContent: "center",
           alignItems: "center",
-          paddingTop: 210,
+          paddingTop: hueco,
           opacity: marca,
           transform: `translateY(${sube}px)`,
         }}

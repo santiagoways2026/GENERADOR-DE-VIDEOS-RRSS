@@ -50,15 +50,17 @@ def main():
 
     # Las constantes de carpeta que usa la escena, del tipo `const B = "..."`.
     carpetas = dict(re.findall(r'const (\w+)\s*=\s*"([^"]*/)"', fuente))
-    bloque = re.search(r"const INSERCIONES[^=]*=\s*\[(.*?)\n\];", fuente, re.S)
-    if not bloque:
-        sys.exit("no encuentro el array INSERCIONES")
+    # Cualquier array tipado `Insercion[]`: una escena puede repartirlos en
+    # varios, por ejemplo los reencuadres por un lado y los hoteles por otro.
+    bloques = re.findall(r":\s*Insercion\[\]\s*=\s*\[(.*?)\n\];", fuente, re.S)
+    if not bloques:
+        sys.exit("no encuentro ningun array de tipo Insercion[]")
 
-    base = re.search(r'const BASE\s*=\s*"([^"]+)"', fuente)
+    base = re.search(r'const (?:BASE|MASTER)\s*=\s*"([^"]+)"', fuente)
     base = base.group(1) if base else None
 
     fallos = 0
-    for linea in re.finditer(r"\{([^{}]*)\}", bloque.group(1)):
+    for linea in re.finditer(r"\{([^{}]*)\}", "\n".join(bloques)):
         c = linea.group(1)
         def campo(n, por_defecto=None):
             m = re.search(rf"\b{n}:\s*([0-9.]+)", c)
