@@ -82,7 +82,10 @@ export const LineaTiempo: React.FC<{
         style={{
           padding: `${space[7]}px ${space[6]}px ${space[6]}px`,
           position: "relative",
-          height: 190,
+          // 92 (margen del punto) + 44 (punto) + 12 (espacio) + 72 (año a
+          // fontSize 60) = 220: el numero de abajo necesita ese alto o
+          // se sale de la caja y pisa la placa de conclusion.
+          height: 224,
         }}>
         {/* Raíl */}
         <div
