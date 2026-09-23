@@ -45,6 +45,14 @@ const salida = Easing.bezier(...easeOut);
 /** Hildary queda algo a la derecha del centro en el bruto horizontal. */
 const ENCUADRE = "55% 38%";
 
+/**
+ * Zona segura de TikTok e Instagram en 1080x1920 (plantilla en
+ * herramientas/zona-segura-redes.png): de y 115 a 958 se puede usar de x 46 a
+ * 1033, salvo el bloque central de y 133 a 216; de y 958 a 1545, solo hasta
+ * x 886, porque a la derecha van los botones. Por debajo de 1545, nada.
+ */
+export const SEGURA = { arriba: 250, izquierda: 60, derecha: 1020, derechaAbajo: 876, corte: 958, abajo: 1545 };
+
 /** Barrido lateral del kit: 27 fotogramas. */
 const BARRIDO = 27;
 
@@ -89,7 +97,7 @@ export const Short: React.FC<{ id: string }> = ({ id }) => {
         <Logo
           variante="blanco"
           ancho={200}
-          style={{ position: "absolute", left: 60, top: 110, opacity: 0.95 }}
+          style={{ position: "absolute", left: SEGURA.izquierda, top: 140, opacity: 0.95 }}
         />
       </Sequence>
 
@@ -151,16 +159,45 @@ const BRoll: React.FC<{ src: string; desde: number; modo: string; dur: number }>
     <OffthreadVideo src={staticFile(src)} trimBefore={f(desde)} muted style={style} />
   );
 
+  if (modo === "mapa") {
+    // Mapa vertical: trae sus propios textos (titular arriba, etapa y km
+    // abajo) que a tamaño completo caen bajo la interfaz de la red y bajo los
+    // subtítulos. Reducido al 66 % y recortado antes de la marca de agua,
+    // todo queda entre y 250 y 1240 y a la izquierda de los botones.
+    const ESCALA = 0.66;
+    return (
+      <AbsoluteFill style={{ opacity: entra, backgroundColor: brand.forestDeep }}>
+        {video({ width: "100%", height: "100%", objectFit: "cover", filter: "blur(40px)", scale: 1.25, opacity: 0.7 })}
+        <div
+          style={{
+            position: "absolute",
+            left: 150,
+            top: 120,
+            width: 1080 * ESCALA,
+            height: 1700 * ESCALA,
+            overflow: "hidden",
+            borderRadius: 18,
+            boxShadow: "0 24px 48px rgba(14, 44, 31, 0.5)",
+            translate: `0px ${interpolate(frame, [0, 12], [24, 0], { ...clamp, easing: salida })}px`,
+          }}
+        >
+          {video({ width: 1080 * ESCALA, height: 1920 * ESCALA, display: "block" })}
+        </div>
+      </AbsoluteFill>
+    );
+  }
+
   if (modo === "tarjeta") {
     // Gráfico horizontal: encajado entero sobre una versión desenfocada de sí mismo.
     return (
       <AbsoluteFill style={{ opacity: entra, backgroundColor: brand.forest }}>
         {video({ width: "100%", height: "100%", objectFit: "cover", filter: "blur(36px)", scale: 1.2 })}
         <AbsoluteFill style={{ backgroundColor: "rgba(14, 44, 31, 0.45)" }} />
-        <AbsoluteFill style={{ justifyContent: "center", alignItems: "center" }}>
+        {/* Encajado entero por encima de y 958, donde no llegan los botones. */}
+        <AbsoluteFill style={{ alignItems: "center", paddingTop: 410 }}>
           <div
             style={{
-              width: 1000,
+              width: 960,
               borderRadius: 16,
               overflow: "hidden",
               boxShadow: "0 24px 48px rgba(14, 44, 31, 0.45)",
@@ -197,9 +234,9 @@ const CartelaPng: React.FC<{ src: string; ancho: number; dur: number }> = ({ src
         src={staticFile(src)}
         style={{
           position: "absolute",
-          top: 250,
+          top: SEGURA.arriba,
           left: ancho >= 900 ? (1080 - ancho) / 2 : margin,
-          width: ancho,
+          width: Math.min(ancho, SEGURA.derecha - SEGURA.izquierda),
           height: "auto",
           clipPath: `inset(0 ${derecha}% 0 ${izquierda}%)`,
           filter: "drop-shadow(0 10px 22px rgba(14, 44, 31, 0.35))",
@@ -218,7 +255,7 @@ const ExpertoSiCabe: React.FC<{ d: DatosShort }> = ({ d }) => {
   if (!libre || brollEncima) return null;
   return (
     <Sequence from={f(a)} durationInFrames={f(b - a)} name="Camino Expert">
-      <Cartela principal="Camino Expert" secundaria="French Way specialist" desde={0} />
+      <Cartela principal="Camino Expert" secundaria="French Way specialist" desde={0} top={SEGURA.arriba} />
     </Sequence>
   );
 };

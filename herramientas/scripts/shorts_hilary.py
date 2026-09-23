@@ -121,14 +121,14 @@ STOCK = [(7.2, 31.2), (72.7, 78.4), (109.2, 118.9), (159.6, 161.9), (183.6, 187.
 # Los gráficos horizontales del vídeo largo no caben en vertical: se cambian
 # por las versiones verticales en inglés que vienen en el Drive.
 GRAFICOS = [
-    ((57.0, 64.5), "hilary/mapas/ruta-frances.mp4", 3.0, "cubrir"),
-    ((88.5, 96.0), "hilary/mapas/ruta-sarria.mp4", 3.0, "cubrir"),
+    ((57.0, 64.5), "hilary/mapas/ruta-frances.mp4", 3.0, "mapa"),
+    ((88.5, 96.0), "hilary/mapas/ruta-sarria.mp4", 3.0, "mapa"),
     ((208.5, 221.0), "hilary/mapas/perfil-sarria-h.mp4", 1.0, "tarjeta"),
-    ((317.5, 320.0), "hilary/mapas/etapas-sarria.mp4", 1.6, "cubrir"),
-    ((335.5, 338.0), "hilary/mapas/etapas-sarria.mp4", 3.7, "cubrir"),
-    ((357.0, 359.5), "hilary/mapas/etapas-sarria.mp4", 7.6, "cubrir"),
-    ((380.5, 383.5), "hilary/mapas/etapas-sarria.mp4", 9.9, "cubrir"),
-    ((397.5, 400.0), "hilary/mapas/etapas-sarria.mp4", 12.0, "cubrir"),
+    ((317.5, 320.0), "hilary/mapas/etapas-sarria.mp4", 1.6, "mapa"),
+    ((335.5, 338.0), "hilary/mapas/etapas-sarria.mp4", 3.7, "mapa"),
+    ((357.0, 359.5), "hilary/mapas/etapas-sarria.mp4", 7.6, "mapa"),
+    ((380.5, 383.5), "hilary/mapas/etapas-sarria.mp4", 9.9, "mapa"),
+    ((397.5, 400.0), "hilary/mapas/etapas-sarria.mp4", 12.0, "mapa"),
 ]
 
 MUSICA = ["Carefree", "Life_of_Riley", "Happy_Alley", "Wholesome", "Sunshine_A",
@@ -196,8 +196,9 @@ def construir(tx, spec, outro, idx):
         dur = min(dur, fin_principal - en)
         solapa = any(en < b["en"] + b["dur"] and b["en"] < en + dur for b in broll)
         if dur >= 1.0 and not solapa:
+            modo = "mapa" if src.startswith("hilary/mapas/") else "cubrir"
             broll.append(dict(en=en, dur=round(dur, 3), src=YT if src == "yt" else src,
-                              desde=desde, modo="cubrir"))
+                              desde=desde, modo=modo))
     broll.sort(key=lambda b: b["en"])
 
     # El B-roll no tapa el gancho.
@@ -237,6 +238,22 @@ def construir(tx, spec, outro, idx):
         dict(tipo="png", src="hilary/cartelas/sw-subscribe-button.png", en=round(o + 4.9, 3), dur=3.4, ancho=720, cta=True),
         dict(tipo="png", src="hilary/cartelas/sw-tag-light.png", en=round(o + 8.5, 3), dur=total_voz - o - 8.5, ancho=900, cta=True),
     ]
+    # Un mapa ya trae su titular y sus datos: la cartela que coincide con él
+    # lo taparía y repetiría lo mismo.
+    mapas = [b for b in broll if b["modo"] == "mapa"]
+    def tapa_mapa(c):
+        return any(min(c["en"] + c["dur"], m["en"] + m["dur"]) - max(c["en"], m["en"]) > 0.8 for m in mapas)
+    # Si queda tiempo, la cartela entra cuando el mapa se retira.
+    for c in capas:
+        if c.get("cta"):
+            continue
+        for m in mapas:
+            fin_m = m["en"] + m["dur"]
+            if min(c["en"] + c["dur"], fin_m) - max(c["en"], m["en"]) > 0.8:
+                fin_c = c["en"] + c["dur"]
+                c["en"] = round(fin_m + 0.1, 3)
+                c["dur"] = round(fin_c + 0.8 - c["en"], 3)
+    capas = [c for c in capas if c.get("cta") or (c["dur"] >= 2.0 and not tapa_mapa(c))]
     capas.sort(key=lambda c: c["en"])
     # Una sola cartela a la vez en la franja superior.
     for i in range(len(capas) - 1):

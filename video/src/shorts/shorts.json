@@ -100,7 +100,7 @@
     "dur": 2.33,
     "src": "hilary/mapas/ruta-frances.mp4",
     "desde": 3.0,
-    "modo": "cubrir"
+    "modo": "mapa"
    },
    {
     "en": 12.93,
@@ -114,7 +114,7 @@
     "dur": 7.5,
     "src": "hilary/mapas/ruta-sarria.mp4",
     "desde": 3.0,
-    "modo": "cubrir"
+    "modo": "mapa"
    },
    {
     "en": 30.57,
@@ -125,13 +125,6 @@
    }
   ],
   "capas": [
-   {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-fact-pill.png",
-    "dur": 2.12,
-    "ancho": 620,
-    "en": 16.53
-   },
    {
     "tipo": "png",
     "src": "hilary/cartelas/sw-subscribe-button.png",
@@ -776,11 +769,6 @@
     "vol": 0.35
    },
    {
-    "en": 16.53,
-    "src": "sfx/pop.wav",
-    "vol": 0.4
-   },
-   {
     "en": 18.75,
     "src": "sfx/ding.wav",
     "vol": 0.28
@@ -916,7 +904,7 @@
     "dur": 1.72,
     "src": "hilary/mapas/ruta-sarria.mp4",
     "desde": 8.78,
-    "modo": "cubrir"
+    "modo": "mapa"
    }
   ],
   "capas": [
@@ -5134,14 +5122,14 @@
     "dur": 2.5,
     "src": "hilary/mapas/etapas-sarria.mp4",
     "desde": 1.6,
-    "modo": "cubrir"
+    "modo": "mapa"
    },
    {
     "en": 8.24,
     "dur": 2.28,
     "src": "hilary/mapas/etapas-sarria.mp4",
     "desde": 3.92,
-    "modo": "cubrir"
+    "modo": "mapa"
    },
    {
     "en": 12.12,
@@ -5155,7 +5143,7 @@
     "dur": 2.5,
     "src": "hilary/mapas/etapas-sarria.mp4",
     "desde": 7.6,
-    "modo": "cubrir"
+    "modo": "mapa"
    },
    {
     "en": 18.42,
@@ -5169,7 +5157,7 @@
     "dur": 2.62,
     "src": "hilary/mapas/etapas-sarria.mp4",
     "desde": 10.28,
-    "modo": "cubrir"
+    "modo": "mapa"
    },
    {
     "en": 25.56,
@@ -5183,44 +5171,30 @@
     "dur": 2.3,
     "src": "hilary/mapas/etapas-sarria.mp4",
     "desde": 12.2,
-    "modo": "cubrir"
+    "modo": "mapa"
    }
   ],
   "capas": [
    {
     "tipo": "png",
-    "src": "hilary/cartelas/sw-stage-01-sarria-portomarin.png",
-    "dur": 3.72,
-    "ancho": 620,
-    "en": 4.48
-   },
-   {
-    "tipo": "png",
     "src": "hilary/cartelas/sw-stage-02-portomarin-palas.png",
-    "dur": 4.0,
+    "dur": 2.48,
     "ancho": 620,
-    "en": 8.3
+    "en": 10.62
    },
    {
     "tipo": "png",
     "src": "hilary/cartelas/sw-stage-03-palas-arzua.png",
-    "dur": 4.0,
+    "dur": 2.06,
     "ancho": 620,
-    "en": 14.68
-   },
-   {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-stage-04-arzua-arua.png",
-    "dur": 3.6,
-    "ancho": 620,
-    "en": 22.9
+    "en": 17.42
    },
    {
     "tipo": "png",
     "src": "hilary/cartelas/sw-stage-05-arua-santiago.png",
-    "dur": 4.0,
+    "dur": 2.46,
     "ancho": 620,
-    "en": 27.14
+    "en": 29.48
    },
    {
     "tipo": "png",
@@ -5801,27 +5775,17 @@
     "vol": 0.35
    },
    {
-    "en": 4.48,
+    "en": 10.62,
     "src": "sfx/pop.wav",
     "vol": 0.4
    },
    {
-    "en": 8.3,
+    "en": 17.42,
     "src": "sfx/pop.wav",
     "vol": 0.4
    },
    {
-    "en": 14.68,
-    "src": "sfx/pop.wav",
-    "vol": 0.4
-   },
-   {
-    "en": 22.9,
-    "src": "sfx/pop.wav",
-    "vol": 0.4
-   },
-   {
-    "en": 27.14,
+    "en": 29.48,
     "src": "sfx/pop.wav",
     "vol": 0.4
    },
@@ -13958,7 +13922,7 @@
     "dur": 2.6,
     "src": "hilary/mapas/etapas-sarria.mp4",
     "desde": 1.6,
-    "modo": "cubrir"
+    "modo": "mapa"
    },
    {
     "en": 16.22,

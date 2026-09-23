@@ -16,7 +16,7 @@ type Palabra = { t: string; en: number; fin: number };
 type Token = { texto: string; en: number; fin: number; logo?: boolean };
 
 const MAX_PALABRAS = 3;
-const MAX_CARACTERES = 15;
+const MAX_CARACTERES = 14;
 
 const limpiar = (t: string) => t.replace(/[.,!?;:"“”]/g, "").trim();
 
@@ -85,9 +85,10 @@ export const Subtitulos: React.FC<{ palabras: Palabra[] }> = ({ palabras }) => {
     <div
       style={{
         position: "absolute",
-        top: 1300,
-        left: 70,
-        right: 70,
+        // Por debajo de y 958 la columna derecha es de los botones de la red.
+        top: 1280,
+        left: 60,
+        right: 1080 - 876,
         display: "flex",
         flexWrap: "wrap",
         justifyContent: "center",
@@ -117,7 +118,7 @@ export const Subtitulos: React.FC<{ palabras: Palabra[] }> = ({ palabras }) => {
           <span
             key={i}
             style={{
-              fontSize: 76,
+              fontSize: 72,
               lineHeight: 1.08,
               fontWeight: 900,
               textTransform: "uppercase",
