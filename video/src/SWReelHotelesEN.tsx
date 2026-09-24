@@ -29,7 +29,7 @@ import { Cartela, CierreMarca, PlacaMarca } from "./componentes/CartelaMarca";
  * 79 % de la imagen y cuando habla el hijo, al 19 %.
  *
  * La pista la monta `herramientas/scripts/audio-reel-hoteles.py`, que hace
- * dos cosas que aqui no se pueden hacer: quita 11,95 s por dentro y le pone
+ * dos cosas que aqui no se pueden hacer: quita 12,68 s por dentro y le pone
  * cola de musica a la placa final. Las dos junturas van con fundido cruzado
  * porque la pista lleva voz y musica en el mismo canal.
  *
@@ -42,12 +42,20 @@ const FPS = 30;
 const f = (s: number) => Math.round(s * FPS);
 
 /** Donde entra la placa de marca y se acaba la imagen de la pieza. */
-const TESTIMONIO = 45.9;
-const DURACION = 49.2;
+const TESTIMONIO = 45.8;
+const DURACION = 49.1;
 
-/** Los dos tramos del master que se conservan. */
-const A_DESDE = 15.3;
-const A_DURA = 14.42;
+/**
+ * Los dos tramos del master que se conservan.
+ *
+ * El tramo A empieza en el 15,40 y no en el 15,30 porque el master cambia de
+ * plano justo ahi: los tres fotogramas de antes son un plano de bosque, y
+ * abrir con un destello de una decima no es abrir con nada. Se mueve tambien
+ * el arranque de la pista, no solo el de la imagen, para que la boca siga
+ * cuadrando; por eso la pieza dura una decima menos.
+ */
+const A_DESDE = 15.4;
+const A_DURA = 14.32;
 const B_DESDE = 42.4;
 
 const PISTA = "montajes/reel-hoteles.wav";
@@ -102,14 +110,18 @@ type Insercion = {
 };
 
 /**
- * Los cuatro momentos en los que se ve hablar a alguien. Salen del propio
- * master, al mismo segundo: lo unico que cambia es por donde se recorta.
+ * Los dos momentos en los que se ve hablar a alguien. Salen del propio master,
+ * al mismo segundo: lo unico que cambia es por donde se recorta.
+ *
+ * Eran cuatro. Se han ido las dos caras cortas, la del padre que partia en
+ * dos el bloque de maletas y la del hijo del 35, porque las dos entraban por
+ * un plano de recurso del propio master, un pasillo y un bano, que aqui no
+ * pintan nada. El master mete esos cortes y en vertical se ven como un
+ * destello. Los dos que hablan salen igual, cada uno en su tramo largo.
  */
 const CARAS: Insercion[] = [
-  { desde: 0.0, hasta: 4.63, origen: 15.3, encuadre: PADRE, nombre: "Padre 1" },
-  { desde: 17.65, hasta: 18.95, origen: 45.63, encuadre: PADRE, nombre: "Padre 2 · equipaje" },
-  { desde: 26.92, hasta: 29.12, origen: 54.9, encuadre: HIJO, nombre: "Hijo 1 · hoteles" },
-  { desde: 35.15, hasta: 36.69, origen: 63.13, encuadre: HIJO, nombre: "Hijo 2 · hoteles" },
+  { desde: 0.0, hasta: 4.53, origen: 15.4, encuadre: PADRE, nombre: "Padre" },
+  { desde: 26.82, hasta: 29.02, origen: 54.9, encuadre: HIJO, nombre: "Hijo · hoteles" },
 ];
 
 /**
@@ -117,24 +129,27 @@ const CARAS: Insercion[] = [
  * pico cada uno el arranque iba a tirones.
  */
 const CAMINO: Insercion[] = [
-  { desde: 4.63, hasta: 6.55, origen: 0.1, fuente: V + "peregrinos-calzada.mp4", nombre: "Calzada" },
-  { desde: 6.55, hasta: 8.05, origen: 0.03, fuente: B + "pareja-muros.mp4", nombre: "Pareja entre muros" },
-  { desde: 8.05, hasta: 10.3, origen: 0.05, fuente: T + "camino-dedaleras.mp4", nombre: "Camino entre dedaleras" },
-  { desde: 10.3, hasta: 12.9, origen: 0.1, fuente: V + "sendero-peregrinos.mp4", nombre: "Sendero" },
-  // Tapa la juntura del corte, que cae en 14,42.
-  { desde: 12.9, hasta: 14.9, origen: 0.1, fuente: V + "grupo-calle.mp4", nombre: "Juntura · grupo por la calle" },
-  { desde: 14.9, hasta: 16.67, origen: 0.1, fuente: V + "calle-aldea.mp4", nombre: "Calle de aldea" },
+  { desde: 4.53, hasta: 6.45, origen: 0.1, fuente: V + "peregrinos-calzada.mp4", nombre: "Calzada" },
+  { desde: 6.45, hasta: 7.95, origen: 0.03, fuente: B + "pareja-muros.mp4", nombre: "Pareja entre muros" },
+  { desde: 7.95, hasta: 10.2, origen: 0.05, fuente: T + "camino-dedaleras.mp4", nombre: "Camino entre dedaleras" },
+  { desde: 10.2, hasta: 12.8, origen: 0.1, fuente: V + "sendero-peregrinos.mp4", nombre: "Sendero" },
+  // Tapa la juntura del corte, que cae en 14,32.
+  { desde: 12.8, hasta: 14.8, origen: 0.1, fuente: V + "grupo-calle.mp4", nombre: "Juntura · grupo por la calle" },
+  { desde: 14.8, hasta: 16.57, origen: 0.1, fuente: V + "calle-aldea.mp4", nombre: "Calle de aldea" },
 ];
 
 /**
- * Equipaje, sobre "having somebody Sherpa your belongings". El ultimo cae
- * entero sobre "The only way to go", que es la frase que lo remata.
+ * Equipaje, sobre "having somebody Sherpa your belongings". Van los cinco
+ * seguidos, sin la cara del padre partiendo el bloque por la mitad: la idea es
+ * que las maletas viajan solas y se ve mejor de un tiron. El ultimo cae entero
+ * sobre "The only way to go", que es la frase que lo remata.
  */
 const EQUIPAJE: Insercion[] = [
-  { desde: 16.67, hasta: 17.65, origen: 0.05, fuente: T + "maletas-portal.mp4", nombre: "Maletas · portal" },
-  { desde: 18.95, hasta: 21.05, origen: 0.05, fuente: V + "maletas-etiqueta.mp4", nombre: "Maletas · etiqueta" },
-  { desde: 21.05, hasta: 22.2, origen: 0.03, fuente: T + "etiquetas-maletas.mp4", nombre: "Maletas · etiquetas del tour" },
-  { desde: 22.2, hasta: 23.9, origen: 0.0, fuente: V + "maleta-concha.mp4", nombre: "Maleta · concha · The only way to go" },
+  { desde: 16.57, hasta: 18.05, origen: 0.0, fuente: T + "maletas-portal.mp4", nombre: "Maletas · portal" },
+  { desde: 18.05, hasta: 20.2, origen: 0.05, fuente: V + "maletas-etiqueta.mp4", nombre: "Maletas · etiqueta" },
+  { desde: 20.2, hasta: 21.35, origen: 0.0, fuente: T + "etiquetas-maletas.mp4", nombre: "Maletas · etiquetas del tour" },
+  { desde: 21.35, hasta: 22.15, origen: 0.0, fuente: T + "maletas-fila.mp4", nombre: "Maletas · en fila" },
+  { desde: 22.15, hasta: 23.8, origen: 0.0, fuente: V + "maleta-concha.mp4", nombre: "Maleta · concha · The only way to go" },
 ];
 
 /**
@@ -145,20 +160,28 @@ const EQUIPAJE: Insercion[] = [
  * Son planos quietos y no se nota.
  */
 const HOTELES: Insercion[] = [
-  { desde: 23.9, hasta: 25.9, origen: 0.0, fuente: V + "pazo-blanco.mp4", ritmo: 0.86, nombre: "Fachada · pazo blanco" },
-  { desde: 25.9, hasta: 26.92, origen: 0.1, fuente: V + "galeria-hotel.mp4", nombre: "Galeria del hotel" },
-  { desde: 29.12, hasta: 31.1, origen: 0.08, fuente: B + "habitacion.mp4", encuadre: mirar(0.66), nombre: "Cama · ventanal 1080p" },
-  { desde: 31.1, hasta: 32.25, origen: 0.03, fuente: T + "bano-ducha.mp4", nombre: "Ducha" },
-  { desde: 32.25, hasta: 34.2, origen: 0.05, fuente: V + "habitacion-ventanal.mp4", nombre: "Cama · ventanal" },
-  { desde: 34.2, hasta: 35.15, origen: 0.0, fuente: V + "salon-rustico.mp4", nombre: "Salon rustico" },
-  { desde: 36.69, hasta: 38.35, origen: 0.0, fuente: V + "habitacion-piedra.mp4", nombre: "Cama · pared de piedra" },
+  { desde: 23.8, hasta: 25.8, origen: 0.0, fuente: V + "pazo-blanco.mp4", ritmo: 0.86, nombre: "Fachada · pazo blanco" },
+  { desde: 25.8, hasta: 26.82, origen: 0.1, fuente: V + "galeria-hotel.mp4", nombre: "Galeria del hotel" },
+  { desde: 29.02, hasta: 31.0, origen: 0.08, fuente: B + "habitacion.mp4", encuadre: mirar(0.66), nombre: "Cama · ventanal 1080p" },
+  { desde: 31.0, hasta: 32.15, origen: 0.03, fuente: T + "bano-ducha.mp4", nombre: "Ducha" },
+  { desde: 32.15, hasta: 34.1, origen: 0.05, fuente: V + "habitacion-ventanal.mp4", nombre: "Cama · ventanal" },
+  { desde: 34.1, hasta: 35.05, origen: 0.0, fuente: V + "salon-rustico.mp4", nombre: "Salon rustico" },
+  // Donde estaba la cara del hijo, que entraba por un bano del master.
+  { desde: 35.05, hasta: 36.59, origen: 0.0, fuente: V + "habitacion-buhardilla.mp4", nombre: "Cama · buhardilla" },
+  { desde: 36.59, hasta: 38.25, origen: 0.0, fuente: V + "habitacion-piedra.mp4", nombre: "Cama · pared de piedra" },
   // Sobre "I won't be sleeping in a tent or at some hostel": una casa de verdad.
-  { desde: 38.35, hasta: 39.7, origen: 0.0, fuente: B + "casa-rural.mp4", ritmo: 0.85, nombre: "Fachada · casa rural 1080p" },
-  // La llegada, ya sin hoteles: el remate emocional antes del CTA.
-  { desde: 39.7, hasta: 41.4, origen: 0.05, fuente: T + "grupo-compostelas.mp4", nombre: "Llegada · las compostelas" },
-  { desde: 41.4, hasta: 42.55, origen: 0.0, fuente: B + "brazos-alto.mp4", ritmo: 0.8, nombre: "Llegada · brazos en alto 1080p" },
-  // El CTA se dice sobre la catedral, que es lo que remata la pieza.
-  { desde: 42.55, hasta: 45.9, origen: 0.1, fuente: T + "fachada-obradoiro.mp4", nombre: "CTA · fachada del Obradoiro" },
+  { desde: 38.25, hasta: 39.6, origen: 0.0, fuente: B + "casa-rural.mp4", ritmo: 0.85, nombre: "Fachada · casa rural 1080p" },
+  /**
+   * La llegada. El plano de la celebracion dura 0,97 s de archivo y no hay
+   * mas: el otro que existe, `testimonios/brazos-celebracion`, es la misma
+   * toma en 720p, asi que no se pueden encadenar. Para que dure lo que tiene
+   * que durar va a 0,62, que en un plano con gente es camara lenta, pero en
+   * el remate emocional se lee como intencion y no como truco.
+   */
+  { desde: 39.6, hasta: 41.1, origen: 0.0, fuente: B + "brazos-alto.mp4", ritmo: 0.62, nombre: "Llegada · brazos en alto 1080p" },
+  // Del general al detalle, con gente por medio, que es como pide el manual.
+  { desde: 41.1, hasta: 42.45, origen: 0.1, fuente: T + "catedral-escalinata.mp4", nombre: "Catedral · la escalinata" },
+  { desde: 42.45, hasta: 45.8, origen: 0.1, fuente: T + "fachada-obradoiro.mp4", nombre: "CTA · fachada del Obradoiro" },
 ];
 
 const INSERCIONES = [...CARAS, ...CAMINO, ...EQUIPAJE, ...HOTELES];
@@ -172,9 +195,9 @@ export const SWReelHotelesEN: React.FC = () => {
    * El CTA necesita sitio: entra con el barrido de 27 fotogramas mas 14 de
    * relevo entre lineas, asi que hasta el segundo y pico no esta entero, y
    * sale con otros 12. Con la ventana justa, "starts here" se leia medio
-   * segundo. Va del 42,75 al 45,7 y la placa espera al 45,9.
+   * segundo. Va del 42,65 al 45,6 y la placa espera al 45,8.
    */
-  const entraCta = f(42.75);
+  const entraCta = f(42.65);
   const entraPlaca = f(TESTIMONIO);
 
   return (
@@ -227,10 +250,10 @@ export const SWReelHotelesEN: React.FC = () => {
       ))}
 
       {/* 1 · sobre "I've had the trail on my bucket list for about 10 years" */}
-      <Sequence from={f(0.7)} durationInFrames={f(7.4) - f(0.7)} name="1 · Camino organizado">
+      <Sequence from={f(0.6)} durationInFrames={f(7.3) - f(0.6)} name="1 · Camino organizado">
         <Cartela
           lineas={[[{ texto: "Camino de Santiago" }], [{ texto: "fully organised", destacado: true }]]}
-          total={f(7.4) - f(0.7)}
+          total={f(7.3) - f(0.6)}
           tam={TAM}
           margen={MARGEN}
           margenAbajo={MARGEN_ABAJO}
@@ -239,11 +262,11 @@ export const SWReelHotelesEN: React.FC = () => {
       </Sequence>
 
       {/* 2 · sobre "having somebody Sherpa your belongings from town to town" */}
-      <Sequence from={f(16.9)} durationInFrames={f(23.8) - f(16.9)} name="2 · Tu equipaje">
+      <Sequence from={f(16.8)} durationInFrames={f(23.7) - f(16.8)} name="2 · Tu equipaje">
         <Cartela
           lineas={[[{ texto: "Your luggage" }], [{ texto: "travels for you", destacado: true }]]}
           pie={["Hotel to hotel, every stage"]}
-          total={f(23.8) - f(16.9)}
+          total={f(23.7) - f(16.8)}
           tam={TAM}
           margen={MARGEN}
           margenAbajo={MARGEN_ABAJO}
@@ -252,11 +275,11 @@ export const SWReelHotelesEN: React.FC = () => {
       </Sequence>
 
       {/* 3 · sobre "nothing better than laying down in a nice clean bed and a shower" */}
-      <Sequence from={f(29.9)} durationInFrames={f(35.5) - f(29.9)} name="3 · Cama limpia">
+      <Sequence from={f(29.8)} durationInFrames={f(35.4) - f(29.8)} name="3 · Cama limpia">
         <Cartela
           lineas={[[{ texto: "A clean bed" }], [{ texto: "and a hot shower", destacado: true }]]}
           pie={["Waiting for you every night"]}
-          total={f(35.5) - f(29.9)}
+          total={f(35.4) - f(29.8)}
           tam={TAM}
           margen={MARGEN}
           margenAbajo={MARGEN_ABAJO}
@@ -265,11 +288,11 @@ export const SWReelHotelesEN: React.FC = () => {
       </Sequence>
 
       {/* 4 · sobre "I won't be sleeping in a tent or at some hostel" */}
-      <Sequence from={f(36.3)} durationInFrames={f(39.7) - f(36.3)} name="4 · Habitacion privada">
+      <Sequence from={f(36.2)} durationInFrames={f(39.6) - f(36.2)} name="4 · Habitacion privada">
         <Cartela
           lineas={[[{ texto: "Always private" }], [{ texto: "room & bathroom", destacado: true }]]}
           pie={["Hand-picked hotels"]}
-          total={f(39.7) - f(36.3)}
+          total={f(39.6) - f(36.2)}
           tam={TAM}
           margen={MARGEN}
           margenAbajo={MARGEN_ABAJO}
@@ -281,7 +304,7 @@ export const SWReelHotelesEN: React.FC = () => {
       <Sequence from={entraCta} durationInFrames={total - entraCta} name="5 · Your Camino starts here">
         <CierreMarca
           lineas={[[{ texto: "Your Camino" }], [{ texto: "starts here", destacado: true }]]}
-          salidaTexto={f(45.7) - entraCta}
+          salidaTexto={f(45.6) - entraCta}
           tam={TAM}
           abajo
           margen={MARGEN}

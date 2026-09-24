@@ -22,7 +22,12 @@ Dos cosas que no se pueden hacer desde Remotion:
    el hueco sin voz que queda entre el "and" y la frase siguiente: misma
    sala, misma musica, ninguna palabra.
 
-2. **La cola.** El testimonio se acaba antes que la pieza, y la placa de
+2. **El arranque, en el 15,40 y no en el 15,30.** No es cosa del audio: el
+   master cambia de plano en el 15,40 y los tres fotogramas de antes son un
+   plano de bosque, que abriendo la pieza se ve como un destello. Se mueve
+   aqui tambien, y no solo en la imagen, para que la boca siga cuadrando.
+
+3. **La cola.** El testimonio se acaba antes que la pieza, y la placa de
    marca no puede quedarse muda. La musica sale de los primeros segundos del
    master, que son de musica sola, y entra con otro fundido cruzado.
 
@@ -41,13 +46,13 @@ FF = binarios()
 RAIZ = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 MASTER = os.path.join(RAIZ, "video", "public", "montajes", "testimonios-EN.mp4")
 
-A0, A1 = 15.30, 29.72      # el padre: lista de deseos, emocion, los 100 km
+A0, A1 = 15.40, 29.72      # el padre: lista de deseos, emocion, los 100 km
 CRUCE_DESDE = 30.16        # hueco sin voz: de aqui sale el lado que se apaga
 B0, B1 = 42.40, 70.80      # el equipaje y todo lo del hijo
 COLA0, COLA1 = 1.50, 6.00  # musica sola del arranque del master
 CRUCE = 0.40
 CRUCE_COLA = 0.60
-FIN = 49.20                # lo que dura la pieza entera
+FIN = 49.10                # lo que dura la pieza entera
 
 
 def main():

@@ -205,6 +205,18 @@ Estas salieron de revisar piezas reales y ahorran repetir errores:
    ve el cámara lenta. En las escenas va en el campo `ritmo` de la inserción,
    y `comprobar-inserciones.py` lo descuenta al medir si el archivo llega.
 
+16. **Un tramo del master empieza donde corta el master, no donde interesa.**
+   Los montajes de origen son piezas ya editadas y meten planos de recurso
+   entre declaración y declaración. Si el tramo que se coge para ver hablar a
+   alguien empieza un poco antes de tiempo, entra el final del recurso
+   anterior: en el reel de hoteles fueron tres fotogramas de bosque abriendo
+   la pieza, un pasillo y un baño. Tres fotogramas en vertical no se leen como
+   un plano, se leen como un error. Se miden los cortes del master antes de
+   fijar el tramo, con la diferencia media entre fotogramas consecutivos en
+   una miniatura en gris: un corte pasa de 50 y el movimiento normal no llega
+   a 12. Y si hay que mover el arranque, **se mueve también el de la pista**:
+   moviendo sólo la imagen la boca se descuadra, y una décima ya se nota.
+
 ## Reglas técnicas de Remotion
 
 - **Usar `OffthreadVideo`, no el `Video` de `@remotion/media`**: este último
