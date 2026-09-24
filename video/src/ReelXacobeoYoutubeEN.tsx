@@ -1,7 +1,7 @@
 import { AbsoluteFill, Sequence, staticFile } from "remotion";
 import { Audio } from "@remotion/media";
 import "./fuentes";
-import { brand, fontFamily, margin } from "./brand/theme";
+import { brand, fontFamily, margin, medioCruce } from "./brand/theme";
 import { Bullets } from "./componentes/Bullets";
 import { Cartela } from "./componentes/Cartela";
 import { Logo } from "./componentes/Logo";
@@ -146,10 +146,11 @@ export const ReelXacobeoYoutubeEN: React.FC = () => {
        * plaza — the cathedral/square shot — goes second, not first, to sit
        * under those words instead of before them. Zoom is auto-boosted by
        * Planos since this block stretches its footage a lot. */}
-      <Sequence from={f(BOUNDS[5])} durationInFrames={dur(5)} name="6 · Arrival">
+      <Sequence from={f(BOUNDS[5])} durationInFrames={dur(5) + medioCruce} name="6 · Arrival">
         <Planos
           total={dur(5)}
           overlay={0.3}
+          fundeSalidaBloque
           lista={[
             { src: "pareja-muros", dura: 1.55, encuadre: "40% 50%" },
             { src: "plaza", dura: 1.05 },
@@ -159,11 +160,21 @@ export const ReelXacobeoYoutubeEN: React.FC = () => {
         <Cartela principal="This is what" secundaria="a Holy Year feels like" desde={149} />
       </Sequence>
 
-      {/* 7 · "With Santiago Ways, your journey is organized from the start" */}
-      <Sequence from={f(BOUNDS[6])} durationInFrames={dur(6)} name="7 · Brand transition">
+      {/* 7 · "With Santiago Ways, your journey is organized from the start".
+       * Hard-cutting from Arrival's lively green forest shot into this
+       * beat's static building close-up read as a jarring jump, especially
+       * with both sides heavily slowed -- crossfades into Arrival instead
+       * (see fundeSalidaBloque above). No overlay content in this beat, so
+       * shifting its start earlier doesn't touch any desde timing. */}
+      <Sequence
+        from={f(BOUNDS[6]) - medioCruce}
+        durationInFrames={dur(6) + medioCruce}
+        name="7 · Brand transition"
+      >
         <Planos
           total={dur(6)}
           overlay={0.34}
+          fundeEntradaBloque
           lista={[{ src: "fachada-moderna", dura: 1.2, encuadre: "40% 50%" }]}
         />
       </Sequence>

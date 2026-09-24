@@ -29,14 +29,28 @@ export type Plano = {
  * en vez de cortar en seco: cada Sequence se solapa `medioCruce` fotogramas
  * con la siguiente y Clip hace un fundido cruzado real (los dos videos se
  * ven a la vez, no un fundido a un color). El primer y el ultimo plano no
- * funden por ningun lado: ese borde lo corta el bloque de fuera.
+ * funden por ningun lado por defecto: ese borde lo corta el bloque de
+ * fuera. `fundeEntradaBloque`/`fundeSalidaBloque` extienden ese fundido al
+ * bloque vecino cuando el corte seco entre dos bloques muy distintos (y
+ * los dos en camara lenta) lee mal -- el bloque de fuera tiene que ampliar
+ * su propia Sequence lo mismo que aqui para que el solape encaje.
  */
 export const Planos: React.FC<{
   lista: Plano[];
   /** Duracion del bloque, en fotogramas. */
   total: number;
   overlay?: number;
-}> = ({ lista, total, overlay = 0.34 }) => {
+  /** Fundir con el bloque anterior en vez de cortar en seco al entrar. */
+  fundeEntradaBloque?: boolean;
+  /** Fundir con el bloque siguiente en vez de cortar en seco al salir. */
+  fundeSalidaBloque?: boolean;
+}> = ({
+  lista,
+  total,
+  overlay = 0.34,
+  fundeEntradaBloque = false,
+  fundeSalidaBloque = false,
+}) => {
   const suma = lista.reduce((a, p) => a + p.dura, 0);
   let acumulado = 0;
 
@@ -55,11 +69,13 @@ export const Planos: React.FC<{
 
         const esPrimero = i === 0;
         const esUltimo = i === lista.length - 1;
-        const from = inicio - (esPrimero ? 0 : medioCruce);
+        const fundeEntrada = !esPrimero || fundeEntradaBloque;
+        const fundeSalida = !esUltimo || fundeSalidaBloque;
+        const from = inicio - (esPrimero ? (fundeEntradaBloque ? medioCruce : 0) : medioCruce);
         const duracion =
           duracionLogica +
-          (esPrimero ? 0 : medioCruce) +
-          (esUltimo ? 0 : medioCruce);
+          (esPrimero ? (fundeEntradaBloque ? medioCruce : 0) : medioCruce) +
+          (esUltimo ? (fundeSalidaBloque ? medioCruce : 0) : medioCruce);
 
         // Si el bloque le pide al plano mas tiempo del que dura de verdad,
         // se estira en camara lenta en vez de pedirle a OffthreadVideo
@@ -80,8 +96,8 @@ export const Planos: React.FC<{
               encuadre={p.encuadre}
               zoom={p.zoom ?? zoomAuto}
               playbackRate={playbackRate}
-              fundeEntrada={!esPrimero}
-              fundeSalida={!esUltimo}
+              fundeEntrada={fundeEntrada}
+              fundeSalida={fundeSalida}
             />
           </Sequence>
         );
