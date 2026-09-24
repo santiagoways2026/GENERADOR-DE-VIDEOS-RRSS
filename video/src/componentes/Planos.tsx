@@ -71,7 +71,11 @@ export const Planos: React.FC<{
         const esUltimo = i === lista.length - 1;
         const fundeEntrada = !esPrimero || fundeEntradaBloque;
         const fundeSalida = !esUltimo || fundeSalidaBloque;
-        const from = inicio - (esPrimero ? (fundeEntradaBloque ? medioCruce : 0) : medioCruce);
+        // Para el primer plano, el "from" nunca se adelanta: cuando hay
+        // fundeEntradaBloque, quien se adelanta es la Sequence del bloque
+        // de fuera (ver ReelXacobeoEN.tsx), asi que aqui basta con darle
+        // mas duracion para que el fundido tenga sitio donde correr.
+        const from = inicio - (esPrimero ? 0 : medioCruce);
         const duracion =
           duracionLogica +
           (esPrimero ? (fundeEntradaBloque ? medioCruce : 0) : medioCruce) +
