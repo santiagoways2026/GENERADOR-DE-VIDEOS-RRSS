@@ -41,8 +41,8 @@ import { Cartela, CierreMarca, PlacaMarca } from "./componentes/CartelaMarca";
 const FPS = 30;
 const f = (s: number) => Math.round(s * FPS);
 
-/** Lo que dura el testimonio ya montado. */
-const TESTIMONIO = 45.4;
+/** Donde entra la placa de marca y se acaba la imagen de la pieza. */
+const TESTIMONIO = 45.9;
 const DURACION = 49.2;
 
 /** Los dos tramos del master que se conservan. */
@@ -158,7 +158,7 @@ const HOTELES: Insercion[] = [
   { desde: 39.7, hasta: 41.4, origen: 0.05, fuente: T + "grupo-compostelas.mp4", nombre: "Llegada · las compostelas" },
   { desde: 41.4, hasta: 42.55, origen: 0.0, fuente: B + "brazos-alto.mp4", ritmo: 0.8, nombre: "Llegada · brazos en alto 1080p" },
   // El CTA se dice sobre la catedral, que es lo que remata la pieza.
-  { desde: 42.55, hasta: 45.4, origen: 0.1, fuente: T + "fachada-obradoiro.mp4", nombre: "CTA · fachada del Obradoiro" },
+  { desde: 42.55, hasta: 45.9, origen: 0.1, fuente: T + "fachada-obradoiro.mp4", nombre: "CTA · fachada del Obradoiro" },
 ];
 
 const INSERCIONES = [...CARAS, ...CAMINO, ...EQUIPAJE, ...HOTELES];
@@ -168,8 +168,14 @@ const INSERCIONES = [...CARAS, ...CAMINO, ...EQUIPAJE, ...HOTELES];
 export const SWReelHotelesEN: React.FC = () => {
   const total = f(DURACION);
   const finTestimonio = f(TESTIMONIO);
-  const entraCta = f(42.9);
-  const entraPlaca = f(45.4);
+  /**
+   * El CTA necesita sitio: entra con el barrido de 27 fotogramas mas 14 de
+   * relevo entre lineas, asi que hasta el segundo y pico no esta entero, y
+   * sale con otros 12. Con la ventana justa, "starts here" se leia medio
+   * segundo. Va del 42,75 al 45,7 y la placa espera al 45,9.
+   */
+  const entraCta = f(42.75);
+  const entraPlaca = f(TESTIMONIO);
 
   return (
     <AbsoluteFill style={{ backgroundColor: brand.green }}>
@@ -275,7 +281,7 @@ export const SWReelHotelesEN: React.FC = () => {
       <Sequence from={entraCta} durationInFrames={total - entraCta} name="5 · Your Camino starts here">
         <CierreMarca
           lineas={[[{ texto: "Your Camino" }], [{ texto: "starts here", destacado: true }]]}
-          salidaTexto={f(45.2) - entraCta}
+          salidaTexto={f(45.7) - entraCta}
           tam={TAM}
           abajo
           margen={MARGEN}

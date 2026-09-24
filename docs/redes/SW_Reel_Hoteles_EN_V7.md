@@ -14,6 +14,8 @@ Pista: `herramientas/scripts/audio-reel-hoteles.py`.
 4. Fuera el lavabo del segundo 39. En su sitio, la casa rural.
 5. Las dos fachadas que gustaron, el pazo blanco y la casa rural, duran más.
 6. El cierre va sobre la catedral, y antes entran los peregrinos llegando.
+7. El CTA tiene ventana para leerse: antes «starts here» duraba medio segundo
+   entero, entre que acababa de entrar y empezaba a salir.
 
 ## Quién habla, que no es uno solo
 
@@ -158,12 +160,12 @@ y `comprobar-inserciones.py` lo tiene en cuenta al medir si el archivo llega.
 | --- | --- | --- |
 | 39,7 s | 41,4 s | `testimonios/grupo-compostelas` · las dos peregrinas con su Compostela |
 | 41,4 s | 42,6 s | `brazos-alto` (1080p) · los brazos en alto, x0,8 |
-| 42,6 s | 45,4 s | `testimonios/fachada-obradoiro` · **la catedral, bajo el CTA** |
-| 45,4 s | 49,2 s | placa de marca |
+| 42,6 s | 45,9 s | `testimonios/fachada-obradoiro` · **la catedral, bajo el CTA** |
+| 45,9 s | 49,2 s | placa de marca |
 
 El cierre se dice sobre el sitio, no sobre el alojamiento: primero la gente
 llegando, después la catedral, que es lo que remata. La fachada del Obradoiro
-lleva una panorámica lenta y aguanta los 2,8 s sin quedarse quieta.
+lleva una panorámica lenta y aguanta los 3,3 s sin quedarse quieta.
 
 ## Las cartelas
 
@@ -173,7 +175,7 @@ lleva una panorámica lenta y aguanta los 2,8 s sin quedarse quieta.
 | 16,9 s | 23,8 s | Your luggage / **travels for you** · «Hotel to hotel, every stage» |
 | 29,9 s | 35,5 s | A clean bed / **and a hot shower** · «Waiting for you every night» |
 | 36,3 s | 39,7 s | Always private / **room & bathroom** · «Hand-picked hotels» |
-| 42,9 s | 45,2 s | Your Camino / **starts here** · el CTA |
+| 42,75 s | 45,7 s | Your Camino / **starts here** · el CTA |
 
 **Van a 480 px del borde inferior**, no a 72 como en horizontal: en stories y
 en TikTok los últimos 300 px los tapa la interfaz, y TikTok mete además el pie
@@ -187,6 +189,12 @@ ocupa 0,565 em por carácter y no los 0,88 que se supusieron al principio.
 La cartela del equipaje se alarga hasta el 23,8 para cubrir «The only way to
 go», y la del baño se recorta al 39,7 para dejar la llegada limpia: un rótulo
 de hotel sobre unos peregrinos abrazándose no pega.
+
+**El CTA necesita más ventana de la que parece.** Entra con el barrido de 27
+fotogramas más los 14 de relevo entre líneas, así que hasta el segundo y pico
+no está entero, y sale con otros 12. Con la ventana de la V6, del 42,9 al
+45,2, «starts here» se quedaba entero medio segundo. Ahora va del 42,75 al
+45,7 y la placa de marca espera al 45,9.
 
 ## El encuadre, que es lo delicado de esta pieza
 
