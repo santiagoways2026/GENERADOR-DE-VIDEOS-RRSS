@@ -27,9 +27,32 @@ Dos cosas que no se pueden hacer desde Remotion:
    plano de bosque, que abriendo la pieza se ve como un destello. Se mueve
    aqui tambien, y no solo en la imagen, para que la boca siga cuadrando.
 
-3. **La cola.** El testimonio se acaba antes que la pieza, y la placa de
-   marca no puede quedarse muda. La musica sale de los primeros segundos del
-   master, que son de musica sola, y entra con otro fundido cruzado.
+3. **El escalon de la juntura.** El master baja la musica cuando alguien
+   habla y la sube cuando nadie habla. A un lado del corte hay voz cerca y la
+   musica esta agachada; al otro hay un hueco de tres segundos y la musica
+   esta entera. Medido, son 7,2 dB de rms y 9,6 de graves: la musica pegaba
+   un salto en el segundo 15 aunque el corte en si fuera limpio. El tramo B
+   entra 7,2 dB por debajo y sube a su nivel en dos segundos, que es justo lo
+   que queda de hueco antes de la frase siguiente. Es el mismo gesto que hace
+   el master solo, asi que no se oye como un truco.
+
+4. **La cola.** El testimonio se acaba antes que la pieza, y la placa de
+   marca no puede quedarse muda. La musica sale del arranque del master, que
+   tiene 15,77 s sin una sola voz, y entra con otro fundido cruzado.
+
+   **Y sale del 7,75, no del 1,50.** Por dos motivos, los dos medidos. El
+   1,50 es la entrada del tema, sin bajos: 10 dB menos de graves y 5 de rms
+   que lo que venia sonando, asi que al llegar el cierre se caia el suelo de
+   la musica. Y ademas caia a contratiempo: el pulso son 0,5016 s, y
+   comparando la envolvente de ataques de los dos lados, el 1,50 entraba
+   desplazado medio pulso. El 7,75 cuadra con 0,2 ms de error y tiene el
+   mismo cuerpo, 64,4 dB de graves contra 63,1. El siguiente sitio que cuadra
+   es el 8,25, por si alguna vez hace falta mover la cola.
+
+   Ojo: la fase no se cuenta multiplicando pulsos por la distancia. A 62 s de
+   distancia, un milisegundo de error en el pulso son ya 125 de desfase. Se
+   compara la envolvente de ataques de los dos lados y se busca el
+   desplazamiento que mejor casa, que es lo unico que mide lo que se oye.
 
     python3 audio-reel-hoteles.py <carpeta de trabajo>
 """
@@ -49,9 +72,11 @@ MASTER = os.path.join(RAIZ, "video", "public", "montajes", "testimonios-EN.mp4")
 A0, A1 = 15.40, 29.72      # el padre: lista de deseos, emocion, los 100 km
 CRUCE_DESDE = 30.16        # hueco sin voz: de aqui sale el lado que se apaga
 B0, B1 = 42.40, 70.80      # el equipaje y todo lo del hijo
-COLA0, COLA1 = 1.50, 6.00  # musica sola del arranque del master
+COLA0 = 7.75               # arranque de la cola: cuadra con el pulso y tiene cuerpo
 CRUCE = 0.40
 CRUCE_COLA = 0.60
+RAMPA = 2.00               # lo que tarda la musica en subir tras el corte
+RAMPA_DB = 7.2             # cuanto entra por debajo, medido a los dos lados
 FIN = 49.10                # lo que dura la pieza entera
 
 
@@ -71,20 +96,34 @@ def main():
         out[i:i + len(x)] = x[:len(out) - i]
 
     def cruza(desde, sale, entra, dur):
+        """Fundido cruzado de potencia constante.
+
+        Con ganancias lineales, dos trozos de musica distintos se restan en
+        medio del cruce y dejan un bache de 3 dB: medido, la pieza caia a
+        -32,5 dB justo en la juntura. Como los dos lados no estan
+        correlacionados, lo que se conserva es la potencia, asi que las
+        ganancias van en raiz y el nivel no se mueve.
+        """
         n = min(int(dur * SR), len(sale), len(entra))
         r = np.linspace(0, 1, n)[:, None]
         i = int(desde * SR)
-        out[i:i + n] = sale[:n] * (1 - r) + entra[:n] * r
+        out[i:i + n] = sale[:n] * np.sqrt(1 - r) + entra[:n] * np.sqrt(r)
 
     durA = A1 - A0
     durB = B1 - B0
 
+    # El tramo B entra agachado y sube: el master lo tenia sin agachar porque
+    # ahi no habla nadie, y de golpe se oia el escalon.
+    b = t(B0, B1)
+    n = int(RAMPA * SR)
+    b[:n] *= (10 ** (np.linspace(-RAMPA_DB, 0.0, n) / 20))[:, None]
+
     mete(0.0, t(A0, A1))
-    mete(durA, t(B0, B1))
+    mete(durA, b)
     mete(durA + durB - CRUCE_COLA, t(COLA0, COLA0 + (FIN - (durA + durB - CRUCE_COLA))))
 
     # 1 · el tramo del padre da paso al del equipaje
-    cruza(durA, t(CRUCE_DESDE, CRUCE_DESDE + CRUCE), t(B0, B0 + CRUCE), CRUCE)
+    cruza(durA, t(CRUCE_DESDE, CRUCE_DESDE + CRUCE), b[:int(CRUCE * SR)], CRUCE)
     # 2 · el testimonio da paso a la musica de la cola
     cruza(durA + durB - CRUCE_COLA, t(B1 - CRUCE_COLA, B1),
           t(COLA0, COLA0 + CRUCE_COLA), CRUCE_COLA)

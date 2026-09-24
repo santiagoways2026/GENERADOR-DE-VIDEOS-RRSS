@@ -1,11 +1,16 @@
-# Reel de hoteles · testimonio en inglés · vertical · V8
+# Reel de hoteles · testimonio en inglés · vertical · V9
 
 Pieza de 49,1 s, 1080x1920 a 30 fps, para stories y TikTok.
 
 Fuente viva: `video/src/SWReelHotelesEN.tsx`.
 Pista: `herramientas/scripts/audio-reel-hoteles.py`.
 
-## Qué cambia respecto a la V7
+## Qué cambia respecto a la V8
+
+**Las dos junturas de la música.** Sonaban raras las dos, y por tres motivos
+distintos que se sumaban. Está contado abajo, en «Las dos junturas».
+
+## Qué cambió de la V7 a la V8
 
 1. **Fuera los tres cortes del master que se colaban.** Son plano de recurso
    del propio montaje de origen, no de la biblioteca, y en vertical se ven
@@ -93,9 +98,57 @@ Lo monta `audio-reel-hoteles.py`, porque son cosas que cambian la duración y
 no se pueden hacer desde Remotion:
 
 - el corte de dentro, con el cruce que se acaba de contar;
-- la **cola de música**, sacada de los primeros segundos del master, que son
-  de música sola, para que la placa final no se quede muda y la música llegue
+- la **cola de música**, sacada del arranque del master, que tiene 15,77 s sin
+  una sola voz, para que la placa final no se quede muda y la música llegue
   hasta el final.
+
+## Las dos junturas
+
+La pista del master lleva **voz y música en el mismo canal**, así que cualquier
+corte se oye en la música aunque caiga en un silencio de la voz. Las dos
+junturas sonaban raras, la del 14,3 y la del 42,1, y no era un solo problema
+sino tres.
+
+### 1 · El escalón, en la juntura de dentro
+
+El master baja la música cuando alguien habla y la sube cuando nadie habla. A
+un lado del corte hay voz cerca y la música está agachada; al otro hay un hueco
+de tres segundos y la música está entera. Medido: **7,2 dB de rms y 9,6 de
+graves**. El corte en sí era limpio, pero la música pegaba un salto.
+
+El tramo B entra ahora 7,2 dB por debajo y sube a su nivel en dos segundos,
+que es justo lo que queda de hueco antes de la frase siguiente. Es el mismo
+gesto que hace el master solo, así que no se oye como un truco: se oye como la
+música volviendo cuando el hombre deja de hablar. Medido después, el escalón
+queda en 1,7 dB.
+
+### 2 · El suelo que se caía, en la cola
+
+La cola salía del segundo 1,50 del master, que es la entrada del tema y no
+tiene bajos: **10 dB menos de graves y 5 de rms** que lo que venía sonando.
+Al llegar el cierre se caía el suelo de la música.
+
+Y además entraba **a contratiempo**. El pulso son 0,5016 s, 119,6 bpm, y
+comparando la envolvente de ataques de los dos lados, el 1,50 caía desplazado
+medio pulso, que es lo más lejos que se puede estar de cuadrar.
+
+La cola sale ahora del **7,75**, que cuadra con 0,2 ms de error y tiene el
+mismo cuerpo: 64,4 dB de graves contra los 63,1 de lo que venía. El siguiente
+sitio que cuadra es el 8,25, por si alguna vez hay que moverla.
+
+Un aviso para la próxima: **la fase no se cuenta multiplicando pulsos por la
+distancia.** A 62 segundos de distancia, un milisegundo de error en el pulso
+son ya 125 de desfase. Se compara la envolvente de ataques de los dos lados y
+se busca el desplazamiento que mejor casa, que es lo único que mide lo que se
+oye.
+
+### 3 · El bache del propio fundido
+
+Los dos cruces iban con ganancias lineales. Dos trozos de música distintos no
+están correlacionados, así que en mitad del cruce se restan y dejan un bache
+de 3 dB: medido, la pieza caía a **-32,5 dB** justo en la juntura de dentro.
+Las ganancias van ahora en raíz, que es lo que conserva la potencia, y el
+nivel ya no se mueve al pasar por el corte.
 
 ## Lo que se oye, y cuándo
 

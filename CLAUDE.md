@@ -217,6 +217,27 @@ Estas salieron de revisar piezas reales y ahorran repetir errores:
    a 12. Y si hay que mover el arranque, **se mueve también el de la pista**:
    moviendo sólo la imagen la boca se descuadra, y una décima ya se nota.
 
+17. **Una juntura en una pista con voz y música mezcladas se mide tres veces.**
+   Los tres fallos salieron en la misma pieza y se sumaban:
+   - **El escalón de nivel.** El master baja la música cuando alguien habla y
+     la sube cuando no. Si un lado del corte tiene voz cerca y el otro un
+     hueco largo, la música salta: en el reel de hoteles eran 7,2 dB de rms y
+     9,6 de graves. Se arregla haciendo entrar el tramo nuevo por debajo y
+     subiéndolo hasta su nivel en el hueco que queda antes de la frase
+     siguiente. Es el mismo gesto que hace el master solo y no se oye.
+   - **El contratiempo.** La música tiene pulso y el corte cae donde cae. Se
+     mide la envolvente de ataques de los dos lados y se busca el
+     desplazamiento que mejor casa. No se cuenta multiplicando pulsos por la
+     distancia: a un minuto, un milisegundo de error en el pulso son más de
+     cien de desfase.
+   - **El bache del propio fundido.** Con ganancias lineales, dos trozos de
+     música distintos se restan en mitad del cruce y dejan 3 dB de agujero.
+     Como no están correlacionados, lo que se conserva es la potencia: las
+     ganancias van en raíz.
+   Y al elegir de dónde sale un trozo de música, se compara el cuerpo, no sólo
+   el nivel: la entrada de un tema suele venir sin bajos y al empalmarla con
+   el tema ya arrancado se cae el suelo.
+
 ## Reglas técnicas de Remotion
 
 - **Usar `OffthreadVideo`, no el `Video` de `@remotion/media`**: este último
