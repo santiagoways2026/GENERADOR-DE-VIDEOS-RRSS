@@ -1,9 +1,21 @@
-# Reel del testimonio alemán · vertical · V1
+# Reel del testimonio alemán · vertical · V2
 
 Pieza de 54,6 s, 1080x1920 a 30 fps, para stories y TikTok.
 
 Fuente viva: `video/src/SWReelCaminoDE.tsx`.
 Pista: `herramientas/scripts/audio-reel-de.py`.
+
+## Qué cambia respecto a la V1
+
+1. **Se colaba el rótulo.** En los últimos ocho fotogramas del plano que abría
+   la pieza entraba un «WIR» del subtítulo original. El fallo estaba en cómo
+   se medían los huecos; está contado abajo, en «El verde que no se veía».
+2. **Del grupo se ve un solo plano**, el único hueco que aguanta segundo y
+   medio. Los otros dos eran de medio segundo largo y no pasan la medida
+   buena.
+3. **Subtítulos nuevos**, en alemán y en el registro de la marca, colocados
+   por encima de las cartelas.
+4. **Cuatro planos reencuadrados**: se salían por un lado.
 
 ## Qué había en el bruto
 
@@ -36,22 +48,42 @@ ocupan el 77 % del metraje y dejan huecos. De los tres, sólo se ven tres
 planos, y los tres salen de esos huecos. El resto de la pieza es biblioteca,
 que viene limpia de origen.
 
-Los huecos se localizaron midiendo la **firma del rótulo**: un píxel muy claro
-(por encima de 235) con uno muy oscuro (por debajo de 65) a menos de cuatro
-píxeles en horizontal, que es lo que deja el borde negro de las letras.
-Contar píxeles blancos a secas no vale, y se comprobó a base de sacar planos
-con un "EINE" o un "DA" todavía dentro: en ese encuadre los pantalones cortos
-son blancos y caen justo en la banda del subtítulo. Medida contra los tres
-recortes, la firma da **0**.
+### El verde que no se veía
+
+Los huecos se localizan midiendo la **firma del rótulo**. La primera versión
+buscaba un píxel muy claro (por encima de 225) con uno muy oscuro (por debajo
+de 75) a menos de cinco píxeles en horizontal, que es lo que deja el borde
+negro de las letras blancas. Contar píxeles blancos a secas no vale, y se
+comprobó a base de sacar planos con un «EINE» o un «DA» todavía dentro: en ese
+encuadre los pantalones cortos son blancos y caen justo en la banda.
+
+Pero esa firma **no ve las palabras resaltadas**. El rótulo va en blanco con
+borde negro salvo la palabra que resalta, que va en verde, y el verde no
+dispara un detector de blanco. Por eso en la V1 se colaba un «WIR» en los
+ocho últimos fotogramas del plano de apertura: medido, 433 píxeles verdes
+donde el resto del plano tenía 8.
+
+El verde del rótulo es **RGB 88, 118, 49** y también lleva borde oscuro, así
+que la firma buena es **claro o verde, con oscuro al lado**. La hierba, que
+también es verde, no la dispara porque no tiene nada negro pegado.
+
+Con la medida corregida, el único hueco del grupo que pasa de segundo y medio
+es **7,17 – 9,00**. Los que parecían valer en la V1, el 33,6 y el 48,7, se
+quedan en medio segundo largo. El plano que se usa va del 7,25 al 8,95 y su
+firma máxima es 16, contra los miles que da un rótulo.
 
 **La calidad, no se puede arreglar.** 720x1280 subidos a 1080x1920 son 1,56x.
 Se nota en los tres planos del grupo y no se nota en el resto, que sale de la
 biblioteca. Si hace falta más calidad, la salida es pedir el original sin
 pasar por el editor online.
 
-**Y la sincronía, con la duración.** Los tres planos del grupo duran uno y dos
-segundos, y ninguno cae sobre una frase entera. A esa duración no se lee como
-un doblaje, se lee como un plano de los clientes, que es para lo que están.
+**Y la sincronía, con la duración.** El plano del grupo dura 1,7 s y no cae
+sobre una frase entera. A esa duración no se lee como un doblaje, se lee como
+un plano de los clientes, que es para lo que está.
+
+**Si aparece el original sin pasar por el editor online**, lo primero que
+gana la pieza son más planos de ellos: ahora mismo el metraje utilizable son
+1,7 segundos de los 83.
 
 ## El audio
 
@@ -99,21 +131,16 @@ Tiempos ya de la pieza montada:
 
 | Entra | Sale | Plano |
 | --- | --- | --- |
-| 0,0 s | 2,1 s | `testimonio-de/grupo-1` · abre la pieza |
-| 7,9 s | 8,9 s | `testimonio-de/grupo-2` · x0,85 · **sobre «wir sind drei»** |
-| 29,3 s | 30,3 s | `testimonio-de/grupo-3` · x0,85 · sobre lo que han conseguido |
-
-Los dos cortos van a 0,85 de velocidad para llegar al segundo. Están de pie y
-quietos, así que no se nota.
+| 0,0 s | 1,7 s | `testimonio-de/grupo` · abre la pieza y no vuelve |
 
 ### Bloque 1 · el grupo y los amigos
 
 | Entra | Sale | Plano |
 | --- | --- | --- |
-| 2,1 s | 4,0 s | `piezas-viejas/peregrinos-calzada` |
+| 1,7 s | 4,0 s | `piezas-viejas/peregrinos-calzada` · reencuadrado al 32 % |
 | 4,0 s | 6,1 s | `piezas-viejas/grupo-calle` |
-| 6,1 s | 7,9 s | `testimonios/peregrinas-muros` |
-| 8,9 s | 10,8 s | `piezas-viejas/sendero-peregrinos` |
+| 6,1 s | 8,4 s | `testimonios/peregrinas-muros` |
+| 8,4 s | 10,8 s | `piezas-viejas/sendero-peregrinos` |
 | 10,8 s | 12,7 s | `testimonios/pareja-muros-piedra` |
 | 12,7 s | 15,0 s | `piezas-viejas/peregrinos-campo` |
 
@@ -122,10 +149,10 @@ quietos, así que no se nota.
 | Entra | Sale | Plano |
 | --- | --- | --- |
 | 15,0 s | 16,7 s | `testimonios/sendero-contraluz` |
-| 16,7 s | 18,8 s | `piezas-viejas/iglesia-espadana` |
+| 16,7 s | 18,8 s | `piezas-viejas/iglesia-espadana` · reencuadrado al 80 % |
 | 18,8 s | 20,2 s | `testimonios/interior-capilla` |
 | 20,2 s | 22,2 s | `piezas-viejas/soportales-rua` |
-| 22,2 s | 24,0 s | `piezas-viejas/cruceiro-prado` |
+| 22,2 s | 24,0 s | `piezas-viejas/cruceiro-prado` · reencuadrado al 61 % |
 | 24,0 s | 25,6 s | `testimonios/timpano-romanico` |
 | 25,6 s | 27,3 s | `piezas-viejas/horreo-peregrinos` |
 
@@ -133,13 +160,14 @@ quietos, así que no se nota.
 
 | Entra | Sale | Plano |
 | --- | --- | --- |
-| 27,3 s | 29,3 s | `testimonios/camino-arbolado` |
-| 30,3 s | 32,5 s | `testimonios/camino-dedaleras` |
+| 27,3 s | 29,5 s | `testimonios/camino-arbolado` |
+| 29,5 s | 31,2 s | `testimonios/camino-muro` |
+| 31,2 s | 32,5 s | `testimonios/camino-dedaleras` |
 | 32,5 s | 34,6 s | `testimonios/botas-camino` · sobre «Sport treibst» |
 | 34,6 s | 36,1 s | `testimonios/ciclista-camino` |
 | 36,1 s | 38,2 s | `piezas-viejas/puente-calzada` |
 | 38,2 s | 40,3 s | `testimonios/mojon-peregrinas` · sobre «Kennenlernen» |
-| 40,3 s | 41,9 s | `testimonios/gaiteros` |
+| 40,3 s | 41,9 s | `testimonios/gaiteros` · reencuadrado al 68 % |
 | 41,9 s | 43,7 s | `brindis` (1080p) |
 
 ### Bloque 4 · los paisajes y Santiago
@@ -153,6 +181,48 @@ quietos, así que no se nota.
 
 Del general al detalle y con gente por medio, que es como pide el manual para
 varios planos del mismo sitio.
+
+## Los reencuadres
+
+Un 16:9 recortado a 9:16 deja ver el 33,75 % del ancho, y centrado se lleva por
+delante lo que importa. Cuatro planos se salían:
+
+| Plano | Dónde estaba el sujeto | Se mira al |
+| --- | --- | --- |
+| `peregrinos-calzada` | el grupo, a la izquierda | 32 % |
+| `iglesia-espadana` | la iglesia, a la derecha, y el resto era cielo | 80 % |
+| `cruceiro-prado` | el cruceiro, a la derecha del centro | 61 % |
+| `gaiteros` | cinco músicos de lado a lado; caben tres | 68 % |
+
+Se ponen con la función `mirar()`, que convierte «dónde está esto en la
+imagen» en el `objectPosition` que hace falta. No son lo mismo: con una
+ventana del 33,75 %, un `71%` no centra el recorte en el 71 % de la imagen
+sino en el 64 %.
+
+## Los subtítulos · **pendientes de aprobar**
+
+La pieza sale con subtítulos nuevos, en alemán y en el registro de la marca.
+Son veinte entradas, de una o dos líneas, y están en el array `SUBS` de la
+escena.
+
+**Dónde van.** A 770 px del borde inferior, o sea el bloque acaba en el píxel
+1150. Por debajo está la cartela, que empieza sobre el 1216 cuando lleva pie:
+quedan 66 px de aire. Más arriba no pueden ir porque ahí están las caras en el
+plano del grupo. Se alinean a la izquierda con el mismo margen de 72 que las
+cartelas, para que las dos cosas se lean como un solo bloque de texto.
+
+**Cómo son.** Montserrat 800 a 44 px, no 900, que el 900 es del titular de la
+cartela. Sin recuadro verde, que el verde es de la promesa. Entran con un
+fundido de tres fotogramas y no con el barrido del kit: un barrido cada dos
+segundos durante un minuto marea.
+
+**Van dibujados por encima del cierre.** El overlay diagonal de `CierreMarca`
+los apagaba cuando iban debajo, y en el último subtítulo se notaba.
+
+**Y falta que los mire alguien que hable alemán.** El texto sale de transcribir
+la pista y se ha repasado a mano, pero la locución es un doblaje y trae giros
+que no son alemán corriente. Las frases se han dejado limpias sin cambiar lo
+que se dice.
 
 ## Las cartelas · **pendientes de aprobar**
 
@@ -172,8 +242,7 @@ um den Rest», mide 27 caracteres y a 76 px se sale del cuadro por 150 px.
 
 ## Lo que falta decidir
 
-- **El alemán de las cartelas**, como se acaba de decir.
+- **El alemán de las cartelas y de los subtítulos**, como se acaba de decir.
 - **Si la pieza lleva música.** Ahora no lleva, porque el bruto no la tiene.
-- **Subtítulos nuevos.** La pieza se queda sin ellos, y en stories se ve en
-  silencio. Si se quieren, salen de la transcripción y van en el registro de
-  la marca, no los del editor online.
+- **Si hay original sin marca.** Con él se pueden sacar más planos del grupo,
+  que ahora mismo se quedan en uno.

@@ -104,6 +104,61 @@ export const Linea: React.FC<{
   </div>
 );
 
+/**
+ * Subtitulo de la pieza, no del kit.
+ *
+ * No es una cartela y no se comporta como una: entra con un fundido de tres
+ * fotogramas, no con el barrido, porque un barrido cada dos segundos durante
+ * un minuto marea. Va en Montserrat 800 y no 900, que el 900 es del titular,
+ * y sin recuadro verde, que el verde es de la promesa de la cartela.
+ *
+ * Se alinea a la izquierda con el mismo margen que las cartelas para que el
+ * bloque de texto se lea como uno solo, y vive por encima de ellas:
+ * `margenAbajo` lo sube hasta dejar libre la franja de la cartela.
+ *
+ * Dos lineas como maximo, y se parten a mano en el array: a 44 px caben unos
+ * 38 caracteres por linea sobre lienzo de 1080.
+ */
+export const Subtitulo: React.FC<{
+  lineas: string[];
+  tam?: number;
+  margen?: number;
+  margenAbajo?: number;
+}> = ({ lineas, tam = 44, margen = MARGEN, margenAbajo }) => {
+  const frame = useCurrentFrame();
+  const o = interpolate(frame, [0, 3], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+  return (
+    <AbsoluteFill
+      style={{
+        justifyContent: "flex-end",
+        alignItems: "flex-start",
+        padding: margen,
+        paddingBottom: margenAbajo ?? margen,
+        opacity: o,
+      }}
+    >
+      <div
+        style={{
+          fontFamily: FUENTE,
+          fontSize: tam,
+          fontWeight: 800,
+          lineHeight: 1.26,
+          letterSpacing: "-0.01em",
+          color: brand.white,
+          textShadow: "0 2px 18px rgba(8,22,15,0.9), 0 0 3px rgba(8,22,15,0.7)",
+        }}
+      >
+        {lineas.map((l) => (
+          <div key={l}>{l}</div>
+        ))}
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 /** Cartela de una a tres lineas, abajo a la izquierda, con pie opcional. */
 export const Cartela: React.FC<{
   lineas: Trozo[][];

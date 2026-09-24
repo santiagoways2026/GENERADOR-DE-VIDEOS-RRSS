@@ -246,12 +246,19 @@ Estas salieron de revisar piezas reales y ahorran repetir errores:
    caras. Lo que sí funciona es **no necesitarlos**: un rótulo ocupa el 70 u
    80 % del metraje, no el 100, y de ese clip sólo hacen falta dos o tres
    planos de la gente. Salen de los huecos.
-   Los huecos se miden por la **firma del rótulo**, un píxel muy claro (más de
-   235) con uno muy oscuro (menos de 65) a menos de cuatro píxeles en
-   horizontal, que es lo que deja el borde negro de las letras. Contar píxeles
-   blancos a secas no vale y se paga: en el testimonio alemán los pantalones
-   cortos eran blancos y caían justo en la banda, así que salieron planos con
-   media palabra todavía dentro.
+   Los huecos se miden por la **firma del rótulo**, y la firma mira dos cosas:
+   un píxel muy claro (más de 225) con uno muy oscuro (menos de 75) a menos de
+   cinco píxeles en horizontal, que es el borde negro de las letras blancas,
+   **y el color de la palabra resaltada con ese mismo borde**. Lo segundo no
+   es un detalle: estos rótulos resaltan una palabra en color y ese color no
+   dispara un detector de blanco, así que se cuela. En el testimonio alemán
+   entró un «WIR» en los ocho últimos fotogramas del plano de apertura, 433
+   píxeles del verde del rótulo donde el resto tenía 8. Contar píxeles blancos
+   a secas tampoco vale: los pantalones cortos eran blancos y caían justo en
+   la banda.
+   El color del rótulo se mide sobre un fotograma que lo tenga, no se supone.
+   Y lo que pinta el fondo, hierba o cielo, no dispara la firma porque no
+   lleva negro pegado.
 19. **Antes de enseñar una cara, comprobar que la imagen va con el audio.** Un
    testimonio doblado o con locución puesta encima no lleva las bocas en su
    sitio. Se mide comparando el movimiento de la zona de las bocas con el

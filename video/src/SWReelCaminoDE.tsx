@@ -9,7 +9,7 @@ import {
 import "./fuentes";
 
 import { brand } from "./brand/theme";
-import { Cartela, CierreMarca, PlacaMarca } from "./componentes/CartelaMarca";
+import { Cartela, CierreMarca, PlacaMarca, Subtitulo } from "./componentes/CartelaMarca";
 
 /**
  * Santiago Ways · el testimonio aleman, vertical para stories y TikTok.
@@ -20,12 +20,17 @@ import { Cartela, CierreMarca, PlacaMarca } from "./componentes/CartelaMarca";
  * Ninguna de las dos se puede quitar del todo, asi que la pieza esta montada
  * para no necesitarlo:
  *
- * - **De los tres se ven tres planos y nada mas**, sacados de los momentos en
- *   que el rotulo no esta en pantalla. Se localizaron midiendo la firma del
- *   rotulo, pixel muy claro con uno muy oscuro a menos de cuatro pixeles, que
- *   es lo que deja el borde negro de las letras. Salen 0 de rastro en los
- *   tres. La marca de agua vive en las filas 1237 a 1253, asi que los planos
- *   van recortados a 692x1230 y se la dejan fuera.
+ * - **De los tres se ve un solo plano**, el unico hueco en el que el rotulo
+ *   no esta en pantalla y dura mas de segundo y medio: del 7,25 al 8,95 del
+ *   bruto. La marca de agua vive en las filas 1237 a 1253, asi que va
+ *   recortado a 692x1230 y se la deja fuera.
+ *
+ *   Ojo con como se mide el hueco. La primera version buscaba la firma del
+ *   rotulo blanco, pixel muy claro con uno muy oscuro al lado, y se le
+ *   escapaban **las palabras resaltadas en verde**, que no llevan ese borde:
+ *   en el plano que abria la pieza se colaba un "WIR" en los ultimos ocho
+ *   fotogramas. El verde del rotulo es RGB 88,118,49 y tambien lleva borde
+ *   oscuro, asi que la firma buena es claro-o-verde con oscuro al lado.
  * - **El resto es biblioteca**, que ademas viene limpia y en mejor calidad.
  *
  * Ojo con la sincronia: **la imagen no va con el audio aleman.** Medido, el
@@ -61,6 +66,14 @@ const MARGEN = 72;
 const MARGEN_ABAJO = 480;
 const TAM = 76;
 const TAM_PIE = 34;
+const TAM_SUB = 44;
+/**
+ * Los subtitulos viven por encima de las cartelas, no encima de ellas. La
+ * cartela mas alta, la que lleva pie, empieza sobre el pixel 1216, asi que
+ * el bloque de subtitulo acaba en el 1150 y quedan 66 px de aire. Mas arriba
+ * no puede ir: en el unico plano de cara, ahi estan las caras.
+ */
+const SUB_ABAJO = 770;
 
 /* ------------------------------------------------------------------ */
 
@@ -71,27 +84,36 @@ type Insercion = {
   fuente: string;
   /** `playbackRate`. Por debajo de 1 el plano dura mas de lo que dura el archivo. */
   ritmo?: number;
+  /** `objectPosition`. Se pone con `mirar()`, no a ojo. */
+  encuadre?: string;
   nombre: string;
 };
 
 /**
- * Los tres momentos en los que se ve al grupo. Son el mismo encuadre, que es
- * el unico que hay, y van repartidos: abren la pieza, caen sobre "wir sind
- * drei" y vuelven sobre lo que han conseguido. Los dos cortos van a 0,85 para
- * llegar al segundo, que de pie y quietos no se nota.
+ * De "donde esta esto en la imagen" a `objectPosition`.
+ *
+ * No son lo mismo: un 16:9 recortado a 9:16 deja ver el 33,75 % del ancho,
+ * asi que un `71%` no centra el recorte en el 71 % de la imagen sino en el
+ * 64 %. Con `cover`, un 16:9 en un lienzo 9:16 solo recorta a lo ancho, asi
+ * que la coordenada vertical no pinta nada.
+ */
+const VENTANA = (9 / 16) / (16 / 9);
+const mirar = (p: number) => `${(((p - VENTANA / 2) / (1 - VENTANA)) * 100).toFixed(1)}% 50%`;
+
+/**
+ * El unico plano del grupo. Abre la pieza y no vuelve: es el unico tramo de
+ * mas de segundo y medio sin rotulo encima.
  */
 const CARAS: Insercion[] = [
-  { desde: 0.0, hasta: 2.05, origen: 0.0, fuente: D + "grupo-1.mp4", nombre: "Grupo 1 · abre" },
-  { desde: 7.86, hasta: 8.9, origen: 0.0, fuente: D + "grupo-2.mp4", ritmo: 0.85, nombre: "Grupo 2 · wir sind drei" },
-  { desde: 29.3, hasta: 30.3, origen: 0.0, fuente: D + "grupo-3.mp4", ritmo: 0.85, nombre: "Grupo 3 · lo conseguido" },
+  { desde: 0.0, hasta: 1.7, origen: 0.0, fuente: D + "grupo.mp4", nombre: "El grupo · abre" },
 ];
 
 /** Bloque 1: el grupo, los amigos de la universidad, las familias. */
 const GRUPO: Insercion[] = [
-  { desde: 2.05, hasta: 4.0, origen: 0.1, fuente: V + "peregrinos-calzada.mp4", nombre: "Calzada" },
+  { desde: 1.7, hasta: 4.0, origen: 0.1, fuente: V + "peregrinos-calzada.mp4", encuadre: mirar(0.32), nombre: "Calzada" },
   { desde: 4.0, hasta: 6.1, origen: 0.1, fuente: V + "grupo-calle.mp4", nombre: "Grupo por la calle" },
-  { desde: 6.1, hasta: 7.86, origen: 0.05, fuente: T + "peregrinas-muros.mp4", nombre: "Peregrinas entre muros" },
-  { desde: 8.9, hasta: 10.8, origen: 0.1, fuente: V + "sendero-peregrinos.mp4", nombre: "Sendero" },
+  { desde: 6.1, hasta: 8.4, origen: 0.05, fuente: T + "peregrinas-muros.mp4", nombre: "Peregrinas entre muros" },
+  { desde: 8.4, hasta: 10.8, origen: 0.1, fuente: V + "sendero-peregrinos.mp4", nombre: "Sendero" },
   { desde: 10.8, hasta: 12.7, origen: 0.05, fuente: T + "pareja-muros-piedra.mp4", nombre: "Pareja entre muros" },
   { desde: 12.7, hasta: 15.0, origen: 0.1, fuente: V + "peregrinos-campo.mp4", nombre: "Peregrinos por el campo" },
 ];
@@ -99,23 +121,24 @@ const GRUPO: Insercion[] = [
 /** Bloque 2: lo que esperan, el enriquecimiento y el vinculo. */
 const CAMINO: Insercion[] = [
   { desde: 15.0, hasta: 16.7, origen: 0.0, fuente: T + "sendero-contraluz.mp4", nombre: "Sendero a contraluz" },
-  { desde: 16.7, hasta: 18.8, origen: 0.1, fuente: V + "iglesia-espadana.mp4", nombre: "Iglesia de espadana" },
+  { desde: 16.7, hasta: 18.8, origen: 0.1, fuente: V + "iglesia-espadana.mp4", encuadre: mirar(0.8), nombre: "Iglesia de espadana" },
   { desde: 18.8, hasta: 20.2, origen: 0.0, fuente: T + "interior-capilla.mp4", nombre: "Interior de capilla" },
   { desde: 20.2, hasta: 22.2, origen: 0.1, fuente: V + "soportales-rua.mp4", nombre: "Soportales" },
-  { desde: 22.2, hasta: 23.95, origen: 0.05, fuente: V + "cruceiro-prado.mp4", nombre: "Cruceiro" },
+  { desde: 22.2, hasta: 23.95, origen: 0.05, fuente: V + "cruceiro-prado.mp4", encuadre: mirar(0.61), nombre: "Cruceiro" },
   { desde: 23.95, hasta: 25.55, origen: 0.0, fuente: T + "timpano-romanico.mp4", nombre: "Timpano romanico" },
   { desde: 25.55, hasta: 27.3, origen: 0.1, fuente: V + "horreo-peregrinos.mp4", nombre: "Horreo" },
 ];
 
 /** Bloque 3: el deporte, los amigos y descubrir sitios. */
 const DEPORTE: Insercion[] = [
-  { desde: 27.3, hasta: 29.3, origen: 0.1, fuente: T + "camino-arbolado.mp4", nombre: "Camino arbolado" },
-  { desde: 30.3, hasta: 32.5, origen: 0.05, fuente: T + "camino-dedaleras.mp4", nombre: "Camino entre dedaleras" },
+  { desde: 27.3, hasta: 29.5, origen: 0.1, fuente: T + "camino-arbolado.mp4", nombre: "Camino arbolado" },
+  { desde: 29.5, hasta: 31.2, origen: 0.05, fuente: T + "camino-muro.mp4", nombre: "Camino entre muros" },
+  { desde: 31.2, hasta: 32.5, origen: 0.05, fuente: T + "camino-dedaleras.mp4", nombre: "Camino entre dedaleras" },
   { desde: 32.5, hasta: 34.6, origen: 0.1, fuente: T + "botas-camino.mp4", nombre: "Botas · Sport treibst" },
   { desde: 34.6, hasta: 36.1, origen: 0.05, fuente: T + "ciclista-camino.mp4", nombre: "Ciclista" },
   { desde: 36.1, hasta: 38.2, origen: 0.1, fuente: V + "puente-calzada.mp4", nombre: "Puente de calzada" },
   { desde: 38.2, hasta: 40.3, origen: 0.1, fuente: T + "mojon-peregrinas.mp4", nombre: "Mojon · kennenlernen" },
-  { desde: 40.3, hasta: 41.9, origen: 0.0, fuente: T + "gaiteros.mp4", nombre: "Gaiteros" },
+  { desde: 40.3, hasta: 41.9, origen: 0.0, fuente: T + "gaiteros.mp4", encuadre: mirar(0.68), nombre: "Gaiteros" },
   { desde: 41.9, hasta: 43.7, origen: 0.05, fuente: B + "brindis.mp4", nombre: "Brindis 1080p" },
 ];
 
@@ -125,6 +148,43 @@ const SANTIAGO: Insercion[] = [
   // Del general con gente al detalle de la fachada, como pide el manual.
   { desde: 45.8, hasta: 47.9, origen: 0.1, fuente: T + "catedral-escalinata.mp4", nombre: "Catedral · la escalinata" },
   { desde: 47.9, hasta: 51.3, origen: 0.1, fuente: T + "fachada-obradoiro.mp4", nombre: "CTA · fachada del Obradoiro" },
+];
+
+/**
+ * Los subtitulos, en el registro de la marca y no los del editor online.
+ *
+ * El texto sale de transcribir la pista y se ha repasado a mano: la
+ * locucion alemana es un doblaje y trae giros que no son aleman corriente,
+ * asi que las frases van limpias sin cambiar lo que se dice. **Falta que lo
+ * mire alguien que hable aleman.**
+ *
+ * Las lineas se parten a mano, no por ancho: a 44 px caben unos 38
+ * caracteres sobre lienzo de 1080, y una frase partida donde toca se lee
+ * mejor que una partida donde cabe.
+ */
+type Cue = { desde: number; hasta: number; lineas: string[] };
+
+const SUBS: Cue[] = [
+  { desde: 0.31, hasta: 3.1, lineas: ["Wir reisen als Gruppe,", "was für uns wichtig ist."] },
+  { desde: 3.54, hasta: 6.75, lineas: ["Das gibt uns die Möglichkeit,", "uns zu treffen."] },
+  { desde: 7.86, hasta: 9.2, lineas: ["Wir sind drei."] },
+  { desde: 9.33, hasta: 11.2, lineas: ["Wir waren Universitätsstudenten,"] },
+  { desde: 11.2, hasta: 12.7, lineas: ["haben zusammen abgeschlossen"] },
+  { desde: 12.7, hasta: 14.8, lineas: ["und sind hier mit unseren Familien."] },
+  { desde: 15.37, hasta: 19.05, lineas: ["Wir hoffen, dass uns diese Erfahrung"] },
+  { desde: 19.41, hasta: 22.45, lineas: ["eine spirituelle Bereicherung bringt."] },
+  { desde: 22.57, hasta: 24.4, lineas: ["und eine größere Verbundenheit,"] },
+  { desde: 24.4, hasta: 26.85, lineas: ["nachdem wir so viel Zeit", "zusammen verbracht haben."] },
+  { desde: 27.53, hasta: 29.0, lineas: ["Ich würde sagen,"] },
+  { desde: 29.26, hasta: 30.9, lineas: ["dass es wunderschön ist,"] },
+  { desde: 30.9, hasta: 32.7, lineas: ["was wir bisher erreicht haben."] },
+  { desde: 32.84, hasta: 35.6, lineas: ["Diese Reisen, bei denen man", "Sport treibt"] },
+  { desde: 35.6, hasta: 38.05, lineas: ["und ihn mit Freunden verbindet"] },
+  { desde: 38.44, hasta: 41.2, lineas: ["und damit, interessante Dinge", "kennenzulernen."] },
+  { desde: 41.4, hasta: 43.5, lineas: ["Ich finde das wunderbar."] },
+  { desde: 43.9, hasta: 46.1, lineas: ["Die Landschaften sind wunderschön."] },
+  { desde: 46.1, hasta: 48.1, lineas: ["Wir hoffen, dass es so weitergeht,"] },
+  { desde: 48.25, hasta: 50.6, lineas: ["bis wir den Weg", "nach Santiago beenden."] },
 ];
 
 const INSERCIONES = [...CARAS, ...GRUPO, ...CAMINO, ...DEPORTE, ...SANTIAGO];
@@ -152,7 +212,12 @@ export const SWReelCaminoDE: React.FC = () => {
             trimBefore={f(s.origen)}
             playbackRate={s.ritmo ?? 1}
             muted
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: s.encuadre ?? "50% 50%",
+            }}
           />
         </Sequence>
       ))}
@@ -205,6 +270,17 @@ export const SWReelCaminoDE: React.FC = () => {
           margenAbajo={MARGEN_ABAJO}
         />
       </Sequence>
+
+      {SUBS.map((c) => (
+        <Sequence
+          key={`sub-${c.desde}`}
+          from={f(c.desde)}
+          durationInFrames={f(c.hasta) - f(c.desde)}
+          name={`sub · ${c.lineas[0]}`}
+        >
+          <Subtitulo lineas={c.lineas} tam={TAM_SUB} margen={MARGEN} margenAbajo={SUB_ABAJO} />
+        </Sequence>
+      ))}
 
       <Sequence from={entraPlaca} durationInFrames={total - entraPlaca} name="5 · Placa de marca">
         <PlacaMarca ancho={620} hueco={300} />
