@@ -3,9 +3,12 @@
 
 Dos cosas que no se pueden hacer desde Remotion:
 
-1. **El corte de 11,95 s.** Se van los "40 years younger than you" y "seeing
+1. **El corte de 12,68 s.** Se van los "40 years younger than you" y "seeing
    people from all over the world", y con ellos la frase que los abria, que
-   sola no se sostiene. Los dos extremos caen en silencio entre frases, pero
+   sola no se sostiene. El corte entra en 29,72 y no en 30,45: en el 29,80 el
+   hombre arranca un "and" que luego deja colgado, y sin quitarlo la frase se
+   queda a medias. "five days" acaba en el 29,15, asi que hay medio segundo
+   de margen. Los dos extremos caen en silencio entre frases, pero
    la pista lleva voz y musica en el mismo canal, asi que la musica sí salta.
    Por eso la juntura va con fundido cruzado de verdad, usando material de
    los dos lados: se toma audio mas alla del corte, que no se usa para nada
@@ -31,12 +34,12 @@ FF = binarios()
 RAIZ = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 MASTER = os.path.join(RAIZ, "video", "public", "montajes", "testimonios-EN.mp4")
 
-A0, A1 = 15.30, 30.45      # el padre: lista de deseos, emocion, los 100 km
+A0, A1 = 15.30, 29.72      # el padre: lista de deseos, emocion, los 100 km
 B0, B1 = 42.40, 70.80      # el equipaje y todo lo del hijo
 COLA0, COLA1 = 1.50, 6.00  # musica sola del arranque del master
 CRUCE = 0.40
 CRUCE_COLA = 0.60
-FIN = 47.55                # lo que dura la pieza entera
+FIN = 49.20                # lo que dura la pieza entera
 
 
 def main():

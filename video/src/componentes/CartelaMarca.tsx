@@ -194,7 +194,18 @@ export const CierreMarca: React.FC<{
   tam?: number;
   reservaDerecha?: number;
   abajo?: boolean;
-}> = ({ lineas, salidaTexto, tam = 72, reservaDerecha = 0, abajo = false }) => {
+  margen?: number;
+  /** Margen inferior aparte, para el lienzo vertical. */
+  margenAbajo?: number;
+}> = ({
+  lineas,
+  salidaTexto,
+  tam = 72,
+  reservaDerecha = 0,
+  abajo = false,
+  margen = MARGEN,
+  margenAbajo,
+}) => {
   const frame = useCurrentFrame();
   const o = interpolate(frame, [0, 10], [0, 1], {
     extrapolateLeft: "clamp",
@@ -213,8 +224,9 @@ export const CierreMarca: React.FC<{
         style={{
           justifyContent: abajo ? "flex-end" : "center",
           alignItems: "flex-start",
-          padding: MARGEN,
-          paddingRight: MARGEN + reservaDerecha,
+          padding: margen,
+          paddingRight: margen + reservaDerecha,
+          paddingBottom: margenAbajo ?? margen,
         }}
       >
         {lineas.map((l, i) => (

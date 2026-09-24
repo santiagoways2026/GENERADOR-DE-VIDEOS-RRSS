@@ -9,7 +9,7 @@ import {
 import "./fuentes";
 
 import { brand } from "./brand/theme";
-import { Cartela, PlacaMarca } from "./componentes/CartelaMarca";
+import { Cartela, CierreMarca, PlacaMarca } from "./componentes/CartelaMarca";
 
 /**
  * Santiago Ways · el testimonio americano, vertical para stories y TikTok.
@@ -42,12 +42,12 @@ const FPS = 30;
 const f = (s: number) => Math.round(s * FPS);
 
 /** Lo que dura el testimonio ya montado. */
-const TESTIMONIO = 43.55;
-const DURACION = 47.55;
+const TESTIMONIO = 45.4;
+const DURACION = 49.2;
 
 /** Los dos tramos del master que se conservan. */
 const A_DESDE = 15.3;
-const A_DURA = 15.15;
+const A_DURA = 14.42;
 const B_DESDE = 42.4;
 
 const PISTA = "montajes/reel-hoteles.wav";
@@ -57,8 +57,14 @@ const T = "brutos/testimonios/";
 const V = "brutos/piezas-viejas/";
 
 const MARGEN = 72;
-/** En stories y TikTok los ultimos 300 px los tapa la interfaz. */
-const MARGEN_ABAJO = 330;
+/**
+ * En stories y TikTok los ultimos 300 px los tapa la interfaz, pero TikTok
+ * mete ademas el pie de foto y el usuario por encima de eso, asi que el texto
+ * sube hasta los 480 px del borde. A la derecha no hace falta margen extra:
+ * la caja mas ancha llega al pixel 799 y el carril de botones de TikTok
+ * empieza sobre el 880.
+ */
+const MARGEN_ABAJO = 480;
 const TAM = 76;
 const TAM_PIE = 34;
 
@@ -93,50 +99,47 @@ type Insercion = {
  */
 const CARAS: Insercion[] = [
   { desde: 0.0, hasta: 4.63, origen: 15.3, encuadre: PADRE, nombre: "Padre 1" },
-  { desde: 18.38, hasta: 19.68, origen: 45.63, encuadre: PADRE, nombre: "Padre 2 · equipaje" },
-  { desde: 27.65, hasta: 29.85, origen: 54.9, encuadre: HIJO, nombre: "Hijo 1 · hoteles" },
-  { desde: 36.52, hasta: 37.42, origen: 63.77, encuadre: HIJO, nombre: "Hijo 2 · hoteles" },
+  { desde: 17.65, hasta: 18.95, origen: 45.63, encuadre: PADRE, nombre: "Padre 2 · equipaje" },
+  { desde: 26.92, hasta: 29.12, origen: 54.9, encuadre: HIJO, nombre: "Hijo 1 · hoteles" },
+  { desde: 35.79, hasta: 36.69, origen: 63.77, encuadre: HIJO, nombre: "Hijo 2 · hoteles" },
 ];
 
 /**
- * Camino, sobre lo que cuenta el padre. Menos planos y mas largos que en la
- * version anterior: a un segundo y pico cada uno el arranque iba a tirones.
+ * Camino, sobre lo que cuenta el padre. Pocos planos y largos: a un segundo y
+ * pico cada uno el arranque iba a tirones.
  */
 const CAMINO: Insercion[] = [
   { desde: 4.63, hasta: 6.55, origen: 0.1, fuente: V + "peregrinos-calzada.mp4", nombre: "Calzada" },
   { desde: 6.55, hasta: 8.05, origen: 0.03, fuente: B + "pareja-muros.mp4", nombre: "Pareja entre muros" },
   { desde: 8.05, hasta: 10.35, origen: 0.1, fuente: V + "peregrinos-campo.mp4", nombre: "Campo" },
   { desde: 10.35, hasta: 12.9, origen: 0.1, fuente: V + "sendero-peregrinos.mp4", nombre: "Sendero" },
-  // Tapa la juntura del corte, que cae en 15,15.
-  { desde: 12.9, hasta: 15.4, origen: 0.1, fuente: V + "grupo-calle.mp4", nombre: "Juntura · grupo por la calle" },
-  { desde: 15.4, hasta: 17.4, origen: 0.1, fuente: V + "calle-aldea.mp4", nombre: "Calle de aldea" },
+  // Tapa la juntura del corte, que cae en 14,42.
+  { desde: 12.9, hasta: 14.9, origen: 0.1, fuente: V + "grupo-calle.mp4", nombre: "Juntura · grupo por la calle" },
+  { desde: 14.9, hasta: 16.67, origen: 0.1, fuente: V + "calle-aldea.mp4", nombre: "Calle de aldea" },
 ];
 
-/**
- * Equipaje. Solo tres planos: de los cinco de antes, dos eran casi negros y
- * duraban menos de un segundo, y el tramo parecia un parpadeo.
- */
+/** Equipaje, sobre "having somebody Sherpa your belongings". */
 const EQUIPAJE: Insercion[] = [
-  { desde: 17.4, hasta: 18.38, origen: 0.05, fuente: T + "maletas-portal.mp4", nombre: "Maletas · portal" },
-  { desde: 19.68, hasta: 21.84, origen: 0.05, fuente: V + "maletas-etiqueta.mp4", nombre: "Maletas · etiqueta" },
-  { desde: 21.84, hasta: 23.52, origen: 0.03, fuente: V + "maleta-concha.mp4", nombre: "Maleta · concha" },
+  { desde: 16.67, hasta: 17.65, origen: 0.05, fuente: T + "maletas-portal.mp4", nombre: "Maletas · portal" },
+  { desde: 18.95, hasta: 21.11, origen: 0.05, fuente: V + "maletas-etiqueta.mp4", nombre: "Maletas · etiqueta" },
+  { desde: 21.11, hasta: 22.79, origen: 0.03, fuente: V + "maleta-concha.mp4", nombre: "Maleta · concha" },
 ];
 
-/**
- * Alojamiento. Fuera `hotel-arzua`, que en vertical es una cristalera oscura
- * sin nada que mirar, y fuera `terraza`, que se queda en dos tercios de cielo.
- */
+/** Alojamiento, sobre lo que cuenta el hijo, y la cola para el CTA. */
 const HOTELES: Insercion[] = [
-  { desde: 23.52, hasta: 25.22, origen: 0.05, fuente: V + "pazo-blanco.mp4", nombre: "Fachada · pazo" },
-  { desde: 25.22, hasta: 27.65, origen: 0.1, fuente: V + "galeria-hotel.mp4", nombre: "Galeria del hotel" },
-  { desde: 29.85, hasta: 31.85, origen: 0.08, fuente: B + "habitacion.mp4", encuadre: mirar(0.66), nombre: "Cama · ventanal 1080p" },
-  { desde: 31.85, hasta: 33.0, origen: 0.03, fuente: T + "bano-ducha.mp4", nombre: "Ducha" },
-  { desde: 33.0, hasta: 34.7, origen: 0.05, fuente: V + "habitacion-ventanal.mp4", nombre: "Cama · ventanal" },
-  { desde: 34.7, hasta: 36.52, origen: 0.05, fuente: V + "terraza-comida.mp4", nombre: "Terraza del hotel" },
-  { desde: 37.42, hasta: 39.15, origen: 0.03, fuente: V + "habitacion-granate.mp4", nombre: "Cama · granate" },
-  { desde: 39.15, hasta: 40.7, origen: 0.03, fuente: V + "bano-lavabo.mp4", nombre: "Bano · lavabo" },
-  { desde: 40.7, hasta: 42.45, origen: 0.05, fuente: V + "casa-calixtino.mp4", nombre: "Fachada · casona" },
-  { desde: 42.45, hasta: 43.55, origen: 0.03, fuente: T + "lounge-hotel.mp4", nombre: "Lounge del hotel" },
+  { desde: 22.79, hasta: 24.49, origen: 0.05, fuente: V + "pazo-blanco.mp4", nombre: "Fachada · pazo" },
+  { desde: 24.49, hasta: 26.92, origen: 0.1, fuente: V + "galeria-hotel.mp4", nombre: "Galeria del hotel" },
+  { desde: 29.12, hasta: 31.12, origen: 0.08, fuente: B + "habitacion.mp4", encuadre: mirar(0.66), nombre: "Cama · ventanal 1080p" },
+  { desde: 31.12, hasta: 32.27, origen: 0.03, fuente: T + "bano-ducha.mp4", nombre: "Ducha" },
+  { desde: 32.27, hasta: 33.97, origen: 0.05, fuente: V + "habitacion-ventanal.mp4", nombre: "Cama · ventanal" },
+  { desde: 33.97, hasta: 35.79, origen: 0.05, fuente: V + "terraza-comida.mp4", nombre: "Terraza del hotel" },
+  { desde: 36.69, hasta: 38.42, origen: 0.03, fuente: V + "habitacion-granate.mp4", nombre: "Cama · granate" },
+  { desde: 38.42, hasta: 39.97, origen: 0.03, fuente: V + "bano-lavabo.mp4", nombre: "Bano · lavabo" },
+  { desde: 39.97, hasta: 41.72, origen: 0.05, fuente: V + "casa-calixtino.mp4", nombre: "Fachada · casona" },
+  { desde: 41.72, hasta: 42.82, origen: 0.03, fuente: T + "lounge-hotel.mp4", nombre: "Lounge del hotel" },
+  // La cola sobre la que se dice el CTA. El testimonio ya ha terminado.
+  { desde: 42.82, hasta: 44.35, origen: 0.05, fuente: V + "habitacion-buhardilla.mp4", nombre: "CTA · buhardilla" },
+  { desde: 44.35, hasta: 45.4, origen: 0.05, fuente: B + "casa-rural.mp4", nombre: "CTA · casa rural" },
 ];
 
 const INSERCIONES = [...CARAS, ...CAMINO, ...EQUIPAJE, ...HOTELES];
@@ -146,7 +149,8 @@ const INSERCIONES = [...CARAS, ...CAMINO, ...EQUIPAJE, ...HOTELES];
 export const SWReelHotelesEN: React.FC = () => {
   const total = f(DURACION);
   const finTestimonio = f(TESTIMONIO);
-  const entraPlaca = f(43.55);
+  const entraCta = f(42.9);
+  const entraPlaca = f(45.4);
 
   return (
     <AbsoluteFill style={{ backgroundColor: brand.green }}>
@@ -209,11 +213,11 @@ export const SWReelHotelesEN: React.FC = () => {
       </Sequence>
 
       {/* 2 · sobre "having somebody Sherpa your belongings from town to town" */}
-      <Sequence from={f(17.6)} durationInFrames={f(23.4) - f(17.6)} name="2 · Tu equipaje">
+      <Sequence from={f(16.9)} durationInFrames={f(22.7) - f(16.9)} name="2 · Tu equipaje">
         <Cartela
           lineas={[[{ texto: "Your luggage" }], [{ texto: "travels for you", destacado: true }]]}
           pie={["Hotel to hotel, every stage"]}
-          total={f(23.4) - f(17.6)}
+          total={f(22.7) - f(16.9)}
           tam={TAM}
           margen={MARGEN}
           margenAbajo={MARGEN_ABAJO}
@@ -222,11 +226,11 @@ export const SWReelHotelesEN: React.FC = () => {
       </Sequence>
 
       {/* 3 · sobre "nothing better than laying down in a nice clean bed and a shower" */}
-      <Sequence from={f(30.6)} durationInFrames={f(36.2) - f(30.6)} name="3 · Cama limpia">
+      <Sequence from={f(29.9)} durationInFrames={f(35.5) - f(29.9)} name="3 · Cama limpia">
         <Cartela
           lineas={[[{ texto: "A clean bed" }], [{ texto: "and a hot shower", destacado: true }]]}
           pie={["Waiting for you every night"]}
-          total={f(36.2) - f(30.6)}
+          total={f(35.5) - f(29.9)}
           tam={TAM}
           margen={MARGEN}
           margenAbajo={MARGEN_ABAJO}
@@ -235,11 +239,11 @@ export const SWReelHotelesEN: React.FC = () => {
       </Sequence>
 
       {/* 4 · sobre "I won't be sleeping in a tent or at some hostel" */}
-      <Sequence from={f(37.5)} durationInFrames={f(42.9) - f(37.5)} name="4 · Habitacion privada">
+      <Sequence from={f(36.8)} durationInFrames={f(42.2) - f(36.8)} name="4 · Habitacion privada">
         <Cartela
           lineas={[[{ texto: "Always private" }], [{ texto: "room & bathroom", destacado: true }]]}
           pie={["Hand-picked hotels"]}
-          total={f(42.9) - f(37.5)}
+          total={f(42.2) - f(36.8)}
           tam={TAM}
           margen={MARGEN}
           margenAbajo={MARGEN_ABAJO}
@@ -247,7 +251,19 @@ export const SWReelHotelesEN: React.FC = () => {
         />
       </Sequence>
 
-      <Sequence from={entraPlaca} durationInFrames={total - entraPlaca} name="5 · Placa de marca">
+      {/* 5 · el CTA, sobre la cola de alojamiento y ya sin voz */}
+      <Sequence from={entraCta} durationInFrames={total - entraCta} name="5 · Your Camino starts here">
+        <CierreMarca
+          lineas={[[{ texto: "Your Camino" }], [{ texto: "starts here", destacado: true }]]}
+          salidaTexto={f(45.2) - entraCta}
+          tam={TAM}
+          abajo
+          margen={MARGEN}
+          margenAbajo={MARGEN_ABAJO}
+        />
+      </Sequence>
+
+      <Sequence from={entraPlaca} durationInFrames={total - entraPlaca} name="6 · Placa de marca">
         <PlacaMarca ancho={620} hueco={300} />
       </Sequence>
     </AbsoluteFill>

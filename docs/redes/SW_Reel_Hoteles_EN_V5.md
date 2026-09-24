@@ -1,6 +1,6 @@
-# Reel de hoteles · testimonio en inglés · vertical · V3
+# Reel de hoteles · testimonio en inglés · vertical · V5
 
-Pieza de 47,6 s, 1080x1920 a 30 fps, para stories y TikTok.
+Pieza de 49,2 s, 1080x1920 a 30 fps, para stories y TikTok.
 
 Fuente viva: `video/src/SWReelHotelesEN.tsx`.
 
@@ -10,8 +10,8 @@ Son **dos voces, padre e hijo**, y la diferencia se mide:
 
 | Quién | Tramo | Tono | Centroide |
 | --- | --- | --- | --- |
-| El padre, camiseta turquesa | 0 – 24,9 s | 150 Hz | 550 – 770 Hz |
-| El hijo, camiseta granate de Arizona State, **el primero por la izquierda** | 25,9 – 43,1 s | 110 Hz | 890 Hz |
+| El padre, camiseta turquesa | 0 – 24,2 s | 150 Hz | 550 – 770 Hz |
+| El hijo, camiseta granate de Arizona State, **el primero por la izquierda** | 25,2 – 42,4 s | 110 Hz | 890 Hz |
 
 **Lo de los hoteles y la cama limpia lo cuenta el hijo**, no el padre. Eso
 decide a quién se enfoca en cada momento, que en vertical no es un detalle:
@@ -32,6 +32,12 @@ over the world».
 El corte pedido era del 0:19 al 0:26. Se extendió hasta el 0:15 porque «and a
 lot of sense of being…» es el arranque de esa misma frase y solo no se
 sostiene.
+
+Y se adelantó otros 0,73 s, del 30,45 al **29,72**: en el 29,80 el hombre
+arranca un «and» que deja colgado, y sin quitarlo la frase se queda a medias.
+«five days» acaba en el 29,15, así que el corte tiene medio segundo de margen
+por delante. Se localizó transcribiendo ventanas cada vez más cortas hasta que
+la palabra desaparece.
 
 ## El audio
 
