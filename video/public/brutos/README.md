@@ -218,6 +218,21 @@ Para un primer plano grande o un encuadre que recorte mucho, tira de los de
 | `testimonios/pulpo-plato` | 1.0 s | 1280x720 |
 | `vieiras` | 1.3 s | 1920x1080 |
 
+## Ojo: dos nombres que no dicen lo que se ve
+
+Salieron al montar el reel alemán, mirando plano a plano lo que de verdad
+entra en cuadro. Los nombres vienen de la primera catalogación y en estos dos
+se quedaron cortos:
+
+| Plano | Lo que se ve de verdad |
+| --- | --- |
+| `interior-velas` | peregrinos caminando de frente y, al final, una mujer en un puesto de sellado bajo un soportal. Velas no hay |
+| `testimonios/botas-camino` | un camino arbolado con peregrinos de espaldas. Botas no hay |
+
+No se han renombrado porque los usa `ReelXacobeo.tsx` y cambiarlos rompería la
+composición. **Antes de coger un plano por el nombre, se mira el fotograma**,
+que es lo que dice la regla 3 y aquí vale también para elegir.
+
 ## Ojo: seis tomas que están dos veces
 
 Salieron de escanear los 154 planos unos contra otros. No se han borrado

@@ -101,7 +101,7 @@ const CAMINO: Insercion[] = [
   { desde: 15.0, hasta: 16.7, origen: 0.0, fuente: T + "sendero-contraluz.mp4", nombre: "Sendero a contraluz" },
   { desde: 16.7, hasta: 18.8, origen: 0.1, fuente: V + "iglesia-espadana.mp4", nombre: "Iglesia de espadana" },
   { desde: 18.8, hasta: 20.2, origen: 0.0, fuente: T + "interior-capilla.mp4", nombre: "Interior de capilla" },
-  { desde: 20.2, hasta: 22.2, origen: 0.05, fuente: B + "interior-velas.mp4", nombre: "Velas 1080p" },
+  { desde: 20.2, hasta: 22.2, origen: 0.1, fuente: V + "soportales-rua.mp4", nombre: "Soportales" },
   { desde: 22.2, hasta: 23.95, origen: 0.05, fuente: V + "cruceiro-prado.mp4", nombre: "Cruceiro" },
   { desde: 23.95, hasta: 25.55, origen: 0.0, fuente: T + "timpano-romanico.mp4", nombre: "Timpano romanico" },
   { desde: 25.55, hasta: 27.3, origen: 0.1, fuente: V + "horreo-peregrinos.mp4", nombre: "Horreo" },

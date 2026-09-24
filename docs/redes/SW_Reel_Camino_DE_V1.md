@@ -124,7 +124,7 @@ quietos, así que no se nota.
 | 15,0 s | 16,7 s | `testimonios/sendero-contraluz` |
 | 16,7 s | 18,8 s | `piezas-viejas/iglesia-espadana` |
 | 18,8 s | 20,2 s | `testimonios/interior-capilla` |
-| 20,2 s | 22,2 s | `interior-velas` (1080p) |
+| 20,2 s | 22,2 s | `piezas-viejas/soportales-rua` |
 | 22,2 s | 24,0 s | `piezas-viejas/cruceiro-prado` |
 | 24,0 s | 25,6 s | `testimonios/timpano-romanico` |
 | 25,6 s | 27,3 s | `piezas-viejas/horreo-peregrinos` |
