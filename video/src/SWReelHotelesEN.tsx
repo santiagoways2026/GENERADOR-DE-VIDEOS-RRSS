@@ -90,6 +90,14 @@ type Insercion = {
   origen: number;
   fuente?: string;
   encuadre?: string;
+  /**
+   * Velocidad de reproduccion. Por debajo de 1 el plano dura mas de lo que
+   * dura el archivo, que es la unica manera de darle mas metraje a una toma
+   * que ya se usa entera. Solo en planos quietos, fachadas y poco mas: en un
+   * plano con gente moviendose se nota. `comprobar-inserciones.py` lo tiene
+   * en cuenta al medir si el archivo llega.
+   */
+  ritmo?: number;
   nombre: string;
 };
 
@@ -101,7 +109,7 @@ const CARAS: Insercion[] = [
   { desde: 0.0, hasta: 4.63, origen: 15.3, encuadre: PADRE, nombre: "Padre 1" },
   { desde: 17.65, hasta: 18.95, origen: 45.63, encuadre: PADRE, nombre: "Padre 2 · equipaje" },
   { desde: 26.92, hasta: 29.12, origen: 54.9, encuadre: HIJO, nombre: "Hijo 1 · hoteles" },
-  { desde: 35.79, hasta: 36.69, origen: 63.77, encuadre: HIJO, nombre: "Hijo 2 · hoteles" },
+  { desde: 35.15, hasta: 36.69, origen: 63.13, encuadre: HIJO, nombre: "Hijo 2 · hoteles" },
 ];
 
 /**
@@ -118,29 +126,39 @@ const CAMINO: Insercion[] = [
   { desde: 14.9, hasta: 16.67, origen: 0.1, fuente: V + "calle-aldea.mp4", nombre: "Calle de aldea" },
 ];
 
-/** Equipaje, sobre "having somebody Sherpa your belongings". */
+/**
+ * Equipaje, sobre "having somebody Sherpa your belongings". El ultimo cae
+ * entero sobre "The only way to go", que es la frase que lo remata.
+ */
 const EQUIPAJE: Insercion[] = [
   { desde: 16.67, hasta: 17.65, origen: 0.05, fuente: T + "maletas-portal.mp4", nombre: "Maletas · portal" },
-  { desde: 18.95, hasta: 21.11, origen: 0.05, fuente: V + "maletas-etiqueta.mp4", nombre: "Maletas · etiqueta" },
-  { desde: 21.11, hasta: 22.76, origen: 0.03, fuente: V + "maleta-concha.mp4", nombre: "Maleta · concha" },
+  { desde: 18.95, hasta: 21.05, origen: 0.05, fuente: V + "maletas-etiqueta.mp4", nombre: "Maletas · etiqueta" },
+  { desde: 21.05, hasta: 22.2, origen: 0.03, fuente: T + "etiquetas-maletas.mp4", nombre: "Maletas · etiquetas del tour" },
+  { desde: 22.2, hasta: 23.9, origen: 0.0, fuente: V + "maleta-concha.mp4", nombre: "Maleta · concha · The only way to go" },
 ];
 
-/** Alojamiento, sobre lo que cuenta el hijo, y la cola para el CTA. */
+/**
+ * Alojamiento, sobre lo que cuenta el hijo, y la llegada a Santiago para el
+ * CTA. Las dos fachadas que el equipo quiso mantener, el pazo blanco y la
+ * casa rural, van un poco mas despacio: los archivos duran 1,80 y 1,17 s y
+ * ya se usaban enteros, asi que el metraje extra solo puede salir de ahi.
+ * Son planos quietos y no se nota.
+ */
 const HOTELES: Insercion[] = [
-  { desde: 22.76, hasta: 24.49, origen: 0.05, fuente: V + "pazo-blanco.mp4", nombre: "Fachada · pazo" },
-  { desde: 24.49, hasta: 25.42, origen: 0.02, fuente: V + "salon-rustico.mp4", nombre: "Salon rustico" },
-  { desde: 25.42, hasta: 26.92, origen: 0.1, fuente: V + "galeria-hotel.mp4", nombre: "Galeria del hotel" },
-  { desde: 29.12, hasta: 31.12, origen: 0.08, fuente: B + "habitacion.mp4", encuadre: mirar(0.66), nombre: "Cama · ventanal 1080p" },
-  { desde: 31.12, hasta: 32.27, origen: 0.03, fuente: T + "bano-ducha.mp4", nombre: "Ducha" },
-  { desde: 32.27, hasta: 33.97, origen: 0.05, fuente: V + "habitacion-ventanal.mp4", nombre: "Cama · ventanal" },
-  { desde: 33.97, hasta: 35.79, origen: 0.05, fuente: V + "terraza-comida.mp4", nombre: "Terraza del hotel" },
-  { desde: 36.69, hasta: 38.32, origen: 0.03, fuente: V + "habitacion-piedra.mp4", nombre: "Cama · pared de piedra" },
-  { desde: 38.32, hasta: 39.89, origen: 0.0, fuente: V + "bano-lavabo.mp4", nombre: "Bano · lavabo" },
-  { desde: 39.89, hasta: 41.72, origen: 0.05, fuente: V + "casa-calixtino.mp4", nombre: "Fachada · casona" },
-  { desde: 41.72, hasta: 42.82, origen: 0.05, fuente: B + "mesa-exterior.mp4", nombre: "Mesa de piedra" },
-  // La cola sobre la que se dice el CTA. El testimonio ya ha terminado.
-  { desde: 42.82, hasta: 44.35, origen: 0.05, fuente: V + "habitacion-buhardilla.mp4", nombre: "CTA · buhardilla" },
-  { desde: 44.35, hasta: 45.4, origen: 0.05, fuente: B + "casa-rural.mp4", nombre: "CTA · casa rural" },
+  { desde: 23.9, hasta: 25.9, origen: 0.0, fuente: V + "pazo-blanco.mp4", ritmo: 0.86, nombre: "Fachada · pazo blanco" },
+  { desde: 25.9, hasta: 26.92, origen: 0.1, fuente: V + "galeria-hotel.mp4", nombre: "Galeria del hotel" },
+  { desde: 29.12, hasta: 31.1, origen: 0.08, fuente: B + "habitacion.mp4", encuadre: mirar(0.66), nombre: "Cama · ventanal 1080p" },
+  { desde: 31.1, hasta: 32.25, origen: 0.03, fuente: T + "bano-ducha.mp4", nombre: "Ducha" },
+  { desde: 32.25, hasta: 34.2, origen: 0.05, fuente: V + "habitacion-ventanal.mp4", nombre: "Cama · ventanal" },
+  { desde: 34.2, hasta: 35.15, origen: 0.0, fuente: V + "salon-rustico.mp4", nombre: "Salon rustico" },
+  { desde: 36.69, hasta: 38.35, origen: 0.0, fuente: V + "habitacion-piedra.mp4", nombre: "Cama · pared de piedra" },
+  // Sobre "I won't be sleeping in a tent or at some hostel": una casa de verdad.
+  { desde: 38.35, hasta: 39.7, origen: 0.0, fuente: B + "casa-rural.mp4", ritmo: 0.85, nombre: "Fachada · casa rural 1080p" },
+  // La llegada, ya sin hoteles: el remate emocional antes del CTA.
+  { desde: 39.7, hasta: 41.4, origen: 0.05, fuente: T + "grupo-compostelas.mp4", nombre: "Llegada · las compostelas" },
+  { desde: 41.4, hasta: 42.55, origen: 0.0, fuente: B + "brazos-alto.mp4", ritmo: 0.8, nombre: "Llegada · brazos en alto 1080p" },
+  // El CTA se dice sobre la catedral, que es lo que remata la pieza.
+  { desde: 42.55, hasta: 45.4, origen: 0.1, fuente: T + "fachada-obradoiro.mp4", nombre: "CTA · fachada del Obradoiro" },
 ];
 
 const INSERCIONES = [...CARAS, ...CAMINO, ...EQUIPAJE, ...HOTELES];
@@ -190,6 +208,7 @@ export const SWReelHotelesEN: React.FC = () => {
           <OffthreadVideo
             src={staticFile(s.fuente ?? MASTER)}
             trimBefore={f(s.origen)}
+            playbackRate={s.ritmo ?? 1}
             muted
             style={{
               width: "100%",
@@ -214,11 +233,11 @@ export const SWReelHotelesEN: React.FC = () => {
       </Sequence>
 
       {/* 2 · sobre "having somebody Sherpa your belongings from town to town" */}
-      <Sequence from={f(16.9)} durationInFrames={f(22.7) - f(16.9)} name="2 · Tu equipaje">
+      <Sequence from={f(16.9)} durationInFrames={f(23.8) - f(16.9)} name="2 · Tu equipaje">
         <Cartela
           lineas={[[{ texto: "Your luggage" }], [{ texto: "travels for you", destacado: true }]]}
           pie={["Hotel to hotel, every stage"]}
-          total={f(22.7) - f(16.9)}
+          total={f(23.8) - f(16.9)}
           tam={TAM}
           margen={MARGEN}
           margenAbajo={MARGEN_ABAJO}
@@ -240,11 +259,11 @@ export const SWReelHotelesEN: React.FC = () => {
       </Sequence>
 
       {/* 4 · sobre "I won't be sleeping in a tent or at some hostel" */}
-      <Sequence from={f(36.8)} durationInFrames={f(42.2) - f(36.8)} name="4 · Habitacion privada">
+      <Sequence from={f(36.3)} durationInFrames={f(39.7) - f(36.3)} name="4 · Habitacion privada">
         <Cartela
           lineas={[[{ texto: "Always private" }], [{ texto: "room & bathroom", destacado: true }]]}
           pie={["Hand-picked hotels"]}
-          total={f(42.2) - f(36.8)}
+          total={f(39.7) - f(36.3)}
           tam={TAM}
           margen={MARGEN}
           margenAbajo={MARGEN_ABAJO}

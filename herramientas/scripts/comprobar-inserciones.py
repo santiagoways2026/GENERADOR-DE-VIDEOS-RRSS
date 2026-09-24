@@ -11,7 +11,12 @@ mal hecho. No hay manera de que Remotion avise, así que se mide aquí.
 Lee el array `INSERCIONES` de la escena, cuenta los fotogramas de cada
 archivo y compara. Devuelve 1 si alguno se queda corto, para poder colgarlo
 de un `npm run` o de CI.
+
+Si la inserción lleva `ritmo` (el `playbackRate` del `OffthreadVideo`) el
+hueco consume menos archivo del que dura: a 0,85 un hueco de 1,35 s se come
+1,15 s de metraje. Se tiene en cuenta al medir.
 """
+import math
 import os
 import re
 import subprocess
@@ -29,7 +34,6 @@ PUBLICO = os.path.join(RAIZ, "video", "public")
 def redondea(s):
     """`Math.round` de JavaScript: el .5 sube siempre, tambien en negativos.
     El `round` de Python usa la regla del par y no da lo mismo."""
-    import math
     return math.floor(s * FPS + 0.5)
 
 
@@ -66,6 +70,8 @@ def main():
             m = re.search(rf"\b{n}:\s*([0-9.]+)", c)
             return float(m.group(1)) if m else por_defecto
         desde, hasta, origen = campo("desde"), campo("hasta"), campo("origen", 0.0)
+        # `playbackRate`: a 0,85 el hueco consume un 15 % menos de archivo.
+        ritmo = campo("ritmo", 1.0)
         nombre = (re.search(r'nombre:\s*"([^"]*)"', c) or [None, "?"])[1]
         fu = re.search(r"fuente:\s*(\w+)\s*\+\s*\"([^\"]+)\"", c)
         rel = carpetas.get(fu.group(1), "") + fu.group(2) if fu else base
@@ -78,12 +84,13 @@ def main():
             fallos += 1
             continue
 
-        pide = redondea(origen) + (redondea(hasta) - redondea(desde))
+        pide = redondea(origen) + math.ceil((redondea(hasta) - redondea(desde)) * ritmo)
         tiene = fotogramas(ff, ruta)
         holgura = tiene - pide
         estado = "ok" if holgura >= 0 else f"SE CONGELA {(-holgura) / FPS:.2f} s"
+        marca = "" if ritmo == 1.0 else f"  x{ritmo:g}"
         print(f"  {nombre[:44]:46s} pide {pide:4d}  tiene {tiene:4d}  "
-              f"holgura {holgura:4d}  {estado}")
+              f"holgura {holgura:4d}  {estado}{marca}")
         fallos += holgura < 0
 
     print("todo cabe" if not fallos else f"{fallos} inserción(es) se quedan cortas")

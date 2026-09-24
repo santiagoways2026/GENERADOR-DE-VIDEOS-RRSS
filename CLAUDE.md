@@ -175,7 +175,12 @@ Estas salieron de revisar piezas reales y ahorran repetir errores:
      entra más alta que lo que viene detrás se oye como un escalón.
    Las junturas se montan con fundido cruzado de verdad, con material de los
    dos lados: pegando a hueso hay chasquido, y fundiendo cada trozo a silencio
-   se oye el bache.
+   se oye el bache. **Y el lado que se apaga no se toma de detrás del corte**,
+   por muy natural que parezca como continuación de la música: un fundido
+   cruzado arranca con ese lado a volumen entero, así que devuelve justo la
+   palabra que se acababa de quitar, sólo que apagándose. Se saca del hueco
+   sin voz más cercano, que es la misma sala y la misma música sin nadie
+   hablando.
 12. **Un plano más corto que su hueco no avisa.** `OffthreadVideo` no falla
    cuando se le pide más metraje del que tiene: congela el último fotograma.
    En la pieza social fueron 0,72 s de imagen parada que parecían un corte mal
@@ -192,6 +197,13 @@ Estas salieron de revisar piezas reales y ahorran repetir errores:
    venía primero en el bruto: se mira si aguanta solo. Un contraluz velado
    con un muro al fondo no abre nada. Para eso están los brutos de 1080p, que
    además entran más nítidos que una base recortada con zoom.
+15. **A una toma corta se le da más metraje bajándole la velocidad, no
+   repitiéndola.** Los brutos duran entre uno y dos segundos, y a veces el
+   plano que gusta ya se está usando entero. `playbackRate` por debajo de 1
+   alarga el hueco sin tocar el archivo: a 0,85 un plano de 1,17 s cubre 1,35.
+   Sólo vale en planos quietos, fachadas y poco más; con gente moviéndose se
+   ve el cámara lenta. En las escenas va en el campo `ritmo` de la inserción,
+   y `comprobar-inserciones.py` lo descuenta al medir si el archivo llega.
 
 ## Reglas técnicas de Remotion
 
