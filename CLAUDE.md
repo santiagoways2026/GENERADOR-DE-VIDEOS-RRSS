@@ -238,6 +238,30 @@ Estas salieron de revisar piezas reales y ahorran repetir errores:
    el nivel: la entrada de un tema suele venir sin bajos y al empalmarla con
    el tema ya arrancado se cae el suelo.
 
+18. **Un rótulo pegado no se quita, se esquiva.** Los clips que vuelven de un
+   editor online traen subtítulos quemados y marca de agua. La marca de agua
+   suele vivir en un borde y se va recortando, como dice `marca-agua.py`. Los
+   subtítulos caen en mitad del cuadro y no hay recorte que valga; borrarlos
+   tampoco, porque el texto cambia cada segundo y suele caer sobre manos o
+   caras. Lo que sí funciona es **no necesitarlos**: un rótulo ocupa el 70 u
+   80 % del metraje, no el 100, y de ese clip sólo hacen falta dos o tres
+   planos de la gente. Salen de los huecos.
+   Los huecos se miden por la **firma del rótulo**, un píxel muy claro (más de
+   235) con uno muy oscuro (menos de 65) a menos de cuatro píxeles en
+   horizontal, que es lo que deja el borde negro de las letras. Contar píxeles
+   blancos a secas no vale y se paga: en el testimonio alemán los pantalones
+   cortos eran blancos y caían justo en la banda, así que salieron planos con
+   media palabra todavía dentro.
+19. **Antes de enseñar una cara, comprobar que la imagen va con el audio.** Un
+   testimonio doblado o con locución puesta encima no lleva las bocas en su
+   sitio. Se mide comparando el movimiento de la zona de las bocas con el
+   nivel de la pista: si van juntos, la correlación sube; si el movimiento es
+   el mismo cuando la pista está en silencio, es doblaje. En el testimonio
+   alemán daba 0,81 en el silencio contra 0,73 y 0,98 hablando, y la
+   correlación se quedaba en 0,03. Con eso, los planos de cara van de uno a
+   dos segundos y nunca sobre una frase entera: a esa duración no se lee como
+   un doblaje, se lee como un plano de los clientes.
+
 ## Reglas técnicas de Remotion
 
 - **Usar `OffthreadVideo`, no el `Video` de `@remotion/media`**: este último

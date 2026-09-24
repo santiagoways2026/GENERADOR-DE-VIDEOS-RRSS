@@ -5,6 +5,7 @@ import { SWCaminoStoriesENComposition } from "./SWCaminoStoriesEN";
 import { SWMiniaturaENComposition } from "./SWMiniaturaEN";
 import { SWSocialCaminoESComposition } from "./SWSocialCaminoES";
 import { SWReelHotelesENComposition } from "./SWReelHotelesEN";
+import { SWReelCaminoDEComposition } from "./SWReelCaminoDE";
 import { SWMiniaturaSinLogoENComposition } from "./SWMiniaturaSinLogoEN";
 import { SWMuestraFuentesComposition } from "./SWMuestraFuentes";
 
@@ -16,6 +17,7 @@ export const RemotionRoot: React.FC = () => {
       <SWCaminoStoriesENComposition />
       <SWSocialCaminoESComposition />
       <SWReelHotelesENComposition />
+      <SWReelCaminoDEComposition />
       <SWMiniaturaENComposition />
       <SWMiniaturaSinLogoENComposition />
       <SWMuestraFuentesComposition />
