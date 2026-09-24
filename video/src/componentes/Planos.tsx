@@ -9,10 +9,9 @@ export type Plano = {
   dura: number;
   /** Encuadre del recorte cuando el sujeto no esta centrado. */
   encuadre?: string;
-  /** Zoom lento de principio a fin. Por defecto 1.05. Subirlo ayuda cuando
-   *  el plano va muy en camara lenta (playbackRate bajo): el zoom corre a
-   *  su propio ritmo, no al de la camara lenta, asi que un empuje mas
-   *  visible es lo que salva que el plano lea como congelado. */
+  /** Zoom lento de principio a fin. Por defecto se calcula solo segun
+   *  cuanta camara lenta le toque al plano (1.05 si no va estirado, mas si
+   *  va muy estirado). Poner un valor aqui lo fija y desactiva ese calculo. */
   zoom?: number;
 };
 
@@ -66,6 +65,12 @@ export const Planos: React.FC<{
         // se estira en camara lenta en vez de pedirle a OffthreadVideo
         // fotogramas que no existen (eso cuelga el render).
         const playbackRate = Math.min(1, (p.dura * fps) / duracion);
+        // El zoom corre a su propio ritmo, no al de la camara lenta: cuanto
+        // mas estirado va el plano, mas empuje hace falta para que no lea
+        // como congelado. A playbackRate 1 (el caso de siempre, planos que
+        // caben en su bloque sin estirarse) esto da 1.05, el zoom de
+        // siempre, sin cambiar nada.
+        const zoomAuto = 1.05 + (1 - playbackRate) * 0.35;
         return (
           <Sequence key={p.src} from={from} durationInFrames={duracion} name={p.src}>
             <Clip
@@ -73,7 +78,7 @@ export const Planos: React.FC<{
               duracion={duracion}
               overlay={overlay}
               encuadre={p.encuadre}
-              zoom={p.zoom ?? 1.05}
+              zoom={p.zoom ?? zoomAuto}
               playbackRate={playbackRate}
               fundeEntrada={!esPrimero}
               fundeSalida={!esUltimo}

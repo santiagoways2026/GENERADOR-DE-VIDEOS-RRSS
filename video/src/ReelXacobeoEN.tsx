@@ -139,16 +139,16 @@ export const ReelXacobeoEN: React.FC = () => {
       </Sequence>
 
       {/* 5 · "A history of friendship, or simply time for yourself...".
-       * "time for yourself" (33.47-35.09s, local ~2.2-3.8s) needs a solo
-       * shot under it, not a group one -- brindis (a big table toast) was
-       * there before and read as a mistake, so it's out of this beat
-       * entirely. contraluz (a lone silhouette) moved here from the
-       * Timeline beat instead. */}
+       * brindis (the group toast) is back for "a history of friendship" --
+       * it's a strong shot and belongs somewhere. "time for yourself"
+       * (33.47-35.09s) still needs to land mostly on the solo shots after
+       * it, so brindis leads and brazos-alto/contraluz close out the beat. */}
       <Sequence from={f(BOUNDS[4])} durationInFrames={dur(4)} name="5 · Friendship">
         <Planos
           total={dur(4)}
           overlay={0.3}
           lista={[
+            { src: "brindis", dura: 2.0, encuadre: "42% 50%" },
             { src: "brazos-alto", dura: 1.0, encuadre: "34% 50%" },
             { src: "contraluz", dura: 1.45 },
           ]}
@@ -158,21 +158,16 @@ export const ReelXacobeoEN: React.FC = () => {
       {/* 6 · "...that moment you finally arrive in Santiago — this is what a Holy Year feels like".
        * "arrive in Santiago" lands around 41.8-43.1s (local ~3.2-4.5s), so
        * plaza — the cathedral/square shot — goes second, not first, to sit
-       * under those words instead of before them. */}
+       * under those words instead of before them. Zoom is auto-boosted by
+       * Planos since this block stretches its footage a lot. */}
       <Sequence from={f(BOUNDS[5])} durationInFrames={dur(5)} name="6 · Arrival">
-        {/* Este bloque estira poco metraje real (3.35s) sobre 7.9s de
-         * pantalla -- a un zoom normal (1.05) se nota casi congelado,
-         * sobre todo grupo-peregrinos (plano abierto, gente alejandose,
-         * ya de por si con poco movimiento propio). Zoom mas fuerte para
-         * que el empuje, que corre a su propio ritmo, lea como que la
-         * escena sigue viva. */}
         <Planos
           total={dur(5)}
           overlay={0.3}
           lista={[
-            { src: "pareja-muros", dura: 1.55, encuadre: "40% 50%", zoom: 1.18 },
-            { src: "plaza", dura: 1.05, zoom: 1.22 },
-            { src: "grupo-peregrinos", dura: 0.75, zoom: 1.28 },
+            { src: "pareja-muros", dura: 1.55, encuadre: "40% 50%" },
+            { src: "plaza", dura: 1.05 },
+            { src: "grupo-peregrinos", dura: 0.75 },
           ]}
         />
         <Cartela principal="This is what" secundaria="a Holy Year feels like" desde={149} />
