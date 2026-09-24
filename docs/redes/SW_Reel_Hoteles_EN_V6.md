@@ -1,4 +1,4 @@
-# Reel de hoteles · testimonio en inglés · vertical · V5
+# Reel de hoteles · testimonio en inglés · vertical · V6
 
 Pieza de 49,2 s, 1080x1920 a 30 fps, para stories y TikTok.
 
@@ -97,8 +97,8 @@ recortados a 9:16.
 | --- | --- | --- |
 | 4,6 s | 6,6 s | `piezas-viejas/peregrinos-calzada` |
 | 6,6 s | 8,1 s | `pareja-muros` (1080p) |
-| 8,1 s | 10,4 s | `piezas-viejas/peregrinos-campo` |
-| 10,4 s | 12,9 s | `piezas-viejas/sendero-peregrinos` |
+| 8,1 s | 10,3 s | `testimonios/camino-dedaleras` |
+| 10,3 s | 12,9 s | `piezas-viejas/sendero-peregrinos` |
 | 12,9 s | 15,4 s | `piezas-viejas/grupo-calle` · tapa la juntura del corte |
 | 15,4 s | 17,4 s | `piezas-viejas/calle-aldea` |
 
@@ -131,6 +131,13 @@ el tramo parecía un parpadeo.
 
 Fuera `hotel-arzua`, que en vertical es una cristalera oscura sin nada que
 mirar, y fuera `terraza`, que se queda en dos tercios de cielo.
+
+**El bloque tira de lo rústico**, que es lo que mejor material tiene: el salón
+de piedra con vigas, la habitación con la lámpara y el cabecero de madera, la
+casona con el cartel y la mesa de piedra bajo el emparrado. Salieron de repasar
+los treinta y tres planos de alojamiento de la biblioteca uno a uno, ya
+recortados a 9:16. Se fueron por sosos el bar moderno de techo turquesa y la
+habitación de los cubrecamas granates.
 
 **No hay ningún plano de piscina en la biblioteca.** Lo más parecido es
 `terraza`, que da a un embalse y desde el encuadre parece una lámina de agua.

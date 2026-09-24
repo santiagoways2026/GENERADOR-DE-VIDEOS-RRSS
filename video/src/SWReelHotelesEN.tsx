@@ -111,8 +111,8 @@ const CARAS: Insercion[] = [
 const CAMINO: Insercion[] = [
   { desde: 4.63, hasta: 6.55, origen: 0.1, fuente: V + "peregrinos-calzada.mp4", nombre: "Calzada" },
   { desde: 6.55, hasta: 8.05, origen: 0.03, fuente: B + "pareja-muros.mp4", nombre: "Pareja entre muros" },
-  { desde: 8.05, hasta: 10.35, origen: 0.1, fuente: V + "peregrinos-campo.mp4", nombre: "Campo" },
-  { desde: 10.35, hasta: 12.9, origen: 0.1, fuente: V + "sendero-peregrinos.mp4", nombre: "Sendero" },
+  { desde: 8.05, hasta: 10.3, origen: 0.05, fuente: T + "camino-dedaleras.mp4", nombre: "Camino entre dedaleras" },
+  { desde: 10.3, hasta: 12.9, origen: 0.1, fuente: V + "sendero-peregrinos.mp4", nombre: "Sendero" },
   // Tapa la juntura del corte, que cae en 14,42.
   { desde: 12.9, hasta: 14.9, origen: 0.1, fuente: V + "grupo-calle.mp4", nombre: "Juntura · grupo por la calle" },
   { desde: 14.9, hasta: 16.67, origen: 0.1, fuente: V + "calle-aldea.mp4", nombre: "Calle de aldea" },
@@ -122,21 +122,22 @@ const CAMINO: Insercion[] = [
 const EQUIPAJE: Insercion[] = [
   { desde: 16.67, hasta: 17.65, origen: 0.05, fuente: T + "maletas-portal.mp4", nombre: "Maletas · portal" },
   { desde: 18.95, hasta: 21.11, origen: 0.05, fuente: V + "maletas-etiqueta.mp4", nombre: "Maletas · etiqueta" },
-  { desde: 21.11, hasta: 22.79, origen: 0.03, fuente: V + "maleta-concha.mp4", nombre: "Maleta · concha" },
+  { desde: 21.11, hasta: 22.76, origen: 0.03, fuente: V + "maleta-concha.mp4", nombre: "Maleta · concha" },
 ];
 
 /** Alojamiento, sobre lo que cuenta el hijo, y la cola para el CTA. */
 const HOTELES: Insercion[] = [
-  { desde: 22.79, hasta: 24.49, origen: 0.05, fuente: V + "pazo-blanco.mp4", nombre: "Fachada · pazo" },
-  { desde: 24.49, hasta: 26.92, origen: 0.1, fuente: V + "galeria-hotel.mp4", nombre: "Galeria del hotel" },
+  { desde: 22.76, hasta: 24.49, origen: 0.05, fuente: V + "pazo-blanco.mp4", nombre: "Fachada · pazo" },
+  { desde: 24.49, hasta: 25.42, origen: 0.02, fuente: V + "salon-rustico.mp4", nombre: "Salon rustico" },
+  { desde: 25.42, hasta: 26.92, origen: 0.1, fuente: V + "galeria-hotel.mp4", nombre: "Galeria del hotel" },
   { desde: 29.12, hasta: 31.12, origen: 0.08, fuente: B + "habitacion.mp4", encuadre: mirar(0.66), nombre: "Cama · ventanal 1080p" },
   { desde: 31.12, hasta: 32.27, origen: 0.03, fuente: T + "bano-ducha.mp4", nombre: "Ducha" },
   { desde: 32.27, hasta: 33.97, origen: 0.05, fuente: V + "habitacion-ventanal.mp4", nombre: "Cama · ventanal" },
   { desde: 33.97, hasta: 35.79, origen: 0.05, fuente: V + "terraza-comida.mp4", nombre: "Terraza del hotel" },
-  { desde: 36.69, hasta: 38.42, origen: 0.03, fuente: V + "habitacion-granate.mp4", nombre: "Cama · granate" },
-  { desde: 38.42, hasta: 39.97, origen: 0.03, fuente: V + "bano-lavabo.mp4", nombre: "Bano · lavabo" },
-  { desde: 39.97, hasta: 41.72, origen: 0.05, fuente: V + "casa-calixtino.mp4", nombre: "Fachada · casona" },
-  { desde: 41.72, hasta: 42.82, origen: 0.03, fuente: T + "lounge-hotel.mp4", nombre: "Lounge del hotel" },
+  { desde: 36.69, hasta: 38.32, origen: 0.03, fuente: V + "habitacion-piedra.mp4", nombre: "Cama · pared de piedra" },
+  { desde: 38.32, hasta: 39.89, origen: 0.0, fuente: V + "bano-lavabo.mp4", nombre: "Bano · lavabo" },
+  { desde: 39.89, hasta: 41.72, origen: 0.05, fuente: V + "casa-calixtino.mp4", nombre: "Fachada · casona" },
+  { desde: 41.72, hasta: 42.82, origen: 0.05, fuente: B + "mesa-exterior.mp4", nombre: "Mesa de piedra" },
   // La cola sobre la que se dice el CTA. El testimonio ya ha terminado.
   { desde: 42.82, hasta: 44.35, origen: 0.05, fuente: V + "habitacion-buhardilla.mp4", nombre: "CTA · buhardilla" },
   { desde: 44.35, hasta: 45.4, origen: 0.05, fuente: B + "casa-rural.mp4", nombre: "CTA · casa rural" },
