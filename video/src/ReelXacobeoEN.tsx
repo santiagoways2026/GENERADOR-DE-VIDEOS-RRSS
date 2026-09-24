@@ -72,7 +72,7 @@ export const ReelXacobeoEN: React.FC = () => {
       <Sequence durationInFrames={dur(0)} name="1 · Opening">
         <Planos
           total={dur(0)}
-          overlay={0.34}
+          overlay={0}
           lista={[
             { src: "catedral-a", dura: 1.7 },
             { src: "catedral-b", dura: 1.7 },
@@ -85,7 +85,7 @@ export const ReelXacobeoEN: React.FC = () => {
       <Sequence from={f(BOUNDS[1])} durationInFrames={dur(1)} name="2 · Calendar">
         <Planos
           total={dur(1)}
-          overlay={0.42}
+          overlay={0}
           lista={[
             { src: "catedral-torres", dura: 1.7 },
             { src: "iglesia-exterior", dura: 1.35, encuadre: "56% 50%" },
@@ -109,7 +109,7 @@ export const ReelXacobeoEN: React.FC = () => {
       <Sequence from={f(BOUNDS[2])} durationInFrames={dur(2)} name="3 · Timeline">
         <Planos
           total={dur(2)}
-          overlay={0.42}
+          overlay={0}
           lista={[
             { src: "campo-flores", dura: 1.7 },
             { src: "camino-abierto", dura: 1.2 },
@@ -130,7 +130,7 @@ export const ReelXacobeoEN: React.FC = () => {
       <Sequence from={f(BOUNDS[3])} durationInFrames={dur(3)} name="4 · Holy Door">
         <Planos
           total={dur(3)}
-          overlay={0.3}
+          overlay={0}
           lista={[
             { src: "credencial", dura: 1.05 },
             { src: "compostela", dura: 1.7, encuadre: "38% 50%" },
@@ -146,7 +146,7 @@ export const ReelXacobeoEN: React.FC = () => {
       <Sequence from={f(BOUNDS[4])} durationInFrames={dur(4)} name="5 · Friendship">
         <Planos
           total={dur(4)}
-          overlay={0.3}
+          overlay={0}
           lista={[
             { src: "brindis", dura: 2.0, encuadre: "42% 50%" },
             { src: "brazos-alto", dura: 1.0, encuadre: "34% 50%" },
@@ -163,7 +163,7 @@ export const ReelXacobeoEN: React.FC = () => {
       <Sequence from={f(BOUNDS[5])} durationInFrames={dur(5)} name="6 · Arrival">
         <Planos
           total={dur(5)}
-          overlay={0.3}
+          overlay={0}
           lista={[
             { src: "pareja-muros", dura: 1.55, encuadre: "40% 50%" },
             { src: "plaza", dura: 1.05 },
@@ -177,7 +177,7 @@ export const ReelXacobeoEN: React.FC = () => {
       <Sequence from={f(BOUNDS[6])} durationInFrames={dur(6)} name="7 · Brand transition">
         <Planos
           total={dur(6)}
-          overlay={0.34}
+          overlay={0}
           lista={[{ src: "fachada-moderna", dura: 1.2, encuadre: "40% 50%" }]}
         />
       </Sequence>
@@ -186,7 +186,7 @@ export const ReelXacobeoEN: React.FC = () => {
       <Sequence from={f(BOUNDS[7])} durationInFrames={dur(7)} name="8 · Services">
         <Planos
           total={dur(7)}
-          overlay={0.46}
+          overlay={0}
           lista={[
             { src: "casa-rural", dura: 1.2, encuadre: "38% 50%" },
             { src: "habitacion", dura: 2.15, encuadre: "62% 50%" },
@@ -219,7 +219,7 @@ export const ReelXacobeoEN: React.FC = () => {
       <Sequence from={f(BOUNDS[8])} durationInFrames={dur(8)} name="9 · Book">
         <Planos
           total={dur(8)}
-          overlay={0.4}
+          overlay={0}
           lista={[
             { src: "piernas", dura: 2.25 },
             { src: "escaleras", dura: 1.2 },
