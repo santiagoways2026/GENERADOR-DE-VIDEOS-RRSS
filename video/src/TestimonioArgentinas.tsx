@@ -11,7 +11,8 @@ import { Cierre } from "./escenas/Cierre";
  *
  * El testimonio va entero y con su audio, ya sin la marca de agua de Clideo
  * (recorte del 5 % que mantiene el 9:16). Se corta en la pausa de voz de
- * 57,4 s para que, con el cierre, la pieza no pase del minuto.
+ * 53,3 s, con un fundido de salida sobre esa pausa: el tramo final del
+ * montaje original mezcla dos músicas y se deja fuera.
  *
  * Los planos de comida del montaje original se tapan con peregrinos
  * disfrutando del Camino; el audio del testimonio sigue por debajo.
@@ -24,7 +25,7 @@ import { Cierre } from "./escenas/Cierre";
 const f = (s: number) => Math.round(s * 30);
 
 /** Fin del testimonio y duración del cierre, en segundos. */
-const FIN = 57.55;
+const FIN = 53.9;
 const CIERRE = 2.4;
 
 /** Tramo de los platos en el testimonio, que se sustituye. */
