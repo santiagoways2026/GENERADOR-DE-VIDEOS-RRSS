@@ -5,14 +5,14 @@ import {
   Sequence,
   staticFile,
 } from "remotion";
-import "./fuentes";
+import "../fuentes";
 
-import { brand } from "./brand/theme";
+import { brand } from "../brand/theme";
 import {
   Cartela,
   CierreMarca,
   PlacaMarca,
-} from "./componentes/CartelaMarca";
+} from "../componentes/CartelaMarca";
 
 /**
  * Santiago Ways · Camino de Santiago · Traveler Stories.

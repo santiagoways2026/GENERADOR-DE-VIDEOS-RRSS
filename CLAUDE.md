@@ -1,18 +1,55 @@
 # Santiago Ways · Vídeo
 
 Producción de vídeo de marca escrita como código, con Remotion. Sustituye al
-montaje manual en Canva para las piezas que se repiten: reels, cartelas,
-mapas de ruta y gráficos de dato.
+montaje manual en Canva para las piezas que se repiten.
 
-## Estructura
+## Lo que se pide aquí, y cómo se llama
+
+Cuatro cosas, y **se piden por su nombre**. Con decir la palabra ya está dicho
+el formato entero:
+
+| Se pide | Qué es | Dónde está la receta |
+| --- | --- | --- |
+| Un **short** | Divulgación en inglés, una presentadora a cámara respondiendo una pregunta. Vertical | «Cómo se monta un short» |
+| Un **testimonio** | Un cliente contando su viaje, en su idioma. Normalmente vertical, a veces horizontal | «Cómo se monta un testimonio» |
+| Un **vídeo horizontal** | La línea editorial, para YouTube. **El modelo está por cerrar** | «Los vídeos horizontales» |
+| **Metraje**: sacar brutos, reescalar, quitar marcas de agua, encuadrar | No es una pieza, es preparar material | «Preparar metraje» |
+
+Los shorts y los testimonios no se parecen en nada más que en el lienzo:
+
+| | Testimonio | Short |
+| --- | --- | --- |
+| Quién habla | Un cliente | Una presentadora de la agencia |
+| Tono | Llano, lo dice él | Llamativo, gancho al principio |
+| Texto | Montserrat 900 en minúscula, **abajo a la izquierda**, con recuadro verde en la promesa | Montserrat 900 en **caja alta y centrado, arriba** |
+| Fondo del texto | Sin placa, sobre el plano, con un velo suave | Degradado del verde de marca |
+| Qué llega | Un bruto o un montaje con la entrevista | Un clip ya montado, con subtítulos quemados |
+| Lo primero que se hace | Transcribir y quitar lo que sobra | Sustituir la cartela pegada del principio |
+| Planos de recurso | Tres o cuatro, tapando junturas | Uno por rótulo |
+| Duración | 40 a 60 s | 28 a 50 s |
+
+Lo que sí comparten, y no se negocia: la placa de marca al final, el paso por
+`comprobar-inserciones.py` y `planos-visibles.py` antes de renderizar, y
+`entregar.py` después.
+
+## Dónde está cada cosa
 
 | Carpeta | Qué hay |
 | --- | --- |
-| `video/` | El proyecto Remotion. Aquí se monta y se exporta |
-| `docs/` | La guía de marca oficial, edición 2026 |
-| `herramientas/mapas-vfx/` | Los dos configuradores de mapas animados |
-| `herramientas/motion-kit/` | El kit de cartelas y overlays |
-| `herramientas/scripts/` | Utilidades para preparar metraje |
+| `video/src/shorts/` | Los shorts |
+| `video/src/testimonios/` | Los testimonios, verticales y horizontales |
+| `video/src/horizontales/` | La línea editorial y sus miniaturas |
+| `video/src/componentes/` | Lo que comparten las tres: `CartelaMarca.tsx` sobre todo |
+| `video/src/utilidades/` | Bancos de prueba, no son piezas |
+| `video/src/archivo/` | Piezas de antes de que hubiera líneas. Se renderizan, no se tocan |
+| `video/public/brutos/` | La biblioteca de planos recurso, con su índice |
+| `docs/shorts/`, `docs/testimonios/`, `docs/horizontales/` | Una tabla de edición por pieza |
+| `herramientas/scripts/` | Las herramientas, con su README |
+| `herramientas/motion-kit/`, `herramientas/mapas-vfx/` | El kit de marca y los configuradores de mapas |
+
+Cada pieza entregada tiene su **tabla de edición** en `docs/`: qué se cambió
+del clip de origen, con qué números y por qué. Antes de rehacer una pieza, se
+lee la suya.
 
 ## La marca, en lo que afecta al vídeo
 
@@ -32,190 +69,6 @@ Reglas que condicionan cada pieza:
 - Tipografía: Montserrat, Manrope, Poppins. Empaquetada con el proyecto.
 - Formatos: 1080x1920 reels, 1080x1080 feed, 1280x720 YouTube. Márgenes 56 px
   como mínimo.
-
-## Cómo se ven los textos
-
-Las cartelas replican las del kit de motion graphics, no se inventan:
-
-- Placa blanca arriba con el dato en bosque, peso 800, esquinas `6px 6px 0 0`.
-- Placa olivo debajo con el complemento en blanco, esquinas `0 6px 6px 6px`.
-  **En mayúsculas y peso negro**, nunca en minúsculas.
-- Entran con barrido lateral (`clip-path`), 27 fotogramas, con 14 de relevo
-  entre placas. No con un fundido.
-- Pocas por pieza. Si el bloque lleva un gráfico, el gráfico ya trae su
-  titular y la cartela sobra.
-
-El texto vive en la mitad superior. Los gráficos, en la inferior.
-
-Esto vale para los **reels verticales**. Las piezas horizontales de marca van
-en otro registro, el de abajo.
-
-### Piezas horizontales de marca
-
-Las de YouTube son más editoriales. No llevan las placas del kit: el texto va
-suelto sobre el plano y el verde recuadra sólo lo que importa.
-
-- **Montserrat en peso 900**, el negro. Es el grosor máximo de la familia:
-  Manrope no pasa de 800 y Poppins es más estrecha. Si piden "más gruesa", el
-  margen está en el cuerpo, no en el peso, que ya está al tope.
-- **En minúscula con la inicial en mayúscula**, nunca en caja alta. En
-  mayúsculas la misma fuente se lee más estrecha y más plana, porque se
-  pierden ascendentes y descendentes. Es lo que más veces hubo que corregir.
-- **Cuerpo grande**: 72 px sobre lienzo de 1280x720, 66 en las líneas largas.
-  Las frases se parten en varias líneas antes que encogerse para caber en una;
-  ahí está la contundencia. Interletraje `-0.025em`, interlínea `1.02`.
-- **Todas las letras en blanco**, también las que llevan recuadro.
-- **El recuadro verde `#7AA606` va sobre la frase que lleva la promesa**, no
-  sobre el complemento. En "You walk. We take care of the details" se recuadra
-  "You walk."; en "24/7 support all along the way", "24/7 support". Esquinas
-  de 6 px.
-- **Los pies van en blanco**, no en lima. 21 px, peso 700.
-- Abajo a la izquierda, margen de 64 px. Lo de la mitad superior es regla de
-  vertical: en horizontal esa franja es donde caen las caras de los
-  entrevistados.
-- Entran con el barrido lateral del kit, 27 fotogramas y 14 de relevo, y salen
-  con el mismo barrido en 12.
-- Un velo inferior muy suave detrás del texto. Sin él el blanco se pierde en
-  los planos de cielo claro.
-
-**El cierre** es una placa de marca, no un rótulo más:
-
-1. Primero el titular sobre el último plano, con un overlay diagonal.
-2. Después, el logo **centrado en el centro exacto del cuadro**, entrando con
-   un desvanecimiento sobre un degradado a 145 grados dentro de la escala de
-   verdes de la guía: `#7AA606`, `#668814` y `#4F6B0F`.
-3. Debajo, la web en blanco. La pieza termina ahí, sin fundido a negro.
-
-Se usa `santiago-ways-blanco.png`, que tiene 2500 px de ancho. El verde sólo
-tiene 507 y no aguanta un logo grande. Durante el resto de la pieza no hay
-logo: la marca cierra, no acompaña.
-
-**El cierre se dice sobre el sitio, no sobre la cara.** Si la pieza termina
-con el entrevistado en primer plano, se sustituye sólo la imagen por un plano
-de la catedral o del Obradoiro, que es lo que remata. La voz sigue corriendo
-por debajo. Y si el final encadena varios planos del mismo monumento, que
-vayan de lo general al detalle y con gente en medio: tres encuadres seguidos
-de torres contra nubes se ven como un salto, no como una secuencia. Y aun así el titular del cierre va abajo, al sitio de las
-cartelas: a media altura el recuadro verde cae justo sobre la cara si el plano
-cambia, y un rótulo no tapa una cara.
-
-**Dos líneas por cartela como máximo, y el cuerpo según lo cerca que esté la
-gente.** 72 px valen cuando el entrevistado está a media altura; con él en
-primer plano hay que bajar a 58 y partir la frase en dos, no en tres. Una
-tercera línea le llega a la barbilla. Antes de dar una cartela por buena, se
-mira el fotograma.
-
-Todo esto vive en `video/src/componentes/CartelaMarca.tsx`, que es de donde
-tiran las piezas de la línea: `Cartela`, `CierreMarca` y `PlacaMarca`. Las
-referencias vivas son `SWCaminoStoriesEN.tsx` en inglés para YouTube,
-`SWSocialCaminoES.tsx` en horizontal para redes, y `SWReelGrupoES.tsx`,
-`SWReelAsistenciaES.tsx` y `SWReelCaminoES.tsx`, los tres reels de testimonio
-en español. Para volver a decidir tipografía hay una
-muestra de las tres oficiales en `SWMuestraFuentes`.
-
-**En español funciona igual**, sólo cambia el registro: frases cortas y
-llanas, sin adornos, y el pie sólo cuando añade algo que el titular no dice.
-Las aprobadas, todas usadas ya en pieza:
-
-| Titular | Pie | Dónde ha ido |
-| --- | --- | --- |
-| Algunos viajes / **dejan huella** | Camino de Santiago | Apertura |
-| Camino de Santiago / **organizado en hoteles** | — | Apertura |
-| **Tú caminas.** / Nosotros nos ocupamos del resto | — | Sobre la organización |
-| Conoce la España / **más auténtica** | — | Sobre patrimonio y gastronomía |
-| Hoteles / **seleccionados** | Habitación y baño privados | Sobre el alojamiento |
-| Tu mochila / **viaja sola** | — | Sobre el equipaje |
-| Teléfono de asistencia / **24/7** | — | Sobre la asistencia |
-| Tu Camino / **empieza aquí** | — | El cierre, siempre |
-
-En negrita, lo que lleva el recuadro verde.
-
-## Las dos líneas, y cómo se llaman
-
-En este repositorio hay dos formatos y **se piden por su nombre**. Si alguien
-dice una de estas dos palabras, ya está dicho todo lo demás:
-
-| Se pide | Es | Se monta con |
-| --- | --- | --- |
-| «un **testimonio**» | Un cliente hablando a cámara, en su idioma | «Cómo se monta un testimonio» |
-| «un **short**» | Divulgación en inglés, una presentadora respondiendo una pregunta | «Cómo se monta un short» |
-
-No se parecen en nada más que en el formato del lienzo:
-
-| | Testimonio | Short |
-| --- | --- | --- |
-| Quién habla | Un cliente | Una presentadora de la agencia |
-| Tono | Llano, lo dice él | Llamativo, gancho al principio |
-| Texto | Cartelas del kit, minúscula, **abajo a la izquierda** | Montserrat 900, **caja alta y centrado, arriba** |
-| Fondo del texto | Sin placa, sobre el plano | Degradado del verde de marca |
-| Qué llega | Un bruto o un montaje con la entrevista | Un clip ya montado, con subtítulos quemados |
-| Lo primero que se hace | Transcribir y quitar lo que sobra | Sustituir la cartela pegada del principio |
-| Planos de recurso | Tres o cuatro, tapando junturas | Uno por rótulo |
-| Duración | 40 a 60 s | 28 a 50 s |
-
-Lo que sí comparten, y no se negocia: la placa de marca al final, el paso por
-`comprobar-inserciones.py` y `planos-visibles.py` antes de renderizar, y
-`entregar.py` después.
-
-En el código los shorts se llaman `SWDivulga…`, de cuando la línea no tenía
-todavía nombre corto. Es lo mismo.
-
-## Cómo se monta un testimonio
-
-Esto es lo que ha salido de montar tres seguidos y es lo que se hace de aquí
-en adelante, salvo que la pieza pida otra cosa. Cada paso está desarrollado en
-las reglas de abajo; esto es el orden.
-
-**1 · Mirar el clip antes de tocarlo.**
-
-- **Marca de agua**: el mínimo temporal de cada píxel en los cuatro bordes. Lo
-  que está pegado siempre se queda claro en todos los fotogramas. Si la hay,
-  `marca-agua.py --modo recorte`, que la saca de cuadro y devuelve el formato
-  con un zoom corto.
-- **Los cortes del propio clip**, con `planos-visibles.py`. Todo lo que se
-  ponga encima se cuadra con ellos, nunca con un número redondo.
-- **El final**. Estos clips acaban donde acabó la cámara, y ahí suele haber
-  viento o un golpe: en el testimonio del grupo, los dos últimos segundos iban
-  a −6,7 dB con el 82 % por debajo de 250 Hz, más fuerte que las voces. Se
-  mide el rms y el reparto grave/medios décima a décima y se corta antes, con
-  la pista bajada a cero.
-
-**2 · Transcribir.** Las cartelas van sobre la frase que las sostiene, y eso
-sólo se sabe con la transcripción y los tiempos delante. Si una cartela no
-tiene frase debajo que la sostenga, sobra: es la primera que se cae cuando hay
-que hacer sitio.
-
-**3 · Las cartelas.** `Cartela`, abajo a la izquierda, con estos valores:
-
-| | Valor | Cuándo se cambia |
-| --- | --- | --- |
-| `tam` | 70 | 52 si el entrevistado está en primer plano |
-| `tamPie` | 34 | 26 con `tam` 52 |
-| `margen` | 72 | — |
-| `margenAbajo` | 480 | Se baja hasta donde acabe la barbilla, medida en vertical |
-
-**El cuerpo se mide, no se elige.** Las líneas no se parten solas: se salen
-del lienzo. A 76 «organizado en hoteles» con su recuadro mide 919 px sobre un
-útil de 936, y eso no es holgura. Se calcula el ancho con la fuente
-empaquetada antes de dar la cartela por buena.
-
-**Tres o cuatro como mucho, y el cierre.** Una cartela tarda 1,37 s en acabar
-de entrar y 0,4 en salir, así que cinco textos en 42 s dejan la pieza sin un
-respiro. En el testimonio del grupo se quitó la del 24/7 por eso, y porque era
-la única que no se apoyaba en nada de lo que decían.
-
-**4 · Los planos de recurso.** De la biblioteca, encuadrados con
-`encuadrar.py` y mirados en un fotograma. Van de límite de plano a límite de
-plano de la base, y si el clip ya trae un plano suyo que sirve, ése se queda y
-los añadidos lo rodean: en el testimonio de la pareja la habitación del propio
-clip caía justo sobre «nos trataron con mucho cariño».
-
-**5 · El cierre de marca, siempre.** Titular sobre el último plano y después
-la placa con el logo y la web. Ninguno de estos clips viene con logo ni con
-CTA, y sin eso la pieza no es de la marca.
-
-**6 · Antes de renderizar**, `comprobar-inserciones.py` y
-`planos-visibles.py`. **Después de renderizar**, `entregar.py`.
 
 ## Cómo se monta un short
 
@@ -299,12 +152,250 @@ que ha terminado.
 **7 · Antes de renderizar**, `comprobar-inserciones.py` y
 `planos-visibles.py`. **Después**, `entregar.py`.
 
-Las referencias vivas son `SWDivulgaCompostelaEN.tsx`, de las rutas, y
-`SWDivulgaDuracionEN.tsx`, de la duración, con su tabla de edición en
-`docs/redes/`. Ahí está razonado por qué el texto va en blanco sobre el
+Las referencias vivas son `SWShortCompostelaEN.tsx`, de las rutas, y
+`SWShortDuracionEN.tsx`, de la duración, con su tabla de edición en
+`docs/`. Ahí está razonado por qué el texto va en blanco sobre el
 degradado y no en color sobre un velo: medido contra el fondo real, el verde
 de marca da de 1,15 a 1,44 de contraste y la lima de 2,57 a 3,23, con el
 mínimo en 3:1.
+
+## Cómo se monta un testimonio
+
+Esto es lo que ha salido de montar tres seguidos y es lo que se hace de aquí
+en adelante, salvo que la pieza pida otra cosa. Cada paso está desarrollado en
+las reglas de abajo; esto es el orden.
+
+**1 · Mirar el clip antes de tocarlo.**
+
+- **Marca de agua**: el mínimo temporal de cada píxel en los cuatro bordes. Lo
+  que está pegado siempre se queda claro en todos los fotogramas. Si la hay,
+  `marca-agua.py --modo recorte`, que la saca de cuadro y devuelve el formato
+  con un zoom corto.
+- **Los cortes del propio clip**, con `planos-visibles.py`. Todo lo que se
+  ponga encima se cuadra con ellos, nunca con un número redondo.
+- **El final**. Estos clips acaban donde acabó la cámara, y ahí suele haber
+  viento o un golpe: en el testimonio del grupo, los dos últimos segundos iban
+  a −6,7 dB con el 82 % por debajo de 250 Hz, más fuerte que las voces. Se
+  mide el rms y el reparto grave/medios décima a décima y se corta antes, con
+  la pista bajada a cero.
+
+**2 · Transcribir.** Las cartelas van sobre la frase que las sostiene, y eso
+sólo se sabe con la transcripción y los tiempos delante. Si una cartela no
+tiene frase debajo que la sostenga, sobra: es la primera que se cae cuando hay
+que hacer sitio.
+
+**3 · Las cartelas.** `Cartela`, abajo a la izquierda, con estos valores:
+
+| | Valor | Cuándo se cambia |
+| --- | --- | --- |
+| `tam` | 70 | 52 si el entrevistado está en primer plano |
+| `tamPie` | 34 | 26 con `tam` 52 |
+| `margen` | 72 | — |
+| `margenAbajo` | 480 | Se baja hasta donde acabe la barbilla, medida en vertical |
+
+**El cuerpo se mide, no se elige.** Las líneas no se parten solas: se salen
+del lienzo. A 76 «organizado en hoteles» con su recuadro mide 919 px sobre un
+útil de 936, y eso no es holgura. Se calcula el ancho con la fuente
+empaquetada antes de dar la cartela por buena.
+
+**Tres o cuatro como mucho, y el cierre.** Una cartela tarda 1,37 s en acabar
+de entrar y 0,4 en salir, así que cinco textos en 42 s dejan la pieza sin un
+respiro. En el testimonio del grupo se quitó la del 24/7 por eso, y porque era
+la única que no se apoyaba en nada de lo que decían.
+
+**4 · Los planos de recurso.** De la biblioteca, encuadrados con
+`encuadrar.py` y mirados en un fotograma. Van de límite de plano a límite de
+plano de la base, y si el clip ya trae un plano suyo que sirve, ése se queda y
+los añadidos lo rodean: en el testimonio de la pareja la habitación del propio
+clip caía justo sobre «nos trataron con mucho cariño».
+
+**5 · El cierre de marca, siempre.** Titular sobre el último plano y después
+la placa con el logo y la web. Ninguno de estos clips viene con logo ni con
+CTA, y sin eso la pieza no es de la marca.
+
+**6 · Antes de renderizar**, `comprobar-inserciones.py` y
+`planos-visibles.py`. **Después de renderizar**, `entregar.py`.
+
+### Cómo se ven los textos de un testimonio
+
+No llevan las placas del kit: el texto va suelto sobre el plano y el verde
+recuadra sólo lo que importa. **Vale para los testimonios verticales y para
+los horizontales**, que sólo cambian en el cuerpo y en los márgenes.
+
+- **Montserrat en peso 900**, el negro. Es el grosor máximo de la familia:
+  Manrope no pasa de 800 y Poppins es más estrecha. Si piden "más gruesa", el
+  margen está en el cuerpo, no en el peso, que ya está al tope.
+- **En minúscula con la inicial en mayúscula**, nunca en caja alta. En
+  mayúsculas la misma fuente se lee más estrecha y más plana, porque se
+  pierden ascendentes y descendentes. Es lo que más veces hubo que corregir.
+- **Cuerpo grande**: 72 px sobre lienzo de 1280x720, 66 en las líneas largas.
+  En vertical son 70 y 52, y el porqué está en la tabla de arriba. Las frases
+  se parten en varias líneas antes que encogerse para caber en una; ahí está
+  la contundencia. Interletraje `-0.025em`, interlínea `1.02`.
+- **Todas las letras en blanco**, también las que llevan recuadro.
+- **El recuadro verde `#7AA606` va sobre la frase que lleva la promesa**, no
+  sobre el complemento. En "You walk. We take care of the details" se recuadra
+  "You walk."; en "24/7 support all along the way", "24/7 support". Esquinas
+  de 6 px.
+- **Los pies van en blanco**, no en lima. 21 px, peso 700.
+- Abajo a la izquierda, margen de 64 px. Lo de la mitad superior es regla de
+  vertical: en horizontal esa franja es donde caen las caras de los
+  entrevistados.
+- Entran con el barrido lateral del kit, 27 fotogramas y 14 de relevo, y salen
+  con el mismo barrido en 12.
+- Un velo inferior muy suave detrás del texto. Sin él el blanco se pierde en
+  los planos de cielo claro.
+
+**El cierre** es una placa de marca, no un rótulo más:
+
+1. Primero el titular sobre el último plano, con un overlay diagonal.
+2. Después, el logo **centrado en el centro exacto del cuadro**, entrando con
+   un desvanecimiento sobre un degradado a 145 grados dentro de la escala de
+   verdes de la guía: `#7AA606`, `#668814` y `#4F6B0F`.
+3. Debajo, la web en blanco. La pieza termina ahí, sin fundido a negro.
+
+Se usa `santiago-ways-blanco.png`, que tiene 2500 px de ancho. El verde sólo
+tiene 507 y no aguanta un logo grande. Durante el resto de la pieza no hay
+logo: la marca cierra, no acompaña.
+
+**El cierre se dice sobre el sitio, no sobre la cara.** Si la pieza termina
+con el entrevistado en primer plano, se sustituye sólo la imagen por un plano
+de la catedral o del Obradoiro, que es lo que remata. La voz sigue corriendo
+por debajo. Y si el final encadena varios planos del mismo monumento, que
+vayan de lo general al detalle y con gente en medio: tres encuadres seguidos
+de torres contra nubes se ven como un salto, no como una secuencia. Y aun así el titular del cierre va abajo, al sitio de las
+cartelas: a media altura el recuadro verde cae justo sobre la cara si el plano
+cambia, y un rótulo no tapa una cara.
+
+**Dos líneas por cartela como máximo, y el cuerpo según lo cerca que esté la
+gente.** 72 px valen cuando el entrevistado está a media altura; con él en
+primer plano hay que bajar a 58 y partir la frase en dos, no en tres. Una
+tercera línea le llega a la barbilla. Antes de dar una cartela por buena, se
+mira el fotograma.
+
+Todo esto vive en `video/src/componentes/CartelaMarca.tsx`, de donde tiran las
+tres líneas: `Cartela`, `CierreMarca` y `PlacaMarca`. Las referencias vivas:
+
+| Pieza | Qué es |
+| --- | --- |
+| `testimonios/SWReelCaminoES.tsx` | Vertical, español, con la base troceada por sus cortes |
+| `testimonios/SWReelAsistenciaES.tsx` | Vertical, español, la pareja |
+| `testimonios/SWReelGrupoES.tsx` | Vertical, español, el grupo |
+| `testimonios/SWReelCaminoDE.tsx` | Vertical, alemán, doblado |
+| `testimonios/SWReelHotelesEN.tsx` | Vertical, inglés |
+| `testimonios/SWSocialCaminoES.tsx` | Horizontal para redes |
+| `horizontales/SWCaminoStoriesEN.tsx` | Horizontal editorial, YouTube |
+
+Para volver a decidir tipografía hay una muestra de las tres oficiales en
+`utilidades/SWMuestraFuentes.tsx`.
+
+**En español funciona igual**, sólo cambia el registro: frases cortas y
+llanas, sin adornos, y el pie sólo cuando añade algo que el titular no dice.
+Las aprobadas, todas usadas ya en pieza:
+
+| Titular | Pie | Dónde ha ido |
+| --- | --- | --- |
+| Algunos viajes / **dejan huella** | Camino de Santiago | Apertura |
+| Camino de Santiago / **organizado en hoteles** | — | Apertura |
+| **Tú caminas.** / Nosotros nos ocupamos del resto | — | Sobre la organización |
+| Conoce la España / **más auténtica** | — | Sobre patrimonio y gastronomía |
+| Hoteles / **seleccionados** | Habitación y baño privados | Sobre el alojamiento |
+| Tu mochila / **viaja sola** | — | Sobre el equipaje |
+| Teléfono de asistencia / **24/7** | — | Sobre la asistencia |
+| Tu Camino / **empieza aquí** | — | El cierre, siempre |
+
+En negrita, lo que lleva el recuadro verde.
+
+## Los vídeos horizontales
+
+**El modelo está por cerrar.** Hay dos piezas hechas y las dos sirven de
+referencia, pero todavía no se ha decidido cuál es la forma definitiva:
+
+| Pieza | Qué es |
+| --- | --- |
+| `horizontales/SWCaminoStoriesEN.tsx` | La editorial de YouTube, 1280x720, en inglés |
+| `testimonios/SWSocialCaminoES.tsx` | Un testimonio en horizontal para redes |
+
+La segunda vive en `testimonios/` porque **es un testimonio**: se pide como
+tal y se monta con esa receta, sólo que en horizontal. Está aquí nombrada
+porque es la otra referencia de formato apaisado que hay.
+
+Mientras no se cierre el modelo, una pieza horizontal se monta con el
+registro de texto del testimonio, que es el de abajo, y con el cierre de
+marca de siempre.
+
+## Preparar metraje
+
+Sacar planos de un bruto, reescalar un clip que viene pequeño, quitar una
+marca de agua, decidir el encuadre vertical. No es montar una pieza, y se pide
+aparte.
+
+**El índice completo de herramientas está en
+`herramientas/scripts/README.md`**, agrupado por para qué sirve cada una. Lo
+que más se usa:
+
+```bash
+python3 herramientas/scripts/planos.py bruto.mp4      # dónde empieza cada toma
+python3 herramientas/scripts/catalogar.py bruto.mp4 hoja.jpg   # verlo de un vistazo
+python3 herramientas/scripts/reescalar.py pequeno.mp4 grande.mp4   # subir a 1080x1920
+python3 herramientas/scripts/marca-agua.py viejo.mp4 limpio.mp4 \
+    --zona 410,290,230,70 --desde 1.335 --hasta 59.27   # quitar un logo pegado
+python3 herramientas/scripts/encuadrar.py bruto.mp4 0,1.5 1.5,2.6   # a vertical
+```
+
+`reescalar.py` limpia antes de ampliar y afila después, en ese orden y por ese
+motivo: a bitrate bajo, ampliar primero convierte cada bloque de compresión en
+uno de 24 píxeles que ya no hay filtro que distinga de la imagen. Sin
+argumento de salida sólo mide y dice qué haría. **Ampliar no inventa detalle**:
+por encima de dos veces y media se nota, y el script lo avisa.
+
+`encuadrar.py` sin tramos mide el archivo entero, que es lo que hace falta para
+un plano de la biblioteca; con tramos mide un montaje plano a plano. Lleva
+`yunet.onnx` al lado, que es el detector de caras y pesa 232 KB: va en el
+repositorio porque las descargas de modelos no siempre pasan.
+
+`--zona` es la esquina donde vive el logo, con margen de sobra: no hace falta
+afinarla, el script encuentra la silueta dentro. `--desde` y `--hasta` marcan
+por dónde cortar las cartelas.
+
+Los planos recortados viven en `video/public/brutos/`. Los brutos completos no
+entran en el repositorio: pesan y se sustituyen a menudo.
+
+Hay dos juegos de planos y conviene saber cuál se coge:
+
+| Carpeta | Qué es | Resolución |
+| --- | --- | --- |
+| `brutos/` | Los 29 planos del reel original | 1920x1080 |
+| `brutos/testimonios/` | 83 planos recurso de las piezas de testimonios | 1280x720 |
+| `brutos/piezas-viejas/` | 42 planos de cuatro piezas viejas de la agencia | 1280x720 |
+
+Los de `testimonios/` dan variedad, sobre todo de alojamiento, gastronomía y
+llegada a Santiago, pero son de menos resolución: para un primer plano grande o
+un encuadre que recorte mucho, mejor los de 1080p. Se usan poniendo la
+subcarpeta delante, `src: "testimonios/prado-flores"`, porque `Planos` compone
+la ruta sola. La lista completa, agrupada por tema, está en el README de esa
+carpeta.
+
+### Reaprovechar piezas antiguas
+
+Las piezas viejas de la agencia llevan el logo pegado en una esquina durante
+todo el metraje y cartelas de marca al principio y al final. `marca-agua.py`
+aprende el logo del propio vídeo, dibuja su silueta y la rellena con lo que hay
+alrededor, y de paso recorta por donde se le diga.
+
+Hay dos modos y **el bueno es `--modo recorte`**, que es el que va por defecto:
+saca la marca de cuadro cortando por el borde que menos imagen se lleva y
+devuelve el formato original con un zoom corto. Sale limpio del todo. En la
+pieza de 640x360 se comió el 12% por abajo.
+
+`--modo relleno` mantiene el encuadre y reconstruye el hueco. Se usa solo si la
+composición no aguanta perder ese borde, porque sobre fondos con mucho
+contraste, un bosque a contraluz o la fachada de la catedral, deja una banda
+blanda que se ve.
+
+Un aviso más, por no repetir el trabajo: **no se puede deshacer la mezcla.** Se
+probó, que sería lo elegante. Como el logo es casi opaco, dividir por
+`1 - alfa` multiplica por ocho el ruido de compresión y salen colorines.
 
 ## Reglas de montaje aprendidas
 
@@ -578,9 +669,19 @@ Estas salieron de revisar piezas reales y ahorran repetir errores:
 ```bash
 cd video
 npm install
-npm run dev                                   # Studio, preview editable
-npx remotion render ReelXacobeo salida.mp4    # Exportar
+npm run dev                                          # Studio, preview editable
+npx remotion render SWShortDuracionEN salida.mp4     # Exportar
 ```
+
+El nombre que se le pasa a `render` es el `id` de la composición, que sale en
+Studio y no cambia aunque el archivo se mueva de carpeta. Los de ahora:
+
+| Línea | Composiciones |
+| --- | --- |
+| Shorts | `SWShortCompostelaEN`, `SWShortDuracionEN` |
+| Testimonios | `SWReelCaminoES`, `SWReelAsistenciaES`, `SWReelGrupoES`, `SWReelCaminoDE`, `SWReelHotelesEN`, `SWSocialCaminoES` |
+| Horizontales | `SWCaminoStoriesEN`, y las dos miniaturas |
+| Archivo | `ReelXacobeo`, `Grafico` |
 
 No hace falta pasar ninguna opción de navegador: `remotion.config.ts` detecta
 un Chromium ya instalado si lo hay, que es lo que permite renderizar en las
@@ -595,64 +696,6 @@ python3 herramientas/scripts/entregar.py salida.mp4
 ```
 
 que lo cuadra y deja al lado la copia comprimida para revisar.
-
-## Preparar metraje
-
-```bash
-python3 herramientas/scripts/planos.py bruto.mp4      # dónde empieza cada toma
-python3 herramientas/scripts/catalogar.py bruto.mp4 hoja.jpg   # verlo de un vistazo
-python3 herramientas/scripts/marca-agua.py viejo.mp4 limpio.mp4 \
-    --zona 410,290,230,70 --desde 1.335 --hasta 59.27   # quitar un logo pegado
-python3 herramientas/scripts/encuadrar.py bruto.mp4 0,1.5 1.5,2.6   # a vertical
-```
-
-`encuadrar.py` sin tramos mide el archivo entero, que es lo que hace falta para
-un plano de la biblioteca; con tramos mide un montaje plano a plano. Lleva
-`yunet.onnx` al lado, que es el detector de caras y pesa 232 KB: va en el
-repositorio porque las descargas de modelos no siempre pasan.
-
-`--zona` es la esquina donde vive el logo, con margen de sobra: no hace falta
-afinarla, el script encuentra la silueta dentro. `--desde` y `--hasta` marcan
-por dónde cortar las cartelas.
-
-Los planos recortados viven en `video/public/brutos/`. Los brutos completos no
-entran en el repositorio: pesan y se sustituyen a menudo.
-
-Hay dos juegos de planos y conviene saber cuál se coge:
-
-| Carpeta | Qué es | Resolución |
-| --- | --- | --- |
-| `brutos/` | Los 29 planos del reel original | 1920x1080 |
-| `brutos/testimonios/` | 83 planos recurso de las piezas de testimonios | 1280x720 |
-| `brutos/piezas-viejas/` | 42 planos de cuatro piezas viejas de la agencia | 1280x720 |
-
-Los de `testimonios/` dan variedad, sobre todo de alojamiento, gastronomía y
-llegada a Santiago, pero son de menos resolución: para un primer plano grande o
-un encuadre que recorte mucho, mejor los de 1080p. Se usan poniendo la
-subcarpeta delante, `src: "testimonios/prado-flores"`, porque `Planos` compone
-la ruta sola. La lista completa, agrupada por tema, está en el README de esa
-carpeta.
-
-### Reaprovechar piezas antiguas
-
-Las piezas viejas de la agencia llevan el logo pegado en una esquina durante
-todo el metraje y cartelas de marca al principio y al final. `marca-agua.py`
-aprende el logo del propio vídeo, dibuja su silueta y la rellena con lo que hay
-alrededor, y de paso recorta por donde se le diga.
-
-Hay dos modos y **el bueno es `--modo recorte`**, que es el que va por defecto:
-saca la marca de cuadro cortando por el borde que menos imagen se lleva y
-devuelve el formato original con un zoom corto. Sale limpio del todo. En la
-pieza de 640x360 se comió el 12% por abajo.
-
-`--modo relleno` mantiene el encuadre y reconstruye el hueco. Se usa solo si la
-composición no aguanta perder ese borde, porque sobre fondos con mucho
-contraste, un bosque a contraluz o la fachada de la catedral, deja una banda
-blanda que se ve.
-
-Un aviso más, por no repetir el trabajo: **no se puede deshacer la mezcla.** Se
-probó, que sería lo elegante. Como el logo es casi opaco, dividir por
-`1 - alfa` multiplica por ocho el ruido de compresión y salen colorines.
 
 ## Lo que el entorno permite y lo que no
 
@@ -681,3 +724,30 @@ Comprobado en sesiones de Claude Code en la web, para no volver a averiguarlo:
 - Promesas de precio que no se puedan sostener.
 - Gradientes ajenos a la marca, glassmorphism, texturas digitales abstractas.
 - Fotografía en blanco y negro, sobresaturada, con grano o de stock genérico.
+## El archivo
+
+En `video/src/archivo/` está `ReelXacobeo.tsx`, el reel del Año Santo 2027,
+que es de antes de que hubiera líneas: lleva locución, gráficos de dato y las
+cartelas del kit de motion graphics. **Se renderiza y no se toca.** Con él van
+sus piezas exclusivas: `CartelaKit.tsx`, `Bullets.tsx`, `Cierre.tsx`, los tres
+gráficos y el banco de pruebas.
+
+### Las cartelas del kit, que no usa ninguna pieza viva
+
+Las cartelas replican las del kit de motion graphics, no se inventan:
+
+- Placa blanca arriba con el dato en bosque, peso 800, esquinas `6px 6px 0 0`.
+- Placa olivo debajo con el complemento en blanco, esquinas `0 6px 6px 6px`.
+  **En mayúsculas y peso negro**, nunca en minúsculas.
+- Entran con barrido lateral (`clip-path`), 27 fotogramas, con 14 de relevo
+  entre placas. No con un fundido.
+- Pocas por pieza. Si el bloque lleva un gráfico, el gráfico ya trae su
+  titular y la cartela sobra.
+
+El texto vive en la mitad superior. Los gráficos, en la inferior.
+
+Eso es el kit, y es lo que usa `ReelXacobeo`. **Ninguna de las tres líneas
+de ahora lo usa**: todas van con el registro de `CartelaMarca.tsx`, que está
+en «Cómo se ven los textos de un testimonio». Si alguien pide «las cartelas
+de la guía», conviene preguntar cuál de las dos.
+

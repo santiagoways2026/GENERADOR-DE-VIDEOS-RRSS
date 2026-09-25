@@ -9,10 +9,10 @@ import {
   staticFile,
   useCurrentFrame,
 } from "remotion";
-import "./fuentes";
+import "../fuentes";
 
-import { brand } from "./brand/theme";
-import { PlacaMarca } from "./componentes/CartelaMarca";
+import { brand } from "../brand/theme";
+import { PlacaMarca } from "../componentes/CartelaMarca";
 
 /**
  * Santiago Ways · **short** en inglés, 1080x1920 a 30 fps. Primero de la
@@ -300,7 +300,7 @@ const INSERCIONES: Insercion[] = [
   { desde: 45.4, hasta: 46.75, origen: 0.0, ritmo: 0.8, fuente: T + "brazos-celebracion.mp4", encuadre: mirar(0.41), nombre: "Recurso · celebracion" },
 ];
 
-export const SWDivulgaCompostelaEN: React.FC = () => {
+export const SWShortCompostelaEN: React.FC = () => {
   const total = f(DURACION);
   const entraPlaca = f(46.9);
 
@@ -366,10 +366,10 @@ export const SWDivulgaCompostelaEN: React.FC = () => {
   );
 };
 
-export const SWDivulgaCompostelaENComposition: React.FC = () => (
+export const SWShortCompostelaENComposition: React.FC = () => (
   <Composition
-    id="SWDivulgaCompostelaEN"
-    component={SWDivulgaCompostelaEN}
+    id="SWShortCompostelaEN"
+    component={SWShortCompostelaEN}
     durationInFrames={f(DURACION)}
     fps={FPS}
     width={1080}

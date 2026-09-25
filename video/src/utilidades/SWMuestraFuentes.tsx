@@ -4,7 +4,7 @@ import "@fontsource/montserrat/latin-900.css";
 import "@fontsource/manrope/latin-800.css";
 import "@fontsource/poppins/latin-800.css";
 import "@fontsource/poppins/latin-900.css";
-import { brand } from "./brand/theme";
+import { brand } from "../brand/theme";
 
 /**
  * Muestra de las tres tipograficas oficiales, para decidir cual es la de las

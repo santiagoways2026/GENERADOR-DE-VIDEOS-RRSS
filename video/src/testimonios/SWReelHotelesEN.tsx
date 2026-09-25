@@ -6,10 +6,10 @@ import {
   Sequence,
   staticFile,
 } from "remotion";
-import "./fuentes";
+import "../fuentes";
 
-import { brand } from "./brand/theme";
-import { Cartela, CierreMarca, PlacaMarca } from "./componentes/CartelaMarca";
+import { brand } from "../brand/theme";
+import { Cartela, CierreMarca, PlacaMarca } from "../componentes/CartelaMarca";
 
 /**
  * Santiago Ways · el testimonio americano, vertical para stories y TikTok.

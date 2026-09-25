@@ -62,11 +62,12 @@ import sys
 
 import numpy as np
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+# `ambiente.py` vive un nivel arriba, con las herramientas de uso general.
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from ambiente import SR, binarios  # noqa: E402
 
 FF = binarios()
-RAIZ = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
+RAIZ = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 MASTER = os.path.join(RAIZ, "video", "public", "montajes", "testimonios-EN.mp4")
 
 A0, A1 = 15.40, 29.72      # el padre: lista de deseos, emocion, los 100 km

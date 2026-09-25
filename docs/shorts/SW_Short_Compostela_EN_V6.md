@@ -5,7 +5,7 @@ montado, con sus subtítulos palabra a palabra.
 
 Fuentes vivas:
 
-- `video/src/SWDivulgaCompostelaEN.tsx` · la escena
+- `video/src/SWShortCompostelaEN.tsx` · la escena
 - `herramientas/scripts/recortar-figura.py` · el cambio de fondo
 - `herramientas/scripts/marca-agua.py` · el recorte de la marca
 - `herramientas/scripts/entregar.py` · cuadra el audio del render

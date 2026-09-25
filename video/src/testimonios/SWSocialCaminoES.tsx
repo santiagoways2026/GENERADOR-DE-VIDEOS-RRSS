@@ -5,14 +5,14 @@ import {
   Sequence,
   staticFile,
 } from "remotion";
-import "./fuentes";
+import "../fuentes";
 
-import { brand } from "./brand/theme";
+import { brand } from "../brand/theme";
 import {
   Cartela,
   CierreMarca,
   PlacaMarca,
-} from "./componentes/CartelaMarca";
+} from "../componentes/CartelaMarca";
 
 /**
  * Santiago Ways · testimonio en espanol para redes, 1280x720 a 30 fps.

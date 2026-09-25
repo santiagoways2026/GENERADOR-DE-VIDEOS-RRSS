@@ -1,22 +1,28 @@
-# Documentación de marca
+# Documentación
 
 | Archivo | Contenido |
 | --- | --- |
-| `guia-de-marca-santiago-ways.html` | Sistema de diseño oficial, edición 2026. Color, logo, tipografía, voz, componentes, fondos y checklist. |
+| `guia-de-marca-santiago-ways.html` | Sistema de diseño oficial, edición 2026. Color, logo, tipografía, voz, componentes, fondos y checklist |
+| `como-pedir-un-video.md` | Para quien no toca código: cómo pedir una pieza desde claude.ai/code |
+| `decisiones.md` | Lo que se decidió y por qué, en orden |
 
-Los tokens de esta guía están traducidos a código en `video/src/brand/theme.ts`.
+Los tokens de la guía están traducidos a código en `video/src/brand/theme.ts`.
 Si la guía cambia, ese archivo es lo único que hay que actualizar.
 
-## Las fichas de cada pieza
+## Una tabla de edición por pieza
 
-En `redes/` y `youtube/` hay una tabla de edición por pieza: qué se cambió del
-clip de origen, con qué números y por qué. Son de dos líneas y se distinguen
-por el título:
+Cada pieza entregada deja su ficha: qué se cambió del clip de origen, con qué
+números, por qué, y cómo rehacer su archivo base. **Antes de retocar una
+pieza, se lee la suya.** Están ordenadas por línea:
 
-| Empieza por | Es | La receta está en |
+| Carpeta | Línea | Piezas |
 | --- | --- | --- |
-| `Short ·` | Divulgación en inglés, presentadora a cámara | «Cómo se monta un short», en `CLAUDE.md` |
-| `Testimonio ·`, `Reel ·` | Un cliente hablando | «Cómo se monta un testimonio», en `CLAUDE.md` |
+| `shorts/` | Divulgación en inglés, presentadora a cámara | 2 |
+| `testimonios/` | Un cliente hablando, vertical y horizontal | 6 |
+| `horizontales/` | La editorial de YouTube | 1 |
 
-Los archivos de los shorts se llaman `SW_Divulga_…` de cuando la línea no
-tenía todavía nombre corto.
+La receta general de cada línea no está aquí, está en el `CLAUDE.md` de la
+raíz: aquí va lo propio de cada pieza.
+
+Los archivos de los shorts se llamaron `SW_Divulga_…` hasta que la línea tuvo
+nombre corto; ahora son `SW_Short_…`.

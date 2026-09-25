@@ -5,10 +5,10 @@ import {
   Sequence,
   staticFile,
 } from "remotion";
-import "./fuentes";
+import "../fuentes";
 
-import { brand } from "./brand/theme";
-import { Cartela, CierreMarca, PlacaMarca } from "./componentes/CartelaMarca";
+import { brand } from "../brand/theme";
+import { Cartela, CierreMarca, PlacaMarca } from "../componentes/CartelaMarca";
 
 /**
  * Santiago Ways · testimonio de la pareja, espanol, reel 1080x1920 a 30 fps.

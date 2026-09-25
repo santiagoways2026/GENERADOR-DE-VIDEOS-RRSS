@@ -1,108 +1,97 @@
 ---
 name: reel
-description: Montar un reel de Santiago Ways en Remotion, desde el guion y los brutos hasta el MP4. Úsala cuando alguien pida un reel, un vídeo para redes, una pieza vertical o adaptar una existente. Cubre el flujo entero: preparar metraje, sincronizar con la locución, aplicar las cartelas de marca y exportar.
+description: Montar una pieza de vídeo de Santiago Ways con Remotion. Úsala cuando alguien pida un short, un testimonio, un vídeo horizontal, un reel o una pieza para redes, o cuando pida preparar metraje: sacar planos de un bruto, reescalar un clip, quitar una marca de agua o pasar algo a vertical.
 ---
 
-# Montar un reel de Santiago Ways
+# Montar una pieza de Santiago Ways
 
-Sigue este orden. Cada paso evita un error que ya se ha cometido antes.
+**Lo primero es saber qué se está pidiendo**, porque cada cosa se monta
+distinto y mezclarlas es el error que más tiempo ha costado:
 
-## 1. Reunir el material
+| Si piden | Es | Ve a |
+| --- | --- | --- |
+| Un **short** | Divulgación en inglés, presentadora a cámara, vertical | «Cómo se monta un short» en `CLAUDE.md` |
+| Un **testimonio** | Un cliente contando su viaje, en su idioma | «Cómo se monta un testimonio» en `CLAUDE.md` |
+| Un **vídeo horizontal** | La línea editorial. **El modelo está por cerrar**: pregunta antes de inventar | «Los vídeos horizontales» en `CLAUDE.md` |
+| **Metraje**: brutos, reescalados, marcas de agua, encuadres | No es una pieza | El paso «Preparar metraje», abajo |
 
-Pide, y no empieces a montar hasta tenerlo:
+Si no queda claro cuál de las cuatro es, **pregúntalo antes de tocar nada**.
+Un testimonio montado como short lleva las cartelas en el sitio equivocado y
+hay que rehacerlo entero.
 
-- **El guion**, con los mensajes en pantalla y el CTA.
-- **La locución** en MP3, si la hay. Si no, el montaje se apoya solo en los
-  rótulos y cada uno necesita medio segundo más en pantalla.
-- **Los brutos.** Suelen ser compilaciones de tomas cortas, no clips sueltos.
+## Lo que vale para las tres líneas
 
-## 2. Catalogar los brutos
+Esto no cambia, se pida lo que se pida:
 
-Nunca cortes a ojo. Para cada archivo:
+1. **Mira el clip antes de tocarlo.** Marca de agua, cortes propios, final, y
+   la resolución. Todo se mide, nada se supone.
+2. **Transcribe.** Los textos van sobre la frase que los sostiene, y eso sólo
+   se sabe con los tiempos delante. En `CLAUDE.md`, «Lo que el entorno permite
+   y lo que no» dice qué modelo se baja y de dónde.
+3. **Ningún corte en un número redondo.** Se cuadra con los límites de plano
+   de la base o con los huecos sin voz.
+4. **El cuerpo del texto se mide**, con `fontTools` contra la fuente
+   empaquetada, antes de dar un rótulo por bueno. Las líneas no se parten
+   solas: se salen del lienzo.
+5. **Cada encuadre se mira en un fotograma.** `encuadrar.py` propone, no
+   decide: no sabe qué va a tapar la cartela ni qué tiene que entrar en cuadro.
+6. **La placa de marca al final, siempre.** Ninguno de estos clips viene con
+   logo ni con CTA, y sin eso la pieza no es de la marca.
+7. **Antes de renderizar**, `comprobar-inserciones.py` y `planos-visibles.py`.
+8. **Después de renderizar**, `entregar.py`. Sin excepción: el render sale con
+   el audio 43 ms por detrás.
+
+Y las 24 **reglas de montaje aprendidas** de `CLAUDE.md`, que son la memoria
+de lo que ya salió mal una vez.
+
+## Preparar metraje
 
 ```bash
-python3 herramientas/scripts/planos.py bruto.mp4
-python3 herramientas/scripts/catalogar.py bruto.mp4 /tmp/hoja.jpg 5 3
+python3 herramientas/scripts/planos.py bruto.mp4                  # límites de cada toma
+python3 herramientas/scripts/catalogar.py bruto.mp4 hoja.jpg 5 3  # verlo de un vistazo
+python3 herramientas/scripts/reescalar.py pequeno.mp4 grande.mp4  # subir a 1080x1920
+python3 herramientas/scripts/encuadrar.py bruto.mp4               # a vertical
+python3 herramientas/scripts/duplicados.py bruto.mp4 12.4,15.8    # ¿ya está en la biblioteca?
 ```
 
-El primero da los límites exactos de cada toma; el segundo, una hoja de
-contactos para ver qué hay. **Ninguna toma suele pasar de 2,75 segundos**, así
-que todo corte más largo cruza dos planos y produce un salto.
+El índice completo, con qué hace cada una y por qué, está en
+`herramientas/scripts/README.md`.
 
-Extrae cada plano con 0,15 s de margen por dentro de sus límites:
+Para extraer un plano de un bruto, con 0,15 s de margen por dentro de sus
+límites:
 
 ```bash
 ffmpeg -ss <inicio> -i bruto.mp4 -t <dura> -an -c:v libx264 -crf 21 \
   -preset medium -pix_fmt yuv420p video/public/brutos/<nombre>.mp4 -y
 ```
 
-## 3. Revisar los encuadres verticales
+**Antes de añadirlo a la biblioteca, pásale `duplicados.py`.** Hay 154 planos
+y seis tomas que ya están dos veces; el índice de `video/public/brutos/` las
+lista.
 
-Un bruto horizontal recortado a 9:16 pierde los laterales, y ahí suele estar
-la gente. Genera un mosaico comparando el original con su recorte central y
-mira plano a plano si se corta alguna cara. Donde pase, pon `encuadre` en la
-lista de planos: `"34% 50%"` desplaza el recorte a la izquierda, `"62% 50%"` a
-la derecha.
-
-## 4. Sincronizar con la locución
-
-Mide los silencios para localizar los arranques de frase:
+## Exportar
 
 ```bash
-ffmpeg -i locucion.mp3 -af silencedetect=noise=-30dB:d=0.28 -f null - 2>&1 \
-  | grep -E 'silence_(start|end)'
+cd video && npx remotion render <IdDeLaComposicion> salida.mp4 \
+  --color-space=bt709 --pixel-format=yuv420p --crf=16
+python3 herramientas/scripts/entregar.py salida.mp4
 ```
 
-Cada bloque del reel arranca en el final de una de esas pausas, de modo que la
-imagen cambia justo cuando la voz empieza a decir lo que ilustra. Esos tiempos
-van al array `B` de la composición.
+El `id` sale en Studio y no cambia aunque el archivo se mueva de carpeta.
+`entregar.py` cuadra el audio y deja al lado la copia comprimida para revisar;
+el chat no admite más de 30 MiB por archivo.
 
-## 5. Montar
-
-Usa `Planos` para encadenar las tomas de cada bloque: reparte la duración en
-proporción a lo que dura cada una, así ninguna se estira de más. Basta con que
-la suma de las tomas cubra el bloque.
-
-Reglas de contenido:
-
-- **Pocas cartelas.** Si el bloque lleva un gráfico, el gráfico ya trae su
-  titular.
-- **Ninguna toma repetida** entre bloques contiguos.
-- **Un gráfico no tapa una cara**: si el plano tiene gente en el centro, va
-  donde el gráfico ya se ha retirado.
-- El texto arriba, los gráficos abajo.
-- Un solo CTA, al final.
-
-## 6. Cerrar
-
-El cierre es siempre igual: degradado entre los verdes de la paleta, el logo
-en blanco y la web en Manrope debajo. Nada más.
-
-## 7. Exportar y revisar
-
-```bash
-cd video && npx remotion render <Composicion> salida.mp4 --crf=23
-```
-
-Antes de darlo por bueno, saca una hoja de contactos del resultado y
-compruébala: es la forma rápida de ver un plano cruzado, un texto ilegible o
-un gráfico que tapa lo que no debe.
-
-```bash
-python3 herramientas/scripts/catalogar.py salida.mp4 /tmp/control.jpg 6 2
-```
-
-## Componentes disponibles
+## Componentes
 
 | Componente | Para qué |
 | --- | --- |
-| `Cartela` | Texto de marca: placa blanca sobre placa olivo, con barrido |
-| `Bullets` | Lista de servicios, entrando de uno en uno |
-| `Clip` y `Planos` | Metraje encajado en vertical, con encuadre y zoom lento |
-| `Logo` | El archivo oficial, en blanco o verde |
-| `Calendario` | Julio de 2027 con el 25 en domingo |
-| `LineaTiempo` | Años Santos, con la vieira que se detiene en 2027 |
-| `Candado` | Precio bloqueado, sin cifras |
-| `Cierre` | Degradado, logo y web |
+| `componentes/CartelaMarca.tsx` | De donde tiran las tres líneas: `Cartela`, `CierreMarca`, `PlacaMarca` |
+| `componentes/Clip` y `Planos` | Metraje encajado, con encuadre y zoom lento |
+| `componentes/Logo` | El archivo oficial, en blanco o verde |
 
-Las reglas de marca completas están en `CLAUDE.md`.
+En `video/src/archivo/` hay otro juego, el del reel del Xacobeo: `CartelaKit`,
+`Bullets`, `Cierre` y los gráficos. **Ninguna pieza viva lo usa.** Si alguien
+pide «las cartelas de la guía», conviene preguntar cuál de las dos.
+
+Las reglas de marca completas están en `CLAUDE.md`, y la tabla de edición de
+cada pieza entregada en `docs/`.

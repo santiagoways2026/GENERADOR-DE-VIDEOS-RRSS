@@ -233,6 +233,14 @@ No se han renombrado porque los usa `ReelXacobeo.tsx` y cambiarlos rompería la
 composición. **Antes de coger un plano por el nombre, se mira el fotograma**,
 que es lo que dice la regla 3 y aquí vale también para elegir.
 
+Dos que han dado problemas al recortarlos a vertical, por si se vuelven a
+mirar:
+
+| Plano | Qué pasa en vertical |
+| --- | --- |
+| `testimonios/peregrino-embalse` | Recortado es un peregrino colocándose la mochila en primer plano, y un rótulo arriba le corta la cabeza. En horizontal sí funciona |
+| `testimonios/mojon-peregrinas` | Hasta el segundo 1,6 la peregrina que cruza tapa el mojón entero. Se usa desde ahí, con `origen: 1.6` |
+
 ## Ojo: seis tomas que están dos veces
 
 Salieron de escanear los 154 planos unos contra otros. No se han borrado
@@ -252,7 +260,17 @@ es la misma toma con dos nombres.
 El par `plaza` / `catedral-torres` está dentro de la misma carpeta, y el reel
 del Xacobeo usa uno en el bloque 1 y el otro en el bloque 2, que son
 contiguos. Eso es justo lo que avisa la regla 4 de `CLAUDE.md`. Queda
-pendiente de decidir.
+pendiente de decidir. `plaza` es además un trozo de `catedral-torres`, 31
+fotogramas de sus 51, y el nombre no dice lo que se ve: no hay plaza, hay
+fachada.
+
+**Tres de los seis gemelos de 720p no los usa ninguna pieza** y se pueden
+borrar sin tocar nada: `testimonios/peregrino-solo`,
+`testimonios/casa-galeria` y `testimonios/casona-moderna`. De cada par queda
+la versión de 1080p, que es la buena. Los otros tres sí están en uso:
+`testimonios/terraza-vistas` en `SWReelGrupoES` y `testimonios/botas-camino`
+en `SWReelCaminoDE`, y apuntarlos a su gemelo de 1080p cambiaría el encuadre
+de dos piezas ya aprobadas, así que no se ha tocado.
 
 Para comprobar un plano nuevo contra toda la biblioteca:
 

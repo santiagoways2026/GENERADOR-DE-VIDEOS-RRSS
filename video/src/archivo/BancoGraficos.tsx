@@ -1,6 +1,6 @@
 import { AbsoluteFill, Composition } from "remotion";
-import "./fuentes";
-import { brand, fontFamily, format, fps } from "./brand/theme";
+import "../fuentes";
+import { brand, fontFamily, format, fps } from "../brand/theme";
 import { Calendario } from "./graficos/Calendario";
 
 /** Banco de pruebas: cada grafico aislado sobre un fondo neutro de marca. */
@@ -17,7 +17,7 @@ const Banco: React.FC = () => (
   </AbsoluteFill>
 );
 
-export const PruebaGrafico = () => (
+export const BancoGraficos = () => (
   <Composition
     id="Grafico"
     component={Banco}

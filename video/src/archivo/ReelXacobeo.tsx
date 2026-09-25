@@ -1,12 +1,12 @@
-import { AbsoluteFill, Sequence, staticFile } from "remotion";
+import { AbsoluteFill, Composition, Sequence, staticFile } from "remotion";
 import { Audio } from "@remotion/media";
-import "./fuentes";
-import { brand, fontFamily, margin } from "./brand/theme";
-import { Bullets } from "./componentes/Bullets";
-import { Cartela } from "./componentes/Cartela";
-import { Logo } from "./componentes/Logo";
-import { Planos } from "./componentes/Planos";
-import { Cierre } from "./escenas/Cierre";
+import "../fuentes";
+import { brand, fontFamily, format, fps, margin } from "../brand/theme";
+import { Bullets } from "./Bullets";
+import { Cartela } from "./CartelaKit";
+import { Logo } from "../componentes/Logo";
+import { Planos } from "../componentes/Planos";
+import { Cierre } from "./Cierre";
 import { Calendario } from "./graficos/Calendario";
 import { Candado } from "./graficos/Candado";
 import { LineaTiempo } from "./graficos/LineaTiempo";
@@ -183,3 +183,14 @@ export const ReelXacobeo: React.FC = () => {
 };
 
 export const DURACION_REEL = f(B[B.length - 1]);
+
+export const ReelXacobeoComposition: React.FC = () => (
+  <Composition
+    id="ReelXacobeo"
+    component={ReelXacobeo}
+    durationInFrames={DURACION_REEL}
+    fps={fps}
+    width={format.reels.width}
+    height={format.reels.height}
+  />
+);

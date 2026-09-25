@@ -36,12 +36,13 @@ import sys
 
 import numpy as np
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+# `ambiente.py` vive un nivel arriba, con las herramientas de uso general.
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from ambiente import SR, leer, binarios  # noqa: E402
 
 FF = binarios()
 AQUI = os.path.dirname(os.path.abspath(__file__))
-RAIZ = os.path.normpath(os.path.join(AQUI, "..", ".."))
+RAIZ = os.path.normpath(os.path.join(AQUI, "..", "..", ".."))
 
 CORTE_A = 19.90     # sale del montaje, dentro del silencio 19,52-20,45
 CORTE_B = 25.00     # vuelve al montaje, dentro del silencio 24,92-25,16

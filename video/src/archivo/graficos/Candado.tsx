@@ -9,8 +9,8 @@ import {
   space,
   tracking,
   weight,
-} from "../brand/theme";
-import { entrada } from "../componentes/entrada";
+} from "../../brand/theme";
+import { entrada } from "../../componentes/entrada";
 
 /**
  * Etiqueta de precio que se cierra con un candado.

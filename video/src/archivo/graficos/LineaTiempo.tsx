@@ -17,8 +17,8 @@ import {
   space,
   tracking,
   weight,
-} from "../brand/theme";
-import { entrada } from "../componentes/entrada";
+} from "../../brand/theme";
+import { entrada } from "../../componentes/entrada";
 
 const HITOS = [2021, 2027, 2032, 2038];
 const ACTUAL = 2027;

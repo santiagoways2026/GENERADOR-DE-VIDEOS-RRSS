@@ -41,11 +41,12 @@ import sys
 
 import numpy as np
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+# `ambiente.py` vive un nivel arriba, con las herramientas de uso general.
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from ambiente import binarios  # noqa: E402
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
-RAIZ = os.path.join(AQUI, "..", "..")
+RAIZ = os.path.join(AQUI, "..", "..", "..")
 ENTRADA = os.path.join(RAIZ, "video", "public", "montajes", "testimonio-ES2.mp4")
 SALIDA = os.path.join(RAIZ, "video", "public", "montajes", "testimonio-ES2-corto.mp4")
 

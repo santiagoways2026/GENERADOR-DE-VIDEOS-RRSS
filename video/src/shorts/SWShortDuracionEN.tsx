@@ -9,17 +9,17 @@ import {
   staticFile,
   useCurrentFrame,
 } from "remotion";
-import "./fuentes";
+import "../fuentes";
 
-import { brand } from "./brand/theme";
-import { PlacaMarca } from "./componentes/CartelaMarca";
+import { brand } from "../brand/theme";
+import { PlacaMarca } from "../componentes/CartelaMarca";
 
 /**
  * Santiago Ways · **short** en inglés, 1080x1920 a 30 fps. La receta está en
  * «Cómo se monta un short», en el `CLAUDE.md`.
  *
  * «How long does it take to walk the Camino de Santiago?». Segundo de la
- * línea y se monta igual que `SWDivulgaCompostelaEN`: no es un
+ * línea y se monta igual que `SWShortCompostelaEN`: no es un
  * testimonio, el clip ya viene montado con sus subtítulos palabra a palabra y
  * su chapa de marca, y de la receta del testimonio se aplican sólo el
  * arreglo de la apertura, la placa de cierre y el paso de entrega.
@@ -163,7 +163,7 @@ const TarjetaApertura: React.FC<{ total: number }> = ({ total }) => {
 /**
  * Los rótulos: **degradado del verde de marca y las letras en blanco**, que es
  * la combinación de la guía y la que garantiza que el olivo salga en pantalla.
- * Es la misma de `SWDivulgaCompostelaEN`, donde está medido por qué no va el
+ * Es la misma de `SWShortCompostelaEN`, donde está medido por qué no va el
  * texto en color sobre un velo fino: el verde de marca sobre el fondo real da
  * de 1,15 a 1,44 de contraste y la lima de 2,57 a 3,23, con el mínimo en 3:1.
  *
@@ -281,7 +281,7 @@ const INSERCIONES: Insercion[] = [
   { desde: 14.55, hasta: 15.85, origen: 1.6, fuente: T + "mojon-peregrinas.mp4", encuadre: mirar(0.21), nombre: "Recurso · el mojon" },
 ];
 
-export const SWDivulgaDuracionEN: React.FC = () => {
+export const SWShortDuracionEN: React.FC = () => {
   const total = f(DURACION);
   const entraPlaca = f(27.95);
 
@@ -343,10 +343,10 @@ export const SWDivulgaDuracionEN: React.FC = () => {
   );
 };
 
-export const SWDivulgaDuracionENComposition: React.FC = () => (
+export const SWShortDuracionENComposition: React.FC = () => (
   <Composition
-    id="SWDivulgaDuracionEN"
-    component={SWDivulgaDuracionEN}
+    id="SWShortDuracionEN"
+    component={SWShortDuracionEN}
     durationInFrames={f(DURACION)}
     fps={FPS}
     width={1080}

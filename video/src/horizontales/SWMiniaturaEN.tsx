@@ -1,8 +1,8 @@
 import { AbsoluteFill, Composition, OffthreadVideo, staticFile } from "remotion";
-import "./fuentes";
+import "../fuentes";
 
-import { brand } from "./brand/theme";
-import { Logo } from "./componentes/Logo";
+import { brand } from "../brand/theme";
+import { Logo } from "../componentes/Logo";
 
 /**
  * Propuesta de miniatura para YouTube.
