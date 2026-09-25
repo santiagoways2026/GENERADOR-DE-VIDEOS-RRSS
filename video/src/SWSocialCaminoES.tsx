@@ -131,12 +131,17 @@ const INSERCIONES: Insercion[] = [
    * fragmentos, de 0,20 y 0,10 s, uno a cada lado del corte: el final del
    * plano que venia y el principio del que sigue. A esa duracion no se leen
    * como planos, se leen como un parpadeo. La regla 8 dice que la juntura se
-   * tapa con imagen, y ademas sale gratis: el montaje tenia un plano de
-   * maletas justo en el tramo que se ha quitado, asi que la idea del
-   * equipaje se habia quedado sin imagen y entra aqui, sobre "hemos cogido
-   * el servicio de recogida de equipaje".
+   * tapa con imagen.
+   *
+   * Aqui iba "maletas-portal", y era la misma toma que el montaje vuelve a
+   * poner en 23,37-25,00, tres segundos despues: 0,931 de parecido, por
+   * encima del 0,92 de la regla 13. La del montaje se queda, que cae debajo
+   * de la cartela del equipaje, y la inserción pasa a cerrar la cartela que
+   * hay puesta aqui, "Hoteles seleccionados · Habitación y baño privados",
+   * detras de la casa rural y la habitacion. El archivo dura 1,23 s y el
+   * hueco 1,40, asi que va a 0,85: es un plano casi quieto.
    */
-  { desde: 19.5, hasta: 20.9, origen: 0.03, fuente: T + "maletas-portal.mp4", nombre: "Juntura · maletas en el portal" },
+  { desde: 19.5, hasta: 20.9, origen: 0.0, fuente: T + "bano-ducha.mp4", ritmo: 0.85, nombre: "Juntura · baño" },
   // Rompe 4,2 s de entrevista seguida, justo sobre "con la mochila y toda
   // la ropa para varios dias".
   { desde: 29.5, hasta: 31.3, origen: 26.7, nombre: "Mochila · caminante con equipaje" },

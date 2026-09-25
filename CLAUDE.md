@@ -227,6 +227,14 @@ Estas salieron de revisar piezas reales y ahorran repetir errores:
    que es lo que identifica una toma. Por encima de 0,92 de parecido es la
    misma toma; entre 0,85 y 0,92 hay que mirarla. Y si la misma toma aparece
    dos veces, se queda la que no esté recortada.
+   **Y una inserción se compara también contra el montaje que tapa.** La
+   biblioteca de recurso sale de estas mismas piezas, así que meter un plano
+   de `testimonios/` encima de un montaje de testimonios es la forma más fácil
+   de poner dos veces la misma toma. En la pieza social en español, las
+   maletas del portal que tapaban la juntura eran la toma que el montaje
+   volvía a poner tres segundos después, 0,931 de parecido. Se mide plano a
+   plano de la base, con los cortes que da `planos-visibles.py`, no contra el
+   archivo entero: promediar un montaje de 42 segundos no se parece a nada.
 14. **El primer plano se elige aparte.** El que abre una pieza no es el que
    venía primero en el bruto: se mira si aguanta solo. Un contraluz velado
    con un muro al fondo no abre nada. Para eso están los brutos de 1080p, que

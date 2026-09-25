@@ -1,4 +1,4 @@
-# Testimonio del Camino · español · redes · V8
+# Testimonio del Camino · español · redes · V9
 
 Pieza de 44,9 s, 1280x720 a 30 fps. Sale de la pieza social antigua, que
 duraba 60,1 s con cartela de agencia, fundido final y dos marcas de agua.
@@ -6,11 +6,29 @@ duraba 60,1 s con cartela de agencia, fundido final y dos marcas de agua.
 Fuentes vivas:
 
 - `video/src/SWSocialCaminoES.tsx` · la escena
-- `herramientas/scripts/montaje-social-ES.py` · la base, `social-ES-v3.mp4`
-- `herramientas/scripts/ambiente.py` · las camas de ambiente
+- `herramientas/scripts/montaje-social-ES.py` · la base, `social-ES-v4.mp4`
 - `herramientas/scripts/comprobar-inserciones.py` · mide que cada plano llega
+- `herramientas/scripts/planos-visibles.py` · mide lo que se ve entre plano y
+  plano, y si una inserción repite una toma de la base
 
-## Qué cambia respecto a la V6
+## Qué cambia respecto a la V8
+
+**Fuera la toma repetida.** El plano del señor colocando la maleta en el
+portal salía dos veces: una como inserción en 19,5 y otra en el propio
+montaje, del 23,37 al 25,00, tres segundos después. Medido, 0,931 de parecido,
+por encima del 0,92 que la regla 13 da por toma repetida.
+
+Se queda la del montaje, que es la que cae debajo de la cartela «Tu mochila
+viaja sola». En 19,5 entra ahora el baño, que cierra la cartela que hay puesta
+ahí, «Hoteles seleccionados · Habitación y baño privados», detrás de la casa
+rural y la habitación. Dura 1,23 s de archivo para un hueco de 1,40, así que
+va a 0,85 de velocidad: es un plano casi quieto.
+
+**Los subtítulos iban mal.** El `.srt` que acompañaba a la V8 tenía los
+tiempos de un corte anterior: entre 3 y 10 segundos tarde. Se han vuelto a
+medir sobre la pista del montaje.
+
+## Qué cambió de la V6 a la V8
 
 **Tres parpadeos, tapados, y una herramienta nueva para cazarlos.**
 
@@ -19,10 +37,16 @@ segundo peregrino, el montaje deja a los dos lados del corte el final de un
 plano y el principio del siguiente. Medidos sobre la base: **0,20 s y 0,10 s**.
 A esa duración no se leen como planos, se leen como un parpadeo.
 
-Se tapan con imagen, que es lo que dice la regla 8, y sale gratis: el montaje
-tenía un plano de maletas justo dentro del tramo que se ha quitado, así que la
-idea del equipaje se había quedado sin imagen. Entra ahí, del 19,5 al 20,9,
-sobre «hemos cogido el servicio de recogida de equipaje».
+Se tapan con imagen, que es lo que dice la regla 8. Del 19,5 al 20,9 entra el
+baño, que cierra la cartela que hay puesta ahí, «Hoteles seleccionados ·
+Habitación y baño privados», detrás de la casa rural y la habitación. El
+archivo dura 1,23 s y el hueco 1,40, así que va a 0,85 de velocidad: es un
+plano casi quieto y no se nota.
+
+Ahí iba antes un plano de maletas en un portal, y era **la misma toma** que el
+montaje vuelve a poner tres segundos después, del 23,37 al 25,00: 0,931 de
+parecido, por encima del 0,92 que la regla 13 da por toma repetida. Se queda
+la del montaje, que es la que cae debajo de la cartela del equipaje.
 
 El tercero salió al medir el archivo ya renderizado: entre los planos de
 apertura, el montaje asomaba **0,43 s** en el segundo 5,27. Los dos planos de
@@ -212,10 +236,10 @@ viene de un recorte con zoom. En la apertura y en el cierre eso juega a favor.
 
 | Entra | Sale | Texto | Pie | Sobre qué |
 | --- | --- | --- | --- | --- |
-| 0,60 s | 5,40 s | Algunos viajes / **dejan huella** | Camino de Santiago | Apertura |
-| 14,20 s | 18,80 s | **Tú caminas.** / Nosotros nos ocupamos del resto | — | «estamos muy contentos con la organización» |
-| 23,80 s | 28,80 s | Hoteles / **seleccionados** | Habitación y baño privados | Sobre el bloque de alojamiento |
-| 31,65 s | 35,85 s | Tu mochila / **viaja sola** | — | Sobre el plano de las maletas |
+| 0,60 s | 5,20 s | Algunos viajes / **dejan huella** | Camino de Santiago | Apertura |
+| 11,20 s | 15,80 s | **Tú caminas.** / Nosotros nos ocupamos del resto | — | «estamos muy contentos con la organización» |
+| 16,60 s | 20,80 s | Hoteles / **seleccionados** | Habitación y baño privados | Sobre «los dos alojamientos que llevamos» |
+| 21,40 s | 25,80 s | Tu mochila / **viaja sola** | — | Sobre «el servicio de recogida de equipaje» |
 
 En negrita, lo que lleva el recuadro verde.
 
