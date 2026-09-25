@@ -41,8 +41,20 @@ const TITULARES = [
   // Habitaciones.
   { desde: 24.4, hasta: 29.2, gancho: "Hoteles seleccionados", destacado: "y máximo confort" },
   // Cruceiro y capilla, en pleno Camino.
-  { desde: 37.0, hasta: 42.8, gancho: "Atención 24/7", destacado: "e información detallada\nde tu ruta" },
+  {
+    desde: 37.0,
+    hasta: 42.8,
+    gancho: "e información detallada\nde tu ruta",
+    destacado: "Atención 24/7",
+    destacadoArriba: true,
+  },
+  // Cierre sobre la catedral, justo antes del logo.
+  { desde: 51.2, hasta: FIN, gancho: "Tu Camino", destacado: "empieza aquí" },
 ];
+
+/** La catedral tapa el final del testimonio; su audio sigue por debajo
+ *  hasta el fundido. */
+const CATEDRAL = { desde: 51.0, hasta: FIN };
 
 /** Deja salir la frase con un fundido corto en lugar de cortarla en seco. */
 const Salida: React.FC<{ duracion: number; children: React.ReactNode }> = ({
@@ -93,15 +105,34 @@ export const TestimonioArgentinas: React.FC = () => {
         />
       </Sequence>
 
+      <Sequence
+        from={f(CATEDRAL.desde)}
+        durationInFrames={f(CATEDRAL.hasta) - f(CATEDRAL.desde)}
+        name="Catedral"
+      >
+        <Planos
+          total={f(CATEDRAL.hasta) - f(CATEDRAL.desde)}
+          overlay={0.18}
+          lista={[
+            { src: "catedral-quintana", dura: 2.43, encuadre: "30% 50%" },
+            { src: "catedral-berenguela", dura: 1.59 },
+          ]}
+        />
+      </Sequence>
+
       {TITULARES.map((c) => (
         <Sequence
-          key={c.gancho}
+          key={c.destacado}
           from={f(c.desde)}
           durationInFrames={f(c.hasta) - f(c.desde)}
-          name={c.destacado.replace("\n", " ")}
+          name={c.destacado}
         >
           <Salida duracion={f(c.hasta) - f(c.desde)}>
-            <Titular gancho={c.gancho} destacado={c.destacado} />
+            <Titular
+              gancho={c.gancho}
+              destacado={c.destacado}
+              destacadoArriba={"destacadoArriba" in c && c.destacadoArriba}
+            />
           </Salida>
         </Sequence>
       ))}

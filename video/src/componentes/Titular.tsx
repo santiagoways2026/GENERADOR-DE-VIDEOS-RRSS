@@ -20,13 +20,69 @@ export const Titular: React.FC<{
   /** Distancia al borde inferior del lienzo. */
   abajo?: number;
   tamano?: number;
-}> = ({ gancho, destacado, abajo = 560, tamano = 70 }) => {
+  /** Pone el bloque olivo en la primera linea y el texto blanco debajo,
+   *  cuando lo que hay que subrayar es el arranque de la frase. */
+  destacadoArriba?: boolean;
+}> = ({
+  gancho,
+  destacado,
+  abajo = 560,
+  tamano = 70,
+  destacadoArriba = false,
+}) => {
   const frame = useCurrentFrame();
   const entrada = {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
     easing: Easing.bezier(...easeOut),
   } as const;
+
+  // La linea de arriba entra primero; la de abajo, con el relevo del kit.
+  const tBlanco = destacadoArriba ? RELEVO : 0;
+  const tVerde = destacadoArriba ? 0 : RELEVO;
+
+  const lineaBlanca = (
+    <div
+      style={{
+        padding: "0 4px",
+        whiteSpace: "pre-line",
+        // Sombra tintada hacia bosque, nunca negra, para leer sobre foto.
+        textShadow:
+          "0 2px 16px rgba(14, 44, 31, 0.6), 0 1px 3px rgba(14, 44, 31, 0.5)",
+        opacity: interpolate(frame, [tBlanco, tBlanco + 12], [0, 1], entrada),
+        translate: `0 ${interpolate(frame, [tBlanco, tBlanco + 12], [slideUp, 0], entrada)}px`,
+      }}
+    >
+      {gancho}
+    </div>
+  );
+
+  const lineaVerde = (
+    <>
+      {/* El servicio puede partirse en dos lineas: cada una lleva su propio
+          bloque olivo, como en las piezas de referencia. */}
+      <div
+        style={{
+          lineHeight: 1.36,
+          // Un salto de linea en el texto marca donde se parte.
+          whiteSpace: "pre-line",
+          clipPath: `inset(0 ${interpolate(frame, [tVerde, tVerde + BARRIDO], [100, 0], entrada)}% 0 0)`,
+        }}
+      >
+        <span
+          style={{
+            backgroundColor: brand.green,
+            padding: "2px 18px 6px",
+            borderRadius: 6,
+            boxDecorationBreak: "clone",
+            WebkitBoxDecorationBreak: "clone",
+          }}
+        >
+          {destacado}
+        </span>
+      </div>
+    </>
+  );
 
   return (
     <Interactive.Div
@@ -47,39 +103,8 @@ export const Titular: React.FC<{
         color: color.fgInverse,
       }}
     >
-      <div
-        style={{
-          padding: "0 4px",
-          // Sombra tintada hacia bosque, nunca negra, para leer sobre foto.
-          textShadow: "0 2px 16px rgba(14, 44, 31, 0.6), 0 1px 3px rgba(14, 44, 31, 0.5)",
-          opacity: interpolate(frame, [0, 12], [0, 1], entrada),
-          translate: `0 ${interpolate(frame, [0, 12], [slideUp, 0], entrada)}px`,
-        }}
-      >
-        {gancho}
-      </div>
-      {/* El servicio puede partirse en dos lineas: cada una lleva su propio
-          bloque olivo, como en las piezas de referencia. */}
-      <div
-        style={{
-          lineHeight: 1.36,
-          // Un salto de linea en el texto marca donde se parte.
-          whiteSpace: "pre-line",
-          clipPath: `inset(0 ${interpolate(frame, [RELEVO, RELEVO + BARRIDO], [100, 0], entrada)}% 0 0)`,
-        }}
-      >
-        <span
-          style={{
-            backgroundColor: brand.green,
-            padding: "2px 18px 6px",
-            borderRadius: 6,
-            boxDecorationBreak: "clone",
-            WebkitBoxDecorationBreak: "clone",
-          }}
-        >
-          {destacado}
-        </span>
-      </div>
+      {destacadoArriba ? lineaVerde : lineaBlanca}
+      {destacadoArriba ? lineaBlanca : lineaVerde}
     </Interactive.Div>
   );
 };
