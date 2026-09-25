@@ -29,10 +29,12 @@ import { brand } from "./brand/theme";
  * el archivo, que lo prepara `herramientas/scripts/recortar-figura.py`. Aquí
  * sólo va el texto.
  *
- * El registro del texto es el que se pidió y es distinto al de las cartelas
- * de testimonio: **Manrope 800 en caja alta y centrado**, no Montserrat 900 en
- * minúscula y a la izquierda. Manrope es de la cascada oficial y 800 es su
- * peso máximo, así que "extra bold" aquí es literalmente el tope.
+ * El registro del texto es **Montserrat 900 en caja alta y centrado**. Lo de
+ * caja alta y centrado es lo que separa este formato de las cartelas de
+ * testimonio, que van en minúscula y a la izquierda; el peso es el mismo,
+ * porque 900 es el máximo de la familia y es lo que la guía llama el negro.
+ * Se pidió "más gruesa" y ahí no queda margen: lo que se ha subido es el
+ * cuerpo, que es donde sí lo hay, hasta que la línea larga roza el lienzo.
  */
 
 const FPS = 30;
@@ -43,7 +45,7 @@ const DURACION = 52.6;
 const TITULAR_SALE = 2.9;
 
 const BASE = "montajes/compostela-abre.mp4";
-const FUENTE = "Manrope, Montserrat, sans-serif";
+const FUENTE = "Montserrat, Manrope, sans-serif";
 
 /**
  * El titular, línea a línea.
@@ -52,18 +54,20 @@ const FUENTE = "Manrope, Montserrat, sans-serif";
  * modelo que se pasó lleva tres líneas, una de entrada grande, una de enlace
  * pequeña y el sujeto enorme abajo. Aquí no caben: medida sobre siete
  * fotogramas de la tarjeta, la cabeza empieza en el píxel 444 de 1920, y un
- * bloque de tres líneas con esos cuerpos acaba en 442. El texto le caía sobre
- * el pelo.
+ * bloque de tres líneas acaba por debajo de eso. El texto le caía en el pelo.
  *
- * Con dos, el bloque mide 231 px, arranca en 130 y acaba en 361: ochenta
- * píxeles limpios antes de su pelo. Y el sujeto se queda igual de grande, que
- * es lo que da el golpe: 162 px, 914 de ancho sobre un útil de 960, el 95 %.
- * La línea de entrada va pequeña a propósito, de pie de entrada, y el verde
- * lima se lo lleva el nombre.
+ * **Los cuerpos los fija el ancho, no el alto.** Montserrat 900 en caja alta
+ * es bastante más ancha que Manrope: "SANTIAGO?" mide 918 px a 150 sobre un
+ * lienzo útil de 960, así que a 155 ya se sale. La línea de entrada va a 66,
+ * que son 883. Los dos están al 92 y al 96 % del ancho, que es el tope real
+ * de esta pieza: de ahí no se puede subir sin partir las líneas.
+ *
+ * Con esos cuerpos el bloque mide 203 px, arranca en 130 y acaba en 333:
+ * ciento diez píxeles limpios antes de su pelo.
  */
 const LINEAS: { texto: string; tam: number; color: string }[] = [
-  { texto: "WHAT IS THE CAMINO DE", tam: 74, color: brand.white },
-  { texto: "SANTIAGO?", tam: 162, color: brand.lime },
+  { texto: "WHAT IS THE CAMINO DE", tam: 66, color: brand.white },
+  { texto: "SANTIAGO?", tam: 150, color: brand.lime },
 ];
 
 /** El movimiento de la guía: fundido más desplazamiento corto. Nunca rebote. */
@@ -91,7 +95,23 @@ const Titular: React.FC = () => {
         opacity: salida,
       }}
     >
-      <div style={{ textAlign: "center" }}>
+      {/*
+        Velo de bosque detrás del titular, el mismo recurso que llevan las
+        cartelas de la línea y por el mismo motivo. Aquí hace falta más que
+        allí: el verde de marca es bastante más claro que el bosque que tenía
+        antes esta tarjeta, y encima el degradado de la placa de cierre pone
+        su extremo claro justo arriba, que es donde va el texto. Medido, la
+        lima sobre olivo puro da 2,23:1 de contraste, por debajo del 3:1 que
+        es el mínimo para texto grande, y el blanco 2,88. Con el velo al 45 %
+        suben a 3,87 y 4,99, y el fondo sigue leyéndose como verde de marca.
+      */}
+      <AbsoluteFill
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(24,72,52,0.55) 0%, rgba(24,72,52,0.45) 20%, rgba(24,72,52,0) 34%)",
+        }}
+      />
+      <div style={{ textAlign: "center", position: "relative" }}>
         {LINEAS.map((l, i) => {
           const desde = RELEVO * i;
           const o = interpolate(frame, [desde, desde + ENTRADA], [0, 1], {
@@ -110,15 +130,15 @@ const Titular: React.FC = () => {
               style={{
                 fontFamily: FUENTE,
                 fontSize: l.tam,
-                fontWeight: 800,
-                lineHeight: 0.98,
-                letterSpacing: "-0.01em",
+                fontWeight: 900,
+                lineHeight: 0.94,
+                letterSpacing: "-0.03em",
                 color: l.color,
                 opacity: o,
                 transform: `translateY(${sube}px)`,
-                // El degradado de detrás es verde medio en la parte de abajo
-                // del titular, asi que el blanco necesita algo de sombra.
-                textShadow: "0 6px 28px rgba(8,22,15,0.45)",
+                // El degradado es verde de marca, mas claro que el bosque
+                // que habia antes, asi que el blanco necesita mas sombra.
+                textShadow: "0 6px 26px rgba(24,72,52,0.55)",
               }}
             >
               {l.texto}

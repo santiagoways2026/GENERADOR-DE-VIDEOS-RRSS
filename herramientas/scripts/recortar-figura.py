@@ -55,9 +55,14 @@ from ambiente import binarios  # noqa: E402
 AQUI = os.path.dirname(os.path.abspath(__file__))
 MODELO = os.path.join(AQUI, "u2net_human_seg.onnx")
 LADO = 320
-# Bosque y olivo de la guía. El degradado va de uno a otro de arriba abajo.
-BOSQUE = (0x18, 0x48, 0x34)
-OLIVO = (0x7A, 0xA6, 0x06)
+# El mismo degradado que la placa de cierre de las piezas de testimonio, que
+# es el verde de marca y no el bosque: `linear-gradient(145deg, #7AA606 0%,
+# #668814 52%, #4F6B0F 100%)`. Con el bosque arriba, la tarjeta salía casi
+# negra en la mitad de arriba, que es justo donde va el titular.
+ANGULO = 145.0
+PARADAS = [(0.00, (0x7A, 0xA6, 0x06)),
+           (0.52, (0x66, 0x88, 0x14)),
+           (1.00, (0x4F, 0x6B, 0x0F))]
 
 
 def sesion():
@@ -92,10 +97,30 @@ def sola_la_grande(a):
 
 
 def degradado(h, w):
-    y = np.linspace(0, 1, h)[:, None, None]
-    c1 = np.array(BOSQUE[::-1], np.float32)   # BGR
-    c2 = np.array(OLIVO[::-1], np.float32)
-    return (c1 * (1 - y) + c2 * y) * np.ones((1, w, 1), np.float32)
+    """El `linear-gradient` de CSS, con su ángulo y sus paradas.
+
+    En CSS el ángulo se mide desde «hacia arriba» y en el sentido del reloj,
+    así que la dirección en coordenadas de pantalla es `(sen A, -cos A)`, y
+    la recta del degradado mide `|w·sen A| + |h·cos A|`. Calcularlo bien
+    importa: a 145 grados el degradado va en diagonal, y aproximarlo de
+    arriba abajo deja la esquina de abajo a la izquierda de otro color.
+    """
+    a = np.deg2rad(ANGULO)
+    dx, dy = np.sin(a), -np.cos(a)
+    largo = abs(w * np.sin(a)) + abs(h * np.cos(a))
+    xs = np.arange(w)[None, :] - w / 2
+    ys = np.arange(h)[:, None] - h / 2
+    t = np.clip(0.5 + (xs * dx + ys * dy) / largo, 0, 1)
+
+    fondo = np.zeros((h, w, 3), np.float32)
+    for (p0, c0), (p1, c1) in zip(PARADAS[:-1], PARADAS[1:]):
+        m = (t >= p0) & (t <= p1)
+        r = np.zeros_like(t)
+        r[m] = (t[m] - p0) / (p1 - p0)
+        a0 = np.array(c0[::-1], np.float32)   # BGR
+        a1 = np.array(c1[::-1], np.float32)
+        fondo[m] = a0 * (1 - r[m])[:, None] + a1 * r[m][:, None]
+    return fondo
 
 
 def main():
