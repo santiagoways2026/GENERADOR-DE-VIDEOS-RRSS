@@ -1,6 +1,6 @@
-# Divulgación · «What is the Camino de Santiago?» · inglés · reel · V2
+# Divulgación · «What is the Camino de Santiago?» · inglés · reel · V3
 
-Pieza de 52,6 s, 1080x1920 a 30 fps. Sale de un clip vertical de 720x1280 ya
+Pieza de 50,0 s, 1080x1920 a 30 fps. Sale de un clip vertical de 720x1280 ya
 montado, con sus subtítulos palabra a palabra.
 
 Fuentes vivas:
@@ -12,10 +12,10 @@ Fuentes vivas:
 
 ## Esto no es un testimonio
 
-Y no se monta como uno. **No lleva las cartelas del kit ni el cierre de
-marca**: el clip ya viene montado, con sus subtítulos y su chapa de Santiago
-Ways en el segundo 26. De la receta del testimonio sólo se aplican el recorte
-de la marca de agua y el paso de entrega.
+Y no se monta como uno. **No lleva las cartelas del kit**: el clip ya viene
+montado, con sus subtítulos y su chapa de Santiago Ways en el segundo 26. De
+la receta del testimonio se aplican el recorte de la marca de agua, la placa
+de cierre y el paso de entrega.
 
 El registro del texto también es otro: **Montserrat 900 en caja alta y
 centrado**. Lo de caja alta y centrado es lo que separa este formato de las
@@ -81,7 +81,44 @@ bastante más ancha que Manrope: «SANTIAGO?» mide 918 px a 150 sobre un lienzo
 ancho, que es el tope real de esta pieza; de ahí no se sube sin partir las
 líneas.
 
-## El velo detrás del titular
+## Los rótulos
+
+Los dos van arriba, en caja alta y centrados, y comparten componente.
+
+| Entra | Sale | Texto | Sobre qué |
+| --- | --- | --- | --- |
+| 0,00 s | 2,90 s | WHAT IS THE CAMINO DE / **SANTIAGO?** | La tarjeta de apertura |
+| 20,10 s | 24,00 s | **FRENCH WAY** / MOST POPULAR | «the French Way starts in France, crossing the Pyrenees», 19,6 – 23,9 |
+
+En negrita, la línea en lima.
+
+**Arriba y no abajo**, que es donde van las cartelas de testimonio, por dos
+cosas: el clip ya trae sus propios subtítulos quemados a media altura, y la
+presentadora ocupa de la mitad para abajo, con el pelo empezando en el píxel
+444 de 1920.
+
+«MOST POPULAR» no es un adorno: un segundo antes ella dice «some routes are
+more popular», así que el pie recoge lo que acaba de decir. Y del 22,2 en
+adelante el rótulo cae sobre el plano del puente, que es donde mejor se lee.
+
+| Línea | Cuerpo | Ancho |
+| --- | --- | --- |
+| FRENCH WAY | 125 | 891 px |
+| MOST POPULAR | 68 | 567 px |
+
+## El cierre
+
+El clip dice 52,60 s, pero **los últimos 4,65 son negro y silencio digital**,
+y antes hay un fundido a negro de medio segundo, del 47,30 al 47,87. La guía
+no funde a negro: las piezas cierran con la placa de marca. Así que la imagen
+se corta en 47,35 y la placa entra en 46,90, por encima del fundido.
+
+**La pista va aparte y dura hasta 47,95.** La última palabra es «decide» y su
+final cae en 47,80-47,90, o sea ya sobre el negro del clip: cortando la pista
+con la imagen se oiría «deci-». Así se acaba de decir por debajo de la placa,
+que es como cierran las otras piezas.
+
+## El velo detrás de los rótulos
 
 El verde de marca es bastante más claro que el bosque, y el degradado de la
 placa de cierre pone además su extremo claro arriba, que es donde va el texto.
@@ -95,7 +132,8 @@ Medido:
 El mínimo para texto grande es 3:1, así que la lima a pelo se queda corta, y
 es justo la línea que lleva el golpe. Con el velo, que es el mismo recurso que
 llevan las cartelas de la línea y por el mismo motivo, los dos entran de
-sobra y el fondo se sigue leyendo como verde de marca.
+sobra y el fondo se sigue leyendo como verde de marca. El rótulo de la ruta lo
+lleva también, y ahí hace aún más falta: cae sobre el bambú.
 
 **Dos líneas y no tres.** El modelo que se pasó lleva tres, una de entrada
 grande, una de enlace pequeña y el sujeto enorme abajo. Con esos cuerpos el
@@ -131,9 +169,6 @@ La segunda necesita `herramientas/scripts/u2net_human_seg.onnx`, que pesa
 
 ## Lo que queda por decidir
 
-- **La pieza no cierra con la marca.** Acaba con ella hablando, sin logo y sin
-  CTA, que es como venía. No se ha tocado porque lo que había gustaba, pero
-  la guía pide placa de cierre y aquí no la hay.
 - **El fondo sólo cambia en la apertura.** Si interesa que la presentadora
   vaya recortada sobre el degradado toda la pieza, el script lo hace subiendo
   `--hasta`; son unos diez minutos de proceso para los 52 s.
