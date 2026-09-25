@@ -1,4 +1,4 @@
-# Testimonio del Camino · español · redes · V7
+# Testimonio del Camino · español · redes · V8
 
 Pieza de 44,9 s, 1280x720 a 30 fps. Sale de la pieza social antigua, que
 duraba 60,1 s con cartela de agencia, fundido final y dos marcas de agua.
@@ -12,7 +12,9 @@ Fuentes vivas:
 
 ## Qué cambia respecto a la V6
 
-**Dos parpadeos en la juntura del corte, tapados.** Al quitar el tramo del
+**Tres parpadeos, tapados, y una herramienta nueva para cazarlos.**
+
+Los dos primeros, en la juntura del corte. Al quitar el tramo del
 segundo peregrino, el montaje deja a los dos lados del corte el final de un
 plano y el principio del siguiente. Medidos sobre la base: **0,20 s y 0,10 s**.
 A esa duración no se leen como planos, se leen como un parpadeo.
@@ -22,8 +24,19 @@ tenía un plano de maletas justo dentro del tramo que se ha quitado, así que la
 idea del equipaje se había quedado sin imagen. Entra ahí, del 19,5 al 20,9,
 sobre «hemos cogido el servicio de recogida de equipaje».
 
-Comprobado sobre la base con detección de planos a 30 fps: sin contar los dos
-de la juntura, ninguno baja de 0,97 s.
+El tercero salió al medir el archivo ya renderizado: entre los planos de
+apertura, el montaje asomaba **0,43 s** en el segundo 5,27. Los dos planos de
+esa zona entran ahora en 5,27 y salen en 7,60, que son los dos límites de
+plano de la base, en vez de en 5,70 y 7,75. El paso de piedras dura 1,00 s de
+archivo y el hueco 1,20, así que va a 0,80 de velocidad: es un plano de agua y
+no se nota.
+
+Y como esto no se ve a ojo, queda una herramienta:
+`planos-visibles.py <escena.tsx> <base.mp4>` cruza los cortes de la base con
+las inserciones y lista lo que se ve menos de medio segundo. Se pasa junto con
+`comprobar-inserciones.py`: uno mide que el plano llegue hasta donde se le
+pide, el otro mide lo que se ve entre plano y plano. La pieza da **ningún
+parpadeo**.
 
 ## Qué cambió de la V5 a la V6
 

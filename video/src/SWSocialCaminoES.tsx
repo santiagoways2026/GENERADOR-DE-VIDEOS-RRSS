@@ -100,6 +100,8 @@ type Insercion = {
   origen: number;
   /** De donde sale. Por defecto, el limpio entero. */
   fuente?: string;
+  /** `playbackRate`. Por debajo de 1 el plano dura mas de lo que dura el archivo. */
+  ritmo?: number;
   nombre: string;
 };
 
@@ -110,8 +112,16 @@ const INSERCIONES: Insercion[] = [
   { desde: 0.0, hasta: 1.5, origen: 0.03, fuente: B + "campo-flores.mp4", nombre: "Apertura · campo en flor" },
   { desde: 1.5, hasta: 2.6, origen: 0.0, fuente: B + "camino-abierto.mp4", nombre: "Apertura · camino abierto" },
   { desde: 2.6, hasta: 4.1, origen: 0.0, fuente: B + "pareja-muros.mp4", nombre: "Apertura · pareja entre muros" },
-  { desde: 5.7, hasta: 6.8, origen: 0.0, fuente: B + "grupo-mimosas.mp4", nombre: "Apertura · grupo entre mimosas" },
-  { desde: 6.8, hasta: 7.75, origen: 0.0, fuente: B + "rio-piedras.mp4", nombre: "Apertura · paso de piedras" },
+  /*
+   * Entran en 5,27 y no en 5,70, y salen en 7,60 y no en 7,75: son los dos
+   * limites de plano de la base. Con los valores de antes, el plano del
+   * montaje que hay debajo se veia 0,43 s entre una inserción y la otra, que
+   * es el mismo parpadeo de la juntura pero mas corto. El paso de piedras
+   * dura 1,00 s de archivo y el hueco 1,20, asi que va a 0,80: es un plano
+   * de agua, no se nota.
+   */
+  { desde: 5.27, hasta: 6.4, origen: 0.0, fuente: B + "grupo-mimosas.mp4", nombre: "Apertura · grupo entre mimosas" },
+  { desde: 6.4, hasta: 7.6, origen: 0.0, fuente: B + "rio-piedras.mp4", ritmo: 0.8, nombre: "Apertura · paso de piedras" },
   // Alojamiento, sobre "los dos alojamientos que llevamos". Antes eran siete
   // segundos con la voz parada; ahora van encima de la frase que los nombra.
   { desde: 16.5, hasta: 17.5, origen: 0.03, fuente: B + "casa-rural.mp4", nombre: "Alojamiento · casa rural" },
@@ -172,6 +182,7 @@ export const SWSocialCaminoES: React.FC = () => {
           <OffthreadVideo
             src={staticFile(s.fuente ?? RECURSOS)}
             trimBefore={f(s.origen)}
+            playbackRate={s.ritmo ?? 1}
             muted
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
           />

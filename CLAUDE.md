@@ -303,6 +303,22 @@ Estas salieron de revisar piezas reales y ahorran repetir errores:
    dos segundos y nunca sobre una frase entera: a esa duración no se lee como
    un doblaje, se lee como un plano de los clientes.
 
+20. **Tapar un montaje a trozos deja parpadeos, y no se ven a ojo.** El
+   montaje de origen trae sus propios cortes. Al cubrirlo con inserciones,
+   entre una y otra se queda al aire el final de un plano o el principio del
+   siguiente, y a dos o tres décimas eso no se lee como un plano: se lee como
+   un parpadeo. En la pieza social en español había tres, de 0,20, 0,10 y
+   0,43 s, y los dos primeros estaban a los lados del corte que quitaba al
+   segundo peregrino.
+   Se arreglan cuadrando la inserción con **el límite de plano de la base**,
+   no con un número redondo, y si el hueco no cuadra con lo que dura el
+   archivo, se estira con `ritmo`. Cuando la juntura de un corte de audio
+   queda en medio, se tapa entera con un plano, que es la regla 8.
+   `python3 herramientas/scripts/planos-visibles.py <escena.tsx> <base.mp4>`
+   cruza los cortes de la base con las inserciones y los lista. Se pasa junto
+   con `comprobar-inserciones.py` antes de cada render: uno mide que el plano
+   llegue, el otro mide lo que se ve entre plano y plano.
+
 ## Reglas técnicas de Remotion
 
 - **Usar `OffthreadVideo`, no el `Video` de `@remotion/media`**: este último
