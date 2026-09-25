@@ -33,9 +33,9 @@ const COMIDA = { desde: 12.5, hasta: 18.33 };
 /** Titulares en pantalla, en segundos del testimonio. Cada servicio cae
  *  sobre el plano que mejor lo ilustra. */
 const TITULARES = [
-  { desde: 0.4, hasta: 5.8, gancho: "Peregrinas argentinas", destacado: "en el Camino de Santiago" },
+  { desde: 0.4, hasta: 5.8, gancho: "Peregrinas argentinas", destacado: "en el Camino\nde Santiago" },
   // Comedor del albergue.
-  { desde: 7.0, hasta: 12.3, gancho: "Todo preparado", destacado: "Información detallada de tu ruta" },
+  { desde: 7.0, hasta: 12.3, gancho: "Todo preparado", destacado: "Información detallada\nde tu ruta" },
   // Peregrinos disfrutando, en lugar de la comida.
   { desde: 12.8, hasta: 18.1, gancho: "Tú solo camina", destacado: "Transporte de equipajes" },
   // Habitaciones.
@@ -43,9 +43,9 @@ const TITULARES = [
   // Terraza y vuelta a cámara.
   { desde: 30.0, hasta: 35.2, gancho: "Nunca caminas solo", destacado: "Asistencia 24/7" },
   // Cruceiro y capilla, en pleno Camino.
-  { desde: 37.0, hasta: 42.8, gancho: "Sin perderte", destacado: "App de navegación móvil" },
+  { desde: 37.0, hasta: 42.8, gancho: "Sin perderte", destacado: "App de\nnavegación móvil" },
   // Un solo CTA, al final.
-  { desde: 52.4, hasta: FIN, gancho: "Tu Camino te espera", destacado: "Reserva en santiagoways.com" },
+  { desde: 52.4, hasta: FIN, gancho: "Tu Camino te espera", destacado: "Reserva en\nsantiagoways.com" },
 ];
 
 /** Deja salir la frase con un fundido corto en lugar de cortarla en seco. */
@@ -102,7 +102,7 @@ export const TestimonioArgentinas: React.FC = () => {
           key={c.gancho}
           from={f(c.desde)}
           durationInFrames={f(c.hasta) - f(c.desde)}
-          name={c.destacado}
+          name={c.destacado.replace("\n", " ")}
         >
           <Salida duracion={f(c.hasta) - f(c.desde)}>
             <Titular gancho={c.gancho} destacado={c.destacado} />

@@ -20,7 +20,7 @@ export const Titular: React.FC<{
   /** Distancia al borde inferior del lienzo. */
   abajo?: number;
   tamano?: number;
-}> = ({ gancho, destacado, abajo = 560, tamano = 52 }) => {
+}> = ({ gancho, destacado, abajo = 560, tamano = 70 }) => {
   const frame = useCurrentFrame();
   const entrada = {
     extrapolateLeft: "clamp",
@@ -58,16 +58,27 @@ export const Titular: React.FC<{
       >
         {gancho}
       </div>
+      {/* El servicio puede partirse en dos lineas: cada una lleva su propio
+          bloque olivo, como en las piezas de referencia. */}
       <div
         style={{
-          backgroundColor: brand.green,
-          padding: "4px 18px 8px",
-          borderRadius: 6,
-          whiteSpace: "nowrap",
+          lineHeight: 1.36,
+          // Un salto de linea en el texto marca donde se parte.
+          whiteSpace: "pre-line",
           clipPath: `inset(0 ${interpolate(frame, [RELEVO, RELEVO + BARRIDO], [100, 0], entrada)}% 0 0)`,
         }}
       >
-        {destacado}
+        <span
+          style={{
+            backgroundColor: brand.green,
+            padding: "2px 18px 6px",
+            borderRadius: 6,
+            boxDecorationBreak: "clone",
+            WebkitBoxDecorationBreak: "clone",
+          }}
+        >
+          {destacado}
+        </span>
       </div>
     </Interactive.Div>
   );
