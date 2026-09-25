@@ -9,7 +9,7 @@ import {
 import "./fuentes";
 
 import { brand } from "./brand/theme";
-import { Cartela, CierreMarca, PlacaMarca, Subtitulo } from "./componentes/CartelaMarca";
+import { Cartela, CierreMarca, PlacaMarca } from "./componentes/CartelaMarca";
 
 /**
  * Santiago Ways · el testimonio aleman, vertical para stories y TikTok.
@@ -42,6 +42,14 @@ import { Cartela, CierreMarca, PlacaMarca, Subtitulo } from "./componentes/Carte
  * La pista la monta `herramientas/scripts/audio-reel-de.py`: deja el
  * testimonio en 50,6 s de los 83 del bruto y le pone cama de ambiente al
  * final. **No lleva musica**, porque el bruto no la tiene.
+ *
+ * **La pieza va sin subtitulos quemados.** Se probaron, en el registro de la
+ * marca y por encima de las cartelas, y con las dos cosas a la vez el tercio
+ * de abajo se quedaba en un muro de texto. Manda la cartela. Los pies estan
+ * en `docs/redes/SW_Reel_Camino_DE_V3.srt` por si se quieren subir como
+ * subtitulo de la plataforma, que ademas se puede activar y desactivar. El
+ * componente `Subtitulo` se queda en `CartelaMarca.tsx` para quien lo
+ * necesite.
  */
 
 const FPS = 30;
@@ -66,14 +74,6 @@ const MARGEN = 72;
 const MARGEN_ABAJO = 480;
 const TAM = 76;
 const TAM_PIE = 34;
-const TAM_SUB = 44;
-/**
- * Los subtitulos viven por encima de las cartelas, no encima de ellas. La
- * cartela mas alta, la que lleva pie, empieza sobre el pixel 1216, asi que
- * el bloque de subtitulo acaba en el 1150 y quedan 66 px de aire. Mas arriba
- * no puede ir: en el unico plano de cara, ahi estan las caras.
- */
-const SUB_ABAJO = 770;
 
 /* ------------------------------------------------------------------ */
 
@@ -131,9 +131,11 @@ const CAMINO: Insercion[] = [
 
 /** Bloque 3: el deporte, los amigos y descubrir sitios. */
 const DEPORTE: Insercion[] = [
-  { desde: 27.3, hasta: 29.5, origen: 0.1, fuente: T + "camino-arbolado.mp4", nombre: "Camino arbolado" },
-  { desde: 29.5, hasta: 31.2, origen: 0.05, fuente: T + "camino-muro.mp4", nombre: "Camino entre muros" },
-  { desde: 31.2, hasta: 32.5, origen: 0.05, fuente: T + "camino-dedaleras.mp4", nombre: "Camino entre dedaleras" },
+  // "Lo que hemos conseguido": aqui hacia falta gente y algo que mirar, no
+  // dos muros de piedra con maleza, que ademas se parecian entre si.
+  { desde: 27.3, hasta: 29.4, origen: 0.1, fuente: V + "peregrinos-iglesia.mp4", nombre: "Peregrino en la iglesia" },
+  { desde: 29.4, hasta: 30.85, origen: 0.0, fuente: T + "mirador-grupo.mp4", nombre: "Mirador · Santiago al fondo" },
+  { desde: 30.85, hasta: 32.5, origen: 0.05, fuente: T + "camino-dedaleras.mp4", nombre: "Camino entre dedaleras" },
   { desde: 32.5, hasta: 34.6, origen: 0.1, fuente: T + "botas-camino.mp4", nombre: "Botas · Sport treibst" },
   { desde: 34.6, hasta: 36.1, origen: 0.05, fuente: T + "ciclista-camino.mp4", nombre: "Ciclista" },
   { desde: 36.1, hasta: 38.2, origen: 0.1, fuente: V + "puente-calzada.mp4", nombre: "Puente de calzada" },
@@ -148,43 +150,6 @@ const SANTIAGO: Insercion[] = [
   // Del general con gente al detalle de la fachada, como pide el manual.
   { desde: 45.8, hasta: 47.9, origen: 0.1, fuente: T + "catedral-escalinata.mp4", nombre: "Catedral · la escalinata" },
   { desde: 47.9, hasta: 51.3, origen: 0.1, fuente: T + "fachada-obradoiro.mp4", nombre: "CTA · fachada del Obradoiro" },
-];
-
-/**
- * Los subtitulos, en el registro de la marca y no los del editor online.
- *
- * El texto sale de transcribir la pista y se ha repasado a mano: la
- * locucion alemana es un doblaje y trae giros que no son aleman corriente,
- * asi que las frases van limpias sin cambiar lo que se dice. **Falta que lo
- * mire alguien que hable aleman.**
- *
- * Las lineas se parten a mano, no por ancho: a 44 px caben unos 38
- * caracteres sobre lienzo de 1080, y una frase partida donde toca se lee
- * mejor que una partida donde cabe.
- */
-type Cue = { desde: number; hasta: number; lineas: string[] };
-
-const SUBS: Cue[] = [
-  { desde: 0.31, hasta: 3.1, lineas: ["Wir reisen als Gruppe,", "was für uns wichtig ist."] },
-  { desde: 3.54, hasta: 6.75, lineas: ["Das gibt uns die Möglichkeit,", "uns zu treffen."] },
-  { desde: 7.86, hasta: 9.2, lineas: ["Wir sind drei."] },
-  { desde: 9.33, hasta: 11.2, lineas: ["Wir waren Universitätsstudenten,"] },
-  { desde: 11.2, hasta: 12.7, lineas: ["haben zusammen abgeschlossen"] },
-  { desde: 12.7, hasta: 14.8, lineas: ["und sind hier mit unseren Familien."] },
-  { desde: 15.37, hasta: 19.05, lineas: ["Wir hoffen, dass uns diese Erfahrung"] },
-  { desde: 19.41, hasta: 22.45, lineas: ["eine spirituelle Bereicherung bringt."] },
-  { desde: 22.57, hasta: 24.4, lineas: ["und eine größere Verbundenheit,"] },
-  { desde: 24.4, hasta: 26.85, lineas: ["nachdem wir so viel Zeit", "zusammen verbracht haben."] },
-  { desde: 27.53, hasta: 29.0, lineas: ["Ich würde sagen,"] },
-  { desde: 29.26, hasta: 30.9, lineas: ["dass es wunderschön ist,"] },
-  { desde: 30.9, hasta: 32.7, lineas: ["was wir bisher erreicht haben."] },
-  { desde: 32.84, hasta: 35.6, lineas: ["Diese Reisen, bei denen man", "Sport treibt"] },
-  { desde: 35.6, hasta: 38.05, lineas: ["und ihn mit Freunden verbindet"] },
-  { desde: 38.44, hasta: 41.2, lineas: ["und damit, interessante Dinge", "kennenzulernen."] },
-  { desde: 41.4, hasta: 43.5, lineas: ["Ich finde das wunderbar."] },
-  { desde: 43.9, hasta: 46.1, lineas: ["Die Landschaften sind wunderschön."] },
-  { desde: 46.1, hasta: 48.1, lineas: ["Wir hoffen, dass es so weitergeht,"] },
-  { desde: 48.25, hasta: 50.6, lineas: ["bis wir den Weg", "nach Santiago beenden."] },
 ];
 
 const INSERCIONES = [...CARAS, ...GRUPO, ...CAMINO, ...DEPORTE, ...SANTIAGO];
@@ -270,17 +235,6 @@ export const SWReelCaminoDE: React.FC = () => {
           margenAbajo={MARGEN_ABAJO}
         />
       </Sequence>
-
-      {SUBS.map((c) => (
-        <Sequence
-          key={`sub-${c.desde}`}
-          from={f(c.desde)}
-          durationInFrames={f(c.hasta) - f(c.desde)}
-          name={`sub · ${c.lineas[0]}`}
-        >
-          <Subtitulo lineas={c.lineas} tam={TAM_SUB} margen={MARGEN} margenAbajo={SUB_ABAJO} />
-        </Sequence>
-      ))}
 
       <Sequence from={entraPlaca} durationInFrames={total - entraPlaca} name="5 · Placa de marca">
         <PlacaMarca ancho={620} hueco={300} />

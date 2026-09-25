@@ -1,11 +1,22 @@
-# Reel del testimonio alemán · vertical · V2
+# Reel del testimonio alemán · vertical · V3
 
 Pieza de 54,6 s, 1080x1920 a 30 fps, para stories y TikTok.
 
 Fuente viva: `video/src/SWReelCaminoDE.tsx`.
 Pista: `herramientas/scripts/audio-reel-de.py`.
 
-## Qué cambia respecto a la V1
+## Qué cambia respecto a la V2
+
+1. **Fuera los subtítulos quemados.** Se probaron y con las cartelas a la vez
+   el tercio de abajo se quedaba en un muro de texto. Manda la cartela. Los
+   pies siguen existiendo, en `SW_Reel_Camino_DE_V3.srt`, para subirlos como
+   subtítulo de la plataforma, que además se puede activar y desactivar.
+2. **Los dos planos del 27 y del 29 fuera.** Eran dos muros de piedra con
+   maleza, sin nadie y parecidos entre sí. En su sitio, un peregrino pasando
+   por una iglesia y el grupo en el mirador con Santiago al fondo, que es lo
+   que pide la frase: «lo bonito que es lo que hemos conseguido hasta ahora».
+
+## Qué cambió de la V1 a la V2
 
 1. **Se colaba el rótulo.** En los últimos ocho fotogramas del plano que abría
    la pieza entraba un «WIR» del subtítulo original. El fallo estaba en cómo
@@ -160,9 +171,9 @@ Tiempos ya de la pieza montada:
 
 | Entra | Sale | Plano |
 | --- | --- | --- |
-| 27,3 s | 29,5 s | `testimonios/camino-arbolado` |
-| 29,5 s | 31,2 s | `testimonios/camino-muro` |
-| 31,2 s | 32,5 s | `testimonios/camino-dedaleras` |
+| 27,3 s | 29,4 s | `piezas-viejas/peregrinos-iglesia` |
+| 29,4 s | 30,9 s | `testimonios/mirador-grupo` · Santiago al fondo |
+| 30,9 s | 32,5 s | `testimonios/camino-dedaleras` |
 | 32,5 s | 34,6 s | `testimonios/botas-camino` · sobre «Sport treibst» |
 | 34,6 s | 36,1 s | `testimonios/ciclista-camino` |
 | 36,1 s | 38,2 s | `piezas-viejas/puente-calzada` |
@@ -199,30 +210,27 @@ imagen» en el `objectPosition` que hace falta. No son lo mismo: con una
 ventana del 33,75 %, un `71%` no centra el recorte en el 71 % de la imagen
 sino en el 64 %.
 
-## Los subtítulos · **pendientes de aprobar**
+## Los subtítulos: fuera de la pieza, en un SRT
 
-La pieza sale con subtítulos nuevos, en alemán y en el registro de la marca.
-Son veinte entradas, de una o dos líneas, y están en el array `SUBS` de la
-escena.
+**La pieza va sin subtítulos quemados.** Se montaron, en el registro de la
+marca y colocados por encima de las cartelas, con 66 px de aire entre unos y
+otras. Técnicamente funcionaba. Pero con las dos cosas en pantalla el tercio
+de abajo se quedaba en un muro de texto, y de los dos el que tiene que mandar
+es la cartela, que es la que lleva el mensaje de marca.
 
-**Dónde van.** A 770 px del borde inferior, o sea el bloque acaba en el píxel
-1150. Por debajo está la cartela, que empieza sobre el 1216 cuando lleva pie:
-quedan 66 px de aire. Más arriba no pueden ir porque ahí están las caras en el
-plano del grupo. Se alinean a la izquierda con el mismo margen de 72 que las
-cartelas, para que las dos cosas se lean como un solo bloque de texto.
+Los veinte pies están en **`SW_Reel_Camino_DE_V3.srt`**, listos para subirlos
+como subtítulo de la plataforma. Así además el espectador los activa o los
+quita, y no compiten con la cartela.
 
-**Cómo son.** Montserrat 800 a 44 px, no 900, que el 900 es del titular de la
-cartela. Sin recuadro verde, que el verde es de la promesa. Entran con un
-fundido de tres fotogramas y no con el barrido del kit: un barrido cada dos
-segundos durante un minuto marea.
+El componente `Subtitulo` se queda en `CartelaMarca.tsx` por si otra pieza lo
+necesita: Montserrat 800 a 44 px, sin recuadro verde (el verde es de la
+promesa), entrando con un fundido de tres fotogramas y no con el barrido del
+kit, que repetido cada dos segundos durante un minuto marea. Y se dibuja por
+encima del cierre, porque el overlay diagonal lo apagaba.
 
-**Van dibujados por encima del cierre.** El overlay diagonal de `CierreMarca`
-los apagaba cuando iban debajo, y en el último subtítulo se notaba.
-
-**Y falta que los mire alguien que hable alemán.** El texto sale de transcribir
-la pista y se ha repasado a mano, pero la locución es un doblaje y trae giros
-que no son alemán corriente. Las frases se han dejado limpias sin cambiar lo
-que se dice.
+**El alemán de los pies sigue pendiente de que lo mire alguien que hable el
+idioma.** Sale de transcribir la pista y está repasado a mano, pero la
+locución es un doblaje y trae giros que no son alemán corriente.
 
 ## Las cartelas · **pendientes de aprobar**
 
@@ -242,7 +250,7 @@ um den Rest», mide 27 caracteres y a 76 px se sale del cuadro por 150 px.
 
 ## Lo que falta decidir
 
-- **El alemán de las cartelas y de los subtítulos**, como se acaba de decir.
+- **El alemán de las cartelas y de los pies del SRT**, como se acaba de decir.
 - **Si la pieza lleva música.** Ahora no lleva, porque el bruto no la tiene.
 - **Si hay original sin marca.** Con él se pueden sacar más planos del grupo,
   que ahora mismo se quedan en uno.
