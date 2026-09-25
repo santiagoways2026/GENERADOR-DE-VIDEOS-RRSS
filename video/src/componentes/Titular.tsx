@@ -20,7 +20,7 @@ export const Titular: React.FC<{
   /** Distancia al borde inferior del lienzo. */
   abajo?: number;
   tamano?: number;
-}> = ({ gancho, destacado, abajo = 560, tamano = 56 }) => {
+}> = ({ gancho, destacado, abajo = 560, tamano = 52 }) => {
   const frame = useCurrentFrame();
   const entrada = {
     extrapolateLeft: "clamp",
