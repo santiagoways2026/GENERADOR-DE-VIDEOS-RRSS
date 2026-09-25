@@ -23,6 +23,15 @@ import { Cartela, CierreMarca, PlacaMarca } from "./componentes/CartelaMarca";
  * apertura. Lo unico que hace esta escena es poner encima las cartelas, dos
  * planos de alojamiento y el cierre de marca.
  *
+ * Aqui iba una cuarta cartela, "Asistencia 24/7", sobre el paisaje del 31,0
+ * al 35,2. Se ha quitado por dos motivos. Uno de sitio: con ella, los tres
+ * ultimos textos iban a 2,1 s y 1,4 s de distancia, y una cartela tarda 1,37 s
+ * en acabar de entrar, asi que apenas quedaba pieza sin texto encima. Y otro
+ * de fondo: es la unica de las cuatro que no se apoya en nada de lo que dicen.
+ * El sitio donde si encajaria es "la atencion muy buena", en 23,5, pero ahi
+ * esta la cartela de hoteles. Sin ella quedan 7,7 s seguidos de paisaje sin
+ * texto, que es el respiro que la pieza necesitaba.
+ *
  * Lo que si hay que tocar es **el final**. El clip dura 42,32 s, pero los dos
  * ultimos segundos son un golpe de viento en el microfono: -6,7 dB de rms con
  * el 82 % de la energia por debajo de 250 Hz, o sea **mas fuerte que las
@@ -186,18 +195,6 @@ export const SWReelGrupoES: React.FC = () => {
           lineas={[[{ texto: "Hoteles" }], [{ texto: "seleccionados", destacado: true }]]}
           pie={["Habitación y baño privados"]}
           total={f(28.9) - f(24.4)}
-          tam={TAM}
-          margen={MARGEN}
-          margenAbajo={MARGEN_ABAJO}
-          tamPie={TAM_PIE}
-        />
-      </Sequence>
-
-      {/* 4 · sobre el paisaje y la senda, 30,43-35,30 */}
-      <Sequence from={f(31.0)} durationInFrames={f(35.2) - f(31.0)} name="4 · Asistencia 24/7">
-        <Cartela
-          lineas={[[{ texto: "Asistencia" }], [{ texto: "24/7", destacado: true }]]}
-          total={f(35.2) - f(31.0)}
           tam={TAM}
           margen={MARGEN}
           margenAbajo={MARGEN_ABAJO}

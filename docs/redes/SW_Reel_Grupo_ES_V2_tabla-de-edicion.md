@@ -1,4 +1,4 @@
-# Testimonio del grupo · español · reel · V1
+# Testimonio del grupo · español · reel · V2
 
 Pieza de 42,8 s, 1080x1920 a 30 fps. Sale de un clip vertical de 720x1280 de
 42,32 s.
@@ -58,7 +58,6 @@ detrás viene el paisaje, que es lo que ilustra «y el paisaje bellísimo».
 | 0,60 s | 5,40 s | Camino de Santiago / **organizado en hoteles** | — | El coro de «excelente, espectacular, muy recomendable» |
 | 17,20 s | 21,80 s | Conoce la España / **más auténtica** | — | El interior de la catedral y el marisco |
 | 24,40 s | 28,90 s | Hoteles / **seleccionados** | Habitación y baño privados | Los tres planos de alojamiento |
-| 31,00 s | 35,20 s | Asistencia / **24/7** | — | El paisaje y la senda |
 | 36,60 s | 39,90 s | Tu Camino / **empieza aquí** | — | El grupo con los brazos en alto |
 
 En negrita, lo que lleva el recuadro verde.
@@ -72,13 +71,29 @@ todo el grupo: medida sobre diez fotogramas, la barbilla más baja de la pieza
 cae en el píxel 883 de los 1920, muy por encima del bloque de texto, que
 arranca en 1290.
 
+## La cartela que se ha quitado
+
+En la primera vuelta iban cuatro cartelas y el cierre: cinco textos en 42
+segundos. La cuarta, «Asistencia 24/7», iba sobre el paisaje del 31,0 al 35,2
+y se ha quitado por dos motivos.
+
+**De sitio.** Con ella, los tres últimos textos iban a 2,1 s y 1,4 s de
+distancia. Una cartela tarda 1,37 s en acabar de entrar y 0,4 en salir, así
+que en ese tramo apenas quedaba pieza sin texto encima.
+
+**De fondo.** Es la única de las cuatro que no se apoya en nada de lo que
+dicen. Donde sí encajaría es en «la atención muy buena», que cae en 23,5, pero
+ahí está la cartela de hoteles.
+
+Sin ella quedan **7,7 s seguidos de paisaje sin texto**, del 28,90 al 36,60,
+que es el respiro que la pieza necesitaba antes del cierre.
+
+Si el mensaje del 24/7 tiene que estar en la pieza, la salida limpia es
+ponerlo de pie en la primera cartela, debajo de «organizado en hoteles», en
+lugar de como cartela propia.
+
 ## Lo que queda por decidir
 
-- **Son cinco textos en 42 segundos**, que es bastante para una pieza de este
-  tamaño. Entran porque el clip va alternando testimonio y recurso, pero los
-  tres últimos van más juntos: 2,1 s entre la de hoteles y la del 24/7, y
-  1,4 s entre esa y el cierre. Si se ve apretado, la que más fácil se quita es
-  la del 24/7, que es la que menos se apoya en lo que dicen.
 - **El bloque del grupo en fila dura 12,9 s seguidos**, del 1,87 al 14,77. Es
   mucho para un plano fijo. No se ha tocado porque ahí van contestando uno a
   uno y se ve quién habla; si se quiere romper, hay sitio para un plano de
