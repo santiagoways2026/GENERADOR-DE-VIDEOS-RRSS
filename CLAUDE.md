@@ -327,6 +327,39 @@ Estas salieron de revisar piezas reales y ahorran repetir errores:
    con `comprobar-inserciones.py` antes de cada render: uno mide que el plano
    llegue, el otro mide lo que se ve entre plano y plano.
 
+21. **Poner una pieza de pie es reencuadrar plano a plano, no cambiar el
+   lienzo.** Un 16:9 recortado a 9:16 con `cover` deja ver **el 33,75 % del
+   ancho**: se va dos tercios de la imagen, y en estos brutos lo que vive en
+   los lados es justo la gente. `herramientas/scripts/encuadrar.py` mide
+   dónde mirar en cada plano y devuelve el número que se le pasa a `mirar()`.
+   Busca por este orden la cara, lo que se mueve y dónde está el detalle, y
+   los tres hacen falta: sólo con bordes, en el plano del peregrino entre la
+   vegetación, los arbustos puntúan más que una persona a cien metros y se la
+   llevan de cuadro; sólo con movimiento, en el plano de la catedral lo que
+   se mueve es la gente que cruza y las torres se quedan fuera.
+   La propuesta **se mira siempre en un fotograma** antes de darla por buena:
+   la herramienta no sabe que debajo va la cartela del equipaje y que por eso
+   las maletas tienen que entrar aunque la cara esté en otro sitio.
+   Y `objectPosition` no es «el punto de la imagen»: como sólo se ve el
+   33,75 %, un `71 %` centra el recorte en el 64 % de la imagen. Por eso se
+   escribe `mirar(0.71)` y no el porcentaje a pelo.
+
+22. **Si el montaje de origen se ve por debajo, va troceado por sus cortes, y
+   el audio aparte.** Cada plano del montaje necesita su encuadre, así que la
+   base deja de ser un solo `OffthreadVideo` y pasa a ser uno por corte. La
+   pista **no** se trocea con ellos: va entera en un `Audio`, porque si no
+   cada juntura de imagen sería un corte de audio, y son veinte.
+
+23. **En vertical, el texto baja hasta donde acaba la barbilla, no hasta la
+   franja segura.** Al recortar a 9:16 un plano medio de 1280x720 la cara se
+   amplía 2,67 veces y ocupa media pantalla. En la pieza social en español el
+   entrevistado iba del píxel 628 al 1400 de los 1920: con el margen inferior
+   de 480 que usan los otros reels, el recuadro verde caía sobre el bigote.
+   Se mide la cara sobre un fotograma ya renderizado, en vertical, y el
+   margen se ajusta a lo que quede por debajo; ahí fueron 360. Y el titular
+   se encoge hasta que la línea larga entre en una sola línea: partirla en
+   tres sube el bloque 70 px y vuelve a la barbilla.
+
 ## Reglas técnicas de Remotion
 
 - **Usar `OffthreadVideo`, no el `Video` de `@remotion/media`**: este último
@@ -360,7 +393,13 @@ python3 herramientas/scripts/planos.py bruto.mp4      # dónde empieza cada toma
 python3 herramientas/scripts/catalogar.py bruto.mp4 hoja.jpg   # verlo de un vistazo
 python3 herramientas/scripts/marca-agua.py viejo.mp4 limpio.mp4 \
     --zona 410,290,230,70 --desde 1.335 --hasta 59.27   # quitar un logo pegado
+python3 herramientas/scripts/encuadrar.py bruto.mp4 0,1.5 1.5,2.6   # a vertical
 ```
+
+`encuadrar.py` sin tramos mide el archivo entero, que es lo que hace falta para
+un plano de la biblioteca; con tramos mide un montaje plano a plano. Lleva
+`yunet.onnx` al lado, que es el detector de caras y pesa 232 KB: va en el
+repositorio porque las descargas de modelos no siempre pasan.
 
 `--zona` es la esquina donde vive el logo, con margen de sobra: no hace falta
 afinarla, el script encuentra la silueta dentro. `--desde` y `--hasta` marcan
