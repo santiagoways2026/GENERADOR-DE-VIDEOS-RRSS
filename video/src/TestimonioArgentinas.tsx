@@ -30,22 +30,17 @@ const CIERRE = 2.4;
 /** Tramo de los platos en el testimonio, que se sustituye. */
 const COMIDA = { desde: 12.5, hasta: 18.33 };
 
-/** Titulares en pantalla, en segundos del testimonio. Cada servicio cae
- *  sobre el plano que mejor lo ilustra. */
+/** Titulares en pantalla, en segundos del testimonio. Cada uno cae sobre
+ *  el plano que mejor lo ilustra. */
 const TITULARES = [
-  { desde: 0.4, hasta: 5.8, gancho: "Peregrinas argentinas", destacado: "en el Camino\nde Santiago" },
-  // Comedor del albergue.
-  { desde: 7.0, hasta: 12.3, gancho: "Todo preparado", destacado: "Información detallada\nde tu ruta" },
-  // Peregrinos disfrutando, en lugar de la comida.
-  { desde: 12.8, hasta: 18.1, gancho: "Tú solo camina", destacado: "Transporte de equipajes" },
+  // Ellas a cámara, al arrancar.
+  { desde: 0.4, hasta: 5.8, gancho: "Camino de Santiago", destacado: "organizado" },
+  // Peregrinos caminando, en lugar de la comida.
+  { desde: 12.8, hasta: 18.1, gancho: "Transporte de equipajes", destacado: "entre etapas" },
   // Habitaciones.
-  { desde: 24.4, hasta: 29.2, gancho: "Descansa cada noche", destacado: "Hoteles seleccionados" },
-  // Terraza y vuelta a cámara.
-  { desde: 30.0, hasta: 35.2, gancho: "Nunca caminas solo", destacado: "Asistencia 24/7" },
+  { desde: 24.4, hasta: 29.2, gancho: "Hoteles seleccionados", destacado: "y máximo confort" },
   // Cruceiro y capilla, en pleno Camino.
-  { desde: 37.0, hasta: 42.8, gancho: "Sin perderte", destacado: "App de\nnavegación móvil" },
-  // Un solo CTA, al final.
-  { desde: 52.4, hasta: FIN, gancho: "Tu Camino te espera", destacado: "Reserva en\nsantiagoways.com" },
+  { desde: 37.0, hasta: 42.8, gancho: "Atención 24/7", destacado: "e información detallada\nde tu ruta" },
 ];
 
 /** Deja salir la frase con un fundido corto en lugar de cortarla en seco. */
