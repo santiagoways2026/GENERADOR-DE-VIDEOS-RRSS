@@ -1,4 +1,4 @@
-# Divulgación · «What is the Camino de Santiago?» · inglés · reel · V5
+# Divulgación · «What is the Camino de Santiago?» · inglés · reel · V6
 
 Pieza de 50,0 s, 1080x1920 a 30 fps. Sale de un clip vertical de 720x1280 ya
 montado, con sus subtítulos palabra a palabra.
@@ -73,7 +73,7 @@ tarjeta, **su pelo empieza en el píxel 444 de 1920**.
 | Línea | Cuerpo | Color | Ancho |
 | --- | --- | --- | --- |
 | WHAT IS THE CAMINO DE | 66 | Blanco | 883 px |
-| SANTIAGO? | 150 | Lima `#B0F808` | 918 px |
+| SANTIAGO? | 150 | Blanco | 918 px |
 
 **Los cuerpos los fija el ancho, no el alto.** Montserrat 900 en caja alta es
 bastante más ancha que Manrope: «SANTIAGO?» mide 918 px a 150 sobre un lienzo
@@ -95,8 +95,8 @@ Los dos van arriba, en caja alta y centrados, y comparten componente.
 | 34,30 s | 36,95 s | SARRIA / MOST POPULAR START | «a lot of people start in Sarria, which is the last 100 km» |
 
 Los límites salen de medir los huecos sin voz uno a uno, no de repartir a ojo.
-En la tarjeta de apertura la línea en negrita va en lima; los cinco rótulos de
-ruta van sobre placa, y eso tiene su apartado.
+**Todo el texto de la pieza va en blanco**, que es lo que manda la guía sobre
+olivo; el fondo es el que cambia, y eso tiene su apartado.
 
 «MOST POPULAR» y «MOST POPULAR START» no son adornos: ella dice «some routes
 are more popular» justo antes de la francesa, y «a lot of people start in
@@ -113,34 +113,55 @@ adelante el rótulo cae sobre el plano del puente, que es donde mejor se lee.
 
 ## El degradado de los rótulos de ruta
 
-El texto va en el verde de marca, que es lo que se pidió, y eso obliga a
-apretar el degradado. Medido contra el **10 % más claro del fondo real** de
-cada tramo, no contra un fondo inventado:
+**Degradado del verde de marca y las letras en blanco.** Es la combinación de
+la guía, y es la que resuelve el problema de raíz: el fondo deja de depender
+del plano que haya detrás, así que no hay nada que medir tramo a tramo.
 
-| Opacidad de la banda | Verde de marca `#7AA606` |
-| --- | --- |
-| 0,45, el velo de la tarjeta de apertura | **1,15 – 1,44** |
-| 0,82 | 2,46 |
-| 0,88 | 2,80 |
-| **0,94** | **3,05** |
-| 1,00 | 3,61 |
+Se llegó aquí después de descartar tres variantes con el texto en color sobre
+un velo de bosque, todas medidas contra el **10 % más claro del fondo real**
+de cada tramo, no contra un fondo inventado:
 
-A 1,15 eso no es poco legible, es ilegible; el mínimo para texto grande es
-3:1. Con la banda a 0,94 entra.
+| | Verde de marca `#7AA606` | Lima `#B0F808` |
+| --- | --- | --- |
+| Velo fino de bosque, 0,45 | 1,15 – 1,44 | 2,57 – 3,23 |
+| Velo cerrado, 0,94 | 3,05 | 6,4 |
+| Placa opaca de bosque | 3,61 | 8,08 |
 
-Sigue siendo un degradado y no un recuadro: ocupa el ancho entero, no tiene
-borde y se deshace hacia abajo. Se probó también con placa opaca ajustada al
-texto, que da 3,61 y es lo que haría el kit de la marca, pero ese recuadro no
-gustó.
+El mínimo para texto grande es 3:1. El verde de marca sobre el velo fino no
+llega ni de lejos, la lima se queda justo por debajo, y las dos soluciones que
+sí entraban, el velo cerrado y la placa, se descartaron a ojo: la placa por
+recuadro y el velo cerrado por oscuro.
+
+El degradado que queda baja por la escala de verdes de la guía, `#7AA606`
+arriba y `#668814` a la altura del texto, así que el blanco va de **3,1 a
+3,4:1** en vez de los 2,88 que da el olivo a pelo:
+
+```
+linear-gradient(to bottom,
+  rgba(122,166,6,0.97)   0%,
+  rgba(112,151,13,0.95) 16%,
+  rgba(102,136,20,0.55) 19.5%,
+  rgba(79,107,15,0)     23%)
+```
+
+**Se apaga en el 23 % del alto, 441 px, y eso lo fija la presentadora.** Con
+la cola larga, hasta el 38 %, el borde del degradado le cruzaba la frente y se
+veía como una mancha verde sobre la cara: el pelo le empieza en el píxel 470
+en los planos de ruta. Por encima de su cabeza el degradado se lee como una
+banda de marca; sobre ella, como un fallo.
+
+La sombra del texto se queda. En el borde de abajo el degradado ya está flojo
+y es lo que despega el pie.
 
 | Línea | Cuerpo | Ancho |
 | --- | --- | --- |
-| Nombre de la ruta | 88 | de 346 a 889 px |
-| Pie | 52 | de 433 a 622 px |
+| Nombre de la ruta | 92 | de 362 a 929 px |
+| Pie | 54 | de 450 a 646 px |
 
-**Cuerpo 88 para los cinco**, y lo fija el más largo: «CAMINO PRIMITIVO» mide
-889 px y la placa deja 892 de hueco entre márgenes. A 95 se sale, y cambiar el
-cuerpo de uno a otro en una lista de cuatro rutas se nota.
+**Cuerpo 92 para los cinco**, y lo fija el más largo: «CAMINO PRIMITIVO» mide
+929 px sobre un lienzo útil de 960. Sin placa entra algo más que antes, que
+iba a 88. Cambiar el cuerpo de uno a otro en una lista de cinco rutas se nota,
+así que van todos igual.
 
 ## Los planos de recurso
 
@@ -179,22 +200,19 @@ el clip arrastra y que ahí no dice nada: se va.
 El logo de la placa va a 560 px de ancho en vez de los 460 de las otras
 piezas.
 
-## El velo detrás de los rótulos
+## El velo de la tarjeta de apertura
 
-El verde de marca es bastante más claro que el bosque, y el degradado de la
-placa de cierre pone además su extremo claro arriba, que es donde va el texto.
-Medido:
+La apertura va sobre el degradado de la placa de cierre, que es plano y pone
+además su extremo claro arriba, que es donde va el texto. Ahí sí basta con el
+velo fino de bosque, que es el mismo recurso que llevan las cartelas de la
+línea:
 
-| Sobre | Lima `#B0F808` | Blanco |
+| Sobre | Blanco | Lima `#B0F808` |
 | --- | --- | --- |
-| Olivo `#7AA606` a pelo | **2,23:1** | 2,88:1 |
-| Con el velo de bosque al 45 % | 3,87:1 | 4,99:1 |
+| Olivo `#7AA606` a pelo | 2,88:1 | 2,23:1 |
+| Con el velo de bosque al 45 % | **4,99:1** | 3,87:1 |
 
-El mínimo para texto grande es 3:1, así que la lima a pelo se queda corta, y
-es justo la línea que lleva el golpe. Con el velo, que es el mismo recurso que
-llevan las cartelas de la línea y por el mismo motivo, los dos entran de
-sobra y el fondo se sigue leyendo como verde de marca. El rótulo de la ruta lo
-lleva también, y ahí hace aún más falta: cae sobre el bambú.
+El mínimo para texto grande es 3:1. Las dos líneas van en blanco.
 
 **Dos líneas y no tres.** El modelo que se pasó lleva tres, una de entrada
 grande, una de enlace pequeña y el sujeto enorme abajo. Con esos cuerpos el

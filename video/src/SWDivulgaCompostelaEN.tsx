@@ -95,6 +95,7 @@ const Lineas: React.FC<{ lineas: Linea[]; largo: number; relevo: number }> = ({
             lineHeight: 0.94,
             letterSpacing: "-0.03em",
             color: l.color,
+            textShadow: "0 6px 26px rgba(24,72,52,0.55)",
             ...entra(frame, relevo * i, largo),
           }}
         >
@@ -109,14 +110,14 @@ const Lineas: React.FC<{ lineas: Linea[]; largo: number; relevo: number }> = ({
  * La tarjeta de apertura: velo suave y texto encima.
  *
  * Va sobre el degradado de marca, que es plano, así que basta con el velo,
- * el mismo recurso que llevan las cartelas de la línea. Medido: la lima
- * sobre el olivo a pelo da 2,23:1 de contraste y el blanco 2,88, por debajo
- * del 3:1 que es el mínimo para texto grande; con el velo al 45 % suben a
- * 3,87 y 4,99.
+ * el mismo recurso que llevan las cartelas de la línea. **Las dos líneas en
+ * blanco**, que es lo que manda la guía sobre olivo. Medido: el blanco sobre
+ * el olivo a pelo da 2,88:1, por debajo del 3:1 que es el mínimo para texto
+ * grande; con el velo al 45 % sube a 4,99.
  */
 const APERTURA: Linea[] = [
   { texto: "WHAT IS THE CAMINO DE", tam: 66, color: brand.white },
-  { texto: "SANTIAGO?", tam: 150, color: brand.lime },
+  { texto: "SANTIAGO?", tam: 150, color: brand.white },
 ];
 
 const TarjetaApertura: React.FC<{ total: number }> = ({ total }) => {
@@ -136,8 +137,7 @@ const TarjetaApertura: React.FC<{ total: number }> = ({ total }) => {
     >
       <AbsoluteFill
         style={{
-          background:
-            "linear-gradient(to bottom, rgba(24,72,52,0.55) 0%, rgba(24,72,52,0.45) 20%, rgba(24,72,52,0) 34%)",
+          background: VELO,
         }}
       />
       <div style={{ textAlign: "center", position: "relative" }}>
@@ -148,26 +148,47 @@ const TarjetaApertura: React.FC<{ total: number }> = ({ total }) => {
 };
 
 /**
- * Los rótulos de ruta: **degradado de bosque, sin recuadro**.
+ * Los rótulos de ruta: **degradado del verde de marca y las letras en
+ * blanco**, que es la combinación de la guía y la que garantiza que el olivo
+ * salga en pantalla.
  *
- * El texto va en el verde de marca, que es lo que se pidió, y eso obliga a
- * apretar el degradado. Medido contra el 10 % más claro del fondo real de
- * cada tramo, no contra un fondo inventado: con el velo suave de la tarjeta
- * de apertura, al 45 %, el verde olivo `#7AA606` se queda entre **1,15 y
- * 1,44** de contraste, y el mínimo para texto grande es 3:1. A eso no se le
- * llama poco legible, se le llama ilegible.
+ * Antes iba un velo de bosque con el nombre en color, y ninguna de las tres
+ * variantes que se probaron encima de la imagen real aguantaba. Queda
+ * anotado lo que dio cada una, medido contra el 10 % más claro del fondo de
+ * los cinco tramos:
  *
- * Subiendo la banda de detrás del texto a **0,94** sube a 3,1 y entra. Sigue
- * siendo un degradado y no un recuadro: ocupa el ancho entero, no tiene borde
- * y se deshace hacia abajo. Se probó también con placa opaca ajustada al
- * texto, que da 3,61, pero ese recuadro no gustó.
+ * | | Verde de marca | Lima |
+ * | --- | --- | --- |
+ * | Velo fino de bosque, 0,45 | 1,15 – 1,44 | 2,57 – 3,23 |
+ * | Velo cerrado, 0,94 | 3,05 | 6,4 |
+ * | Placa opaca de bosque | 3,61 | 8,08 |
  *
- * **Cuerpo 88 para los cinco**, y lo fija el más largo: "CAMINO PRIMITIVO"
- * mide 889 px sobre un lienzo útil de 892. A 95 se sale, y cambiar el cuerpo
- * de uno a otro en una lista de cuatro rutas se nota.
+ * Con el degradado de marca detrás, el fondo deja de depender del plano: el
+ * blanco va sobre olivo siempre. El degradado baja por la escala de verdes de
+ * la guía, `#7AA606` arriba y `#668814` a la altura del texto, así que el
+ * contraste va de 3,1 a 3,4:1 en vez de los 2,88 que da el olivo a pelo, y
+ * **Se apaga en el 23 % del alto, 441 px**, y eso lo fija la presentadora: el
+ * pelo le empieza en el 470 y con la cola larga el borde del degradado le
+ * cruzaba la frente, que se veía como una mancha sobre la cara. La sombra se
+ * queda, que es lo que despega el texto donde el degradado ya está flojo.
+ *
+ * **Cuerpo 92 para los cinco**, y lo fija el más largo: "CAMINO PRIMITIVO"
+ * mide 929 px sobre un lienzo útil de 960.
  */
-const RUTA_TAM = 88;
-const PIE_TAM = 52;
+const RUTA_TAM = 92;
+const PIE_TAM = 54;
+
+/** El velo de bosque de la guía, sólo para la tarjeta de apertura. */
+const VELO =
+  "linear-gradient(to bottom, rgba(24,72,52,0.55) 0%, rgba(24,72,52,0.45) 20%, rgba(24,72,52,0) 34%)";
+
+/**
+ * El degradado de marca detrás de los rótulos de ruta, dentro de la escala de
+ * verdes de la guía y apagándose antes del tercio de cuadro.
+ */
+const DEGRADADO_RUTA =
+  "linear-gradient(to bottom, rgba(122,166,6,0.97) 0%, rgba(112,151,13,0.95) 16%," +
+  " rgba(102,136,20,0.55) 19.5%, rgba(79,107,15,0) 23%)";
 
 const RotuloRuta: React.FC<{ lineas: Linea[]; total: number; rapido?: boolean }> = ({
   lineas,
@@ -189,13 +210,8 @@ const RotuloRuta: React.FC<{ lineas: Linea[]; total: number; rapido?: boolean }>
         opacity: salida,
       }}
     >
-      <AbsoluteFill
-        style={{
-          background:
-            "linear-gradient(to bottom, rgba(24,72,52,0.96) 0%, rgba(24,72,52,0.94) 16%, rgba(24,72,52,0.55) 24%, rgba(24,72,52,0) 34%)",
-        }}
-      />
-      <div style={{ textAlign: "center", position: "relative", ...entra(frame, 0, largo) }}>
+      <AbsoluteFill style={{ background: DEGRADADO_RUTA }} />
+      <div style={{ textAlign: "center", position: "relative" }}>
         <Lineas lineas={lineas} largo={largo} relevo={rapido ? 0 : 5} />
       </div>
     </AbsoluteFill>
@@ -216,7 +232,7 @@ const RUTAS: { desde: number; hasta: number; lineas: Linea[]; nombre: string }[]
     hasta: 24.3,
     nombre: "French Way",
     lineas: [
-      { texto: "FRENCH WAY", tam: RUTA_TAM, color: brand.green },
+      { texto: "FRENCH WAY", tam: RUTA_TAM, color: brand.white },
       { texto: "MOST POPULAR", tam: PIE_TAM, color: brand.white },
     ],
   },
@@ -224,26 +240,26 @@ const RUTAS: { desde: number; hasta: number; lineas: Linea[]; nombre: string }[]
     desde: 24.45,
     hasta: 26.3,
     nombre: "Portuguese Way",
-    lineas: [{ texto: "PORTUGUESE WAY", tam: RUTA_TAM, color: brand.green }],
+    lineas: [{ texto: "PORTUGUESE WAY", tam: RUTA_TAM, color: brand.white }],
   },
   {
     desde: 26.55,
     hasta: 27.75,
     nombre: "Northern Way",
-    lineas: [{ texto: "NORTHERN WAY", tam: RUTA_TAM, color: brand.green }],
+    lineas: [{ texto: "NORTHERN WAY", tam: RUTA_TAM, color: brand.white }],
   },
   {
     desde: 27.85,
     hasta: 29.3,
     nombre: "Camino Primitivo",
-    lineas: [{ texto: "CAMINO PRIMITIVO", tam: RUTA_TAM, color: brand.green }],
+    lineas: [{ texto: "CAMINO PRIMITIVO", tam: RUTA_TAM, color: brand.white }],
   },
   {
     desde: 34.3,
     hasta: 36.95,
     nombre: "Sarria",
     lineas: [
-      { texto: "SARRIA", tam: RUTA_TAM, color: brand.green },
+      { texto: "SARRIA", tam: RUTA_TAM, color: brand.white },
       { texto: "MOST POPULAR START", tam: PIE_TAM, color: brand.white },
     ],
   },
