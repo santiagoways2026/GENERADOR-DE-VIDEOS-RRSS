@@ -38,6 +38,11 @@ TRAMOS = [
     (75.55, 82.45),  # los paisajes y el final en Santiago
 ]
 CRUCE = 0.30      # las junturas caen en silencio, con ambiente a los dos lados
+# Los huecos sin voz de la pieza ya montada, en segundos de la pieza. Salen de
+# la transcripcion, no de oido, y de ahi se saca el color de la cama del final.
+HUECOS = [(6.80, 7.80), (14.85, 15.32), (19.08, 19.38), (22.47, 22.55),
+          (26.90, 27.48), (29.02, 29.22), (32.72, 32.82), (38.08, 38.40),
+          (43.52, 43.86), (48.08, 48.22)]
 COLA = 4.00       # cama de ambiente bajo la placa de marca
 FIN = None        # se calcula
 
@@ -95,41 +100,59 @@ def main():
 
 
 def ambiente(x, dura):
-    """Cama sintetizada a partir de los huecos mas limpios de la propia pieza.
+    """Cama sintetizada a partir de los huecos de la propia pieza.
 
     Ni un bucle ni silencio: se saca la huella espectral de los huecos y se
-    sintetiza con fase aleatoria, que es lo que dice la regla 11. Los huecos
-    se eligen por factor de cresta, pico entre rms: por debajo de 5 es
-    ambiente y por encima hay una respiracion dentro.
+    sintetiza con fase aleatoria, que es lo que dice la regla 11.
+
+    **Los huecos son los de HUECOS, no los que salgan de un percentil.**
+    Coger las ventanas mas flojas de la pieza mete colas de voz dentro, y una
+    cola de voz es mas brillante que una sala: medido, la cama salia 3,5 dB
+    por encima del ambiente de verdad entre 3 y 8 kHz, y eso se oye como
+    ruido. Con los huecos medidos, el color cuadra banda a banda. Cada ventana
+    se comprueba ademas por factor de cresta, pico entre rms: por encima de 5
+    hay una respiracion dentro y se descarta.
+
+    **La ventana de sintesis va en raiz.** Con ventana de Hann y medio solape,
+    la suma reconstruye bien una senal, pero aqui cada ventana lleva fase
+    aleatoria y no esta correlacionada con la anterior: lo que se suma no son
+    amplitudes sino potencias, y w1^2 + w2^2 no es constante. Vale 1 en el
+    centro de cada ventana y 0,5 en el cruce, asi que la cama sale con un
+    temblor de 3 dB al ritmo del salto. Medido sobre esta pieza: un pico a
+    21,5 Hz en la envolvente, que son los 44100 entre 2048 del salto, y su
+    armonico a 43. A esa frecuencia no se oye como tremolo, se oye como que el
+    audio se rompe. Con la ventana en raiz, w^2 es Hann y Hann mas Hann
+    desplazada media ventana suma 1: la potencia queda plana.
     """
-    n = 4096
-    trozos = x[:len(x) // n * n].reshape(-1, n)
-    rms = np.sqrt((trozos ** 2).mean(1)) + 1e-12
-    cresta = np.abs(trozos).max(1) / rms
-    quietos = trozos[(cresta < 5) & (rms < np.percentile(rms, 30))]
-    if len(quietos) < 4:
-        quietos = trozos[np.argsort(rms)[:8]]
-    huella = np.abs(np.fft.rfft(quietos * np.hanning(n), axis=1)).mean(0)
+    n = 2048
+    ven = np.hanning(n)
+    trozos = []
+    for a0, a1 in HUECOS:
+        t = x[int(a0 * SR):int(a1 * SR)]
+        for i in range(0, len(t) - n, n // 2):
+            w = t[i:i + n]
+            r = np.sqrt((w ** 2).mean()) + 1e-12
+            if np.abs(w).max() / r < 5:
+                trozos.append(w)
+    if len(trozos) < 8:
+        sys.exit("los huecos no dan ni ocho ventanas: revisa HUECOS")
+    trozos = np.array(trozos)
+    huella = np.abs(np.fft.rfft(trozos * ven, axis=1)).mean(0)
 
     salto = n // 2
     total = int(dura * SR) + n
     cama = np.zeros(total, np.float32)
-    ventana = np.hanning(n).astype(np.float32)
+    # Hann periodica en raiz: ver la explicacion de arriba.
+    ventana = np.sqrt(0.5 - 0.5 * np.cos(2 * np.pi * np.arange(n) / n)).astype(np.float32)
     for i in range(0, total - n, salto):
         fase = np.exp(2j * np.pi * np.random.rand(len(huella)))
         cama[i:i + n] += (np.fft.irfft(huella * fase, n) * ventana).astype(np.float32)
     cama = cama[:int(dura * SR)]
-    # Se nivela contra el ambiente con el que empalma, no contra la media ni
-    # contra el ultimo medio segundo: ahi todavia queda cola de voz y la cama
-    # entraba 4 dB por encima de lo que suena de verdad entre frase y frase.
-    # Se mide en ventanas de una decima sobre los ultimos siete segundos, que
-    # es el tramo entero, y se coge el percentil 10: los tres ultimos
-    # segundos son casi todo voz y el percentil salia 3 dB alto.
-    m = int(0.1 * SR)
-    cola = x[-int(7.0 * SR):]
-    v = cola[:len(cola) // m * m].reshape(-1, m)
-    suelo = np.percentile(np.sqrt((v ** 2).mean(1)), 10)
-    cama *= (suelo + 1e-12) / (np.sqrt((cama ** 2).mean()) + 1e-12)
+
+    # Se nivela contra el ambiente de los propios huecos, que es contra lo que
+    # empalma, no contra la media de la pieza.
+    suelo = np.sqrt((trozos ** 2).mean())
+    cama *= suelo / (np.sqrt((cama ** 2).mean()) + 1e-12)
     return cama
 
 

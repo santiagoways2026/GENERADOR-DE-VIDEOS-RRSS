@@ -167,9 +167,24 @@ Estas salieron de revisar piezas reales y ahorran repetir errores:
    - **No se hace con un bucle.** Los huecos entre frases duran medio segundo,
      así que el ciclo vuelve cada segundo y medio y se nota. Se saca la huella
      espectral, que es el color de la sala, y se sintetiza con fase aleatoria.
+   - **La ventana de síntesis va en raíz, y no se divide por el peso.** Con
+     Hann y medio solape la suma reconstruye bien una señal, pero aquí cada
+     ventana lleva fase aleatoria y no está correlacionada con la anterior: lo
+     que se suma no son amplitudes sino potencias, y w1² + w2² no es constante.
+     Vale 1 en el centro de la ventana y 0,5 en el cruce, así que la cama sale
+     con un temblor de 3 dB al ritmo del salto. En el reel alemán era una línea
+     a 21,5 Hz, los 44100 entre los 2048 del salto, que destacaba 6,4 veces
+     sobre el resto de la envolvente. A esa frecuencia no se oye como trémolo,
+     se oye como que el audio se rompe, y así llegó el aviso. Con la ventana en
+     raíz, w² es Hann y Hann más Hann desplazada media ventana suma 1: la
+     potencia queda plana y la línea baja a 2,3 veces, que es el suelo.
    - **Los huecos se eligen midiendo**, con el factor de cresta, pico entre
      rms: por debajo de 5 es ambiente, por encima hay una respiración o un
-     golpe de aire dentro. `--listar` los mide.
+     golpe de aire dentro. `--listar` los mide. Y se eligen **por su sitio, no
+     por un percentil de nivel**: coger las ventanas más flojas de la pieza
+     mete colas de voz dentro, y una cola de voz es más brillante que una
+     sala. En el reel alemán eso dejaba la cama 3,5 dB por encima del ambiente
+     de verdad entre 3 y 8 kHz, y una cama más brillante se oye como ruido.
    - **La cama se nivela contra el ambiente con el que empalma**, no contra la
      media de la pieza. La media salía de 3 a 8 dB por encima, y una cama que
      entra más alta que lo que viene detrás se oye como un escalón.

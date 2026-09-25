@@ -79,18 +79,28 @@ def huella(audio, huecos):
 
 def sintetiza(h, segundos, canales):
     """Superposición y suma con fase aleatoria. Sin ciclo: cada ventana es
-    ruido distinto y sólo comparten el color."""
+    ruido distinto y sólo comparten el color.
+
+    **La ventana de síntesis va en raíz, y no se divide por el peso.** Con
+    Hann y medio solape, la suma reconstruye bien una señal, pero aquí cada
+    ventana lleva fase aleatoria y no está correlacionada con la anterior: lo
+    que se suma no son amplitudes sino potencias, y w1² + w2² no es constante.
+    Vale 1 en el centro de cada ventana y 0,5 en el cruce, así que la cama sale
+    con un temblor de 3 dB al ritmo del salto. Medido sobre la pieza alemana:
+    un pico a 21,5 Hz en la envolvente, que son los 44100 entre 2048 del salto,
+    y su armónico a 43. A esa frecuencia no se oye como trémolo, se oye como
+    que el audio se rompe. Dividir por el peso tampoco lo arregla, porque el
+    peso suma amplitudes. Con la ventana en raíz, w² es Hann y Hann más Hann
+    desplazada media ventana suma 1: la potencia queda plana."""
     total = int(segundos * SR)
     salida = np.zeros((total + VENTANA, canales))
-    peso = np.zeros((total + VENTANA, 1))
-    ven = np.hanning(VENTANA)[:, None]
+    ven = np.sqrt(0.5 - 0.5 * np.cos(2 * np.pi * np.arange(VENTANA) / VENTANA))[:, None]
     rng = np.random.default_rng(20260923)
     for i in range(0, total, SALTO):
         fase = rng.uniform(0, 2 * np.pi, h.shape)
         trozo = np.fft.irfft(h * np.exp(1j * fase), n=VENTANA, axis=0) * ven
         salida[i:i + VENTANA] += trozo
-        peso[i:i + VENTANA] += ven
-    salida = salida[:total] / np.maximum(peso[:total], 1e-9)
+    salida = salida[:total]
 
     # Una deriva muy lenta de nivel, para que no suene a ruido de cinta.
     t = np.arange(total) / SR

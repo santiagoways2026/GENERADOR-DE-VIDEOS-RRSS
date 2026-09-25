@@ -1,11 +1,33 @@
-# Reel del testimonio alemán · vertical · V4
+# Reel del testimonio alemán · vertical · V5
 
 Pieza de 54,6 s, 1080x1920 a 30 fps, para stories y TikTok.
 
 Fuente viva: `video/src/SWReelCaminoDE.tsx`.
 Pista: `herramientas/scripts/audio-reel-de.py`.
 
-## Qué cambia respecto a la V3
+## Qué cambia respecto a la V4
+
+**La cama de ambiente del final sonaba rota, y era verdad.** Dos fallos, los
+dos en cómo se sintetizaba:
+
+1. **Un temblor a 21,5 Hz.** La síntesis solapa ventanas con fase aleatoria, y
+   con ventana de Hann eso no suma amplitudes sino potencias: w² + w² vale 1
+   en el centro de cada ventana y 0,5 en el cruce, así que la cama salía con
+   3 dB de temblor al ritmo del salto. Medido sobre la envolvente, una línea a
+   21,4 Hz que destacaba 6,4 veces sobre el resto. A esa frecuencia no se oye
+   como trémolo, se oye como que el audio se rompe. Con la ventana en raíz la
+   potencia queda plana y la línea baja a 2,3 veces, que es el suelo de ruido.
+2. **La cama era más brillante que la sala.** El color salía de las ventanas
+   más flojas de la pieza, y ahí dentro caen colas de voz, que son más
+   brillantes que una sala: 3,5 dB de más entre 3 y 8 kHz y 3 dB de nivel de
+   más. Ahora el color sale de los **huecos medidos**, los de verdad, que
+   están listados en la constante `HUECOS` del script. Cuadra banda a banda
+   dentro de 2 dB y el nivel a una décima.
+
+El mismo fallo de la ventana estaba en `herramientas/scripts/ambiente.py`, que
+es la herramienta que usan las demás piezas. Queda arreglado ahí también.
+
+## Qué cambió de la V3 a la V4
 
 Cuatro planos, tres fuera y uno reencuadrado:
 
@@ -23,7 +45,7 @@ con un muro al fondo no abre nada».
 
 1. **Fuera los subtítulos quemados.** Se probaron y con las cartelas a la vez
    el tercio de abajo se quedaba en un muro de texto. Manda la cartela. Los
-   pies siguen existiendo, en `SW_Reel_Camino_DE_V4.srt`, para subirlos como
+   pies siguen existiendo, en `SW_Reel_Camino_DE_V5.srt`, para subirlos como
    subtítulo de la plataforma, que además se puede activar y desactivar.
 2. **Los dos planos del 27 y del 29 fuera.** Eran dos muros de piedra con
    maleza, sin nadie y parecidos entre sí. En su sitio, un peregrino pasando
@@ -129,9 +151,11 @@ golpe de música en el último segundo del bruto, que se va con el resto. Eso
 simplifica las junturas, que no tienen que cuadrar con ningún pulso, y obliga
 en el final: la placa de marca va con **cama de ambiente sintetizada**, no con
 una canción metida a última hora, que es lo que dice la regla 11. La cama sale
-de los huecos de la propia pieza, con fase aleatoria, y queda a -27,4 dB
-contra los -28,6 del ambiente con el que empalma. Su autocorrelación es 0,06,
-así que no se oye el ciclo.
+de los huecos de la propia pieza, con fase aleatoria, y queda a -30,7 dB
+contra los -30,8 del ambiente con el que empalma. Su autocorrelación es 0,06,
+así que no se oye el ciclo, y su envolvente no tiene ninguna línea: el pico
+más alto en la banda de 10 a 120 Hz se queda en 3,7 veces la mediana, que es
+lo que da el ruido por sí solo.
 
 **Si el equipo quiere música**, hay que pasar un tema: meterle uno sólo a la
 cola sonaría a parche, y ponerlo debajo de toda la pieza cambia el registro y
@@ -233,7 +257,7 @@ otras. Técnicamente funcionaba. Pero con las dos cosas en pantalla el tercio
 de abajo se quedaba en un muro de texto, y de los dos el que tiene que mandar
 es la cartela, que es la que lleva el mensaje de marca.
 
-Los veinte pies están en **`SW_Reel_Camino_DE_V4.srt`**, listos para subirlos
+Los veinte pies están en **`SW_Reel_Camino_DE_V5.srt`**, listos para subirlos
 como subtítulo de la plataforma. Así además el espectador los activa o los
 quita, y no compiten con la cartela.
 

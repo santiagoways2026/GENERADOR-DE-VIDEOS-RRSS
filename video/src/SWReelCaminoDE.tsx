@@ -46,7 +46,7 @@ import { Cartela, CierreMarca, PlacaMarca } from "./componentes/CartelaMarca";
  * **La pieza va sin subtitulos quemados.** Se probaron, en el registro de la
  * marca y por encima de las cartelas, y con las dos cosas a la vez el tercio
  * de abajo se quedaba en un muro de texto. Manda la cartela. Los pies estan
- * en `docs/redes/SW_Reel_Camino_DE_V4.srt` por si se quieren subir como
+ * en `docs/redes/SW_Reel_Camino_DE_V5.srt` por si se quieren subir como
  * subtitulo de la plataforma, que ademas se puede activar y desactivar. El
  * componente `Subtitulo` se queda en `CartelaMarca.tsx` para quien lo
  * necesite.
