@@ -130,6 +130,36 @@ Las aprobadas, todas usadas ya en pieza:
 
 En negrita, lo que lleva el recuadro verde.
 
+## Las dos líneas, y cómo se llaman
+
+En este repositorio hay dos formatos y **se piden por su nombre**. Si alguien
+dice una de estas dos palabras, ya está dicho todo lo demás:
+
+| Se pide | Es | Se monta con |
+| --- | --- | --- |
+| «un **testimonio**» | Un cliente hablando a cámara, en su idioma | «Cómo se monta un testimonio» |
+| «un **short**» | Divulgación en inglés, una presentadora respondiendo una pregunta | «Cómo se monta un short» |
+
+No se parecen en nada más que en el formato del lienzo:
+
+| | Testimonio | Short |
+| --- | --- | --- |
+| Quién habla | Un cliente | Una presentadora de la agencia |
+| Tono | Llano, lo dice él | Llamativo, gancho al principio |
+| Texto | Cartelas del kit, minúscula, **abajo a la izquierda** | Montserrat 900, **caja alta y centrado, arriba** |
+| Fondo del texto | Sin placa, sobre el plano | Degradado del verde de marca |
+| Qué llega | Un bruto o un montaje con la entrevista | Un clip ya montado, con subtítulos quemados |
+| Lo primero que se hace | Transcribir y quitar lo que sobra | Sustituir la cartela pegada del principio |
+| Planos de recurso | Tres o cuatro, tapando junturas | Uno por rótulo |
+| Duración | 40 a 60 s | 28 a 50 s |
+
+Lo que sí comparten, y no se negocia: la placa de marca al final, el paso por
+`comprobar-inserciones.py` y `planos-visibles.py` antes de renderizar, y
+`entregar.py` después.
+
+En el código los shorts se llaman `SWDivulga…`, de cuando la línea no tenía
+todavía nombre corto. Es lo mismo.
+
 ## Cómo se monta un testimonio
 
 Esto es lo que ha salido de montar tres seguidos y es lo que se hace de aquí
@@ -187,37 +217,94 @@ CTA, y sin eso la pieza no es de la marca.
 **6 · Antes de renderizar**, `comprobar-inserciones.py` y
 `planos-visibles.py`. **Después de renderizar**, `entregar.py`.
 
-## Las piezas de divulgación
+## Cómo se monta un short
 
-Otra línea, y **no se montan como un testimonio**. Son reels en inglés para
-TikTok, Instagram y Shorts, con una presentadora a cámara respondiendo una
-pregunta, y el clip llega ya montado, con sus subtítulos palabra a palabra
-quemados y su chapa de marca. El registro es más llamativo: **Montserrat 900
-en caja alta y centrado, arriba del cuadro**, no las cartelas del kit en
-minúscula y abajo.
+Lo que ha salido de montar dos, y es lo que se hace de aquí en adelante. **Un
+short no se monta como un testimonio**: el clip llega ya editado, con sus
+subtítulos palabra a palabra quemados y su chapa de marca, así que no hay nada
+que recortar ni que recomponer. Lo que se hace es cambiarle la apertura,
+ponerle los rótulos de la casa y cerrarlo con la marca.
 
-Lo que se hace siempre, y está razonado en las fichas de cada pieza:
+**1 · Mirar el clip antes de tocarlo.** Cuatro medidas, todas sobre el archivo:
 
-1. **La cartela pegada del principio se sustituye.** Esos clips abren con una
-   caja verde y texto blanco que no es de la marca. En su sitio va el titular
-   grande, y para que se lea hay que **quitarle el fondo a la presentadora**
-   con `recortar-figura.py` y poner detrás el degradado de la placa de cierre.
-   El titular se ajusta a ella: se mide en qué píxel empieza su pelo y el
-   bloque se queda por encima. Los subtítulos del clip se quedan.
-2. **Los rótulos llevan el degradado del verde de marca y las letras en
-   blanco.** Así el fondo deja de depender del plano. Se probó el texto en
-   color sobre un velo fino y no llega: el verde de marca da de 1,15 a 1,44 de
-   contraste sobre el fondo real y la lima de 2,57 a 3,23, con el mínimo en
-   3:1. El degradado se apaga en el 23 % del alto, que es por encima del pelo
-   de la presentadora; con la cola más larga, el borde le cruza la cara.
-3. **Un plano de recurso por rótulo**, y sobre el dato, no sobre el nombre:
-   así el rótulo cae sobre el paisaje y no sobre su cara.
-4. **Placa de marca al final**, con el logo a 560 px. Estos clips acaban en
-   fundido a negro y la guía no funde a negro: se corta antes y la placa entra
-   por encima del fundido.
+- **La resolución.** Estos clips vuelven de un editor online y han venido a
+  720x1280 y a 360x640. Si no llega a 1080x1920 se sube antes de nada, y
+  **con limpieza delante**, porque a bitrate bajo el bloqueo se amplía igual
+  que la imagen:
 
-Las referencias vivas son `SWDivulgaCompostelaEN.tsx` y
-`SWDivulgaDuracionEN.tsx`, con su tabla de edición en `docs/redes/`.
+  ```bash
+  ffmpeg -i bruto.mp4 -vf \
+      "hqdn3d=2:1:3:3,scale=1080:1920:flags=lanczos,unsharp=5:5:0.5:5:5:0.0" \
+      -c:v libx264 -crf 17 -preset medium -pix_fmt yuv420p -c:a copy base.mp4
+  ```
+
+  Subir tres veces se nota y hay que decirlo, no disimularlo.
+- **La cartela pegada del principio**, contando los píxeles verdes de su
+  esquina fotograma a fotograma. Da el límite exacto por donde sustituirla.
+- **El final**, con la media de cada fotograma: estos clips acaban en fundido
+  a negro y con segundos de negro detrás, y a veces con una sílaba suelta ya
+  sobre el negro.
+- **La marca de agua**, el mínimo temporal de cada píxel en los cuatro bordes.
+  Si la hay, `marca-agua.py --modo recorte`; si no, la base conserva el
+  encuadre entero.
+
+**2 · Transcribir y medir los huecos.** Los rótulos van sobre el tramo en que
+ella dice ese dato, y eso se sabe con los tiempos delante. Con
+`sherpa-onnx-whisper-small.en`, decodificando por bloques de voz: la
+envolvente en ventanas de 20 ms con umbral en el percentil 35 corta por
+palabra, que es la precisión que hace falta.
+
+**3 · La apertura.** Se le quita el fondo a la presentadora con
+`recortar-figura.py --hasta <fin de la cartela> --vuelta 0.4` y detrás va el
+degradado de la placa de cierre. **El titular se ajusta a ella, nunca al
+revés**: se mide en qué píxel empieza su pelo sobre la tarjeta ya compuesta y
+el bloque se queda por encima. Con el pelo en el 444 caben dos líneas; en el
+572 caben tres. Y el cuerpo lo fija el ancho, medido con `fontTools` contra la
+fuente empaquetada: el lienzo útil es 960 px y de ahí no se pasa.
+
+La estructura es **setup pequeño más golpe grande**: una o dos líneas a 66-72
+y la palabra que remata a 150-190.
+
+**4 · Los rótulos.** Caja alta, centrados, `paddingTop` 150, con el degradado
+del verde de marca detrás y **las letras en blanco**:
+
+| | Valor |
+| --- | --- |
+| Nombre | 92 |
+| Pie | 54 |
+| Degradado | `#7AA606` arriba, `#668814` a la altura del texto, apagado en el 23 % |
+
+Ese 23 % no es decorativo: **es por encima del pelo de la presentadora**. Con
+la cola más larga el borde del degradado le cruza la frente y se ve como una
+mancha en la cara.
+
+**El pie lleva un dato que el titular no dice.** En la pieza de las rutas era
+«MOST POPULAR», porque el tema era cuántos caminos hay; en la de la duración,
+«4 TO 5 WEEKS», porque el tema era cuánto se tarda. Si el pie repite el
+titular, sobra.
+
+**5 · Un plano de recurso por rótulo, y sobre el dato, no sobre el nombre.**
+Así el rótulo cae sobre el paisaje y no sobre su cara, y la base vuelve a ella
+en cuanto sigue hablando. Valen las reglas 13, 15 y 21 enteras: encuadre con
+`encuadrar.py` **mirado en un fotograma** (las dos veces que se dio por bueno
+sin mirar salió un primer plano de espaldas), `ritmo` por debajo de 1 si el
+archivo se queda corto, y `origen` movido si el principio del plano está
+tapado.
+
+**6 · La placa de marca**, con el logo a 560 px. La imagen se corta antes del
+fundido a negro del clip y la placa entra por encima. Los segundos de placa
+van en silencio: sobre una placa quieta y al final, el silencio se lee como
+que ha terminado.
+
+**7 · Antes de renderizar**, `comprobar-inserciones.py` y
+`planos-visibles.py`. **Después**, `entregar.py`.
+
+Las referencias vivas son `SWDivulgaCompostelaEN.tsx`, de las rutas, y
+`SWDivulgaDuracionEN.tsx`, de la duración, con su tabla de edición en
+`docs/redes/`. Ahí está razonado por qué el texto va en blanco sobre el
+degradado y no en color sobre un velo: medido contra el fondo real, el verde
+de marca da de 1,15 a 1,44 de contraste y la lima de 2,57 a 3,23, con el
+mínimo en 3:1.
 
 ## Reglas de montaje aprendidas
 

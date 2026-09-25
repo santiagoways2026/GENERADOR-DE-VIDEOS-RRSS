@@ -1,4 +1,4 @@
-# Divulgación · «What is the Camino de Santiago?» · inglés · reel · V6
+# Short · «What is the Camino de Santiago?» · inglés · 1080x1920 · V6
 
 Pieza de 50,0 s, 1080x1920 a 30 fps. Sale de un clip vertical de 720x1280 ya
 montado, con sus subtítulos palabra a palabra.

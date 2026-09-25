@@ -1,9 +1,10 @@
-# Divulgación · «How long does it take to walk the Camino?» · inglés · reel · V1
+# Short · «How long does it take to walk the Camino?» · inglés · 1080x1920 · V1
 
-Pieza de 30,9 s, 1080x1920 a 30 fps. Segunda de la línea de divulgación, y se
-monta igual que la primera: ver
-`SW_Divulga_Compostela_EN_V6_tabla-de-edicion.md`, que es donde está razonado
-cada recurso. Aquí va sólo lo propio de esta pieza.
+Pieza de 30,9 s, 1080x1920 a 30 fps. Segundo short de la línea, y se monta
+igual que el primero: la receta está en «Cómo se monta un short» del
+`CLAUDE.md`, y el razonamiento de cada recurso en
+`SW_Divulga_Compostela_EN_V6_tabla-de-edicion.md`. Aquí va sólo lo propio de
+esta pieza.
 
 Fuentes vivas:
 

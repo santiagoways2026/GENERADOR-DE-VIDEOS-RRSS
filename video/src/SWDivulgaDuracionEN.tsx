@@ -15,10 +15,11 @@ import { brand } from "./brand/theme";
 import { PlacaMarca } from "./componentes/CartelaMarca";
 
 /**
- * Santiago Ways · pieza de divulgación en inglés, reel 1080x1920 a 30 fps.
+ * Santiago Ways · **short** en inglés, 1080x1920 a 30 fps. La receta está en
+ * «Cómo se monta un short», en el `CLAUDE.md`.
  *
- * «How long does it take to walk the Camino de Santiago?». Segunda de la
- * línea de divulgación y se monta igual que `SWDivulgaCompostelaEN`: no es un
+ * «How long does it take to walk the Camino de Santiago?». Segundo de la
+ * línea y se monta igual que `SWDivulgaCompostelaEN`: no es un
  * testimonio, el clip ya viene montado con sus subtítulos palabra a palabra y
  * su chapa de marca, y de la receta del testimonio se aplican sólo el
  * arreglo de la apertura, la placa de cierre y el paso de entrega.

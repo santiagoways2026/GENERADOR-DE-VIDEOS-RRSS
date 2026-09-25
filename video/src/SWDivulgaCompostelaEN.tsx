@@ -15,7 +15,8 @@ import { brand } from "./brand/theme";
 import { PlacaMarca } from "./componentes/CartelaMarca";
 
 /**
- * Santiago Ways · pieza de divulgación en inglés, reel 1080x1920 a 30 fps.
+ * Santiago Ways · **short** en inglés, 1080x1920 a 30 fps. Primero de la
+ * línea; la receta está en «Cómo se monta un short», en el `CLAUDE.md`.
  *
  * Esta **no es un testimonio** y no se monta como uno: el clip ya viene
  * montado, con sus subtítulos palabra a palabra y su chapa de marca en el
