@@ -19,7 +19,7 @@ fundido cruzado de verdad, y para eso hay que tener material de los dos lados
 del corte a la vez. Los cortes caen todos en silencio entre frases, así que
 hay de sobra.
 
-    python3 montaje-social-ES.py <carpeta con social-montaje.mp4>
+    python3 montaje-social-ES.py <carpeta con social-ES.mp4>
 """
 import os
 import subprocess
@@ -73,7 +73,7 @@ def video(S):
     filtros.append("".join(vs[n:]) + f"concat=n={len(HOTELES)}:v=1:a=0[vH]")
 
     m = i
-    ent += ["-i", f"{S}/social-montaje.mp4"]
+    ent += ["-i", f"{S}/social-ES.mp4"]
     filtros += [
         f"[{m}:v]trim=0:{CORTE_A},setpts=PTS-STARTPTS,fps=fps=30,setsar=1,format=yuv420p[vA]",
         f"[{m}:v]trim={CORTE_B}:{FIN},setpts=PTS-STARTPTS,fps=fps=30,setsar=1,format=yuv420p[vB]",
@@ -97,7 +97,7 @@ def cruza(salida, desde, a, b):
 
 def audio(S):
     """Monta la pista entera con fundidos cruzados en las tres junturas."""
-    a = leer(FF, f"{S}/social-montaje.mp4")
+    a = leer(FF, f"{S}/social-ES.mp4")
     canales = a.shape[1]
     h = huella(a, HUECOS)
 
@@ -105,15 +105,27 @@ def audio(S):
         return float(np.median([np.sqrt((a[int(x * SR):int(y * SR)] ** 2).mean())
                                 for x, y in ventanas]))
 
-    def cama(seg, nivel):
+    def cama(seg, entra, sale=None):
         """El nivel no es el medio de la pieza: es el del ambiente con el que
         la cama empalma. La media sale 3 y 8 dB por encima, y una cama que
-        entra mas alta que lo que viene detras se oye como un escalon."""
+        entra mas alta que lo que viene detras se oye como un escalon.
+
+        **Y empalma por los dos lados.** El ambiente de esta grabacion no es
+        constante: el hueco del corte A esta a -33,4 dB y el del corte B a
+        -25,4, ocho de diferencia. Con un solo nivel, la cama cuadraba al
+        entrar y se quedaba ocho por debajo al salir, asi que al volver el
+        testimonio parecia que el audio subia de golpe. Va con una rampa de
+        un nivel al otro: ocho dB repartidos en siete segundos no se oyen
+        como rampa, se oyen como que la sala era asi."""
         c = sintetiza(h, seg + CRUCE, canales)
-        return c * (nivel / max(float(np.sqrt((c ** 2).mean())), 1e-9))
+        c *= entra / max(float(np.sqrt((c ** 2).mean())), 1e-9)
+        if sale is not None:
+            g = np.linspace(1.0, sale / entra, len(c))[:, None]
+            c *= g
+        return c
 
     camaP = cama(DUR_AP, rms((0.05, 0.62)))
-    camaH = cama(DUR_HO, rms((19.62, 20.42)))
+    camaH = cama(DUR_HO, rms((19.62, 20.42)), rms((24.92, 25.19)))
     total = int((DUR_AP + CORTE_A + DUR_HO + (FIN - CORTE_B)) * SR)
     out = np.zeros((total, canales), np.float32)
 
@@ -126,6 +138,9 @@ def audio(S):
 
     # Los cuatro bloques, y encima los tres fundidos cruzados de 150 ms.
     mete(0.0, camaP[:int(DUR_AP * SR)])
+    # La pieza abre con la cama: que no arranque de golpe.
+    n = int(0.25 * SR)
+    out[:n] *= np.linspace(0, 1, n)[:, None]
     mete(DUR_AP, tramo(0.0, CORTE_A))
     mete(DUR_AP + CORTE_A, camaH[:int(DUR_HO * SR)])
     mete(DUR_AP + DUR_HO + CORTE_A, tramo(CORTE_B, FIN))

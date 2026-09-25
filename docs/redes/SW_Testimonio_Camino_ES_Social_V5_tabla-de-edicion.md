@@ -1,4 +1,4 @@
-# Testimonio del Camino · español · redes · V4
+# Testimonio del Camino · español · redes · V5
 
 Pieza de 54,9 s, 1280x720 a 30 fps. Sale de la pieza social antigua, que
 duraba 60,1 s con cartela de agencia, fundido final y dos marcas de agua.
@@ -9,6 +9,47 @@ Fuentes vivas:
 - `herramientas/scripts/montaje-social-ES.py` · la base, `social-ES-v3.mp4`
 - `herramientas/scripts/ambiente.py` · las camas de ambiente
 - `herramientas/scripts/comprobar-inserciones.py` · mide que cada plano llega
+
+## Qué cambia respecto a la V4
+
+**Las dos camas de ambiente sonaban rotas, y era un fallo de la síntesis.**
+Se oía al principio y en el segundo 23, que es justo donde están.
+
+1. **Una línea a 43 Hz.** `sintetiza()` solapa ventanas de ruido con fase
+   aleatoria, y con ventana de Hann eso no suma amplitudes sino potencias:
+   w² + w² vale 1 en el centro de la ventana y 0,5 en el cruce, así que la
+   cama salía con 3 dB de temblor al ritmo del salto, los 44100 entre los
+   2048 de ventana. Medido sobre la envolvente de la V4: una línea a 43 Hz
+   que destacaba **7,5 veces** sobre el resto en la apertura y **10,1** en la
+   de hoteles. A esa frecuencia no se oye como trémolo, se oye como un ruido
+   raro. Con la ventana en raíz, la potencia queda plana y la línea baja a
+   **2,1 y 1,6**, que es el suelo.
+2. **La cama de hoteles cuadraba por un lado y no por el otro.** El ambiente
+   de esta grabación no es constante: el hueco del corte A está a -33,4 dB y
+   el del corte B a -25,4, ocho de diferencia. Con un solo nivel, la cama
+   entraba bien y salía ocho por debajo de lo que venía detrás, así que al
+   volver el testimonio parecía que el audio subía de golpe. Va con una rampa
+   de un nivel al otro: ocho dB en siete segundos no se oyen como rampa, se
+   oyen como que la sala era así. Medido, el empalme de salida pasa de 8 dB
+   de escalón a 2,7.
+
+Además la pieza ya no arranca de golpe: la cama de apertura entra con un
+fundido de 0,25 s.
+
+## Lo que sigue sin tener voz, y por qué
+
+Quedan **tres segundos al principio y siete en el 23** en los que sólo suena
+ambiente. No es un fallo, es cómo está montada la pieza:
+
+- Los tres del principio son la apertura nueva, que sustituye al bosque a
+  contraluz con el que arrancaba el original.
+- Los siete del 23 son el bloque de alojamiento, que entró en lugar de los
+  5,15 s en los que habla un segundo peregrino al que no se ve nunca.
+
+Se pueden quitar los dos, pero cambia el montaje: habría que poner la voz por
+debajo de esos planos, y entonces la pieza pasa de 54,9 a unos 45 s y las
+cartelas dejan de caer sobre la frase que ilustran. **Está sin hacer a
+propósito, a la espera de decidirlo.**
 
 ## Qué se quitó del original
 
