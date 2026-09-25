@@ -74,7 +74,14 @@ def main():
         ritmo = campo("ritmo", 1.0)
         nombre = (re.search(r'nombre:\s*"([^"]*)"', c) or [None, "?"])[1]
         fu = re.search(r"fuente:\s*(\w+)\s*\+\s*\"([^\"]+)\"", c)
-        rel = carpetas.get(fu.group(1), "") + fu.group(2) if fu else base
+        # Tambien vale la ruta escrita entera, sin constante de carpeta delante.
+        suelta = re.search(r'fuente:\s*"([^"]+)"', c)
+        if fu:
+            rel = carpetas.get(fu.group(1), "") + fu.group(2)
+        elif suelta:
+            rel = suelta.group(1)
+        else:
+            rel = base
         if rel is None:
             continue
 

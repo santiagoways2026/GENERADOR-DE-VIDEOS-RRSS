@@ -7,18 +7,23 @@ uno.
 
     python3 catalogar.py entrada.mp4 salida.jpg [columnas] [filas]
 """
-import subprocess, sys, tempfile, os, json
+import subprocess, sys, tempfile, os, re
 from PIL import Image, ImageDraw
 
-FF = "/home/user/centrodecontrol/video/node_modules/@remotion/compositor-linux-x64-gnu/ffmpeg"
-FP = "/home/user/centrodecontrol/video/node_modules/@remotion/compositor-linux-x64-gnu/ffprobe"
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from ambiente import binarios  # noqa: E402
+
+FF = binarios()
 
 
 def duracion(src):
-    out = subprocess.run(
-        [FP, "-v", "error", "-show_entries", "format=duration", "-of", "json", src],
-        capture_output=True, text=True, check=True)
-    return float(json.loads(out.stdout)["format"]["duration"])
+    """La saca del propio ffmpeg: aqui no siempre hay un ffprobe al lado."""
+    out = subprocess.run([FF, "-i", src], capture_output=True, text=True).stderr
+    m = re.search(r"Duration: (\d+):(\d+):(\d+\.\d+)", out)
+    if not m:
+        raise SystemExit("no se puede leer la duracion de " + src)
+    h, mi, se = m.groups()
+    return int(h) * 3600 + int(mi) * 60 + float(se)
 
 
 def hoja(src, dst, cols=5, filas=3, ancho=380):

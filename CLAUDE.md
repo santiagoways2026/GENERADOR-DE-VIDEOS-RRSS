@@ -187,6 +187,38 @@ CTA, y sin eso la pieza no es de la marca.
 **6 · Antes de renderizar**, `comprobar-inserciones.py` y
 `planos-visibles.py`. **Después de renderizar**, `entregar.py`.
 
+## Las piezas de divulgación
+
+Otra línea, y **no se montan como un testimonio**. Son reels en inglés para
+TikTok, Instagram y Shorts, con una presentadora a cámara respondiendo una
+pregunta, y el clip llega ya montado, con sus subtítulos palabra a palabra
+quemados y su chapa de marca. El registro es más llamativo: **Montserrat 900
+en caja alta y centrado, arriba del cuadro**, no las cartelas del kit en
+minúscula y abajo.
+
+Lo que se hace siempre, y está razonado en las fichas de cada pieza:
+
+1. **La cartela pegada del principio se sustituye.** Esos clips abren con una
+   caja verde y texto blanco que no es de la marca. En su sitio va el titular
+   grande, y para que se lea hay que **quitarle el fondo a la presentadora**
+   con `recortar-figura.py` y poner detrás el degradado de la placa de cierre.
+   El titular se ajusta a ella: se mide en qué píxel empieza su pelo y el
+   bloque se queda por encima. Los subtítulos del clip se quedan.
+2. **Los rótulos llevan el degradado del verde de marca y las letras en
+   blanco.** Así el fondo deja de depender del plano. Se probó el texto en
+   color sobre un velo fino y no llega: el verde de marca da de 1,15 a 1,44 de
+   contraste sobre el fondo real y la lima de 2,57 a 3,23, con el mínimo en
+   3:1. El degradado se apaga en el 23 % del alto, que es por encima del pelo
+   de la presentadora; con la cola más larga, el borde le cruza la cara.
+3. **Un plano de recurso por rótulo**, y sobre el dato, no sobre el nombre:
+   así el rótulo cae sobre el paisaje y no sobre su cara.
+4. **Placa de marca al final**, con el logo a 560 px. Estos clips acaban en
+   fundido a negro y la guía no funde a negro: se corta antes y la placa entra
+   por encima del fundido.
+
+Las referencias vivas son `SWDivulgaCompostelaEN.tsx` y
+`SWDivulgaDuracionEN.tsx`, con su tabla de edición en `docs/redes/`.
+
 ## Reglas de montaje aprendidas
 
 Estas salieron de revisar piezas reales y ahorran repetir errores:

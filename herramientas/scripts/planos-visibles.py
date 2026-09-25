@@ -112,9 +112,17 @@ def main():
     ins = []
     for linea in re.findall(r"\{ desde:.*?\}", fuente):
         d = re.search(r"desde: ([\d.]+), hasta: ([\d.]+)", linea)
+        if not d:
+            # La anotacion de tipo de las listas tiene la misma forma que una
+            # insercion: `{ desde: number; hasta: number; ... }`.
+            continue
         f = re.search(r'fuente: (\w+) \+ "([^"]+)"', linea)
-        ins.append((float(d.group(1)), float(d.group(2)),
-                    rutas.get(f.group(1), "") + f.group(2) if f else None))
+        suelta = re.search(r'fuente: "([^"]+)"', linea)
+        if f:
+            rel = rutas.get(f.group(1), "") + f.group(2)
+        else:
+            rel = suelta.group(1) if suelta else None
+        ins.append((float(d.group(1)), float(d.group(2)), rel))
     ins.sort()
 
     libres, t = [], 0.0
