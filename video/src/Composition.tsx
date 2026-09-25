@@ -5,6 +5,10 @@ import {
   DURACION_TESTIMONIO_ARGENTINAS,
   TestimonioArgentinas,
 } from "./TestimonioArgentinas";
+import {
+  DURACION_TESTIMONIO_CECILIA,
+  TestimonioCecilia,
+} from "./TestimonioCecilia";
 
 /**
  * Cada <Composition> es un video registrado: que componente lo pinta,
@@ -25,6 +29,14 @@ export const MyComposition = () => {
         id="TestimonioArgentinas"
         component={TestimonioArgentinas}
         durationInFrames={DURACION_TESTIMONIO_ARGENTINAS}
+        fps={fps}
+        width={format.reels.width}
+        height={format.reels.height}
+      />
+      <Composition
+        id="TestimonioCecilia"
+        component={TestimonioCecilia}
+        durationInFrames={DURACION_TESTIMONIO_CECILIA}
         fps={fps}
         width={format.reels.width}
         height={format.reels.height}
