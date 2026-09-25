@@ -12,8 +12,9 @@ import {
  * minuto.
  *
  * El montaje original ya trae los hoteles buenos y termina llegando a la
- * plaza del Obradoiro, así que solo se sustituye el mojón y la muralla del
- * principio por maletas.
+ * plaza del Obradoiro. Se sustituyen el mojón y la muralla del principio
+ * por maletas, y la recepción y el pasillo por la habitación de piedra y
+ * la terraza de la casa de piedra.
  */
 const config: ConfigTestimonio = {
   src: "testimonios/cecilia.mp4",
@@ -30,6 +31,16 @@ const config: ConfigTestimonio = {
         { src: "equipaje-portal", dura: 1.2, encuadre: "60% 50%" },
         { src: "maleta-concha", dura: 1.73 },
         { src: "equipaje-etiquetas", dura: 0.93 },
+      ],
+    },
+    {
+      // La recepción y el pasillo dejan paso a los hoteles elegidos.
+      nombre: "Hoteles",
+      desde: 36.73,
+      hasta: 41.63,
+      lista: [
+        { src: "habitacion-piedra", dura: 1.7 },
+        { src: "terraza-casa-piedra", dura: 3.13 },
       ],
     },
   ],
@@ -55,7 +66,7 @@ const config: ConfigTestimonio = {
       gancho: "Hoteles seleccionados",
       destacado: "y máximo confort",
     },
-    // Recepción y pasillo del hotel.
+    // Habitación de piedra y terraza.
     {
       desde: 37.0,
       hasta: 42.6,
