@@ -14,8 +14,9 @@ import { Cierre } from "./escenas/Cierre";
  * 53,3 s, con un fundido de salida sobre esa pausa: el tramo final del
  * montaje original mezcla dos músicas y se deja fuera.
  *
- * Los planos de comida del montaje original se tapan con peregrinos
- * disfrutando del Camino; el audio del testimonio sigue por debajo.
+ * Sobre el audio del testimonio, el metraje del albergue se sustituye:
+ * maletas donde estaba el comedor, peregrinos disfrutando donde estaban
+ * los platos y hoteles donde estaban las literas y la terraza.
  *
  * Los textos son titulares de mensaje directo: gancho en blanco y el
  * servicio sobre el bloque olivo, a la izquierda y en el tercio inferior,
@@ -28,17 +29,20 @@ const f = (s: number) => Math.round(s * 30);
 const FIN = 53.9;
 const CIERRE = 2.4;
 
-/** Tramo de los platos en el testimonio, que se sustituye. */
+/** Tramos del testimonio que se tapan con metraje de recurso; el audio del
+ *  testimonio sigue por debajo. */
+const MALETAS = { desde: 6.07, hasta: 12.5 };
 const COMIDA = { desde: 12.5, hasta: 18.33 };
+const HOTELES = { desde: 24.23, hasta: 32.63 };
 
 /** Titulares en pantalla, en segundos del testimonio. Cada uno cae sobre
  *  el plano que mejor lo ilustra. */
 const TITULARES = [
   // Ellas a cámara, al arrancar.
   { desde: 0.4, hasta: 5.8, gancho: "Camino de Santiago", destacado: "organizado" },
-  // Peregrinos caminando, en lugar de la comida.
-  { desde: 12.8, hasta: 18.1, gancho: "Transporte de equipajes", destacado: "entre etapas" },
-  // Habitaciones.
+  // Maletas, en lugar del comedor.
+  { desde: 7.0, hasta: 12.3, gancho: "Transporte de equipajes", destacado: "entre etapas" },
+  // Hoteles.
   { desde: 24.4, hasta: 29.2, gancho: "Hoteles seleccionados", destacado: "y máximo confort" },
   // Cruceiro y capilla, en pleno Camino.
   {
@@ -87,6 +91,43 @@ export const TestimonioArgentinas: React.FC = () => {
           duracion={f(FIN)}
           overlay={0.1}
           zoom={1.03}
+        />
+      </Sequence>
+
+      {/* Maletas en lugar del comedor del albergue. */}
+      <Sequence
+        from={f(MALETAS.desde)}
+        durationInFrames={f(MALETAS.hasta) - f(MALETAS.desde)}
+        name="Maletas"
+      >
+        <Planos
+          total={f(MALETAS.hasta) - f(MALETAS.desde)}
+          overlay={0.12}
+          lista={[
+            { src: "maletas-etiqueta", dura: 2.23 },
+            { src: "equipaje-fila", dura: 0.7 },
+            { src: "equipaje-portal", dura: 1.2, encuadre: "60% 50%" },
+            { src: "maleta-concha", dura: 1.73 },
+            { src: "equipaje-etiquetas", dura: 0.93 },
+          ]}
+        />
+      </Sequence>
+
+      {/* Hoteles en lugar de las habitaciones y la terraza del albergue. */}
+      <Sequence
+        from={f(HOTELES.desde)}
+        durationInFrames={f(HOTELES.hasta) - f(HOTELES.desde)}
+        name="Hoteles"
+      >
+        <Planos
+          total={f(HOTELES.hasta) - f(HOTELES.desde)}
+          overlay={0.12}
+          lista={[
+            { src: "jardin-alojamiento", dura: 4.4 },
+            { src: "habitacion-alojamiento", dura: 3.14 },
+            { src: "habitacion-piedra", dura: 1.7 },
+            { src: "terraza-casa-piedra", dura: 3.13 },
+          ]}
         />
       </Sequence>
 
