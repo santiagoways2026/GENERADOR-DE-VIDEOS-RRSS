@@ -45,7 +45,10 @@ export const Cartela: React.FC<{
   desde?: number;
   /** Tono de la placa inferior: olivo por defecto, lima para rematar. */
   tono?: "olivo" | "lima" | "bosque";
-}> = ({ eyebrow, principal, secundaria, desde = 0, tono = "olivo" }) => {
+  /** Distancia al borde superior. En anuncios de Reels conviene bajarla
+   *  para librar la franja que tapa la interfaz de Instagram. */
+  arriba?: number;
+}> = ({ eyebrow, principal, secundaria, desde = 0, tono = "olivo", arriba = 200 }) => {
   const frame = useCurrentFrame();
 
   const inferior = {
@@ -63,7 +66,7 @@ export const Cartela: React.FC<{
       name="Cartela"
       style={{
         position: "absolute",
-        top: 200,
+        top: arriba,
         left: margin,
         right: margin,
         display: "flex",
