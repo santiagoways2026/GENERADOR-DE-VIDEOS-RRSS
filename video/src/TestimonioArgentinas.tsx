@@ -23,7 +23,7 @@ const f = (s: number) => Math.round(s * 30);
 
 /** Fin del testimonio y duración del cierre, en segundos. */
 const FIN = 57.55;
-const CIERRE = 2.45;
+const CIERRE = 2.4;
 
 /** Franja superior que ocupa la interfaz de Reels en un anuncio. */
 const ARRIBA = 290;
