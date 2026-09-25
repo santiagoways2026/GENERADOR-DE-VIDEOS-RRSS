@@ -1,15 +1,29 @@
-# Reel del testimonio alemán · vertical · V3
+# Reel del testimonio alemán · vertical · V4
 
 Pieza de 54,6 s, 1080x1920 a 30 fps, para stories y TikTok.
 
 Fuente viva: `video/src/SWReelCaminoDE.tsx`.
 Pista: `herramientas/scripts/audio-reel-de.py`.
 
-## Qué cambia respecto a la V2
+## Qué cambia respecto a la V3
+
+Cuatro planos, tres fuera y uno reencuadrado:
+
+| Segundo | Qué pasaba | Qué entra |
+| --- | --- | --- |
+| 10,8 | la pareja caminaba por el 30 % del ancho y el recorte centrado la dejaba pegada al borde | el mismo plano, mirando al 30 % |
+| 12,7 | un grupo a contraluz con media gente cortada | `habitacion`, el mejor plano de alojamiento que hay y el único 1080p de la pieza |
+| 15,0 | un contraluz velado que en vertical es un muro de árboles oscuros | `maletas-etiqueta`, la concha colgada de la maleta |
+| 41,9 | una mesa con un señor mirando a cámara, que sabe a foto de stock | `arco-piedra`, con un peregrino cruzándolo |
+
+Lo del contraluz es literalmente la regla 14 del manual: «un contraluz velado
+con un muro al fondo no abre nada».
+
+## Qué cambió de la V2 a la V3
 
 1. **Fuera los subtítulos quemados.** Se probaron y con las cartelas a la vez
    el tercio de abajo se quedaba en un muro de texto. Manda la cartela. Los
-   pies siguen existiendo, en `SW_Reel_Camino_DE_V3.srt`, para subirlos como
+   pies siguen existiendo, en `SW_Reel_Camino_DE_V4.srt`, para subirlos como
    subtítulo de la plataforma, que además se puede activar y desactivar.
 2. **Los dos planos del 27 y del 29 fuera.** Eran dos muros de piedra con
    maleza, sin nadie y parecidos entre sí. En su sitio, un peregrino pasando
@@ -152,14 +166,14 @@ Tiempos ya de la pieza montada:
 | 4,0 s | 6,1 s | `piezas-viejas/grupo-calle` |
 | 6,1 s | 8,4 s | `testimonios/peregrinas-muros` |
 | 8,4 s | 10,8 s | `piezas-viejas/sendero-peregrinos` |
-| 10,8 s | 12,7 s | `testimonios/pareja-muros-piedra` |
-| 12,7 s | 15,0 s | `piezas-viejas/peregrinos-campo` |
+| 10,8 s | 12,7 s | `testimonios/pareja-muros-piedra` · reencuadrado al 30 % |
+| 12,7 s | 14,8 s | `habitacion` (1080p) |
 
 ### Bloque 2 · lo espiritual y el vínculo
 
 | Entra | Sale | Plano |
 | --- | --- | --- |
-| 15,0 s | 16,7 s | `testimonios/sendero-contraluz` |
+| 14,8 s | 16,7 s | `piezas-viejas/maletas-etiqueta` |
 | 16,7 s | 18,8 s | `piezas-viejas/iglesia-espadana` · reencuadrado al 80 % |
 | 18,8 s | 20,2 s | `testimonios/interior-capilla` |
 | 20,2 s | 22,2 s | `piezas-viejas/soportales-rua` |
@@ -179,7 +193,7 @@ Tiempos ya de la pieza montada:
 | 36,1 s | 38,2 s | `piezas-viejas/puente-calzada` |
 | 38,2 s | 40,3 s | `testimonios/mojon-peregrinas` · sobre «Kennenlernen» |
 | 40,3 s | 41,9 s | `testimonios/gaiteros` · reencuadrado al 68 % |
-| 41,9 s | 43,7 s | `brindis` (1080p) |
+| 41,9 s | 43,7 s | `piezas-viejas/arco-piedra` |
 
 ### Bloque 4 · los paisajes y Santiago
 
@@ -201,6 +215,7 @@ delante lo que importa. Cuatro planos se salían:
 | Plano | Dónde estaba el sujeto | Se mira al |
 | --- | --- | --- |
 | `peregrinos-calzada` | el grupo, a la izquierda | 32 % |
+| `pareja-muros-piedra` | la pareja, a la izquierda | 30 % |
 | `iglesia-espadana` | la iglesia, a la derecha, y el resto era cielo | 80 % |
 | `cruceiro-prado` | el cruceiro, a la derecha del centro | 61 % |
 | `gaiteros` | cinco músicos de lado a lado; caben tres | 68 % |
@@ -218,7 +233,7 @@ otras. Técnicamente funcionaba. Pero con las dos cosas en pantalla el tercio
 de abajo se quedaba en un muro de texto, y de los dos el que tiene que mandar
 es la cartela, que es la que lleva el mensaje de marca.
 
-Los veinte pies están en **`SW_Reel_Camino_DE_V3.srt`**, listos para subirlos
+Los veinte pies están en **`SW_Reel_Camino_DE_V4.srt`**, listos para subirlos
 como subtítulo de la plataforma. Así además el espectador los activa o los
 quita, y no compiten con la cartela.
 

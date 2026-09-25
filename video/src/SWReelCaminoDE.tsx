@@ -46,7 +46,7 @@ import { Cartela, CierreMarca, PlacaMarca } from "./componentes/CartelaMarca";
  * **La pieza va sin subtitulos quemados.** Se probaron, en el registro de la
  * marca y por encima de las cartelas, y con las dos cosas a la vez el tercio
  * de abajo se quedaba en un muro de texto. Manda la cartela. Los pies estan
- * en `docs/redes/SW_Reel_Camino_DE_V3.srt` por si se quieren subir como
+ * en `docs/redes/SW_Reel_Camino_DE_V4.srt` por si se quieren subir como
  * subtitulo de la plataforma, que ademas se puede activar y desactivar. El
  * componente `Subtitulo` se queda en `CartelaMarca.tsx` para quien lo
  * necesite.
@@ -108,19 +108,20 @@ const CARAS: Insercion[] = [
   { desde: 0.0, hasta: 1.7, origen: 0.0, fuente: D + "grupo.mp4", nombre: "El grupo · abre" },
 ];
 
-/** Bloque 1: el grupo, los amigos de la universidad, las familias. */
+/** Bloque 1: el grupo, los amigos de la universidad, las familias y donde se alojan. */
 const GRUPO: Insercion[] = [
   { desde: 1.7, hasta: 4.0, origen: 0.1, fuente: V + "peregrinos-calzada.mp4", encuadre: mirar(0.32), nombre: "Calzada" },
   { desde: 4.0, hasta: 6.1, origen: 0.1, fuente: V + "grupo-calle.mp4", nombre: "Grupo por la calle" },
   { desde: 6.1, hasta: 8.4, origen: 0.05, fuente: T + "peregrinas-muros.mp4", nombre: "Peregrinas entre muros" },
   { desde: 8.4, hasta: 10.8, origen: 0.1, fuente: V + "sendero-peregrinos.mp4", nombre: "Sendero" },
-  { desde: 10.8, hasta: 12.7, origen: 0.05, fuente: T + "pareja-muros-piedra.mp4", nombre: "Pareja entre muros" },
-  { desde: 12.7, hasta: 15.0, origen: 0.1, fuente: V + "peregrinos-campo.mp4", nombre: "Peregrinos por el campo" },
+  { desde: 10.8, hasta: 12.7, origen: 0.05, fuente: T + "pareja-muros-piedra.mp4", encuadre: mirar(0.3), nombre: "Pareja entre muros" },
+  // El mejor plano de alojamiento que hay, y el unico 1080p de la pieza.
+  { desde: 12.7, hasta: 14.8, origen: 0.0, fuente: B + "habitacion.mp4", nombre: "Habitacion 1080p" },
 ];
 
-/** Bloque 2: lo que esperan, el enriquecimiento y el vinculo. */
+/** Bloque 2: el equipaje, y lo que esperan del Camino. */
 const CAMINO: Insercion[] = [
-  { desde: 15.0, hasta: 16.7, origen: 0.0, fuente: T + "sendero-contraluz.mp4", nombre: "Sendero a contraluz" },
+  { desde: 14.8, hasta: 16.7, origen: 0.1, fuente: V + "maletas-etiqueta.mp4", nombre: "Maletas · etiqueta del tour" },
   { desde: 16.7, hasta: 18.8, origen: 0.1, fuente: V + "iglesia-espadana.mp4", encuadre: mirar(0.8), nombre: "Iglesia de espadana" },
   { desde: 18.8, hasta: 20.2, origen: 0.0, fuente: T + "interior-capilla.mp4", nombre: "Interior de capilla" },
   { desde: 20.2, hasta: 22.2, origen: 0.1, fuente: V + "soportales-rua.mp4", nombre: "Soportales" },
@@ -141,7 +142,7 @@ const DEPORTE: Insercion[] = [
   { desde: 36.1, hasta: 38.2, origen: 0.1, fuente: V + "puente-calzada.mp4", nombre: "Puente de calzada" },
   { desde: 38.2, hasta: 40.3, origen: 0.1, fuente: T + "mojon-peregrinas.mp4", nombre: "Mojon · kennenlernen" },
   { desde: 40.3, hasta: 41.9, origen: 0.0, fuente: T + "gaiteros.mp4", encuadre: mirar(0.68), nombre: "Gaiteros" },
-  { desde: 41.9, hasta: 43.7, origen: 0.05, fuente: B + "brindis.mp4", nombre: "Brindis 1080p" },
+  { desde: 41.9, hasta: 43.7, origen: 0.1, fuente: V + "arco-piedra.mp4", nombre: "Arco de piedra" },
 ];
 
 /** Bloque 4: los paisajes y el final en Santiago, que es donde cae el CTA. */
