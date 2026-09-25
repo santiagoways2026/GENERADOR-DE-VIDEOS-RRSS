@@ -21,6 +21,13 @@ import { Cartela, CierreMarca, PlacaMarca } from "./componentes/CartelaMarca";
  * los lados. Borrar la marca en su sitio no sirve aqui: cae sobre los pies y
  * la piedra, con mucha textura, y ahi el relleno se ve.
  *
+ * El clip venia de 64,98 s y se queda en 51,91: `montaje-testimonio-ES2.py`
+ * le quita tres tramos de 13,07 s en total, los tres cortando por el silencio
+ * entre frases. Ahi esta el porque de cada uno; aqui solo importa que **los
+ * tres empalmes van tapados con imagen**, que es la regla 8, y que dos de
+ * ellos dejaban ademas un resto de plano de 0,20 y 0,43 s, que no se lee como
+ * un plano sino como un parpadeo.
+ *
  * La base ya es vertical, asi que a diferencia de `SWReelCaminoES` no hay que
  * reencuadrar plano a plano: va entera en un `OffthreadVideo` con su audio.
  * Los que si hay que encuadrar son los planos de la biblioteca, que son 16:9.
@@ -42,9 +49,9 @@ import { Cartela, CierreMarca, PlacaMarca } from "./componentes/CartelaMarca";
 const FPS = 30;
 const f = (s: number) => Math.round(s * FPS);
 
-/** El clip dura 64,98 s. Detras va la placa de marca. */
-const MONTAJE = 64.98;
-const DURACION = 67.8;
+/** El montaje ya recortado dura 51,91 s. Detras va la placa de marca. */
+const MONTAJE = 51.91;
+const DURACION = 54.3;
 
 const MARGEN = 72;
 const MARGEN_ABAJO = 480;
@@ -61,7 +68,7 @@ const MARGEN_ABAJO = 480;
 const TAM = 70;
 const TAM_PIE = 34;
 
-const BASE = "montajes/testimonio-ES2.mp4";
+const BASE = "montajes/testimonio-ES2-corto.mp4";
 const B = "brutos/";
 const T = "brutos/testimonios/";
 
@@ -110,10 +117,25 @@ const INSERCIONES: Insercion[] = [
    * fotograma de holgura: a cero, `comprobar-inserciones.py` no avisa pero
    * cualquier redondeo congela el ultimo fotograma.
    */
-  { desde: 40.53, hasta: 42.6, origen: 0.05, fuente: B + "habitacion.mp4", encuadre: mirar(0.55), nombre: "Hoteles · habitacion con vistas" },
-  { desde: 42.6, hasta: 44.05, origen: 0.0, fuente: T + "habitacion-doble.mp4", ritmo: 0.68, encuadre: mirar(0.35), nombre: "Hoteles · habitacion doble" },
-  { desde: 44.05, hasta: 45.4, origen: 0.0, fuente: T + "lounge-hotel.mp4", ritmo: 0.86, encuadre: mirar(0.35), nombre: "Hoteles · salon" },
-  { desde: 45.4, hasta: 46.8, origen: 0.0, fuente: T + "bano-ducha.mp4", ritmo: 0.85, encuadre: mirar(0.5), nombre: "Hoteles · baño privado" },
+  { desde: 29.97, hasta: 32.04, origen: 0.05, fuente: B + "habitacion.mp4", encuadre: mirar(0.55), nombre: "Hoteles · habitacion con vistas" },
+  { desde: 32.04, hasta: 33.49, origen: 0.0, fuente: T + "habitacion-doble.mp4", ritmo: 0.68, encuadre: mirar(0.35), nombre: "Hoteles · habitacion doble" },
+  { desde: 33.49, hasta: 34.84, origen: 0.0, fuente: T + "lounge-hotel.mp4", ritmo: 0.86, encuadre: mirar(0.35), nombre: "Hoteles · salon" },
+  { desde: 34.84, hasta: 36.23, origen: 0.0, fuente: T + "bano-ducha.mp4", ritmo: 0.85, encuadre: mirar(0.5), nombre: "Hoteles · baño privado" },
+  /*
+   * Juntura del primer corte, en 13,60. El montaje deja el plano del camino
+   * asomando 0,20 s antes del empalme y despues salta dentro del mismo plano,
+   * porque los dos extremos del corte caen en la misma toma: la gente que
+   * anda da un brinco. Se tapa entero, del limite de plano al limite de
+   * plano, 13,40 a 16,03.
+   */
+  { desde: 13.4, hasta: 16.03, origen: 0.0, fuente: T + "peregrinas-muros.mp4", encuadre: mirar(0.55), nombre: "Juntura 1 · peregrina entre muros" },
+  /*
+   * Juntura del segundo corte, en 27,13. Antes se quedaban 0,43 s del plano
+   * de la mesa, que a esa duracion es un parpadeo. Se tapa desde su limite de
+   * plano, 26,70, y se suelta ya sobre la pareja. El agua quieta va sobre
+   * "nos da mucha tranquilidad", que es lo que se oye debajo.
+   */
+  { desde: 26.7, hasta: 28.1, origen: 0.0, fuente: T + "rio-remanso.mp4", encuadre: mirar(0.43), nombre: "Juntura 2 · remanso" },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -121,8 +143,8 @@ const INSERCIONES: Insercion[] = [
 export const SWReelAsistenciaES: React.FC = () => {
   const total = f(DURACION);
   const finMontaje = f(MONTAJE);
-  const entraPlaca = f(64.6);
-  const entraCierre = f(61.4);
+  const entraPlaca = f(51.5);
+  const entraCierre = f(48.4);
 
   return (
     <AbsoluteFill style={{ backgroundColor: brand.green }}>
@@ -173,16 +195,16 @@ export const SWReelAsistenciaES: React.FC = () => {
 
       {/*
         2 · "poder tener un número de apoyo 24 horas todos los días del
-        viaje", 21,5-25,5. La cartela entra en 22,0, que es donde empieza la
-        frase, y se queda hasta 26,6.
+        viaje". En el clip original iba de 21,5 a 25,5; con el primer tramo
+        fuera, la frase empieza en 17,4. La cartela entra en 17,9.
       */}
-      <Sequence from={f(22.0)} durationInFrames={f(26.6) - f(22.0)} name="2 · Teléfono 24/7">
+      <Sequence from={f(17.9)} durationInFrames={f(22.5) - f(17.9)} name="2 · Teléfono 24/7">
         <Cartela
           lineas={[
             [{ texto: "Teléfono de asistencia" }],
             [{ texto: "24/7", destacado: true }],
           ]}
-          total={f(26.6) - f(22.0)}
+          total={f(22.5) - f(17.9)}
           tam={TAM}
           margen={MARGEN}
           margenAbajo={MARGEN_ABAJO}
@@ -190,12 +212,12 @@ export const SWReelAsistenciaES: React.FC = () => {
         />
       </Sequence>
 
-      {/* 3 · sobre los cuatro planos de alojamiento, 40,53-46,80 */}
-      <Sequence from={f(40.8)} durationInFrames={f(46.6) - f(40.8)} name="3 · Hoteles seleccionados">
+      {/* 3 · sobre los cuatro planos de alojamiento, 29,97-36,23 */}
+      <Sequence from={f(30.24)} durationInFrames={f(36.04) - f(30.24)} name="3 · Hoteles seleccionados">
         <Cartela
           lineas={[[{ texto: "Hoteles" }], [{ texto: "seleccionados", destacado: true }]]}
           pie={["Habitación y baño privados"]}
-          total={f(46.6) - f(40.8)}
+          total={f(36.04) - f(30.24)}
           tam={TAM}
           margen={MARGEN}
           margenAbajo={MARGEN_ABAJO}
@@ -206,7 +228,7 @@ export const SWReelAsistenciaES: React.FC = () => {
       <Sequence from={entraCierre} durationInFrames={total - entraCierre} name="4 · Tu Camino empieza aquí">
         <CierreMarca
           lineas={[[{ texto: "Tu Camino" }], [{ texto: "empieza aquí", destacado: true }]]}
-          salidaTexto={f(64.5) - entraCierre}
+          salidaTexto={f(51.4) - entraCierre}
           tam={TAM}
           margen={MARGEN}
           margenAbajo={MARGEN_ABAJO}

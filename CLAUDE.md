@@ -360,6 +360,19 @@ Estas salieron de revisar piezas reales y ahorran repetir errores:
    se encoge hasta que la línea larga entre en una sola línea: partirla en
    tres sube el bloque 70 px y vuelve a la barbilla.
 
+24. **Un render de Remotion sale con el audio 43 ms por detrás.** Son 2048
+   muestras a 48 kHz, el retardo de arranque del codificador AAC, dos tramas
+   de 1024. Remotion no lo compensa y el contenedor tampoco: decodificando
+   con la lista de edición del mp4 o sin ella, el desfase es el mismo. Se
+   midió comparando dos renders distintos contra sus montajes de origen: la
+   imagen casa en el fotograma cero y el audio en +2048, exactamente igual en
+   los dos. A 43 ms un espectador entrenado ya nota que el audio va detrás, y
+   en un testimonio, que es todo caras hablando, se nota antes. Se quita
+   tirando las 2048 primeras muestras, que son el propio arranque del
+   codificador, y eso es lo que hace
+   `python3 herramientas/scripts/entregar.py <render.mp4>`, que además deja la
+   copia comprimida para revisar. **Se pasa a todo lo que se entregue.**
+
 ## Reglas técnicas de Remotion
 
 - **Usar `OffthreadVideo`, no el `Video` de `@remotion/media`**: este último
@@ -385,6 +398,15 @@ No hace falta pasar ninguna opción de navegador: `remotion.config.ts` detecta
 un Chromium ya instalado si lo hay, que es lo que permite renderizar en las
 sesiones de Claude Code en la web, donde la descarga del Chrome de Remotion
 está bloqueada.
+
+Lo que sale del render **no se entrega tal cual**: lleva el audio 43 ms por
+detrás, que es el retardo del codificador AAC. Se pasa por
+
+```bash
+python3 herramientas/scripts/entregar.py salida.mp4
+```
+
+que lo cuadra y deja al lado la copia comprimida para revisar.
 
 ## Preparar metraje
 
