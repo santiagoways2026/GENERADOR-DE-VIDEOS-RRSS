@@ -1,9 +1,9 @@
 import { AbsoluteFill, interpolate, Sequence, useCurrentFrame } from "remotion";
 import "./fuentes";
-import { brand, fontFamily, margin } from "./brand/theme";
-import { Cartela } from "./componentes/Cartela";
+import { brand, fontFamily } from "./brand/theme";
 import { Clip } from "./componentes/Clip";
-import { Logo } from "./componentes/Logo";
+import { Frase } from "./componentes/Frase";
+import { Planos } from "./componentes/Planos";
 import { Cierre } from "./escenas/Cierre";
 
 /**
@@ -13,10 +13,11 @@ import { Cierre } from "./escenas/Cierre";
  * (recorte del 5 % que mantiene el 9:16). Se corta en la pausa de voz de
  * 57,4 s para que, con el cierre, la pieza no pase del minuto.
  *
- * Solo tres cartelas: quién habla, el mensaje de organización sobre los
- * planos del albergue y el CTA. Van en la mitad superior, por encima de
- * las caras, y más bajas que en un reel orgánico para librar la franja que
- * tapa la interfaz de Instagram.
+ * Los planos de comida del montaje original se tapan con peregrinos
+ * disfrutando del Camino; el audio del testimonio sigue por debajo.
+ *
+ * El texto va suelto, con las palabras clave sobre el bloque olivo del kit,
+ * en la mitad superior y por debajo de la franja que tapa la interfaz.
  */
 
 const f = (s: number) => Math.round(s * 30);
@@ -25,19 +26,21 @@ const f = (s: number) => Math.round(s * 30);
 const FIN = 57.55;
 const CIERRE = 2.4;
 
-/** Franja superior que ocupa la interfaz de Reels en un anuncio. */
-const ARRIBA = 290;
+/** Tramo de los platos en el testimonio, que se sustituye. */
+const COMIDA = { desde: 12.5, hasta: 18.33 };
 
-/** Tramos de las cartelas, en segundos del testimonio. */
-const CARTELAS = [
-  { desde: 0.4, hasta: 5.7, principal: "Desde Argentina", secundaria: "al Camino de Santiago", eyebrow: "Testimonio real" },
-  // Sobre los planos del albergue: comedor, platos, habitaciones y terraza.
-  { desde: 7.0, hasta: 17.9, principal: "Todo organizado", secundaria: "etapa a etapa" },
+/** Frases en pantalla, en segundos del testimonio. */
+const FRASES = [
+  { desde: 0.4, hasta: 5.7, texto: "Desde *Argentina*\nal Camino de Santiago" },
+  // Sobre el comedor del albergue.
+  { desde: 7.0, hasta: 12.3, texto: "Todo *organizado*,\netapa a etapa" },
+  // Sobre los peregrinos que sustituyen a la comida.
+  { desde: 12.8, hasta: 18.1, texto: "Tú solo tienes\nque *disfrutar*" },
   // Un solo CTA, al final.
-  { desde: 52.4, hasta: FIN, principal: "Tu Camino, resuelto", secundaria: "Reserva en la web", tono: "lima" as const },
+  { desde: 52.4, hasta: FIN, texto: "*Reserva* tu Camino" },
 ];
 
-/** Deja salir la cartela con un fundido corto en lugar de cortarla en seco. */
+/** Deja salir la frase con un fundido corto en lugar de cortarla en seco. */
 const Salida: React.FC<{ duracion: number; children: React.ReactNode }> = ({
   duracion,
   children,
@@ -58,6 +61,8 @@ const Salida: React.FC<{ duracion: number; children: React.ReactNode }> = ({
 };
 
 export const TestimonioArgentinas: React.FC = () => {
+  const comida = f(COMIDA.hasta) - f(COMIDA.desde);
+
   return (
     <AbsoluteFill style={{ backgroundColor: brand.forest, fontFamily }}>
       <Sequence durationInFrames={f(FIN)} name="Testimonio">
@@ -69,31 +74,30 @@ export const TestimonioArgentinas: React.FC = () => {
         />
       </Sequence>
 
-      {/* La marca acompaña la pieza hasta el cierre, por encima de la franja
-          inferior que tapan el texto y los botones del anuncio. */}
-      <Sequence durationInFrames={f(FIN)} name="Marca">
-        <Logo
-          variante="blanco"
-          ancho={220}
-          style={{ position: "absolute", left: margin, bottom: 440, opacity: 0.92 }}
+      {/* Peregrinos felices en lugar de los platos. Van sin sonido: se sigue
+          oyendo el testimonio. */}
+      <Sequence from={f(COMIDA.desde)} durationInFrames={comida} name="Peregrinos">
+        <Planos
+          total={comida}
+          overlay={0.12}
+          lista={[
+            { src: "pareja-sendero", dura: 2.26, encuadre: "72% 50%" },
+            { src: "mirador-grupo", dura: 1.26, encuadre: "18% 50%" },
+            { src: "grupo-mimosas", dura: 1.2 },
+            { src: "brindis", dura: 2.0, encuadre: "62% 50%" },
+          ]}
         />
       </Sequence>
 
-      {CARTELAS.map((c) => (
+      {FRASES.map((c) => (
         <Sequence
-          key={c.principal}
+          key={c.texto}
           from={f(c.desde)}
           durationInFrames={f(c.hasta) - f(c.desde)}
-          name={c.principal}
+          name={c.texto.replace(/[*\n]/g, " ")}
         >
           <Salida duracion={f(c.hasta) - f(c.desde)}>
-            <Cartela
-              eyebrow={c.eyebrow}
-              principal={c.principal}
-              secundaria={c.secundaria}
-              tono={c.tono}
-              arriba={ARRIBA}
-            />
+            <Frase texto={c.texto} />
           </Salida>
         </Sequence>
       ))}
