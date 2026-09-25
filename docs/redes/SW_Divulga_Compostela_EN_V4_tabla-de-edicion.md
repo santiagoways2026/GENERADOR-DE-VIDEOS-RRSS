@@ -1,4 +1,4 @@
-# Divulgación · «What is the Camino de Santiago?» · inglés · reel · V3
+# Divulgación · «What is the Camino de Santiago?» · inglés · reel · V4
 
 Pieza de 50,0 s, 1080x1920 a 30 fps. Sale de un clip vertical de 720x1280 ya
 montado, con sus subtítulos palabra a palabra.
@@ -88,9 +88,19 @@ Los dos van arriba, en caja alta y centrados, y comparten componente.
 | Entra | Sale | Texto | Sobre qué |
 | --- | --- | --- | --- |
 | 0,00 s | 2,90 s | WHAT IS THE CAMINO DE / **SANTIAGO?** | La tarjeta de apertura |
-| 20,10 s | 24,00 s | **FRENCH WAY** / MOST POPULAR | «the French Way starts in France, crossing the Pyrenees», 19,6 – 23,9 |
+| 20,10 s | 24,30 s | FRENCH WAY / MOST POPULAR | «the French Way starts in France, crossing the Pyrenees» |
+| 24,45 s | 26,30 s | PORTUGUESE WAY | «you've also got the Portuguese Camino» |
+| 26,55 s | 27,75 s | NORTHERN WAY | «the Northern Way» |
+| 27,85 s | 29,30 s | CAMINO PRIMITIVO | «and the Primitivo» |
+| 34,30 s | 36,95 s | SARRIA / MOST POPULAR START | «a lot of people start in Sarria, which is the last 100 km» |
 
-En negrita, la línea en lima.
+Los límites salen de medir los huecos sin voz uno a uno, no de repartir a ojo.
+En la tarjeta de apertura la línea en negrita va en lima; los cinco rótulos de
+ruta van sobre placa, y eso tiene su apartado.
+
+«MOST POPULAR» y «MOST POPULAR START» no son adornos: ella dice «some routes
+are more popular» justo antes de la francesa, y «a lot of people start in
+Sarria» justo antes de Sarria.
 
 **Arriba y no abajo**, que es donde van las cartelas de testimonio, por dos
 cosas: el clip ya trae sus propios subtítulos quemados a media altura, y la
@@ -101,10 +111,47 @@ presentadora ocupa de la mitad para abajo, con el pelo empezando en el píxel
 more popular», así que el pie recoge lo que acaba de decir. Y del 22,2 en
 adelante el rótulo cae sobre el plano del puente, que es donde mejor se lee.
 
+## Los rótulos de ruta van sobre placa, y no es cuestión de gusto
+
+Se pidió el verde de marca en lugar de la lima. Con el velo que lleva la
+tarjeta de apertura eso no se puede leer. Medido contra el **10 % más claro
+del fondo real** de cada tramo, no contra un fondo inventado:
+
+| Tinta | Con velo al 45 % | Con velo al 85 % | Con placa opaca |
+| --- | --- | --- | --- |
+| Verde de marca `#7AA606` | **1,15 – 1,44** | 2,62 | **3,61** |
+| Lima `#B0F808` | 2,57 – 3,23 | 5,86 | 8,08 |
+| Blanco | 3,31 – 4,16 | 7,56 | 10,42 |
+
+A 1,15 eso no es poco legible, es ilegible; el mínimo para texto grande es
+3:1. Y no se arregla apretando el velo, porque a 0,85 todavía anda por 2,62.
+Sólo con la placa opaca llega a 3,61.
+
+Que además es lo que hace el kit de la marca: no pone texto suelto sobre el
+plano, lo pone sobre placa. La placa va de bosque `#184834`, que es la tinta
+de la guía, con esquinas de 6 px; el nombre de la ruta en el verde de marca y
+el pie en blanco, que sobre bosque da 10,42.
+
 | Línea | Cuerpo | Ancho |
 | --- | --- | --- |
-| FRENCH WAY | 125 | 891 px |
-| MOST POPULAR | 68 | 567 px |
+| Nombre de la ruta | 88 | de 346 a 889 px |
+| Pie | 52 | de 433 a 622 px |
+
+**Cuerpo 88 para los cinco**, y lo fija el más largo: «CAMINO PRIMITIVO» mide
+889 px y la placa deja 892 de hueco entre márgenes. A 95 se sale, y cambiar el
+cuerpo de uno a otro en una lista de cuatro rutas se nota.
+
+## Los planos de recurso
+
+Dos, que es lo que se pidió:
+
+| Entra | Sale | Plano | Sobre qué |
+| --- | --- | --- | --- |
+| 41,30 s | 43,20 s | Dos peregrinos andando entre dedaleras | «it was all organized» |
+| 45,40 s | 46,50 s | Llegada, brazos en alto | «the Camino starts wherever you decide» |
+
+La frase que cierra gana mucho más sobre gente celebrando que sobre un plano
+de ella hablando.
 
 ## El cierre
 
@@ -113,10 +160,13 @@ y antes hay un fundido a negro de medio segundo, del 47,30 al 47,87. La guía
 no funde a negro: las piezas cierran con la placa de marca. Así que la imagen
 se corta en 47,35 y la placa entra en 46,90, por encima del fundido.
 
-**La pista va aparte y dura hasta 47,95.** La última palabra es «decide» y su
-final cae en 47,80-47,90, o sea ya sobre el negro del clip: cortando la pista
-con la imagen se oiría «deci-». Así se acaba de decir por debajo de la placa,
-que es como cierran las otras piezas.
+**La pista va aparte y dura hasta 47,45.** La última palabra es «decide» y se
+apaga en 47,38, ya sobre el negro del clip, así que se acaba de decir por
+debajo de la placa. Detrás hay una sílaba suelta en 47,80-47,94, a −21 dB, que
+el clip arrastra y que ahí no dice nada: se va.
+
+El logo de la placa va a 560 px de ancho en vez de los 460 de las otras
+piezas.
 
 ## El velo detrás de los rótulos
 
