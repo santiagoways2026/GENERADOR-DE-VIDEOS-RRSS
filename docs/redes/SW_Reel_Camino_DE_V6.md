@@ -1,11 +1,36 @@
-# Reel del testimonio alemán · vertical · V5
+# Reel del testimonio alemán · vertical · V6
 
-Pieza de 54,6 s, 1080x1920 a 30 fps, para stories y TikTok.
+Pieza de 53,8 s, 1080x1920 a 30 fps, para stories y TikTok.
 
 Fuente viva: `video/src/SWReelCaminoDE.tsx`.
 Pista: `herramientas/scripts/audio-reel-de.py`.
 
-## Qué cambia respecto a la V4
+## Qué cambia respecto a la V5
+
+**La placa de marca se queda en silencio, y eso es lo correcto aquí.** La
+regla 11 dice que un tramo sin voz lleva cama de ambiente y no silencio, y en
+una grabación normal es verdad. Pero esto es un doblaje, y lo que queda entre
+frase y frase no es una sala: es lo que dejó el doblador. Medido, los huecos
+del master van de **-40,7 dB a -25,9** según el trozo, con colores distintos
+entre sí. No hay un ambiente que imitar, así que una cama sintetizada suena a
+añadido se haga como se haga. Se intentó dos veces, con dos fallos distintos
+arreglados por el camino, y seguía sonando mal.
+
+Lo que hace ahora: **un segundo de ambiente de verdad**, del hueco del master
+que más se parece al final, nivelado contra él y bajado a cero en 0,75 s. A
+partir del 51,6 no suena nada. Sobre una placa de marca quieta eso se lee como
+que la pieza ha terminado, no como un mute, que es lo que pasaría si el corte
+cayera de golpe.
+
+La pieza dura **53,8 s** y no 54,6 para que el silencio sea corto: dos
+segundos y pico de placa, no tres.
+
+Los dos fallos de la síntesis que se arreglaron por el camino no se tiran: el
+de la ventana en raíz estaba también en `herramientas/scripts/ambiente.py`,
+que es lo que usan las demás piezas, y ahí sí hay ambiente de verdad que
+imitar.
+
+## Qué cambió de la V4 a la V5
 
 **La cama de ambiente del final sonaba rota, y era verdad.** Dos fallos, los
 dos en cómo se sintetizaba:
@@ -45,7 +70,7 @@ con un muro al fondo no abre nada».
 
 1. **Fuera los subtítulos quemados.** Se probaron y con las cartelas a la vez
    el tercio de abajo se quedaba en un muro de texto. Manda la cartela. Los
-   pies siguen existiendo, en `SW_Reel_Camino_DE_V5.srt`, para subirlos como
+   pies siguen existiendo, en `SW_Reel_Camino_DE_V6.srt`, para subirlos como
    subtítulo de la plataforma, que además se puede activar y desactivar.
 2. **Los dos planos del 27 y del 29 fuera.** Eran dos muros de piedra con
    maleza, sin nadie y parecidos entre sí. En su sitio, un peregrino pasando
@@ -151,11 +176,9 @@ golpe de música en el último segundo del bruto, que se va con el resto. Eso
 simplifica las junturas, que no tienen que cuadrar con ningún pulso, y obliga
 en el final: la placa de marca va con **cama de ambiente sintetizada**, no con
 una canción metida a última hora, que es lo que dice la regla 11. La cama sale
-de los huecos de la propia pieza, con fase aleatoria, y queda a -30,7 dB
-contra los -30,8 del ambiente con el que empalma. Su autocorrelación es 0,06,
-así que no se oye el ciclo, y su envolvente no tiene ninguna línea: el pico
-más alto en la banda de 10 a 120 Hz se queda en 3,7 veces la mediana, que es
-lo que da el ruido por sí solo.
+de los huecos de la propia pieza, con fase aleatoria, y llegó a cuadrar banda a
+banda, pero el problema no era ése: era que aquí no hay ambiente que imitar.
+Ver arriba.
 
 **Si el equipo quiere música**, hay que pasar un tema: meterle uno sólo a la
 cola sonaría a parche, y ponerlo debajo de toda la pieza cambia el registro y
@@ -226,7 +249,7 @@ Tiempos ya de la pieza montada:
 | 43,7 s | 45,8 s | `testimonios/prado-flores` |
 | 45,8 s | 47,9 s | `testimonios/catedral-escalinata` · el general, con gente |
 | 47,9 s | 51,3 s | `testimonios/fachada-obradoiro` · **la fachada, bajo el CTA** |
-| 51,3 s | 54,6 s | placa de marca |
+| 51,3 s | 53,8 s | placa de marca, en silencio |
 
 Del general al detalle y con gente por medio, que es como pide el manual para
 varios planos del mismo sitio.
@@ -257,7 +280,7 @@ otras. Técnicamente funcionaba. Pero con las dos cosas en pantalla el tercio
 de abajo se quedaba en un muro de texto, y de los dos el que tiene que mandar
 es la cartela, que es la que lleva el mensaje de marca.
 
-Los veinte pies están en **`SW_Reel_Camino_DE_V5.srt`**, listos para subirlos
+Los veinte pies están en **`SW_Reel_Camino_DE_V6.srt`**, listos para subirlos
 como subtítulo de la plataforma. Así además el espectador los activa o los
 quita, y no compiten con la cartela.
 

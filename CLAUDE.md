@@ -196,6 +196,15 @@ Estas salieron de revisar piezas reales y ahorran repetir errores:
    palabra que se acababa de quitar, sólo que apagándose. Se saca del hueco
    sin voz más cercano, que es la misma sala y la misma música sin nadie
    hablando.
+   **Y antes de sintetizar nada, comprobar que hay una sala que imitar.** Si
+   la pista es un doblaje o una locución puesta encima, lo que queda entre
+   frase y frase no es ambiente de la grabación, es lo que dejó el doblador:
+   en el testimonio alemán los huecos iban de -40,7 dB a -25,9 según el trozo,
+   con colores distintos. Contra eso, una cama sintetizada suena a añadido se
+   haga como se haga, y se intentó dos veces. Lo que funciona ahí es un
+   segundo de ambiente de verdad, del hueco que más se parezca, bajado a cero,
+   y dejar la placa de marca en silencio: al final de una pieza, sobre una
+   placa quieta, el silencio se lee como que ha terminado y no como un mute.
 12. **Un plano más corto que su hueco no avisa.** `OffthreadVideo` no falla
    cuando se le pide más metraje del que tiene: congela el último fotograma.
    En la pieza social fueron 0,72 s de imagen parada que parecían un corte mal

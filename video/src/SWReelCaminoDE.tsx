@@ -40,13 +40,17 @@ import { Cartela, CierreMarca, PlacaMarca } from "./componentes/CartelaMarca";
  * nota, y nunca sobre una frase entera.
  *
  * La pista la monta `herramientas/scripts/audio-reel-de.py`: deja el
- * testimonio en 50,6 s de los 83 del bruto y le pone cama de ambiente al
- * final. **No lleva musica**, porque el bruto no la tiene.
+ * testimonio en 50,6 s de los 83 del bruto. **No lleva musica**, porque el
+ * bruto no la tiene, y **la placa de marca se queda en silencio**: el
+ * ambiente cae a cero en el 51,6 y de ahi al final no suena nada. Es un
+ * doblaje y lo que queda entre frase y frase no es una sala, asi que no hay
+ * ambiente que imitar; probado dos veces, cualquier cama sintetizada suena a
+ * anadido. La pieza dura 53,8 y no 54,6 para que el silencio sea corto.
  *
  * **La pieza va sin subtitulos quemados.** Se probaron, en el registro de la
  * marca y por encima de las cartelas, y con las dos cosas a la vez el tercio
  * de abajo se quedaba en un muro de texto. Manda la cartela. Los pies estan
- * en `docs/redes/SW_Reel_Camino_DE_V5.srt` por si se quieren subir como
+ * en `docs/redes/SW_Reel_Camino_DE_V6.srt` por si se quieren subir como
  * subtitulo de la plataforma, que ademas se puede activar y desactivar. El
  * componente `Subtitulo` se queda en `CartelaMarca.tsx` para quien lo
  * necesite.
@@ -57,7 +61,7 @@ const f = (s: number) => Math.round(s * FPS);
 
 /** Donde entra la placa de marca y se acaba la imagen. */
 const TESTIMONIO = 51.3;
-const DURACION = 54.6;
+const DURACION = 53.8;
 
 const PISTA = "montajes/reel-de.wav";
 const B = "brutos/";
