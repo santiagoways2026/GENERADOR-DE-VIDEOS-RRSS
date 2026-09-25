@@ -116,6 +116,17 @@ const INSERCIONES: Insercion[] = [
   // segundos con la voz parada; ahora van encima de la frase que los nombra.
   { desde: 16.5, hasta: 17.5, origen: 0.03, fuente: B + "casa-rural.mp4", nombre: "Alojamiento · casa rural" },
   { desde: 17.5, hasta: 19.5, origen: 0.1, fuente: B + "habitacion.mp4", nombre: "Alojamiento · habitacion" },
+  /*
+   * Tapa la juntura del corte, que cae en 19,70. El montaje deja ahi dos
+   * fragmentos, de 0,20 y 0,10 s, uno a cada lado del corte: el final del
+   * plano que venia y el principio del que sigue. A esa duracion no se leen
+   * como planos, se leen como un parpadeo. La regla 8 dice que la juntura se
+   * tapa con imagen, y ademas sale gratis: el montaje tenia un plano de
+   * maletas justo en el tramo que se ha quitado, asi que la idea del
+   * equipaje se habia quedado sin imagen y entra aqui, sobre "hemos cogido
+   * el servicio de recogida de equipaje".
+   */
+  { desde: 19.5, hasta: 20.9, origen: 0.03, fuente: T + "maletas-portal.mp4", nombre: "Juntura · maletas en el portal" },
   // Rompe 4,2 s de entrevista seguida, justo sobre "con la mochila y toda
   // la ropa para varios dias".
   { desde: 29.5, hasta: 31.3, origen: 26.7, nombre: "Mochila · caminante con equipaje" },

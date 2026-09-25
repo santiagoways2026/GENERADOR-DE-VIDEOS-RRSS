@@ -1,4 +1,4 @@
-# Testimonio del Camino · español · redes · V6
+# Testimonio del Camino · español · redes · V7
 
 Pieza de 44,9 s, 1280x720 a 30 fps. Sale de la pieza social antigua, que
 duraba 60,1 s con cartela de agencia, fundido final y dos marcas de agua.
@@ -10,7 +10,22 @@ Fuentes vivas:
 - `herramientas/scripts/ambiente.py` · las camas de ambiente
 - `herramientas/scripts/comprobar-inserciones.py` · mide que cada plano llega
 
-## Qué cambia respecto a la V5
+## Qué cambia respecto a la V6
+
+**Dos parpadeos en la juntura del corte, tapados.** Al quitar el tramo del
+segundo peregrino, el montaje deja a los dos lados del corte el final de un
+plano y el principio del siguiente. Medidos sobre la base: **0,20 s y 0,10 s**.
+A esa duración no se leen como planos, se leen como un parpadeo.
+
+Se tapan con imagen, que es lo que dice la regla 8, y sale gratis: el montaje
+tenía un plano de maletas justo dentro del tramo que se ha quitado, así que la
+idea del equipaje se había quedado sin imagen. Entra ahí, del 19,5 al 20,9,
+sobre «hemos cogido el servicio de recogida de equipaje».
+
+Comprobado sobre la base con detección de planos a 30 fps: sin contar los dos
+de la juntura, ninguno baja de 0,97 s.
+
+## Qué cambió de la V5 a la V6
 
 **Fuera las dos camas de ambiente, y con ellas diez segundos de pieza.**
 
