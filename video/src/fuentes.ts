@@ -9,3 +9,4 @@ import "@fontsource/montserrat/latin-800.css";
 import "@fontsource/montserrat/latin-900.css";
 import "@fontsource/manrope/latin-400.css";
 import "@fontsource/manrope/latin-700.css";
+import "@fontsource/manrope/latin-800.css";

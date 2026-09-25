@@ -8,3 +8,6 @@ brutos-originales/
 
 # Python
 __pycache__/
+
+# El modelo de recorte pesa 176 MB. Se baja con el curl que dice recortar-figura.py
+herramientas/scripts/u2net_human_seg.onnx
