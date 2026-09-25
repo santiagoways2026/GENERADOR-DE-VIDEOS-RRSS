@@ -107,16 +107,85 @@ mira el fotograma.
 
 Todo esto vive en `video/src/componentes/CartelaMarca.tsx`, que es de donde
 tiran las piezas de la línea: `Cartela`, `CierreMarca` y `PlacaMarca`. Las
-referencias vivas son `SWCaminoStoriesEN.tsx`, en inglés para YouTube, y
-`SWSocialCaminoES.tsx`, en español para redes. Para volver a decidir
-tipografía hay una muestra de las tres oficiales en `SWMuestraFuentes`.
+referencias vivas son `SWCaminoStoriesEN.tsx` en inglés para YouTube,
+`SWSocialCaminoES.tsx` en horizontal para redes, y `SWReelGrupoES.tsx`,
+`SWReelAsistenciaES.tsx` y `SWReelCaminoES.tsx`, los tres reels de testimonio
+en español. Para volver a decidir tipografía hay una
+muestra de las tres oficiales en `SWMuestraFuentes`.
 
 **En español funciona igual**, sólo cambia el registro: frases cortas y
 llanas, sin adornos, y el pie sólo cuando añade algo que el titular no dice.
-Las aprobadas: "Algunos viajes dejan huella", "Tú caminas. Nosotros nos
-ocupamos del resto", "Hoteles seleccionados" con "Habitación y baño privados"
-de pie, "Tu mochila viaja sola" a secas, y "Tu Camino empieza aquí" en el
-cierre.
+Las aprobadas, todas usadas ya en pieza:
+
+| Titular | Pie | Dónde ha ido |
+| --- | --- | --- |
+| Algunos viajes / **dejan huella** | Camino de Santiago | Apertura |
+| Camino de Santiago / **organizado en hoteles** | — | Apertura |
+| **Tú caminas.** / Nosotros nos ocupamos del resto | — | Sobre la organización |
+| Conoce la España / **más auténtica** | — | Sobre patrimonio y gastronomía |
+| Hoteles / **seleccionados** | Habitación y baño privados | Sobre el alojamiento |
+| Tu mochila / **viaja sola** | — | Sobre el equipaje |
+| Teléfono de asistencia / **24/7** | — | Sobre la asistencia |
+| Tu Camino / **empieza aquí** | — | El cierre, siempre |
+
+En negrita, lo que lleva el recuadro verde.
+
+## Cómo se monta un testimonio
+
+Esto es lo que ha salido de montar tres seguidos y es lo que se hace de aquí
+en adelante, salvo que la pieza pida otra cosa. Cada paso está desarrollado en
+las reglas de abajo; esto es el orden.
+
+**1 · Mirar el clip antes de tocarlo.**
+
+- **Marca de agua**: el mínimo temporal de cada píxel en los cuatro bordes. Lo
+  que está pegado siempre se queda claro en todos los fotogramas. Si la hay,
+  `marca-agua.py --modo recorte`, que la saca de cuadro y devuelve el formato
+  con un zoom corto.
+- **Los cortes del propio clip**, con `planos-visibles.py`. Todo lo que se
+  ponga encima se cuadra con ellos, nunca con un número redondo.
+- **El final**. Estos clips acaban donde acabó la cámara, y ahí suele haber
+  viento o un golpe: en el testimonio del grupo, los dos últimos segundos iban
+  a −6,7 dB con el 82 % por debajo de 250 Hz, más fuerte que las voces. Se
+  mide el rms y el reparto grave/medios décima a décima y se corta antes, con
+  la pista bajada a cero.
+
+**2 · Transcribir.** Las cartelas van sobre la frase que las sostiene, y eso
+sólo se sabe con la transcripción y los tiempos delante. Si una cartela no
+tiene frase debajo que la sostenga, sobra: es la primera que se cae cuando hay
+que hacer sitio.
+
+**3 · Las cartelas.** `Cartela`, abajo a la izquierda, con estos valores:
+
+| | Valor | Cuándo se cambia |
+| --- | --- | --- |
+| `tam` | 70 | 52 si el entrevistado está en primer plano |
+| `tamPie` | 34 | 26 con `tam` 52 |
+| `margen` | 72 | — |
+| `margenAbajo` | 480 | Se baja hasta donde acabe la barbilla, medida en vertical |
+
+**El cuerpo se mide, no se elige.** Las líneas no se parten solas: se salen
+del lienzo. A 76 «organizado en hoteles» con su recuadro mide 919 px sobre un
+útil de 936, y eso no es holgura. Se calcula el ancho con la fuente
+empaquetada antes de dar la cartela por buena.
+
+**Tres o cuatro como mucho, y el cierre.** Una cartela tarda 1,37 s en acabar
+de entrar y 0,4 en salir, así que cinco textos en 42 s dejan la pieza sin un
+respiro. En el testimonio del grupo se quitó la del 24/7 por eso, y porque era
+la única que no se apoyaba en nada de lo que decían.
+
+**4 · Los planos de recurso.** De la biblioteca, encuadrados con
+`encuadrar.py` y mirados en un fotograma. Van de límite de plano a límite de
+plano de la base, y si el clip ya trae un plano suyo que sirve, ése se queda y
+los añadidos lo rodean: en el testimonio de la pareja la habitación del propio
+clip caía justo sobre «nos trataron con mucho cariño».
+
+**5 · El cierre de marca, siempre.** Titular sobre el último plano y después
+la placa con el logo y la web. Ninguno de estos clips viene con logo ni con
+CTA, y sin eso la pieza no es de la marca.
+
+**6 · Antes de renderizar**, `comprobar-inserciones.py` y
+`planos-visibles.py`. **Después de renderizar**, `entregar.py`.
 
 ## Reglas de montaje aprendidas
 
