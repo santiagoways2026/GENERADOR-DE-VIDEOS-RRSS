@@ -196,6 +196,16 @@ Estas salieron de revisar piezas reales y ahorran repetir errores:
    palabra que se acababa de quitar, sólo que apagándose. Se saca del hueco
    sin voz más cercano, que es la misma sala y la misma música sin nadie
    hablando.
+   **Y una cama sintetizada arrastra eco, siempre.** Sintetizar con fase
+   aleatoria dispersa la fase, que es literalmente lo que hace un
+   reverberador: por bien nivelada que esté y por plana que tenga la
+   potencia, se le oye una cola de sala grande que no pega con una grabación
+   de campo. Así que la síntesis es el último recurso, no el primero. Antes
+   van, por este orden: **no dejar el hueco** (cortarlo y que la pieza dure
+   menos), **pegar ambiente de verdad** de los huecos del propio master, y
+   sólo entonces sintetizar. Lo de pegar ambiente de verdad hay que medirlo
+   antes: en la pieza social en español había 2,71 s aprovechables en 57 de
+   metraje, y hacían falta 10,3, así que no daba.
    **Y antes de sintetizar nada, comprobar que hay una sala que imitar.** Si
    la pista es un doblaje o una locución puesta encima, lo que queda entre
    frase y frase no es ambiente de la grabación, es lo que dejó el doblador:

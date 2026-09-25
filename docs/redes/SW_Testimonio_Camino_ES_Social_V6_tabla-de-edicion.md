@@ -1,6 +1,6 @@
-# Testimonio del Camino · español · redes · V5
+# Testimonio del Camino · español · redes · V6
 
-Pieza de 54,9 s, 1280x720 a 30 fps. Sale de la pieza social antigua, que
+Pieza de 44,9 s, 1280x720 a 30 fps. Sale de la pieza social antigua, que
 duraba 60,1 s con cartela de agencia, fundido final y dos marcas de agua.
 
 Fuentes vivas:
@@ -10,7 +10,49 @@ Fuentes vivas:
 - `herramientas/scripts/ambiente.py` · las camas de ambiente
 - `herramientas/scripts/comprobar-inserciones.py` · mide que cada plano llega
 
-## Qué cambia respecto a la V4
+## Qué cambia respecto a la V5
+
+**Fuera las dos camas de ambiente, y con ellas diez segundos de pieza.**
+
+El aviso era que sonaba un eco de fondo. Y es literal: sintetizar ruido con
+fase aleatoria **dispersa la fase**, que es exactamente lo que hace un
+reverberador. Por eso una cama sintética, por bien nivelada y por plana que
+tenga la potencia, arrastra siempre esa cola de sala grande que no pega con
+una grabación de campo.
+
+Lo siguiente que se probó fue lo evidente: pegar silencios de verdad del
+master. **No llega.** Medidos con VAD y filtrados por factor de cresta, en los
+57,3 s del limpio hay seis huecos y **2,71 s** de ambiente aprovechable:
+
+| Hueco | Dura | Nivel | Cresta |
+| --- | --- | --- | --- |
+| 0,07 – 1,06 | 0,99 s | -37,3 dB | 3,9 |
+| 11,02 – 11,27 | 0,24 s | -44,1 dB | 3,0 |
+| 20,08 – 20,83 | 0,76 s | -34,3 dB | 3,4 |
+| 33,15 – 33,41 | 0,26 s | -23,2 dB | 2,8 |
+| 40,21 – 40,45 | 0,24 s | -29,6 dB | 4,0 |
+| 46,63 – 46,85 | 0,22 s | -28,7 dB | 3,6 |
+
+Harían falta 10,3 s. Repetir el hueco largo cuatro veces es el bucle que avisa
+la regla 11, y además los niveles van de -23 a -44 dB, así que ni siquiera son
+la misma sala.
+
+Así que los diez segundos sin voz se van. **La pieza pasa de 54,9 a 44,9 s** y
+no queda ni un tramo sin testimonio. Los planos que vivían en esos huecos no
+se pierden: siguen en la pieza, pero como inserciones sobre la voz, que es
+donde tenían que haber estado desde el principio.
+
+| Antes | Ahora |
+| --- | --- |
+| Tres segundos de ambiente y planos de apertura, sin voz | Los mismos planos sobre «venir al Camino era un desafío personal» |
+| Siete segundos de ambiente y planos de alojamiento, sin voz | Casa rural y habitación sobre «los dos alojamientos que llevamos», 16,5 – 19,5 |
+
+Y hay un efecto secundario que se agradece: con el corte del segundo peregrino
+metido dentro del montaje y no rodeado de camas, **la frase del equipaje se
+oye entera**. Antes se quedaba en «el servicio de recogida de…»; ahora dice
+«el servicio de recogida de equipaje».
+
+## Qué cambió de la V4 a la V5
 
 **Las dos camas de ambiente sonaban rotas, y era un fallo de la síntesis.**
 Se oía al principio y en el segundo 23, que es justo donde están.

@@ -54,8 +54,8 @@ import {
 const FPS = 30;
 const f = (s: number) => Math.round(s * FPS);
 
-/** Duracion final, en segundos: 47,15 de montaje mas la placa de marca. */
-const DURACION = 54.9;
+/** Duracion final, en segundos: 42,06 de montaje mas la placa de marca. */
+const DURACION = 44.9;
 
 /**
  * Cuerpo de las cartelas. Mas pequeno que los 72 px de la pieza en ingles:
@@ -66,8 +66,17 @@ const DURACION = 54.9;
  */
 const TAM = 58;
 
-/** El montaje ya recortado, con el audio continuo. */
-const BASE = "montajes/social-ES-v3.mp4";
+/**
+ * El montaje ya recortado, con el audio continuo y **sin un solo hueco sin
+ * voz**. Las versiones anteriores metian tres segundos de ambiente por
+ * delante y siete en el bloque de alojamiento, sintetizados, y sonaban a
+ * eco: sintetizar con fase aleatoria dispersa la fase, que es lo que hace un
+ * reverberador. Pegar silencios de verdad tampoco llega, en los 57,3 s del
+ * limpio hay 2,71 s de ambiente aprovechable y harian falta 10,3. Asi que
+ * esos diez segundos se han ido y la pieza dura lo que dura el testimonio.
+ * Los planos que vivian ahi siguen, pero como inserciones sobre la voz.
+ */
+const BASE = "montajes/social-ES-v4.mp4";
 /**
  * El limpio entero, del que salen los planos de recurso. Son tomas que el
  * recorte de audio dejaba fuera, asi que no se repite ninguna: cada una se
@@ -96,28 +105,29 @@ type Insercion = {
 
 const INSERCIONES: Insercion[] = [
   // La pieza arrancaba con un bosque a contraluz velado y un muro de
-  // hormigon al fondo. Se rehace la apertura con planos de 1080p y el
-  // bosque se queda, pero mas tarde y mas corto: entra en 5,60.
-  { desde: 3.0, hasta: 4.1, origen: 0.0, fuente: B + "camino-abierto.mp4", nombre: "Apertura · camino abierto" },
-  { desde: 4.1, hasta: 5.6, origen: 0.0, fuente: B + "pareja-muros.mp4", nombre: "Apertura · pareja entre muros" },
-  { desde: 8.7, hasta: 9.8, origen: 0.0, fuente: B + "grupo-mimosas.mp4", nombre: "Apertura · grupo entre mimosas" },
-  { desde: 9.8, hasta: 10.75, origen: 0.0, fuente: B + "rio-piedras.mp4", nombre: "Apertura · paso de piedras" },
+  // hormigon al fondo. Se tapa con tres planos de 1080p sobre la primera
+  // frase, que es la del desafio personal.
+  { desde: 0.0, hasta: 1.5, origen: 0.03, fuente: B + "campo-flores.mp4", nombre: "Apertura · campo en flor" },
+  { desde: 1.5, hasta: 2.6, origen: 0.0, fuente: B + "camino-abierto.mp4", nombre: "Apertura · camino abierto" },
+  { desde: 2.6, hasta: 4.1, origen: 0.0, fuente: B + "pareja-muros.mp4", nombre: "Apertura · pareja entre muros" },
+  { desde: 5.7, hasta: 6.8, origen: 0.0, fuente: B + "grupo-mimosas.mp4", nombre: "Apertura · grupo entre mimosas" },
+  { desde: 6.8, hasta: 7.75, origen: 0.0, fuente: B + "rio-piedras.mp4", nombre: "Apertura · paso de piedras" },
+  // Alojamiento, sobre "los dos alojamientos que llevamos". Antes eran siete
+  // segundos con la voz parada; ahora van encima de la frase que los nombra.
+  { desde: 16.5, hasta: 17.5, origen: 0.03, fuente: B + "casa-rural.mp4", nombre: "Alojamiento · casa rural" },
+  { desde: 17.5, hasta: 19.5, origen: 0.1, fuente: B + "habitacion.mp4", nombre: "Alojamiento · habitacion" },
   // Rompe 4,2 s de entrevista seguida, justo sobre "con la mochila y toda
   // la ropa para varios dias".
-  { desde: 39.45, hasta: 41.25, origen: 26.7, nombre: "Mochila · caminante con equipaje" },
+  { desde: 29.5, hasta: 31.3, origen: 26.7, nombre: "Mochila · caminante con equipaje" },
   // Llegada a Santiago. El montaje encadenaba tres planos de la catedral casi
   // iguales, todos torres contra nubes, y los cortes se veian como saltos.
   // Ahora va de lejos a cerca y con gente en medio: la calle, la plaza y la
   // fachada.
-  //
-  // Los tres duran justo lo que tiene el plano, sin pasarse. Un plano mas
-  // corto que su hueco no avisa: se congela el ultimo fotograma y parece un
-  // corte raro. `comprobar-inserciones.py` lo mide.
-  { desde: 44.4, hasta: 45.7, origen: 0.0, fuente: T + "rua-santiago.mp4", nombre: "Llegada · calle de Santiago" },
-  { desde: 45.7, hasta: 47.0, origen: 0.0, fuente: T + "obradoiro.mp4", nombre: "Llegada · plaza del Obradoiro" },
+  { desde: 34.45, hasta: 35.75, origen: 0.0, fuente: T + "rua-santiago.mp4", nombre: "Llegada · calle de Santiago" },
+  { desde: 35.75, hasta: 37.05, origen: 0.0, fuente: T + "obradoiro.mp4", nombre: "Llegada · plaza del Obradoiro" },
   // El cierre no se dice sobre la cara del peregrino, se dice sobre la
   // catedral.
-  { desde: 47.0, hasta: 52.02, origen: 0.0, fuente: T + "fachada-obradoiro.mp4", nombre: "Cierre · fachada del Obradoiro" },
+  { desde: 37.05, hasta: 42.06, origen: 0.0, fuente: T + "fachada-obradoiro.mp4", nombre: "Cierre · fachada del Obradoiro" },
 ];
 
 
@@ -125,10 +135,10 @@ const INSERCIONES: Insercion[] = [
 
 export const SWSocialCaminoES: React.FC = () => {
   const total = f(DURACION);
-  /** El montaje dura 52,02 s. La placa entra antes de que se acabe. */
-  const finMontaje = f(52.02);
-  const entraPlaca = f(51.2);
-  const entraCierre = f(48.45);
+  /** El montaje dura 42,06 s. La placa entra antes de que se acabe. */
+  const finMontaje = f(42.06);
+  const entraPlaca = f(41.2);
+  const entraCierre = f(38.4);
 
   return (
     // Verde de marca por debajo: si en el cambio a la placa quedase un
@@ -158,46 +168,46 @@ export const SWSocialCaminoES: React.FC = () => {
       ))}
 
       {/* 1 · "venir al Camino de Santiago era un desafio personal" */}
-      <Sequence from={f(0.6)} durationInFrames={f(5.4) - f(0.6)} name="1 · Algunos viajes">
+      <Sequence from={f(0.6)} durationInFrames={f(5.2) - f(0.6)} name="1 · Algunos viajes">
         <Cartela
           lineas={[[{ texto: "Algunos viajes" }], [{ texto: "dejan huella", destacado: true }]]}
           pie={["Camino de Santiago"]}
-          total={f(5.4) - f(0.6)}
+          total={f(5.2) - f(0.6)}
           tam={TAM}
         />
       </Sequence>
 
       {/* 2 · "estamos muy contentos tanto con la organizacion" */}
-      <Sequence from={f(14.2)} durationInFrames={f(18.8) - f(14.2)} name="2 · Tú caminas">
+      <Sequence from={f(11.2)} durationInFrames={f(15.8) - f(11.2)} name="2 · Tú caminas">
         <Cartela
           lineas={[
             [{ texto: "Tú caminas.", destacado: true }],
             [{ texto: "Nosotros nos ocupamos del resto" }],
           ]}
-          total={f(18.8) - f(14.2)}
+          total={f(15.8) - f(11.2)}
           tam={TAM}
         />
       </Sequence>
 
-      {/* 3 · "como con los dos alojamientos que llevamos" */}
-      <Sequence from={f(23.8)} durationInFrames={f(28.8) - f(23.8)} name="3 · Hoteles">
+      {/* 3 · sobre "como con los dos alojamientos que llevamos", 16,68-19,52 */}
+      <Sequence from={f(16.6)} durationInFrames={f(20.8) - f(16.6)} name="3 · Hoteles">
         <Cartela
           lineas={[[{ texto: "Hoteles" }], [{ texto: "seleccionados", destacado: true }]]}
           pie={["Habitación y baño privados"]}
-          total={f(28.8) - f(23.8)}
+          total={f(20.8) - f(16.6)}
           tam={TAM}
         />
       </Sequence>
 
       {/*
-        4 · "hemos cogido al mismo tiempo el servicio de recogida de
-        equipaje". Cae sobre el plano de las maletas en el portal, que entra
-        en 28,55.
+        4 · sobre "hemos cogido al mismo tiempo el servicio de recogida de
+        equipaje", 20,07-24,89. Con el corte del segundo peregrino fuera, la
+        frase ya se oye entera: antes se quedaba en "recogida de".
       */}
-      <Sequence from={f(31.65)} durationInFrames={f(35.85) - f(31.65)} name="4 · Tu mochila">
+      <Sequence from={f(21.4)} durationInFrames={f(25.8) - f(21.4)} name="4 · Tu mochila">
         <Cartela
           lineas={[[{ texto: "Tu mochila" }], [{ texto: "viaja sola", destacado: true }]]}
-          total={f(35.85) - f(31.65)}
+          total={f(25.8) - f(21.4)}
           tam={TAM}
         />
       </Sequence>
@@ -205,7 +215,7 @@ export const SWSocialCaminoES: React.FC = () => {
       <Sequence from={entraCierre} durationInFrames={total - entraCierre} name="6 · Tu Camino empieza aquí">
         <CierreMarca
           lineas={[[{ texto: "Tu Camino" }], [{ texto: "empieza aquí", destacado: true }]]}
-          salidaTexto={f(51.1) - entraCierre}
+          salidaTexto={f(41.1) - entraCierre}
           abajo
         />
       </Sequence>
