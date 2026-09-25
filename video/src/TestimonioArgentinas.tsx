@@ -2,8 +2,8 @@ import { AbsoluteFill, interpolate, Sequence, useCurrentFrame } from "remotion";
 import "./fuentes";
 import { brand, fontFamily } from "./brand/theme";
 import { Clip } from "./componentes/Clip";
-import { Frase } from "./componentes/Frase";
 import { Planos } from "./componentes/Planos";
+import { Titular } from "./componentes/Titular";
 import { Cierre } from "./escenas/Cierre";
 
 /**
@@ -16,8 +16,9 @@ import { Cierre } from "./escenas/Cierre";
  * Los planos de comida del montaje original se tapan con peregrinos
  * disfrutando del Camino; el audio del testimonio sigue por debajo.
  *
- * El texto va suelto, con las palabras clave sobre el bloque olivo del kit,
- * en la mitad superior y por debajo de la franja que tapa la interfaz.
+ * Los textos son titulares de mensaje directo: gancho en blanco y el
+ * servicio sobre el bloque olivo, a la izquierda y en el tercio inferior,
+ * por encima de la franja que tapan el texto y los botones del anuncio.
  */
 
 const f = (s: number) => Math.round(s * 30);
@@ -29,15 +30,22 @@ const CIERRE = 2.4;
 /** Tramo de los platos en el testimonio, que se sustituye. */
 const COMIDA = { desde: 12.5, hasta: 18.33 };
 
-/** Frases en pantalla, en segundos del testimonio. */
-const FRASES = [
-  { desde: 0.4, hasta: 5.7, texto: "Desde *Argentina*\nal Camino de Santiago" },
-  // Sobre el comedor del albergue.
-  { desde: 7.0, hasta: 12.3, texto: "Todo *organizado*,\netapa a etapa" },
-  // Sobre los peregrinos que sustituyen a la comida.
-  { desde: 12.8, hasta: 18.1, texto: "Tú solo tienes\nque *disfrutar*" },
+/** Titulares en pantalla, en segundos del testimonio. Cada servicio cae
+ *  sobre el plano que mejor lo ilustra. */
+const TITULARES = [
+  { desde: 0.4, hasta: 5.8, gancho: "Peregrinas argentinas", destacado: "en el Camino de Santiago" },
+  // Comedor del albergue.
+  { desde: 7.0, hasta: 12.3, gancho: "Todo preparado", destacado: "Información detallada de tu ruta" },
+  // Peregrinos disfrutando, en lugar de la comida.
+  { desde: 12.8, hasta: 18.1, gancho: "Tú solo camina", destacado: "Transporte de equipajes" },
+  // Habitaciones.
+  { desde: 24.4, hasta: 29.2, gancho: "Descansa cada noche", destacado: "Hoteles seleccionados" },
+  // Terraza y vuelta a cámara.
+  { desde: 30.0, hasta: 35.2, gancho: "Nunca caminas solo", destacado: "Asistencia 24/7" },
+  // Cruceiro y capilla, en pleno Camino.
+  { desde: 37.0, hasta: 42.8, gancho: "Sin perderte", destacado: "App de navegación móvil" },
   // Un solo CTA, al final.
-  { desde: 52.4, hasta: FIN, texto: "*Reserva* tu Camino" },
+  { desde: 52.4, hasta: FIN, gancho: "Tu Camino te espera", destacado: "Reserva en santiagoways.com" },
 ];
 
 /** Deja salir la frase con un fundido corto en lugar de cortarla en seco. */
@@ -89,15 +97,15 @@ export const TestimonioArgentinas: React.FC = () => {
         />
       </Sequence>
 
-      {FRASES.map((c) => (
+      {TITULARES.map((c) => (
         <Sequence
-          key={c.texto}
+          key={c.gancho}
           from={f(c.desde)}
           durationInFrames={f(c.hasta) - f(c.desde)}
-          name={c.texto.replace(/[*\n]/g, " ")}
+          name={c.destacado}
         >
           <Salida duracion={f(c.hasta) - f(c.desde)}>
-            <Frase texto={c.texto} />
+            <Titular gancho={c.gancho} destacado={c.destacado} />
           </Salida>
         </Sequence>
       ))}
