@@ -1,4 +1,4 @@
-# Divulgación · «What is the Camino de Santiago?» · inglés · reel · V4
+# Divulgación · «What is the Camino de Santiago?» · inglés · reel · V5
 
 Pieza de 50,0 s, 1080x1920 a 30 fps. Sale de un clip vertical de 720x1280 ya
 montado, con sus subtítulos palabra a palabra.
@@ -111,26 +111,27 @@ presentadora ocupa de la mitad para abajo, con el pelo empezando en el píxel
 more popular», así que el pie recoge lo que acaba de decir. Y del 22,2 en
 adelante el rótulo cae sobre el plano del puente, que es donde mejor se lee.
 
-## Los rótulos de ruta van sobre placa, y no es cuestión de gusto
+## El degradado de los rótulos de ruta
 
-Se pidió el verde de marca en lugar de la lima. Con el velo que lleva la
-tarjeta de apertura eso no se puede leer. Medido contra el **10 % más claro
-del fondo real** de cada tramo, no contra un fondo inventado:
+El texto va en el verde de marca, que es lo que se pidió, y eso obliga a
+apretar el degradado. Medido contra el **10 % más claro del fondo real** de
+cada tramo, no contra un fondo inventado:
 
-| Tinta | Con velo al 45 % | Con velo al 85 % | Con placa opaca |
-| --- | --- | --- | --- |
-| Verde de marca `#7AA606` | **1,15 – 1,44** | 2,62 | **3,61** |
-| Lima `#B0F808` | 2,57 – 3,23 | 5,86 | 8,08 |
-| Blanco | 3,31 – 4,16 | 7,56 | 10,42 |
+| Opacidad de la banda | Verde de marca `#7AA606` |
+| --- | --- |
+| 0,45, el velo de la tarjeta de apertura | **1,15 – 1,44** |
+| 0,82 | 2,46 |
+| 0,88 | 2,80 |
+| **0,94** | **3,05** |
+| 1,00 | 3,61 |
 
 A 1,15 eso no es poco legible, es ilegible; el mínimo para texto grande es
-3:1. Y no se arregla apretando el velo, porque a 0,85 todavía anda por 2,62.
-Sólo con la placa opaca llega a 3,61.
+3:1. Con la banda a 0,94 entra.
 
-Que además es lo que hace el kit de la marca: no pone texto suelto sobre el
-plano, lo pone sobre placa. La placa va de bosque `#184834`, que es la tinta
-de la guía, con esquinas de 6 px; el nombre de la ruta en el verde de marca y
-el pie en blanco, que sobre bosque da 10,42.
+Sigue siendo un degradado y no un recuadro: ocupa el ancho entero, no tiene
+borde y se deshace hacia abajo. Se probó también con placa opaca ajustada al
+texto, que da 3,61 y es lo que haría el kit de la marca, pero ese recuadro no
+gustó.
 
 | Línea | Cuerpo | Ancho |
 | --- | --- | --- |
@@ -147,11 +148,21 @@ Dos, que es lo que se pidió:
 
 | Entra | Sale | Plano | Sobre qué |
 | --- | --- | --- | --- |
-| 41,30 s | 43,20 s | Dos peregrinos andando entre dedaleras | «it was all organized» |
-| 45,40 s | 46,50 s | Llegada, brazos en alto | «the Camino starts wherever you decide» |
+| 11,45 s | 12,95 s | La catedral, en vídeo | «Santiago de Compostela» |
+| 45,40 s | 46,75 s | Llegada, brazos en alto | «the Camino starts wherever you decide» |
 
-La frase que cierra gana mucho más sobre gente celebrando que sobre un plano
-de ella hablando.
+**La catedral.** Ahí el clip metía una foto fija de la fachada del Obradoiro,
+con fundido de entrada en 11,53 y de salida entre 12,43 y 12,90. El hueco se
+toma completo, con los dos fundidos dentro, para que no asome ni un fotograma
+de la foto.
+
+**La celebración** va sobre la frase que cierra, que gana mucho más sobre
+gente celebrando que sobre un plano de ella hablando. Ese plano **dura 1,13 s
+y no hay más**: se buscó en los dos másters de origen, y en `testimonios-EN`
+la toma va del 121,40 al 122,57, o sea 1,17 s enteros. Para alargarlo sólo
+queda bajarle la velocidad, y ahí manda la regla 15: tiene 4,55 de movimiento
+medio, que es mucho, y por debajo de 0,80 se le empieza a ver el cámara
+lenta. A 0,80 se queda en 1,37 s.
 
 ## El cierre
 

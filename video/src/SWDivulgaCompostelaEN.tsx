@@ -148,22 +148,23 @@ const TarjetaApertura: React.FC<{ total: number }> = ({ total }) => {
 };
 
 /**
- * Los rótulos de ruta: **placa de bosque y letras en el verde de marca**.
+ * Los rótulos de ruta: **degradado de bosque, sin recuadro**.
  *
- * Aquí el velo no vale, y no es cuestión de gusto. Medido contra el 10 % más
- * claro del fondo real de cada tramo, con el velo al 45 % que lleva la
- * tarjeta de apertura, el verde olivo `#7AA606` se queda entre **1,15 y 1,44**
- * de contraste. A eso no se le llama poco legible, se le llama ilegible: el
- * mínimo para texto grande es 3:1. Y no se arregla apretando el velo, porque
- * a 0,85 todavía anda por 2,62. Sólo con la placa opaca llega a **3,61**.
+ * El texto va en el verde de marca, que es lo que se pidió, y eso obliga a
+ * apretar el degradado. Medido contra el 10 % más claro del fondo real de
+ * cada tramo, no contra un fondo inventado: con el velo suave de la tarjeta
+ * de apertura, al 45 %, el verde olivo `#7AA606` se queda entre **1,15 y
+ * 1,44** de contraste, y el mínimo para texto grande es 3:1. A eso no se le
+ * llama poco legible, se le llama ilegible.
  *
- * Que además es lo que hace el kit de la marca, que no pone texto suelto
- * sobre el plano sino sobre placa. El bosque es la tinta de la guía, así que
- * la placa va de bosque y las letras del verde que se pidió.
+ * Subiendo la banda de detrás del texto a **0,94** sube a 3,1 y entra. Sigue
+ * siendo un degradado y no un recuadro: ocupa el ancho entero, no tiene borde
+ * y se deshace hacia abajo. Se probó también con placa opaca ajustada al
+ * texto, que da 3,61, pero ese recuadro no gustó.
  *
  * **Cuerpo 88 para los cinco**, y lo fija el más largo: "CAMINO PRIMITIVO"
- * mide 889 px y la placa deja 892 de hueco entre márgenes. A 95 se sale, y
- * cambiar el cuerpo de uno a otro en una lista de cuatro rutas se ve.
+ * mide 889 px sobre un lienzo útil de 892. A 95 se sale, y cambiar el cuerpo
+ * de uno a otro en una lista de cuatro rutas se nota.
  */
 const RUTA_TAM = 88;
 const PIE_TAM = 52;
@@ -188,15 +189,13 @@ const RotuloRuta: React.FC<{ lineas: Linea[]; total: number; rapido?: boolean }>
         opacity: salida,
       }}
     >
-      <div
+      <AbsoluteFill
         style={{
-          textAlign: "center",
-          backgroundColor: brand.forest,
-          padding: "26px 34px 30px",
-          borderRadius: 6,
-          ...entra(frame, 0, largo),
+          background:
+            "linear-gradient(to bottom, rgba(24,72,52,0.96) 0%, rgba(24,72,52,0.94) 16%, rgba(24,72,52,0.55) 24%, rgba(24,72,52,0) 34%)",
         }}
-      >
+      />
+      <div style={{ textAlign: "center", position: "relative", ...entra(frame, 0, largo) }}>
         <Lineas lineas={lineas} largo={largo} relevo={rapido ? 0 : 5} />
       </div>
     </AbsoluteFill>
@@ -251,23 +250,37 @@ const RUTAS: { desde: number; hasta: number; lineas: Linea[]; nombre: string }[]
 ];
 
 /**
- * Dos planos de recurso y no más, que es lo que se pidió. Uno de camino
- * andando sobre "it was all organized", y uno de llegada celebrando sobre la
- * frase que cierra, "the Camino starts wherever you decide": esa frase gana
- * mucho más sobre gente celebrando que sobre un plano de ella hablando.
+ * Los planos de recurso.
+ *
+ * **La catedral, 11,45-12,95.** Ahí el clip metía una foto fija de la fachada
+ * del Obradoiro, con fundido de entrada en 11,53 y de salida en 12,43-12,90.
+ * Va en vídeo, que es lo que se pidió, y el hueco se toma completo, con los
+ * dos fundidos dentro, para que no asome ni un fotograma de la foto.
+ *
+ * **La celebración, 45,40-46,75**, sobre "the Camino starts wherever you
+ * decide", que es la frase que cierra y gana mucho más sobre gente celebrando
+ * que sobre un plano de ella hablando.
+ *
+ * Ese plano **dura 1,13 s y no hay más**: se buscó en los dos másters de
+ * origen y en `testimonios-EN` la toma va del 121,40 al 122,57, o sea 1,17 s
+ * enteros. Así que para alargarlo sólo queda bajarle la velocidad, y ahí manda
+ * la regla 15: tiene 4,55 de movimiento medio, que es mucho, y por debajo de
+ * 0,80 se le empieza a ver el cámara lenta. A 0,80 se queda en 1,37 s.
  */
 type Insercion = {
   desde: number;
   hasta: number;
   origen: number;
   fuente: string;
+  /** Por debajo de 1 alarga el plano sin repetirlo. */
+  ritmo?: number;
   encuadre: string;
   nombre: string;
 };
 
 const INSERCIONES: Insercion[] = [
-  { desde: 41.3, hasta: 43.2, origen: 0.0, fuente: T + "camino-dedaleras.mp4", encuadre: mirar(0.39), nombre: "Recurso · camino entre dedaleras" },
-  { desde: 45.4, hasta: 46.5, origen: 0.0, fuente: T + "brazos-celebracion.mp4", encuadre: mirar(0.41), nombre: "Recurso · celebracion" },
+  { desde: 11.45, hasta: 12.95, origen: 0.0, fuente: T + "catedral-nubes.mp4", encuadre: mirar(0.5), nombre: "Recurso · la catedral" },
+  { desde: 45.4, hasta: 46.75, origen: 0.0, ritmo: 0.8, fuente: T + "brazos-celebracion.mp4", encuadre: mirar(0.41), nombre: "Recurso · celebracion" },
 ];
 
 export const SWDivulgaCompostelaEN: React.FC = () => {
@@ -298,6 +311,7 @@ export const SWDivulgaCompostelaEN: React.FC = () => {
           <OffthreadVideo
             src={staticFile(s.fuente)}
             trimBefore={f(s.origen)}
+            playbackRate={s.ritmo ?? 1}
             muted
             style={{
               width: "100%",
