@@ -15,16 +15,27 @@ import { LineaTiempo } from "./graficos/LineaTiempo";
  * English text version of ReelXacobeo (vertical, 1080x1920).
  *
  * This is NOT a translation of the Spanish reel's script — it follows the
- * actual English voiceover (public/locucion-en.mp3, "US Female Voiceover —
- * Lara"), which has its own script: no "Xacobeo" wording, a different
- * services list, and the price-lock line AFTER the services line instead
- * of before. There is no source transcript for it, so `BOUNDS` comes from
- * transcribing the real audio locally with pocketsphinx (offline, no
- * network — @remotion/install-whisper-cpp needs a model download this
- * sandbox's network policy blocks) and reading off the sentence starts.
- * pocketsphinx is a low-accuracy recognizer, so individual words in the
- * transcript are unreliable, but sentence timing and the general content
- * of each beat are solid enough to build the cut list from.
+ * actual English voiceover ("US Female Voiceover — Lara"), which has its
+ * own script: no "Xacobeo" wording, a different services list, and the
+ * price-lock line AFTER the services line instead of before. There is no
+ * source transcript for it, so `BOUNDS` comes from transcribing the real
+ * audio locally with pocketsphinx (offline, no network —
+ * @remotion/install-whisper-cpp needs a model download this sandbox's
+ * network policy blocks) and reading off the sentence starts. pocketsphinx
+ * is a low-accuracy recognizer, so individual words in the transcript are
+ * unreliable, but sentence timing and the general content of each beat are
+ * solid enough to build the cut list from.
+ *
+ * The voiceover plays from public/locucion-en-tight.mp3, not the original
+ * public/locucion-en.mp3: the raw file has 0.4-1.1 s of dead air at every
+ * beat boundary (measured with ffmpeg silencedetect), roughly 4.4 s total,
+ * and that dead air was being handed to Planos as extra screen time it had
+ * to fill by slowing footage down. Trimming each boundary pause down to a
+ * natural ~0.25-0.28 s breath (never touching the words themselves, or any
+ * pause inside a beat) shortens every beat by however much its own
+ * trailing pause was cut, without moving any `desde` offset: those are
+ * measured from each beat's own start, and nothing before that start
+ * changed. `BOUNDS` below is remeasured on the tightened file.
  *
  * Footage is reassigned per beat by theme rather than reusing the Spanish
  * cut's block-for-block mapping, since this script has more beats (10)
@@ -34,10 +45,22 @@ import { LineaTiempo } from "./graficos/LineaTiempo";
  * one borrowed from "Servicios" (grupo-peregrinos) are split two-per-beat
  * across beats 3-5 (Holy Door, Friendship, Arrival) so none of them
  * repeats — even a dozen seconds apart, a repeat reads as a mistake.
+ *
+ * Two beats (Opening, Brand transition) only had one or two short clips
+ * for a much longer block, so even after the audio trim they still had to
+ * run real footage at ~50 % and ~33 % speed to fill their screen time —
+ * the "still looks too slow motion" beats. Both get a second real clip:
+ * `escaleras` (already the second shot in the Book beat, but two beats
+ * away with all of Services in between, so never contiguous) joins the
+ * Brand-transition beat, and `flecha` (the waymarker arrow, also from the
+ * Book beat, 55 s later) opens the piece alongside the two cathedral
+ * shots. That brings both beats' real footage close enough to their block
+ * length that the stretch stops reading as a freeze.
  */
 
 const BOUNDS = [
-  0, 9.9, 19.83, 26.22, 31.26, 38.58, 46.44, 50.13, 59.76, 67.65, 71.63,
+  0, 9.049, 18.558, 24.404, 28.929, 35.865, 43.157, 46.552, 55.601, 63.239,
+  67.217,
 ];
 const f = (s: number) => Math.round(s * 30);
 const dur = (i: number) => f(BOUNDS[i + 1]) - f(BOUNDS[i]);
@@ -58,7 +81,7 @@ const Inferior: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 export const ReelXacobeoEN: React.FC = () => {
   return (
     <AbsoluteFill style={{ backgroundColor: brand.forest, fontFamily }}>
-      <Audio src={staticFile("locucion-en.mp3")} />
+      <Audio src={staticFile("locucion-en-tight.mp3")} />
 
       <Sequence durationInFrames={f(BOUNDS[9])} name="Brand">
         <Logo
@@ -68,7 +91,11 @@ export const ReelXacobeoEN: React.FC = () => {
         />
       </Sequence>
 
-      {/* 1 · "...reason to celebrate the coming Holy Year" */}
+      {/* 1 · "...reason to celebrate the coming Holy Year".
+       * flecha (the waymarker arrow) opens the piece with the two cathedral
+       * shots: on its own, 3.4s of real footage for a 9s block meant this
+       * ran near a third speed. It also breaks up two near-identical
+       * upward shots of the same towers with something visually distinct. */}
       <Sequence durationInFrames={dur(0)} name="1 · Opening">
         <Planos
           total={dur(0)}
@@ -76,6 +103,7 @@ export const ReelXacobeoEN: React.FC = () => {
           lista={[
             { src: "catedral-a", dura: 1.7 },
             { src: "catedral-b", dura: 1.7 },
+            { src: "flecha", dura: 1.17, encuadre: "50% 40%" },
           ]}
         />
         <Cartela principal="2027" secundaria="A Holy Year" desde={110} />
@@ -141,8 +169,9 @@ export const ReelXacobeoEN: React.FC = () => {
       {/* 5 · "A history of friendship, or simply time for yourself...".
        * brindis (the group toast) is back for "a history of friendship" --
        * it's a strong shot and belongs somewhere. "time for yourself"
-       * (33.47-35.09s) still needs to land mostly on the solo shots after
-       * it, so brindis leads and brazos-alto/contraluz close out the beat. */}
+       * (~31-32.6s on the tightened audio) still needs to land mostly on
+       * the solo shots after it, so brindis leads and brazos-alto/contraluz
+       * close out the beat. */}
       <Sequence from={f(BOUNDS[4])} durationInFrames={dur(4)} name="5 · Friendship">
         <Planos
           total={dur(4)}
@@ -156,10 +185,11 @@ export const ReelXacobeoEN: React.FC = () => {
       </Sequence>
 
       {/* 6 · "...that moment you finally arrive in Santiago — this is what a Holy Year feels like".
-       * "arrive in Santiago" lands around 41.8-43.1s (local ~3.2-4.5s), so
-       * plaza — the cathedral/square shot — goes second, not first, to sit
-       * under those words instead of before them. Zoom is auto-boosted by
-       * Planos since this block stretches its footage a lot. */}
+       * "arrive in Santiago" lands around 39.1-40.4s on the tightened audio
+       * (local ~3.2-4.5s into the beat), so plaza — the cathedral/square
+       * shot — goes second, not first, to sit under those words instead of
+       * before them. Zoom is auto-boosted by Planos since this block
+       * stretches its footage a lot. */}
       <Sequence from={f(BOUNDS[5])} durationInFrames={dur(5) + medioCruce} name="6 · Arrival">
         <Planos
           total={dur(5)}
@@ -179,7 +209,16 @@ export const ReelXacobeoEN: React.FC = () => {
        * beat's static building close-up read as a jarring jump, especially
        * with both sides heavily slowed -- crossfades into Arrival instead
        * (see fundeSalidaBloque above). No overlay content in this beat, so
-       * shifting its start earlier doesn't touch any desde timing. */}
+       * shifting its start earlier doesn't touch any desde timing.
+       * fachada-moderna alone was 1.2s of real footage for a 3.7s block —
+       * the worst stretch in the whole cut, close to a third speed. escaleras
+       * (already used in beat 8, but two beats away with Services in
+       * between, not contiguous) gives it a second real clip instead of
+       * stretching one shot further -- vieiras was the first pick, but at
+       * this canvas's 9:16 crop a 1920px-wide close-up plate shrinks to a
+       * ~600px sliver and reads as an abstract food-texture blur, not a
+       * dish; it stays reserved for the horizontal cut below, where the
+       * source's own 16:9 needs no crop at all. */}
       <Sequence
         from={f(BOUNDS[6]) - medioCruce}
         durationInFrames={dur(6) + medioCruce}
@@ -189,7 +228,10 @@ export const ReelXacobeoEN: React.FC = () => {
           total={dur(6)}
           overlay={0.34}
           fundeEntradaBloque
-          lista={[{ src: "fachada-moderna", dura: 1.2, encuadre: "40% 50%" }]}
+          lista={[
+            { src: "fachada-moderna", dura: 1.2, encuadre: "40% 50%" },
+            { src: "escaleras", dura: 1.2 },
+          ]}
         />
       </Sequence>
 
