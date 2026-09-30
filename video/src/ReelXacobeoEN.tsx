@@ -45,17 +45,16 @@ import { LineaTiempo } from "./graficos/LineaTiempo";
  * one borrowed from "Servicios" (grupo-peregrinos) are split two-per-beat
  * across beats 3-5 (Holy Door, Friendship, Arrival) so none of them
  * repeats — even a dozen seconds apart, a repeat reads as a mistake.
- *
- * Two beats (Opening, Brand transition) only had one or two short clips
- * for a much longer block, so even after the audio trim they still had to
- * run real footage at ~50 % and ~33 % speed to fill their screen time —
- * the "still looks too slow motion" beats. Both get a second real clip:
- * `escaleras` (already the second shot in the Book beat, but two beats
- * away with all of Services in between, so never contiguous) joins the
- * Brand-transition beat, and `flecha` (the waymarker arrow, also from the
- * Book beat, 55 s later) opens the piece alongside the two cathedral
- * shots. That brings both beats' real footage close enough to their block
- * length that the stretch stops reading as a freeze.
+ * Every clip in public/brutos is used at most once across the whole cut,
+ * full stop: two beats (Opening, Brand transition) only had one or two
+ * short clips for a much longer block, so even after the audio trim above
+ * they still ran real footage at ~38 % and ~35 % speed to fill their
+ * screen time. An earlier pass "fixed" that by reusing flecha and
+ * escaleras a second time each, which just traded one visible problem for
+ * another -- fix it instead by moving portico-sellado out of the Calendar
+ * beat's five-clip list (which can spare it) into Brand transition, and
+ * flecha out of the Book beat's four-clip list into Opening: reassigned,
+ * not duplicated, so each still only appears once.
  */
 
 const BOUNDS = [
@@ -92,10 +91,12 @@ export const ReelXacobeoEN: React.FC = () => {
       </Sequence>
 
       {/* 1 · "...reason to celebrate the coming Holy Year".
-       * flecha (the waymarker arrow) opens the piece with the two cathedral
-       * shots: on its own, 3.4s of real footage for a 9s block meant this
-       * ran near a third speed. It also breaks up two near-identical
-       * upward shots of the same towers with something visually distinct. */}
+       * flecha (the waymarker arrow, moved here from the Book beat -- not
+       * duplicated, it no longer appears there) opens the piece with the
+       * two cathedral shots: on its own, 3.4s of real footage for a 9s
+       * block meant this ran near a third speed. It also breaks up two
+       * near-identical upward shots of the same towers with something
+       * visually distinct. */}
       <Sequence durationInFrames={dur(0)} name="1 · Opening">
         <Planos
           total={dur(0)}
@@ -109,7 +110,10 @@ export const ReelXacobeoEN: React.FC = () => {
         <Cartela principal="2027" secundaria="A Holy Year" desde={110} />
       </Sequence>
 
-      {/* 2 · "...falls on a Sunday, Santiago celebrates a Holy Year" */}
+      {/* 2 · "...falls on a Sunday, Santiago celebrates a Holy Year".
+       * portico-sellado moved out to Brand transition below -- manos-sellando
+       * already covers the credential-stamping beat, so losing it here
+       * still leaves four clips for the block. */}
       <Sequence from={f(BOUNDS[1])} durationInFrames={dur(1)} name="2 · Calendar">
         <Planos
           total={dur(1)}
@@ -119,7 +123,6 @@ export const ReelXacobeoEN: React.FC = () => {
             { src: "iglesia-exterior", dura: 1.35, encuadre: "56% 50%" },
             { src: "interior-velas", dura: 2.1 },
             { src: "manos-sellando", dura: 1.6, encuadre: "28% 50%" },
-            { src: "portico-sellado", dura: 2.0, encuadre: "30% 50%" },
           ]}
         />
         <Inferior>
@@ -201,7 +204,18 @@ export const ReelXacobeoEN: React.FC = () => {
             { src: "grupo-peregrinos", dura: 0.75 },
           ]}
         />
-        <Cartela principal="This is what" secundaria="a Holy Year feels like" desde={149} />
+        {/* Own Sequence capped at dur(5), not the extended outer one: the
+         * outer Sequence runs medioCruce frames past the beat's real end so
+         * Planos has room to crossfade its last clip into Brand transition,
+         * but Cartela has no exit animation, so left as a direct sibling it
+         * just sat there fully visible through that crossfade -- the "This
+         * is what a Holy Year feels like" text hanging over the next
+         * beat's building shot. Capping it here makes it leave exactly at
+         * the beat boundary, same as it always did before the crossfade
+         * extended this Sequence. */}
+        <Sequence durationInFrames={dur(5)} name="cartela">
+          <Cartela principal="This is what" secundaria="a Holy Year feels like" desde={149} />
+        </Sequence>
       </Sequence>
 
       {/* 7 · "With Santiago Ways, your journey is organized from the start".
@@ -211,14 +225,12 @@ export const ReelXacobeoEN: React.FC = () => {
        * (see fundeSalidaBloque above). No overlay content in this beat, so
        * shifting its start earlier doesn't touch any desde timing.
        * fachada-moderna alone was 1.2s of real footage for a 3.7s block —
-       * the worst stretch in the whole cut, close to a third speed. escaleras
-       * (already used in beat 8, but two beats away with Services in
-       * between, not contiguous) gives it a second real clip instead of
-       * stretching one shot further -- vieiras was the first pick, but at
-       * this canvas's 9:16 crop a 1920px-wide close-up plate shrinks to a
-       * ~600px sliver and reads as an abstract food-texture blur, not a
-       * dish; it stays reserved for the horizontal cut below, where the
-       * source's own 16:9 needs no crop at all. */}
+       * the worst stretch in the whole cut, close to a third speed.
+       * portico-sellado (moved here from the Calendar beat -- see above,
+       * not duplicated) gives it a second real clip instead of stretching
+       * one shot further, and it fits the "organized from the start" line
+       * arguably better than it fit the calendar countdown anyway: it's a
+       * pilgrim being looked after at an office door. */}
       <Sequence
         from={f(BOUNDS[6]) - medioCruce}
         durationInFrames={dur(6) + medioCruce}
@@ -230,7 +242,7 @@ export const ReelXacobeoEN: React.FC = () => {
           fundeEntradaBloque
           lista={[
             { src: "fachada-moderna", dura: 1.2, encuadre: "40% 50%" },
-            { src: "escaleras", dura: 1.2 },
+            { src: "portico-sellado", dura: 2.0, encuadre: "30% 50%" },
           ]}
         />
       </Sequence>
@@ -268,7 +280,9 @@ export const ReelXacobeoEN: React.FC = () => {
         </AbsoluteFill>
       </Sequence>
 
-      {/* 9 · "...lock in your price today — you focus on the experience, we take care of the details" */}
+      {/* 9 · "...lock in your price today — you focus on the experience, we take care of the details".
+       * flecha moved out to Opening above -- piernas/escaleras/rio-piedras
+       * still cover the physical-journey imagery this beat needs. */}
       <Sequence from={f(BOUNDS[8])} durationInFrames={dur(8)} name="9 · Book">
         <Planos
           total={dur(8)}
@@ -276,7 +290,6 @@ export const ReelXacobeoEN: React.FC = () => {
           lista={[
             { src: "piernas", dura: 2.25 },
             { src: "escaleras", dura: 1.2 },
-            { src: "flecha", dura: 1.2, encuadre: "58% 50%" },
             { src: "rio-piedras", dura: 1.0 },
           ]}
         />
