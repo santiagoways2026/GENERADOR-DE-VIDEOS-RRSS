@@ -193,11 +193,15 @@ const Cortinilla: React.FC<{ capa: Capa; dur: number }> = ({ capa, dur }) => {
   // Gráfico de marca sobre los verdes, centrado en la zona segura.
   return (
     <AbsoluteFill style={{ opacity: Math.min(entra, sale), background: fondo }}>
-      <AbsoluteFill style={{ alignItems: "center", paddingTop: 330, paddingRight: 80, paddingLeft: 40 }}>
+      {/* El calendario es alto y empieza arriba; las tarjetas bajas se centran
+          en la pantalla, por encima de los subtítulos. */}
+      <AbsoluteFill
+        style={{ alignItems: "center", paddingTop: capa.g === "calendario" ? 330 : 640, paddingRight: 80, paddingLeft: 40 }}
+      >
         <div style={{ scale: capa.escala ?? 1, transformOrigin: "50% 0%" }}>
           {capa.g === "calendario" ? <Calendario idioma="en" desde={4} soloVerde /> : null}
           {capa.g === "linea" ? <LineaTiempo desde={4} actual={capa.actual ?? 2027} texto={capa.texto ?? ""} /> : null}
-          {capa.g === "candado" ? <Candado desde={4} texto={capa.texto ?? ""} soloVerde /> : null}
+          {capa.g === "candado" ? <Candado desde={4} texto={capa.texto ?? ""} etiqueta="Plan ahead" soloVerde /> : null}
         </div>
       </AbsoluteFill>
     </AbsoluteFill>

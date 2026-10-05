@@ -19,8 +19,9 @@ import { entrada } from "../componentes/entrada";
  * Sin cifras ni porcentajes: el gesto de cerrar cuenta la idea entera, y
  * una cifra en una pieza anclada un ano seria una promesa que envejece.
  */
-export const Candado: React.FC<{ texto?: string; desde?: number; soloVerde?: boolean }> = ({
+export const Candado: React.FC<{ texto?: string; etiqueta?: string; desde?: number; soloVerde?: boolean }> = ({
   texto = "Precio bloqueado hoy",
+  etiqueta = "Reservando ahora",
   desde = 0,
   soloVerde = false,
 }) => {
@@ -85,7 +86,7 @@ export const Candado: React.FC<{ texto?: string; desde?: number; soloVerde?: boo
             color: color.fg3,
           }}
         >
-          Reservando ahora
+          {etiqueta}
         </div>
         <div
           style={{
