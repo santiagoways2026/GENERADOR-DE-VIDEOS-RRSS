@@ -1,6 +1,6 @@
 import { AbsoluteFill, Composition } from "remotion";
 import "../fuentes";
-import { brand, fontFamily, format, fps } from "../brand/theme";
+import { brand, fontFamily, format, fps } from "./theme-2026";
 import { Calendario } from "./graficos/Calendario";
 
 /** Banco de pruebas: cada grafico aislado sobre un fondo neutro de marca. */

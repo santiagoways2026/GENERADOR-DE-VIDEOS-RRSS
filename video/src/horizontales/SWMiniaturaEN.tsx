@@ -17,7 +17,7 @@ import { Logo } from "../componentes/Logo";
 const FUENTE = "Montserrat, Manrope, Poppins, sans-serif";
 
 export const SWMiniaturaEN: React.FC<{ sinLogo?: boolean }> = ({ sinLogo }) => (
-  <AbsoluteFill style={{ backgroundColor: brand.forest }}>
+  <AbsoluteFill style={{ backgroundColor: brand.grafito }}>
     <OffthreadVideo
       src={staticFile("montajes/testimonios-EN.mp4")}
       trimBefore={Math.round(131.9 * 30)}
@@ -27,7 +27,7 @@ export const SWMiniaturaEN: React.FC<{ sinLogo?: boolean }> = ({ sinLogo }) => (
     <AbsoluteFill
       style={{
         background:
-          "linear-gradient(to top, rgba(10,26,18,0.88) 0%, rgba(10,26,18,0.55) 22%, rgba(10,26,18,0) 46%)",
+          "linear-gradient(to top, rgba(46,46,45,0.88) 0%, rgba(46,46,45,0.55) 22%, rgba(46,46,45,0) 46%)",
       }}
     />
     <AbsoluteFill
@@ -36,12 +36,12 @@ export const SWMiniaturaEN: React.FC<{ sinLogo?: boolean }> = ({ sinLogo }) => (
       <div
         style={{
           fontFamily: FUENTE,
-          fontWeight: 900,
+          fontWeight: 800,
           fontSize: 78,
           lineHeight: 1.12,
           letterSpacing: "-0.025em",
           color: brand.white,
-          textShadow: "0 3px 24px rgba(8,22,15,0.6)",
+          textShadow: "0 3px 24px rgba(46,46,45,0.6)",
         }}
       >
         Your Camino

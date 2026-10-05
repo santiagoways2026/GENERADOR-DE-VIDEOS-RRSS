@@ -9,7 +9,7 @@ import {
   space,
   tracking,
   weight,
-} from "../../brand/theme";
+} from "../theme-2026";
 
 /** Julio de 2027, con lunes como primer dia. El 0 es hueco. */
 const SEMANAS = [

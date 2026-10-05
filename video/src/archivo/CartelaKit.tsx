@@ -8,7 +8,7 @@ import {
   space,
   tracking,
   weight,
-} from "../brand/theme";
+} from "./theme-2026";
 
 /**
  * Cartela de texto del reel, calcada del kit de motion graphics.

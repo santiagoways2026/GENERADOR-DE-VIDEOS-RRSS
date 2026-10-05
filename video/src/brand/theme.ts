@@ -1,121 +1,201 @@
 /**
- * Design system de Santiago Ways, edicion 2026, traducido a tokens de video.
- * Fuente: "Guia de marca - Santiago Ways", sistema de diseno oficial.
+ * Design system de Santiago Ways, **Brandbook 2027**, traducido a tokens de
+ * video. Fuente: `docs/brandbook-2027.pdf`.
  *
- * Regla de oro: el protagonista es el verde olivo. Blanco + olivo en la
- * mayoria de piezas. Lima y bosque son complementarios de uso puntual.
- * En caso de duda: pintalo verde, ponlo en bold y deja aire.
+ * Este archivo es la traduccion de la guia: si la guia cambia, se cambia aqui
+ * y nada mas. Lo que diga el PDF manda sobre lo que diga este comentario.
+ *
+ * Regla de oro, segun el ratio 50/30/10/7/3: **el blanco es el principal** y
+ * el verde Ways el principal secundario. El verde sendero es el color de
+ * resalte y el grafito es la tinta. No hay mas colores.
+ *
+ * Lo que cambia respecto a la edicion 2026, por si aparece una pieza vieja:
+ *
+ * | 2026 | 2027 |
+ * | --- | --- |
+ * | Tinta bosque `#184834` | Grafito `#2E2E2D` |
+ * | Verde oscuro `#668814` | Verde sendero `#506718` |
+ * | Lima `#B0F808` como acento | **Fuera de la paleta** |
+ * | Crema `#FAF8F2` de fondo | Brote `#FAFFEE` |
+ * | Cascada Montserrat/Manrope/Poppins/Tahoma | **Montserrat sola** |
+ * | Peso maximo 900 | **800, el ExtraBold** |
+ * | Titulares en caja alta | **Minuscula de frase**; mayusculas solo en antetitulos |
+ * | Degradado 145 grados, tres paradas | **135 grados, de `#7AA606` a `#628A04`, sutil** |
+ *
+ * Los tokens de 2026 que todavia usan las piezas de `archivo/` estan abajo,
+ * en `legacy`, y **no se usan en nada nuevo**.
  */
 
 /* ------------------------------------------------------------------ *
- * COLOR
+ * COLOR · la paleta cerrada del 2027
  * ------------------------------------------------------------------ */
 
 export const brand = {
-  /** Verde principal. Fondos, CTAs primarios, titulos sobre claro. */
-  green: "#7AA606",
-  /** Verde oscuro. Hover, pressed, sombras, verde con mas contraste. */
-  greenDark: "#668814",
+  /** 50 % de la pieza. El principal, siempre: da aire y limpieza. */
   white: "#FFFFFF",
 
-  /** Lima. Brushstroke sobre foto, badge de oferta, CTA muy puntual.
-   *  Encima siempre texto bosque. Nunca protagonista. */
-  lime: "#B0F808",
-  limeSoft: "#C5F446",
-  limeDeep: "#9DDB07",
+  /** Verde Ways, 30 %. El principal secundario. Cajas, lineas, CTAs y la
+   *  concha. **Nunca como color de texto sobre blanco.** */
+  green: "#7AA606",
 
-  /** Bosque. Tinta por defecto: sustituye al negro. Footers, bloques oscuros. */
-  forest: "#184834",
-  forestSoft: "#2A6447",
-  forestDeep: "#0E2C1F",
+  /** Verde sendero, 10 %. El color de resalte: cajas oscuras, palabras clave
+   *  y el subrayado en negativo. Blanco encima da 6,4:1. */
+  sendero: "#506718",
 
-  /** Crema. Fondo alternativo para lecturas largas. */
-  cream: "#FAF8F2",
+  /** Grafito, 7 %. **La tinta**, donde antes iba el bosque. Texto principal
+   *  y, como mucho, un resalte puntual. Sobre blanco da 13,6:1. */
+  grafito: "#2E2E2D",
+
+  /** Apoyo, 3 % entre los tres. */
+  gris: "#6F6F6E",
+  niebla: "#E8E8E6",
+  brote: "#FAFFEE",
 } as const;
 
-/** Escalas completas, por si hace falta un paso intermedio. */
-export const scale = {
-  green: ["#F4F8E6", "#E6F0CC", "#CDE199", "#B0CC66", "#94B833",
-          "#7AA606", "#668814", "#4F6B0F", "#38500B", "#243607"],
-  lime: ["#F5FDE0", "#ECFBC2", "#D7F784", "#C5F446", "#B0F808",
-         "#9DDB07", "#7DAE05", "#5E8404", "#3F5902", "#1F2C01"],
-  forest: ["#E8F0EC", "#CDDFD5", "#9BBFAA", "#68A07F", "#408561",
-           "#2A6447", "#184834", "#133A2A", "#0E2C1F", "#081B13"],
-  neutral: ["#FFFFFF", "#FAF8F2", "#F3F0E7", "#E6E2D6", "#CFCABB",
-            "#A8A498", "#76736A", "#4F4D47", "#353330", "#22211F", "#15140F"],
+/**
+ * El degradado **solo va en cajas de fondo verde Ways**, a 135 grados y muy
+ * sutil: el tono final es un punto mas oscuro y no se debe leer como efecto.
+ * Todo lo demas va plano: CTA, etiquetas, antetitulos, subrayados, lineas,
+ * barras, textos y la concha.
+ */
+export const degradado = {
+  desde: "#7AA606",
+  hasta: "#628A04",
+  angulo: 135,
+  css: "linear-gradient(135deg, #7AA606 0%, #628A04 100%)",
 } as const;
 
 /** Tokens semanticos. Usa estos en las escenas, no los colores crudos. */
 export const color = {
-  /** Texto: bosque, nunca negro puro. */
-  fg1: brand.forest,
-  fg2: brand.forestSoft,
-  fg3: "#76736A",
-  /** Texto sobre bloques verdes o bosque. */
+  /** Texto: grafito, nunca negro puro. */
+  fg1: brand.grafito,
+  fg2: brand.gris,
+  /** Texto sobre verde Ways, verde sendero o foto. */
   fgInverse: brand.white,
-  /** Texto sobre lima: siempre bosque. */
-  fgOnLime: brand.forest,
+  /** Titulares y palabras resaltadas sobre blanco. */
+  fgAccent: brand.sendero,
 
   bg1: brand.white,
-  bg2: brand.cream,
+  bg2: brand.brote,
   bgBrand: brand.green,
-  bgBrandStrong: brand.greenDark,
-  bgInk: brand.forest,
-  bgAccent: brand.lime,
-  bgWash: "#F4F8E6",
+  bgAccent: brand.sendero,
+  bgMuted: brand.niebla,
 
-  border1: "#E6E2D6",
+  border1: brand.niebla,
   borderBrand: brand.green,
 } as const;
+
+/**
+ * Las parejas que da el brandbook, medidas y comprobadas. El minimo para
+ * texto grande es 3:1.
+ *
+ * | Tinta sobre fondo | Ratio | Para que |
+ * | --- | --- | --- |
+ * | Grafito sobre blanco | 13,6:1 | Todo tipo de texto |
+ * | Verde sendero sobre blanco | 6,4:1 | Titulares y palabras en verde |
+ * | Blanco sobre verde sendero | 6,4:1 | Cajas oscuras, todo en blanco |
+ * | Blanco sobre verde Ways | 2,9:1 | Titulares, CTAs y cajas, **en negrita** |
+ * | Grafito sobre niebla | 11,1:1 | Etiquetas y superficies |
+ *
+ * **Nunca verde sobre verde.** Y el verde Ways no es color de texto sobre
+ * blanco: ahi va el verde sendero.
+ */
 
 /* ------------------------------------------------------------------ *
  * TIPOGRAFIA
  * ------------------------------------------------------------------ */
 
 /**
- * Tahoma es la corporativa oficial para PDF y material legacy. En web y
- * video la cascada es Montserrat -> Manrope -> Poppins. Las fuentes se
- * empaquetan con el proyecto para que el render sea identico en cualquier
- * maquina y funcione sin conexion.
+ * **Montserrat y nada mas.** La edicion 2026 llevaba una cascada de cuatro
+ * familias y Tahoma como corporativa de PDF; el brandbook 2027 las retira:
+ * "Tahoma, anticuada y distinta de la web. Montserrat en todas las piezas".
+ * Se empaqueta con el proyecto para que el render salga igual en cualquier
+ * maquina y sin conexion.
  */
-export const fontFamily = "Montserrat, Manrope, Poppins, Tahoma, sans-serif";
+export const fontFamily = "Montserrat, sans-serif";
 
-/** Escala oficial: 12 · 14 · 16 · 18 · 22 · 28 · 36 · 48 · 64 · 88 px. */
-export const fontSize = {
-  xs: 12,
-  sm: 14,
-  base: 16,
-  md: 18,
-  lg: 22,
-  xl: 28,
-  "2xl": 36,
-  "3xl": 48,
-  "4xl": 64,
-  /** Titular de impacto para feed: mayusculas, peso 900. */
-  impact: 88,
-} as const;
-
+/**
+ * Los pesos que existen. **No hay 900**: el tope de la familia en la guia es
+ * el 800, el ExtraBold. Si piden "mas gruesa", el margen esta en el cuerpo.
+ */
 export const weight = {
   regular: 400,
   medium: 500,
   semibold: 600,
   bold: 700,
   extrabold: 800,
-  black: 900,
+} as const;
+
+/**
+ * La escala de la guia, en px de web. **El video no la usa tal cual**: un
+ * lienzo de 1080x1920 pide cuerpos de 70 a 190, y cada pieza los mide contra
+ * el ancho util con la fuente empaquetada. Lo que si se respeta es el reparto
+ * de pesos y el interlineado.
+ */
+export const texto = {
+  display: { size: 64, line: 1.05, weight: weight.extrabold },
+  h1: { size: 48, line: 1.1, weight: weight.extrabold },
+  h2: { size: 36, line: 1.15, weight: weight.bold },
+  h3: { size: 28, line: 1.2, weight: weight.bold },
+  h4: { size: 22, line: 1.2, weight: weight.bold },
+  cuerpo: { size: 16, line: 1.5, weight: weight.regular },
+  pie: { size: 13, line: 1.4, weight: weight.regular },
+  legal: { size: 12, line: 1.4, weight: weight.regular },
+  /** Mayusculas, y es el unico sitio donde las hay. */
+  antetitulo: { size: 12, line: 1.2, weight: weight.bold, tracking: "0.15em" },
 } as const;
 
 export const lineHeight = {
+  /** Titulares. */
   tight: 1.1,
-  snug: 1.25,
+  /** Texto de lectura. */
   normal: 1.5,
-  relaxed: 1.7,
 } as const;
 
 export const tracking = {
   tight: "-0.02em",
   normal: "0",
-  wide: "0.02em",
-  loose: "0.08em",
+  /** Antetitulos y etiquetas. */
+  antetitulo: "0.15em",
+} as const;
+
+/**
+ * **Los titulares van en minuscula de frase.** Las mayusculas se reservan a
+ * antetitulos y etiquetas. Es lo que mas cambia respecto a 2026 y afecta a
+ * cada rotulo que ya esta montado.
+ */
+export const caja = {
+  titular: "none",
+  antetitulo: "uppercase",
+} as const;
+
+/* ------------------------------------------------------------------ *
+ * SUBRAYADO SW
+ * ------------------------------------------------------------------ */
+
+/**
+ * El recurso tipografico de la marca: un bloque de color detras de las
+ * palabras que llevan la promesa.
+ *
+ * - **Una o dos palabras, una sola vez por titular.**
+ * - Girado **-1,5 grados**, como un trazo hecho a mano.
+ * - Recto: **sin redondeo y sin sombra**. Siempre en color plano.
+ * - Un solo tipo de subrayado por pieza.
+ *
+ * Tres versiones, y la de la pieza las fija todas:
+ *
+ * | | Fondo | Subrayado | Letra |
+ * | --- | --- | --- | --- |
+ * | Por defecto | Blanco o foto | Verde Ways | Blanca |
+ * | En negativo | Caja verde Ways | Verde sendero | Blanca |
+ * | Excepcion | Blanco, si la pieza ya lleva uno en negativo | Ninguno | Verde Ways |
+ */
+export const subrayado = {
+  giro: -1.5,
+  radio: 0,
+  porDefecto: { fondo: brand.green, letra: brand.white },
+  negativo: { fondo: brand.sendero, letra: brand.white },
+  excepcion: { fondo: "transparent", letra: brand.green },
 } as const;
 
 /* ------------------------------------------------------------------ *
@@ -128,19 +208,20 @@ export const space = {
 } as const;
 
 export const radius = {
-  /** Componentes: botones, inputs. */
   md: 8,
-  /** Cards. */
   lg: 12,
   xl: 20,
   pill: 999,
+  /** El subrayado SW no lleva redondeo. */
+  subrayado: 0,
 } as const;
 
-/** Sombras tintadas hacia bosque, nunca negro. */
+/**
+ * **Solo las cajas llevan sombra**, suave y en grafito al 12 %. Botones,
+ * etiquetas y subrayados van sin sombra.
+ */
 export const shadow = {
-  card: "0 4px 12px rgba(24, 72, 52, 0.10), 0 1px 2px rgba(24, 72, 52, 0.05)",
-  raised: "0 12px 28px rgba(24, 72, 52, 0.14), 0 2px 6px rgba(24, 72, 52, 0.06)",
-  brand: "0 12px 24px rgba(122, 166, 6, 0.28)",
+  caja: "0 8px 32px rgba(46, 46, 45, 0.12)",
 } as const;
 
 /* ------------------------------------------------------------------ *
@@ -148,11 +229,10 @@ export const shadow = {
  * ------------------------------------------------------------------ */
 
 /**
- * La guia define el movimiento en milisegundos, pensando en interfaz web:
- * 120 ms hover, 220 ms paneles, 420 ms pagina, con fade + slide-up de
- * 8 a 12 px y nunca bounce. En video esas duraciones son casi imperceptibles,
- * asi que se escalan a fotogramas manteniendo la regla: entradas cortas,
- * easing de salida, desplazamiento corto, cero rebote.
+ * El brandbook 2027 no trae apartado de movimiento, asi que **se mantiene el
+ * de 2026**, que si lo definia: entradas cortas, easing de salida,
+ * desplazamiento corto y cero rebote. Queda anotado que viene de la edicion
+ * anterior y no del libro nuevo.
  */
 export const easeOut = [0.22, 0.61, 0.36, 1] as const;
 
@@ -163,15 +243,12 @@ export const duration = {
   slow: 18,
 } as const;
 
-/** Desplazamiento vertical de entrada. La guia pide 8-12 px en web;
- *  en un lienzo de 1080 px de ancho equivale a este rango. */
 export const slideUp = 24;
 
 /* ------------------------------------------------------------------ *
  * LIENZO
  * ------------------------------------------------------------------ */
 
-/** Formatos sociales oficiales. */
 export const format = {
   reels: { width: 1080, height: 1920 },
   feed: { width: 1080, height: 1080 },
@@ -188,19 +265,55 @@ export const margin = 72;
  * ------------------------------------------------------------------ */
 
 /**
- * "Santiago Ways" nunca se escribe como texto: ni en mayusculas, ni junto
- * al isotipo, ni como lockup tipografico. La marca escrita es siempre el
- * archivo oficial. Nunca sobre lima, nunca full-color sobre imagen, nunca
- * delinear, rotar ni usar como mascara.
- * Tamano minimo digital: 60 px de alto, 180 px de ancho.
+ * "Santiago Ways" nunca se escribe como texto: la marca escrita es siempre el
+ * archivo oficial.
+ *
+ * - **Sobre blanco, el logo va en verde Ways; sobre cualquier otro fondo, en
+ *   blanco.** Eso incluye toda la foto, que es casi todo el video.
+ * - El horizontal, arriba a la izquierda, con un ancho de un cuarto de pieza.
+ * - El **isotipo**, arriba a la derecha, como firma. En video funciona como
+ *   marca de agua desde 24 px de ancho.
+ * - Area de respeto: X es la mitad de la altura de la concha, y nada entra
+ *   ahi.
+ * - La concha **siempre entera**: ni recortada, ni girada, ni como trama.
+ *
+ * Los minimos son de **ancho**, no de alto, y cambian respecto a 2026.
  */
 export const logo = {
-  /** Sobre blanco o crema. */
+  /** Sobre blanco o brote. */
   verde: "logo/santiago-ways-verde.png",
-  /** Sobre olivo, bosque o foto. */
+  /** Sobre verde, grafito o foto. */
   blanco: "logo/santiago-ways-blanco.png",
-  /** Isotipo suelto: favicon, avatar, sellos pequenos. */
+  /** Isotipo suelto: firma, avatar, marca de agua. */
   isotipo: "logo/isotipo-verde.png",
-  minHeight: 60,
-  minWidth: 180,
+  /** Anchos minimos en digital. */
+  minAnchoHorizontal: 140,
+  minAnchoVertical: 160,
+  minAnchoIsotipo: 24,
+} as const;
+
+/* ------------------------------------------------------------------ *
+ * LEGACY · edicion 2026
+ * ------------------------------------------------------------------ */
+
+/**
+ * **Fuera de la paleta 2027.** Esta aqui porque las piezas de `archivo/` se
+ * siguen renderizando y las usan: el reel del Xacobeo, las cartelas del kit y
+ * los graficos de dato. **No se usa en nada nuevo.**
+ *
+ * El brandbook 2027 lo dice explicitamente en el punto de partida: "Variantes
+ * de verde lima y oscuro sin aprobar. Paleta cerrada y codigos unicos".
+ */
+export const legacy = {
+  lime: "#B0F808",
+  limeSoft: "#C5F446",
+  limeDeep: "#9DDB07",
+  forest: "#184834",
+  forestSoft: "#2A6447",
+  forestDeep: "#0E2C1F",
+  greenDark: "#668814",
+  cream: "#FAF8F2",
+  /** La escala de verdes de 2026, de la que salia el degradado de tres paradas. */
+  scaleGreen: ["#F4F8E6", "#E6F0CC", "#CDE199", "#B0CC66", "#94B833",
+               "#7AA606", "#668814", "#4F6B0F", "#38500B", "#243607"],
 } as const;

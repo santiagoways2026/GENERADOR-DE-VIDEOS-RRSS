@@ -4,8 +4,16 @@ import {
   interpolate,
   useCurrentFrame,
 } from "remotion";
-import { brand, scale } from "../brand/theme";
+import { brand, degradado, subrayado, weight } from "../brand/theme";
 import { Logo } from "./Logo";
+
+/**
+ * Los velos y las sombras van en **grafito**, que es la tinta de la marca.
+ * Hasta la edicion 2026 iban en un casi negro de la escala del bosque, que ya
+ * no esta en la paleta.
+ */
+const tinta = (alfa: number) => `rgba(46, 46, 45, ${alfa})`;
+const VELO_TINTA = tinta(0.55);
 
 /**
  * Las cartelas de las piezas horizontales de marca, y el cierre que las
@@ -29,7 +37,9 @@ import { Logo } from "./Logo";
  *   sobre el verde olivo con degradado, y la web debajo en blanco.
  */
 
-export const FUENTE = "Montserrat, Manrope, Poppins, sans-serif";
+/** Brandbook 2027: Montserrat y nada mas. La cascada de cuatro familias y
+ *  Tahoma se retiran con la edicion 2026. */
+export const FUENTE = "Montserrat, sans-serif";
 export const MARGEN = 64;
 
 /** 896 ms del kit, a 30 fps. */
@@ -85,17 +95,21 @@ export const Linea: React.FC<{
           fontFamily: FUENTE,
           fontSize: tam,
           lineHeight: 1.02,
-          fontWeight: 900,
+          fontWeight: weight.extrabold,
           letterSpacing: "-0.025em",
           color: brand.white,
           whiteSpace: "pre",
-          backgroundColor: t.destacado ? brand.green : "transparent",
+          // El subrayado SW: bloque de color plano detras de la promesa.
+          // Recto y sin sombra, y girado -1,5 grados como un trazo a mano.
+          backgroundColor: t.destacado ? subrayado.porDefecto.fondo : "transparent",
           padding: t.destacado
             ? `${Math.round(tam * 0.14)}px ${Math.round(tam * 0.26)}px`
             : 0,
-          borderRadius: t.destacado ? 6 : 0,
+          borderRadius: subrayado.radio,
+          transform: t.destacado ? `rotate(${subrayado.giro}deg)` : undefined,
+          display: t.destacado ? "inline-block" : undefined,
           marginRight: i < trozos.length - 1 ? Math.round(tam * 0.22) : 0,
-          textShadow: t.destacado ? "none" : "0 2px 16px rgba(8,22,15,0.55)",
+          textShadow: t.destacado ? "none" : `0 2px 16px ${VELO_TINTA}`,
         }}
       >
         {t.texto}
@@ -148,7 +162,7 @@ export const Subtitulo: React.FC<{
           lineHeight: 1.26,
           letterSpacing: "-0.01em",
           color: brand.white,
-          textShadow: "0 2px 18px rgba(8,22,15,0.9), 0 0 3px rgba(8,22,15,0.7)",
+          textShadow: `0 2px 18px ${tinta(0.9)}, 0 0 3px ${tinta(0.7)}`,
         }}
       >
         {lineas.map((l) => (
@@ -199,7 +213,7 @@ export const Cartela: React.FC<{
       <AbsoluteFill
         style={{
           background:
-            "linear-gradient(to top, rgba(10,26,18,0.58) 0%, rgba(10,26,18,0.28) 34%, rgba(10,26,18,0) 64%)",
+            `linear-gradient(to top, ${tinta(0.58)} 0%, ${tinta(0.28)} 34%, ${tinta(0)} 64%)`,
         }}
       />
       <div style={{ position: "relative" }}>
@@ -217,7 +231,7 @@ export const Cartela: React.FC<{
               letterSpacing: "0.01em",
               color: brand.white,
               clipPath: barrido(frame, RELEVO * lineas.length, total),
-              textShadow: "0 2px 14px rgba(8,22,15,0.55)",
+              textShadow: `0 2px 14px ${tinta(0.55)}`,
             }}
           >
             {pie.map((l) => (
@@ -272,7 +286,7 @@ export const CierreMarca: React.FC<{
       <AbsoluteFill
         style={{
           background:
-            "linear-gradient(105deg, rgba(10,26,18,0.80) 0%, rgba(10,26,18,0.62) 46%, rgba(10,26,18,0.18) 100%)",
+            `linear-gradient(105deg, ${tinta(0.80)} 0%, ${tinta(0.62)} 46%, ${tinta(0.18)} 100%)`,
         }}
       />
       <AbsoluteFill
@@ -338,7 +352,9 @@ export const PlacaMarca: React.FC<{
     <AbsoluteFill>
       <AbsoluteFill
         style={{
-          background: `linear-gradient(145deg, ${brand.green} 0%, ${brand.greenDark} 52%, ${scale.green[7]} 100%)`,
+          // Brandbook 2027: el degradado solo va en cajas de fondo verde Ways,
+          // a 135 grados y de un solo salto. Antes eran 145 y tres paradas.
+          background: degradado.css,
           opacity: fondo,
         }}
       />

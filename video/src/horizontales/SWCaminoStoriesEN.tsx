@@ -89,7 +89,7 @@ export const SWCaminoStoriesEN: React.FC = () => {
   const finCierre = f(123.0);
 
   return (
-    <AbsoluteFill style={{ backgroundColor: brand.forest }}>
+    <AbsoluteFill style={{ backgroundColor: brand.grafito }}>
       {/* Base: imagen y audio del montaje limpio, entrando por el 11,30. */}
       <OffthreadVideo
         src={staticFile("montajes/testimonios-EN.mp4")}

@@ -18,7 +18,7 @@ export const Logo: React.FC<{
     <CanvasImage
       src={staticFile(variante === "blanco" ? logo.blanco : logo.verde)}
       style={{
-        width: Math.max(ancho, logo.minWidth),
+        width: Math.max(ancho, logo.minAnchoHorizontal),
         height: "auto",
         objectFit: "contain",
         ...style,

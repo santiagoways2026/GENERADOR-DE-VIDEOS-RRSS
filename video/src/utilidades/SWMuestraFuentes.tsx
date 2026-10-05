@@ -19,7 +19,7 @@ const CASOS: { nombre: string; familia: string; peso: number }[] = [
 ];
 
 export const SWMuestraFuentes: React.FC = () => (
-  <AbsoluteFill style={{ backgroundColor: brand.forest, padding: 44 }}>
+  <AbsoluteFill style={{ backgroundColor: brand.grafito, padding: 44 }}>
     {CASOS.map((c) => (
       <div key={c.nombre} style={{ marginBottom: 26 }}>
         <div
@@ -29,7 +29,7 @@ export const SWMuestraFuentes: React.FC = () => (
             fontWeight: 800,
             letterSpacing: "0.14em",
             textTransform: "uppercase",
-            color: brand.lime,
+            color: brand.sendero,
             marginBottom: 8,
           }}
         >

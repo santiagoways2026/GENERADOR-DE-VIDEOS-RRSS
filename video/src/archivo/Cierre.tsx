@@ -1,5 +1,5 @@
 import { AbsoluteFill, Easing, interpolate, useCurrentFrame } from "remotion";
-import { brand, easeOut, fontSize, space, tracking, weight } from "../brand/theme";
+import { brand, easeOut, fontSize, space, tracking, weight } from "./theme-2026";
 import { Logo } from "../componentes/Logo";
 
 /**

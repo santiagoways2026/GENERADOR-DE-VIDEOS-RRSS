@@ -9,7 +9,7 @@ import {
   space,
   tracking,
   weight,
-} from "../../brand/theme";
+} from "../theme-2026";
 import { entrada } from "../../componentes/entrada";
 
 /**

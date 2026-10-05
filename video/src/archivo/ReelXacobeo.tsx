@@ -1,7 +1,7 @@
 import { AbsoluteFill, Composition, Sequence, staticFile } from "remotion";
 import { Audio } from "@remotion/media";
 import "../fuentes";
-import { brand, fontFamily, format, fps, margin } from "../brand/theme";
+import { brand, fontFamily, format, fps, margin } from "./theme-2026";
 import { Bullets } from "./Bullets";
 import { Cartela } from "./CartelaKit";
 import { Logo } from "../componentes/Logo";

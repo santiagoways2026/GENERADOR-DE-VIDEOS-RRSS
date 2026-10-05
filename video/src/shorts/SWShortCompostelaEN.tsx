@@ -53,7 +53,8 @@ const DURACION = 50.0;
 
 const BASE = "montajes/compostela-abre.mp4";
 const T = "brutos/testimonios/";
-const FUENTE = "Montserrat, Manrope, sans-serif";
+/** Brandbook 2027: Montserrat y nada mas. */
+const FUENTE = "Montserrat, sans-serif";
 
 /** El movimiento de la guía: fundido más desplazamiento corto. Nunca rebote. */
 const SUAVE = Easing.bezier(0.22, 0.61, 0.36, 1);
@@ -92,11 +93,11 @@ const Lineas: React.FC<{ lineas: Linea[]; largo: number; relevo: number }> = ({
           style={{
             fontFamily: FUENTE,
             fontSize: l.tam,
-            fontWeight: 900,
+            fontWeight: 800,
             lineHeight: 0.94,
             letterSpacing: "-0.03em",
             color: l.color,
-            textShadow: "0 6px 26px rgba(24,72,52,0.55)",
+            textShadow: "0 6px 26px rgba(46,46,45,0.55)",
             ...entra(frame, relevo * i, largo),
           }}
         >
@@ -181,15 +182,15 @@ const PIE_TAM = 54;
 
 /** El velo de bosque de la guía, sólo para la tarjeta de apertura. */
 const VELO =
-  "linear-gradient(to bottom, rgba(24,72,52,0.55) 0%, rgba(24,72,52,0.45) 20%, rgba(24,72,52,0) 34%)";
+  "linear-gradient(to bottom, rgba(46,46,45,0.55) 0%, rgba(46,46,45,0.45) 20%, rgba(46,46,45,0) 34%)";
 
 /**
  * El degradado de marca detrás de los rótulos de ruta, dentro de la escala de
  * verdes de la guía y apagándose antes del tercio de cuadro.
  */
 const DEGRADADO_RUTA =
-  "linear-gradient(to bottom, rgba(122,166,6,0.97) 0%, rgba(112,151,13,0.95) 16%," +
-  " rgba(102,136,20,0.55) 19.5%, rgba(79,107,15,0) 23%)";
+  "linear-gradient(to bottom, rgba(122,166,6,0.97) 0%, rgba(99,131,16,0.95) 16%," +
+  " rgba(80,103,24,0.55) 19.5%, rgba(80,103,24,0) 23%)";
 
 const RotuloRuta: React.FC<{ lineas: Linea[]; total: number; rapido?: boolean }> = ({
   lineas,
