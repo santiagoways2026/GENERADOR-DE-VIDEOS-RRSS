@@ -267,7 +267,7 @@ const Gancho: React.FC<{ titulo: string[]; acento: number; dur: number }> = ({ t
                 textTransform: "uppercase",
                 whiteSpace: "nowrap",
                 color: brand.white,
-                backgroundColor: esAcento ? paleta.sendero : "transparent",
+                backgroundColor: esAcento ? paleta.verdeWays : "transparent",
                 padding: esAcento ? "4px 18px 8px" : 0,
                 borderRadius: 10,
                 WebkitTextStroke: esAcento ? "0px" : `10px ${paleta.grafito}`,
