@@ -26,7 +26,9 @@ for id in $ids; do
   seg=$(python3 -c "import json;print([d for d in json.load(open('src/xacobeo/xacobeo.json')) if d['id']=='$id'][0]['portada']['fotograma'])")
   vid=$(python3 -c "import json;print([d for d in json.load(open('src/xacobeo/xacobeo.json')) if d['id']=='$id'][0]['video'])")
   mkdir -p public/xacobeo/portadas
-  ffmpeg -v error -y -ss "$seg" -i "public/$vid" -frames:v 1 -q:v 2 "public/xacobeo/portadas/$id.jpg"
+  ffmpeg -v error -y -ss "$seg" -i "public/$vid" -frames:v 1 \
+    -vf "eq=brightness=0.03:contrast=1.05:saturation=1.08,colorbalance=rs=0.03:bs=-0.03,unsharp=5:5:0.4" \
+    -q:v 2 "public/xacobeo/portadas/$id.jpg"
   npx remotion still "Portada-$id" "out/xacobeo/portadas/$id.png" --log=error
   ffmpeg -v error -y -i "out/xacobeo/portadas/$id.png" -q:v 2 "out/xacobeo/portadas/portada-$id.jpg"
   rm "out/xacobeo/portadas/$id.png"

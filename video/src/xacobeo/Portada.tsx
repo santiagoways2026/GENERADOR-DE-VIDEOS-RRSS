@@ -1,6 +1,6 @@
 import { AbsoluteFill, Img, Interactive, staticFile } from "remotion";
 import "../fuentes";
-import { brand, fontFamily } from "../brand/theme";
+import { brand, fontFamily, paleta } from "../brand/theme";
 import { Logo } from "../componentes/Logo";
 import datos from "./xacobeo.json";
 
@@ -19,7 +19,7 @@ export const Portada: React.FC<{ id: string }> = ({ id }) => {
   const lineas = d.portada.titulo;
 
   return (
-    <AbsoluteFill style={{ backgroundColor: brand.forest, fontFamily }}>
+    <AbsoluteFill style={{ backgroundColor: brand.green, fontFamily }}>
       {/* El fotograma se extrae antes con ffmpeg (render_xacobeo.sh): en una
           imagen fija, OffthreadVideo no aplica trimBefore y sale el primero. */}
       <Img
@@ -27,11 +27,11 @@ export const Portada: React.FC<{ id: string }> = ({ id }) => {
         style={{ width: "100%", height: "100%", objectFit: "cover", scale: 1.06, transformOrigin: "50% 38%" }}
       />
 
-      {/* Velo bosque abajo para que el titular se lea sobre cualquier ropa. */}
+      {/* Velo grafito abajo para que el titular se lea sobre cualquier ropa. */}
       <AbsoluteFill
         style={{
           background:
-            "linear-gradient(180deg, rgba(14,44,31,0) 48%, rgba(14,44,31,0.55) 62%, rgba(14,44,31,0.92) 82%, rgba(14,44,31,0.96) 100%)",
+            "linear-gradient(180deg, rgba(46,46,45,0) 50%, rgba(46,46,45,0.38) 64%, rgba(46,46,45,0.66) 82%, rgba(46,46,45,0.72) 100%)",
         }}
       />
 
@@ -56,8 +56,8 @@ export const Portada: React.FC<{ id: string }> = ({ id }) => {
       >
         <div
           style={{
-            backgroundColor: brand.lime,
-            color: brand.forest,
+            backgroundColor: paleta.sendero,
+            color: brand.white,
             fontSize: 34,
             fontWeight: 900,
             letterSpacing: "0.08em",
@@ -79,8 +79,11 @@ export const Portada: React.FC<{ id: string }> = ({ id }) => {
               letterSpacing: "-0.02em",
               textTransform: "uppercase",
               whiteSpace: "nowrap",
-              color: i === d.portada.acento ? brand.lime : brand.white,
-              textShadow: "0 6px 24px rgba(14, 44, 31, 0.6)",
+              color: brand.white,
+              backgroundColor: i === d.portada.acento ? brand.green : "transparent",
+              padding: i === d.portada.acento ? "4px 22px 10px" : 0,
+              borderRadius: 10,
+              textShadow: i === d.portada.acento ? "none" : "0 6px 24px rgba(46, 46, 45, 0.5)",
             }}
           >
             {linea}

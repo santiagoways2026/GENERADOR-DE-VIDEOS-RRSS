@@ -47,7 +47,9 @@ export const Cartela: React.FC<{
   tono?: "olivo" | "lima" | "bosque";
   /** Distancia al borde superior. En redes, por debajo de la interfaz. */
   top?: number;
-}> = ({ eyebrow, principal, secundaria, desde = 0, tono = "olivo", top = 200 }) => {
+  /** Color del texto de la placa blanca. Bosque por defecto. */
+  tinta?: string;
+}> = ({ eyebrow, principal, secundaria, desde = 0, tono = "olivo", top = 200, tinta = brand.forest }) => {
   const frame = useCurrentFrame();
 
   const inferior = {
@@ -108,7 +110,7 @@ export const Cartela: React.FC<{
             lineHeight: 1,
             fontWeight: weight.extrabold,
             letterSpacing: "-0.015em",
-            color: brand.forest,
+            color: tinta,
             whiteSpace: "nowrap",
           }}
         >

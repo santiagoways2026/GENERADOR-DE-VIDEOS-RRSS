@@ -21,9 +21,11 @@ de la guía; si la guía cambia, se cambia ahí y nada más.
 
 Reglas que condicionan cada pieza:
 
-- El protagonista es el verde olivo `#7AA606`. Blanco más verde en la mayoría.
-- Lima `#B0F808` y bosque `#184834` son complementarios, de uso puntual.
-- Nada de negro puro: la tinta es el bosque.
+- Paleta y ratio de la guía 2026 (`paleta` en `theme.ts`): blanco `#FFFFFF`
+  50 %, verde Ways `#7AA606` 30 %, verde sendero `#506718` 10 % para cajas y
+  palabras clave, grafito `#2E2E2D` 7 % para el texto, apoyo 3 %. En piezas
+  nuevas, nada de lima ni bosque.
+- Nada de negro puro: la tinta es el grafito `#2E2E2D`.
 - Texto blanco sobre olivo. Texto bosque sobre lima. Siempre.
 - La marca nunca se escribe como texto. Se usa el archivo de logo.
 - Un solo CTA por pieza.

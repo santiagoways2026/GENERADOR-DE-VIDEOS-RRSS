@@ -1,5 +1,6 @@
 import { Easing, Interactive, interpolate, useCurrentFrame } from "remotion";
 import {
+  paleta,
   brand,
   color,
   easeOut,
@@ -41,11 +42,13 @@ const HUECO = 6;
  * La vista sigue ese orden y saca la conclusion sola, que es justo lo que
  * hace que 2027 sea Ano Santo.
  */
-export const Calendario: React.FC<{ desde?: number; hasta?: number; idioma?: "es" | "en" }> = ({
-  desde = 0,
-  hasta,
-  idioma = "es",
-}) => {
+export const Calendario: React.FC<{
+  desde?: number;
+  hasta?: number;
+  idioma?: "es" | "en";
+  /** Paleta 2026: grafito para el texto y verde sendero para el resalte. */
+  soloVerde?: boolean;
+}> = ({ desde = 0, hasta, idioma = "es", soloVerde = false }) => {
   const frame = useCurrentFrame();
   const t = frame - desde;
   // Salida: la tarjeta se retira antes de que acabe el bloque.
@@ -162,7 +165,9 @@ export const Calendario: React.FC<{ desde?: number; hasta?: number; idioma?: "es
                     ? color.fgInverse
                     : enColumna
                       ? brand.green
-                      : color.fg1,
+                      : soloVerde
+                        ? paleta.grafito
+                        : color.fg1,
                   backgroundColor: esDestacado ? brand.green : "transparent",
                   opacity: interpolate(t, [aparece, aparece + 8], [0, 1], {
                     extrapolateLeft: "clamp",
@@ -189,8 +194,8 @@ export const Calendario: React.FC<{ desde?: number; hasta?: number; idioma?: "es
       {/* Conclusion, en placa lima con texto bosque. */}
       <div
         style={{
-          backgroundColor: brand.lime,
-          color: color.fgOnLime,
+          backgroundColor: soloVerde ? paleta.sendero : brand.lime,
+          color: soloVerde ? brand.white : color.fgOnLime,
           padding: `${space[4]}px ${space[6]}px`,
           fontSize: fontSize.xl,
           fontWeight: weight.black,

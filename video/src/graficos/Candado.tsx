@@ -1,5 +1,6 @@
 import { Easing, Interactive, interpolate, useCurrentFrame } from "remotion";
 import {
+  paleta,
   brand,
   color,
   easeOut,
@@ -18,9 +19,10 @@ import { entrada } from "../componentes/entrada";
  * Sin cifras ni porcentajes: el gesto de cerrar cuenta la idea entera, y
  * una cifra en una pieza anclada un ano seria una promesa que envejece.
  */
-export const Candado: React.FC<{ texto?: string; desde?: number }> = ({
+export const Candado: React.FC<{ texto?: string; desde?: number; soloVerde?: boolean }> = ({
   texto = "Precio bloqueado hoy",
   desde = 0,
+  soloVerde = false,
 }) => {
   const frame = useCurrentFrame();
   const t = frame - desde;
@@ -91,7 +93,7 @@ export const Candado: React.FC<{ texto?: string; desde?: number }> = ({
             fontSize: fontSize["3xl"],
             fontWeight: weight.black,
             lineHeight: 1.15,
-            color: brand.forest,
+            color: soloVerde ? paleta.grafito : brand.forest,
           }}
         >
           {texto}

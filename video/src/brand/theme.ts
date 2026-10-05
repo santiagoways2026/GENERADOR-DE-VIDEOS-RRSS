@@ -33,6 +33,26 @@ export const brand = {
   cream: "#FAF8F2",
 } as const;
 
+/**
+ * Paleta y ratio de la guía 2026 ("Colores de marca y ratio"):
+ * blanco 50 %, verde Ways 30 %, verde sendero 10 %, grafito 7 %, apoyo 3 %.
+ * Sustituye a lima y bosque en las piezas nuevas.
+ */
+export const paleta = {
+  /** El principal, siempre. Aire y limpieza. */
+  blanco: "#FFFFFF",
+  /** Principal secundario: prevalece sobre el resto. */
+  verdeWays: "#7AA606",
+  /** Color de resalte: cajas oscuras y palabras clave. */
+  sendero: "#506718",
+  /** Texto principal y, como mucho, un resalte puntual. */
+  grafito: "#2E2E2D",
+  /** Gris, niebla y brote: textos secundarios y superficies. */
+  gris: "#6F6F6E",
+  niebla: "#E8E8E6",
+  brote: "#FAFFEE",
+} as const;
+
 /** Escalas completas, por si hace falta un paso intermedio. */
 export const scale = {
   green: ["#F4F8E6", "#E6F0CC", "#CDE199", "#B0CC66", "#94B833",

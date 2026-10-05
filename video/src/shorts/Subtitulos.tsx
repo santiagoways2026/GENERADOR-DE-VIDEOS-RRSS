@@ -1,5 +1,5 @@
 import { Easing, Img, interpolate, staticFile, useCurrentFrame } from "remotion";
-import { brand, easeOut, fps, logo } from "../brand/theme";
+import { brand, easeOut, fps, logo, paleta } from "../brand/theme";
 
 /**
  * Subtítulos palabra a palabra, al estilo de redes.
@@ -62,7 +62,11 @@ function paginar(ts: Token[]): Token[][] {
   return paginas;
 }
 
-export const Subtitulos: React.FC<{ palabras: Palabra[] }> = ({ palabras }) => {
+export const Subtitulos: React.FC<{
+  palabras: Palabra[];
+  /** Paleta 2026: placa verde sendero en la palabra que suena, contorno grafito. */
+  soloVerde?: boolean;
+}> = ({ palabras, soloVerde = false }) => {
   const frame = useCurrentFrame();
   const t = frame / fps;
   const paginas = paginar(tokens(palabras));
@@ -125,11 +129,11 @@ export const Subtitulos: React.FC<{ palabras: Palabra[] }> = ({ palabras }) => {
               letterSpacing: "-0.01em",
               padding: "2px 14px 6px",
               borderRadius: 12,
-              color: activa ? brand.forest : brand.white,
-              backgroundColor: activa ? brand.lime : "transparent",
-              WebkitTextStroke: activa ? "0px" : `12px ${brand.forest}`,
+              color: activa && !soloVerde ? brand.forest : brand.white,
+              backgroundColor: activa ? (soloVerde ? paleta.sendero : brand.lime) : "transparent",
+              WebkitTextStroke: activa ? "0px" : `12px ${soloVerde ? paleta.grafito : brand.forest}`,
               paintOrder: "stroke fill",
-              textShadow: activa ? "none" : "0 6px 18px rgba(14, 44, 31, 0.55)",
+              textShadow: activa ? "none" : soloVerde ? "0 6px 18px rgba(46, 46, 45, 0.45)" : "0 6px 18px rgba(14, 44, 31, 0.55)",
               scale: activa ? 1.06 : 1,
             }}
           >

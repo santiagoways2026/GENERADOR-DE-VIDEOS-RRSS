@@ -11,9 +11,8 @@ import {
   useCurrentFrame,
 } from "remotion";
 import "../fuentes";
-import { brand, easeOut, fontFamily, fps } from "../brand/theme";
+import { brand, easeOut, fontFamily, fps, paleta } from "../brand/theme";
 import { Cartela } from "../componentes/Cartela";
-import { Logo } from "../componentes/Logo";
 import { Calendario } from "../graficos/Calendario";
 import { Candado } from "../graficos/Candado";
 import { LineaTiempo } from "../graficos/LineaTiempo";
@@ -65,9 +64,9 @@ export const ShortXacobeo: React.FC<{ id: string }> = ({ id }) => {
   const total = f(d.duracion);
 
   return (
-    <AbsoluteFill style={{ backgroundColor: brand.forest, fontFamily }}>
+    <AbsoluteFill style={{ backgroundColor: brand.green, fontFamily }}>
       {/* El vídeo de Hildary, entero y con su voz. */}
-      <Base src={d.video} zooms={d.zooms} />
+      <Base src={d.video} zooms={d.zooms} fin={total} />
 
       {d.capas
         .filter((c) => c.tipo === "broll" || c.tipo === "grafico" || c.tipo === "mapa")
@@ -76,10 +75,6 @@ export const ShortXacobeo: React.FC<{ id: string }> = ({ id }) => {
             <Cortinilla capa={c} dur={f(c.dur)} />
           </Sequence>
         ))}
-
-      <Sequence durationInFrames={total} name="Marca">
-        <Logo variante="blanco" ancho={200} style={{ position: "absolute", left: 60, top: 140, opacity: 0.95 }} />
-      </Sequence>
 
       <Sequence durationInFrames={f(d.gancho.dur)} name="Gancho">
         <Gancho titulo={d.titulo} acento={d.acento} dur={f(d.gancho.dur)} />
@@ -90,14 +85,14 @@ export const ShortXacobeo: React.FC<{ id: string }> = ({ id }) => {
         .map((c, i) => (
           <Sequence key={`c${i}`} from={f(c.en)} durationInFrames={f(c.dur)} name={`Cartela ${i + 1}`}>
             {c.tipo === "cartela" ? (
-              <Cartela principal={c.principal ?? ""} secundaria={c.secundaria ?? undefined} top={ARRIBA} tono={(c.tono as "olivo" | "lima") ?? "olivo"} />
+              <Cartela principal={c.principal ?? ""} secundaria={c.secundaria ?? undefined} top={ARRIBA} tinta={paleta.grafito} />
             ) : (
               <CartelaPng src={c.src ?? ""} ancho={c.ancho ?? 900} dur={f(c.dur)} />
             )}
           </Sequence>
         ))}
 
-      <Subtitulos palabras={d.palabras} />
+      <Subtitulos palabras={d.palabras} soloVerde />
 
       <Audio
         src={staticFile(d.musica.src)}
@@ -119,7 +114,7 @@ export const ShortXacobeo: React.FC<{ id: string }> = ({ id }) => {
  * Hildary con su voz. En cada arranque de frase el encuadre salta un poco
  * hacia la cara y vuelve en la siguiente: da ritmo sin cortar el plano.
  */
-const Base: React.FC<{ src: string; zooms: { en: number; z: number }[] }> = ({ src, zooms }) => {
+const Base: React.FC<{ src: string; zooms: { en: number; z: number }[]; fin: number }> = ({ src, zooms, fin }) => {
   const frame = useCurrentFrame();
   const t = frame / fps;
   const actual = [...zooms].reverse().find((z) => z.en <= t);
@@ -131,6 +126,8 @@ const Base: React.FC<{ src: string; zooms: { en: number; z: number }[] }> = ({ s
     <AbsoluteFill style={{ overflow: "hidden" }}>
       <OffthreadVideo
         src={staticFile(src)}
+        // El vídeo se corta antes de su final: la voz se apaga en seis fotogramas.
+        volume={(fr) => interpolate(fr, [fin - 6, fin], [1, 0], clamp)}
         style={{ width: "100%", height: "100%", objectFit: "cover", scale: escala, transformOrigin: "50% 38%" }}
       />
     </AbsoluteFill>
@@ -142,7 +139,8 @@ const Cortinilla: React.FC<{ capa: Capa; dur: number }> = ({ capa, dur }) => {
   const frame = useCurrentFrame();
   const entra = interpolate(frame, [0, 4], [0, 1], clamp);
   const sale = interpolate(frame, [dur - 4, dur], [1, 0], clamp);
-  const fondo = `radial-gradient(120% 80% at 50% 35%, ${brand.greenDark} 0%, ${brand.forest} 55%, ${brand.forestDeep} 100%)`;
+  // Paleta 2026: fondo verde Ways.
+  const fondo = paleta.verdeWays;
 
   if (capa.tipo === "broll") {
     return (
@@ -177,7 +175,7 @@ const Cortinilla: React.FC<{ capa: Capa; dur: number }> = ({ capa, dur }) => {
             height: 1280 * ESCALA,
             overflow: "hidden",
             borderRadius: 18,
-            boxShadow: "0 24px 48px rgba(14, 44, 31, 0.5)",
+            boxShadow: "0 24px 48px rgba(46, 46, 45, 0.3)",
             translate: `0px ${interpolate(frame, [0, 12], [24, 0], { ...clamp, easing: salida })}px`,
           }}
         >
@@ -197,9 +195,9 @@ const Cortinilla: React.FC<{ capa: Capa; dur: number }> = ({ capa, dur }) => {
     <AbsoluteFill style={{ opacity: Math.min(entra, sale), background: fondo }}>
       <AbsoluteFill style={{ alignItems: "center", paddingTop: 330, paddingRight: 80, paddingLeft: 40 }}>
         <div style={{ scale: capa.escala ?? 1, transformOrigin: "50% 0%" }}>
-          {capa.g === "calendario" ? <Calendario idioma="en" desde={4} /> : null}
+          {capa.g === "calendario" ? <Calendario idioma="en" desde={4} soloVerde /> : null}
           {capa.g === "linea" ? <LineaTiempo desde={4} actual={capa.actual ?? 2027} texto={capa.texto ?? ""} /> : null}
-          {capa.g === "candado" ? <Candado desde={4} texto={capa.texto ?? ""} /> : null}
+          {capa.g === "candado" ? <Candado desde={4} texto={capa.texto ?? ""} soloVerde /> : null}
         </div>
       </AbsoluteFill>
     </AbsoluteFill>
@@ -220,7 +218,7 @@ const CartelaPng: React.FC<{ src: string; ancho: number; dur: number }> = ({ src
         width: ancho,
         height: "auto",
         clipPath: `inset(0 ${derecha}% 0 ${izquierda}%)`,
-        filter: "drop-shadow(0 10px 22px rgba(14, 44, 31, 0.35))",
+        filter: "drop-shadow(0 10px 22px rgba(46, 46, 45, 0.25))",
       }}
     />
   );
@@ -237,7 +235,7 @@ const Gancho: React.FC<{ titulo: string[]; acento: number; dur: number }> = ({ t
     <AbsoluteFill>
       <AbsoluteFill
         style={{
-          background: "linear-gradient(180deg, rgba(14,44,31,0.82) 0%, rgba(14,44,31,0.55) 24%, rgba(14,44,31,0) 34%)",
+          background: "linear-gradient(180deg, rgba(46,46,45,0.5) 0%, rgba(46,46,45,0.28) 22%, rgba(46,46,45,0) 32%)",
           opacity: interpolate(frame, [0, 6, dur - 6, dur], [0, 1, 1, 0], clamp),
         }}
       />
@@ -268,11 +266,11 @@ const Gancho: React.FC<{ titulo: string[]; acento: number; dur: number }> = ({ t
                 letterSpacing: "-0.02em",
                 textTransform: "uppercase",
                 whiteSpace: "nowrap",
-                color: esAcento ? brand.forest : brand.white,
-                backgroundColor: esAcento ? brand.lime : "transparent",
+                color: brand.white,
+                backgroundColor: esAcento ? paleta.sendero : "transparent",
                 padding: esAcento ? "4px 18px 8px" : 0,
                 borderRadius: 10,
-                WebkitTextStroke: esAcento ? "0px" : `10px ${brand.forest}`,
+                WebkitTextStroke: esAcento ? "0px" : `10px ${paleta.grafito}`,
                 paintOrder: "stroke fill",
                 clipPath: `inset(0 ${interpolate(frame, [i * 4, i * 4 + 12], [100, 0], { ...clamp, easing: salida })}% 0 0)`,
               }}

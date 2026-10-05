@@ -2,7 +2,7 @@
  {
   "id": "01-por-que-2027",
   "video": "xacobeo/videos/IMG_8743.mp4",
-  "duracion": 40.919,
+  "duracion": 39.9,
   "titulo": [
    "BEFORE YOU",
    "CHOOSE YOUR",
@@ -19,7 +19,7 @@
     "DIFFERENT"
    ],
    "acento": 2,
-   "fotograma": 15
+   "fotograma": 36.0
   },
   "capas": [
    {
@@ -77,9 +77,9 @@
    },
    {
     "tipo": "cartela",
-    "principal": "FREE QUOTE",
-    "secundaria": "NO OBLIGATION",
-    "dur": 4.0,
+    "principal": "REQUEST",
+    "secundaria": "YOUR QUOTE",
+    "dur": 3.7,
     "tono": "olivo",
     "en": 36.2
    }
@@ -665,7 +665,7 @@
  {
   "id": "02-el-siguiente-2032",
   "video": "xacobeo/videos/IMG_8744.mp4",
-  "duracion": 32.067,
+  "duracion": 31.2,
   "titulo": [
    "MISS 2027?",
    "YOU'LL WAIT",
@@ -682,7 +682,7 @@
     "NOT UNTIL 2032"
    ],
    "acento": 2,
-   "fotograma": 20
+   "fotograma": 7.2
   },
   "capas": [
    {
@@ -729,7 +729,7 @@
     "tipo": "cartela",
     "principal": "REQUEST YOUR QUOTE",
     "secundaria": "START PLANNING",
-    "dur": 3.707,
+    "dur": 2.84,
     "tono": "olivo",
     "en": 28.36
    }
@@ -1186,7 +1186,7 @@
  {
   "id": "03-perdonar-pecados",
   "video": "xacobeo/videos/IMG_8748.mp4",
-  "duracion": 41.233,
+  "duracion": 40.0,
   "titulo": [
    "CAN THE CAMINO",
    "FORGIVE",
@@ -1203,7 +1203,7 @@
     "YOUR SINS?"
    ],
    "acento": 2,
-   "fotograma": 20
+   "fotograma": 35.9
   },
   "capas": [
    {
@@ -1797,7 +1797,7 @@
  {
   "id": "04-error-reservar",
   "video": "xacobeo/videos/IMG_8750.mp4",
-  "duracion": 35.075,
+  "duracion": 34.0,
   "titulo": [
    "THE BIGGEST",
    "2027 BOOKING",
@@ -1814,7 +1814,7 @@
     "MISTAKE"
    ],
    "acento": 2,
-   "fotograma": 5
+   "fotograma": 24.1
   },
   "capas": [
    {
@@ -2292,7 +2292,7 @@
  {
   "id": "05-2027-vs-normal",
   "video": "xacobeo/videos/IMG_8752.mp4",
-  "duracion": 35.577,
+  "duracion": 34.4,
   "titulo": [
    "2027 VS",
    "A NORMAL",
@@ -2309,7 +2309,7 @@
     "YEAR"
    ],
    "acento": 2,
-   "fotograma": 10
+   "fotograma": 16.9
   },
   "capas": [
    {
@@ -2360,8 +2360,8 @@
    },
    {
     "tipo": "cartela",
-    "principal": "FREE QUOTE",
-    "secundaria": "NO OBLIGATION",
+    "principal": "REQUEST",
+    "secundaria": "YOUR QUOTE",
     "dur": 4.0,
     "tono": "olivo",
     "en": 29.92
@@ -2817,7 +2817,7 @@
  {
   "id": "06-puerta-santa",
   "video": "xacobeo/videos/IMG_8754.mp4",
-  "duracion": 30.454,
+  "duracion": 29.1,
   "titulo": [
    "THIS DOOR",
    "ISN'T OPEN",
@@ -2834,7 +2834,7 @@
     "A HOLY YEAR"
    ],
    "acento": 2,
-   "fotograma": 20
+   "fotograma": 18.4
   },
   "capas": [
    {
@@ -3297,7 +3297,7 @@
  {
   "id": "07-100km-indulgencia",
   "video": "xacobeo/videos/IMG_8756.mp4",
-  "duracion": 34.697,
+  "duracion": 33.4,
   "titulo": [
    "100 KM",
    "IS NOT THE",
@@ -3314,7 +3314,7 @@
     "INDULGENCE"
    ],
    "acento": 2,
-   "fotograma": 20
+   "fotograma": 22.6
   },
   "capas": [
    {
@@ -3768,7 +3768,7 @@
  {
   "id": "08-que-ruta-2027",
   "video": "xacobeo/videos/IMG_8758.mp4",
-  "duracion": 36.875,
+  "duracion": 35.7,
   "titulo": [
    "WHICH CAMINO",
    "SHOULD YOU WALK",
@@ -3785,7 +3785,7 @@
     "IN 2027?"
    ],
    "acento": 2,
-   "fotograma": 20
+   "fotograma": 16.7
   },
   "capas": [
    {
@@ -4389,7 +4389,7 @@
  {
   "id": "09-demasiado-lleno",
   "video": "xacobeo/videos/IMG_8762.mp4",
-  "duracion": 36.254,
+  "duracion": 34.8,
   "titulo": [
    "WILL THE CAMINO",
    "BE TOO CROWDED",
@@ -4406,7 +4406,7 @@
     "IN 2027?"
    ],
    "acento": 2,
-   "fotograma": 10
+   "fotograma": 23.0
   },
   "capas": [
    {
@@ -4891,7 +4891,7 @@
  {
   "id": "10-tu-camino-2027",
   "video": "xacobeo/videos/IMG_8763.mp4",
-  "duracion": 32.254,
+  "duracion": 31.4,
   "titulo": [
    "THIS IS THE YEAR",
    "I'M WALKING",
@@ -4908,7 +4908,7 @@
     "YEAR?"
    ],
    "acento": 2,
-   "fotograma": 15
+   "fotograma": 5.8
   },
   "capas": [
    {
