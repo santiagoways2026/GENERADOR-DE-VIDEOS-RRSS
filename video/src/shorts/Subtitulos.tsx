@@ -64,7 +64,7 @@ function paginar(ts: Token[]): Token[][] {
 
 export const Subtitulos: React.FC<{
   palabras: Palabra[];
-  /** Paleta 2026: placa verde sendero en la palabra que suena, contorno grafito. */
+  /** Paleta 2026: placa verde Ways en la palabra que suena, contorno grafito. */
   soloVerde?: boolean;
 }> = ({ palabras, soloVerde = false }) => {
   const frame = useCurrentFrame();
@@ -130,7 +130,7 @@ export const Subtitulos: React.FC<{
               padding: "2px 14px 6px",
               borderRadius: 12,
               color: activa && !soloVerde ? brand.forest : brand.white,
-              backgroundColor: activa ? (soloVerde ? paleta.sendero : brand.lime) : "transparent",
+              backgroundColor: activa ? (soloVerde ? paleta.verdeWays : brand.lime) : "transparent",
               WebkitTextStroke: activa ? "0px" : `12px ${soloVerde ? paleta.grafito : brand.forest}`,
               paintOrder: "stroke fill",
               textShadow: activa ? "none" : soloVerde ? "0 6px 18px rgba(46, 46, 45, 0.45)" : "0 6px 18px rgba(14, 44, 31, 0.55)",
