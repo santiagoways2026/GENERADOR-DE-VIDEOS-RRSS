@@ -118,8 +118,8 @@ SHORTS = [
                 web("Santiago Ways is already"),
                 cartela("Request your quote", "REQUEST", "YOUR QUOTE", dur=4.0)]),
 
-    dict(video="IMG_8744", fotograma=30.75, fin=31.2, id="02-el-siguiente-2032", titulo=["MISS 2027?", "YOU'LL WAIT", "UNTIL 2032"],
-         portada=["THE NEXT", "HOLY YEAR?", "NOT UNTIL 2032"],
+    dict(video="IMG_8744", fotograma=30.75, fin=31.2, id="02-el-siguiente-2032", titulo=["WHY THE CAMINO", "IN 2027", "IS A MUST"],
+         portada=["WHY THE CAMINO", "IN 2027", "IS A MUST"],
          capas=[cartela("you'll have to wait", "5 YEARS", "UNTIL THE NEXT ONE"),
                 grafico("doesn't happen every year", "linea", 6.0, actual=2032, texto="After 2027, the next one is 2032", escala=1.0),
                 stock("arriving in Santiago", "llegada-plaza", 1.5),
