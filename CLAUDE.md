@@ -21,7 +21,7 @@ Los shorts y los testimonios no se parecen en nada más que en el lienzo:
 | --- | --- | --- |
 | Quién habla | Un cliente | Una presentadora de la agencia |
 | Tono | Llano, lo dice él | Llamativo, gancho al principio |
-| Texto | Montserrat 900 en minúscula, **abajo a la izquierda**, con recuadro verde en la promesa | Montserrat 900 en **caja alta y centrado, arriba** |
+| Texto | Montserrat 800 en minúscula, **abajo a la izquierda**, con el subrayado SW en la promesa | Montserrat 800 en minúscula, **centrado y arriba** |
 | Fondo del texto | Sin placa, sobre el plano, con un velo suave | Degradado del verde de marca |
 | Qué llega | Un bruto o un montaje con la entrevista | Un clip ya montado, con subtítulos quemados |
 | Lo primero que se hace | Transcribir y quitar lo que sobra | Sustituir la cartela pegada del principio |
@@ -53,22 +53,82 @@ lee la suya.
 
 ## La marca, en lo que afecta al vídeo
 
-Los tokens están en `video/src/brand/theme.ts`. Ese archivo es la traducción
-de la guía; si la guía cambia, se cambia ahí y nada más.
+La fuente es el **Brandbook 2027**, en `docs/brandbook-2027.pdf`. Los tokens
+están en `video/src/brand/theme.ts`, que es su traducción: si la guía cambia,
+se cambia ahí y nada más. La edición 2026 está archivada en
+`docs/archivo/` y sus tokens, congelados, en `video/src/archivo/theme-2026.ts`,
+que es lo único que usan las piezas de archivo.
+
+**La paleta está cerrada**, con un ratio orientativo por pieza:
+
+| | Color | Para qué |
+| --- | --- | --- |
+| 50 % | Blanco `#FFFFFF` | El principal, siempre. Da aire |
+| 30 % | Verde Ways `#7AA606` | Cajas, líneas, CTAs y la concha. **Nunca texto sobre blanco** |
+| 10 % | Verde sendero `#506718` | El resalte: cajas oscuras y palabras clave |
+| 7 % | Grafito `#2E2E2D` | **La tinta.** Texto principal |
+| 3 % | Gris `#6F6F6E`, niebla `#E8E8E6`, brote `#FAFFEE` | Textos secundarios y superficies |
+
+Lo que sale respecto a 2026, y no vuelve: **la lima `#B0F808`, el bosque
+`#184834` y la crema**. El propio libro las llama "variantes sin aprobar". Si
+aparecen en una pieza nueva, es un error.
 
 Reglas que condicionan cada pieza:
 
-- El protagonista es el verde olivo `#7AA606`. Blanco más verde en la mayoría.
-- Lima `#B0F808` y bosque `#184834` son complementarios, de uso puntual.
-- Nada de negro puro: la tinta es el bosque.
-- Texto blanco sobre olivo. Texto bosque sobre lima. Siempre.
-- La marca nunca se escribe como texto. Se usa el archivo de logo.
+- **Nunca verde sobre verde.** Y el verde Ways no es color de texto sobre
+  blanco: ahí va el verde sendero.
+- Blanco sobre verde Ways da 2,9:1, así que ahí el texto va **en negrita**.
+  Blanco sobre verde sendero da 6,4:1 y grafito sobre blanco, 13,6:1.
+- **Nada de negro puro**: la tinta es el grafito. Los velos y las sombras de
+  las piezas van en grafito, no en un casi negro.
+- **El degradado va sólo en cajas de fondo verde Ways**, a 135 grados, de
+  `#7AA606` a `#628A04`, y muy sutil: no se debe leer como efecto. Todo lo
+  demás plano, la concha incluida.
+- Sombra sólo en cajas: `0 8px 32px` de grafito al 12 %. Botones, etiquetas y
+  subrayados, sin sombra.
+- **Montserrat y nada más.** Se retiran Manrope, Poppins y Tahoma.
+- **Peso máximo 800**, el ExtraBold. No hay 900. Si piden "más gruesa", el
+  margen está en el cuerpo.
+- **Titulares en minúscula de frase.** Las mayúsculas se reservan a
+  antetítulos y etiquetas. Interlineado 1,1 en titulares y 1,5 en texto.
+- La marca nunca se escribe como texto. Se usa el archivo de logo, **en verde
+  sobre blanco y en blanco sobre cualquier otro fondo**, que en vídeo es
+  siempre. Anchos mínimos: 140 px el horizontal, 160 el vertical, 24 el
+  isotipo.
 - Un solo CTA por pieza.
 - Movimiento: fade más desplazamiento corto con `cubic-bezier(0.22,0.61,0.36,1)`.
-  Nunca rebote.
-- Tipografía: Montserrat, Manrope, Poppins. Empaquetada con el proyecto.
+  Nunca rebote. **Esto viene de la edición 2026**: el libro de 2027 no trae
+  apartado de movimiento.
 - Formatos: 1080x1920 reels, 1080x1080 feed, 1280x720 YouTube. Márgenes 56 px
   como mínimo.
+
+### El subrayado SW
+
+El recurso tipográfico de la marca, y lo que antes llamábamos "el recuadro
+verde": un bloque de color detrás de las palabras que llevan la promesa.
+
+- **Una o dos palabras, una sola vez por titular.**
+- Girado **-1,5 grados**, como un trazo hecho a mano.
+- **Recto: sin redondeo y sin sombra.** Siempre en color plano.
+- Un solo tipo por pieza, y la pieza lo fija:
+
+| | Fondo | Subrayado | Letra |
+| --- | --- | --- | --- |
+| Por defecto | Blanco o foto | Verde Ways | Blanca |
+| En negativo | Caja verde Ways | Verde sendero | Blanca |
+| Excepción | Blanco, si la pieza ya lleva uno en negativo | Ninguno | Verde Ways |
+
+### Tres decisiones tomadas al entrar el libro
+
+1. **Los shorts pasan a minúscula de frase.** Iban en caja alta y el libro no
+   la admite fuera de antetítulos.
+2. **Las ocho piezas ya entregadas no se rehacen.** La marca nueva se aplica de
+   aquí en adelante. Ojo: los componentes ya están cambiados, así que si se
+   retoca una pieza vieja, saldrá con la marca 2027 y no coincidirá con la
+   copia publicada.
+3. **No se pone el isotipo como marca de agua.** El libro lo permite en vídeo
+   desde 24 px arriba a la derecha; aquí se mantiene que la marca cierra y no
+   acompaña. En vertical, además, esa esquina es la de los iconos de la app.
 
 ## Cómo se monta un short
 
@@ -118,14 +178,22 @@ fuente empaquetada: el lienzo útil es 960 px y de ahí no se pasa.
 La estructura es **setup pequeño más golpe grande**: una o dos líneas a 66-72
 y la palabra que remata a 150-190.
 
-**4 · Los rótulos.** Caja alta, centrados, `paddingTop` 150, con el degradado
-del verde de marca detrás y **las letras en blanco**:
+**4 · Los rótulos.** **Minúscula de frase**, centrados, `paddingTop` 150, con
+el degradado del verde de marca detrás y **las letras en blanco y en peso
+800**:
 
 | | Valor |
 | --- | --- |
-| Nombre | 92 |
-| Pie | 54 |
-| Degradado | `#7AA606` arriba, `#668814` a la altura del texto, apagado en el 23 % |
+| Nombre | 104 |
+| Pie | 62 |
+| Degradado | Verde Ways `#7AA606` arriba, verde sendero `#506718` a la altura del texto, apagado en el 23 % |
+
+Los cuerpos subieron de 92 y 54 al pasar a minúscula: una línea en minúscula
+ocupa bastante menos, y el que manda sigue siendo el más largo. «Camino
+Primitivo» admite hasta 109 sobre el útil de 960, así que 104 deja aire.
+
+Con el verde sendero abajo, el blanco va de 2,9 a **6,4:1** de contraste,
+frente a los 3,4 que daba el `#668814` de la edición anterior.
 
 Ese 23 % no es decorativo: **es por encima del pelo de la presentadora**. Con
 la cola más larga el borde del degradado le cruza la frente y se ve como una
@@ -154,10 +222,11 @@ que ha terminado.
 
 Las referencias vivas son `SWShortCompostelaEN.tsx`, de las rutas, y
 `SWShortDuracionEN.tsx`, de la duración, con su tabla de edición en
-`docs/`. Ahí está razonado por qué el texto va en blanco sobre el
+`docs/shorts/`. Ahí está razonado por qué el texto va en blanco sobre el
 degradado y no en color sobre un velo: medido contra el fondo real, el verde
-de marca da de 1,15 a 1,44 de contraste y la lima de 2,57 a 3,23, con el
-mínimo en 3:1.
+de marca daba de 1,15 a 1,44 de contraste y la lima de 2,57 a 3,23, con el
+mínimo en 3:1. Con el Brandbook 2027 la discusión se cierra sola, porque la
+lima sale de la paleta.
 
 ## Cómo se monta un testimonio
 
@@ -222,9 +291,9 @@ No llevan las placas del kit: el texto va suelto sobre el plano y el verde
 recuadra sólo lo que importa. **Vale para los testimonios verticales y para
 los horizontales**, que sólo cambian en el cuerpo y en los márgenes.
 
-- **Montserrat en peso 900**, el negro. Es el grosor máximo de la familia:
-  Manrope no pasa de 800 y Poppins es más estrecha. Si piden "más gruesa", el
-  margen está en el cuerpo, no en el peso, que ya está al tope.
+- **Montserrat en peso 800**, el ExtraBold, que es el tope de la familia en el
+  Brandbook 2027. Hasta la edición anterior se usaba el 900. Si piden "más
+  gruesa", el margen está en el cuerpo, no en el peso.
 - **En minúscula con la inicial en mayúscula**, nunca en caja alta. En
   mayúsculas la misma fuente se lee más estrecha y más plana, porque se
   pierden ascendentes y descendentes. Es lo que más veces hubo que corregir.
@@ -233,11 +302,13 @@ los horizontales**, que sólo cambian en el cuerpo y en los márgenes.
   se parten en varias líneas antes que encogerse para caber en una; ahí está
   la contundencia. Interletraje `-0.025em`, interlínea `1.02`.
 - **Todas las letras en blanco**, también las que llevan recuadro.
-- **El recuadro verde `#7AA606` va sobre la frase que lleva la promesa**, no
-  sobre el complemento. En "You walk. We take care of the details" se recuadra
-  "You walk."; en "24/7 support all along the way", "24/7 support". Esquinas
-  de 6 px.
-- **Los pies van en blanco**, no en lima. 21 px, peso 700.
+- **El subrayado SW va sobre la frase que lleva la promesa**, no sobre el
+  complemento. En "You walk. We take care of the details" se subraya
+  "You walk."; en "24/7 support all along the way", "24/7 support". **Recto,
+  sin redondeo, y girado -1,5 grados**, que es lo que fija el libro; hasta la
+  edición anterior iba con esquinas de 6 px y sin girar.
+- **Los pies van en blanco.** 21 px, peso 700. En la edición 2026 se
+  advertía de no ponerlos en lima; ese color ya no está en la paleta.
 - Abajo a la izquierda, margen de 64 px. Lo de la mitad superior es regla de
   vertical: en horizontal esa franja es donde caen las caras de los
   entrevistados.
@@ -250,8 +321,9 @@ los horizontales**, que sólo cambian en el cuerpo y en los márgenes.
 
 1. Primero el titular sobre el último plano, con un overlay diagonal.
 2. Después, el logo **centrado en el centro exacto del cuadro**, entrando con
-   un desvanecimiento sobre un degradado a 145 grados dentro de la escala de
-   verdes de la guía: `#7AA606`, `#668814` y `#4F6B0F`.
+   un desvanecimiento sobre el degradado de la guía: **135 grados, de
+   `#7AA606` a `#628A04`**, y sutil. Hasta la edición anterior eran 145 grados
+   y tres paradas.
 3. Debajo, la web en blanco. La pieza termina ahí, sin fundido a negro.
 
 Se usa `santiago-ways-blanco.png`, que tiene 2500 px de ancho. El verde sólo

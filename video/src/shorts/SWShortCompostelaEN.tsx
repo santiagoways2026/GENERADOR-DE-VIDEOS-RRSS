@@ -118,8 +118,8 @@ const Lineas: React.FC<{ lineas: Linea[]; largo: number; relevo: number }> = ({
  * grande; con el velo al 45 % sube a 4,99.
  */
 const APERTURA: Linea[] = [
-  { texto: "WHAT IS THE CAMINO DE", tam: 66, color: brand.white },
-  { texto: "SANTIAGO?", tam: 150, color: brand.white },
+  { texto: "What is the Camino de", tam: 78, color: brand.white },
+  { texto: "Santiago?", tam: 178, color: brand.white },
 ];
 
 const TarjetaApertura: React.FC<{ total: number }> = ({ total }) => {
@@ -177,8 +177,8 @@ const TarjetaApertura: React.FC<{ total: number }> = ({ total }) => {
  * **Cuerpo 92 para los cinco**, y lo fija el más largo: "CAMINO PRIMITIVO"
  * mide 929 px sobre un lienzo útil de 960.
  */
-const RUTA_TAM = 92;
-const PIE_TAM = 54;
+const RUTA_TAM = 104;
+const PIE_TAM = 62;
 
 /** El velo de bosque de la guía, sólo para la tarjeta de apertura. */
 const VELO =
@@ -234,35 +234,35 @@ const RUTAS: { desde: number; hasta: number; lineas: Linea[]; nombre: string }[]
     hasta: 24.3,
     nombre: "French Way",
     lineas: [
-      { texto: "FRENCH WAY", tam: RUTA_TAM, color: brand.white },
-      { texto: "MOST POPULAR", tam: PIE_TAM, color: brand.white },
+      { texto: "French Way", tam: RUTA_TAM, color: brand.white },
+      { texto: "Most popular", tam: PIE_TAM, color: brand.white },
     ],
   },
   {
     desde: 24.45,
     hasta: 26.3,
     nombre: "Portuguese Way",
-    lineas: [{ texto: "PORTUGUESE WAY", tam: RUTA_TAM, color: brand.white }],
+    lineas: [{ texto: "Portuguese Way", tam: RUTA_TAM, color: brand.white }],
   },
   {
     desde: 26.55,
     hasta: 27.75,
     nombre: "Northern Way",
-    lineas: [{ texto: "NORTHERN WAY", tam: RUTA_TAM, color: brand.white }],
+    lineas: [{ texto: "Northern Way", tam: RUTA_TAM, color: brand.white }],
   },
   {
     desde: 27.85,
     hasta: 29.3,
     nombre: "Camino Primitivo",
-    lineas: [{ texto: "CAMINO PRIMITIVO", tam: RUTA_TAM, color: brand.white }],
+    lineas: [{ texto: "Camino Primitivo", tam: RUTA_TAM, color: brand.white }],
   },
   {
     desde: 34.3,
     hasta: 36.95,
     nombre: "Sarria",
     lineas: [
-      { texto: "SARRIA", tam: RUTA_TAM, color: brand.white },
-      { texto: "MOST POPULAR START", tam: PIE_TAM, color: brand.white },
+      { texto: "Sarria", tam: RUTA_TAM, color: brand.white },
+      { texto: "Most popular start", tam: PIE_TAM, color: brand.white },
     ],
   },
 ];

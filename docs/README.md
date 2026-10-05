@@ -2,12 +2,15 @@
 
 | Archivo | Contenido |
 | --- | --- |
-| `guia-de-marca-santiago-ways.html` | Sistema de diseño oficial, edición 2026. Color, logo, tipografía, voz, componentes, fondos y checklist |
+| `brandbook-2027.pdf` | **El sistema de diseño vigente.** Estrategia, logo, color, tipografía, imagen, tono y aplicaciones |
+| `archivo/guia-de-marca-2026.html` | La edición anterior. Está sólo para entender las piezas de `video/src/archivo/` |
 | `como-pedir-un-video.md` | Para quien no toca código: cómo pedir una pieza desde claude.ai/code |
 | `decisiones.md` | Lo que se decidió y por qué, en orden |
 
-Los tokens de la guía están traducidos a código en `video/src/brand/theme.ts`.
-Si la guía cambia, ese archivo es lo único que hay que actualizar.
+Los tokens del brandbook están traducidos a código en
+`video/src/brand/theme.ts`. Si la guía cambia, ese archivo es lo único que hay
+que actualizar. Los de 2026 están congelados en
+`video/src/archivo/theme-2026.ts` y no se usan en nada nuevo.
 
 ## Una tabla de edición por pieza
 

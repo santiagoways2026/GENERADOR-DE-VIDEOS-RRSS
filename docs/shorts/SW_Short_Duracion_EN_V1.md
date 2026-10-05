@@ -166,3 +166,22 @@ La segunda necesita `herramientas/scripts/u2net_human_seg.onnx`, que pesa
   gana lo que se pierde ahora en la ampliación.
 - **El fondo sólo cambia en la apertura.** Si interesa que vaya recortada toda
   la pieza, el script lo hace subiendo `--hasta`.
+
+## Brandbook 2027
+
+Esta ficha es de cuando la marca era la edición 2026. Lo que cambió al entrar
+el libro nuevo, y que ya está en el código:
+
+| | 2026 | 2027 |
+| --- | --- | --- |
+| Caja de los rótulos | Alta | **Minúscula de frase** |
+| Cuerpo nombre / pie | 92 / 54 | **104 / 62**, que en minúscula cabe más |
+| Peso | 900 | **800**, el tope de la familia |
+| Degradado del rótulo | `#7AA606` a `#668814` | `#7AA606` a verde sendero **`#506718`** |
+| Contraste del blanco | 3,4:1 | **6,4:1** |
+| Velo de la apertura | Bosque `#184834` | Grafito **`#2E2E2D`** |
+| Tipografía | Montserrat, Manrope, sans-serif | **Montserrat sola** |
+
+**La pieza entregada no se rehizo**: se decidió aplicar la marca nueva de aquí
+en adelante. Si se vuelve a renderizar, saldrá con la 2027 y no coincidirá con
+la copia publicada.

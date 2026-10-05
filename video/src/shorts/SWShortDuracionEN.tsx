@@ -129,9 +129,9 @@ const Lineas: React.FC<{ lineas: Linea[]; largo: number; relevo: number }> = ({
  * LONG DOES IT TAKE TO» ya mide 996 px al cuerpo pequeño.
  */
 const APERTURA: Linea[] = [
-  { texto: "HOW LONG DOES IT", tam: 72, color: brand.white },
-  { texto: "TAKE TO WALK THE", tam: 72, color: brand.white },
-  { texto: "CAMINO?", tam: 190, color: brand.white },
+  { texto: "How long does it", tam: 82, color: brand.white },
+  { texto: "take to walk the", tam: 82, color: brand.white },
+  { texto: "Camino?", tam: 200, color: brand.white },
 ];
 
 /** El velo de bosque de la guía, sólo para la tarjeta de apertura. */
@@ -175,8 +175,8 @@ const TarjetaApertura: React.FC<{ total: number }> = ({ total }) => {
  * **Se apaga en el 23 % del alto, 441 px**, por encima de su pelo, que aquí
  * empieza en el 572.
  */
-const RUTA_TAM = 92;
-const PIE_TAM = 54;
+const RUTA_TAM = 104;
+const PIE_TAM = 62;
 
 const DEGRADADO_RUTA =
   "linear-gradient(to bottom, rgba(122,166,6,0.97) 0%, rgba(99,131,16,0.95) 16%," +
@@ -223,8 +223,8 @@ const ROTULOS: { desde: number; hasta: number; lineas: Linea[]; nombre: string }
     hasta: 7.95,
     nombre: "Full French Way",
     lineas: [
-      { texto: "FULL FRENCH WAY", tam: RUTA_TAM, color: brand.white },
-      { texto: "4 TO 5 WEEKS", tam: PIE_TAM, color: brand.white },
+      { texto: "Full French Way", tam: RUTA_TAM, color: brand.white },
+      { texto: "4 to 5 weeks", tam: PIE_TAM, color: brand.white },
     ],
   },
   {
@@ -232,8 +232,8 @@ const ROTULOS: { desde: number; hasta: number; lineas: Linea[]; nombre: string }
     hasta: 15.85,
     nombre: "Sarria",
     lineas: [
-      { texto: "SARRIA", tam: RUTA_TAM, color: brand.white },
-      { texto: "5 TO 7 DAYS", tam: PIE_TAM, color: brand.white },
+      { texto: "Sarria", tam: RUTA_TAM, color: brand.white },
+      { texto: "5 to 7 days", tam: PIE_TAM, color: brand.white },
     ],
   },
 ];
