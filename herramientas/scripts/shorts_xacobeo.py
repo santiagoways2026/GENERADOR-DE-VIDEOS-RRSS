@@ -163,7 +163,7 @@ SHORTS = [
                 cartela("And in 2027", "2027", "CENTRE STAGE AGAIN"),
                 web("Start planning")]),
 
-    dict(video="IMG_8756", fotograma=32.95, fin=33.4, id="07-100km-indulgencia", titulo=["100 KM", "IS NOT THE", "INDULGENCE"],
+    dict(video="IMG_8756", inicio=0.9, fotograma=32.95, fin=33.4, id="07-100km-indulgencia", titulo=["100 KM", "IS NOT THE", "INDULGENCE"],
          portada=["100 KM", "IS NOT THE", "INDULGENCE"],
          capas=[cartela("The famous 100", "100 KM", "= THE COMPOSTELA", dur=3.4),
                 stock("Compostela on foot", "compostelas", 2.0),
@@ -254,8 +254,20 @@ def construir(carpeta, s, idx):
         else:
             sfx.append(dict(en=c["en"], src="sfx/pop.wav", vol=0.35))
 
+    # Recorte del principio: todo se desplaza para que el vídeo arranque en
+    # `inicio` (por ejemplo, cuando Hildary todavía mira a un lado).
+    ini = s.get("inicio", 0)
+    if ini:
+        for c in capas:
+            c["en"] = round(max(0.0, c["en"] - ini), 3)
+        zooms = [dict(z, en=round(z["en"] - ini, 3)) for z in zooms if z["en"] - ini >= 0]
+        ws = [dict(w, s=w["s"] - ini, e=w["e"] - ini) for w in ws if w["s"] - ini >= -0.05]
+        # El golpe y el whoosh del gancho se quedan en su sitio; el resto se mueve.
+        sfx = sfx[:2] + [dict(x, en=round(max(0.0, x["en"] - ini), 3)) for x in sfx[2:]]
+        total -= ini
+
     return dict(
-        id=s["id"], video=video, duracion=round(total, 3),
+        id=s["id"], video=video, duracion=round(total, 3), inicio=ini,
         titulo=s["titulo"], acento=s.get("acento", len(s["titulo"]) - 1),
         gancho=dict(dur=GANCHO),
         # Portada: la sonrisa con la boca cerrada que hace al terminar de hablar,

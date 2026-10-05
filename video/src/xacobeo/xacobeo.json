@@ -3,6 +3,7 @@
   "id": "01-por-que-2027",
   "video": "xacobeo/videos/IMG_8743.mp4",
   "duracion": 39.9,
+  "inicio": 0,
   "titulo": [
    "BEFORE YOU",
    "CHOOSE YOUR",
@@ -666,6 +667,7 @@
   "id": "02-el-siguiente-2032",
   "video": "xacobeo/videos/IMG_8744.mp4",
   "duracion": 31.2,
+  "inicio": 0,
   "titulo": [
    "WHY THE CAMINO",
    "IN 2027",
@@ -1187,6 +1189,7 @@
   "id": "03-perdonar-pecados",
   "video": "xacobeo/videos/IMG_8748.mp4",
   "duracion": 40.0,
+  "inicio": 0,
   "titulo": [
    "CAN THE CAMINO",
    "FORGIVE",
@@ -1798,6 +1801,7 @@
   "id": "04-error-reservar",
   "video": "xacobeo/videos/IMG_8750.mp4",
   "duracion": 34.0,
+  "inicio": 0,
   "titulo": [
    "THE BIGGEST",
    "2027 BOOKING",
@@ -2293,6 +2297,7 @@
   "id": "05-2027-vs-normal",
   "video": "xacobeo/videos/IMG_8752.mp4",
   "duracion": 34.4,
+  "inicio": 0,
   "titulo": [
    "2027 VS",
    "A NORMAL",
@@ -2818,6 +2823,7 @@
   "id": "06-puerta-santa",
   "video": "xacobeo/videos/IMG_8754.mp4",
   "duracion": 29.1,
+  "inicio": 0,
   "titulo": [
    "THIS DOOR",
    "ISN'T OPEN",
@@ -3297,7 +3303,8 @@
  {
   "id": "07-100km-indulgencia",
   "video": "xacobeo/videos/IMG_8756.mp4",
-  "duracion": 33.4,
+  "duracion": 32.5,
+  "inicio": 0.9,
   "titulo": [
    "100 KM",
    "IS NOT THE",
@@ -3323,14 +3330,14 @@
     "secundaria": "= THE COMPOSTELA",
     "dur": 3.4,
     "tono": "olivo",
-    "en": 8.38
+    "en": 7.48
    },
    {
     "tipo": "broll",
     "src": "xacobeo/stock/compostelas.mp4",
     "dur": 2.0,
     "encuadre": "50% 50%",
-    "en": 12.36
+    "en": 11.46
    },
    {
     "tipo": "cartela",
@@ -3338,21 +3345,21 @@
     "secundaria": "SOMETHING DIFFERENT",
     "dur": 3.2,
     "tono": "olivo",
-    "en": 15.08
+    "en": 14.18
    },
    {
     "tipo": "broll",
     "src": "brutos/catedral-a.mp4",
     "dur": 1.7,
     "encuadre": "50% 50%",
-    "en": 18.84
+    "en": 17.94
    },
    {
     "tipo": "broll",
     "src": "xacobeo/stock/llegada-plaza.mp4",
     "dur": 1.5,
     "encuadre": "50% 50%",
-    "en": 23.18
+    "en": 22.28
    },
    {
     "tipo": "png",
@@ -3360,362 +3367,362 @@
     "ancho": 880,
     "web": true,
     "hasta": null,
-    "en": 29.4,
+    "en": 28.5,
     "dur": 2.98
    }
   ],
   "zooms": [
    {
-    "en": 8.38,
+    "en": 7.48,
     "z": 1.1
    },
    {
-    "en": 14.82,
+    "en": 13.92,
     "z": 1.0
    },
    {
-    "en": 18.72,
+    "en": 17.82,
     "z": 1.1
    },
    {
-    "en": 23.18,
+    "en": 22.28,
     "z": 1.0
    },
    {
-    "en": 29.02,
+    "en": 28.12,
     "z": 1.1
    }
   ],
   "palabras": [
    {
     "t": "No,",
-    "en": 0.98,
-    "fin": 1.84
+    "en": 0.08,
+    "fin": 0.94
    },
    {
     "t": "walking",
-    "en": 2.08,
-    "fin": 2.4
+    "en": 1.18,
+    "fin": 1.5
    },
    {
     "t": "100",
-    "en": 2.4,
-    "fin": 2.74
+    "en": 1.5,
+    "fin": 1.84
    },
    {
     "t": "km",
-    "en": 2.74,
-    "fin": 3.26
+    "en": 1.84,
+    "fin": 2.36
    },
    {
     "t": "in",
-    "en": 3.26,
-    "fin": 3.52
+    "en": 2.36,
+    "fin": 2.62
    },
    {
     "t": "2027",
-    "en": 3.52,
-    "fin": 4.4
+    "en": 2.62,
+    "fin": 3.5
    },
    {
     "t": "doesn't",
-    "en": 4.4,
-    "fin": 4.98
+    "en": 3.5,
+    "fin": 4.08
    },
    {
     "t": "automatically",
-    "en": 4.98,
-    "fin": 5.72
+    "en": 4.08,
+    "fin": 4.82
    },
    {
     "t": "give",
-    "en": 5.72,
-    "fin": 5.98
+    "en": 4.82,
+    "fin": 5.08
    },
    {
     "t": "you",
-    "en": 5.98,
-    "fin": 6.32
+    "en": 5.08,
+    "fin": 5.42
    },
    {
     "t": "the",
-    "en": 6.32,
-    "fin": 6.46
+    "en": 5.42,
+    "fin": 5.56
    },
    {
     "t": "Xacobeo",
-    "en": 6.46,
-    "fin": 7.02
+    "en": 5.56,
+    "fin": 6.12
    },
    {
     "t": "Indulgence.",
-    "en": 7.02,
-    "fin": 7.86
+    "en": 6.12,
+    "fin": 6.96
    },
    {
     "t": "The",
-    "en": 8.38,
-    "fin": 8.46
+    "en": 7.48,
+    "fin": 7.56
    },
    {
     "t": "famous",
-    "en": 8.46,
-    "fin": 8.7
+    "en": 7.56,
+    "fin": 7.8
    },
    {
     "t": "100",
-    "en": 8.7,
-    "fin": 9.06
+    "en": 7.8,
+    "fin": 8.16
    },
    {
     "t": "km",
-    "en": 9.06,
-    "fin": 9.6
+    "en": 8.16,
+    "fin": 8.7
    },
    {
     "t": "are",
-    "en": 9.6,
-    "fin": 9.86
+    "en": 8.7,
+    "fin": 8.96
    },
    {
     "t": "related",
-    "en": 9.86,
-    "fin": 10.26
+    "en": 8.96,
+    "fin": 9.36
    },
    {
     "t": "to",
-    "en": 10.26,
-    "fin": 10.46
+    "en": 9.36,
+    "fin": 9.56
    },
    {
     "t": "the",
-    "en": 10.46,
-    "fin": 10.6
+    "en": 9.56,
+    "fin": 9.7
    },
    {
     "t": "requirements",
-    "en": 10.6,
-    "fin": 11.16
+    "en": 9.7,
+    "fin": 10.26
    },
    {
     "t": "for",
-    "en": 11.16,
-    "fin": 11.46
+    "en": 10.26,
+    "fin": 10.56
    },
    {
     "t": "obtaining",
-    "en": 11.46,
-    "fin": 12.02
+    "en": 10.56,
+    "fin": 11.12
    },
    {
     "t": "the",
-    "en": 12.02,
-    "fin": 12.36
+    "en": 11.12,
+    "fin": 11.46
    },
    {
     "t": "Compostela",
-    "en": 12.36,
-    "fin": 13.26
+    "en": 11.46,
+    "fin": 12.36
    },
    {
     "t": "on",
-    "en": 13.26,
-    "fin": 13.98
+    "en": 12.36,
+    "fin": 13.08
    },
    {
     "t": "foot,",
-    "en": 13.98,
-    "fin": 14.24
+    "en": 13.08,
+    "fin": 13.34
    },
    {
     "t": "while",
-    "en": 14.56,
-    "fin": 14.82
+    "en": 13.66,
+    "fin": 13.92
    },
    {
     "t": "the",
-    "en": 14.82,
-    "fin": 15.08
+    "en": 13.92,
+    "fin": 14.18
    },
    {
     "t": "Holy",
-    "en": 15.08,
-    "fin": 15.32
+    "en": 14.18,
+    "fin": 14.42
    },
    {
     "t": "Year",
-    "en": 15.32,
-    "fin": 15.64
+    "en": 14.42,
+    "fin": 14.74
    },
    {
     "t": "Indulgence",
-    "en": 15.64,
-    "fin": 16.3
+    "en": 14.74,
+    "fin": 15.4
    },
    {
     "t": "is",
-    "en": 16.3,
-    "fin": 16.5
+    "en": 15.4,
+    "fin": 15.6
    },
    {
     "t": "something",
-    "en": 16.5,
-    "fin": 17.16
+    "en": 15.6,
+    "fin": 16.26
    },
    {
     "t": "completely",
-    "en": 17.16,
-    "fin": 17.9
+    "en": 16.26,
+    "fin": 17.0
    },
    {
     "t": "different.",
-    "en": 17.9,
-    "fin": 18.34
+    "en": 17.0,
+    "fin": 17.44
    },
    {
     "t": "They're",
-    "en": 18.72,
-    "fin": 18.84
+    "en": 17.82,
+    "fin": 17.94
    },
    {
     "t": "two",
-    "en": 18.84,
-    "fin": 19.26
+    "en": 17.94,
+    "fin": 18.36
    },
    {
     "t": "separate",
-    "en": 19.26,
-    "fin": 19.66
+    "en": 18.36,
+    "fin": 18.76
    },
    {
     "t": "traditions",
-    "en": 19.66,
-    "fin": 20.2
+    "en": 18.76,
+    "fin": 19.3
    },
    {
     "t": "that",
-    "en": 20.2,
-    "fin": 20.7
+    "en": 19.3,
+    "fin": 19.8
    },
    {
     "t": "many",
-    "en": 20.7,
-    "fin": 21.02
+    "en": 19.8,
+    "fin": 20.12
    },
    {
     "t": "people",
-    "en": 21.02,
-    "fin": 21.36
+    "en": 20.12,
+    "fin": 20.46
    },
    {
     "t": "confuse.",
-    "en": 21.36,
-    "fin": 22.12
+    "en": 20.46,
+    "fin": 21.22
    },
    {
     "t": "And",
-    "en": 23.18,
-    "fin": 23.4
+    "en": 22.28,
+    "fin": 22.5
    },
    {
     "t": "if",
-    "en": 23.4,
-    "fin": 23.5
+    "en": 22.5,
+    "fin": 22.6
    },
    {
     "t": "you",
-    "en": 23.5,
-    "fin": 23.72
+    "en": 22.6,
+    "fin": 22.82
    },
    {
     "t": "want",
-    "en": 23.72,
-    "fin": 23.88
+    "en": 22.82,
+    "fin": 22.98
    },
    {
     "t": "to",
-    "en": 23.88,
-    "fin": 24.12
+    "en": 22.98,
+    "fin": 23.22
    },
    {
     "t": "arrive",
-    "en": 24.12,
-    "fin": 24.36
+    "en": 23.22,
+    "fin": 23.46
    },
    {
     "t": "in",
-    "en": 24.36,
-    "fin": 24.6
+    "en": 23.46,
+    "fin": 23.7
    },
    {
     "t": "Santiago",
-    "en": 24.6,
-    "fin": 25.12
+    "en": 23.7,
+    "fin": 24.22
    },
    {
     "t": "in",
-    "en": 25.12,
-    "fin": 25.46
+    "en": 24.22,
+    "fin": 24.56
    },
    {
     "t": "2027,",
-    "en": 25.46,
-    "fin": 26.4
+    "en": 24.56,
+    "fin": 25.5
    },
    {
     "t": "truly",
-    "en": 26.76,
-    "fin": 27.14
+    "en": 25.86,
+    "fin": 26.24
    },
    {
     "t": "understanding",
-    "en": 27.14,
-    "fin": 27.84
+    "en": 26.24,
+    "fin": 26.94
    },
    {
     "t": "and",
-    "en": 27.84,
-    "fin": 28.42
+    "en": 26.94,
+    "fin": 27.52
    },
    {
     "t": "enjoying",
-    "en": 28.42,
-    "fin": 28.76
+    "en": 27.52,
+    "fin": 27.86
    },
    {
     "t": "the",
-    "en": 28.76,
-    "fin": 29.02
+    "en": 27.86,
+    "fin": 28.12
    },
    {
     "t": "Camino,",
-    "en": 29.02,
-    "fin": 29.4
+    "en": 28.12,
+    "fin": 28.5
    },
    {
     "t": "plan",
-    "en": 29.4,
-    "fin": 29.78
+    "en": 28.5,
+    "fin": 28.88
    },
    {
     "t": "it",
-    "en": 29.78,
-    "fin": 30.16
+    "en": 28.88,
+    "fin": 29.26
    },
    {
     "t": "with",
-    "en": 30.16,
-    "fin": 30.58
+    "en": 29.26,
+    "fin": 29.68
    },
    {
     "t": "Santiago",
-    "en": 30.58,
-    "fin": 31.14
+    "en": 29.68,
+    "fin": 30.24
    },
    {
     "t": "Ways.",
-    "en": 31.14,
-    "fin": 31.78
+    "en": 30.24,
+    "fin": 30.88
    }
   ],
   "sfx": [
@@ -3730,32 +3737,32 @@
     "vol": 0.25
    },
    {
-    "en": 8.38,
+    "en": 7.48,
     "src": "sfx/pop.wav",
     "vol": 0.35
    },
    {
-    "en": 12.21,
+    "en": 11.31,
     "src": "sfx/whoosh-corto.wav",
     "vol": 0.22
    },
    {
-    "en": 15.08,
+    "en": 14.18,
     "src": "sfx/pop.wav",
     "vol": 0.35
    },
    {
-    "en": 18.69,
+    "en": 17.79,
     "src": "sfx/whoosh-corto.wav",
     "vol": 0.22
    },
    {
-    "en": 23.03,
+    "en": 22.13,
     "src": "sfx/whoosh-corto.wav",
     "vol": 0.22
    },
    {
-    "en": 29.4,
+    "en": 28.5,
     "src": "sfx/ding.wav",
     "vol": 0.25
    }
@@ -3769,6 +3776,7 @@
   "id": "08-que-ruta-2027",
   "video": "xacobeo/videos/IMG_8758.mp4",
   "duracion": 35.7,
+  "inicio": 0,
   "titulo": [
    "WHICH CAMINO",
    "SHOULD YOU WALK",
@@ -4390,6 +4398,7 @@
   "id": "09-demasiado-lleno",
   "video": "xacobeo/videos/IMG_8762.mp4",
   "duracion": 34.8,
+  "inicio": 0,
   "titulo": [
    "WILL THE CAMINO",
    "BE TOO CROWDED",
@@ -4892,6 +4901,7 @@
   "id": "10-tu-camino-2027",
   "video": "xacobeo/videos/IMG_8763.mp4",
   "duracion": 31.4,
+  "inicio": 0,
   "titulo": [
    "THIS IS THE YEAR",
    "I'M WALKING",

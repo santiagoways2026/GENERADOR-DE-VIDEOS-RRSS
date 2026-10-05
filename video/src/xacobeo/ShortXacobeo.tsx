@@ -66,7 +66,7 @@ export const ShortXacobeo: React.FC<{ id: string }> = ({ id }) => {
   return (
     <AbsoluteFill style={{ backgroundColor: brand.green, fontFamily }}>
       {/* El vídeo de Hildary, entero y con su voz. */}
-      <Base src={d.video} zooms={d.zooms} fin={total} />
+      <Base src={d.video} zooms={d.zooms} fin={total} inicio={d.inicio} />
 
       {d.capas
         .filter((c) => c.tipo === "broll" || c.tipo === "grafico" || c.tipo === "mapa")
@@ -114,7 +114,12 @@ export const ShortXacobeo: React.FC<{ id: string }> = ({ id }) => {
  * Hildary con su voz. En cada arranque de frase el encuadre salta un poco
  * hacia la cara y vuelve en la siguiente: da ritmo sin cortar el plano.
  */
-const Base: React.FC<{ src: string; zooms: { en: number; z: number }[]; fin: number }> = ({ src, zooms, fin }) => {
+const Base: React.FC<{ src: string; zooms: { en: number; z: number }[]; fin: number; inicio: number }> = ({
+  src,
+  zooms,
+  fin,
+  inicio,
+}) => {
   const frame = useCurrentFrame();
   const t = frame / fps;
   const actual = [...zooms].reverse().find((z) => z.en <= t);
@@ -126,6 +131,8 @@ const Base: React.FC<{ src: string; zooms: { en: number; z: number }[]; fin: num
     <AbsoluteFill style={{ overflow: "hidden" }}>
       <OffthreadVideo
         src={staticFile(src)}
+        // Recorte del principio, si lo hay (todo el guion ya viene desplazado).
+        trimBefore={inicio > 0 ? f(inicio) : undefined}
         // El vídeo se corta antes de su final: la voz se apaga en seis fotogramas.
         volume={(fr) => interpolate(fr, [fin - 6, fin], [1, 0], clamp)}
         style={{ width: "100%", height: "100%", objectFit: "cover", scale: escala, transformOrigin: "50% 38%" }}
