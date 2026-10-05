@@ -107,7 +107,7 @@ def web(frase, hasta=None):
 # Los diez shorts ----------------------------------------------------------
 
 SHORTS = [
-    dict(video="IMG_8743", fotograma=36.0, fin=39.9, id="01-por-que-2027", titulo=["BEFORE YOU", "CHOOSE YOUR", "CAMINO YEAR"],
+    dict(video="IMG_8743", fotograma=39.45, fin=39.9, id="01-por-que-2027", titulo=["BEFORE YOU", "CHOOSE YOUR", "CAMINO YEAR"],
          portada=["WHY 2027", "WILL BE", "DIFFERENT"],
          capas=[stock("2027 won't be", "catedral-siluetas", 2.5),
                 cartela("It will be a Holy Year", "2027", "A HOLY YEAR"),
@@ -118,7 +118,7 @@ SHORTS = [
                 web("Santiago Ways is already"),
                 cartela("Request your quote", "REQUEST", "YOUR QUOTE", dur=4.0)]),
 
-    dict(video="IMG_8744", fotograma=7.2, fin=31.2, id="02-el-siguiente-2032", titulo=["MISS 2027?", "YOU'LL WAIT", "UNTIL 2032"],
+    dict(video="IMG_8744", fotograma=30.75, fin=31.2, id="02-el-siguiente-2032", titulo=["MISS 2027?", "YOU'LL WAIT", "UNTIL 2032"],
          portada=["THE NEXT", "HOLY YEAR?", "NOT UNTIL 2032"],
          capas=[cartela("you'll have to wait", "5 YEARS", "UNTIL THE NEXT ONE"),
                 grafico("doesn't happen every year", "linea", 6.0, actual=2032, texto="After 2027, the next one is 2032", escala=0.92),
@@ -127,7 +127,7 @@ SHORTS = [
                 web("Santiago Ways can organize"),
                 cartela("Request your quote", "REQUEST YOUR QUOTE", "START PLANNING", dur=4.0)]),
 
-    dict(video="IMG_8748", fotograma=35.9, fin=40.0, id="03-perdonar-pecados", titulo=["CAN THE CAMINO", "FORGIVE", "YOUR SINS?"],
+    dict(video="IMG_8748", fotograma=39.55, fin=40.0, id="03-perdonar-pecados", titulo=["CAN THE CAMINO", "FORGIVE", "YOUR SINS?"],
          portada=["CAN THE CAMINO", "FORGIVE", "YOUR SINS?"],
          capas=[stock("Well, there's some truth", "brutos/interior-velas", 2.0),
                 cartela("plenary indulgence", "INDULGENCE", "PLENARY · JUBILEE", dur=3.6),
@@ -136,7 +136,7 @@ SHORTS = [
                 stock("unforgettable Camino", "celebracion", 1.6),
                 web("start planning it")]),
 
-    dict(video="IMG_8750", fotograma=24.1, fin=34.0, id="04-error-reservar", titulo=["THE BIGGEST", "2027 BOOKING", "MISTAKE"],
+    dict(video="IMG_8750", fotograma=33.55, fin=34.0, id="04-error-reservar", titulo=["THE BIGGEST", "2027 BOOKING", "MISTAKE"],
          portada=["THE BIGGEST", "2027 BOOKING", "MISTAKE"],
          capas=[cartela("It will be a Holy Year", "HOLY YEAR", "HUGE DEMAND EXPECTED"),
                 stock("most popular routes", "multitud-calle", 2.4),
@@ -144,7 +144,7 @@ SHORTS = [
                 grafico("Waiting too long", "candado", 3.6, texto="Book early, more options", escala=1.1),
                 web("talk to Santiago Ways")]),
 
-    dict(video="IMG_8752", fotograma=16.9, fin=34.4, id="05-2027-vs-normal", titulo=["2027 VS", "A NORMAL", "YEAR"], acento=0,
+    dict(video="IMG_8752", fotograma=33.95, fin=34.4, id="05-2027-vs-normal", titulo=["2027 VS", "A NORMAL", "YEAR"], acento=0,
          portada=["2027 VS", "A NORMAL", "YEAR"],
          capas=[cartela("will be a Xacobeo", "2027", "XACOBEO"),
                 stock("more pilgrims", "multitud-camino", 1.8),
@@ -154,7 +154,7 @@ SHORTS = [
                 web("can help you plan"),
                 cartela("Request your quote", "REQUEST", "YOUR QUOTE", dur=4.0)]),
 
-    dict(video="IMG_8754", fotograma=18.4, fin=29.1, id="06-puerta-santa", titulo=["THIS DOOR", "ISN'T OPEN", "EVERY YEAR"], acento=0,
+    dict(video="IMG_8754", fotograma=28.65, fin=29.1, id="06-puerta-santa", titulo=["THIS DOOR", "ISN'T OPEN", "EVERY YEAR"], acento=0,
          portada=["THE DOOR THAT", "ONLY OPENS IN", "A HOLY YEAR"],
          capas=[cartela("It's the Holy Door", "THE HOLY DOOR", "SANTIAGO CATHEDRAL", dur=3.4),
                 stock("its opening marks", "brutos/portico-sellado", 1.9),
@@ -163,7 +163,7 @@ SHORTS = [
                 cartela("And in 2027", "2027", "CENTRE STAGE AGAIN"),
                 web("Start planning")]),
 
-    dict(video="IMG_8756", fotograma=22.6, fin=33.4, id="07-100km-indulgencia", titulo=["100 KM", "IS NOT THE", "INDULGENCE"],
+    dict(video="IMG_8756", fotograma=32.95, fin=33.4, id="07-100km-indulgencia", titulo=["100 KM", "IS NOT THE", "INDULGENCE"],
          portada=["100 KM", "IS NOT THE", "INDULGENCE"],
          capas=[cartela("The famous 100", "100 KM", "= THE COMPOSTELA", dur=3.4),
                 stock("Compostela on foot", "compostelas", 2.0),
@@ -172,7 +172,7 @@ SHORTS = [
                 stock("And if you want to arrive", "llegada-plaza", 1.5),
                 web("plan it with")]),
 
-    dict(video="IMG_8758", fotograma=16.7, fin=35.7, id="08-que-ruta-2027", titulo=["WHICH CAMINO", "SHOULD YOU WALK", "IN 2027?"],
+    dict(video="IMG_8758", fotograma=35.25, fin=35.7, id="08-que-ruta-2027", titulo=["WHICH CAMINO", "SHOULD YOU WALK", "IN 2027?"],
          portada=["WHICH CAMINO", "SHOULD YOU WALK", "IN 2027?"],
          capas=[mapa("The French Way", "frances", 16.0, 3.4),
                 cartela("The French Way", "FRENCH WAY", None, dur=3.2),
@@ -187,7 +187,7 @@ SHORTS = [
                 stock("choosing the right route", "bosque-peregrinos", 2.4),
                 web("Tell us what kind")]),
 
-    dict(video="IMG_8762", fotograma=23.0, fin=34.8, id="09-demasiado-lleno", titulo=["WILL THE CAMINO", "BE TOO CROWDED", "IN 2027?"],
+    dict(video="IMG_8762", fotograma=34.35, fin=34.8, id="09-demasiado-lleno", titulo=["WILL THE CAMINO", "BE TOO CROWDED", "IN 2027?"],
          portada=["WILL THE CAMINO", "BE TOO CROWDED", "IN 2027?"],
          capas=[stock("important catch", "multitud-calle", 2.2),
                 cartela("Not every route", "NOT EVERY ROUTE", "HAS THE SAME CROWDS", dur=3.6),
@@ -196,7 +196,7 @@ SHORTS = [
                 web("Santiago Ways can help"),
                 cartela("if you plan it", "PLAN IT WELL", "ENJOY 2027", dur=3.0)]),
 
-    dict(video="IMG_8763", fotograma=5.8, fin=31.4, id="10-tu-camino-2027", titulo=["THIS IS THE YEAR", "I'M WALKING", "THE CAMINO"],
+    dict(video="IMG_8763", fotograma=30.95, fin=31.4, id="10-tu-camino-2027", titulo=["THIS IS THE YEAR", "I'M WALKING", "THE CAMINO"],
          portada=["IS 2027", "YOUR CAMINO", "YEAR?"],
          capas=[cartela("It will be a Holy Year", "2027", "A HOLY YEAR", dur=2.8),
                 stock("Santiago will be celebrating", "catedral-siluetas", 2.4),
@@ -258,6 +258,8 @@ def construir(carpeta, s, idx):
         id=s["id"], video=video, duracion=round(total, 3),
         titulo=s["titulo"], acento=s.get("acento", len(s["titulo"]) - 1),
         gancho=dict(dur=GANCHO),
+        # Portada: la sonrisa con la boca cerrada que hace al terminar de hablar,
+        # justo antes del corte.
         portada=dict(titulo=s["portada"], acento=len(s["portada"]) - 1, fotograma=s.get("fotograma", 1.5)),
         capas=sorted(capas, key=lambda c: c["en"]),
         zooms=zooms,

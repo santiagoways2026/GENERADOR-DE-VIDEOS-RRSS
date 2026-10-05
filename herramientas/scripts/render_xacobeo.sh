@@ -21,7 +21,7 @@ for id in $ids; do
   ffmpeg -v error -y -i "out/xacobeo/final/$id.mp4" -c:v libx264 -preset medium -b:v ${vb}k \
     -maxrate $((vb*3/2))k -bufsize $((vb*2))k -pix_fmt yuv420p -c:a copy -movflags +faststart "out/xacobeo/entrega/$id.mp4"
   fi
-  [ -s "out/xacobeo/portadas/portada-$id.jpg" ] && continue
+  [ -s "out/xacobeo/portadas/portada-$id-verde.jpg" ] && continue
   # Fotograma de la portada, extraído del vídeo en el segundo elegido.
   seg=$(python3 -c "import json;print([d for d in json.load(open('src/xacobeo/xacobeo.json')) if d['id']=='$id'][0]['portada']['fotograma'])")
   vid=$(python3 -c "import json;print([d for d in json.load(open('src/xacobeo/xacobeo.json')) if d['id']=='$id'][0]['video'])")
@@ -29,8 +29,12 @@ for id in $ids; do
   ffmpeg -v error -y -ss "$seg" -i "public/$vid" -frames:v 1 \
     -vf "eq=brightness=0.03:contrast=1.05:saturation=1.08,colorbalance=rs=0.03:bs=-0.03,unsharp=5:5:0.4" \
     -q:v 2 "public/xacobeo/portadas/$id.jpg"
-  npx remotion still "Portada-$id" "out/xacobeo/portadas/$id.png" --log=error
-  ffmpeg -v error -y -i "out/xacobeo/portadas/$id.png" -q:v 2 "out/xacobeo/portadas/portada-$id.jpg"
-  rm "out/xacobeo/portadas/$id.png"
+  # Dos portadas: con la foto de Hildary y con el fondo verde Ways.
+  for v in foto verde; do
+    comp="Portada-$id"; [ $v = verde ] && comp="PortadaVerde-$id"
+    npx remotion still "$comp" "out/xacobeo/portadas/$id-$v.png" --log=error
+    ffmpeg -v error -y -i "out/xacobeo/portadas/$id-$v.png" -q:v 2 "out/xacobeo/portadas/portada-$id-$v.jpg"
+    rm "out/xacobeo/portadas/$id-$v.png"
+  done
 done
 echo RENDER_FIN

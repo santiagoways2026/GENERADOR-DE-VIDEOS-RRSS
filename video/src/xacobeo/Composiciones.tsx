@@ -25,6 +25,16 @@ export const ComposicionesXacobeo: React.FC = () => (
     ))}
     {datos.map((d) => (
       <Still
+        key={`v${d.id}`}
+        id={`PortadaVerde-${d.id}`}
+        component={Portada}
+        defaultProps={{ id: d.id, variante: "verde" as const }}
+        width={format.reels.width}
+        height={format.reels.height}
+      />
+    ))}
+    {datos.map((d) => (
+      <Still
         key={`p${d.id}`}
         id={`Portada-${d.id}`}
         component={Portada}
