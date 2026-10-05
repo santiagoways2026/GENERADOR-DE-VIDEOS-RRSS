@@ -30,10 +30,15 @@ const ACTUAL = 2027;
  * Los anos son reales: el Ano Santo cae cuando el 25 de julio es domingo,
  * lo que da un patron de 6, 5, 6 y 11 anos que se repite.
  */
-export const LineaTiempo: React.FC<{ desde?: number }> = ({ desde = 0 }) => {
+export const LineaTiempo: React.FC<{
+  desde?: number;
+  /** Año en el que se para la vieira. */
+  actual?: number;
+  texto?: string;
+}> = ({ desde = 0, actual = ACTUAL, texto = "Cada 6, 5 u 11 años" }) => {
   const frame = useCurrentFrame();
   const t = frame - desde;
-  const indiceActual = HITOS.indexOf(ACTUAL);
+  const indiceActual = HITOS.indexOf(actual);
 
   // La vieira recorre de un hito al siguiente y se detiene.
   const avance = interpolate(t, [14, 40], [0, indiceActual], {
@@ -87,7 +92,7 @@ export const LineaTiempo: React.FC<{ desde?: number }> = ({ desde = 0 }) => {
 
         {HITOS.map((anio, i) => {
           const x = 70 + i * 273;
-          const esActual = anio === ACTUAL;
+          const esActual = anio === actual;
           const encendido = interpolate(t, [14 + i * 9, 22 + i * 9], [0, 1], {
             extrapolateLeft: "clamp",
             extrapolateRight: "clamp",
@@ -156,7 +161,7 @@ export const LineaTiempo: React.FC<{ desde?: number }> = ({ desde = 0 }) => {
           color: color.fg3,
         }}
       >
-        Cada 6, 5 u 11 años
+        {texto}
       </div>
     </Interactive.Div>
   );

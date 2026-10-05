@@ -1,0 +1,5422 @@
+[
+ {
+  "id": "01-por-que-2027",
+  "video": "xacobeo/videos/IMG_8743.mp4",
+  "duracion": 40.919,
+  "titulo": [
+   "BEFORE YOU",
+   "CHOOSE YOUR",
+   "CAMINO YEAR"
+  ],
+  "acento": 2,
+  "gancho": {
+   "dur": 2.6
+  },
+  "portada": {
+   "titulo": [
+    "WHY 2027",
+    "WILL BE",
+    "DIFFERENT"
+   ],
+   "acento": 2,
+   "fotograma": 15
+  },
+  "capas": [
+   {
+    "tipo": "broll",
+    "src": "xacobeo/stock/catedral-siluetas.mp4",
+    "dur": 2.5,
+    "encuadre": "50% 50%",
+    "en": 8.96
+   },
+   {
+    "tipo": "cartela",
+    "principal": "2027",
+    "secundaria": "A HOLY YEAR",
+    "dur": 3.2,
+    "tono": "olivo",
+    "en": 11.68
+   },
+   {
+    "tipo": "grafico",
+    "g": "calendario",
+    "dur": 5.0,
+    "escala": 0.92,
+    "en": 14.1
+   },
+   {
+    "tipo": "broll",
+    "src": "xacobeo/stock/multitud-calle.mp4",
+    "dur": 2.4,
+    "encuadre": "50% 50%",
+    "en": 21.26
+   },
+   {
+    "tipo": "broll",
+    "src": "xacobeo/stock/abrazo.mp4",
+    "dur": 1.6,
+    "encuadre": "50% 50%",
+    "en": 24.86
+   },
+   {
+    "tipo": "cartela",
+    "principal": "PLAN AHEAD",
+    "secundaria": "DON'T WAIT TOO LONG",
+    "dur": 2.61,
+    "tono": "olivo",
+    "en": 29.72
+   },
+   {
+    "tipo": "png",
+    "src": "hilary/cartelas/sw-tag-light.png",
+    "ancho": 880,
+    "web": true,
+    "hasta": null,
+    "en": 32.38,
+    "dur": 3.77
+   },
+   {
+    "tipo": "cartela",
+    "principal": "FREE QUOTE",
+    "secundaria": "NO OBLIGATION",
+    "dur": 4.0,
+    "tono": "olivo",
+    "en": 36.2
+   }
+  ],
+  "zooms": [
+   {
+    "en": 4.56,
+    "z": 1.1
+   },
+   {
+    "en": 8.96,
+    "z": 1.0
+   },
+   {
+    "en": 11.68,
+    "z": 1.1
+   },
+   {
+    "en": 14.1,
+    "z": 1.0
+   },
+   {
+    "en": 16.24,
+    "z": 1.1
+   },
+   {
+    "en": 19.38,
+    "z": 1.0
+   },
+   {
+    "en": 22.38,
+    "z": 1.1
+   },
+   {
+    "en": 24.22,
+    "z": 1.0
+   },
+   {
+    "en": 26.98,
+    "z": 1.1
+   },
+   {
+    "en": 29.72,
+    "z": 1.0
+   },
+   {
+    "en": 32.38,
+    "z": 1.1
+   },
+   {
+    "en": 34.32,
+    "z": 1.0
+   },
+   {
+    "en": 36.2,
+    "z": 1.1
+   }
+  ],
+  "palabras": [
+   {
+    "t": "If",
+    "en": 0.72,
+    "fin": 1.2
+   },
+   {
+    "t": "you're",
+    "en": 1.2,
+    "fin": 1.4
+   },
+   {
+    "t": "thinking",
+    "en": 1.4,
+    "fin": 1.74
+   },
+   {
+    "t": "about",
+    "en": 1.74,
+    "fin": 2.18
+   },
+   {
+    "t": "walking",
+    "en": 2.18,
+    "fin": 2.62
+   },
+   {
+    "t": "the",
+    "en": 2.62,
+    "fin": 2.86
+   },
+   {
+    "t": "Camino",
+    "en": 2.86,
+    "fin": 3.16
+   },
+   {
+    "t": "to",
+    "en": 3.16,
+    "fin": 3.42
+   },
+   {
+    "t": "Santiago,",
+    "en": 3.42,
+    "fin": 4.04
+   },
+   {
+    "t": "there's",
+    "en": 4.56,
+    "fin": 4.84
+   },
+   {
+    "t": "something",
+    "en": 4.84,
+    "fin": 5.1
+   },
+   {
+    "t": "you",
+    "en": 5.1,
+    "fin": 5.3
+   },
+   {
+    "t": "should",
+    "en": 5.3,
+    "fin": 5.54
+   },
+   {
+    "t": "know",
+    "en": 5.54,
+    "fin": 6.18
+   },
+   {
+    "t": "before",
+    "en": 6.18,
+    "fin": 6.98
+   },
+   {
+    "t": "choosing",
+    "en": 6.98,
+    "fin": 7.5
+   },
+   {
+    "t": "the",
+    "en": 7.5,
+    "fin": 7.72
+   },
+   {
+    "t": "year.",
+    "en": 7.72,
+    "fin": 8.12
+   },
+   {
+    "t": "2027",
+    "en": 8.96,
+    "fin": 9.6
+   },
+   {
+    "t": "won't",
+    "en": 9.6,
+    "fin": 10.02
+   },
+   {
+    "t": "be",
+    "en": 10.02,
+    "fin": 10.22
+   },
+   {
+    "t": "just",
+    "en": 10.22,
+    "fin": 10.62
+   },
+   {
+    "t": "another",
+    "en": 10.62,
+    "fin": 11.08
+   },
+   {
+    "t": "year.",
+    "en": 11.08,
+    "fin": 11.52
+   },
+   {
+    "t": "It",
+    "en": 11.68,
+    "fin": 11.8
+   },
+   {
+    "t": "will",
+    "en": 11.8,
+    "fin": 11.96
+   },
+   {
+    "t": "be",
+    "en": 11.96,
+    "fin": 12.12
+   },
+   {
+    "t": "a",
+    "en": 12.12,
+    "fin": 12.3
+   },
+   {
+    "t": "Holy",
+    "en": 12.3,
+    "fin": 12.5
+   },
+   {
+    "t": "Year",
+    "en": 12.5,
+    "fin": 12.78
+   },
+   {
+    "t": "or",
+    "en": 12.78,
+    "fin": 13.1
+   },
+   {
+    "t": "Xacobeo.",
+    "en": 13.1,
+    "fin": 13.76
+   },
+   {
+    "t": "This",
+    "en": 14.1,
+    "fin": 14.4
+   },
+   {
+    "t": "happens",
+    "en": 14.4,
+    "fin": 14.84
+   },
+   {
+    "t": "when",
+    "en": 14.84,
+    "fin": 15.06
+   },
+   {
+    "t": "July",
+    "en": 15.06,
+    "fin": 15.44
+   },
+   {
+    "t": "25th,",
+    "en": 15.44,
+    "fin": 16.22
+   },
+   {
+    "t": "the",
+    "en": 16.24,
+    "fin": 16.46
+   },
+   {
+    "t": "feast",
+    "en": 16.46,
+    "fin": 16.64
+   },
+   {
+    "t": "of",
+    "en": 16.64,
+    "fin": 16.86
+   },
+   {
+    "t": "St.",
+    "en": 16.86,
+    "fin": 17.08
+   },
+   {
+    "t": "James",
+    "en": 17.2,
+    "fin": 17.48
+   },
+   {
+    "t": "falls",
+    "en": 17.48,
+    "fin": 18.04
+   },
+   {
+    "t": "on",
+    "en": 18.04,
+    "fin": 18.32
+   },
+   {
+    "t": "a",
+    "en": 18.32,
+    "fin": 18.44
+   },
+   {
+    "t": "Sunday.",
+    "en": 18.44,
+    "fin": 18.76
+   },
+   {
+    "t": "And",
+    "en": 19.38,
+    "fin": 19.64
+   },
+   {
+    "t": "every",
+    "en": 19.64,
+    "fin": 19.98
+   },
+   {
+    "t": "Holy",
+    "en": 19.98,
+    "fin": 20.24
+   },
+   {
+    "t": "Year,",
+    "en": 20.24,
+    "fin": 20.92
+   },
+   {
+    "t": "thousands",
+    "en": 21.26,
+    "fin": 21.62
+   },
+   {
+    "t": "of",
+    "en": 21.62,
+    "fin": 21.92
+   },
+   {
+    "t": "pilgrims",
+    "en": 21.92,
+    "fin": 22.38
+   },
+   {
+    "t": "choose",
+    "en": 22.38,
+    "fin": 22.7
+   },
+   {
+    "t": "to",
+    "en": 22.7,
+    "fin": 22.98
+   },
+   {
+    "t": "experience",
+    "en": 22.98,
+    "fin": 23.46
+   },
+   {
+    "t": "a",
+    "en": 23.46,
+    "fin": 23.74
+   },
+   {
+    "t": "Camino",
+    "en": 23.74,
+    "fin": 24.22
+   },
+   {
+    "t": "that",
+    "en": 24.22,
+    "fin": 24.86
+   },
+   {
+    "t": "won't",
+    "en": 24.86,
+    "fin": 25.18
+   },
+   {
+    "t": "happen",
+    "en": 25.18,
+    "fin": 25.44
+   },
+   {
+    "t": "again",
+    "en": 25.44,
+    "fin": 25.84
+   },
+   {
+    "t": "for",
+    "en": 25.84,
+    "fin": 26.14
+   },
+   {
+    "t": "several",
+    "en": 26.14,
+    "fin": 26.5
+   },
+   {
+    "t": "years.",
+    "en": 26.5,
+    "fin": 26.98
+   },
+   {
+    "t": "If",
+    "en": 26.98,
+    "fin": 27.64
+   },
+   {
+    "t": "2027",
+    "en": 27.64,
+    "fin": 28.36
+   },
+   {
+    "t": "could",
+    "en": 28.36,
+    "fin": 28.58
+   },
+   {
+    "t": "be",
+    "en": 28.58,
+    "fin": 28.78
+   },
+   {
+    "t": "your",
+    "en": 28.78,
+    "fin": 29.08
+   },
+   {
+    "t": "year,",
+    "en": 29.08,
+    "fin": 29.4
+   },
+   {
+    "t": "don't",
+    "en": 29.72,
+    "fin": 30.3
+   },
+   {
+    "t": "leave",
+    "en": 30.3,
+    "fin": 30.58
+   },
+   {
+    "t": "it",
+    "en": 30.58,
+    "fin": 30.82
+   },
+   {
+    "t": "until",
+    "en": 30.82,
+    "fin": 31.02
+   },
+   {
+    "t": "the",
+    "en": 31.02,
+    "fin": 31.16
+   },
+   {
+    "t": "last",
+    "en": 31.16,
+    "fin": 31.46
+   },
+   {
+    "t": "minute.",
+    "en": 31.46,
+    "fin": 31.82
+   },
+   {
+    "t": "Santiago",
+    "en": 32.38,
+    "fin": 32.74
+   },
+   {
+    "t": "Ways",
+    "en": 32.74,
+    "fin": 33.16
+   },
+   {
+    "t": "is",
+    "en": 33.16,
+    "fin": 33.42
+   },
+   {
+    "t": "already",
+    "en": 33.42,
+    "fin": 33.86
+   },
+   {
+    "t": "preparing",
+    "en": 33.86,
+    "fin": 34.32
+   },
+   {
+    "t": "for",
+    "en": 34.32,
+    "fin": 34.66
+   },
+   {
+    "t": "the",
+    "en": 34.66,
+    "fin": 34.84
+   },
+   {
+    "t": "next",
+    "en": 34.84,
+    "fin": 35.14
+   },
+   {
+    "t": "Xacobeo.",
+    "en": 35.14,
+    "fin": 35.88
+   },
+   {
+    "t": "Request",
+    "en": 36.2,
+    "fin": 36.54
+   },
+   {
+    "t": "your",
+    "en": 36.54,
+    "fin": 36.76
+   },
+   {
+    "t": "quote",
+    "en": 36.76,
+    "fin": 37.0
+   },
+   {
+    "t": "with",
+    "en": 37.0,
+    "fin": 37.68
+   },
+   {
+    "t": "no",
+    "en": 37.68,
+    "fin": 38.2
+   },
+   {
+    "t": "obligation.",
+    "en": 38.2,
+    "fin": 38.76
+   }
+  ],
+  "sfx": [
+   {
+    "en": 0,
+    "src": "sfx/impacto.wav",
+    "vol": 0.45
+   },
+   {
+    "en": 2.35,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.25
+   },
+   {
+    "en": 8.81,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 11.68,
+    "src": "sfx/pop.wav",
+    "vol": 0.35
+   },
+   {
+    "en": 13.95,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 21.11,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 24.71,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 29.72,
+    "src": "sfx/pop.wav",
+    "vol": 0.35
+   },
+   {
+    "en": 32.38,
+    "src": "sfx/ding.wav",
+    "vol": 0.25
+   },
+   {
+    "en": 36.2,
+    "src": "sfx/pop.wav",
+    "vol": 0.35
+   }
+  ],
+  "musica": {
+   "src": "musica/Carefree.mp3",
+   "vol": 0.06
+  }
+ },
+ {
+  "id": "02-el-siguiente-2032",
+  "video": "xacobeo/videos/IMG_8744.mp4",
+  "duracion": 32.067,
+  "titulo": [
+   "MISS 2027?",
+   "YOU'LL WAIT",
+   "UNTIL 2032"
+  ],
+  "acento": 2,
+  "gancho": {
+   "dur": 2.6
+  },
+  "portada": {
+   "titulo": [
+    "THE NEXT",
+    "HOLY YEAR?",
+    "NOT UNTIL 2032"
+   ],
+   "acento": 2,
+   "fotograma": 20
+  },
+  "capas": [
+   {
+    "tipo": "cartela",
+    "principal": "5 YEARS",
+    "secundaria": "UNTIL THE NEXT ONE",
+    "dur": 3.2,
+    "tono": "olivo",
+    "en": 3.6
+   },
+   {
+    "tipo": "grafico",
+    "g": "linea",
+    "dur": 6.0,
+    "actual": 2032,
+    "texto": "After 2027, the next one is 2032",
+    "escala": 0.92,
+    "en": 8.18
+   },
+   {
+    "tipo": "broll",
+    "src": "xacobeo/stock/llegada-plaza.mp4",
+    "dur": 1.5,
+    "encuadre": "50% 50%",
+    "en": 16.12
+   },
+   {
+    "tipo": "broll",
+    "src": "xacobeo/stock/catedral-obradoiro.mp4",
+    "dur": 2.6,
+    "encuadre": "50% 50%",
+    "en": 19.38
+   },
+   {
+    "tipo": "png",
+    "src": "hilary/cartelas/sw-tag-light.png",
+    "ancho": 880,
+    "web": true,
+    "hasta": null,
+    "en": 24.7,
+    "dur": 3.61
+   },
+   {
+    "tipo": "cartela",
+    "principal": "REQUEST YOUR QUOTE",
+    "secundaria": "START PLANNING",
+    "dur": 3.707,
+    "tono": "olivo",
+    "en": 28.36
+   }
+  ],
+  "zooms": [
+   {
+    "en": 7.42,
+    "z": 1.1
+   },
+   {
+    "en": 9.7,
+    "z": 1.0
+   },
+   {
+    "en": 13.92,
+    "z": 1.1
+   },
+   {
+    "en": 20.22,
+    "z": 1.0
+   },
+   {
+    "en": 21.94,
+    "z": 1.1
+   },
+   {
+    "en": 24.7,
+    "z": 1.0
+   },
+   {
+    "en": 28.36,
+    "z": 1.1
+   }
+  ],
+  "palabras": [
+   {
+    "t": "If",
+    "en": 0.4,
+    "fin": 0.94
+   },
+   {
+    "t": "you",
+    "en": 0.94,
+    "fin": 1.1
+   },
+   {
+    "t": "don't",
+    "en": 1.1,
+    "fin": 1.28
+   },
+   {
+    "t": "walk",
+    "en": 1.28,
+    "fin": 1.5
+   },
+   {
+    "t": "the",
+    "en": 1.5,
+    "fin": 1.7
+   },
+   {
+    "t": "Camino",
+    "en": 1.7,
+    "fin": 1.98
+   },
+   {
+    "t": "in",
+    "en": 1.98,
+    "fin": 2.3
+   },
+   {
+    "t": "2027,",
+    "en": 2.3,
+    "fin": 3.08
+   },
+   {
+    "t": "you'll",
+    "en": 3.6,
+    "fin": 3.86
+   },
+   {
+    "t": "have",
+    "en": 3.86,
+    "fin": 4.02
+   },
+   {
+    "t": "to",
+    "en": 4.02,
+    "fin": 4.2
+   },
+   {
+    "t": "wait",
+    "en": 4.2,
+    "fin": 4.44
+   },
+   {
+    "t": "five",
+    "en": 4.44,
+    "fin": 5.1
+   },
+   {
+    "t": "years",
+    "en": 5.1,
+    "fin": 5.7
+   },
+   {
+    "t": "for",
+    "en": 5.7,
+    "fin": 6.02
+   },
+   {
+    "t": "another",
+    "en": 6.02,
+    "fin": 6.5
+   },
+   {
+    "t": "Holy",
+    "en": 6.5,
+    "fin": 6.72
+   },
+   {
+    "t": "Year.",
+    "en": 6.72,
+    "fin": 7.02
+   },
+   {
+    "t": "The",
+    "en": 7.42,
+    "fin": 7.6
+   },
+   {
+    "t": "Xacobeo",
+    "en": 7.6,
+    "fin": 8.18
+   },
+   {
+    "t": "doesn't",
+    "en": 8.18,
+    "fin": 8.6
+   },
+   {
+    "t": "happen",
+    "en": 8.6,
+    "fin": 8.96
+   },
+   {
+    "t": "every",
+    "en": 8.96,
+    "fin": 9.3
+   },
+   {
+    "t": "year.",
+    "en": 9.3,
+    "fin": 9.64
+   },
+   {
+    "t": "After",
+    "en": 9.7,
+    "fin": 10.06
+   },
+   {
+    "t": "2027,",
+    "en": 10.06,
+    "fin": 10.92
+   },
+   {
+    "t": "the",
+    "en": 11.14,
+    "fin": 11.26
+   },
+   {
+    "t": "next",
+    "en": 11.26,
+    "fin": 11.58
+   },
+   {
+    "t": "Holy",
+    "en": 11.58,
+    "fin": 11.82
+   },
+   {
+    "t": "Year",
+    "en": 11.82,
+    "fin": 12.18
+   },
+   {
+    "t": "will",
+    "en": 12.18,
+    "fin": 12.58
+   },
+   {
+    "t": "be",
+    "en": 12.58,
+    "fin": 12.74
+   },
+   {
+    "t": "in",
+    "en": 12.74,
+    "fin": 12.96
+   },
+   {
+    "t": "2032.",
+    "en": 12.96,
+    "fin": 13.6
+   },
+   {
+    "t": "That's",
+    "en": 13.92,
+    "fin": 14.22
+   },
+   {
+    "t": "why",
+    "en": 14.22,
+    "fin": 14.38
+   },
+   {
+    "t": "for",
+    "en": 14.38,
+    "fin": 14.72
+   },
+   {
+    "t": "thousands",
+    "en": 14.72,
+    "fin": 15.16
+   },
+   {
+    "t": "of",
+    "en": 15.16,
+    "fin": 15.44
+   },
+   {
+    "t": "pilgrims,",
+    "en": 15.44,
+    "fin": 15.96
+   },
+   {
+    "t": "arriving",
+    "en": 16.12,
+    "fin": 16.58
+   },
+   {
+    "t": "in",
+    "en": 16.58,
+    "fin": 16.9
+   },
+   {
+    "t": "Santiago",
+    "en": 16.9,
+    "fin": 17.4
+   },
+   {
+    "t": "during",
+    "en": 17.4,
+    "fin": 17.8
+   },
+   {
+    "t": "a",
+    "en": 17.8,
+    "fin": 18.04
+   },
+   {
+    "t": "Holy",
+    "en": 18.04,
+    "fin": 18.2
+   },
+   {
+    "t": "Year",
+    "en": 18.2,
+    "fin": 18.58
+   },
+   {
+    "t": "has",
+    "en": 18.58,
+    "fin": 19.14
+   },
+   {
+    "t": "a",
+    "en": 19.14,
+    "fin": 19.38
+   },
+   {
+    "t": "completely",
+    "en": 19.38,
+    "fin": 20.22
+   },
+   {
+    "t": "different",
+    "en": 20.22,
+    "fin": 21.06
+   },
+   {
+    "t": "meaning.",
+    "en": 21.06,
+    "fin": 21.46
+   },
+   {
+    "t": "Want",
+    "en": 21.94,
+    "fin": 22.08
+   },
+   {
+    "t": "2027",
+    "en": 22.08,
+    "fin": 22.9
+   },
+   {
+    "t": "to",
+    "en": 22.9,
+    "fin": 23.18
+   },
+   {
+    "t": "be",
+    "en": 23.18,
+    "fin": 23.34
+   },
+   {
+    "t": "the",
+    "en": 23.34,
+    "fin": 23.42
+   },
+   {
+    "t": "year",
+    "en": 23.42,
+    "fin": 23.64
+   },
+   {
+    "t": "of",
+    "en": 23.64,
+    "fin": 23.88
+   },
+   {
+    "t": "your",
+    "en": 23.88,
+    "fin": 24.16
+   },
+   {
+    "t": "Camino?",
+    "en": 24.16,
+    "fin": 24.7
+   },
+   {
+    "t": "Santiago",
+    "en": 24.7,
+    "fin": 25.5
+   },
+   {
+    "t": "Ways",
+    "en": 25.5,
+    "fin": 25.88
+   },
+   {
+    "t": "can",
+    "en": 25.88,
+    "fin": 26.18
+   },
+   {
+    "t": "organize",
+    "en": 26.18,
+    "fin": 26.82
+   },
+   {
+    "t": "everything",
+    "en": 26.82,
+    "fin": 27.5
+   },
+   {
+    "t": "for",
+    "en": 27.5,
+    "fin": 27.8
+   },
+   {
+    "t": "you.",
+    "en": 27.8,
+    "fin": 28.12
+   },
+   {
+    "t": "Request",
+    "en": 28.36,
+    "fin": 28.68
+   },
+   {
+    "t": "your",
+    "en": 28.68,
+    "fin": 28.92
+   },
+   {
+    "t": "quote",
+    "en": 28.92,
+    "fin": 29.12
+   },
+   {
+    "t": "and",
+    "en": 29.12,
+    "fin": 29.48
+   },
+   {
+    "t": "start",
+    "en": 29.48,
+    "fin": 29.72
+   },
+   {
+    "t": "planning.",
+    "en": 29.72,
+    "fin": 30.12
+   }
+  ],
+  "sfx": [
+   {
+    "en": 0,
+    "src": "sfx/impacto.wav",
+    "vol": 0.45
+   },
+   {
+    "en": 2.35,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.25
+   },
+   {
+    "en": 3.6,
+    "src": "sfx/pop.wav",
+    "vol": 0.35
+   },
+   {
+    "en": 8.03,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 15.97,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 19.23,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 24.7,
+    "src": "sfx/ding.wav",
+    "vol": 0.25
+   },
+   {
+    "en": 28.36,
+    "src": "sfx/pop.wav",
+    "vol": 0.35
+   }
+  ],
+  "musica": {
+   "src": "musica/Life_of_Riley.mp3",
+   "vol": 0.06
+  }
+ },
+ {
+  "id": "03-perdonar-pecados",
+  "video": "xacobeo/videos/IMG_8748.mp4",
+  "duracion": 41.233,
+  "titulo": [
+   "CAN THE CAMINO",
+   "FORGIVE",
+   "YOUR SINS?"
+  ],
+  "acento": 2,
+  "gancho": {
+   "dur": 2.6
+  },
+  "portada": {
+   "titulo": [
+    "CAN THE CAMINO",
+    "FORGIVE",
+    "YOUR SINS?"
+   ],
+   "acento": 2,
+   "fotograma": 20
+  },
+  "capas": [
+   {
+    "tipo": "broll",
+    "src": "brutos/interior-velas.mp4",
+    "dur": 2.0,
+    "encuadre": "50% 50%",
+    "en": 7.1
+   },
+   {
+    "tipo": "cartela",
+    "principal": "INDULGENCE",
+    "secundaria": "PLENARY · JUBILEE",
+    "dur": 3.6,
+    "tono": "olivo",
+    "en": 13.32
+   },
+   {
+    "tipo": "broll",
+    "src": "xacobeo/stock/catedral-torres-2.mp4",
+    "dur": 2.4,
+    "encuadre": "50% 50%",
+    "en": 21.64
+   },
+   {
+    "tipo": "cartela",
+    "principal": "100 KM",
+    "secundaria": "NOT A MAGIC BUTTON",
+    "dur": 3.2,
+    "tono": "olivo",
+    "en": 23.6
+   },
+   {
+    "tipo": "broll",
+    "src": "xacobeo/stock/celebracion.mp4",
+    "dur": 1.6,
+    "encuadre": "50% 50%",
+    "en": 30.8
+   },
+   {
+    "tipo": "png",
+    "src": "hilary/cartelas/sw-tag-light.png",
+    "ancho": 880,
+    "web": true,
+    "hasta": null,
+    "en": 36.16,
+    "dur": 2.82
+   }
+  ],
+  "zooms": [
+   {
+    "en": 7.1,
+    "z": 1.1
+   },
+   {
+    "en": 12.14,
+    "z": 1.0
+   },
+   {
+    "en": 19.66,
+    "z": 1.1
+   },
+   {
+    "en": 25.44,
+    "z": 1.0
+   },
+   {
+    "en": 32.72,
+    "z": 1.1
+   }
+  ],
+  "palabras": [
+   {
+    "t": "Is",
+    "en": 0.7,
+    "fin": 1.24
+   },
+   {
+    "t": "it",
+    "en": 1.24,
+    "fin": 1.46
+   },
+   {
+    "t": "true",
+    "en": 1.46,
+    "fin": 1.7
+   },
+   {
+    "t": "that",
+    "en": 1.7,
+    "fin": 1.92
+   },
+   {
+    "t": "walking",
+    "en": 1.92,
+    "fin": 2.2
+   },
+   {
+    "t": "the",
+    "en": 2.2,
+    "fin": 2.44
+   },
+   {
+    "t": "Camino",
+    "en": 2.44,
+    "fin": 2.8
+   },
+   {
+    "t": "in",
+    "en": 2.8,
+    "fin": 3.06
+   },
+   {
+    "t": "2027",
+    "en": 3.06,
+    "fin": 3.94
+   },
+   {
+    "t": "can",
+    "en": 3.94,
+    "fin": 4.38
+   },
+   {
+    "t": "help",
+    "en": 4.38,
+    "fin": 4.56
+   },
+   {
+    "t": "you",
+    "en": 4.56,
+    "fin": 4.82
+   },
+   {
+    "t": "receive",
+    "en": 4.82,
+    "fin": 5.06
+   },
+   {
+    "t": "forgiveness",
+    "en": 5.06,
+    "fin": 5.64
+   },
+   {
+    "t": "for",
+    "en": 5.64,
+    "fin": 5.88
+   },
+   {
+    "t": "your",
+    "en": 5.88,
+    "fin": 6.06
+   },
+   {
+    "t": "sins?",
+    "en": 6.06,
+    "fin": 6.36
+   },
+   {
+    "t": "Well,",
+    "en": 7.1,
+    "fin": 7.44
+   },
+   {
+    "t": "there's",
+    "en": 7.62,
+    "fin": 7.88
+   },
+   {
+    "t": "some",
+    "en": 7.88,
+    "fin": 8.22
+   },
+   {
+    "t": "truth",
+    "en": 8.22,
+    "fin": 8.44
+   },
+   {
+    "t": "to",
+    "en": 8.44,
+    "fin": 8.64
+   },
+   {
+    "t": "it,",
+    "en": 8.64,
+    "fin": 8.8
+   },
+   {
+    "t": "but",
+    "en": 8.8,
+    "fin": 8.9
+   },
+   {
+    "t": "it's",
+    "en": 8.9,
+    "fin": 9.14
+   },
+   {
+    "t": "not",
+    "en": 9.14,
+    "fin": 9.32
+   },
+   {
+    "t": "quite",
+    "en": 9.32,
+    "fin": 9.54
+   },
+   {
+    "t": "that",
+    "en": 9.54,
+    "fin": 9.8
+   },
+   {
+    "t": "simple.",
+    "en": 9.8,
+    "fin": 10.16
+   },
+   {
+    "t": "During",
+    "en": 10.54,
+    "fin": 10.8
+   },
+   {
+    "t": "the",
+    "en": 10.8,
+    "fin": 11.0
+   },
+   {
+    "t": "Holy",
+    "en": 11.0,
+    "fin": 11.22
+   },
+   {
+    "t": "Year,",
+    "en": 11.22,
+    "fin": 11.54
+   },
+   {
+    "t": "pilgrims",
+    "en": 11.88,
+    "fin": 12.14
+   },
+   {
+    "t": "can",
+    "en": 12.14,
+    "fin": 12.44
+   },
+   {
+    "t": "receive",
+    "en": 12.44,
+    "fin": 12.88
+   },
+   {
+    "t": "a",
+    "en": 12.88,
+    "fin": 13.32
+   },
+   {
+    "t": "plenary",
+    "en": 13.32,
+    "fin": 13.92
+   },
+   {
+    "t": "indulgence",
+    "en": 13.92,
+    "fin": 14.98
+   },
+   {
+    "t": "associated",
+    "en": 14.98,
+    "fin": 15.88
+   },
+   {
+    "t": "with",
+    "en": 15.88,
+    "fin": 16.2
+   },
+   {
+    "t": "the",
+    "en": 16.2,
+    "fin": 16.36
+   },
+   {
+    "t": "Jubilee,",
+    "en": 16.36,
+    "fin": 16.84
+   },
+   {
+    "t": "but",
+    "en": 17.16,
+    "fin": 17.32
+   },
+   {
+    "t": "simply",
+    "en": 17.32,
+    "fin": 17.7
+   },
+   {
+    "t": "walking",
+    "en": 17.7,
+    "fin": 18.1
+   },
+   {
+    "t": "the",
+    "en": 18.1,
+    "fin": 18.36
+   },
+   {
+    "t": "Camino",
+    "en": 18.36,
+    "fin": 19.0
+   },
+   {
+    "t": "isn't",
+    "en": 19.0,
+    "fin": 19.66
+   },
+   {
+    "t": "enough.",
+    "en": 19.66,
+    "fin": 20.04
+   },
+   {
+    "t": "You",
+    "en": 20.42,
+    "fin": 20.54
+   },
+   {
+    "t": "must",
+    "en": 20.54,
+    "fin": 20.76
+   },
+   {
+    "t": "meet",
+    "en": 20.76,
+    "fin": 20.92
+   },
+   {
+    "t": "the",
+    "en": 20.92,
+    "fin": 21.14
+   },
+   {
+    "t": "conditions",
+    "en": 21.14,
+    "fin": 21.64
+   },
+   {
+    "t": "established",
+    "en": 21.64,
+    "fin": 22.28
+   },
+   {
+    "t": "by",
+    "en": 22.28,
+    "fin": 22.52
+   },
+   {
+    "t": "the",
+    "en": 22.52,
+    "fin": 22.74
+   },
+   {
+    "t": "Church.",
+    "en": 22.74,
+    "fin": 23.12
+   },
+   {
+    "t": "So",
+    "en": 23.6,
+    "fin": 23.84
+   },
+   {
+    "t": "no,",
+    "en": 23.84,
+    "fin": 24.18
+   },
+   {
+    "t": "walking",
+    "en": 24.24,
+    "fin": 24.56
+   },
+   {
+    "t": "100",
+    "en": 24.56,
+    "fin": 24.8
+   },
+   {
+    "t": "kilometers",
+    "en": 24.8,
+    "fin": 25.44
+   },
+   {
+    "t": "isn't",
+    "en": 25.44,
+    "fin": 25.94
+   },
+   {
+    "t": "a",
+    "en": 25.94,
+    "fin": 26.26
+   },
+   {
+    "t": "magic",
+    "en": 26.26,
+    "fin": 26.56
+   },
+   {
+    "t": "button",
+    "en": 26.56,
+    "fin": 26.92
+   },
+   {
+    "t": "to",
+    "en": 26.92,
+    "fin": 27.32
+   },
+   {
+    "t": "wipe",
+    "en": 27.32,
+    "fin": 27.56
+   },
+   {
+    "t": "away",
+    "en": 27.56,
+    "fin": 27.82
+   },
+   {
+    "t": "your",
+    "en": 27.82,
+    "fin": 28.1
+   },
+   {
+    "t": "sins.",
+    "en": 28.1,
+    "fin": 28.48
+   },
+   {
+    "t": "What",
+    "en": 28.94,
+    "fin": 29.04
+   },
+   {
+    "t": "we",
+    "en": 29.04,
+    "fin": 29.3
+   },
+   {
+    "t": "can",
+    "en": 29.3,
+    "fin": 29.46
+   },
+   {
+    "t": "promise",
+    "en": 29.46,
+    "fin": 29.94
+   },
+   {
+    "t": "is",
+    "en": 29.94,
+    "fin": 30.34
+   },
+   {
+    "t": "an",
+    "en": 30.34,
+    "fin": 30.8
+   },
+   {
+    "t": "unforgettable",
+    "en": 30.8,
+    "fin": 31.64
+   },
+   {
+    "t": "Camino.",
+    "en": 31.64,
+    "fin": 32.2
+   },
+   {
+    "t": "If",
+    "en": 32.72,
+    "fin": 32.88
+   },
+   {
+    "t": "you",
+    "en": 32.88,
+    "fin": 33.08
+   },
+   {
+    "t": "want",
+    "en": 33.08,
+    "fin": 33.26
+   },
+   {
+    "t": "to",
+    "en": 33.26,
+    "fin": 33.46
+   },
+   {
+    "t": "experience",
+    "en": 33.46,
+    "fin": 33.78
+   },
+   {
+    "t": "Xacobeo",
+    "en": 33.78,
+    "fin": 34.6
+   },
+   {
+    "t": "2027,",
+    "en": 34.6,
+    "fin": 35.64
+   },
+   {
+    "t": "start",
+    "en": 36.16,
+    "fin": 36.34
+   },
+   {
+    "t": "planning",
+    "en": 36.34,
+    "fin": 36.64
+   },
+   {
+    "t": "it",
+    "en": 36.64,
+    "fin": 36.94
+   },
+   {
+    "t": "with",
+    "en": 36.94,
+    "fin": 37.24
+   },
+   {
+    "t": "Santiago",
+    "en": 37.24,
+    "fin": 37.8
+   },
+   {
+    "t": "Ways.",
+    "en": 37.8,
+    "fin": 38.38
+   }
+  ],
+  "sfx": [
+   {
+    "en": 0,
+    "src": "sfx/impacto.wav",
+    "vol": 0.45
+   },
+   {
+    "en": 2.35,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.25
+   },
+   {
+    "en": 6.95,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 13.32,
+    "src": "sfx/pop.wav",
+    "vol": 0.35
+   },
+   {
+    "en": 21.49,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 23.6,
+    "src": "sfx/pop.wav",
+    "vol": 0.35
+   },
+   {
+    "en": 30.65,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 36.16,
+    "src": "sfx/ding.wav",
+    "vol": 0.25
+   }
+  ],
+  "musica": {
+   "src": "musica/Inspired.mp3",
+   "vol": 0.06
+  }
+ },
+ {
+  "id": "04-error-reservar",
+  "video": "xacobeo/videos/IMG_8750.mp4",
+  "duracion": 35.075,
+  "titulo": [
+   "THE BIGGEST",
+   "2027 BOOKING",
+   "MISTAKE"
+  ],
+  "acento": 2,
+  "gancho": {
+   "dur": 2.6
+  },
+  "portada": {
+   "titulo": [
+    "THE BIGGEST",
+    "2027 BOOKING",
+    "MISTAKE"
+   ],
+   "acento": 2,
+   "fotograma": 5
+  },
+  "capas": [
+   {
+    "tipo": "cartela",
+    "principal": "HOLY YEAR",
+    "secundaria": "HUGE DEMAND EXPECTED",
+    "dur": 3.2,
+    "tono": "olivo",
+    "en": 8.6
+   },
+   {
+    "tipo": "broll",
+    "src": "xacobeo/stock/multitud-calle.mp4",
+    "dur": 2.4,
+    "encuadre": "50% 50%",
+    "en": 13.14
+   },
+   {
+    "tipo": "broll",
+    "src": "xacobeo/stock/hotel.mp4",
+    "dur": 2.0,
+    "encuadre": "50% 50%",
+    "en": 16.76
+   },
+   {
+    "tipo": "grafico",
+    "g": "candado",
+    "dur": 3.6,
+    "texto": "Book early, more options",
+    "escala": 1.1,
+    "en": 20.54
+   },
+   {
+    "tipo": "png",
+    "src": "hilary/cartelas/sw-tag-light.png",
+    "ancho": 880,
+    "web": true,
+    "hasta": null,
+    "en": 28.58,
+    "dur": 4.48
+   }
+  ],
+  "zooms": [
+   {
+    "en": 8.6,
+    "z": 1.1
+   },
+   {
+    "en": 15.5,
+    "z": 1.0
+   },
+   {
+    "en": 22.24,
+    "z": 1.1
+   },
+   {
+    "en": 28.58,
+    "z": 1.0
+   }
+  ],
+  "palabras": [
+   {
+    "t": "The",
+    "en": 0.64,
+    "fin": 0.98
+   },
+   {
+    "t": "biggest",
+    "en": 0.98,
+    "fin": 1.32
+   },
+   {
+    "t": "mistake",
+    "en": 1.32,
+    "fin": 1.74
+   },
+   {
+    "t": "you",
+    "en": 1.74,
+    "fin": 1.82
+   },
+   {
+    "t": "can",
+    "en": 1.82,
+    "fin": 2.08
+   },
+   {
+    "t": "make",
+    "en": 2.08,
+    "fin": 2.3
+   },
+   {
+    "t": "if",
+    "en": 2.3,
+    "fin": 2.54
+   },
+   {
+    "t": "you",
+    "en": 2.54,
+    "fin": 2.7
+   },
+   {
+    "t": "want",
+    "en": 2.7,
+    "fin": 2.86
+   },
+   {
+    "t": "to",
+    "en": 2.86,
+    "fin": 3.06
+   },
+   {
+    "t": "walk",
+    "en": 3.06,
+    "fin": 3.24
+   },
+   {
+    "t": "the",
+    "en": 3.24,
+    "fin": 3.48
+   },
+   {
+    "t": "Camino",
+    "en": 3.48,
+    "fin": 3.84
+   },
+   {
+    "t": "in",
+    "en": 3.84,
+    "fin": 4.14
+   },
+   {
+    "t": "2027",
+    "en": 4.14,
+    "fin": 5.1
+   },
+   {
+    "t": "is",
+    "en": 5.1,
+    "fin": 6.06
+   },
+   {
+    "t": "booking",
+    "en": 6.06,
+    "fin": 6.44
+   },
+   {
+    "t": "it",
+    "en": 6.44,
+    "fin": 6.94
+   },
+   {
+    "t": "in",
+    "en": 6.94,
+    "fin": 7.24
+   },
+   {
+    "t": "2027.",
+    "en": 7.24,
+    "fin": 8.2
+   },
+   {
+    "t": "It",
+    "en": 8.6,
+    "fin": 8.8
+   },
+   {
+    "t": "will",
+    "en": 8.8,
+    "fin": 8.96
+   },
+   {
+    "t": "be",
+    "en": 8.96,
+    "fin": 9.18
+   },
+   {
+    "t": "a",
+    "en": 9.18,
+    "fin": 9.44
+   },
+   {
+    "t": "Holy",
+    "en": 9.44,
+    "fin": 9.7
+   },
+   {
+    "t": "Year",
+    "en": 9.7,
+    "fin": 9.94
+   },
+   {
+    "t": "with",
+    "en": 9.94,
+    "fin": 10.26
+   },
+   {
+    "t": "huge",
+    "en": 10.26,
+    "fin": 10.84
+   },
+   {
+    "t": "demand",
+    "en": 10.84,
+    "fin": 11.32
+   },
+   {
+    "t": "expected,",
+    "en": 11.32,
+    "fin": 12.12
+   },
+   {
+    "t": "especially",
+    "en": 12.22,
+    "fin": 12.82
+   },
+   {
+    "t": "on",
+    "en": 12.82,
+    "fin": 13.06
+   },
+   {
+    "t": "the",
+    "en": 13.06,
+    "fin": 13.14
+   },
+   {
+    "t": "most",
+    "en": 13.14,
+    "fin": 13.44
+   },
+   {
+    "t": "popular",
+    "en": 13.44,
+    "fin": 13.84
+   },
+   {
+    "t": "routes",
+    "en": 13.84,
+    "fin": 14.26
+   },
+   {
+    "t": "and",
+    "en": 14.26,
+    "fin": 14.66
+   },
+   {
+    "t": "dates.",
+    "en": 14.66,
+    "fin": 15.04
+   },
+   {
+    "t": "The",
+    "en": 15.5,
+    "fin": 15.6
+   },
+   {
+    "t": "problem?",
+    "en": 15.6,
+    "fin": 16.0
+   },
+   {
+    "t": "The",
+    "en": 16.48,
+    "fin": 16.76
+   },
+   {
+    "t": "best",
+    "en": 16.76,
+    "fin": 17.0
+   },
+   {
+    "t": "located",
+    "en": 17.0,
+    "fin": 17.5
+   },
+   {
+    "t": "accommodation",
+    "en": 17.5,
+    "fin": 18.28
+   },
+   {
+    "t": "isn't",
+    "en": 18.28,
+    "fin": 19.42
+   },
+   {
+    "t": "unlimited.",
+    "en": 19.42,
+    "fin": 19.98
+   },
+   {
+    "t": "Waiting",
+    "en": 20.54,
+    "fin": 20.72
+   },
+   {
+    "t": "too",
+    "en": 20.72,
+    "fin": 21.1
+   },
+   {
+    "t": "long",
+    "en": 21.1,
+    "fin": 21.36
+   },
+   {
+    "t": "means",
+    "en": 21.36,
+    "fin": 21.66
+   },
+   {
+    "t": "having",
+    "en": 21.66,
+    "fin": 22.24
+   },
+   {
+    "t": "far",
+    "en": 22.24,
+    "fin": 22.9
+   },
+   {
+    "t": "fewer",
+    "en": 22.9,
+    "fin": 23.34
+   },
+   {
+    "t": "options.",
+    "en": 23.34,
+    "fin": 23.98
+   },
+   {
+    "t": "If",
+    "en": 24.32,
+    "fin": 24.56
+   },
+   {
+    "t": "you",
+    "en": 24.56,
+    "fin": 24.8
+   },
+   {
+    "t": "already",
+    "en": 24.8,
+    "fin": 25.18
+   },
+   {
+    "t": "know",
+    "en": 25.18,
+    "fin": 25.62
+   },
+   {
+    "t": "you",
+    "en": 25.62,
+    "fin": 25.9
+   },
+   {
+    "t": "want",
+    "en": 25.9,
+    "fin": 26.08
+   },
+   {
+    "t": "to",
+    "en": 26.08,
+    "fin": 26.36
+   },
+   {
+    "t": "walk",
+    "en": 26.36,
+    "fin": 26.58
+   },
+   {
+    "t": "the",
+    "en": 26.58,
+    "fin": 26.86
+   },
+   {
+    "t": "Camino",
+    "en": 26.86,
+    "fin": 27.28
+   },
+   {
+    "t": "in",
+    "en": 27.28,
+    "fin": 27.58
+   },
+   {
+    "t": "2027,",
+    "en": 27.58,
+    "fin": 28.58
+   },
+   {
+    "t": "talk",
+    "en": 28.58,
+    "fin": 29.36
+   },
+   {
+    "t": "to",
+    "en": 29.36,
+    "fin": 29.66
+   },
+   {
+    "t": "Santiago",
+    "en": 29.66,
+    "fin": 30.16
+   },
+   {
+    "t": "Ways",
+    "en": 30.16,
+    "fin": 30.64
+   },
+   {
+    "t": "and",
+    "en": 30.64,
+    "fin": 30.96
+   },
+   {
+    "t": "start",
+    "en": 30.96,
+    "fin": 31.26
+   },
+   {
+    "t": "planning",
+    "en": 31.26,
+    "fin": 31.88
+   },
+   {
+    "t": "ahead.",
+    "en": 31.88,
+    "fin": 32.46
+   }
+  ],
+  "sfx": [
+   {
+    "en": 0,
+    "src": "sfx/impacto.wav",
+    "vol": 0.45
+   },
+   {
+    "en": 2.35,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.25
+   },
+   {
+    "en": 8.6,
+    "src": "sfx/pop.wav",
+    "vol": 0.35
+   },
+   {
+    "en": 12.99,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 16.61,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 20.39,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 28.58,
+    "src": "sfx/ding.wav",
+    "vol": 0.25
+   }
+  ],
+  "musica": {
+   "src": "musica/Wholesome.mp3",
+   "vol": 0.06
+  }
+ },
+ {
+  "id": "05-2027-vs-normal",
+  "video": "xacobeo/videos/IMG_8752.mp4",
+  "duracion": 35.577,
+  "titulo": [
+   "2027 VS",
+   "A NORMAL",
+   "YEAR"
+  ],
+  "acento": 0,
+  "gancho": {
+   "dur": 2.6
+  },
+  "portada": {
+   "titulo": [
+    "2027 VS",
+    "A NORMAL",
+    "YEAR"
+   ],
+   "acento": 2,
+   "fotograma": 10
+  },
+  "capas": [
+   {
+    "tipo": "cartela",
+    "principal": "2027",
+    "secundaria": "XACOBEO",
+    "dur": 3.2,
+    "tono": "olivo",
+    "en": 7.44
+   },
+   {
+    "tipo": "broll",
+    "src": "xacobeo/stock/multitud-camino.mp4",
+    "dur": 1.8,
+    "encuadre": "50% 50%",
+    "en": 8.8
+   },
+   {
+    "tipo": "broll",
+    "src": "xacobeo/stock/celebracion.mp4",
+    "dur": 1.6,
+    "encuadre": "50% 50%",
+    "en": 11.24
+   },
+   {
+    "tipo": "broll",
+    "src": "xacobeo/stock/catedral-siluetas.mp4",
+    "dur": 2.4,
+    "encuadre": "50% 50%",
+    "en": 13.06
+   },
+   {
+    "tipo": "cartela",
+    "principal": "MORE PEOPLE",
+    "secundaria": "A UNIQUE EXPERIENCE",
+    "dur": 3.2,
+    "tono": "olivo",
+    "en": 17.06
+   },
+   {
+    "tipo": "png",
+    "src": "hilary/cartelas/sw-tag-light.png",
+    "ancho": 880,
+    "web": true,
+    "hasta": null,
+    "en": 26.68,
+    "dur": 3.19
+   },
+   {
+    "tipo": "cartela",
+    "principal": "FREE QUOTE",
+    "secundaria": "NO OBLIGATION",
+    "dur": 4.0,
+    "tono": "olivo",
+    "en": 29.92
+   }
+  ],
+  "zooms": [
+   {
+    "en": 8.8,
+    "z": 1.1
+   },
+   {
+    "en": 14.96,
+    "z": 1.0
+   },
+   {
+    "en": 20.4,
+    "z": 1.1
+   },
+   {
+    "en": 25.6,
+    "z": 1.0
+   }
+  ],
+  "palabras": [
+   {
+    "t": "Walking",
+    "en": 0.76,
+    "fin": 1.36
+   },
+   {
+    "t": "the",
+    "en": 1.36,
+    "fin": 1.66
+   },
+   {
+    "t": "Camino",
+    "en": 1.66,
+    "fin": 2.02
+   },
+   {
+    "t": "in",
+    "en": 2.02,
+    "fin": 2.32
+   },
+   {
+    "t": "2027",
+    "en": 2.32,
+    "fin": 3.18
+   },
+   {
+    "t": "won't",
+    "en": 3.18,
+    "fin": 3.68
+   },
+   {
+    "t": "be",
+    "en": 3.68,
+    "fin": 3.9
+   },
+   {
+    "t": "the",
+    "en": 3.9,
+    "fin": 4.08
+   },
+   {
+    "t": "same",
+    "en": 4.08,
+    "fin": 4.32
+   },
+   {
+    "t": "as",
+    "en": 4.32,
+    "fin": 4.58
+   },
+   {
+    "t": "walking",
+    "en": 4.58,
+    "fin": 4.88
+   },
+   {
+    "t": "it",
+    "en": 4.88,
+    "fin": 5.14
+   },
+   {
+    "t": "in",
+    "en": 5.14,
+    "fin": 5.34
+   },
+   {
+    "t": "2026.",
+    "en": 5.34,
+    "fin": 6.2
+   },
+   {
+    "t": "2027",
+    "en": 6.84,
+    "fin": 7.44
+   },
+   {
+    "t": "will",
+    "en": 7.44,
+    "fin": 7.68
+   },
+   {
+    "t": "be",
+    "en": 7.68,
+    "fin": 7.84
+   },
+   {
+    "t": "a",
+    "en": 7.84,
+    "fin": 8.02
+   },
+   {
+    "t": "Xacobeo,",
+    "en": 8.02,
+    "fin": 8.68
+   },
+   {
+    "t": "more",
+    "en": 8.8,
+    "fin": 9.08
+   },
+   {
+    "t": "pilgrims,",
+    "en": 9.08,
+    "fin": 9.72
+   },
+   {
+    "t": "unique",
+    "en": 9.94,
+    "fin": 10.22
+   },
+   {
+    "t": "atmosphere,",
+    "en": 10.22,
+    "fin": 10.9
+   },
+   {
+    "t": "special",
+    "en": 11.24,
+    "fin": 11.46
+   },
+   {
+    "t": "celebrations,",
+    "en": 11.46,
+    "fin": 12.22
+   },
+   {
+    "t": "and",
+    "en": 12.86,
+    "fin": 13.06
+   },
+   {
+    "t": "Santiago",
+    "en": 13.06,
+    "fin": 13.64
+   },
+   {
+    "t": "experiencing",
+    "en": 13.64,
+    "fin": 14.6
+   },
+   {
+    "t": "one",
+    "en": 14.6,
+    "fin": 14.96
+   },
+   {
+    "t": "of",
+    "en": 14.96,
+    "fin": 15.04
+   },
+   {
+    "t": "its",
+    "en": 15.04,
+    "fin": 15.46
+   },
+   {
+    "t": "biggest",
+    "en": 15.46,
+    "fin": 16.08
+   },
+   {
+    "t": "years.",
+    "en": 16.08,
+    "fin": 16.66
+   },
+   {
+    "t": "Yes,",
+    "en": 17.06,
+    "fin": 17.4
+   },
+   {
+    "t": "there",
+    "en": 17.56,
+    "fin": 17.84
+   },
+   {
+    "t": "will",
+    "en": 17.84,
+    "fin": 18.02
+   },
+   {
+    "t": "be",
+    "en": 18.02,
+    "fin": 18.2
+   },
+   {
+    "t": "more",
+    "en": 18.2,
+    "fin": 18.4
+   },
+   {
+    "t": "people,",
+    "en": 18.4,
+    "fin": 18.8
+   },
+   {
+    "t": "but",
+    "en": 18.8,
+    "fin": 18.98
+   },
+   {
+    "t": "that's",
+    "en": 18.98,
+    "fin": 19.3
+   },
+   {
+    "t": "exactly",
+    "en": 19.3,
+    "fin": 19.9
+   },
+   {
+    "t": "what",
+    "en": 19.9,
+    "fin": 20.1
+   },
+   {
+    "t": "makes",
+    "en": 20.1,
+    "fin": 20.4
+   },
+   {
+    "t": "an",
+    "en": 20.4,
+    "fin": 20.68
+   },
+   {
+    "t": "experience",
+    "en": 20.68,
+    "fin": 21.26
+   },
+   {
+    "t": "you",
+    "en": 21.26,
+    "fin": 21.52
+   },
+   {
+    "t": "can",
+    "en": 21.52,
+    "fin": 21.88
+   },
+   {
+    "t": "only",
+    "en": 21.88,
+    "fin": 22.36
+   },
+   {
+    "t": "have",
+    "en": 22.36,
+    "fin": 22.7
+   },
+   {
+    "t": "during",
+    "en": 22.7,
+    "fin": 22.98
+   },
+   {
+    "t": "a",
+    "en": 22.98,
+    "fin": 23.22
+   },
+   {
+    "t": "Holy",
+    "en": 23.22,
+    "fin": 23.42
+   },
+   {
+    "t": "Year.",
+    "en": 23.42,
+    "fin": 23.84
+   },
+   {
+    "t": "If",
+    "en": 24.42,
+    "fin": 24.6
+   },
+   {
+    "t": "you",
+    "en": 24.6,
+    "fin": 24.8
+   },
+   {
+    "t": "want",
+    "en": 24.8,
+    "fin": 24.9
+   },
+   {
+    "t": "to",
+    "en": 24.9,
+    "fin": 25.04
+   },
+   {
+    "t": "be",
+    "en": 25.04,
+    "fin": 25.2
+   },
+   {
+    "t": "there,",
+    "en": 25.2,
+    "fin": 25.6
+   },
+   {
+    "t": "Santiago",
+    "en": 25.6,
+    "fin": 26.28
+   },
+   {
+    "t": "Ways",
+    "en": 26.28,
+    "fin": 26.68
+   },
+   {
+    "t": "can",
+    "en": 26.68,
+    "fin": 26.9
+   },
+   {
+    "t": "help",
+    "en": 26.9,
+    "fin": 27.06
+   },
+   {
+    "t": "you",
+    "en": 27.06,
+    "fin": 27.36
+   },
+   {
+    "t": "plan",
+    "en": 27.36,
+    "fin": 27.56
+   },
+   {
+    "t": "your",
+    "en": 27.56,
+    "fin": 27.94
+   },
+   {
+    "t": "2027",
+    "en": 27.94,
+    "fin": 28.86
+   },
+   {
+    "t": "Camino.",
+    "en": 28.86,
+    "fin": 29.52
+   },
+   {
+    "t": "Request",
+    "en": 29.92,
+    "fin": 30.38
+   },
+   {
+    "t": "your",
+    "en": 30.38,
+    "fin": 30.6
+   },
+   {
+    "t": "quote",
+    "en": 30.6,
+    "fin": 30.82
+   },
+   {
+    "t": "with",
+    "en": 30.82,
+    "fin": 31.48
+   },
+   {
+    "t": "no",
+    "en": 31.48,
+    "fin": 32.06
+   },
+   {
+    "t": "obligation.",
+    "en": 32.06,
+    "fin": 32.62
+   }
+  ],
+  "sfx": [
+   {
+    "en": 0,
+    "src": "sfx/impacto.wav",
+    "vol": 0.45
+   },
+   {
+    "en": 2.35,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.25
+   },
+   {
+    "en": 7.44,
+    "src": "sfx/pop.wav",
+    "vol": 0.35
+   },
+   {
+    "en": 8.65,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 11.09,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 12.91,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 17.06,
+    "src": "sfx/pop.wav",
+    "vol": 0.35
+   },
+   {
+    "en": 26.68,
+    "src": "sfx/ding.wav",
+    "vol": 0.25
+   },
+   {
+    "en": 29.92,
+    "src": "sfx/pop.wav",
+    "vol": 0.35
+   }
+  ],
+  "musica": {
+   "src": "musica/Sunshine_A.mp3",
+   "vol": 0.06
+  }
+ },
+ {
+  "id": "06-puerta-santa",
+  "video": "xacobeo/videos/IMG_8754.mp4",
+  "duracion": 30.454,
+  "titulo": [
+   "THIS DOOR",
+   "ISN'T OPEN",
+   "EVERY YEAR"
+  ],
+  "acento": 0,
+  "gancho": {
+   "dur": 2.6
+  },
+  "portada": {
+   "titulo": [
+    "THE DOOR THAT",
+    "ONLY OPENS IN",
+    "A HOLY YEAR"
+   ],
+   "acento": 2,
+   "fotograma": 20
+  },
+  "capas": [
+   {
+    "tipo": "cartela",
+    "principal": "THE HOLY DOOR",
+    "secundaria": "SANTIAGO CATHEDRAL",
+    "dur": 3.4,
+    "tono": "olivo",
+    "en": 4.78
+   },
+   {
+    "tipo": "broll",
+    "src": "brutos/portico-sellado.mp4",
+    "dur": 1.9,
+    "encuadre": "50% 50%",
+    "en": 6.38
+   },
+   {
+    "tipo": "broll",
+    "src": "xacobeo/stock/llegada-plaza.mp4",
+    "dur": 1.5,
+    "encuadre": "50% 50%",
+    "en": 11.44
+   },
+   {
+    "tipo": "broll",
+    "src": "brutos/interior-velas.mp4",
+    "dur": 2.0,
+    "encuadre": "50% 50%",
+    "en": 16.88
+   },
+   {
+    "tipo": "cartela",
+    "principal": "2027",
+    "secundaria": "CENTRE STAGE AGAIN",
+    "dur": 3.2,
+    "tono": "olivo",
+    "en": 18.62
+   },
+   {
+    "tipo": "png",
+    "src": "hilary/cartelas/sw-tag-light.png",
+    "ancho": 880,
+    "web": true,
+    "hasta": null,
+    "en": 24.1,
+    "dur": 4.54
+   }
+  ],
+  "zooms": [
+   {
+    "en": 4.78,
+    "z": 1.1
+   },
+   {
+    "en": 10.04,
+    "z": 1.0
+   },
+   {
+    "en": 15.3,
+    "z": 1.1
+   },
+   {
+    "en": 18.62,
+    "z": 1.0
+   },
+   {
+    "en": 22.38,
+    "z": 1.1
+   },
+   {
+    "en": 24.1,
+    "z": 1.0
+   }
+  ],
+  "palabras": [
+   {
+    "t": "This",
+    "en": 0.3,
+    "fin": 1.02
+   },
+   {
+    "t": "door",
+    "en": 1.02,
+    "fin": 1.38
+   },
+   {
+    "t": "at",
+    "en": 1.38,
+    "fin": 1.68
+   },
+   {
+    "t": "Santiago",
+    "en": 1.68,
+    "fin": 2.2
+   },
+   {
+    "t": "Cathedral",
+    "en": 2.2,
+    "fin": 2.82
+   },
+   {
+    "t": "isn't",
+    "en": 2.82,
+    "fin": 3.36
+   },
+   {
+    "t": "open",
+    "en": 3.36,
+    "fin": 3.68
+   },
+   {
+    "t": "every",
+    "en": 3.68,
+    "fin": 4.02
+   },
+   {
+    "t": "year.",
+    "en": 4.02,
+    "fin": 4.32
+   },
+   {
+    "t": "It's",
+    "en": 4.78,
+    "fin": 4.96
+   },
+   {
+    "t": "the",
+    "en": 4.96,
+    "fin": 5.2
+   },
+   {
+    "t": "Holy",
+    "en": 5.2,
+    "fin": 5.44
+   },
+   {
+    "t": "Door,",
+    "en": 5.44,
+    "fin": 5.9
+   },
+   {
+    "t": "and",
+    "en": 6.18,
+    "fin": 6.38
+   },
+   {
+    "t": "its",
+    "en": 6.38,
+    "fin": 6.78
+   },
+   {
+    "t": "opening",
+    "en": 6.78,
+    "fin": 7.34
+   },
+   {
+    "t": "marks",
+    "en": 7.34,
+    "fin": 7.74
+   },
+   {
+    "t": "the",
+    "en": 7.74,
+    "fin": 7.9
+   },
+   {
+    "t": "beginning",
+    "en": 7.9,
+    "fin": 8.26
+   },
+   {
+    "t": "of",
+    "en": 8.26,
+    "fin": 8.5
+   },
+   {
+    "t": "the",
+    "en": 8.5,
+    "fin": 8.68
+   },
+   {
+    "t": "Holy",
+    "en": 8.68,
+    "fin": 8.92
+   },
+   {
+    "t": "Year.",
+    "en": 8.92,
+    "fin": 9.46
+   },
+   {
+    "t": "During",
+    "en": 10.04,
+    "fin": 10.24
+   },
+   {
+    "t": "the",
+    "en": 10.24,
+    "fin": 10.52
+   },
+   {
+    "t": "Xacobeo,",
+    "en": 10.52,
+    "fin": 11.06
+   },
+   {
+    "t": "pilgrims",
+    "en": 11.44,
+    "fin": 11.7
+   },
+   {
+    "t": "from",
+    "en": 11.7,
+    "fin": 11.98
+   },
+   {
+    "t": "around",
+    "en": 11.98,
+    "fin": 12.64
+   },
+   {
+    "t": "the",
+    "en": 12.64,
+    "fin": 12.82
+   },
+   {
+    "t": "world",
+    "en": 12.82,
+    "fin": 13.2
+   },
+   {
+    "t": "arrive",
+    "en": 13.2,
+    "fin": 13.56
+   },
+   {
+    "t": "in",
+    "en": 13.56,
+    "fin": 13.8
+   },
+   {
+    "t": "Santiago",
+    "en": 13.8,
+    "fin": 14.3
+   },
+   {
+    "t": "and",
+    "en": 14.3,
+    "fin": 14.64
+   },
+   {
+    "t": "pass",
+    "en": 14.64,
+    "fin": 15.02
+   },
+   {
+    "t": "through",
+    "en": 15.02,
+    "fin": 15.3
+   },
+   {
+    "t": "it",
+    "en": 15.3,
+    "fin": 15.66
+   },
+   {
+    "t": "as",
+    "en": 15.66,
+    "fin": 16.06
+   },
+   {
+    "t": "part",
+    "en": 16.06,
+    "fin": 16.46
+   },
+   {
+    "t": "of",
+    "en": 16.46,
+    "fin": 16.72
+   },
+   {
+    "t": "the",
+    "en": 16.72,
+    "fin": 16.88
+   },
+   {
+    "t": "Jubilee",
+    "en": 16.88,
+    "fin": 17.36
+   },
+   {
+    "t": "tradition.",
+    "en": 17.36,
+    "fin": 18.12
+   },
+   {
+    "t": "And",
+    "en": 18.62,
+    "fin": 18.82
+   },
+   {
+    "t": "in",
+    "en": 18.82,
+    "fin": 19.04
+   },
+   {
+    "t": "2027,",
+    "en": 19.04,
+    "fin": 19.78
+   },
+   {
+    "t": "it",
+    "en": 19.94,
+    "fin": 20.12
+   },
+   {
+    "t": "will",
+    "en": 20.12,
+    "fin": 20.36
+   },
+   {
+    "t": "take",
+    "en": 20.36,
+    "fin": 20.62
+   },
+   {
+    "t": "center",
+    "en": 20.62,
+    "fin": 21.04
+   },
+   {
+    "t": "stage",
+    "en": 21.04,
+    "fin": 21.42
+   },
+   {
+    "t": "again.",
+    "en": 21.42,
+    "fin": 21.86
+   },
+   {
+    "t": "Want",
+    "en": 22.38,
+    "fin": 22.5
+   },
+   {
+    "t": "to",
+    "en": 22.5,
+    "fin": 22.66
+   },
+   {
+    "t": "experience",
+    "en": 22.66,
+    "fin": 23.06
+   },
+   {
+    "t": "it",
+    "en": 23.06,
+    "fin": 23.26
+   },
+   {
+    "t": "for",
+    "en": 23.26,
+    "fin": 23.52
+   },
+   {
+    "t": "yourself?",
+    "en": 23.52,
+    "fin": 24.1
+   },
+   {
+    "t": "Start",
+    "en": 24.1,
+    "fin": 24.74
+   },
+   {
+    "t": "planning",
+    "en": 24.74,
+    "fin": 25.08
+   },
+   {
+    "t": "your",
+    "en": 25.08,
+    "fin": 25.4
+   },
+   {
+    "t": "Xacobeo",
+    "en": 25.4,
+    "fin": 26.06
+   },
+   {
+    "t": "Camino",
+    "en": 26.06,
+    "fin": 26.52
+   },
+   {
+    "t": "with",
+    "en": 26.52,
+    "fin": 26.84
+   },
+   {
+    "t": "Santiago",
+    "en": 26.84,
+    "fin": 27.46
+   },
+   {
+    "t": "Ways.",
+    "en": 27.46,
+    "fin": 28.04
+   }
+  ],
+  "sfx": [
+   {
+    "en": 0,
+    "src": "sfx/impacto.wav",
+    "vol": 0.45
+   },
+   {
+    "en": 2.35,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.25
+   },
+   {
+    "en": 4.78,
+    "src": "sfx/pop.wav",
+    "vol": 0.35
+   },
+   {
+    "en": 6.23,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 11.29,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 16.73,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 18.62,
+    "src": "sfx/pop.wav",
+    "vol": 0.35
+   },
+   {
+    "en": 24.1,
+    "src": "sfx/ding.wav",
+    "vol": 0.25
+   }
+  ],
+  "musica": {
+   "src": "musica/Merry_Go.mp3",
+   "vol": 0.06
+  }
+ },
+ {
+  "id": "07-100km-indulgencia",
+  "video": "xacobeo/videos/IMG_8756.mp4",
+  "duracion": 34.697,
+  "titulo": [
+   "100 KM",
+   "IS NOT THE",
+   "INDULGENCE"
+  ],
+  "acento": 2,
+  "gancho": {
+   "dur": 2.6
+  },
+  "portada": {
+   "titulo": [
+    "100 KM",
+    "IS NOT THE",
+    "INDULGENCE"
+   ],
+   "acento": 2,
+   "fotograma": 20
+  },
+  "capas": [
+   {
+    "tipo": "cartela",
+    "principal": "100 KM",
+    "secundaria": "= THE COMPOSTELA",
+    "dur": 3.4,
+    "tono": "olivo",
+    "en": 8.38
+   },
+   {
+    "tipo": "broll",
+    "src": "xacobeo/stock/compostelas.mp4",
+    "dur": 2.0,
+    "encuadre": "50% 50%",
+    "en": 12.36
+   },
+   {
+    "tipo": "cartela",
+    "principal": "INDULGENCE",
+    "secundaria": "SOMETHING DIFFERENT",
+    "dur": 3.2,
+    "tono": "olivo",
+    "en": 15.08
+   },
+   {
+    "tipo": "broll",
+    "src": "brutos/interior-velas.mp4",
+    "dur": 2.0,
+    "encuadre": "50% 50%",
+    "en": 18.84
+   },
+   {
+    "tipo": "broll",
+    "src": "xacobeo/stock/llegada-plaza.mp4",
+    "dur": 1.5,
+    "encuadre": "50% 50%",
+    "en": 23.18
+   },
+   {
+    "tipo": "png",
+    "src": "hilary/cartelas/sw-tag-light.png",
+    "ancho": 880,
+    "web": true,
+    "hasta": null,
+    "en": 29.4,
+    "dur": 2.98
+   }
+  ],
+  "zooms": [
+   {
+    "en": 8.38,
+    "z": 1.1
+   },
+   {
+    "en": 14.82,
+    "z": 1.0
+   },
+   {
+    "en": 18.72,
+    "z": 1.1
+   },
+   {
+    "en": 23.18,
+    "z": 1.0
+   },
+   {
+    "en": 29.02,
+    "z": 1.1
+   }
+  ],
+  "palabras": [
+   {
+    "t": "No,",
+    "en": 0.98,
+    "fin": 1.84
+   },
+   {
+    "t": "walking",
+    "en": 2.08,
+    "fin": 2.4
+   },
+   {
+    "t": "100",
+    "en": 2.4,
+    "fin": 2.74
+   },
+   {
+    "t": "km",
+    "en": 2.74,
+    "fin": 3.26
+   },
+   {
+    "t": "in",
+    "en": 3.26,
+    "fin": 3.52
+   },
+   {
+    "t": "2027",
+    "en": 3.52,
+    "fin": 4.4
+   },
+   {
+    "t": "doesn't",
+    "en": 4.4,
+    "fin": 4.98
+   },
+   {
+    "t": "automatically",
+    "en": 4.98,
+    "fin": 5.72
+   },
+   {
+    "t": "give",
+    "en": 5.72,
+    "fin": 5.98
+   },
+   {
+    "t": "you",
+    "en": 5.98,
+    "fin": 6.32
+   },
+   {
+    "t": "the",
+    "en": 6.32,
+    "fin": 6.46
+   },
+   {
+    "t": "Xacobeo",
+    "en": 6.46,
+    "fin": 7.02
+   },
+   {
+    "t": "Indulgence.",
+    "en": 7.02,
+    "fin": 7.86
+   },
+   {
+    "t": "The",
+    "en": 8.38,
+    "fin": 8.46
+   },
+   {
+    "t": "famous",
+    "en": 8.46,
+    "fin": 8.7
+   },
+   {
+    "t": "100",
+    "en": 8.7,
+    "fin": 9.06
+   },
+   {
+    "t": "km",
+    "en": 9.06,
+    "fin": 9.6
+   },
+   {
+    "t": "are",
+    "en": 9.6,
+    "fin": 9.86
+   },
+   {
+    "t": "related",
+    "en": 9.86,
+    "fin": 10.26
+   },
+   {
+    "t": "to",
+    "en": 10.26,
+    "fin": 10.46
+   },
+   {
+    "t": "the",
+    "en": 10.46,
+    "fin": 10.6
+   },
+   {
+    "t": "requirements",
+    "en": 10.6,
+    "fin": 11.16
+   },
+   {
+    "t": "for",
+    "en": 11.16,
+    "fin": 11.46
+   },
+   {
+    "t": "obtaining",
+    "en": 11.46,
+    "fin": 12.02
+   },
+   {
+    "t": "the",
+    "en": 12.02,
+    "fin": 12.36
+   },
+   {
+    "t": "Compostela",
+    "en": 12.36,
+    "fin": 13.26
+   },
+   {
+    "t": "on",
+    "en": 13.26,
+    "fin": 13.98
+   },
+   {
+    "t": "foot,",
+    "en": 13.98,
+    "fin": 14.24
+   },
+   {
+    "t": "while",
+    "en": 14.56,
+    "fin": 14.82
+   },
+   {
+    "t": "the",
+    "en": 14.82,
+    "fin": 15.08
+   },
+   {
+    "t": "Holy",
+    "en": 15.08,
+    "fin": 15.32
+   },
+   {
+    "t": "Year",
+    "en": 15.32,
+    "fin": 15.64
+   },
+   {
+    "t": "Indulgence",
+    "en": 15.64,
+    "fin": 16.3
+   },
+   {
+    "t": "is",
+    "en": 16.3,
+    "fin": 16.5
+   },
+   {
+    "t": "something",
+    "en": 16.5,
+    "fin": 17.16
+   },
+   {
+    "t": "completely",
+    "en": 17.16,
+    "fin": 17.9
+   },
+   {
+    "t": "different.",
+    "en": 17.9,
+    "fin": 18.34
+   },
+   {
+    "t": "They're",
+    "en": 18.72,
+    "fin": 18.84
+   },
+   {
+    "t": "two",
+    "en": 18.84,
+    "fin": 19.26
+   },
+   {
+    "t": "separate",
+    "en": 19.26,
+    "fin": 19.66
+   },
+   {
+    "t": "traditions",
+    "en": 19.66,
+    "fin": 20.2
+   },
+   {
+    "t": "that",
+    "en": 20.2,
+    "fin": 20.7
+   },
+   {
+    "t": "many",
+    "en": 20.7,
+    "fin": 21.02
+   },
+   {
+    "t": "people",
+    "en": 21.02,
+    "fin": 21.36
+   },
+   {
+    "t": "confuse.",
+    "en": 21.36,
+    "fin": 22.12
+   },
+   {
+    "t": "And",
+    "en": 23.18,
+    "fin": 23.4
+   },
+   {
+    "t": "if",
+    "en": 23.4,
+    "fin": 23.5
+   },
+   {
+    "t": "you",
+    "en": 23.5,
+    "fin": 23.72
+   },
+   {
+    "t": "want",
+    "en": 23.72,
+    "fin": 23.88
+   },
+   {
+    "t": "to",
+    "en": 23.88,
+    "fin": 24.12
+   },
+   {
+    "t": "arrive",
+    "en": 24.12,
+    "fin": 24.36
+   },
+   {
+    "t": "in",
+    "en": 24.36,
+    "fin": 24.6
+   },
+   {
+    "t": "Santiago",
+    "en": 24.6,
+    "fin": 25.12
+   },
+   {
+    "t": "in",
+    "en": 25.12,
+    "fin": 25.46
+   },
+   {
+    "t": "2027,",
+    "en": 25.46,
+    "fin": 26.4
+   },
+   {
+    "t": "truly",
+    "en": 26.76,
+    "fin": 27.14
+   },
+   {
+    "t": "understanding",
+    "en": 27.14,
+    "fin": 27.84
+   },
+   {
+    "t": "and",
+    "en": 27.84,
+    "fin": 28.42
+   },
+   {
+    "t": "enjoying",
+    "en": 28.42,
+    "fin": 28.76
+   },
+   {
+    "t": "the",
+    "en": 28.76,
+    "fin": 29.02
+   },
+   {
+    "t": "Camino,",
+    "en": 29.02,
+    "fin": 29.4
+   },
+   {
+    "t": "plan",
+    "en": 29.4,
+    "fin": 29.78
+   },
+   {
+    "t": "it",
+    "en": 29.78,
+    "fin": 30.16
+   },
+   {
+    "t": "with",
+    "en": 30.16,
+    "fin": 30.58
+   },
+   {
+    "t": "Santiago",
+    "en": 30.58,
+    "fin": 31.14
+   },
+   {
+    "t": "Ways.",
+    "en": 31.14,
+    "fin": 31.78
+   }
+  ],
+  "sfx": [
+   {
+    "en": 0,
+    "src": "sfx/impacto.wav",
+    "vol": 0.45
+   },
+   {
+    "en": 2.35,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.25
+   },
+   {
+    "en": 8.38,
+    "src": "sfx/pop.wav",
+    "vol": 0.35
+   },
+   {
+    "en": 12.21,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 15.08,
+    "src": "sfx/pop.wav",
+    "vol": 0.35
+   },
+   {
+    "en": 18.69,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 23.03,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 29.4,
+    "src": "sfx/ding.wav",
+    "vol": 0.25
+   }
+  ],
+  "musica": {
+   "src": "musica/Easy_Lemon.mp3",
+   "vol": 0.06
+  }
+ },
+ {
+  "id": "08-que-ruta-2027",
+  "video": "xacobeo/videos/IMG_8758.mp4",
+  "duracion": 36.875,
+  "titulo": [
+   "WHICH CAMINO",
+   "SHOULD YOU WALK",
+   "IN 2027?"
+  ],
+  "acento": 2,
+  "gancho": {
+   "dur": 2.6
+  },
+  "portada": {
+   "titulo": [
+    "WHICH CAMINO",
+    "SHOULD YOU WALK",
+    "IN 2027?"
+   ],
+   "acento": 2,
+   "fotograma": 20
+  },
+  "capas": [
+   {
+    "tipo": "mapa",
+    "src": "xacobeo/mapas/frances.mp4",
+    "desde": 16.0,
+    "dur": 3.4,
+    "en": 8.74
+   },
+   {
+    "tipo": "cartela",
+    "principal": "FRENCH WAY",
+    "secundaria": null,
+    "dur": 3.2,
+    "tono": "olivo",
+    "en": 8.74
+   },
+   {
+    "tipo": "mapa",
+    "src": "xacobeo/mapas/portugues.mp4",
+    "desde": 15.0,
+    "dur": 1.05,
+    "en": 15.7
+   },
+   {
+    "tipo": "cartela",
+    "principal": "PORTUGUESE WAY",
+    "secundaria": null,
+    "dur": 1.05,
+    "tono": "olivo",
+    "en": 15.7
+   },
+   {
+    "tipo": "mapa",
+    "src": "xacobeo/mapas/portugues.mp4",
+    "desde": 19.0,
+    "dur": 1.11,
+    "en": 16.8
+   },
+   {
+    "tipo": "cartela",
+    "principal": "COASTAL PORTUGUESE",
+    "secundaria": null,
+    "dur": 1.11,
+    "tono": "olivo",
+    "en": 16.8
+   },
+   {
+    "tipo": "broll",
+    "src": "brutos/vieiras.mp4",
+    "dur": 0.97,
+    "encuadre": "50% 50%",
+    "en": 17.96
+   },
+   {
+    "tipo": "cartela",
+    "principal": "ENGLISH WAY",
+    "secundaria": null,
+    "dur": 0.97,
+    "tono": "olivo",
+    "en": 17.96
+   },
+   {
+    "tipo": "mapa",
+    "src": "xacobeo/mapas/primitivo.mp4",
+    "desde": 16.0,
+    "dur": 1.8,
+    "en": 18.98
+   },
+   {
+    "tipo": "cartela",
+    "principal": "PRIMITIVE WAY",
+    "secundaria": null,
+    "dur": 1.7,
+    "tono": "olivo",
+    "en": 18.98
+   },
+   {
+    "tipo": "broll",
+    "src": "xacobeo/stock/bosque-peregrinos.mp4",
+    "dur": 2.4,
+    "encuadre": "50% 50%",
+    "en": 21.68
+   },
+   {
+    "tipo": "png",
+    "src": "hilary/cartelas/sw-tag-light.png",
+    "ancho": 880,
+    "web": true,
+    "hasta": null,
+    "en": 27.44,
+    "dur": 7.8
+   }
+  ],
+  "zooms": [
+   {
+    "en": 6.28,
+    "z": 1.1
+   },
+   {
+    "en": 13.46,
+    "z": 1.0
+   },
+   {
+    "en": 20.36,
+    "z": 1.1
+   },
+   {
+    "en": 25.66,
+    "z": 1.0
+   },
+   {
+    "en": 30.7,
+    "z": 1.1
+   }
+  ],
+  "palabras": [
+   {
+    "t": "Want",
+    "en": 0.02,
+    "fin": 0.86
+   },
+   {
+    "t": "to",
+    "en": 0.86,
+    "fin": 1.02
+   },
+   {
+    "t": "walk",
+    "en": 1.02,
+    "fin": 1.2
+   },
+   {
+    "t": "the",
+    "en": 1.2,
+    "fin": 1.4
+   },
+   {
+    "t": "Camino",
+    "en": 1.4,
+    "fin": 1.66
+   },
+   {
+    "t": "in",
+    "en": 1.66,
+    "fin": 1.9
+   },
+   {
+    "t": "2027?",
+    "en": 1.9,
+    "fin": 2.7
+   },
+   {
+    "t": "Then",
+    "en": 3.14,
+    "fin": 3.32
+   },
+   {
+    "t": "maybe",
+    "en": 3.32,
+    "fin": 3.74
+   },
+   {
+    "t": "you",
+    "en": 3.74,
+    "fin": 4.06
+   },
+   {
+    "t": "shouldn't",
+    "en": 4.06,
+    "fin": 4.42
+   },
+   {
+    "t": "choose",
+    "en": 4.42,
+    "fin": 4.78
+   },
+   {
+    "t": "your",
+    "en": 4.78,
+    "fin": 4.98
+   },
+   {
+    "t": "route",
+    "en": 4.98,
+    "fin": 5.16
+   },
+   {
+    "t": "just",
+    "en": 5.16,
+    "fin": 5.78
+   },
+   {
+    "t": "because",
+    "en": 5.78,
+    "fin": 6.28
+   },
+   {
+    "t": "it's",
+    "en": 6.28,
+    "fin": 6.84
+   },
+   {
+    "t": "the",
+    "en": 6.84,
+    "fin": 7.14
+   },
+   {
+    "t": "most",
+    "en": 7.14,
+    "fin": 7.44
+   },
+   {
+    "t": "famous",
+    "en": 7.44,
+    "fin": 7.76
+   },
+   {
+    "t": "one.",
+    "en": 7.76,
+    "fin": 8.2
+   },
+   {
+    "t": "The",
+    "en": 8.74,
+    "fin": 9.02
+   },
+   {
+    "t": "French",
+    "en": 9.02,
+    "fin": 9.34
+   },
+   {
+    "t": "Way",
+    "en": 9.34,
+    "fin": 9.66
+   },
+   {
+    "t": "will",
+    "en": 9.66,
+    "fin": 10.04
+   },
+   {
+    "t": "be",
+    "en": 10.04,
+    "fin": 10.34
+   },
+   {
+    "t": "one",
+    "en": 10.34,
+    "fin": 10.82
+   },
+   {
+    "t": "of",
+    "en": 10.82,
+    "fin": 11.08
+   },
+   {
+    "t": "the",
+    "en": 11.08,
+    "fin": 11.36
+   },
+   {
+    "t": "biggest",
+    "en": 11.36,
+    "fin": 11.72
+   },
+   {
+    "t": "routes,",
+    "en": 11.72,
+    "fin": 12.2
+   },
+   {
+    "t": "but",
+    "en": 12.56,
+    "fin": 12.74
+   },
+   {
+    "t": "it's",
+    "en": 12.74,
+    "fin": 13.02
+   },
+   {
+    "t": "far",
+    "en": 13.02,
+    "fin": 13.24
+   },
+   {
+    "t": "from",
+    "en": 13.24,
+    "fin": 13.46
+   },
+   {
+    "t": "your",
+    "en": 13.46,
+    "fin": 13.68
+   },
+   {
+    "t": "only",
+    "en": 13.68,
+    "fin": 14.04
+   },
+   {
+    "t": "option.",
+    "en": 14.04,
+    "fin": 14.64
+   },
+   {
+    "t": "Portuguese",
+    "en": 15.7,
+    "fin": 16.04
+   },
+   {
+    "t": "Way?",
+    "en": 16.04,
+    "fin": 16.52
+   },
+   {
+    "t": "Coastal",
+    "en": 16.8,
+    "fin": 17.26
+   },
+   {
+    "t": "Portuguese?",
+    "en": 17.26,
+    "fin": 17.66
+   },
+   {
+    "t": "English",
+    "en": 17.96,
+    "fin": 18.38
+   },
+   {
+    "t": "Way?",
+    "en": 18.38,
+    "fin": 18.74
+   },
+   {
+    "t": "Primitive",
+    "en": 18.98,
+    "fin": 19.48
+   },
+   {
+    "t": "Way?",
+    "en": 19.48,
+    "fin": 19.84
+   },
+   {
+    "t": "During",
+    "en": 20.36,
+    "fin": 20.68
+   },
+   {
+    "t": "a",
+    "en": 20.68,
+    "fin": 20.9
+   },
+   {
+    "t": "Xacobeo,",
+    "en": 20.9,
+    "fin": 21.56
+   },
+   {
+    "t": "choosing",
+    "en": 21.68,
+    "fin": 22.2
+   },
+   {
+    "t": "the",
+    "en": 22.2,
+    "fin": 22.48
+   },
+   {
+    "t": "right",
+    "en": 22.48,
+    "fin": 22.72
+   },
+   {
+    "t": "route",
+    "en": 22.72,
+    "fin": 23.08
+   },
+   {
+    "t": "and",
+    "en": 23.08,
+    "fin": 23.44
+   },
+   {
+    "t": "dates",
+    "en": 23.44,
+    "fin": 23.7
+   },
+   {
+    "t": "can",
+    "en": 23.7,
+    "fin": 24.18
+   },
+   {
+    "t": "completely",
+    "en": 24.18,
+    "fin": 25.02
+   },
+   {
+    "t": "change",
+    "en": 25.02,
+    "fin": 25.66
+   },
+   {
+    "t": "your",
+    "en": 25.66,
+    "fin": 26.14
+   },
+   {
+    "t": "experience.",
+    "en": 26.14,
+    "fin": 26.94
+   },
+   {
+    "t": "Tell",
+    "en": 27.44,
+    "fin": 27.66
+   },
+   {
+    "t": "us",
+    "en": 27.66,
+    "fin": 27.86
+   },
+   {
+    "t": "what",
+    "en": 27.86,
+    "fin": 28.1
+   },
+   {
+    "t": "kind",
+    "en": 28.1,
+    "fin": 28.32
+   },
+   {
+    "t": "of",
+    "en": 28.32,
+    "fin": 28.5
+   },
+   {
+    "t": "Camino",
+    "en": 28.5,
+    "fin": 28.86
+   },
+   {
+    "t": "you're",
+    "en": 28.86,
+    "fin": 29.34
+   },
+   {
+    "t": "looking",
+    "en": 29.34,
+    "fin": 29.68
+   },
+   {
+    "t": "for,",
+    "en": 29.68,
+    "fin": 30.26
+   },
+   {
+    "t": "and",
+    "en": 30.7,
+    "fin": 30.82
+   },
+   {
+    "t": "Santiago",
+    "en": 30.82,
+    "fin": 31.34
+   },
+   {
+    "t": "Ways",
+    "en": 31.34,
+    "fin": 31.64
+   },
+   {
+    "t": "will",
+    "en": 31.64,
+    "fin": 32.06
+   },
+   {
+    "t": "help",
+    "en": 32.06,
+    "fin": 32.48
+   },
+   {
+    "t": "you",
+    "en": 32.48,
+    "fin": 32.84
+   },
+   {
+    "t": "find",
+    "en": 32.84,
+    "fin": 33.2
+   },
+   {
+    "t": "the",
+    "en": 33.2,
+    "fin": 33.64
+   },
+   {
+    "t": "right",
+    "en": 33.64,
+    "fin": 33.9
+   },
+   {
+    "t": "one",
+    "en": 33.9,
+    "fin": 34.1
+   },
+   {
+    "t": "for",
+    "en": 34.1,
+    "fin": 34.42
+   },
+   {
+    "t": "you.",
+    "en": 34.42,
+    "fin": 34.64
+   }
+  ],
+  "sfx": [
+   {
+    "en": 0,
+    "src": "sfx/impacto.wav",
+    "vol": 0.45
+   },
+   {
+    "en": 2.35,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.25
+   },
+   {
+    "en": 8.59,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 8.74,
+    "src": "sfx/pop.wav",
+    "vol": 0.35
+   },
+   {
+    "en": 15.55,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 15.7,
+    "src": "sfx/pop.wav",
+    "vol": 0.35
+   },
+   {
+    "en": 16.65,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 16.8,
+    "src": "sfx/pop.wav",
+    "vol": 0.35
+   },
+   {
+    "en": 17.81,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 17.96,
+    "src": "sfx/pop.wav",
+    "vol": 0.35
+   },
+   {
+    "en": 18.83,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 18.98,
+    "src": "sfx/pop.wav",
+    "vol": 0.35
+   },
+   {
+    "en": 21.53,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 27.44,
+    "src": "sfx/ding.wav",
+    "vol": 0.25
+   }
+  ],
+  "musica": {
+   "src": "musica/Fretless.mp3",
+   "vol": 0.06
+  }
+ },
+ {
+  "id": "09-demasiado-lleno",
+  "video": "xacobeo/videos/IMG_8762.mp4",
+  "duracion": 36.254,
+  "titulo": [
+   "WILL THE CAMINO",
+   "BE TOO CROWDED",
+   "IN 2027?"
+  ],
+  "acento": 2,
+  "gancho": {
+   "dur": 2.6
+  },
+  "portada": {
+   "titulo": [
+    "WILL THE CAMINO",
+    "BE TOO CROWDED",
+    "IN 2027?"
+   ],
+   "acento": 2,
+   "fotograma": 10
+  },
+  "capas": [
+   {
+    "tipo": "broll",
+    "src": "xacobeo/stock/multitud-calle.mp4",
+    "dur": 2.2,
+    "encuadre": "50% 50%",
+    "en": 6.28
+   },
+   {
+    "tipo": "cartela",
+    "principal": "NOT EVERY ROUTE",
+    "secundaria": "HAS THE SAME CROWDS",
+    "dur": 3.6,
+    "tono": "olivo",
+    "en": 7.78
+   },
+   {
+    "tipo": "broll",
+    "src": "xacobeo/stock/bosque-peregrinos.mp4",
+    "dur": 2.4,
+    "encuadre": "50% 50%",
+    "en": 12.7
+   },
+   {
+    "tipo": "broll",
+    "src": "xacobeo/stock/atardecer.mp4",
+    "dur": 2.2,
+    "encuadre": "50% 50%",
+    "en": 18.82
+   },
+   {
+    "tipo": "png",
+    "src": "hilary/cartelas/sw-tag-light.png",
+    "ancho": 880,
+    "web": true,
+    "hasta": null,
+    "en": 23.34,
+    "dur": 7.49
+   },
+   {
+    "tipo": "cartela",
+    "principal": "PLAN IT WELL",
+    "secundaria": "ENJOY 2027",
+    "dur": 3.0,
+    "tono": "olivo",
+    "en": 30.88
+   }
+  ],
+  "zooms": [
+   {
+    "en": 7.78,
+    "z": 1.1
+   },
+   {
+    "en": 12.7,
+    "z": 1.0
+   },
+   {
+    "en": 19.36,
+    "z": 1.1
+   },
+   {
+    "en": 25.18,
+    "z": 1.0
+   }
+  ],
+  "palabras": [
+   {
+    "t": "The",
+    "en": 0.4,
+    "fin": 1.02
+   },
+   {
+    "t": "Camino",
+    "en": 1.02,
+    "fin": 1.54
+   },
+   {
+    "t": "will",
+    "en": 1.54,
+    "fin": 1.78
+   },
+   {
+    "t": "be",
+    "en": 1.78,
+    "fin": 2.22
+   },
+   {
+    "t": "absolutely",
+    "en": 2.22,
+    "fin": 2.94
+   },
+   {
+    "t": "packed",
+    "en": 2.94,
+    "fin": 3.26
+   },
+   {
+    "t": "in",
+    "en": 3.26,
+    "fin": 3.56
+   },
+   {
+    "t": "2027.",
+    "en": 3.56,
+    "fin": 4.58
+   },
+   {
+    "t": "Yes,",
+    "en": 5.32,
+    "fin": 5.56
+   },
+   {
+    "t": "but",
+    "en": 5.56,
+    "fin": 5.76
+   },
+   {
+    "t": "there's",
+    "en": 5.76,
+    "fin": 6.04
+   },
+   {
+    "t": "an",
+    "en": 6.04,
+    "fin": 6.28
+   },
+   {
+    "t": "important",
+    "en": 6.28,
+    "fin": 6.54
+   },
+   {
+    "t": "catch.",
+    "en": 6.54,
+    "fin": 7.12
+   },
+   {
+    "t": "Not",
+    "en": 7.78,
+    "fin": 8.08
+   },
+   {
+    "t": "every",
+    "en": 8.08,
+    "fin": 8.52
+   },
+   {
+    "t": "route,",
+    "en": 8.52,
+    "fin": 8.78
+   },
+   {
+    "t": "month,",
+    "en": 8.88,
+    "fin": 9.22
+   },
+   {
+    "t": "or",
+    "en": 9.22,
+    "fin": 9.48
+   },
+   {
+    "t": "stage",
+    "en": 9.48,
+    "fin": 9.78
+   },
+   {
+    "t": "has",
+    "en": 9.78,
+    "fin": 10.12
+   },
+   {
+    "t": "the",
+    "en": 10.12,
+    "fin": 10.4
+   },
+   {
+    "t": "same",
+    "en": 10.4,
+    "fin": 10.66
+   },
+   {
+    "t": "number",
+    "en": 10.66,
+    "fin": 10.98
+   },
+   {
+    "t": "of",
+    "en": 10.98,
+    "fin": 11.32
+   },
+   {
+    "t": "pilgrims.",
+    "en": 11.32,
+    "fin": 12.32
+   },
+   {
+    "t": "Choose",
+    "en": 12.7,
+    "fin": 13.06
+   },
+   {
+    "t": "your",
+    "en": 13.06,
+    "fin": 13.48
+   },
+   {
+    "t": "dates,",
+    "en": 13.48,
+    "fin": 13.82
+   },
+   {
+    "t": "route,",
+    "en": 14.02,
+    "fin": 14.16
+   },
+   {
+    "t": "and",
+    "en": 14.28,
+    "fin": 14.46
+   },
+   {
+    "t": "stages",
+    "en": 14.46,
+    "fin": 14.76
+   },
+   {
+    "t": "carefully,",
+    "en": 14.76,
+    "fin": 15.56
+   },
+   {
+    "t": "and",
+    "en": 16.08,
+    "fin": 16.2
+   },
+   {
+    "t": "you",
+    "en": 16.2,
+    "fin": 16.4
+   },
+   {
+    "t": "can",
+    "en": 16.4,
+    "fin": 16.68
+   },
+   {
+    "t": "experience",
+    "en": 16.68,
+    "fin": 17.64
+   },
+   {
+    "t": "the",
+    "en": 17.64,
+    "fin": 18.02
+   },
+   {
+    "t": "Xacobeo",
+    "en": 18.02,
+    "fin": 18.82
+   },
+   {
+    "t": "without",
+    "en": 18.82,
+    "fin": 19.36
+   },
+   {
+    "t": "limiting",
+    "en": 19.36,
+    "fin": 19.82
+   },
+   {
+    "t": "yourself",
+    "en": 19.82,
+    "fin": 20.34
+   },
+   {
+    "t": "to",
+    "en": 20.34,
+    "fin": 20.62
+   },
+   {
+    "t": "the",
+    "en": 20.62,
+    "fin": 20.76
+   },
+   {
+    "t": "busiest",
+    "en": 20.76,
+    "fin": 21.16
+   },
+   {
+    "t": "places",
+    "en": 21.16,
+    "fin": 21.7
+   },
+   {
+    "t": "and",
+    "en": 21.7,
+    "fin": 22.14
+   },
+   {
+    "t": "periods.",
+    "en": 22.14,
+    "fin": 22.66
+   },
+   {
+    "t": "Santiago",
+    "en": 23.34,
+    "fin": 23.72
+   },
+   {
+    "t": "Ways",
+    "en": 23.72,
+    "fin": 24.12
+   },
+   {
+    "t": "can",
+    "en": 24.12,
+    "fin": 24.42
+   },
+   {
+    "t": "help",
+    "en": 24.42,
+    "fin": 24.6
+   },
+   {
+    "t": "you",
+    "en": 24.6,
+    "fin": 24.88
+   },
+   {
+    "t": "find",
+    "en": 24.88,
+    "fin": 25.18
+   },
+   {
+    "t": "the",
+    "en": 25.18,
+    "fin": 25.62
+   },
+   {
+    "t": "route",
+    "en": 25.62,
+    "fin": 25.9
+   },
+   {
+    "t": "and",
+    "en": 25.9,
+    "fin": 26.2
+   },
+   {
+    "t": "the",
+    "en": 26.2,
+    "fin": 26.38
+   },
+   {
+    "t": "dates",
+    "en": 26.38,
+    "fin": 26.6
+   },
+   {
+    "t": "that",
+    "en": 26.6,
+    "fin": 26.92
+   },
+   {
+    "t": "suit",
+    "en": 26.92,
+    "fin": 27.18
+   },
+   {
+    "t": "you",
+    "en": 27.18,
+    "fin": 27.8
+   },
+   {
+    "t": "best,",
+    "en": 27.8,
+    "fin": 28.32
+   },
+   {
+    "t": "because",
+    "en": 28.94,
+    "fin": 29.1
+   },
+   {
+    "t": "you",
+    "en": 29.1,
+    "fin": 29.38
+   },
+   {
+    "t": "can",
+    "en": 29.38,
+    "fin": 29.64
+   },
+   {
+    "t": "enjoy",
+    "en": 29.64,
+    "fin": 29.94
+   },
+   {
+    "t": "2027",
+    "en": 29.94,
+    "fin": 30.88
+   },
+   {
+    "t": "if",
+    "en": 30.88,
+    "fin": 31.64
+   },
+   {
+    "t": "you",
+    "en": 31.64,
+    "fin": 31.96
+   },
+   {
+    "t": "plan",
+    "en": 31.96,
+    "fin": 32.1
+   },
+   {
+    "t": "it",
+    "en": 32.1,
+    "fin": 32.32
+   },
+   {
+    "t": "properly.",
+    "en": 32.32,
+    "fin": 32.68
+   }
+  ],
+  "sfx": [
+   {
+    "en": 0,
+    "src": "sfx/impacto.wav",
+    "vol": 0.45
+   },
+   {
+    "en": 2.35,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.25
+   },
+   {
+    "en": 6.13,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 7.78,
+    "src": "sfx/pop.wav",
+    "vol": 0.35
+   },
+   {
+    "en": 12.55,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 18.67,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 23.34,
+    "src": "sfx/ding.wav",
+    "vol": 0.25
+   },
+   {
+    "en": 30.88,
+    "src": "sfx/pop.wav",
+    "vol": 0.35
+   }
+  ],
+  "musica": {
+   "src": "musica/Pamgaea.mp3",
+   "vol": 0.06
+  }
+ },
+ {
+  "id": "10-tu-camino-2027",
+  "video": "xacobeo/videos/IMG_8763.mp4",
+  "duracion": 32.254,
+  "titulo": [
+   "THIS IS THE YEAR",
+   "I'M WALKING",
+   "THE CAMINO"
+  ],
+  "acento": 2,
+  "gancho": {
+   "dur": 2.6
+  },
+  "portada": {
+   "titulo": [
+    "IS 2027",
+    "YOUR CAMINO",
+    "YEAR?"
+   ],
+   "acento": 2,
+   "fotograma": 15
+  },
+  "capas": [
+   {
+    "tipo": "cartela",
+    "principal": "2027",
+    "secundaria": "A HOLY YEAR",
+    "dur": 2.8,
+    "tono": "olivo",
+    "en": 6.0
+   },
+   {
+    "tipo": "broll",
+    "src": "xacobeo/stock/catedral-siluetas.mp4",
+    "dur": 2.4,
+    "encuadre": "50% 50%",
+    "en": 7.64
+   },
+   {
+    "tipo": "broll",
+    "src": "xacobeo/stock/llegada-plaza.mp4",
+    "dur": 1.5,
+    "encuadre": "50% 50%",
+    "en": 10.72
+   },
+   {
+    "tipo": "broll",
+    "src": "xacobeo/stock/abrazo.mp4",
+    "dur": 1.5,
+    "encuadre": "50% 50%",
+    "en": 13.04
+   },
+   {
+    "tipo": "cartela",
+    "principal": "START PLANNING",
+    "secundaria": "DON'T LEAVE IT LATE",
+    "dur": 3.6,
+    "tono": "olivo",
+    "en": 14.66
+   },
+   {
+    "tipo": "png",
+    "src": "hilary/cartelas/sw-tag-light.png",
+    "ancho": 880,
+    "web": true,
+    "hasta": null,
+    "en": 22.82,
+    "dur": 6.88
+   }
+  ],
+  "zooms": [
+   {
+    "en": 3.06,
+    "z": 1.1
+   },
+   {
+    "en": 6.0,
+    "z": 1.0
+   },
+   {
+    "en": 7.64,
+    "z": 1.1
+   },
+   {
+    "en": 10.16,
+    "z": 1.0
+   },
+   {
+    "en": 13.04,
+    "z": 1.1
+   },
+   {
+    "en": 14.66,
+    "z": 1.0
+   },
+   {
+    "en": 18.36,
+    "z": 1.1
+   },
+   {
+    "en": 19.66,
+    "z": 1.0
+   },
+   {
+    "en": 22.82,
+    "z": 1.1
+   },
+   {
+    "en": 25.98,
+    "z": 1.0
+   }
+  ],
+  "palabras": [
+   {
+    "t": "In",
+    "en": 0.0,
+    "fin": 0.26
+   },
+   {
+    "t": "2027,",
+    "en": 0.26,
+    "fin": 1.18
+   },
+   {
+    "t": "thousands",
+    "en": 1.42,
+    "fin": 1.76
+   },
+   {
+    "t": "of",
+    "en": 1.76,
+    "fin": 1.98
+   },
+   {
+    "t": "people",
+    "en": 1.98,
+    "fin": 2.18
+   },
+   {
+    "t": "will",
+    "en": 2.18,
+    "fin": 2.44
+   },
+   {
+    "t": "say,",
+    "en": 2.44,
+    "fin": 2.72
+   },
+   {
+    "t": "this",
+    "en": 3.06,
+    "fin": 3.5
+   },
+   {
+    "t": "is",
+    "en": 3.5,
+    "fin": 3.88
+   },
+   {
+    "t": "the",
+    "en": 3.88,
+    "fin": 3.96
+   },
+   {
+    "t": "year",
+    "en": 3.96,
+    "fin": 4.14
+   },
+   {
+    "t": "I'm",
+    "en": 4.14,
+    "fin": 4.38
+   },
+   {
+    "t": "walking",
+    "en": 4.38,
+    "fin": 4.82
+   },
+   {
+    "t": "the",
+    "en": 4.82,
+    "fin": 5.22
+   },
+   {
+    "t": "Camino.",
+    "en": 5.22,
+    "fin": 5.58
+   },
+   {
+    "t": "It",
+    "en": 6.0,
+    "fin": 6.22
+   },
+   {
+    "t": "will",
+    "en": 6.22,
+    "fin": 6.32
+   },
+   {
+    "t": "be",
+    "en": 6.32,
+    "fin": 6.5
+   },
+   {
+    "t": "a",
+    "en": 6.5,
+    "fin": 6.68
+   },
+   {
+    "t": "Holy",
+    "en": 6.68,
+    "fin": 6.9
+   },
+   {
+    "t": "Year.",
+    "en": 6.9,
+    "fin": 7.32
+   },
+   {
+    "t": "Santiago",
+    "en": 7.64,
+    "fin": 7.98
+   },
+   {
+    "t": "will",
+    "en": 7.98,
+    "fin": 8.2
+   },
+   {
+    "t": "be",
+    "en": 8.2,
+    "fin": 8.6
+   },
+   {
+    "t": "celebrating",
+    "en": 8.6,
+    "fin": 9.2
+   },
+   {
+    "t": "the",
+    "en": 9.2,
+    "fin": 9.52
+   },
+   {
+    "t": "Xacobeo",
+    "en": 9.52,
+    "fin": 10.16
+   },
+   {
+    "t": "with",
+    "en": 10.16,
+    "fin": 10.72
+   },
+   {
+    "t": "pilgrims",
+    "en": 10.72,
+    "fin": 11.22
+   },
+   {
+    "t": "arriving",
+    "en": 11.22,
+    "fin": 11.6
+   },
+   {
+    "t": "from",
+    "en": 11.6,
+    "fin": 11.98
+   },
+   {
+    "t": "all",
+    "en": 11.98,
+    "fin": 12.32
+   },
+   {
+    "t": "over",
+    "en": 12.32,
+    "fin": 12.54
+   },
+   {
+    "t": "the",
+    "en": 12.54,
+    "fin": 12.7
+   },
+   {
+    "t": "world",
+    "en": 12.7,
+    "fin": 13.04
+   },
+   {
+    "t": "to",
+    "en": 13.04,
+    "fin": 13.22
+   },
+   {
+    "t": "be",
+    "en": 13.22,
+    "fin": 13.44
+   },
+   {
+    "t": "part",
+    "en": 13.44,
+    "fin": 13.72
+   },
+   {
+    "t": "of",
+    "en": 13.72,
+    "fin": 13.88
+   },
+   {
+    "t": "it.",
+    "en": 13.88,
+    "fin": 14.24
+   },
+   {
+    "t": "But",
+    "en": 14.66,
+    "fin": 14.78
+   },
+   {
+    "t": "there's",
+    "en": 14.78,
+    "fin": 15.24
+   },
+   {
+    "t": "one",
+    "en": 15.24,
+    "fin": 15.66
+   },
+   {
+    "t": "thing",
+    "en": 15.66,
+    "fin": 16.06
+   },
+   {
+    "t": "many",
+    "en": 16.06,
+    "fin": 16.4
+   },
+   {
+    "t": "people",
+    "en": 16.4,
+    "fin": 16.68
+   },
+   {
+    "t": "will",
+    "en": 16.68,
+    "fin": 16.88
+   },
+   {
+    "t": "do",
+    "en": 16.88,
+    "fin": 17.14
+   },
+   {
+    "t": "too",
+    "en": 17.14,
+    "fin": 17.6
+   },
+   {
+    "t": "late,",
+    "en": 17.6,
+    "fin": 17.84
+   },
+   {
+    "t": "start",
+    "en": 18.36,
+    "fin": 18.58
+   },
+   {
+    "t": "planning.",
+    "en": 18.58,
+    "fin": 19.04
+   },
+   {
+    "t": "Don't",
+    "en": 19.66,
+    "fin": 19.96
+   },
+   {
+    "t": "wait",
+    "en": 19.96,
+    "fin": 20.32
+   },
+   {
+    "t": "until",
+    "en": 20.32,
+    "fin": 20.56
+   },
+   {
+    "t": "the",
+    "en": 20.56,
+    "fin": 20.76
+   },
+   {
+    "t": "best",
+    "en": 20.76,
+    "fin": 21.02
+   },
+   {
+    "t": "options",
+    "en": 21.02,
+    "fin": 21.5
+   },
+   {
+    "t": "start",
+    "en": 21.5,
+    "fin": 21.84
+   },
+   {
+    "t": "disappearing.",
+    "en": 21.84,
+    "fin": 22.52
+   },
+   {
+    "t": "Plan",
+    "en": 22.82,
+    "fin": 23.12
+   },
+   {
+    "t": "your",
+    "en": 23.12,
+    "fin": 23.44
+   },
+   {
+    "t": "2027",
+    "en": 23.44,
+    "fin": 24.18
+   },
+   {
+    "t": "Camino",
+    "en": 24.18,
+    "fin": 24.7
+   },
+   {
+    "t": "with",
+    "en": 24.7,
+    "fin": 24.94
+   },
+   {
+    "t": "Santiago",
+    "en": 24.94,
+    "fin": 25.5
+   },
+   {
+    "t": "Ways",
+    "en": 25.5,
+    "fin": 25.98
+   },
+   {
+    "t": "and",
+    "en": 25.98,
+    "fin": 26.62
+   },
+   {
+    "t": "request",
+    "en": 26.62,
+    "fin": 27.0
+   },
+   {
+    "t": "your",
+    "en": 27.0,
+    "fin": 27.3
+   },
+   {
+    "t": "quote",
+    "en": 27.3,
+    "fin": 27.52
+   },
+   {
+    "t": "with",
+    "en": 27.52,
+    "fin": 28.06
+   },
+   {
+    "t": "no",
+    "en": 28.06,
+    "fin": 28.48
+   },
+   {
+    "t": "obligation.",
+    "en": 28.48,
+    "fin": 29.1
+   }
+  ],
+  "sfx": [
+   {
+    "en": 0,
+    "src": "sfx/impacto.wav",
+    "vol": 0.45
+   },
+   {
+    "en": 2.35,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.25
+   },
+   {
+    "en": 6.0,
+    "src": "sfx/pop.wav",
+    "vol": 0.35
+   },
+   {
+    "en": 7.49,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 10.57,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 12.89,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 14.66,
+    "src": "sfx/pop.wav",
+    "vol": 0.35
+   },
+   {
+    "en": 22.82,
+    "src": "sfx/ding.wav",
+    "vol": 0.25
+   }
+  ],
+  "musica": {
+   "src": "musica/Hyperfun.mp3",
+   "vol": 0.06
+  }
+ }
+]
