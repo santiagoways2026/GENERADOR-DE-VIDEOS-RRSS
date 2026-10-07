@@ -113,7 +113,9 @@ LIMPIO = "hilary/limpio.mp4"
 # sincronizados con la voz, así que se reaprovechan tal cual en vertical.
 # Límites medidos con detección de cortes y recortados un par de fotogramas
 # hacia dentro: un límite largo dejaba ver un fotograma de Hildary.
-STOCK = [(7.2, 30.7), (72.75, 78.4), (109.2, 118.9), (160.1, 161.9), (183.65, 187.9),
+# Fuera las dos tomas de la pareja mayor de la mano (17,2-19,0 y 75,1-78,4):
+# la marca no las quiere.
+STOCK = [(7.2, 17.13), (19.07, 30.7), (72.75, 75.07), (109.2, 118.9), (160.1, 161.9), (183.65, 187.9),
          (236.8, 241.05), (274.6, 285.9), (297.27, 306.9), (321.6, 331.77),
          (339.6, 341.4), (344.35, 353.33), (360.7, 376.9), (383.6, 396.4),
          (404.1, 409.9), (414.1, 419.7), (440.2, 450.9), (474.1, 486.9),
@@ -361,6 +363,8 @@ def construir(tx, spec, outro, idx):
         if b["en"] < GANCHO:
             corte = GANCHO - b["en"]
             b["en"], b["dur"], b["desde"] = GANCHO, round(b["dur"] - corte, 3), round(b["desde"] + corte, 3)
+            if b.get("max_src") is not None:
+                b["max_src"] = round(b["max_src"] - corte, 3)
 
     # Un mismo gráfico partido por un cambio de tramo se une en uno solo:
     # partido, la tarjeta volvía a entrar y se veía un salto.
