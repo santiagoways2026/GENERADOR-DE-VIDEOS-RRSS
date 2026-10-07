@@ -133,7 +133,7 @@
    },
    {
     "en": 30.57,
-    "dur": 4.12,
+    "dur": 3.52,
     "src": "dji/DJI_20260929071708_0025_D.mp4",
     "desde": 0.5,
     "modo": "cubrir"
@@ -913,7 +913,7 @@
    },
    {
     "en": 12.28,
-    "dur": 5.84,
+    "dur": 5.24,
     "src": "dji/DJI_20260929073439_0041_D.mp4",
     "desde": 0.3,
     "modo": "cubrir"
@@ -1506,11 +1506,11 @@
    },
    {
     "en": 29.18,
-    "dur": 5.02,
+    "dur": 4.42,
     "src": "hilary/youtube.mp4",
     "desde": 183.6,
     "modo": "cubrir",
-    "vel": 0.857
+    "vel": 0.973
    }
   ],
   "capas": [
@@ -2330,7 +2330,7 @@
    },
    {
     "en": 36.49,
-    "dur": 3.92,
+    "dur": 3.32,
     "src": "dji/DJI_20260929073713_0044_D.mp4",
     "desde": 18.0,
     "modo": "cubrir"
@@ -3825,11 +3825,11 @@
    },
    {
     "en": 23.58,
-    "dur": 5.54,
+    "dur": 4.94,
     "src": "hilary/youtube.mp4",
     "desde": 302.16,
     "modo": "cubrir",
-    "vel": 0.856
+    "vel": 0.96
    }
   ],
   "capas": [
@@ -4548,11 +4548,11 @@
    },
    {
     "en": 18.79,
-    "dur": 5.54,
+    "dur": 4.94,
     "src": "hilary/youtube.mp4",
     "desde": 302.16,
     "modo": "cubrir",
-    "vel": 0.856
+    "vel": 0.96
    }
   ],
   "capas": [
@@ -6577,7 +6577,7 @@
    },
    {
     "en": 32.14,
-    "dur": 4.72,
+    "dur": 4.12,
     "src": "dji/IMG_5520.mp4",
     "desde": 0.5,
     "modo": "cubrir"
@@ -7337,7 +7337,7 @@
    },
    {
     "en": 27.44,
-    "dur": 5.5,
+    "dur": 4.9,
     "src": "dji/DJI_20260929090511_0056_D.mp4",
     "desde": 1.0,
     "modo": "cubrir"
@@ -8012,7 +8012,7 @@
    },
    {
     "en": 26.98,
-    "dur": 4.05,
+    "dur": 3.45,
     "src": "dji/DJI_20260929083455_0050_D.mp4",
     "desde": 1.0,
     "modo": "cubrir"
@@ -9405,11 +9405,11 @@
    },
    {
     "en": 18.69,
-    "dur": 10.06,
+    "dur": 9.46,
     "src": "hilary/youtube.mp4",
     "desde": 548.1,
     "modo": "cubrir",
-    "vel": 0.924
+    "vel": 0.983
    }
   ],
   "capas": [
@@ -13057,11 +13057,11 @@
    },
    {
     "en": 13.92,
-    "dur": 3.9,
+    "dur": 3.3,
     "src": "hilary/youtube.mp4",
     "desde": 275.2,
     "modo": "cubrir",
-    "vel": 0.769
+    "vel": 0.909
    }
   ],
   "capas": [

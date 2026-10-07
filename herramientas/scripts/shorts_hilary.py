@@ -216,7 +216,8 @@ def ritmo(broll, cortes, fin, idx):
         despues = [b for b in broll if c - 0.3 <= b["en"] < c + MIN_BROLL]
         if antes:
             # Hasta pasado el corte, sin pisar el recurso siguiente.
-            hasta = min([c + 0.6] + [b["en"] for b in broll if c - 0.12 < b["en"] < c + 0.6])
+            # Antes del cierre basta con llegar al corte.
+            hasta = min([c + 0.6, fin] + [b["en"] for b in broll if c - 0.12 < b["en"] < c + 0.6])
             if estirar(antes[-1], hasta - antes[-1]["en"]):
                 continue
         if despues:
