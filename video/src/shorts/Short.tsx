@@ -83,6 +83,7 @@ export const Short: React.FC<{ id: string }> = ({ id }) => {
             modo={b.modo}
             dur={f(b.dur)}
             seguido={i > 0 && b.en - (d.broll[i - 1].en + d.broll[i - 1].dur) < 0.2}
+            vel={"vel" in b ? (b.vel as number) : 1}
           />
         </Sequence>
       ))}
@@ -151,17 +152,19 @@ const PlanoHabla: React.FC<{ src: string; zoom: number; dur: number }> = ({ src,
   );
 };
 
-const BRoll: React.FC<{ src: string; desde: number; modo: string; dur: number; seguido?: boolean }> = ({
+const BRoll: React.FC<{ src: string; desde: number; modo: string; dur: number; seguido?: boolean; vel?: number }> = ({
   src,
   desde,
   modo,
   dur,
   seguido = false,
+  // Un recurso alargado para enlazar con el siguiente va algo más lento.
+  vel = 1,
 }) => {
   const frame = useCurrentFrame();
   const entra = seguido ? 1 : interpolate(frame, [0, 3], [0, 1], clamp);
   const video = (style: React.CSSProperties) => (
-    <OffthreadVideo src={staticFile(src)} trimBefore={f(desde)} muted style={style} />
+    <OffthreadVideo src={staticFile(src)} trimBefore={f(desde)} playbackRate={vel} muted style={style} />
   );
 
   if (modo === "mapa") {

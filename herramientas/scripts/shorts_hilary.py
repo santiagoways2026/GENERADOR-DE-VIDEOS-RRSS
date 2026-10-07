@@ -144,6 +144,133 @@ def cartela(nombre, **kw):
 
 
 # --------------------------------------------------------------------------
+# Ritmo: sin destellos ni saltos
+# --------------------------------------------------------------------------
+
+MIN_BROLL = 2.5   # ningún recurso dura menos
+MIN_HABLA = 2.0   # Hildary no asoma menos que esto entre dos recursos
+LENTO = 0.7       # velocidad mínima a la que se estira un recurso
+# Metraje propio de relleno para tapar un corte entre frases: gente caminando
+# de espaldas, sin caras.
+RELLENO = ["dji/DJI_20260929071346_0021_D.mp4", "dji/DJI_20260929073931_0046_D.mp4",
+           "dji/DJI_20260929072925_0036_D.mp4", "dji/DJI_20260929074051_0048_D.mp4",
+           "dji/DJI_20260929090338_0051_D.mp4", "dji/DJI_20260929073713_0044_D.mp4",
+           "dji/DJI_20260929073458_0042_D.mp4", "dji/DJI_20260929090511_0056_D.mp4"]
+_DURACIONES = {}
+
+
+def dur_fuente(src):
+    if src not in _DURACIONES:
+        import subprocess
+        r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0",
+                            str(RAIZ / "video/public" / src)], capture_output=True, text=True)
+        _DURACIONES[src] = float(r.stdout.strip() or 0)
+    return _DURACIONES[src]
+
+
+def estirar(b, nueva):
+    """Alarga b a `nueva` segundos con más metraje o, si no hay, a cámara
+    lenta. Devuelve False si haría falta ir más lento que LENTO."""
+    disponible = b.get("max_src")
+    if disponible is None:
+        disponible = dur_fuente(b["src"]) - b["desde"]
+    usado = min(disponible, nueva)
+    vel = usado / nueva
+    if vel < LENTO:
+        return False
+    b["dur"] = round(nueva, 3)
+    if vel < 0.999:
+        b["vel"] = round(vel, 3)
+    else:
+        b.pop("vel", None)
+    return True
+
+
+def ritmo(broll, cortes, fin, idx):
+    """Menos cambios y ningún salto:
+    - ningún recurso de menos de MIN_BROLL (los extra cortos se quitan);
+    - cada corte entre frases de Hildary queda tapado por un recurso;
+    - Hildary nunca asoma menos de MIN_HABLA entre dos recursos: el anterior
+      se alarga hasta el siguiente o, si no da, se quita el extra."""
+    broll = [dict(b) for b in broll if not (b["prio"] == 1 and b["dur"] < MIN_BROLL)]
+    broll.sort(key=lambda b: b["en"])
+    for i, b in enumerate(broll):
+        if b["dur"] < MIN_BROLL:
+            tope = broll[i + 1]["en"] if i + 1 < len(broll) else fin
+            estirar(b, min(MIN_BROLL, tope - b["en"]))
+
+    def fin_de(b):
+        return b["en"] + b["dur"]
+
+    def visible(t):
+        return not any(b["en"] <= t < fin_de(b) for b in broll)
+
+    def tapado(c):
+        # Solo hay salto si Hildary se ve justo antes y justo después del corte.
+        return not (visible(c - 0.12) and visible(c + 0.12))
+
+    for k, c in enumerate(cortes):
+        if tapado(c):
+            continue
+        antes = [b for b in broll if c - MIN_BROLL < fin_de(b) <= c + 0.3]
+        despues = [b for b in broll if c - 0.3 <= b["en"] < c + MIN_BROLL]
+        if antes:
+            # Hasta pasado el corte, sin pisar el recurso siguiente.
+            hasta = min([c + 0.6] + [b["en"] for b in broll if c - 0.12 < b["en"] < c + 0.6])
+            if estirar(antes[-1], hasta - antes[-1]["en"]):
+                continue
+        if despues:
+            b = despues[0]
+            nuevo_en = max([c - 0.6] + [fin_de(x) for x in broll if fin_de(x) <= b["en"]])
+            b2 = dict(b)
+            if estirar(b2, fin_de(b) - nuevo_en):
+                b.update(b2, en=round(nuevo_en, 3))
+                continue
+        # Nada cerca: un plano de relleno de metraje propio centrado en el corte.
+        if c < GANCHO + 0.3:
+            continue  # bajo el gancho no se ve
+        src = RELLENO[(idx + k) % len(RELLENO)]
+        # Antes del cierre el relleno acaba justo en el corte; dentro, lo cruza.
+        a, z = (c - 2.6, c) if c >= fin - 0.05 else (c - 1.4, c + 1.4)
+        a = max([a, GANCHO] + [fin_de(b) for b in broll if fin_de(b) <= c])
+        z = min([z, fin] + [b["en"] for b in broll if b["en"] >= c])
+        if z - a >= MIN_BROLL - 0.3:
+            broll.append(dict(en=round(a, 3), dur=round(z - a, 3), src=src, desde=1.0, modo="cubrir", prio=1))
+        broll.sort(key=lambda b: b["en"])
+
+    for _ in range(20):
+        broll.sort(key=lambda b: b["en"])
+        cambio = False
+        # Hueco con el gancho, entre recursos y con el cierre.
+        bordes = [(None, broll[0])] if broll else []
+        bordes += list(zip(broll, broll[1:]))
+        bordes += [(broll[-1], None)] if broll else []
+        for a, b in bordes:
+            ini = fin_de(a) if a else GANCHO
+            fin_h = b["en"] if b else fin
+            hueco = fin_h - ini
+            if not (0.01 < hueco < MIN_HABLA):
+                continue
+            if a and estirar(a, fin_h - a["en"]):
+                cambio = True
+                break
+            if b:
+                b2 = dict(b)
+                if estirar(b2, fin_de(b) - ini):
+                    b.update(b2, en=round(ini, 3))
+                    cambio = True
+                    break
+            quitables = [x for x in (a, b) if x and x["prio"] == 1]
+            if quitables:
+                broll.remove(min(quitables, key=lambda x: x["dur"]))
+                cambio = True
+                break
+        if not cambio:
+            break
+    return broll
+
+
+# --------------------------------------------------------------------------
 # Construcción de un short
 # --------------------------------------------------------------------------
 
@@ -169,12 +296,13 @@ def construir(tx, spec, outro, idx):
                 ia, ib = max(a, sa), min(b, sb)
                 if ib - ia >= 1.0:
                     broll.append(dict(en=round(t_out + ia - a, 3), dur=round(ib - ia, 3),
-                                      src=YT, desde=round(ia, 3), modo="cubrir"))
+                                      src=YT, desde=round(ia, 3), modo="cubrir",
+                                      prio=2, max_src=round(sb - ia, 3)))
             for (sa, sb), src, off, modo in GRAFICOS:
                 ia, ib = max(a, sa), min(b, sb)
                 if ib - ia >= 1.0:
                     broll.append(dict(en=round(t_out + ia - a, 3), dur=round(ib - ia, 3),
-                                      src=src, desde=round(off + (ia - sa), 3), modo=modo))
+                                      src=src, desde=round(off + (ia - sa), 3), modo=modo, prio=3))
         t_out += dur
     fin_principal = sum(b - a for a, b in tramos[:n_principal])
     total_voz = t_out
@@ -202,7 +330,9 @@ def construir(tx, spec, outro, idx):
         if dur >= 1.0 and not solapa:
             modo = "mapa" if src.startswith("hilary/mapas/") else "cubrir"
             broll.append(dict(en=en, dur=round(dur, 3), src=YT if src == "yt" else src,
-                              desde=desde, modo=modo))
+                              desde=desde, modo=modo, prio=1,
+                              # De un extra del vídeo largo no se sabe qué sigue: no se alarga.
+                              max_src=round(dur, 3) if src == "yt" else None))
     broll.sort(key=lambda b: b["en"])
 
     # El B-roll no tapa el gancho.
@@ -224,6 +354,11 @@ def construir(tx, spec, outro, idx):
         else:
             unidos.append(b)
     broll = unidos
+    cortes = [v["en"] for v in video[1:n_principal + 1]]
+    broll = ritmo(broll, cortes, fin_principal, idx)
+    for b in broll:
+        b.pop("prio", None)
+        b.pop("max_src", None)
 
     # Subtítulos palabra a palabra.
     palabras = []
