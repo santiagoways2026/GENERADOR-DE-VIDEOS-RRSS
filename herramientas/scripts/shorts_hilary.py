@@ -567,7 +567,7 @@ def shorts():
         dict(id="19-que-te-preocupa", extra=[("much easier to solve", 258.8, 3.0, "dji/DJI_20260929061142_0014_D.mp4", 2.0), ("The distance,", 251, 2.2, "yt", 237.5), ("getting lost,", 253, 2.0, "yt", 322.4), ("carrying your backpack,", 255, 2.4, "yt", 480.5), ("And one of them", 262, 3.0, "yt", 275.2)], titulo=["WHAT WORRIES", "YOU MOST ABOUT", "THE CAMINO?"],
              tramos=[("What worries you most", 248, "on your feet.")]),
 
-        dict(id="20-como-llegar-sarria", extra=[("Depending on where", 127.6, 3.0, "dji/DJI_20260929071136_0018_D.mp4", 1.0), ("by train,", 131.1, 3.0, "dji/DJI_20260929071708_0025_D.mp4", 0.5), ("such as Madrid,", 133, 3.0, "yt", 112.6), ("And once you arrive,", 139, 3.0, "yt", 27.0)], titulo=["HOW DO YOU", "GET TO", "SARRIA?"],
+        dict(id="20-como-llegar-sarria", extra=[("Depending on where", 127.6, 3.0, "dji/DJI_20260929071136_0018_D.mp4", 1.0), ("by train,", 131.1, 3.0, "dji/DJI_20260929071708_0025_D.mp4", 0.5), ("And once you arrive,", 139, 3.0, "dji/DJI_20260929071211_0019_D.mp4", 2.0)], titulo=["HOW DO YOU", "GET TO", "SARRIA?"],
              tramos=[("Getting there is also", 123, "really begins.")]),
 
         dict(id="21-camino-sin-estres", extra=[("can organize the entire", 656.9, 3.0, "dji/DJI_20260929070236_0016_D.mp4", 8.0), ("arranged before", 664.4, 2.6, "dji/IMG_5440.mp4", 0.2), ("click the link", 667.1, 3.0, "dji/DJI_20260929072030_0030_D.mp4", 0.5), ("where you're sleeping", 648, 2.4, "yt", 531.6), ("how your luggage", 650, 2.4, "yt", 480.5), ("or how to structure", 653, 2.6, "hilary/mapas/etapas-sarria.mp4", 1.6), ("Your accommodation,", 660, 3.0, "yt", 548.6)], titulo=["WALK THE CAMINO", "WITHOUT THE", "STRESS"],

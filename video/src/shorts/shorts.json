@@ -13107,9 +13107,16 @@
    },
    {
     "en": 6.62,
-    "dur": 4.64,
+    "dur": 3.0,
     "src": "dji/DJI_20260929071708_0025_D.mp4",
     "desde": 0.5,
+    "modo": "cubrir"
+   },
+   {
+    "en": 15.58,
+    "dur": 4.46,
+    "src": "dji/DJI_20260929071211_0019_D.mp4",
+    "desde": 2.0,
     "modo": "cubrir"
    }
   ],
@@ -13526,6 +13533,11 @@
    },
    {
     "en": 2.1999999999999997,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 15.38,
     "src": "sfx/whoosh-corto.wav",
     "vol": 0.22
    },
