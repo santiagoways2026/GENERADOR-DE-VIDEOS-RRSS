@@ -1416,12 +1416,12 @@
   ],
   "broll": [
    {
-    "en": 5.9,
+    "en": 6.4,
     "dur": 2.5,
     "src": "hilary/youtube.mp4",
-    "desde": 159.6,
+    "desde": 160.1,
     "modo": "cubrir",
-    "vel": 0.92
+    "vel": 0.72
    },
    {
     "en": 12.84,
@@ -1447,16 +1447,16 @@
    },
    {
     "en": 24.52,
-    "dur": 4.66,
+    "dur": 4.71,
     "src": "dji/DJI_20260929071755_0026_D.mp4",
     "desde": 6.0,
     "modo": "cubrir"
    },
    {
-    "en": 29.18,
-    "dur": 4.42,
+    "en": 29.23,
+    "dur": 4.37,
     "src": "hilary/youtube.mp4",
-    "desde": 183.6,
+    "desde": 183.65,
     "modo": "cubrir",
     "vel": 0.973
    }
@@ -2119,7 +2119,7 @@
     "vol": 0.28
    },
    {
-    "en": 5.7,
+    "en": 6.2,
     "src": "sfx/whoosh-corto.wav",
     "vol": 0.22
    },
@@ -2237,22 +2237,21 @@
    },
    {
     "en": 25.73,
-    "dur": 4.4,
+    "dur": 4.6,
     "src": "dji/DJI_20260929090353_0052_D.mp4",
     "desde": 0.2,
     "modo": "cubrir"
    },
    {
-    "en": 30.13,
-    "dur": 6.36,
+    "en": 30.33,
+    "dur": 4.25,
     "src": "hilary/youtube.mp4",
-    "desde": 236.6,
-    "modo": "cubrir",
-    "vel": 0.723
+    "desde": 236.8,
+    "modo": "cubrir"
    },
    {
-    "en": 36.49,
-    "dur": 3.32,
+    "en": 34.58,
+    "dur": 5.23,
     "src": "dji/DJI_20260929073713_0044_D.mp4",
     "desde": 18.0,
     "modo": "cubrir"
@@ -4371,16 +4370,16 @@
   "broll": [
    {
     "en": 2.4,
-    "dur": 3.74,
+    "dur": 3.91,
     "src": "dji/DJI_20260929074051_0048_D.mp4",
     "desde": 2.0,
     "modo": "cubrir"
    },
    {
-    "en": 6.14,
-    "dur": 5.35,
+    "en": 6.31,
+    "dur": 5.18,
     "src": "hilary/youtube.mp4",
-    "desde": 297.1,
+    "desde": 297.27,
     "modo": "cubrir"
    },
    {
@@ -5039,16 +5038,16 @@
    },
    {
     "en": 14.62,
-    "dur": 3.8,
+    "dur": 3.9,
     "src": "hilary/mapas/etapas-sarria.mp4",
     "desde": 7.6,
     "modo": "mapa"
    },
    {
-    "en": 18.42,
-    "dur": 4.42,
+    "en": 18.52,
+    "dur": 4.32,
     "src": "hilary/youtube.mp4",
-    "desde": 360.6,
+    "desde": 360.7,
     "modo": "cubrir"
    },
    {
@@ -5730,9 +5729,9 @@
     "en": 2.4,
     "dur": 18.82,
     "src": "hilary/youtube.mp4",
-    "desde": 360.6,
+    "desde": 360.7,
     "modo": "cubrir",
-    "vel": 0.866
+    "vel": 0.861
    },
    {
     "en": 21.22,
@@ -6345,7 +6344,7 @@
     "src": "hilary/youtube.mp4",
     "desde": 414.1,
     "modo": "cubrir",
-    "vel": 0.997
+    "vel": 0.962
    },
    {
     "en": 22.22,
@@ -7065,7 +7064,7 @@
     "src": "hilary/youtube.mp4",
     "desde": 440.48,
     "modo": "cubrir",
-    "vel": 0.985
+    "vel": 0.976
    },
    {
     "en": 13.36,
@@ -9069,7 +9068,7 @@
     "src": "hilary/youtube.mp4",
     "desde": 531.81,
     "modo": "cubrir",
-    "vel": 0.887
+    "vel": 0.856
    },
    {
     "en": 7.81,

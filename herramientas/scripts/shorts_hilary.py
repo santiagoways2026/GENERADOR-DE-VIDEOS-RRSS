@@ -111,12 +111,14 @@ LIMPIO = "hilary/limpio.mp4"
 
 # Tramos donde el vídeo de YouTube ya pone B-roll a pantalla completa. Van
 # sincronizados con la voz, así que se reaprovechan tal cual en vertical.
-STOCK = [(7.2, 31.2), (72.7, 78.4), (109.2, 118.9), (159.6, 161.9), (183.6, 187.9),
-         (236.6, 241.2), (274.6, 285.9), (297.1, 306.9), (321.6, 331.9),
-         (339.6, 341.4), (344.2, 353.4), (360.6, 376.9), (383.6, 396.4),
-         (404.1, 409.9), (414.1, 419.9), (440.1, 450.9), (474.1, 486.9),
-         (497.6, 504.9), (531.1, 535.9), (548.1, 557.4), (589.6, 602.4),
-         (611.1, 616.4)]
+# Límites medidos con detección de cortes y recortados un par de fotogramas
+# hacia dentro: un límite largo dejaba ver un fotograma de Hildary.
+STOCK = [(7.2, 30.7), (72.75, 78.4), (109.2, 118.9), (160.1, 161.9), (183.65, 187.9),
+         (236.8, 241.05), (274.6, 285.9), (297.27, 306.9), (321.6, 331.77),
+         (339.6, 341.4), (344.35, 353.33), (360.7, 376.9), (383.6, 396.4),
+         (404.1, 409.9), (414.1, 419.7), (440.2, 450.9), (474.1, 486.9),
+         (497.6, 504.87), (531.1, 535.73), (548.1, 557.4), (589.6, 602.27),
+         (611.1, 616.23)]
 
 # Los gráficos horizontales del vídeo largo no caben en vertical: se cambian
 # por las versiones verticales en inglés que vienen en el Drive.
