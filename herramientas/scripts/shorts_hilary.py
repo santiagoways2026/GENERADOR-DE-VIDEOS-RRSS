@@ -196,7 +196,9 @@ def construir(tx, spec, outro, idx):
     for frase, cerca, dur, src, desde in spec.get("extra", []):
         en = round(a_salida(tx.en(frase, cerca)), 3)
         dur = min(dur, fin_principal - en)
-        solapa = any(en < b["en"] + b["dur"] and b["en"] < en + dur for b in broll)
+        # Lo que acaba bajo el gancho se descarta después: no cuenta como solape.
+        solapa = any(en < b["en"] + b["dur"] and b["en"] < en + dur
+                     for b in broll if b["en"] + b["dur"] > GANCHO + 0.3)
         if dur >= 1.0 and not solapa:
             modo = "mapa" if src.startswith("hilary/mapas/") else "cubrir"
             broll.append(dict(en=en, dur=round(dur, 3), src=YT if src == "yt" else src,
@@ -358,7 +360,7 @@ def shorts():
              capas=[cartela("sw-stage-03-palas-arzua", frase="stage three,", cerca=356, dur=4.5, ancho=620),
                     cartela("sw-tip-card", frase="Take breaks,", cerca=372, dur=3.5, ancho=900)]),
 
-        dict(id="10-ultimo-dia", extra=[("This is the one", 401.5, 2.7, "dji/IMG_5542.mp4", 0.3), ("towards Santiago", 409.9, 4.1, "dji/IMG_5543.mp4", 2.0), ("in front of you", 419.9, 3.4, "dji/IMG_5543.mp4", 14.0), ("suddenly hits", 427.9, 1.8, "dji/IMG_5531.mp4", 2.0), ("And yes, there", 429.8, 3.0, "dji/IMG_5520.mp4", 0.5)], titulo=["WHAT THE LAST", "DAY OF THE", "CAMINO FEELS LIKE"],
+        dict(id="10-ultimo-dia", extra=[("Santiago de Compostela.", 399.5, 4.5, "dji/IMG_5542.mp4", 0.0), ("towards Santiago", 409.9, 4.1, "dji/IMG_5543.mp4", 2.0), ("in front of you", 419.9, 3.4, "dji/IMG_5543.mp4", 14.0), ("suddenly hits", 427.9, 1.8, "dji/IMG_5531.mp4", 2.0), ("And yes, there", 429.8, 3.0, "dji/IMG_5520.mp4", 0.5)], titulo=["WHAT THE LAST", "DAY OF THE", "CAMINO FEELS LIKE"],
              tramos=[("stage five,", 398, "Lots of photos.")],
              capas=[cartela("sw-stage-05-arua-santiago", frase="stage five,", cerca=398, dur=4.0, ancho=620),
                     cartela("sw-card-yellow-arrow", frase="After following yellow", cerca=402, dur=3.6, ancho=960)]),

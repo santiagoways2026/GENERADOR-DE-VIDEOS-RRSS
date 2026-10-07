@@ -6613,6 +6613,13 @@
   ],
   "broll": [
    {
+    "en": 2.4,
+    "dur": 3.94,
+    "src": "dji/IMG_5542.mp4",
+    "desde": 0.56,
+    "modo": "cubrir"
+   },
+   {
     "en": 6.4,
     "dur": 5.8,
     "src": "hilary/youtube.mp4",
@@ -7297,7 +7304,7 @@
     "vol": 0.28
    },
    {
-    "en": 6.2,
+    "en": 2.1999999999999997,
     "src": "sfx/whoosh-corto.wav",
     "vol": 0.22
    },
