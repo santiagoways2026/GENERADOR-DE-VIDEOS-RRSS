@@ -194,15 +194,30 @@ def ritmo(broll, cortes, fin, idx):
     - cada corte entre frases de Hildary queda tapado por un recurso;
     - Hildary nunca asoma menos de MIN_HABLA entre dos recursos: el anterior
       se alarga hasta el siguiente o, si no da, se quita el extra."""
+    def fin_de(b):
+        return b["en"] + b["dur"]
+
     broll = [dict(b) for b in broll if not (b["prio"] == 1 and b["dur"] < MIN_BROLL)]
     broll.sort(key=lambda b: b["en"])
     for i, b in enumerate(broll):
         if b["dur"] < MIN_BROLL:
             tope = broll[i + 1]["en"] if i + 1 < len(broll) else fin
             estirar(b, min(MIN_BROLL, tope - b["en"]))
-
-    def fin_de(b):
-        return b["en"] + b["dur"]
+        # Encajonado entre dos recursos: se le recorta el principio al
+        # siguiente, si le sobra, para que este no pase como un parpadeo.
+        sig = broll[i + 1] if i + 1 < len(broll) else None
+        falta = MIN_BROLL - b["dur"]
+        if (falta > 0.01 and sig and abs(sig["en"] - (b["en"] + b["dur"])) < 0.05
+                and sig["dur"] - falta >= 2.0):
+            b2 = dict(b)
+            if estirar(b2, b["dur"] + falta):
+                b.update(b2)
+                sig["en"], sig["desde"], sig["dur"] = (round(sig["en"] + falta, 3), round(sig["desde"] + falta, 3),
+                                                       round(sig["dur"] - falta, 3))
+    # Si aun así queda un parpadeo entre dos recursos, se quita.
+    broll = [b for i, b in enumerate(broll)
+             if not (b["dur"] < MIN_BROLL - 0.3 and 0 < i < len(broll) - 1
+                     and b["en"] - fin_de(broll[i - 1]) < 0.2 and broll[i + 1]["en"] - fin_de(b) < 0.2)]
 
     def visible(t):
         return not any(b["en"] <= t < fin_de(b) for b in broll)
@@ -254,7 +269,9 @@ def ritmo(broll, cortes, fin, idx):
             hueco = fin_h - ini
             if not (0.01 < hueco < MIN_HABLA):
                 continue
-            if a and estirar(a, fin_h - a["en"]):
+            # Mismo gráfico a los dos lados: alargar el primero repetiría animación.
+            mismo = a and b and a["src"] == b["src"] and a["modo"] != "cubrir"
+            if a and not mismo and estirar(a, fin_h - a["en"]):
                 cambio = True
                 break
             if b:

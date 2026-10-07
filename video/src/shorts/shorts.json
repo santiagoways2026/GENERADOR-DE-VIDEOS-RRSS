@@ -880,16 +880,16 @@
    },
    {
     "en": 10.18,
-    "dur": 2.1,
+    "dur": 2.5,
     "src": "hilary/mapas/ruta-sarria.mp4",
     "desde": 8.78,
     "modo": "mapa"
    },
    {
-    "en": 12.28,
-    "dur": 5.24,
+    "en": 12.68,
+    "dur": 4.84,
     "src": "dji/DJI_20260929073439_0041_D.mp4",
-    "desde": 0.3,
+    "desde": 0.7,
     "modo": "cubrir"
    }
   ],
@@ -5052,24 +5052,18 @@
    },
    {
     "en": 22.84,
-    "dur": 2.72,
+    "dur": 2.62,
     "src": "hilary/mapas/etapas-sarria.mp4",
     "desde": 10.28,
     "modo": "mapa"
    },
    {
-    "en": 25.56,
-    "dur": 1.52,
-    "src": "hilary/youtube.mp4",
-    "desde": 383.6,
-    "modo": "cubrir"
-   },
-   {
-    "en": 27.08,
-    "dur": 3.25,
+    "en": 25.46,
+    "dur": 4.87,
     "src": "hilary/mapas/etapas-sarria.mp4",
     "desde": 12.2,
-    "modo": "mapa"
+    "modo": "mapa",
+    "vel": 0.934
    },
    {
     "en": 30.33,
