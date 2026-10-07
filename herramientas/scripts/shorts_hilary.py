@@ -339,7 +339,7 @@ def shorts():
                      ("lightweight trekking or hiking", 274, "good grip,"),
                      ("because after 20 kilometers", 302, "notice your shoes.")]),
 
-        dict(id="08-cinco-etapas", titulo=["SARRIA TO", "SANTIAGO IN", "5 STAGES"],
+        dict(id="08-cinco-etapas", extra=[("into five stages", 314.3, 2.7, "dji/DJI_20260929072047_0031_D.mp4", 3.0)], titulo=["SARRIA TO", "SANTIAGO IN", "5 STAGES"],
              tramos=[("Most people divide", 310, "five stages."),
                      ("Stage one,", 314, "around 22 kilometers."),
                      ("Stage two,", 336, "24 to 25 kilometers."),
@@ -353,7 +353,7 @@ def shorts():
                     cartela("sw-stage-05-arua-santiago", frase="stage five,", cerca=398, dur=4.0, ancho=620)],
              cta=False),
 
-        dict(id="09-etapa-mas-larga", titulo=["THE LONGEST", "STAGE FROM", "SARRIA"],
+        dict(id="09-etapa-mas-larga", extra=[("not racing anyone", 379.1, 3.0, "dji/DJI_20260929073458_0042_D.mp4", 1.0)], titulo=["THE LONGEST", "STAGE FROM", "SARRIA"],
              tramos=[("stage three,", 356, "racing anyone.")],
              capas=[cartela("sw-stage-03-palas-arzua", frase="stage three,", cerca=356, dur=4.5, ancho=620),
                     cartela("sw-tip-card", frase="Take breaks,", cerca=372, dur=3.5, ancho=900)]),
@@ -363,11 +363,11 @@ def shorts():
              capas=[cartela("sw-stage-05-arua-santiago", frase="stage five,", cerca=398, dur=4.0, ancho=620),
                     cartela("sw-card-yellow-arrow", frase="After following yellow", cerca=402, dur=3.6, ancho=960)]),
 
-        dict(id="11-comer-camino", extra=[("And somehow, food", 462, 2.2, "brutos/terraza.mp4", 0), ("to get it.", 468, 1.9, "brutos/brindis.mp4", 0)], titulo=["WHAT DO YOU", "EAT ON THE", "CAMINO?"],
+        dict(id="11-comer-camino", extra=[("more delicious", 465.8, 3.0, "dji/DJI_20260929090511_0056_D.mp4", 1.0), ("And somehow, food", 462, 2.2, "brutos/terraza.mp4", 0), ("to get it.", 468, 1.9, "brutos/brindis.mp4", 0)], titulo=["WHAT DO YOU", "EAT ON THE", "CAMINO?"],
              tramos=[("You also have to eat,", 438, "Walk again."),
                      ("And somehow, food", 462, "to get it.")]),
 
-        dict(id="12-cargar-mochila", extra=[("At Santiago Ways,", 505, 3.0, "yt", 531.6)], titulo=["DO YOU HAVE TO", "CARRY YOUR", "BACKPACK?"],
+        dict(id="12-cargar-mochila", extra=[("walk the stage", 489.7, 3.0, "dji/DJI_20260929071346_0021_D.mp4", 8.0), ("your main bag", 494.0, 3.0, "dji/DJI_20260929061142_0014_D.mp4", 18.0), ("together with your", 509.7, 3.0, "dji/DJI_20260929083455_0050_D.mp4", 1.0), ("At Santiago Ways,", 505, 3.0, "yt", 531.6)], titulo=["DO YOU HAVE TO", "CARRY YOUR", "BACKPACK?"],
              tramos=[("You don't necessarily have to carry", 474, "Camino."),
                      ("There are luggage", 478, "when you arrive."),
                      ("At Santiago Ways,", 505, "accommodation and itinerary.")],
@@ -375,18 +375,18 @@ def shorts():
                     cartela("sw-card-luggage-transporte", frase="There are luggage", cerca=478, dur=4.0, ancho=960),
                     cartela("sw-tag-light", frase="At Santiago Ways,", cerca=505, dur=4.0, ancho=900)]),
 
-        dict(id="13-caminar-20km-facil", titulo=["THIS MAKES", "WALKING 20 KM", "MUCH EASIER"],
+        dict(id="13-caminar-20km-facil", extra=[("walk the stage", 489.7, 3.0, "dji/DJI_20260929071346_0021_D.mp4", 8.0), ("your main bag", 494.0, 3.0, "dji/DJI_20260929061142_0014_D.mp4", 18.0)], titulo=["THIS MAKES", "WALKING 20 KM", "MUCH EASIER"],
              tramos=[("You don't necessarily have to carry", 474, "Camino."),
                      ("walk the stage", 489, "when you arrive."),
                      ("And walking 20", 497, "huge difference.")],
              capas=[cartela("sw-tip-golden-rule", frase="walk the stage", cerca=489, dur=4.0, ancho=900)]),
 
-        dict(id="14-donde-dormir", titulo=["WHERE DO YOU", "SLEEP ON THE", "CAMINO?"],
+        dict(id="14-donde-dormir", extra=[("doing it again", 537.2, 3.0, "dji/DJI_20260929090421_0054_D.mp4", 0.5), ("private rooms", 545.7, 2.3, "dji/DJI_20260929083455_0050_D.mp4", 1.0)], titulo=["WHERE DO YOU", "SLEEP ON THE", "CAMINO?"],
              tramos=[("Rest matters a lot.", 529, "experience the Camino.")],
              capas=[cartela("sw-card-accommodation-hotel", frase="many pilgrims choose", cerca=542, dur=4.2, ancho=980),
                     cartela("sw-notice-hoteles", frase="Being able to shower,", cerca=546, dur=3.8, ancho=880)]),
 
-        dict(id="15-mejor-mes", extra=[("Spring and autumn", 563, 1.6, "brutos/campo-flores.mp4", 0), ("Summer gives you", 569, 3.0, "yt", 499.8), ("And winter is", 577, 2.0, "yt", 118.0)], titulo=["THE BEST MONTH", "TO WALK", "THE CAMINO"],
+        dict(id="15-mejor-mes", extra=[("isn't one perfect", 562.2, 2.6, "dji/DJI_20260929073458_0042_D.mp4", 1.0), ("a lot more pilgrims", 574.6, 3.0, "dji/DJI_20260929072030_0030_D.mp4", 0.5), ("more rain", 580.3, 3.0, "dji/DJI_20260929110228_0069_D.mp4", 3.0), ("Spring and autumn", 563, 1.6, "brutos/campo-flores.mp4", 0), ("Summer gives you", 569, 3.0, "yt", 499.8), ("And winter is", 577, 2.0, "yt", 118.0)], titulo=["THE BEST MONTH", "TO WALK", "THE CAMINO"],
              tramos=[("So what's the best month", 558, "Sarria?"),
                      ("There isn't one perfect", 562, "being closed."),
                      ("So instead of asking", 585, "when you should go.")],
@@ -395,7 +395,7 @@ def shorts():
                     cartela("sw-card-season-invierno", frase="And winter is", cerca=577, dur=3.6, ancho=620)],
              cta=False),
 
-        dict(id="16-menos-gente", extra=[("Summer gives you", 569, 3.0, "yt", 499.8), ("And winter is", 577, 2.0, "yt", 118.0), ("Spring and autumn", 563, 1.6, "brutos/campo-flores.mp4", 0)], titulo=["WANT FEWER", "CROWDS? GO AT", "THIS TIME"],
+        dict(id="16-menos-gente", extra=[("a lot more pilgrims", 574.6, 3.0, "dji/DJI_20260929072030_0030_D.mp4", 0.5), ("more rain", 580.3, 3.0, "dji/DJI_20260929110228_0069_D.mp4", 3.0), ("Summer gives you", 569, 3.0, "yt", 499.8), ("And winter is", 577, 2.0, "yt", 118.0), ("Spring and autumn", 563, 1.6, "brutos/campo-flores.mp4", 0)], titulo=["WANT FEWER", "CROWDS? GO AT", "THIS TIME"],
              tramos=[("Summer gives you", 569, "on the route."),
                      ("And winter is", 577, "being closed."),
                      ("Spring and autumn", 563, "and atmosphere.")],
@@ -403,28 +403,28 @@ def shorts():
                     cartela("sw-card-season-invierno", frase="And winter is", cerca=577, dur=3.6, ancho=620),
                     cartela("sw-card-season-otono", frase="Spring and autumn", cerca=563, dur=3.4, ancho=620)]),
 
-        dict(id="17-primer-camino", extra=[("You don't need several", 622, 3.0, "yt", 344.5), ("The most important", 631, 3.0, "yt", 27.0)], titulo=["IS SARRIA A", "GOOD FIRST", "CAMINO?"],
+        dict(id="17-primer-camino", extra=[("excellent signposting", 617.1, 3.0, "dji/DJI_20260929090353_0052_D.mp4", 0.2), ("logistical detail", 628.7, 3.0, "dji/DJI_20260929070236_0016_D.mp4", 5.0), ("Because the goal", 637.1, 3.2, "dji/DJI_20260929073713_0044_D.mp4", 3.0), ("You don't need several", 622, 3.0, "yt", 344.5), ("The most important", 631, 3.0, "yt", 27.0)], titulo=["IS SARRIA A", "GOOD FIRST", "CAMINO?"],
              tramos=[("If this is going", 610, "getting there.")],
              capas=[cartela("sw-quote-band", frase="Because the goal", cerca=637, dur=4.0, ancho=960)]),
 
-        dict(id="18-cuantos-dias", titulo=["HOW LONG FROM", "SARRIA TO", "SANTIAGO?"],
+        dict(id="18-cuantos-dias", extra=[("into five stages", 314.3, 3.0, "dji/DJI_20260929072047_0031_D.mp4", 3.0), ("choose an itinerary", 633.6, 3.0, "dji/DJI_20260929072925_0036_D.mp4", 4.0), ("Because the goal", 637.1, 3.2, "dji/DJI_20260929073713_0044_D.mp4", 3.0)], titulo=["HOW LONG FROM", "SARRIA TO", "SANTIAGO?"],
              tramos=[("It's just over", 11, "experienced hiker,"),
                      ("Most people divide", 310, "five stages."),
                      ("The most important", 631, "getting there.")],
              capas=[cartela("sw-stage-progress", frase="Most people divide", cerca=310, dur=3.6, ancho=900)]),
 
-        dict(id="19-que-te-preocupa", extra=[("The distance,", 251, 2.2, "yt", 237.5), ("getting lost,", 253, 2.0, "yt", 322.4), ("carrying your backpack,", 255, 2.4, "yt", 480.5), ("And one of them", 262, 3.0, "yt", 275.2)], titulo=["WHAT WORRIES", "YOU MOST ABOUT", "THE CAMINO?"],
+        dict(id="19-que-te-preocupa", extra=[("much easier to solve", 258.8, 3.0, "dji/DJI_20260929061142_0014_D.mp4", 2.0), ("The distance,", 251, 2.2, "yt", 237.5), ("getting lost,", 253, 2.0, "yt", 322.4), ("carrying your backpack,", 255, 2.4, "yt", 480.5), ("And one of them", 262, 3.0, "yt", 275.2)], titulo=["WHAT WORRIES", "YOU MOST ABOUT", "THE CAMINO?"],
              tramos=[("What worries you most", 248, "on your feet.")]),
 
-        dict(id="20-como-llegar-sarria", extra=[("such as Madrid,", 133, 3.0, "yt", 112.6), ("And once you arrive,", 139, 3.0, "yt", 27.0)], titulo=["HOW DO YOU", "GET TO", "SARRIA?"],
+        dict(id="20-como-llegar-sarria", extra=[("Depending on where", 127.6, 3.0, "dji/DJI_20260929071136_0018_D.mp4", 1.0), ("by train,", 131.1, 3.0, "dji/DJI_20260929071708_0025_D.mp4", 0.5), ("such as Madrid,", 133, 3.0, "yt", 112.6), ("And once you arrive,", 139, 3.0, "yt", 27.0)], titulo=["HOW DO YOU", "GET TO", "SARRIA?"],
              tramos=[("Getting there is also", 123, "really begins.")]),
 
-        dict(id="21-camino-sin-estres", extra=[("where you're sleeping", 648, 2.4, "yt", 531.6), ("how your luggage", 650, 2.4, "yt", 480.5), ("or how to structure", 653, 2.6, "hilary/mapas/etapas-sarria.mp4", 1.6), ("Your accommodation,", 660, 3.0, "yt", 548.6)], titulo=["WALK THE CAMINO", "WITHOUT THE", "STRESS"],
+        dict(id="21-camino-sin-estres", extra=[("can organize the entire", 656.9, 3.0, "dji/DJI_20260929070236_0016_D.mp4", 8.0), ("arranged before", 664.4, 2.6, "dji/DJI_20260929083455_0050_D.mp4", 1.0), ("click the link", 667.1, 3.0, "dji/DJI_20260929072030_0030_D.mp4", 0.5), ("where you're sleeping", 648, 2.4, "yt", 531.6), ("how your luggage", 650, 2.4, "yt", 480.5), ("or how to structure", 653, 2.6, "hilary/mapas/etapas-sarria.mp4", 1.6), ("Your accommodation,", 660, 3.0, "yt", 548.6)], titulo=["WALK THE CAMINO", "WITHOUT THE", "STRESS"],
              tramos=[("And if you want to walk", 644, "start planning your trip.")],
              capas=[cartela("sw-tag-light", frase="Santiago Ways can organize", cerca=656, dur=4.0, ancho=900)],
              cta=False),
 
-        dict(id="22-mejor-ruta-principiantes", titulo=["THE BEST CAMINO", "FOR", "BEGINNERS"],
+        dict(id="22-mejor-ruta-principiantes", extra=[("the first time,", 2.9, 2.4, "dji/DJI_20260929072047_0031_D.mp4", 3.0), ("hear about again", 5.4, 1.6, "dji/DJI_20260929073931_0046_D.mp4", 0.5)], titulo=["THE BEST CAMINO", "FOR", "BEGINNERS"],
              tramos=[("If you're thinking", 0, "Santiago de Compostela.")],
              capas=[cartela("sw-card-route-frances", frase="Camino Francés from", cerca=7, dur=3.6, ancho=720)]),
     ]

@@ -5216,6 +5216,13 @@
   ],
   "broll": [
    {
+    "en": 2.86,
+    "dur": 2.7,
+    "src": "dji/DJI_20260929072047_0031_D.mp4",
+    "desde": 3.0,
+    "modo": "cubrir"
+   },
+   {
     "en": 5.62,
     "dur": 2.5,
     "src": "hilary/mapas/etapas-sarria.mp4",
@@ -5903,7 +5910,7 @@
     "vol": 0.28
    },
    {
-    "en": 5.42,
+    "en": 2.6599999999999997,
     "src": "sfx/whoosh-corto.wav",
     "vol": 0.22
    },
@@ -5977,6 +5984,13 @@
     "dur": 16.3,
     "src": "hilary/youtube.mp4",
     "desde": 360.6,
+    "modo": "cubrir"
+   },
+   {
+    "en": 22.26,
+    "dur": 1.56,
+    "src": "dji/DJI_20260929073458_0042_D.mp4",
+    "desde": 1.0,
     "modo": "cubrir"
    }
   ],
@@ -6518,6 +6532,11 @@
    },
    {
     "en": 3.54,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 22.060000000000002,
     "src": "sfx/whoosh-corto.wav",
     "vol": 0.22
    },
@@ -7334,6 +7353,13 @@
     "modo": "cubrir"
    },
    {
+    "en": 27.44,
+    "dur": 3.0,
+    "src": "dji/DJI_20260929090511_0056_D.mp4",
+    "desde": 1.0,
+    "modo": "cubrir"
+   },
+   {
     "en": 30.98,
     "dur": 1.36,
     "src": "brutos/brindis.mp4",
@@ -7904,11 +7930,6 @@
     "vol": 0.22
    },
    {
-    "en": 30.78,
-    "src": "sfx/whoosh-corto.wav",
-    "vol": 0.22
-   },
-   {
     "en": 42.94,
     "src": "sfx/whoosh.wav",
     "vol": 0.3
@@ -8007,10 +8028,24 @@
     "modo": "cubrir"
    },
    {
-    "en": 22.54,
+    "en": 15.34,
     "dur": 3.0,
-    "src": "hilary/youtube.mp4",
-    "desde": 531.6,
+    "src": "dji/DJI_20260929071346_0021_D.mp4",
+    "desde": 8.0,
+    "modo": "cubrir"
+   },
+   {
+    "en": 19.62,
+    "dur": 3.0,
+    "src": "dji/DJI_20260929061142_0014_D.mp4",
+    "desde": 18.0,
+    "modo": "cubrir"
+   },
+   {
+    "en": 26.98,
+    "dur": 3.0,
+    "src": "dji/DJI_20260929083455_0050_D.mp4",
+    "desde": 1.0,
     "modo": "cubrir"
    }
   ],
@@ -8673,7 +8708,12 @@
     "vol": 0.22
    },
    {
-    "en": 22.34,
+    "en": 15.14,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 26.78,
     "src": "sfx/whoosh-corto.wav",
     "vol": 0.22
    },
@@ -8766,6 +8806,20 @@
     "dur": 3.02,
     "src": "hilary/youtube.mp4",
     "desde": 476.74,
+    "modo": "cubrir"
+   },
+   {
+    "en": 5.48,
+    "dur": 3.0,
+    "src": "dji/DJI_20260929071346_0021_D.mp4",
+    "desde": 8.0,
+    "modo": "cubrir"
+   },
+   {
+    "en": 9.76,
+    "dur": 3.0,
+    "src": "dji/DJI_20260929061142_0014_D.mp4",
+    "desde": 18.0,
     "modo": "cubrir"
    },
    {
@@ -9306,11 +9360,6 @@
     "vol": 0.22
    },
    {
-    "en": 12.680000000000001,
-    "src": "sfx/whoosh-corto.wav",
-    "vol": 0.22
-   },
-   {
     "en": 30.54,
     "src": "sfx/whoosh.wav",
     "vol": 0.3
@@ -9375,6 +9424,20 @@
     "dur": 4.09,
     "src": "hilary/youtube.mp4",
     "desde": 531.81,
+    "modo": "cubrir"
+   },
+   {
+    "en": 7.81,
+    "dur": 3.0,
+    "src": "dji/DJI_20260929090421_0054_D.mp4",
+    "desde": 0.5,
+    "modo": "cubrir"
+   },
+   {
+    "en": 16.31,
+    "dur": 2.3,
+    "src": "dji/DJI_20260929083455_0050_D.mp4",
+    "desde": 1.0,
     "modo": "cubrir"
    },
    {
@@ -9947,7 +10010,7 @@
     "vol": 0.22
    },
    {
-    "en": 18.490000000000002,
+    "en": 16.11,
     "src": "sfx/whoosh-corto.wav",
     "vol": 0.22
    },
@@ -10036,10 +10099,10 @@
   ],
   "broll": [
    {
-    "en": 5.74,
-    "dur": 1.6,
-    "src": "brutos/campo-flores.mp4",
-    "desde": 0,
+    "en": 3.98,
+    "dur": 2.6,
+    "src": "dji/DJI_20260929073458_0042_D.mp4",
+    "desde": 1.0,
     "modo": "cubrir"
    },
    {
@@ -10050,10 +10113,17 @@
     "modo": "cubrir"
    },
    {
-    "en": 18.98,
-    "dur": 2.0,
-    "src": "hilary/youtube.mp4",
-    "desde": 118.0,
+    "en": 16.34,
+    "dur": 3.0,
+    "src": "dji/DJI_20260929072030_0030_D.mp4",
+    "desde": 0.5,
+    "modo": "cubrir"
+   },
+   {
+    "en": 22.04,
+    "dur": 3.0,
+    "src": "dji/DJI_20260929110228_0069_D.mp4",
+    "desde": 3.0,
     "modo": "cubrir"
    },
    {
@@ -10835,7 +10905,7 @@
     "vol": 0.28
    },
    {
-    "en": 5.54,
+    "en": 3.78,
     "src": "sfx/whoosh-corto.wav",
     "vol": 0.22
    },
@@ -10845,7 +10915,12 @@
     "vol": 0.22
    },
    {
-    "en": 18.78,
+    "en": 16.14,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 21.84,
     "src": "sfx/whoosh-corto.wav",
     "vol": 0.22
    },
@@ -10946,10 +11021,17 @@
     "modo": "cubrir"
    },
    {
-    "en": 7.5,
-    "dur": 2.0,
-    "src": "hilary/youtube.mp4",
-    "desde": 118.0,
+    "en": 5.36,
+    "dur": 3.0,
+    "src": "dji/DJI_20260929072030_0030_D.mp4",
+    "desde": 0.5,
+    "modo": "cubrir"
+   },
+   {
+    "en": 10.56,
+    "dur": 3.0,
+    "src": "dji/DJI_20260929110228_0069_D.mp4",
+    "desde": 3.0,
     "modo": "cubrir"
    },
    {
@@ -11479,7 +11561,12 @@
     "vol": 0.22
    },
    {
-    "en": 7.3,
+    "en": 5.16,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 10.360000000000001,
     "src": "sfx/whoosh-corto.wav",
     "vol": 0.22
    },
@@ -11556,6 +11643,13 @@
     "modo": "cubrir"
    },
    {
+    "en": 7.24,
+    "dur": 3.0,
+    "src": "dji/DJI_20260929090353_0052_D.mp4",
+    "desde": 0.2,
+    "modo": "cubrir"
+   },
+   {
     "en": 12.46,
     "dur": 3.0,
     "src": "hilary/youtube.mp4",
@@ -11563,10 +11657,17 @@
     "modo": "cubrir"
    },
    {
-    "en": 21.44,
+    "en": 18.88,
     "dur": 3.0,
-    "src": "hilary/youtube.mp4",
-    "desde": 27.0,
+    "src": "dji/DJI_20260929070236_0016_D.mp4",
+    "desde": 5.0,
+    "modo": "cubrir"
+   },
+   {
+    "en": 27.24,
+    "dur": 3.2,
+    "src": "dji/DJI_20260929073713_0044_D.mp4",
+    "desde": 3.0,
     "modo": "cubrir"
    }
   ],
@@ -12240,7 +12341,12 @@
     "vol": 0.22
    },
    {
-    "en": 21.240000000000002,
+    "en": 18.68,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 27.04,
     "src": "sfx/whoosh-corto.wav",
     "vol": 0.22
    },
@@ -12333,6 +12439,27 @@
     "dur": 5.35,
     "src": "hilary/youtube.mp4",
     "desde": 13.3,
+    "modo": "cubrir"
+   },
+   {
+    "en": 10.61,
+    "dur": 3.0,
+    "src": "dji/DJI_20260929072047_0031_D.mp4",
+    "desde": 3.0,
+    "modo": "cubrir"
+   },
+   {
+    "en": 14.59,
+    "dur": 3.0,
+    "src": "dji/DJI_20260929072925_0036_D.mp4",
+    "desde": 4.0,
+    "modo": "cubrir"
+   },
+   {
+    "en": 18.03,
+    "dur": 3.2,
+    "src": "dji/DJI_20260929073713_0044_D.mp4",
+    "desde": 3.0,
     "modo": "cubrir"
    }
   ],
@@ -12896,6 +13023,11 @@
     "vol": 0.22
    },
    {
+    "en": 10.41,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
     "en": 35.78,
     "src": "sfx/whoosh.wav",
     "vol": 0.3
@@ -12967,6 +13099,13 @@
     "dur": 2.0,
     "src": "hilary/youtube.mp4",
     "desde": 322.4,
+    "modo": "cubrir"
+   },
+   {
+    "en": 10.4,
+    "dur": 3.0,
+    "src": "dji/DJI_20260929061142_0014_D.mp4",
+    "desde": 2.0,
     "modo": "cubrir"
    },
    {
@@ -13420,7 +13559,7 @@
     "vol": 0.22
    },
    {
-    "en": 13.72,
+    "en": 10.200000000000001,
     "src": "sfx/whoosh-corto.wav",
     "vol": 0.22
    },
@@ -13484,6 +13623,20 @@
    }
   ],
   "broll": [
+   {
+    "en": 3.06,
+    "dur": 3.0,
+    "src": "dji/DJI_20260929071136_0018_D.mp4",
+    "desde": 1.0,
+    "modo": "cubrir"
+   },
+   {
+    "en": 6.62,
+    "dur": 3.0,
+    "src": "dji/DJI_20260929071708_0025_D.mp4",
+    "desde": 0.5,
+    "modo": "cubrir"
+   },
    {
     "en": 11.26,
     "dur": 3.0,
@@ -13937,6 +14090,11 @@
     "vol": 0.28
    },
    {
+    "en": 2.86,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
     "en": 11.06,
     "src": "sfx/whoosh-corto.wav",
     "vol": 0.22
@@ -14023,10 +14181,31 @@
     "modo": "mapa"
    },
    {
+    "en": 12.68,
+    "dur": 3.0,
+    "src": "dji/DJI_20260929070236_0016_D.mp4",
+    "desde": 8.0,
+    "modo": "cubrir"
+   },
+   {
     "en": 16.22,
     "dur": 3.0,
     "src": "hilary/youtube.mp4",
     "desde": 548.6,
+    "modo": "cubrir"
+   },
+   {
+    "en": 20.26,
+    "dur": 2.6,
+    "src": "dji/DJI_20260929083455_0050_D.mp4",
+    "desde": 1.0,
+    "modo": "cubrir"
+   },
+   {
+    "en": 22.96,
+    "dur": 3.0,
+    "src": "dji/DJI_20260929072030_0030_D.mp4",
+    "desde": 0.5,
     "modo": "cubrir"
    }
   ],
@@ -14607,11 +14786,6 @@
     "vol": 0.22
    },
    {
-    "en": 16.02,
-    "src": "sfx/whoosh-corto.wav",
-    "vol": 0.22
-   },
-   {
     "en": 40.64,
     "src": "sfx/whoosh.wav",
     "vol": 0.3
@@ -14671,6 +14845,20 @@
    }
   ],
   "broll": [
+   {
+    "en": 2.94,
+    "dur": 2.4,
+    "src": "dji/DJI_20260929072047_0031_D.mp4",
+    "desde": 3.0,
+    "modo": "cubrir"
+   },
+   {
+    "en": 5.46,
+    "dur": 1.6,
+    "src": "dji/DJI_20260929073931_0046_D.mp4",
+    "desde": 0.5,
+    "modo": "cubrir"
+   },
    {
     "en": 7.26,
     "dur": 19.14,
@@ -15289,7 +15477,7 @@
     "vol": 0.28
    },
    {
-    "en": 7.06,
+    "en": 2.7399999999999998,
     "src": "sfx/whoosh-corto.wav",
     "vol": 0.22
    },
