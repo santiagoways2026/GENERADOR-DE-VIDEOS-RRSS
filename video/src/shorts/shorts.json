@@ -3214,16 +3214,9 @@
   "broll": [
    {
     "en": 2.4,
-    "dur": 8.47,
+    "dur": 10.57,
     "src": "hilary/mapas/perfil-sarria-h.mp4",
     "desde": 2.98,
-    "modo": "tarjeta"
-   },
-   {
-    "en": 10.87,
-    "dur": 2.1,
-    "src": "hilary/mapas/perfil-sarria-h.mp4",
-    "desde": 11.4,
     "modo": "tarjeta"
    },
    {
@@ -5224,16 +5217,9 @@
    },
    {
     "en": 5.62,
-    "dur": 2.5,
+    "dur": 4.9,
     "src": "hilary/mapas/etapas-sarria.mp4",
     "desde": 1.6,
-    "modo": "mapa"
-   },
-   {
-    "en": 8.24,
-    "dur": 2.28,
-    "src": "hilary/mapas/etapas-sarria.mp4",
-    "desde": 3.92,
     "modo": "mapa"
    },
    {
@@ -8076,16 +8062,9 @@
   "broll": [
    {
     "en": 2.4,
-    "dur": 3.02,
+    "dur": 10.12,
     "src": "hilary/youtube.mp4",
     "desde": 476.74,
-    "modo": "cubrir"
-   },
-   {
-    "en": 5.42,
-    "dur": 7.1,
-    "src": "hilary/youtube.mp4",
-    "desde": 479.8,
     "modo": "cubrir"
    },
    {

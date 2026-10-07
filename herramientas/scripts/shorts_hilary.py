@@ -212,6 +212,19 @@ def construir(tx, spec, outro, idx):
             corte = GANCHO - b["en"]
             b["en"], b["dur"], b["desde"] = GANCHO, round(b["dur"] - corte, 3), round(b["desde"] + corte, 3)
 
+    # Un mismo gráfico partido por un cambio de tramo se une en uno solo:
+    # partido, la tarjeta volvía a entrar y se veía un salto.
+    unidos = []
+    for b in broll:
+        p = unidos[-1] if unidos else None
+        if (p and p["src"] == b["src"] and p["modo"] == b["modo"]
+                and abs(b["en"] - (p["en"] + p["dur"])) < 0.2
+                and abs(b["desde"] - (p["desde"] + p["dur"])) < 0.3):
+            p["dur"] = round(b["en"] + b["dur"] - p["en"], 3)
+        else:
+            unidos.append(b)
+    broll = unidos
+
     # Subtítulos palabra a palabra.
     palabras = []
     for a, b, en in mapa:

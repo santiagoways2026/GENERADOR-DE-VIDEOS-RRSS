@@ -75,7 +75,15 @@ export const Short: React.FC<{ id: string }> = ({ id }) => {
 
       {d.broll.map((b, i) => (
         <Sequence key={`b${i}`} {...tramo(b.en, b.dur)} name={`B-roll ${i + 1}`}>
-          <BRoll src={b.src} desde={b.desde} modo={b.modo} dur={f(b.dur)} />
+          {/* Si enlaza con el anterior, entra en seco: un fundido dejaría ver
+              a Hildary un instante entre los dos. */}
+          <BRoll
+            src={b.src}
+            desde={b.desde}
+            modo={b.modo}
+            dur={f(b.dur)}
+            seguido={i > 0 && b.en - (d.broll[i - 1].en + d.broll[i - 1].dur) < 0.2}
+          />
         </Sequence>
       ))}
 
@@ -143,9 +151,15 @@ const PlanoHabla: React.FC<{ src: string; zoom: number; dur: number }> = ({ src,
   );
 };
 
-const BRoll: React.FC<{ src: string; desde: number; modo: string; dur: number }> = ({ src, desde, modo, dur }) => {
+const BRoll: React.FC<{ src: string; desde: number; modo: string; dur: number; seguido?: boolean }> = ({
+  src,
+  desde,
+  modo,
+  dur,
+  seguido = false,
+}) => {
   const frame = useCurrentFrame();
-  const entra = interpolate(frame, [0, 3], [0, 1], clamp);
+  const entra = seguido ? 1 : interpolate(frame, [0, 3], [0, 1], clamp);
   const video = (style: React.CSSProperties) => (
     <OffthreadVideo src={staticFile(src)} trimBefore={f(desde)} muted style={style} />
   );
