@@ -311,7 +311,7 @@ def shorts():
                      ("100 kilometers is", 93, "for the Compostela.")],
              capas=[cartela("sw-fact-box", frase="To qualify", cerca=153, dur=3.8, ancho=520)]),
 
-        dict(id="03-como-conseguir-compostela", extra=[("You'll find places", 174, 3.0, "yt", 344.5)], titulo=["HOW DO YOU", "ACTUALLY GET THE", "COMPOSTELA?"],
+        dict(id="03-como-conseguir-compostela", extra=[("You'll find places", 174, 3.0, "yt", 344.5), ("Along the way", 167, 3.0, "dji/DJI_20260929081752_0049_D.mp4", 0.3), ("For the final", 170, 2.8, "dji/DJI_20260929090406_0053_D.mp4", 1.0), ("becomes a small", 178.6, 3.0, "dji/DJI_20260929071755_0026_D.mp4", 6.0)], titulo=["HOW DO YOU", "ACTUALLY GET THE", "COMPOSTELA?"],
              tramos=[("To qualify", 153, "pilgrim passport."),
                      ("Along the way", 167, "experience itself."),
                      ("Just remember", 180, "anything has changed.")],
@@ -319,22 +319,22 @@ def shorts():
                     cartela("sw-notice-stamp-credential", frase="For the final", cerca=170, dur=4.0, ancho=880),
                     cartela("sw-card-credential-where", frase="You'll find places", cerca=174, dur=3.6, ancho=900)]),
 
-        dict(id="04-es-dificil", extra=[("You don't need to be", 197, 3.0, "yt", 27.0), ("The good news", 229, 3.0, "yt", 322.2)], titulo=["IS THE CAMINO", "FROM SARRIA", "DIFFICULT?"],
+        dict(id="04-es-dificil", extra=[("You don't need to be", 197, 3.0, "yt", 27.0), ("The good news", 229, 3.0, "yt", 322.2), ("But don't make", 203, 3.2, "dji/DJI_20260929074037_0047_D.mp4", 1.0), ("signposted and", 232, 3.0, "dji/DJI_20260929090353_0052_D.mp4", 0.2), ("very achievable", 243, 3.2, "dji/DJI_20260929073713_0044_D.mp4", 18.0)], titulo=["IS THE CAMINO", "FROM SARRIA", "DIFFICULT?"],
              tramos=[("The short answer", 196, "start to add up."),
                      ("The good news", 229, "huge number of people.")],
              capas=[cartela("sw-card-stages-question", en_src=198, dur=3.6, ancho=980)]),
 
-        dict(id="05-lo-mas-duro", extra=[("waking up the next", 222, 3.0, "yt", 594.6)], titulo=["THE HARDEST PART", "ISN'T WHAT", "YOU THINK"],
+        dict(id="05-lo-mas-duro", extra=[("waking up the next", 222, 3.0, "yt", 594.6), ("and again and again", 226.3, 2.6, "dji/DJI_20260929072513_0035_D.mp4", 2.0)], titulo=["THE HARDEST PART", "ISN'T WHAT", "YOU THINK"],
              tramos=[("Galicia has a lot", 207, "start to add up."),
                      ("That's usually the real", 219, "and again and again.")]),
 
-        dict(id="06-error-zapatillas", titulo=["DON'T MAKE", "THIS SHOE", "MISTAKE"],
+        dict(id="06-error-zapatillas", extra=[("the wrong shoes", 269.6, 2.6, "dji/DJI_20260929073410_0040_D.mp4", 0.2), ("time on day one", 286, 3.2, "dji/DJI_20260929073931_0046_D.mp4", 4.0)], titulo=["DON'T MAKE", "THIS SHOE", "MISTAKE"],
              tramos=[("One of the biggest mistakes", 266, "the wrong shoes."),
                      ("For a route like", 270, "Break them in beforehand."),
                      ("because after 20 kilometers", 302, "notice your shoes.")],
              capas=[cartela("sw-tip-essentials", frase="do not wear them", cerca=283, dur=4.2, ancho=900)]),
 
-        dict(id="07-botas-montana", titulo=["DO YOU NEED", "HIKING BOOTS", "FOR THE CAMINO?"],
+        dict(id="07-botas-montana", extra=[("especially if you're", 293.7, 3.2, "dji/DJI_20260929074051_0048_D.mp4", 2.0)], titulo=["DO YOU NEED", "HIKING BOOTS", "FOR THE CAMINO?"],
              tramos=[("You don't necessarily need heavy", 291, "for hours,"),
                      ("lightweight trekking or hiking", 274, "good grip,"),
                      ("because after 20 kilometers", 302, "notice your shoes.")]),
