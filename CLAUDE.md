@@ -9,7 +9,7 @@ mapas de ruta y gráficos de dato.
 | Carpeta | Qué hay |
 | --- | --- |
 | `video/` | El proyecto Remotion. Aquí se monta y se exporta |
-| `docs/` | La guía de marca oficial, edición 2026 |
+| `docs/` | La guía de marca oficial, edición 2026, y `drive.md` con las carpetas de metraje y recursos en Drive |
 | `herramientas/mapas-vfx/` | Los dos configuradores de mapas animados |
 | `herramientas/motion-kit/` | El kit de cartelas y overlays |
 | `herramientas/scripts/` | Utilidades para preparar metraje |
