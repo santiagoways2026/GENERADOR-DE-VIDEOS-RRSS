@@ -296,7 +296,7 @@ def construir(tx, spec, outro, idx):
 
 def shorts():
     return [
-        dict(id="01-por-que-sarria", extra=[("walking the entire", 80, 3.2, "dji/DJI_20260929071346_0021_D.mp4", 2.0), ("most of us don't", 83, 3.0, "yt", 73.0), ("the minimum distance", 97, 3.4, "dji/DJI_20260929065826_0015_D.mp4", 3.5), ("So starting in Sarria", 102, 3.0, "dji/DJI_20260929071708_0025_D.mp4", 0.5)], titulo=["WHY DOES", "EVERYONE START", "IN SARRIA?"],
+        dict(id="01-por-que-sarria", extra=[("walking the entire", 80, 3.2, "dji/DJI_20260929071346_0021_D.mp4", 2.0), ("most of us don't", 83, 3.0, "dji/DJI_20260929073931_0046_D.mp4", 1.0), ("the minimum distance", 97, 3.4, "dji/DJI_20260929065826_0015_D.mp4", 7.4), ("So starting in Sarria", 102, 3.0, "dji/DJI_20260929071708_0025_D.mp4", 0.5)], titulo=["WHY DOES", "EVERYONE START", "IN SARRIA?"],
              tramos=[("why so many people", 50, "in Sarria."),
                      ("The full Camino", 52, "in France"),
                      ("But walking the entire", 75, "for one trip."),
@@ -305,7 +305,7 @@ def shorts():
              capas=[cartela("sw-fact-pill", frase="That's where Sarria", cerca=86, dur=3.0, ancho=620),
                     cartela("sw-fact-box", frase="also the minimum", cerca=96, dur=3.6, ancho=520)]),
 
-        dict(id="02-km-compostela", extra=[("Not exactly.", 152, 2.2, "yt", 12.5), ("or cycled", 157, 2.4, "yt", 499.8), ("100 kilometers is", 93, 3.0, "yt", 237.5)], titulo=["HOW MANY KM", "FOR THE", "COMPOSTELA?"],
+        dict(id="02-km-compostela", extra=[("Not exactly.", 152, 2.2, "yt", 12.5), ("walked at least", 155, 1.8, "dji/DJI_20260929090421_0054_D.mp4", 0.5), ("or cycled", 157, 2.4, "yt", 499.8), ("100 kilometers is", 93, 3.0, "yt", 237.5), ("the minimum distance", 97, 3.6, "dji/DJI_20260929073439_0041_D.mp4", 0.3)], titulo=["HOW MANY KM", "FOR THE", "COMPOSTELA?"],
              tramos=[("Do I", 146, "in Santiago?"),
                      ("Not exactly.", 152, "at least 200,"),
                      ("100 kilometers is", 93, "for the Compostela.")],

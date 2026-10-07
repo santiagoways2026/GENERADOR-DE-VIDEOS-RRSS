@@ -112,8 +112,8 @@
    {
     "en": 12.93,
     "dur": 3.0,
-    "src": "hilary/youtube.mp4",
-    "desde": 73.0,
+    "src": "dji/DJI_20260929073931_0046_D.mp4",
+    "desde": 1.0,
     "modo": "cubrir"
    },
    {
@@ -127,7 +127,7 @@
     "en": 25.27,
     "dur": 3.4,
     "src": "dji/DJI_20260929065826_0015_D.mp4",
-    "desde": 3.5,
+    "desde": 7.4,
     "modo": "cubrir"
    },
    {
@@ -909,11 +909,25 @@
     "modo": "cubrir"
    },
    {
+    "en": 6.52,
+    "dur": 1.8,
+    "src": "dji/DJI_20260929090421_0054_D.mp4",
+    "desde": 0.5,
+    "modo": "cubrir"
+   },
+   {
     "en": 10.18,
     "dur": 1.72,
     "src": "hilary/mapas/ruta-sarria.mp4",
     "desde": 8.78,
     "modo": "mapa"
+   },
+   {
+    "en": 12.28,
+    "dur": 3.6,
+    "src": "dji/DJI_20260929073439_0041_D.mp4",
+    "desde": 0.3,
+    "modo": "cubrir"
    }
   ],
   "capas": [
