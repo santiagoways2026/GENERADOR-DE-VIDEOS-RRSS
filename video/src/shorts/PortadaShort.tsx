@@ -26,7 +26,9 @@ const CONTORNO = 30;
 export const PortadaShort: React.FC<{ id: string }> = ({ id }) => {
   const d = (portadas as Datos[]).find((x) => x.id === id) as Datos;
   const [uno, dos, tres] = d.lineas;
-  const tam = (t: string, max: number) => Math.min(max, Math.floor(1580 / Math.max(t.length, 6)));
+  // Ancho medio de un carácter de Montserrat 900 en caja mixta: 0,66 em. La
+  // tercera línea cuenta además la vieira.
+  const tam = (t: string, max: number, extra = 0) => Math.min(max, Math.floor(900 / ((t.length + extra) * 0.66)));
 
   return (
     <AbsoluteFill style={{ backgroundColor: brand.green, fontFamily }}>
@@ -60,11 +62,11 @@ export const PortadaShort: React.FC<{ id: string }> = ({ id }) => {
             zIndex: 1,
           }}
         >
-          <span style={{ ...estiloTexto(tam(dos, 140)), color: brand.white }}>{dos}</span>
+          <span style={{ ...estiloTexto(tam(dos, 140, 1.5)), color: brand.white }}>{dos}</span>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-          <Linea texto={tres} tam={tam(tres, 160)} color={paleta.verdeWays} />
-          <Vieira tam={Math.max(120, tam(tres, 160) * 1.05)} />
+          <Linea texto={tres} tam={tam(tres, 160, 3)} color={paleta.verdeWays} />
+          <Vieira tam={tam(tres, 160, 3) * 1.05} />
         </div>
       </Interactive.Div>
     </AbsoluteFill>

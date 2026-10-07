@@ -1,8 +1,8 @@
 [
- {"id": "01-por-que-sarria", "lineas": ["Why does", "everyone start", "in Sarria?"]},
- {"id": "02-km-compostela", "lineas": ["How many km", "for the", "Compostela?"]},
- {"id": "03-como-conseguir-compostela", "lineas": ["How do you", "get the", "Compostela?"]},
- {"id": "04-es-dificil", "lineas": ["Is the Camino", "from Sarria", "difficult?"]},
+ {"id": "01-por-que-sarria", "lineas": ["Why does", "everyone start", "in Sarria?"], "foto": "n1/0C89BB45-9983-4166-B3F4-D068927B106E.jpg"},
+ {"id": "02-km-compostela", "lineas": ["How many km", "for the", "Compostela?"], "foto": "n1/9ed5a174-a359-400b-9326-c31371fd098b.jpg"},
+ {"id": "03-como-conseguir-compostela", "lineas": ["How do you", "get the", "Compostela?"], "foto": "n1/4210715c-197c-4570-ba2e-f4e8cb5a97b6.jpg"},
+ {"id": "04-es-dificil", "lineas": ["Is the Camino", "from Sarria", "difficult?"], "foto": "n1/IMG_5339.jpg"},
  {"id": "05-lo-mas-duro", "lineas": ["The hardest part", "isn't what", "you think"]},
  {"id": "06-error-zapatillas", "lineas": ["Don't make", "this shoe", "mistake"]},
  {"id": "07-botas-montana", "lineas": ["Do you need", "hiking boots", "for the Camino?"]},
