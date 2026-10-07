@@ -378,8 +378,8 @@ def construir(tx, spec, outro, idx):
             c["en"] = round(a_salida(c.pop("en_src")), 3)
         capas.append(c)
 
-    # CTA de suscripción a mitad del short, como en el vídeo largo.
-    if spec.get("cta", True):
+    # CTA de suscripción a mitad del short: fuera, a petición de la marca.
+    if spec.get("cta", False):
         mitad = max(GANCHO + 4, fin_principal * 0.55)
         capas.append(dict(tipo="png", src="hilary/cartelas/sw-subscribe-button.png",
                           en=round(mitad, 3), dur=3.2, ancho=720, cta=True))
@@ -387,8 +387,8 @@ def construir(tx, spec, outro, idx):
     # Cierre común: el final del vídeo largo con sus CTA.
     o = fin_principal
     capas += [
-        dict(tipo="png", src="hilary/cartelas/sw-social-bar.png", en=round(o + 0.3, 3), dur=4.4, ancho=960, cta=True),
-        dict(tipo="png", src="hilary/cartelas/sw-subscribe-button.png", en=round(o + 4.9, 3), dur=3.4, ancho=720, cta=True),
+        # Sin botón de suscribirse: la barra social se queda hasta la etiqueta.
+        dict(tipo="png", src="hilary/cartelas/sw-social-bar.png", en=round(o + 0.3, 3), dur=8.0, ancho=960, cta=True),
         dict(tipo="png", src="hilary/cartelas/sw-tag-light.png", en=round(o + 8.5, 3), dur=total_voz - o - 8.5, ancho=900, cta=True),
     ]
     # Un mapa ya trae su titular y sus datos: la cartela que coincide con él

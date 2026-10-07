@@ -142,14 +142,6 @@
   "capas": [
    {
     "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 18.75,
-    "dur": 3.2,
-    "ancho": 720,
-    "cta": true
-   },
-   {
-    "tipo": "png",
     "src": "hilary/cartelas/sw-fact-box.png",
     "dur": 3.6,
     "ancho": 520,
@@ -159,16 +151,8 @@
     "tipo": "png",
     "src": "hilary/cartelas/sw-social-bar.png",
     "en": 34.39,
-    "dur": 4.4,
+    "dur": 8.0,
     "ancho": 960,
-    "cta": true
-   },
-   {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 38.99,
-    "dur": 3.4,
-    "ancho": 720,
     "cta": true
    },
    {
@@ -784,22 +768,12 @@
     "vol": 0.35
    },
    {
-    "en": 18.75,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
     "en": 24.63,
     "src": "sfx/pop.wav",
     "vol": 0.4
    },
    {
     "en": 34.39,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
-    "en": 38.99,
     "src": "sfx/ding.wav",
     "vol": 0.28
    },
@@ -929,26 +903,10 @@
    },
    {
     "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 9.636,
-    "dur": 3.2,
-    "ancho": 720,
-    "cta": true
-   },
-   {
-    "tipo": "png",
     "src": "hilary/cartelas/sw-social-bar.png",
     "en": 17.82,
-    "dur": 4.4,
+    "dur": 8.0,
     "ancho": 960,
-    "cta": true
-   },
-   {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 22.42,
-    "dur": 3.4,
-    "ancho": 720,
     "cta": true
    },
    {
@@ -1354,17 +1312,7 @@
     "vol": 0.4
    },
    {
-    "en": 9.636,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
     "en": 17.82,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
-    "en": 22.42,
     "src": "sfx/ding.wav",
     "vol": 0.28
    },
@@ -1524,17 +1472,9 @@
    {
     "tipo": "png",
     "src": "hilary/cartelas/sw-notice-stamp-credential.png",
-    "dur": 2.32,
+    "dur": 4.0,
     "ancho": 880,
     "en": 16.06
-   },
-   {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 18.48,
-    "dur": 2.46,
-    "ancho": 720,
-    "cta": true
    },
    {
     "tipo": "png",
@@ -1547,16 +1487,8 @@
     "tipo": "png",
     "src": "hilary/cartelas/sw-social-bar.png",
     "en": 33.9,
-    "dur": 4.4,
+    "dur": 8.0,
     "ancho": 960,
-    "cta": true
-   },
-   {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 38.5,
-    "dur": 3.4,
-    "ancho": 720,
     "cta": true
    },
    {
@@ -2172,22 +2104,12 @@
     "vol": 0.4
    },
    {
-    "en": 18.48,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
     "en": 21.04,
     "src": "sfx/pop.wav",
     "vol": 0.4
    },
    {
     "en": 33.9,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
-    "en": 38.5,
     "src": "sfx/ding.wav",
     "vol": 0.28
    },
@@ -2346,26 +2268,10 @@
    },
    {
     "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 21.896,
-    "dur": 3.2,
-    "ancho": 720,
-    "cta": true
-   },
-   {
-    "tipo": "png",
     "src": "hilary/cartelas/sw-social-bar.png",
     "en": 40.11,
-    "dur": 4.4,
+    "dur": 8.0,
     "ancho": 960,
-    "cta": true
-   },
-   {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 44.71,
-    "dur": 3.4,
-    "ancho": 720,
     "cta": true
    },
    {
@@ -3096,17 +3002,7 @@
     "vol": 0.4
    },
    {
-    "en": 21.896,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
     "en": 40.11,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
-    "en": 44.71,
     "src": "sfx/ding.wav",
     "vol": 0.28
    },
@@ -3222,26 +3118,10 @@
   "capas": [
    {
     "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 11.434,
-    "dur": 3.2,
-    "ancho": 720,
-    "cta": true
-   },
-   {
-    "tipo": "png",
     "src": "hilary/cartelas/sw-social-bar.png",
     "en": 21.09,
-    "dur": 4.4,
+    "dur": 8.0,
     "ancho": 960,
-    "cta": true
-   },
-   {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 25.69,
-    "dur": 3.4,
-    "ancho": 720,
     "cta": true
    },
    {
@@ -3687,17 +3567,7 @@
     "vol": 0.35
    },
    {
-    "en": 11.434,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
     "en": 21.09,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
-    "en": 25.69,
     "src": "sfx/ding.wav",
     "vol": 0.28
    },
@@ -3835,14 +3705,6 @@
   "capas": [
    {
     "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 15.686,
-    "dur": 1.634,
-    "ancho": 720,
-    "cta": true
-   },
-   {
-    "tipo": "png",
     "src": "hilary/cartelas/sw-tip-essentials.png",
     "dur": 4.2,
     "ancho": 900,
@@ -3852,16 +3714,8 @@
     "tipo": "png",
     "src": "hilary/cartelas/sw-social-bar.png",
     "en": 28.82,
-    "dur": 4.4,
+    "dur": 8.0,
     "ancho": 960,
-    "cta": true
-   },
-   {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 33.42,
-    "dur": 3.4,
-    "ancho": 720,
     "cta": true
    },
    {
@@ -4407,22 +4261,12 @@
     "vol": 0.35
    },
    {
-    "en": 15.686,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
     "en": 17.42,
     "src": "sfx/pop.wav",
     "vol": 0.4
    },
    {
     "en": 28.82,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
-    "en": 33.42,
     "src": "sfx/ding.wav",
     "vol": 0.28
    },
@@ -4558,26 +4402,10 @@
   "capas": [
    {
     "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 13.051,
-    "dur": 3.2,
-    "ancho": 720,
-    "cta": true
-   },
-   {
-    "tipo": "png",
     "src": "hilary/cartelas/sw-social-bar.png",
     "en": 24.03,
-    "dur": 4.4,
+    "dur": 8.0,
     "ancho": 960,
-    "cta": true
-   },
-   {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 28.63,
-    "dur": 3.4,
-    "ancho": 720,
     "cta": true
    },
    {
@@ -5053,17 +4881,7 @@
     "vol": 0.35
    },
    {
-    "en": 13.051,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
     "en": 24.03,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
-    "en": 28.63,
     "src": "sfx/ding.wav",
     "vol": 0.28
    },
@@ -5267,16 +5085,8 @@
     "tipo": "png",
     "src": "hilary/cartelas/sw-social-bar.png",
     "en": 33.23,
-    "dur": 4.4,
+    "dur": 8.0,
     "ancho": 960,
-    "cta": true
-   },
-   {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 37.83,
-    "dur": 3.4,
-    "ancho": 720,
     "cta": true
    },
    {
@@ -5847,11 +5657,6 @@
     "vol": 0.28
    },
    {
-    "en": 37.83,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
     "en": 41.43,
     "src": "sfx/ding.wav",
     "vol": 0.28
@@ -5947,14 +5752,6 @@
    },
    {
     "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 13.101,
-    "dur": 3.2,
-    "ancho": 720,
-    "cta": true
-   },
-   {
-    "tipo": "png",
     "src": "hilary/cartelas/sw-tip-card.png",
     "dur": 3.5,
     "ancho": 900,
@@ -5964,16 +5761,8 @@
     "tipo": "png",
     "src": "hilary/cartelas/sw-social-bar.png",
     "en": 24.12,
-    "dur": 4.4,
+    "dur": 8.0,
     "ancho": 960,
-    "cta": true
-   },
-   {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 28.72,
-    "dur": 3.4,
-    "ancho": 720,
     "cta": true
    },
    {
@@ -6449,22 +6238,12 @@
     "vol": 0.4
    },
    {
-    "en": 13.101,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
     "en": 17.66,
     "src": "sfx/pop.wav",
     "vol": 0.4
    },
    {
     "en": 24.12,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
-    "en": 28.72,
     "src": "sfx/ding.wav",
     "vol": 0.28
    },
@@ -6600,26 +6379,10 @@
    },
    {
     "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 19.943,
-    "dur": 3.2,
-    "ancho": 720,
-    "cta": true
-   },
-   {
-    "tipo": "png",
     "src": "hilary/cartelas/sw-social-bar.png",
     "en": 36.56,
-    "dur": 4.4,
+    "dur": 8.0,
     "ancho": 960,
-    "cta": true
-   },
-   {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 41.16,
-    "dur": 3.4,
-    "ancho": 720,
     "cta": true
    },
    {
@@ -7205,17 +6968,7 @@
     "vol": 0.4
    },
    {
-    "en": 19.943,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
     "en": 36.56,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
-    "en": 41.16,
     "src": "sfx/ding.wav",
     "vol": 0.28
    },
@@ -7346,26 +7099,10 @@
   "capas": [
    {
     "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 17.787,
-    "dur": 3.2,
-    "ancho": 720,
-    "cta": true
-   },
-   {
-    "tipo": "png",
     "src": "hilary/cartelas/sw-social-bar.png",
     "en": 32.64,
-    "dur": 4.4,
+    "dur": 8.0,
     "ancho": 960,
-    "cta": true
-   },
-   {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 37.24,
-    "dur": 3.4,
-    "ancho": 720,
     "cta": true
    },
    {
@@ -7876,17 +7613,7 @@
     "vol": 0.35
    },
    {
-    "en": 17.787,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
     "en": 32.64,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
-    "en": 37.24,
     "src": "sfx/ding.wav",
     "vol": 0.28
    },
@@ -8035,14 +7762,6 @@
    },
    {
     "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 16.737,
-    "dur": 3.2,
-    "ancho": 720,
-    "cta": true
-   },
-   {
-    "tipo": "png",
     "src": "hilary/cartelas/sw-tag-light.png",
     "dur": 4.0,
     "ancho": 900,
@@ -8052,16 +7771,8 @@
     "tipo": "png",
     "src": "hilary/cartelas/sw-social-bar.png",
     "en": 30.73,
-    "dur": 4.4,
+    "dur": 8.0,
     "ancho": 960,
-    "cta": true
-   },
-   {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 35.33,
-    "dur": 3.4,
-    "ancho": 720,
     "cta": true
    },
    {
@@ -8647,22 +8358,12 @@
     "vol": 0.4
    },
    {
-    "en": 16.737,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
     "en": 22.54,
     "src": "sfx/pop.wav",
     "vol": 0.4
    },
    {
     "en": 30.73,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
-    "en": 35.33,
     "src": "sfx/ding.wav",
     "vol": 0.28
    },
@@ -8809,26 +8510,10 @@
    },
    {
     "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 10.967,
-    "dur": 3.2,
-    "ancho": 720,
-    "cta": true
-   },
-   {
-    "tipo": "png",
     "src": "hilary/cartelas/sw-social-bar.png",
     "en": 20.24,
-    "dur": 4.4,
+    "dur": 8.0,
     "ancho": 960,
-    "cta": true
-   },
-   {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 24.84,
-    "dur": 3.4,
-    "ancho": 720,
     "cta": true
    },
    {
@@ -9304,17 +8989,7 @@
     "vol": 0.4
    },
    {
-    "en": 10.967,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
     "en": 20.24,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
-    "en": 24.84,
     "src": "sfx/ding.wav",
     "vol": 0.28
    },
@@ -9416,17 +9091,9 @@
    {
     "tipo": "png",
     "src": "hilary/cartelas/sw-card-accommodation-hotel.png",
-    "dur": 2.212,
+    "dur": 4.2,
     "ancho": 980,
     "en": 13.17
-   },
-   {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 15.482,
-    "dur": 3.2,
-    "ancho": 720,
-    "cta": true
    },
    {
     "tipo": "png",
@@ -9439,16 +9106,8 @@
     "tipo": "png",
     "src": "hilary/cartelas/sw-social-bar.png",
     "en": 28.45,
-    "dur": 4.4,
+    "dur": 8.0,
     "ancho": 960,
-    "cta": true
-   },
-   {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 33.05,
-    "dur": 3.4,
-    "ancho": 720,
     "cta": true
    },
    {
@@ -9944,22 +9603,12 @@
     "vol": 0.4
    },
    {
-    "en": 15.482,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
     "en": 19.45,
     "src": "sfx/pop.wav",
     "vol": 0.4
    },
    {
     "en": 28.45,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
-    "en": 33.05,
     "src": "sfx/ding.wav",
     "vol": 0.28
    },
@@ -10124,16 +9773,8 @@
     "tipo": "png",
     "src": "hilary/cartelas/sw-social-bar.png",
     "en": 41.93,
-    "dur": 4.4,
+    "dur": 8.0,
     "ancho": 960,
-    "cta": true
-   },
-   {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 46.53,
-    "dur": 3.4,
-    "ancho": 720,
     "cta": true
    },
    {
@@ -10859,11 +10500,6 @@
     "vol": 0.28
    },
    {
-    "en": 46.53,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
     "en": 50.13,
     "src": "sfx/ding.wav",
     "vol": 0.28
@@ -11010,17 +10646,9 @@
    {
     "tipo": "png",
     "src": "hilary/cartelas/sw-card-season-invierno.png",
-    "dur": 3.405,
+    "dur": 3.6,
     "ancho": 620,
     "en": 7.5
-   },
-   {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 11.005,
-    "dur": 3.2,
-    "ancho": 720,
-    "cta": true
    },
    {
     "tipo": "png",
@@ -11033,16 +10661,8 @@
     "tipo": "png",
     "src": "hilary/cartelas/sw-social-bar.png",
     "en": 20.31,
-    "dur": 4.4,
+    "dur": 8.0,
     "ancho": 960,
-    "cta": true
-   },
-   {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 24.91,
-    "dur": 3.4,
-    "ancho": 720,
     "cta": true
    },
    {
@@ -11488,22 +11108,12 @@
     "vol": 0.4
    },
    {
-    "en": 11.005,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
     "en": 15.33,
     "src": "sfx/pop.wav",
     "vol": 0.4
    },
    {
     "en": 20.31,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
-    "en": 24.91,
     "src": "sfx/ding.wav",
     "vol": 0.28
    },
@@ -11628,14 +11238,6 @@
   "capas": [
    {
     "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 18.914,
-    "dur": 3.2,
-    "ancho": 720,
-    "cta": true
-   },
-   {
-    "tipo": "png",
     "src": "hilary/cartelas/sw-quote-band.png",
     "dur": 4.0,
     "ancho": 960,
@@ -11645,16 +11247,8 @@
     "tipo": "png",
     "src": "hilary/cartelas/sw-social-bar.png",
     "en": 34.69,
-    "dur": 4.4,
+    "dur": 8.0,
     "ancho": 960,
-    "cta": true
-   },
-   {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 39.29,
-    "dur": 3.4,
-    "ancho": 720,
     "cta": true
    },
    {
@@ -12260,22 +11854,12 @@
     "vol": 0.35
    },
    {
-    "en": 18.914,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
     "en": 27.24,
     "src": "sfx/pop.wav",
     "vol": 0.4
    },
    {
     "en": 34.69,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
-    "en": 39.29,
     "src": "sfx/ding.wav",
     "vol": 0.28
    },
@@ -12434,26 +12018,10 @@
    },
    {
     "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 13.849,
-    "dur": 3.2,
-    "ancho": 720,
-    "cta": true
-   },
-   {
-    "tipo": "png",
     "src": "hilary/cartelas/sw-social-bar.png",
     "en": 25.48,
-    "dur": 4.4,
+    "dur": 8.0,
     "ancho": 960,
-    "cta": true
-   },
-   {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 30.08,
-    "dur": 3.4,
-    "ancho": 720,
     "cta": true
    },
    {
@@ -12959,17 +12527,7 @@
     "vol": 0.4
    },
    {
-    "en": 13.849,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
     "en": 25.48,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
-    "en": 30.08,
     "src": "sfx/ding.wav",
     "vol": 0.28
    },
@@ -13067,26 +12625,10 @@
   "capas": [
    {
     "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 9.471,
-    "dur": 3.2,
-    "ancho": 720,
-    "cta": true
-   },
-   {
-    "tipo": "png",
     "src": "hilary/cartelas/sw-social-bar.png",
     "en": 17.52,
-    "dur": 4.4,
+    "dur": 8.0,
     "ancho": 960,
-    "cta": true
-   },
-   {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 22.12,
-    "dur": 3.4,
-    "ancho": 720,
     "cta": true
    },
    {
@@ -13482,17 +13024,7 @@
     "vol": 0.35
    },
    {
-    "en": 9.471,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
     "en": 17.52,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
-    "en": 22.12,
     "src": "sfx/ding.wav",
     "vol": 0.28
    },
@@ -13584,26 +13116,10 @@
   "capas": [
    {
     "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 11.022,
-    "dur": 3.2,
-    "ancho": 720,
-    "cta": true
-   },
-   {
-    "tipo": "png",
     "src": "hilary/cartelas/sw-social-bar.png",
     "en": 20.34,
-    "dur": 4.4,
+    "dur": 8.0,
     "ancho": 960,
-    "cta": true
-   },
-   {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 24.94,
-    "dur": 3.4,
-    "ancho": 720,
     "cta": true
    },
    {
@@ -13999,17 +13515,7 @@
     "vol": 0.35
    },
    {
-    "en": 11.022,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
     "en": 20.34,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
-    "en": 24.94,
     "src": "sfx/ding.wav",
     "vol": 0.28
    },
@@ -14139,16 +13645,8 @@
     "tipo": "png",
     "src": "hilary/cartelas/sw-social-bar.png",
     "en": 30.34,
-    "dur": 4.4,
+    "dur": 8.0,
     "ancho": 960,
-    "cta": true
-   },
-   {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 34.94,
-    "dur": 3.4,
-    "ancho": 720,
     "cta": true
    },
    {
@@ -14689,11 +14187,6 @@
     "vol": 0.28
    },
    {
-    "en": 34.94,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
     "en": 38.54,
     "src": "sfx/ding.wav",
     "vol": 0.28
@@ -14781,26 +14274,10 @@
    },
    {
     "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 14.52,
-    "dur": 3.2,
-    "ancho": 720,
-    "cta": true
-   },
-   {
-    "tipo": "png",
     "src": "hilary/cartelas/sw-social-bar.png",
     "en": 26.7,
-    "dur": 4.4,
+    "dur": 8.0,
     "ancho": 960,
-    "cta": true
-   },
-   {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-subscribe-button.png",
-    "en": 31.3,
-    "dur": 3.4,
-    "ancho": 720,
     "cta": true
    },
    {
@@ -15361,17 +14838,7 @@
     "vol": 0.4
    },
    {
-    "en": 14.52,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
     "en": 26.7,
-    "src": "sfx/ding.wav",
-    "vol": 0.28
-   },
-   {
-    "en": 31.3,
     "src": "sfx/ding.wav",
     "vol": 0.28
    },
