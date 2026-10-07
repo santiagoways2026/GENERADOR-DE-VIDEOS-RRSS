@@ -11,9 +11,8 @@ import {
   useCurrentFrame,
 } from "remotion";
 import "../fuentes";
-import { brand, easeOut, fontFamily, fps, margin } from "../brand/theme";
+import { brand, easeOut, fontFamily, fps, margin, paleta } from "../brand/theme";
 import { Cartela } from "../componentes/Cartela";
-import { Logo } from "../componentes/Logo";
 import { Cierre } from "../escenas/Cierre";
 import { Subtitulos } from "./Subtitulos";
 import datos from "./shorts.json";
@@ -62,7 +61,7 @@ export const Short: React.FC<{ id: string }> = ({ id }) => {
   const finVoz = f(d.cierre.en);
 
   return (
-    <AbsoluteFill style={{ backgroundColor: brand.forest, fontFamily }}>
+    <AbsoluteFill style={{ backgroundColor: paleta.verdeWays, fontFamily }}>
       {/* Hildary hablando, cortada y pegada del vídeo limpio con su propio
           audio: imagen y voz salen del mismo clip, así que no pueden
           descuadrarse. El B-roll va encima y la voz sigue sonando debajo.
@@ -92,21 +91,13 @@ export const Short: React.FC<{ id: string }> = ({ id }) => {
         <Gancho titulo={d.titulo} acento={d.acento} src={d.gancho.src} />
       </Sequence>
 
-      {/* La marca y los subtítulos acompañan toda la pieza, gancho incluido. */}
-      <Sequence durationInFrames={finVoz} name="Marca">
-        <Logo
-          variante="blanco"
-          ancho={200}
-          style={{ position: "absolute", left: SEGURA.izquierda, top: 140, opacity: 0.95 }}
-        />
-      </Sequence>
-
+      {/* Los subtítulos acompañan toda la pieza, gancho incluido. */}
       <Sequence durationInFrames={finVoz} name="Subtítulos">
-        <Subtitulos palabras={d.palabras} />
+        <Subtitulos palabras={d.palabras} soloVerde />
       </Sequence>
 
       <Sequence from={finVoz} durationInFrames={total - finVoz} name="Cierre">
-        <Cierre duracion={total - finVoz} />
+        <Cierre duracion={total - finVoz} fondo={paleta.verdeWays} />
       </Sequence>
 
       {/* Música de fondo y efectos. La voz no va aquí: sale de cada plano. */}
@@ -166,7 +157,7 @@ const BRoll: React.FC<{ src: string; desde: number; modo: string; dur: number }>
     // todo queda entre y 250 y 1240 y a la izquierda de los botones.
     const ESCALA = 0.66;
     return (
-      <AbsoluteFill style={{ opacity: entra, backgroundColor: brand.forestDeep }}>
+      <AbsoluteFill style={{ opacity: entra, backgroundColor: paleta.verdeWays }}>
         {video({ width: "100%", height: "100%", objectFit: "cover", filter: "blur(40px)", scale: 1.25, opacity: 0.7 })}
         <div
           style={{
@@ -177,7 +168,7 @@ const BRoll: React.FC<{ src: string; desde: number; modo: string; dur: number }>
             height: 1700 * ESCALA,
             overflow: "hidden",
             borderRadius: 18,
-            boxShadow: "0 24px 48px rgba(14, 44, 31, 0.5)",
+            boxShadow: "0 24px 48px rgba(46, 46, 45, 0.3)",
             translate: `0px ${interpolate(frame, [0, 12], [24, 0], { ...clamp, easing: salida })}px`,
           }}
         >
@@ -190,9 +181,9 @@ const BRoll: React.FC<{ src: string; desde: number; modo: string; dur: number }>
   if (modo === "tarjeta") {
     // Gráfico horizontal: encajado entero sobre una versión desenfocada de sí mismo.
     return (
-      <AbsoluteFill style={{ opacity: entra, backgroundColor: brand.forest }}>
+      <AbsoluteFill style={{ opacity: entra, backgroundColor: paleta.verdeWays }}>
         {video({ width: "100%", height: "100%", objectFit: "cover", filter: "blur(36px)", scale: 1.2 })}
-        <AbsoluteFill style={{ backgroundColor: "rgba(14, 44, 31, 0.45)" }} />
+        <AbsoluteFill style={{ backgroundColor: "rgba(46, 46, 45, 0.3)" }} />
         {/* Encajado entero por encima de y 958, donde no llegan los botones. */}
         <AbsoluteFill style={{ alignItems: "center", paddingTop: 410 }}>
           <div
@@ -200,7 +191,7 @@ const BRoll: React.FC<{ src: string; desde: number; modo: string; dur: number }>
               width: 960,
               borderRadius: 16,
               overflow: "hidden",
-              boxShadow: "0 24px 48px rgba(14, 44, 31, 0.45)",
+              boxShadow: "0 24px 48px rgba(46, 46, 45, 0.3)",
               translate: `0px ${interpolate(frame, [0, 12], [24, 0], { ...clamp, easing: salida })}px`,
             }}
           >
@@ -239,7 +230,7 @@ const CartelaPng: React.FC<{ src: string; ancho: number; dur: number }> = ({ src
           width: Math.min(ancho, SEGURA.derecha - SEGURA.izquierda),
           height: "auto",
           clipPath: `inset(0 ${derecha}% 0 ${izquierda}%)`,
-          filter: "drop-shadow(0 10px 22px rgba(14, 44, 31, 0.35))",
+          filter: "drop-shadow(0 10px 22px rgba(46, 46, 45, 0.25))",
         }}
       />
     </AbsoluteFill>
@@ -255,7 +246,7 @@ const ExpertoSiCabe: React.FC<{ d: DatosShort }> = ({ d }) => {
   if (!libre || brollEncima) return null;
   return (
     <Sequence from={f(a)} durationInFrames={f(b - a)} name="Camino Expert">
-      <Cartela principal="Camino Expert" secundaria="French Way specialist" desde={0} top={SEGURA.arriba} />
+      <Cartela principal="Camino Expert" secundaria="French Way specialist" desde={0} top={SEGURA.arriba} tinta={paleta.grafito} />
     </Sequence>
   );
 };
@@ -272,7 +263,8 @@ const Gancho: React.FC<{ titulo: string[]; acento: number; src: string }> = ({ t
   return (
     <AbsoluteFill
       style={{
-        background: `radial-gradient(120% 80% at 50% 30%, ${brand.greenDark} 0%, ${brand.forest} 55%, ${brand.forestDeep} 100%)`,
+        // Paleta 2026: fondo blanco, titular en grafito y la línea clave en verde Ways.
+        backgroundColor: paleta.blanco,
       }}
     >
       <Interactive.Div
@@ -298,9 +290,12 @@ const Gancho: React.FC<{ titulo: string[]; acento: number; src: string }> = ({ t
               fontWeight: 900,
               letterSpacing: "-0.02em",
               textTransform: "uppercase",
-              color: i === acento ? brand.lime : brand.white,
+              color: i === acento ? brand.white : paleta.grafito,
+              backgroundColor: i === acento ? paleta.verdeWays : "transparent",
+              padding: i === acento ? "2px 20px 8px" : 0,
+              borderRadius: 10,
               whiteSpace: "nowrap",
-              textShadow: "0 6px 24px rgba(14, 44, 31, 0.5)",
+              textShadow: "0 6px 24px rgba(46, 46, 45, 0.3)",
               clipPath: `inset(0 ${interpolate(frame, [i * 4, i * 4 + 12], [100, 0], { ...clamp, easing: salida })}% 0 0)`,
             }}
           >
