@@ -258,6 +258,8 @@ def ritmo(broll, cortes, fin, idx):
             broll.append(dict(en=round(a, 3), dur=round(z - a, 3), src=src, desde=1.0, modo="cubrir", prio=1))
         broll.sort(key=lambda b: b["en"])
 
+    sin_pellizcos(broll)
+    broll = [b for b in broll if b["dur"] >= 1.0]
     for _ in range(20):
         broll.sort(key=lambda b: b["en"])
         cambio = False
@@ -290,6 +292,51 @@ def ritmo(broll, cortes, fin, idx):
         if not cambio:
             break
     return broll
+
+
+# Cortes de plano del vídeo de YouTube (detección de escena, umbral 0,3).
+CORTES_YT = json.load(open(Path(__file__).with_name("cortes_youtube.json")))
+PELLIZCO = 0.7
+
+
+def sin_pellizcos(broll):
+    """Un trozo del vídeo largo que empieza o acaba con menos de PELLIZCO
+    segundos de otra toma se desplaza dentro de su tramo de stock para que
+    ese cambio no se vea: era un parpadeo de un plano distinto."""
+    for b in broll:
+        if b["src"] != YT:
+            continue
+        largo = b["dur"] * b.get("vel", 1)
+        tramo = next(((sa, sb) for sa, sb in STOCK if sa - 0.05 <= b["desde"] <= sb), None)
+        if not tramo:
+            continue
+        for _ in range(3):
+            s0, s1 = b["desde"], b["desde"] + largo
+            dentro = [c for c in CORTES_YT if s0 + 0.05 < c < s1 - 0.05]
+            cola = [c for c in dentro if s1 - c < PELLIZCO]
+            cabeza = [c for c in dentro if c - s0 < PELLIZCO]
+            if cola:
+                nuevo = b["desde"] - (s1 - cola[0]) - 0.04
+            elif cabeza:
+                nuevo = b["desde"] + (cabeza[-1] - s0) + 0.04
+            else:
+                break
+            if tramo[0] <= nuevo and nuevo + largo <= tramo[1]:
+                b["desde"] = round(nuevo, 3)
+                continue
+            # No cabe desplazarlo: se recorta en el corte y el hueco lo cubre
+            # el ritmo. Sin margen para volver a crecer hacia el pellizco.
+            vel = b.get("vel", 1)
+            if cola:
+                largo = cola[0] - 0.04 - s0
+                b["dur"] = round(largo / vel, 3)
+            else:
+                quita = cabeza[-1] + 0.04 - s0
+                b["desde"], b["en"] = round(b["desde"] + quita, 3), round(b["en"] + quita / vel, 3)
+                largo -= quita
+                b["dur"] = round(largo / vel, 3)
+            b["max_src"] = round(largo, 3)
+            break
 
 
 # --------------------------------------------------------------------------

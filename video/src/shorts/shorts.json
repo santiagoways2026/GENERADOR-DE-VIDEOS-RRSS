@@ -1441,7 +1441,7 @@
     "en": 21.04,
     "dur": 3.48,
     "src": "hilary/youtube.mp4",
-    "desde": 344.5,
+    "desde": 345.24,
     "modo": "cubrir",
     "vel": 0.862
    },
@@ -2231,7 +2231,7 @@
     "en": 22.69,
     "dur": 3.04,
     "src": "hilary/youtube.mp4",
-    "desde": 322.2,
+    "desde": 321.827,
     "modo": "cubrir",
     "vel": 0.987
    },
@@ -5023,16 +5023,16 @@
    },
    {
     "en": 5.62,
-    "dur": 6.5,
+    "dur": 4.9,
     "src": "hilary/mapas/etapas-sarria.mp4",
     "desde": 1.6,
     "modo": "mapa"
    },
    {
-    "en": 12.12,
-    "dur": 2.5,
+    "en": 12.824,
+    "dur": 1.796,
     "src": "hilary/youtube.mp4",
-    "desde": 339.6,
+    "desde": 340.107,
     "modo": "cubrir",
     "vel": 0.72
    },
@@ -5048,7 +5048,8 @@
     "dur": 4.32,
     "src": "hilary/youtube.mp4",
     "desde": 360.7,
-    "modo": "cubrir"
+    "modo": "cubrir",
+    "vel": 0.932
    },
    {
     "en": 22.84,
@@ -5074,6 +5075,13 @@
    }
   ],
   "capas": [
+   {
+    "tipo": "png",
+    "src": "hilary/cartelas/sw-stage-02-portomarin-palas.png",
+    "dur": 2.48,
+    "ancho": 620,
+    "en": 10.62
+   },
    {
     "tipo": "png",
     "src": "hilary/cartelas/sw-social-bar.png",
@@ -5645,6 +5653,11 @@
     "vol": 0.35
    },
    {
+    "en": 10.62,
+    "src": "sfx/pop.wav",
+    "vol": 0.4
+   },
+   {
     "en": 33.23,
     "src": "sfx/ding.wav",
     "vol": 0.28
@@ -5656,6 +5669,11 @@
    },
    {
     "en": 2.1999999999999997,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 12.624,
     "src": "sfx/whoosh-corto.wav",
     "vol": 0.22
    },
@@ -8468,7 +8486,7 @@
     "en": 2.4,
     "dur": 3.08,
     "src": "hilary/youtube.mp4",
-    "desde": 476.74,
+    "desde": 476.44,
     "modo": "cubrir"
    },
    {
@@ -8480,16 +8498,16 @@
    },
    {
     "en": 9.76,
-    "dur": 3.12,
+    "dur": 3.793,
     "src": "dji/DJI_20260929061142_0014_D.mp4",
     "desde": 18.0,
     "modo": "cubrir"
    },
    {
-    "en": 12.88,
-    "dur": 7.06,
+    "en": 13.553,
+    "dur": 6.387,
     "src": "hilary/youtube.mp4",
-    "desde": 497.6,
+    "desde": 498.273,
     "modo": "cubrir"
    }
   ],
@@ -9737,7 +9755,8 @@
     "dur": 10.24,
     "src": "hilary/youtube.mp4",
     "desde": 589.6,
-    "modo": "cubrir"
+    "modo": "cubrir",
+    "vel": 0.976
    }
   ],
   "capas": [
@@ -11204,7 +11223,7 @@
     "en": 12.46,
     "dur": 3.0,
     "src": "hilary/youtube.mp4",
-    "desde": 344.5,
+    "desde": 345.24,
     "modo": "cubrir"
    },
    {
@@ -13614,15 +13633,14 @@
    },
    {
     "en": 16.22,
-    "dur": 4.04,
+    "dur": 2.36,
     "src": "hilary/youtube.mp4",
     "desde": 548.6,
-    "modo": "cubrir",
-    "vel": 0.743
+    "modo": "cubrir"
    },
    {
-    "en": 20.26,
-    "dur": 2.7,
+    "en": 18.58,
+    "dur": 4.38,
     "src": "dji/IMG_5440.mp4",
     "desde": 0.2,
     "modo": "cubrir"
@@ -14278,7 +14296,8 @@
     "dur": 7.27,
     "src": "hilary/youtube.mp4",
     "desde": 19.07,
-    "modo": "cubrir"
+    "modo": "cubrir",
+    "vel": 0.925
    }
   ],
   "capas": [
