@@ -5277,6 +5277,13 @@
     "src": "hilary/mapas/etapas-sarria.mp4",
     "desde": 12.2,
     "modo": "mapa"
+   },
+   {
+    "en": 30.92,
+    "dur": 2.01,
+    "src": "dji/IMG_5542.mp4",
+    "desde": 0.3,
+    "modo": "cubrir"
    }
   ],
   "capas": [
@@ -5916,6 +5923,11 @@
    },
    {
     "en": 11.92,
+    "src": "sfx/whoosh-corto.wav",
+    "vol": 0.22
+   },
+   {
+    "en": 30.720000000000002,
     "src": "sfx/whoosh-corto.wav",
     "vol": 0.22
    },
@@ -6608,10 +6620,38 @@
     "modo": "cubrir"
    },
    {
+    "en": 12.2,
+    "dur": 4.1,
+    "src": "dji/IMG_5543.mp4",
+    "desde": 2.0,
+    "modo": "cubrir"
+   },
+   {
     "en": 16.4,
     "dur": 5.8,
     "src": "hilary/youtube.mp4",
     "desde": 414.1,
+    "modo": "cubrir"
+   },
+   {
+    "en": 22.22,
+    "dur": 3.4,
+    "src": "dji/IMG_5543.mp4",
+    "desde": 14.0,
+    "modo": "cubrir"
+   },
+   {
+    "en": 30.18,
+    "dur": 1.8,
+    "src": "dji/IMG_5531.mp4",
+    "desde": 2.0,
+    "modo": "cubrir"
+   },
+   {
+    "en": 32.14,
+    "dur": 3.0,
+    "src": "dji/IMG_5520.mp4",
+    "desde": 0.5,
     "modo": "cubrir"
    }
   ],
@@ -7262,7 +7302,7 @@
     "vol": 0.22
    },
    {
-    "en": 16.2,
+    "en": 29.98,
     "src": "sfx/whoosh-corto.wav",
     "vol": 0.22
    },
@@ -7343,6 +7383,20 @@
     "dur": 10.42,
     "src": "hilary/youtube.mp4",
     "desde": 440.48,
+    "modo": "cubrir"
+   },
+   {
+    "en": 13.36,
+    "dur": 3.0,
+    "src": "dji/IMG_5198.mp4",
+    "desde": 0.2,
+    "modo": "cubrir"
+   },
+   {
+    "en": 16.88,
+    "dur": 3.0,
+    "src": "dji/IMG_5198.mp4",
+    "desde": 3.2,
     "modo": "cubrir"
    },
    {
@@ -9436,8 +9490,8 @@
    {
     "en": 16.31,
     "dur": 2.3,
-    "src": "dji/DJI_20260929083455_0050_D.mp4",
-    "desde": 1.0,
+    "src": "dji/IMG_5440.mp4",
+    "desde": 0.2,
     "modo": "cubrir"
    },
    {
@@ -14197,8 +14251,8 @@
    {
     "en": 20.26,
     "dur": 2.6,
-    "src": "dji/DJI_20260929083455_0050_D.mp4",
-    "desde": 1.0,
+    "src": "dji/IMG_5440.mp4",
+    "desde": 0.2,
     "modo": "cubrir"
    },
    {
