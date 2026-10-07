@@ -103,6 +103,13 @@
     "modo": "mapa"
    },
    {
+    "en": 8.31,
+    "dur": 3.2,
+    "src": "dji/DJI_20260929071346_0021_D.mp4",
+    "desde": 2.0,
+    "modo": "cubrir"
+   },
+   {
     "en": 12.93,
     "dur": 3.0,
     "src": "hilary/youtube.mp4",
@@ -117,10 +124,17 @@
     "modo": "mapa"
    },
    {
+    "en": 25.27,
+    "dur": 3.4,
+    "src": "dji/DJI_20260929065826_0015_D.mp4",
+    "desde": 3.5,
+    "modo": "cubrir"
+   },
+   {
     "en": 30.57,
     "dur": 3.0,
-    "src": "hilary/youtube.mp4",
-    "desde": 27.0,
+    "src": "dji/DJI_20260929071708_0025_D.mp4",
+    "desde": 0.5,
     "modo": "cubrir"
    }
   ],
@@ -795,11 +809,6 @@
    },
    {
     "en": 5.5,
-    "src": "sfx/whoosh-corto.wav",
-    "vol": 0.22
-   },
-   {
-    "en": 12.73,
     "src": "sfx/whoosh-corto.wav",
     "vol": 0.22
    },

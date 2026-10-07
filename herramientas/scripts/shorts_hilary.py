@@ -189,7 +189,9 @@ def construir(tx, spec, outro, idx):
                 return en
         return mapa[-1][2]
 
-    # B-roll extra por tema, anclado a la frase que ilustra. Si pisa un
+    # B-roll extra por tema, anclado a la frase que ilustra. Los clips "dji/"
+    # son metraje propio del Camino (solo de la carpeta Brutos: las de "Short N"
+    # son Paula hablando a cámara y no valen como recurso). Si pisa un
     # B-roll que ya venía del vídeo largo, gana el del vídeo largo.
     for frase, cerca, dur, src, desde in spec.get("extra", []):
         en = round(a_salida(tx.en(frase, cerca)), 3)
@@ -294,7 +296,7 @@ def construir(tx, spec, outro, idx):
 
 def shorts():
     return [
-        dict(id="01-por-que-sarria", extra=[("most of us don't", 83, 3.0, "yt", 73.0), ("So starting in Sarria", 102, 3.0, "yt", 27.0)], titulo=["WHY DOES", "EVERYONE START", "IN SARRIA?"],
+        dict(id="01-por-que-sarria", extra=[("walking the entire", 80, 3.2, "dji/DJI_20260929071346_0021_D.mp4", 2.0), ("most of us don't", 83, 3.0, "yt", 73.0), ("the minimum distance", 97, 3.4, "dji/DJI_20260929065826_0015_D.mp4", 3.5), ("So starting in Sarria", 102, 3.0, "dji/DJI_20260929071708_0025_D.mp4", 0.5)], titulo=["WHY DOES", "EVERYONE START", "IN SARRIA?"],
              tramos=[("why so many people", 50, "in Sarria."),
                      ("The full Camino", 52, "in France"),
                      ("But walking the entire", 75, "for one trip."),
