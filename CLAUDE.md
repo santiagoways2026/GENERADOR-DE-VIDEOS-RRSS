@@ -113,6 +113,24 @@ python3 herramientas/scripts/catalogar.py bruto.mp4 hoja.jpg   # verlo de un vis
 Los planos recortados viven en `video/public/brutos/`. Los brutos completos no
 entran en el repositorio: pesan y se sustituyen a menudo.
 
+## Fotos y metraje propio
+
+Fotos para portadas y piezas, por orden de preferencia (carpetas de Drive
+públicas, se bajan con `gdown`):
+
+1. Fotos propias: `14Zt6wd_1ctJq2x__1bvvPulmDBHdmd3U`. Primera opción.
+2. Fotos de clientes: `1FuBc-gAoj-eQj_Dk6-wC1UTtS1yLDHnM`.
+3. Stock: `1aSS8NGQ7F8pD_RK4zs72qzClRqlvGqap`. Solo si hace falta y tiene sentido.
+
+Metraje propio del Camino en vertical (DJI e iPhone):
+`1uqIc7g442woz-sHalNrjBYkZPsUge8nk` (brutos sueltos). En la carpeta
+`1f-jQx7NilhcomXzZgqJwDvVbGjz-Bcvs` las subcarpetas "Short N" y "Video
+youtube cliente" son Paula hablando a cámara: no son recurso de stock.
+
+Portadas de shorts: estilo pegatina (`video/src/shorts/PortadaShort.tsx`),
+foto a sangre y titular en tres líneas: grafito con contorno blanco, placa
+verde Ways y verde Ways con la vieira.
+
 ## Lo que no se hace
 
 - Contadores de cuenta atrás ni "últimas plazas".
