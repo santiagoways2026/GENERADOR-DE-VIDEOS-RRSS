@@ -44,7 +44,13 @@ export const ShortPaula: React.FC = () => {
 
       {datos.recursos.map((r, i) => (
         <Sequence key={`r${i}`} from={f(r.en)} durationInFrames={f(r.dur)} name={`Recurso ${i + 1}`}>
-          <Recurso src={r.src} desde={r.desde} dur={f(r.dur)} />
+          <Recurso
+            src={r.src}
+            desde={r.desde}
+            dur={f(r.dur)}
+            // Pegado al anterior entra en seco: un fundido dejaba ver a Paula un fotograma.
+            seguido={i > 0 && r.en - (datos.recursos[i - 1].en + datos.recursos[i - 1].dur) < 0.1}
+          />
         </Sequence>
       ))}
 
@@ -100,10 +106,10 @@ const Toma: React.FC<{ src: string; desde: number; zoom: number; dur: number }> 
 };
 
 /** Metraje propio a pantalla completa; la voz sigue debajo. */
-const Recurso: React.FC<{ src: string; desde: number; dur: number }> = ({ src, desde, dur }) => {
+const Recurso: React.FC<{ src: string; desde: number; dur: number; seguido: boolean }> = ({ src, desde, dur, seguido }) => {
   const frame = useCurrentFrame();
   return (
-    <AbsoluteFill style={{ opacity: interpolate(frame, [0, 3], [0, 1], clamp), overflow: "hidden" }}>
+    <AbsoluteFill style={{ opacity: seguido ? 1 : interpolate(frame, [0, 3], [0, 1], clamp), overflow: "hidden" }}>
       <OffthreadVideo
         src={staticFile(src)}
         trimBefore={f(desde)}

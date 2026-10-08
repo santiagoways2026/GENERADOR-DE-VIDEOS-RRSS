@@ -16,14 +16,16 @@ TOMAS = [("0057", 16.50, 19.95),   # ¿Sabías que no necesitas hacer los 800 km
          ("0058", 0.45, 5.45),     # ...al menos los últimos 100 km de una ruta oficial
          ("0059", 2.28, 5.55),     # Por eso Sarria se ha convertido en...
          ("0060", 0.00, 6.95),     # Y de aquí nos quedan 108,741 km...
-         ("0066", 0.00, 7.80)]     # CTA y ¡Buen camino!
+         ("0066", 0.00, 6.40),     # CTA
+         ("0066", 6.98, 7.80)]     # ¡Buen camino! (sin la pausa de antes)
 CORRIGE = {"Sarrias": "Sarria", "organizamos.": "organizamos."}
 D = "dji/DJI_2026092"
 # Recursos: (en, dur, src, desde). Cada uno tapa un corte entre tomas.
 RECURSOS = [(3.15, 3.0, D + "9065826_0015_D.mp4", 7.4),   # sellado de la credencial
             (8.15, 2.4, D + "9071708_0025_D.mp4", 0.5),   # letras de Sarria
             (10.55, 2.6, D + "9072030_0030_D.mp4", 0.5),  # peregrinos en Sarria
-            (18.35, 3.0, D + "9061142_0014_D.mp4", 18.0)] # maletas
+            (18.35, 3.0, D + "9061142_0014_D.mp4", 18.0), # maletas
+            (23.6, 2.29, D + "9071346_0021_D.mp4", 2.0)] # peregrinos hasta el final: tapa el corte de la pausa
 CARTELAS = [dict(en=4.0, dur=3.6, principal="100 km", secundaria="Mínimo para la Compostela"),
             dict(en=13.9, dur=3.4, principal="108,741 km", secundaria="Hasta Santiago")]
 
