@@ -18,7 +18,8 @@ type Token = { texto: string; en: number; fin: number; logo?: boolean };
 const MAX_PALABRAS = 3;
 const MAX_CARACTERES = 14;
 
-const limpiar = (t: string) => t.replace(/[.,!?;:"“”]/g, "").trim();
+// La coma o el punto entre cifras se quedan: "108,741".
+const limpiar = (t: string) => t.replace(/(?<!\d)[.,]|[.,](?!\d)|[!?;:"“”]/g, "").trim();
 
 function tokens(palabras: Palabra[]): Token[] {
   const out: Token[] = [];
