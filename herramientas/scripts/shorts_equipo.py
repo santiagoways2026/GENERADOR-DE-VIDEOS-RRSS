@@ -29,7 +29,7 @@ SHORTS = {
                 ("0067", 57.06, 59.36, D + "9071346_0021_D.mp4@2.0"),
                 ("0067", 71.06, 76.94, None),
                 ("0067", 80.26, 82.86, D + "9072030_0030_D.mp4@0.5"),
-                ("0067", 83.68, 84.25, None)],
+                ("0067", 83.68, 84.25, "+")],
         cartelas=[dict(frase=3, principal="Flechas amarillas", secundaria="En piedras, árboles y paredes"),
                   dict(frase=9, principal="App sin conexión", secundaria="Y asistencia 24 h")]),
 }
@@ -54,7 +54,10 @@ def main():
             dur = round(b - a, 3)
             planos.append(dict(src=f"paula/{clip}.mp4", desde=round(a, 3), dur=dur, en=round(t, 3),
                                zoom=1.15 if i % 2 == 0 else 1.25))
-            if rec:
+            if rec == "+":
+                # Sigue el recurso anterior sin corte.
+                recursos[-1]["dur"] = round(recursos[-1]["dur"] + dur, 3)
+            elif rec:
                 src, desde = rec.split("@")
                 recursos.append(dict(en=round(t, 3), dur=dur, src=src, desde=float(desde)))
             palabras += palabras_de(tr, clip, a, b, t)
