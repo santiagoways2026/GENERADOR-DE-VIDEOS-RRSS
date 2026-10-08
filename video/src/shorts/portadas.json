@@ -22,5 +22,12 @@
  {"id": "21-camino-sin-estres", "lineas": ["Walk the Camino", "without the", "stress"], "foto": "n1/979345d2-5e1e-4993-9083-c89dfc57980f.jpg"},
  {"id": "22-mejor-ruta-principiantes", "lineas": ["The best Camino", "for", "beginners"], "foto": "n1/24161d1e-41f2-4b11-b4ac-1f3542bae3e9.jpg"},
  {"id": "paula-sarria", "lineas": ["¿Sabías que", "no necesitas", "800 km?"], "alto": 300, "foto": "fotograma de paula/0066.mp4 a 7,5 s"},
- {"id": "s2-perderse", "lineas": ["¿Te puedes", "perder en el", "Camino?"], "alto": 1100, "foto": "fotograma de paula/0067.mp4 a 83 s"}
+ {"id": "s2-perderse", "lineas": ["¿Te puedes", "perder en el", "Camino?"], "alto": 1100, "foto": "fotograma de paula/0067.mp4 a 83 s"},
+ {"id": "s3-portomarin", "lineas": ["Un pueblo", "trasladado", "piedra a piedra"], "alto": 1100, "foto": "fotograma de paula/0072.mp4 a 2.2 s"},
+ {"id": "s4-bastones", "lineas": ["¿Bastones", "en el", "Camino?"], "alto": 1100, "foto": "fotograma de paula/0073.mp4 a 4.0 s"},
+ {"id": "s5-cuanto-se-camina", "lineas": ["¿Cuánto se", "camina de", "verdad?"], "alto": 1280, "foto": "fotograma de paula/0082.mp4 a 1.6 s"},
+ {"id": "s6-nadie-te-cuenta", "lineas": ["Lo que nadie", "te cuenta del", "Camino"], "alto": 1100, "foto": "fotograma de paula/0083.mp4 a 11.3 s"},
+ {"id": "s7-xacobeo-2027", "lineas": ["2027 no será", "un año", "normal"], "alto": 300, "foto": "fotograma de paula/0101.mp4 a 2.6 s"},
+ {"id": "s8-puerta-santa", "lineas": ["La Puerta", "Santa", "se abre"], "alto": 300, "foto": "fotograma de paula/0104.mp4 a 4.4 s"},
+ {"id": "s9-credencial", "lineas": ["Sella tu", "credencial", "por el Camino"], "alto": 300, "foto": "fotograma de paula/0110.mp4 a 5.3 s"}
 ]
