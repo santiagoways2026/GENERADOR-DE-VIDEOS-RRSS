@@ -794,8 +794,8 @@
    }
   ],
   "musica": {
-   "src": "musica/Carefree.mp3",
-   "vol": 0.07,
+   "src": "musica/chill_Lobby_Time.mp3",
+   "vol": 0.04,
    "desde": 0
   }
  },
@@ -1338,8 +1338,8 @@
    }
   ],
   "musica": {
-   "src": "musica/Life_of_Riley.mp3",
-   "vol": 0.07,
+   "src": "musica/chill_Bossa_Antigua.mp3",
+   "vol": 0.04,
    "desde": 0
   }
  },
@@ -2140,8 +2140,8 @@
    }
   ],
   "musica": {
-   "src": "musica/Happy_Alley.mp3",
-   "vol": 0.07,
+   "src": "musica/chill_Dreamer.mp3",
+   "vol": 0.04,
    "desde": 0
   }
  },
@@ -3027,8 +3027,8 @@
    }
   ],
   "musica": {
-   "src": "musica/Wholesome.mp3",
-   "vol": 0.07,
+   "src": "musica/chill_Wallpaper.mp3",
+   "vol": 0.04,
    "desde": 0
   }
  },
@@ -3592,8 +3592,8 @@
    }
   ],
   "musica": {
-   "src": "musica/Sunshine_A.mp3",
-   "vol": 0.07,
+   "src": "musica/chill_Smooth_Lovin.mp3",
+   "vol": 0.04,
    "desde": 0
   }
  },
@@ -4291,8 +4291,8 @@
    }
   ],
   "musica": {
-   "src": "musica/Inspired.mp3",
-   "vol": 0.07,
+   "src": "musica/chill_Deliberate_Thought.mp3",
+   "vol": 0.04,
    "desde": 0
   }
  },
@@ -4901,8 +4901,8 @@
    }
   ],
   "musica": {
-   "src": "musica/Merry_Go.mp3",
-   "vol": 0.07,
+   "src": "musica/chill_Backbay_Lounge.mp3",
+   "vol": 0.04,
    "desde": 0
   }
  },
@@ -5684,8 +5684,8 @@
    }
   ],
   "musica": {
-   "src": "musica/Easy_Lemon.mp3",
-   "vol": 0.07,
+   "src": "musica/chill_Late_Night_Radio.mp3",
+   "vol": 0.04,
    "desde": 0
   }
  },
@@ -6275,8 +6275,8 @@
    }
   ],
   "musica": {
-   "src": "musica/Cheery_Monday.mp3",
-   "vol": 0.07,
+   "src": "musica/chill_Lobby_Time.mp3",
+   "vol": 0.04,
    "desde": 0
   }
  },
@@ -7005,8 +7005,8 @@
    }
   ],
   "musica": {
-   "src": "musica/Fretless.mp3",
-   "vol": 0.07,
+   "src": "musica/chill_Bossa_Antigua.mp3",
+   "vol": 0.04,
    "desde": 0
   }
  },
@@ -7650,8 +7650,8 @@
    }
   ],
   "musica": {
-   "src": "musica/Pamgaea.mp3",
-   "vol": 0.07,
+   "src": "musica/chill_Dreamer.mp3",
+   "vol": 0.04,
    "desde": 0
   }
  },
@@ -8405,8 +8405,8 @@
    }
   ],
   "musica": {
-   "src": "musica/Hyperfun.mp3",
-   "vol": 0.07,
+   "src": "musica/chill_Wallpaper.mp3",
+   "vol": 0.04,
    "desde": 0
   }
  },
@@ -9021,8 +9021,8 @@
    }
   ],
   "musica": {
-   "src": "musica/Funkorama.mp3",
-   "vol": 0.07,
+   "src": "musica/chill_Smooth_Lovin.mp3",
+   "vol": 0.04,
    "desde": 0
   }
  },
@@ -9645,8 +9645,8 @@
    }
   ],
   "musica": {
-   "src": "musica/Airport_Lounge.mp3",
-   "vol": 0.07,
+   "src": "musica/chill_Deliberate_Thought.mp3",
+   "vol": 0.04,
    "desde": 0
   }
  },
@@ -10548,8 +10548,8 @@
    }
   ],
   "musica": {
-   "src": "musica/Carefree.mp3",
-   "vol": 0.07,
+   "src": "musica/chill_Backbay_Lounge.mp3",
+   "vol": 0.04,
    "desde": 0
   }
  },
@@ -11151,8 +11151,8 @@
    }
   ],
   "musica": {
-   "src": "musica/Life_of_Riley.mp3",
-   "vol": 0.07,
+   "src": "musica/chill_Late_Night_Radio.mp3",
+   "vol": 0.04,
    "desde": 0
   }
  },
@@ -11908,8 +11908,8 @@
    }
   ],
   "musica": {
-   "src": "musica/Happy_Alley.mp3",
-   "vol": 0.07,
+   "src": "musica/chill_Lobby_Time.mp3",
+   "vol": 0.04,
    "desde": 0
   }
  },
@@ -12569,8 +12569,8 @@
    }
   ],
   "musica": {
-   "src": "musica/Wholesome.mp3",
-   "vol": 0.07,
+   "src": "musica/chill_Bossa_Antigua.mp3",
+   "vol": 0.04,
    "desde": 0
   }
  },
@@ -13061,8 +13061,8 @@
    }
   ],
   "musica": {
-   "src": "musica/Sunshine_A.mp3",
-   "vol": 0.07,
+   "src": "musica/chill_Dreamer.mp3",
+   "vol": 0.04,
    "desde": 0
   }
  },
@@ -13564,8 +13564,8 @@
    }
   ],
   "musica": {
-   "src": "musica/Inspired.mp3",
-   "vol": 0.07,
+   "src": "musica/chill_Wallpaper.mp3",
+   "vol": 0.04,
    "desde": 0
   }
  },
@@ -14230,8 +14230,8 @@
    }
   ],
   "musica": {
-   "src": "musica/Merry_Go.mp3",
-   "vol": 0.07,
+   "src": "musica/chill_Smooth_Lovin.mp3",
+   "vol": 0.04,
    "desde": 0
   }
  },
@@ -14895,8 +14895,8 @@
    }
   ],
   "musica": {
-   "src": "musica/Easy_Lemon.mp3",
-   "vol": 0.07,
+   "src": "musica/chill_Deliberate_Thought.mp3",
+   "vol": 0.04,
    "desde": 0
   }
  }

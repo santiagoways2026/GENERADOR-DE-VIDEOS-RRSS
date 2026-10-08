@@ -135,9 +135,10 @@ GRAFICOS = [
     ((397.5, 400.0), "hilary/mapas/etapas-sarria.mp4", 12.0, "mapa"),
 ]
 
-MUSICA = ["Carefree", "Life_of_Riley", "Happy_Alley", "Wholesome", "Sunshine_A",
-          "Inspired", "Merry_Go", "Easy_Lemon", "Cheery_Monday", "Fretless",
-          "Pamgaea", "Hyperfun", "Funkorama", "Airport_Lounge"]
+# Música chill y baja (Kevin MacLeod, CC BY): la voz es la protagonista.
+MUSICA = ["chill_Lobby_Time", "chill_Bossa_Antigua", "chill_Dreamer", "chill_Wallpaper",
+          "chill_Smooth_Lovin", "chill_Deliberate_Thought", "chill_Backbay_Lounge",
+          "chill_Late_Night_Radio"]
 
 GANCHO = 2.4
 CIERRE = 1.4
@@ -506,7 +507,7 @@ def construir(tx, spec, outro, idx):
         cierre=dict(en=round(total_voz, 3), dur=CIERRE),
         gancho=dict(dur=GANCHO, src=f"hilary/recortes/{spec['id']}.webm", desde=tramos[0][0]),
         voz=voz, video=video, broll=broll, capas=capas, palabras=palabras, sfx=sfx,
-        musica=dict(src=f"musica/{MUSICA[idx % len(MUSICA)]}.mp3", vol=0.07,
+        musica=dict(src=f"musica/{MUSICA[idx % len(MUSICA)]}.mp3", vol=0.04,
                     desde=spec.get("musica_desde", 0)),
     )
 
