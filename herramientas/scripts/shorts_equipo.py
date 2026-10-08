@@ -103,8 +103,9 @@ SHORTS = {
     "s9-credencial": dict(
         titulo=["Sella tu", "credencial", "por el Camino"],
         musica="chill_Bossa_Antigua",
-        frases=[("0107", 19.20, 22.60, None),
-                ("0110", 0.80, 5.74, D + "9065826_0015_D.mp4@7.4")]),
+        # El sellado va sobre la primera frase; la Oficina del Peregrino se ve con ella delante.
+        frases=[("0107", 19.20, 22.60, D + "9065826_0015_D.mp4@7.4"),
+                ("0110", 0.80, 5.74, None)]),
 }
 
 
@@ -136,7 +137,7 @@ def main():
     for sid, spec in SHORTS.items():
         planos, recursos, palabras, cartelas, t = [], [], [], [], 0.0
         for i, (clip, a, b, rec) in enumerate(spec["frases"]):
-            a, b = a - 0.08, b + 0.12  # un respiro para no comerse sílabas
+            a, b = max(0.0, a - 0.08), b + 0.12  # un respiro para no comerse sílabas
             dur = round(b - a, 3)
             planos.append(dict(src=f"paula/{clip}.mp4", desde=round(a, 3), dur=dur, en=round(t, 3),
                                zoom=1.15 if i % 2 == 0 else 1.25))
