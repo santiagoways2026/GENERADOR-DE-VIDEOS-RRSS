@@ -31,6 +31,11 @@ function tokens(palabras: Palabra[]): Token[] {
       i++;
       continue;
     }
+    // La web tampoco se escribe: "santiagoways.com" también es el logo.
+    if (/^santiagoways/i.test(limpiar(w.t))) {
+      out.push({ texto: "", en: w.en, fin: w.fin, logo: true });
+      continue;
+    }
     out.push({ texto: w.t, en: w.en, fin: w.fin });
   }
   return out;

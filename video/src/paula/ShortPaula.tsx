@@ -15,7 +15,10 @@ import { brand, easeOut, fontFamily, format, fps, paleta } from "../brand/theme"
 import { Cartela } from "../componentes/Cartela";
 import { Cierre } from "../escenas/Cierre";
 import { Subtitulos } from "../shorts/Subtitulos";
-import datos from "./paula.json";
+import datosPaula from "./paula.json";
+import equipo from "./equipo.json";
+
+type Datos = typeof datosPaula;
 
 /**
  * Short de Paula en el mojón: cinco tomas del mismo plano con su propio audio
@@ -31,7 +34,8 @@ const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 const salida = Easing.bezier(...easeOut);
 const ARRIBA = 240;
 
-export const ShortPaula: React.FC = () => {
+export const ShortPaula: React.FC<{ id?: string }> = ({ id }) => {
+  const datos = (id ? (equipo as unknown as Datos[]).find((x) => (x as unknown as { id: string }).id === id) : datosPaula) as Datos;
   const total = f(datos.duracion);
   const finVoz = f(datos.finVoz);
   return (
@@ -168,12 +172,27 @@ const Titular: React.FC<{ lineas: string[]; dur: number }> = ({ lineas, dur }) =
 };
 
 export const ComposicionPaula: React.FC = () => (
-  <Composition
-    id="ShortPaula"
-    component={ShortPaula}
-    durationInFrames={Math.round(datos.duracion * fps)}
-    fps={fps}
-    width={format.reels.width}
-    height={format.reels.height}
-  />
+  <>
+    <Composition
+      id="ShortPaula"
+      component={ShortPaula}
+      durationInFrames={Math.round(datosPaula.duracion * fps)}
+      fps={fps}
+      width={format.reels.width}
+      height={format.reels.height}
+    />
+    {/* Shorts del equipo: `npx remotion render Equipo-s2-perderse`. */}
+    {(equipo as unknown as (Datos & { id: string })[]).map((d) => (
+      <Composition
+        key={d.id}
+        id={`Equipo-${d.id}`}
+        component={ShortPaula}
+        defaultProps={{ id: d.id }}
+        durationInFrames={Math.round(d.duracion * fps)}
+        fps={fps}
+        width={format.reels.width}
+        height={format.reels.height}
+      />
+    ))}
+  </>
 );
