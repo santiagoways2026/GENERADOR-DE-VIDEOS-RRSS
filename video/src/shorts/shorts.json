@@ -795,7 +795,7 @@
   ],
   "musica": {
    "src": "musica/chill_Lobby_Time.mp3",
-   "vol": 0.04,
+   "vol": 0.0,
    "desde": 0
   }
  },
@@ -1339,7 +1339,7 @@
   ],
   "musica": {
    "src": "musica/chill_Bossa_Antigua.mp3",
-   "vol": 0.04,
+   "vol": 0.0,
    "desde": 0
   }
  },
@@ -2141,7 +2141,7 @@
   ],
   "musica": {
    "src": "musica/chill_Dreamer.mp3",
-   "vol": 0.04,
+   "vol": 0.0,
    "desde": 0
   }
  },
@@ -3028,7 +3028,7 @@
   ],
   "musica": {
    "src": "musica/chill_Wallpaper.mp3",
-   "vol": 0.04,
+   "vol": 0.0,
    "desde": 0
   }
  },
@@ -3593,7 +3593,7 @@
   ],
   "musica": {
    "src": "musica/chill_Smooth_Lovin.mp3",
-   "vol": 0.04,
+   "vol": 0.0,
    "desde": 0
   }
  },
@@ -4292,7 +4292,7 @@
   ],
   "musica": {
    "src": "musica/chill_Deliberate_Thought.mp3",
-   "vol": 0.04,
+   "vol": 0.0,
    "desde": 0
   }
  },
@@ -4902,7 +4902,7 @@
   ],
   "musica": {
    "src": "musica/chill_Backbay_Lounge.mp3",
-   "vol": 0.04,
+   "vol": 0.0,
    "desde": 0
   }
  },
@@ -5685,7 +5685,7 @@
   ],
   "musica": {
    "src": "musica/chill_Late_Night_Radio.mp3",
-   "vol": 0.04,
+   "vol": 0.0,
    "desde": 0
   }
  },
@@ -6276,7 +6276,7 @@
   ],
   "musica": {
    "src": "musica/chill_Lobby_Time.mp3",
-   "vol": 0.04,
+   "vol": 0.0,
    "desde": 0
   }
  },
@@ -7006,7 +7006,7 @@
   ],
   "musica": {
    "src": "musica/chill_Bossa_Antigua.mp3",
-   "vol": 0.04,
+   "vol": 0.0,
    "desde": 0
   }
  },
@@ -7651,7 +7651,7 @@
   ],
   "musica": {
    "src": "musica/chill_Dreamer.mp3",
-   "vol": 0.04,
+   "vol": 0.0,
    "desde": 0
   }
  },
@@ -8406,7 +8406,7 @@
   ],
   "musica": {
    "src": "musica/chill_Wallpaper.mp3",
-   "vol": 0.04,
+   "vol": 0.0,
    "desde": 0
   }
  },
@@ -9022,7 +9022,7 @@
   ],
   "musica": {
    "src": "musica/chill_Smooth_Lovin.mp3",
-   "vol": 0.04,
+   "vol": 0.0,
    "desde": 0
   }
  },
@@ -9646,7 +9646,7 @@
   ],
   "musica": {
    "src": "musica/chill_Deliberate_Thought.mp3",
-   "vol": 0.04,
+   "vol": 0.0,
    "desde": 0
   }
  },
@@ -10549,7 +10549,7 @@
   ],
   "musica": {
    "src": "musica/chill_Backbay_Lounge.mp3",
-   "vol": 0.04,
+   "vol": 0.0,
    "desde": 0
   }
  },
@@ -11152,7 +11152,7 @@
   ],
   "musica": {
    "src": "musica/chill_Late_Night_Radio.mp3",
-   "vol": 0.04,
+   "vol": 0.0,
    "desde": 0
   }
  },
@@ -11909,7 +11909,7 @@
   ],
   "musica": {
    "src": "musica/chill_Lobby_Time.mp3",
-   "vol": 0.04,
+   "vol": 0.0,
    "desde": 0
   }
  },
@@ -12570,7 +12570,7 @@
   ],
   "musica": {
    "src": "musica/chill_Bossa_Antigua.mp3",
-   "vol": 0.04,
+   "vol": 0.0,
    "desde": 0
   }
  },
@@ -13062,7 +13062,7 @@
   ],
   "musica": {
    "src": "musica/chill_Dreamer.mp3",
-   "vol": 0.04,
+   "vol": 0.0,
    "desde": 0
   }
  },
@@ -13565,7 +13565,7 @@
   ],
   "musica": {
    "src": "musica/chill_Wallpaper.mp3",
-   "vol": 0.04,
+   "vol": 0.0,
    "desde": 0
   }
  },
@@ -14231,7 +14231,7 @@
   ],
   "musica": {
    "src": "musica/chill_Smooth_Lovin.mp3",
-   "vol": 0.04,
+   "vol": 0.0,
    "desde": 0
   }
  },
@@ -14896,7 +14896,7 @@
   ],
   "musica": {
    "src": "musica/chill_Deliberate_Thought.mp3",
-   "vol": 0.04,
+   "vol": 0.0,
    "desde": 0
   }
  }

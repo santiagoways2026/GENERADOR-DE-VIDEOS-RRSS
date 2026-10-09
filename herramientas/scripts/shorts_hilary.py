@@ -507,7 +507,8 @@ def construir(tx, spec, outro, idx):
         cierre=dict(en=round(total_voz, 3), dur=CIERRE),
         gancho=dict(dur=GANCHO, src=f"hilary/recortes/{spec['id']}.webm", desde=tramos[0][0]),
         voz=voz, video=video, broll=broll, capas=capas, palabras=palabras, sfx=sfx,
-        musica=dict(src=f"musica/{MUSICA[idx % len(MUSICA)]}.mp3", vol=0.04,
+        # Sin música de fondo: la marca prefiere solo voz y efectos.
+        musica=dict(src=f"musica/{MUSICA[idx % len(MUSICA)]}.mp3", vol=0.0,
                     desde=spec.get("musica_desde", 0)),
     )
 
