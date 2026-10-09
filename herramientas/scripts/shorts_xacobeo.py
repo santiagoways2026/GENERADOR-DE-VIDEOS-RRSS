@@ -129,7 +129,7 @@ SHORTS = [
 
     dict(video="IMG_8748", fotograma=39.55, fin=40.0, id="03-perdonar-pecados", titulo=["CAN THE CAMINO", "FORGIVE", "YOUR SINS?"],
          portada=["CAN THE CAMINO", "FORGIVE", "YOUR SINS?"],
-         capas=[stock("Well, there's some truth", "catedral-fachada", 2.0),
+         capas=[stock("Well, there's some truth", "catedral-fachada", 1.75),
                 cartela("plenary indulgence", "INDULGENCE", "PLENARY · JUBILEE", dur=3.6),
                 stock("established by the Church", "catedral-torres-2", 2.4),
                 cartela("So no, walking", "100 KM", "NOT A MAGIC BUTTON"),
