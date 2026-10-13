@@ -292,6 +292,25 @@ export const logo = {
   minAnchoIsotipo: 24,
 } as const;
 
+/**
+ * Los archivos del Brandbook 2027, sacados de su pagina 10 a 1200 dpi y con el
+ * fondo transparente. **Son los que se usan en una pieza nueva**; los de
+ * `logo` son los de la edicion anterior y siguen ahi porque los usan las
+ * piezas ya entregadas.
+ *
+ * Van recortados a hueso, sin margen transparente: con el mismo `ancho`, el
+ * logo nuevo se ve un 15 % mas grande que el viejo. El detalle esta en
+ * `video/public/logo/README.md`.
+ */
+export const logo2027 = {
+  horizontalVerde: "logo/santiago-ways-horizontal-verde.png",
+  horizontalBlanco: "logo/santiago-ways-horizontal-blanco.png",
+  verticalVerde: "logo/santiago-ways-vertical-verde.png",
+  verticalBlanco: "logo/santiago-ways-vertical-blanco.png",
+  isotipoVerde: "logo/santiago-ways-isotipo-verde.png",
+  isotipoBlanco: "logo/santiago-ways-isotipo-blanco.png",
+} as const;
+
 /* ------------------------------------------------------------------ *
  * LEGACY · edicion 2026
  * ------------------------------------------------------------------ */
