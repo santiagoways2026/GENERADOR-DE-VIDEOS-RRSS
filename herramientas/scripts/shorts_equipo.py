@@ -120,12 +120,27 @@ SHORTS = {
                 ("1104", 17.60, 21.05, "dji/IMG_5440.mp4@0.2"),
                 ("1104", 21.05, 24.55, None)],
         cartelas=[dict(frase=2, principal="Portomarín", secundaria="Trasladado piedra a piedra")]),
+    "perderse-toma": dict(
+        continuo=True,
+        sin_musica=True,
+        titulo=["¿Te puedes", "perder en el", "Camino?"],
+        musica="chill_Lobby_Time",
+        frases=[("v2", 0.00, 3.67, None),
+                ("v2", 3.67, 5.45, D + "9073931_0046_D.mp4@1.0"),
+                ("v2", 5.45, 7.77, D + "9090353_0052_D.mp4@0.2"),
+                ("v2", 7.77, 11.20, D + "9090406_0053_D.mp4@1.0"),
+                ("v2", 11.20, 14.78, None),
+                ("v2", 14.78, 18.89, D + "9073410_0040_D.mp4@0.0"),
+                ("v2", 18.89, 24.22, None),
+                ("v2", 24.22, 26.98, D + "9072030_0030_D.mp4@0.5")],
+        cartelas=[dict(frase=3, principal="Flechas amarillas", secundaria="En piedras, árboles y paredes"),
+                  dict(frase=6, principal="App sin conexión", secundaria="Y asistencia 24 h")]),
 }
 
 
 # Lo que Whisper oye mal en estas tomas.
 ARREGLOS = {"compostela": "Compostela", "portomarín": "Portomarín", "Velesar": "Belesar", "Belezar": "Belesar", "Embarce": "embalse",
-            "Sarri ": "Sarria ", "Comparadas": "Con paradas", "santiagoweb": "santiagoways",
+            "Sarri ": "Sarria ", "Comparadas": "Con paradas", "santiagoweb": "santiagoways", "santiagogoys": "santiagoways",
             "santiagowest": "santiagoways", "jacobeo": "Xacobeo", "Jacoveo": "Xacobeo", "cambio": "camino",
             "evidencia": "credencial", "selfies": "sellos", "reservalo": "resérvalo",
             "organizemos": "organicemos", "Way.": "Ways."}
