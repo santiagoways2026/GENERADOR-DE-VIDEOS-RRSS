@@ -135,6 +135,19 @@ SHORTS = {
                 ("v2", 24.22, 26.98, D + "9072030_0030_D.mp4@0.5")],
         cartelas=[dict(frase=3, principal="Flechas amarillas", secundaria="En piedras, árboles y paredes"),
                   dict(frase=6, principal="App sin conexión", secundaria="Y asistencia 24 h")]),
+    "sarria-800km-toma": dict(
+        continuo=True,
+        sin_musica=True,
+        titulo=["¿Sabías que", "no necesitas", "800 km?"],
+        musica="chill_Bossa_Antigua",
+        frases=[("v3", 0.00, 3.37, None),
+                ("v3", 3.37, 7.95, D + "9065826_0015_D.mp4@7.4"),
+                ("v3", 7.95, 11.56, D + "9071708_0025_D.mp4@0.5"),
+                ("v3", 11.56, 18.21, None),
+                ("v3", 18.21, 22.94, D + "9073931_0046_D.mp4@1.0"),
+                ("v3", 22.94, 25.24, None)],
+        cartelas=[dict(frase=1, principal="100 km", secundaria="Mínimo para la Compostela"),
+                  dict(frase=3, principal="108,741 km", secundaria="Hasta Santiago")]),
 }
 
 
