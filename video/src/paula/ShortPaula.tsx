@@ -74,10 +74,13 @@ export const ShortPaula: React.FC<{ id?: string }> = ({ id }) => {
         <Cierre duracion={total - finVoz} fondo={paleta.verdeWays} />
       </Sequence>
 
+      {/* Sin música si el volumen es 0: solo voz y efectos. */}
+      {datos.musica.vol > 0 ? (
       <Audio
-        src={staticFile(datos.musica.src)}
-        volume={(fr) => interpolate(fr, [0, 15, total - 20, total], [0, datos.musica.vol, datos.musica.vol, 0], clamp)}
-      />
+          src={staticFile(datos.musica.src)}
+          volume={(fr) => interpolate(fr, [0, 15, total - 20, total], [0, datos.musica.vol, datos.musica.vol, 0], clamp)}
+        />
+      ) : null}
       <Audio src={staticFile("sfx/impacto.wav")} volume={0.4} />
       {datos.recursos.map((r, i) => (
         <Sequence key={`s${i}`} from={Math.max(0, f(r.en) - 6)} durationInFrames={f(1.5)}>
@@ -155,7 +158,8 @@ const Titular: React.FC<{ lineas: string[]; dur: number }> = ({ lineas, dur }) =
               textTransform: "uppercase",
               whiteSpace: "nowrap",
               color: brand.white,
-              backgroundColor: acento ? paleta.verdeWays : "transparent",
+              // Brandbook 2027: la palabra clave va en placa verde sendero.
+              backgroundColor: acento ? paleta.sendero : "transparent",
               padding: acento ? "4px 18px 8px" : 0,
               borderRadius: 10,
               WebkitTextStroke: acento ? "0px" : `10px ${paleta.grafito}`,

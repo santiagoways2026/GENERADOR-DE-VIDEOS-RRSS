@@ -106,11 +106,25 @@ SHORTS = {
         # El sellado va sobre la primera frase; la Oficina del Peregrino se ve con ella delante.
         frases=[("0107", 19.20, 22.60, D + "9065826_0015_D.mp4@7.4"),
                 ("0110", 0.80, 5.74, None)]),
+    "portomarin-toma": dict(
+        # Una sola toma limpia (1104.mov): se pega entera, sin márgenes ni cambios de encuadre.
+        continuo=True,
+        sin_musica=True,
+        titulo=["Un pueblo", "trasladado", "piedra a piedra"],
+        musica="chill_Dreamer",
+        frases=[("1104", 0.00, 3.45, None),
+                ("1104", 3.45, 7.65, D + "9110228_0069_D.mp4@3.0"),
+                ("1104", 7.65, 10.40, D + "9110126_0068_D.mp4@0.5"),
+                ("1104", 10.40, 13.85, D + "9110407_0070_D.mp4@2.0"),
+                ("1104", 13.85, 17.60, None),
+                ("1104", 17.60, 21.05, "dji/IMG_5440.mp4@0.2"),
+                ("1104", 21.05, 24.55, None)],
+        cartelas=[dict(frase=2, principal="Portomarín", secundaria="Trasladado piedra a piedra")]),
 }
 
 
 # Lo que Whisper oye mal en estas tomas.
-ARREGLOS = {"compostela": "Compostela", "portomarín": "Portomarín", "Velesar": "Belesar",
+ARREGLOS = {"compostela": "Compostela", "portomarín": "Portomarín", "Velesar": "Belesar", "Belezar": "Belesar", "Embarce": "embalse",
             "Sarri ": "Sarria ", "Comparadas": "Con paradas", "santiagoweb": "santiagoways",
             "santiagowest": "santiagoways", "jacobeo": "Xacobeo", "Jacoveo": "Xacobeo", "cambio": "camino",
             "evidencia": "credencial", "selfies": "sellos", "reservalo": "resérvalo",
@@ -119,7 +133,7 @@ ARREGLOS = {"compostela": "Compostela", "portomarín": "Portomarín", "Velesar":
 
 PALABRA = {"Sarri": "Sarria"}
 # Pares de palabras seguidas: (oído, oído) -> (bien, bien); "" une las dos.
-PARES = {("saco", "veo"): ("Xacobeo", ""), ("ahí", "a"): ("ya", ""), ("ahora", "rarísima"): ("a horas", "rarísimas")}
+PARES = {("Porto", "Marín"): ("Portomarín", ""), ("Santiago", "hoy."): ("Santiago", "Ways."), ("saco", "veo"): ("Xacobeo", ""), ("ahí", "a"): ("ya", ""), ("ahora", "rarísima"): ("a horas", "rarísimas")}
 
 
 def palabras_de(tr, clip, a, b, t):
@@ -133,14 +147,20 @@ def palabras_de(tr, clip, a, b, t):
 
 def main():
     tr = json.load(open(sys.argv[1]))
-    datos = []
+    # Con un segundo argumento solo se rehace ese short y se conservan los demás.
+    solo = sys.argv[2] if len(sys.argv) > 2 else None
+    previos = json.load(open(SALIDA)) if solo and SALIDA.exists() else []
+    datos = [d for d in previos if d["id"] != solo]
     for sid, spec in SHORTS.items():
+        if solo and sid != solo:
+            continue
         planos, recursos, palabras, cartelas, t = [], [], [], [], 0.0
         for i, (clip, a, b, rec) in enumerate(spec["frases"]):
-            a, b = max(0.0, a - 0.08), b + 0.12  # un respiro para no comerse sílabas
+            if not spec.get("continuo"):
+                a, b = max(0.0, a - 0.08), b + 0.12  # un respiro para no comerse sílabas
             dur = round(b - a, 3)
             planos.append(dict(src=f"paula/{clip}.mp4", desde=round(a, 3), dur=dur, en=round(t, 3),
-                               zoom=1.15 if i % 2 == 0 else 1.25))
+                               zoom=1.15 if spec.get("continuo") or i % 2 == 0 else 1.25))
             if rec == "+":
                 # Sigue el recurso anterior sin corte.
                 recursos[-1]["dur"] = round(recursos[-1]["dur"] + dur, 3)
@@ -168,7 +188,7 @@ def main():
         palabras = limpias
         datos.append(dict(id=sid, titulo=spec["titulo"], duracion=round(t + 1.4, 3), finVoz=round(t, 3),
                           planos=planos, recursos=recursos, palabras=palabras, cartelas=cartelas,
-                          musica=dict(src=f"musica/{spec['musica']}.mp3", vol=0.04)))
+                          musica=dict(src=f"musica/{spec['musica']}.mp3", vol=0.0 if spec.get("sin_musica") else 0.04)))
         print(sid, round(t, 1), " ".join(w["t"] for w in palabras)[:300])
     json.dump(datos, open(SALIDA, "w"), ensure_ascii=False, indent=1)
 
