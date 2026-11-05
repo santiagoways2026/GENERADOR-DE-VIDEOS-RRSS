@@ -301,12 +301,11 @@ const Gancho: React.FC<{ titulo: string[]; acento: number; src: string }> = ({ t
           <div
             key={i}
             style={{
-              // Montserrat 900 en mayúsculas ocupa unos 0,8 em por letra.
-              fontSize: Math.min(124, Math.floor(950 / (linea.length * 0.8))),
-              lineHeight: 1.04,
-              fontWeight: 900,
-              letterSpacing: "-0.02em",
-              textTransform: "uppercase",
+              // Brandbook 2027: minúscula de frase, Montserrat 800 (unos 0,66 em por letra).
+              fontSize: Math.min(124, Math.floor(950 / (linea.length * 0.66))),
+              lineHeight: 1.1,
+              fontWeight: 800,
+              letterSpacing: "-0.01em",
               color: i === acento ? brand.white : paleta.grafito,
               backgroundColor: i === acento ? paleta.verdeWays : "transparent",
               padding: i === acento ? "2px 20px 8px" : 0,
