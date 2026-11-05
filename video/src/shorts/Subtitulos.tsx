@@ -98,8 +98,10 @@ export const Subtitulos: React.FC<{
         position: "absolute",
         // Por debajo de y 958 la columna derecha es de los botones de la red.
         top: 1280,
-        left: 60,
-        right: 1080 - 876,
+        // Centrado en 540: el mismo margen a los dos lados que pide la
+        // columna de botones (x 855, plantilla de zonas seguras), así nada cae debajo de ellos.
+        left: 1080 - 855,
+        right: 1080 - 855,
         display: "flex",
         flexWrap: "wrap",
         justifyContent: "center",

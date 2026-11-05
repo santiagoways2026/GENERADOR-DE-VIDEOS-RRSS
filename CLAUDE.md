@@ -80,6 +80,13 @@ Al adaptar piezas antiguas al brandbook: cambiar lo mínimo. Mismo montaje,
 cortes, planos y textos; solo tipografía, color, mayúsculas, subrayado SW,
 logo y cierre.
 
+## Zonas seguras de reels y shorts (1080x1920)
+
+- Zona segura: x 60 a 1020, y 153 a 1452. Fuera de ella no va texto.
+- Botones de interacción: x 855 a 1020 desde y 853 hacia abajo.
+- Por debajo de y 853 el texto se centra en x 540 con 225 px a cada lado
+  (subtítulos: de 225 a 855), así queda centrado y libre de botones.
+
 ## Cómo se ven los textos
 
 Las cartelas replican las del kit de motion graphics, no se inventan:
