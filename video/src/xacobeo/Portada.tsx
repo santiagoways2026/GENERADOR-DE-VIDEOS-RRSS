@@ -23,7 +23,7 @@ export const Portada: React.FC<{ id: string; variante?: "foto" | "verde" }> = ({
   if (variante === "verde") {
     // Solo el verde de la marca y el titular, centrado en el recorte 4:5.
     return (
-      <AbsoluteFill style={{ backgroundColor: paleta.verdeWays, fontFamily, justifyContent: "center", alignItems: "center" }}>
+      <AbsoluteFill style={{ background: "linear-gradient(135deg, #7AA606 0%, #628A04 100%)", fontFamily, justifyContent: "center", alignItems: "center" }}>
         <Titular lineas={lineas} acento={d.portada.acento} grande />
       </AbsoluteFill>
     );
@@ -62,10 +62,10 @@ const Titular: React.FC<{ lineas: string[]; acento: number; grande?: boolean }> 
   >
     <div
       style={{
-        backgroundColor: paleta.sendero,
+        backgroundColor: grande ? paleta.sendero : paleta.verdeWays,
         color: brand.white,
         fontSize: grande ? 44 : 34,
-        fontWeight: 900,
+        fontWeight: 700,
         letterSpacing: "0.08em",
         textTransform: "uppercase",
         padding: grande ? "10px 26px" : "8px 20px",
@@ -80,13 +80,12 @@ const Titular: React.FC<{ lineas: string[]; acento: number; grande?: boolean }> 
         key={i}
         style={{
           fontSize: Math.min(grande ? 132 : 110, Math.floor((grande ? 960 : 940) / (linea.length * 0.78))),
-          lineHeight: 1.04,
-          fontWeight: 900,
-          letterSpacing: "-0.02em",
-          textTransform: "uppercase",
+          lineHeight: 1.1,
+          fontWeight: 800,
+          letterSpacing: "-0.01em",
           whiteSpace: "nowrap",
           color: brand.white,
-          backgroundColor: i === acento ? paleta.sendero : "transparent",
+          backgroundColor: i === acento ? (grande ? paleta.sendero : paleta.verdeWays) : "transparent",
           padding: i === acento ? "4px 22px 10px" : 0,
           borderRadius: 10,
           textShadow: i === acento || grande ? "none" : "0 6px 24px rgba(46, 46, 45, 0.5)",

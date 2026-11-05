@@ -8,6 +8,7 @@ import {
   space,
   tracking,
   weight,
+  paleta,
 } from "../brand/theme";
 
 /**
@@ -78,10 +79,10 @@ export const Cartela: React.FC<{
       {eyebrow ? (
         <div
           style={{
-            backgroundColor: brand.forest,
+            backgroundColor: paleta.sendero,
             color: brand.lime,
             fontSize: fontSize.lg,
-            fontWeight: weight.black,
+            fontWeight: weight.extrabold,
             letterSpacing: tracking.loose,
             textTransform: "uppercase",
             padding: `${space[2]}px ${space[4]}px`,
@@ -132,7 +133,7 @@ export const Cartela: React.FC<{
               display: "block",
               fontSize: 42,
               lineHeight: 1.15,
-              fontWeight: weight.black,
+              fontWeight: weight.extrabold,
               letterSpacing: tracking.wide,
               textTransform: "uppercase",
               color: inferior.fg,

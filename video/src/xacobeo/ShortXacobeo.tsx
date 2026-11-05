@@ -272,10 +272,9 @@ const Gancho: React.FC<{ titulo: string[]; acento: number; dur: number }> = ({ t
               key={i}
               style={{
                 fontSize: Math.min(96, Math.floor(900 / (linea.length * 0.8))),
-                lineHeight: 1.02,
-                fontWeight: 900,
-                letterSpacing: "-0.02em",
-                textTransform: "uppercase",
+                lineHeight: 1.1,
+                fontWeight: 800,
+                letterSpacing: "-0.01em",
                 whiteSpace: "nowrap",
                 color: brand.white,
                 backgroundColor: esAcento ? paleta.verdeWays : "transparent",
