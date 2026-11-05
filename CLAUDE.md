@@ -35,6 +35,51 @@ Reglas que condicionan cada pieza:
 - Formatos: 1080x1920 reels, 1080x1080 feed, 1280x720 YouTube. Márgenes 56 px
   como mínimo.
 
+## Brandbook 2027 (vigente, manda sobre todo lo anterior)
+
+El PDF oficial está en `docs/Santiago_Ways_Brandbook_2027.pdf`. Si algo de
+este archivo o de `theme.ts` lo contradice, gana el PDF. Lo que afecta al vídeo:
+
+- **Una sola familia: Montserrat.** Pesos de 400 a 800. Titular 72 ExtraBold,
+  sección 44 Bold, lectura 32 Regular, etiqueta 24 Bold. Interlineado 1,1 en
+  titulares y 1,5 en texto. Nada de Manrope ni Poppins.
+- **Titulares en minúscula de frase** ("Tu Camino empieza aquí"), nunca todo en
+  mayúsculas. Mayúsculas solo en antetítulos y etiquetas pequeñas
+  ("CAMINO FRANCÉS").
+- **El subrayado SW:** una sola parte del titular va en placa verde Ways
+  `#7AA606` con letra blanca. Es la marca del sistema.
+- **Paleta y ratio:** blanco `#FFFFFF` 50 %, verde Ways `#7AA606` 30 %, verde
+  sendero `#506718` 10 % (cajas oscuras y palabras clave), grafito `#2E2E2D`
+  7 % (texto), apoyo 3 % (`#6F6F6E`, `#E8E8E6`, `#FAFFEE`).
+- **Qué letra sobre qué fondo:** grafito sobre blanco; sendero sobre blanco
+  para titulares y palabras en verde; blanco sobre sendero; blanco sobre verde
+  Ways solo en negrita; verde Ways sobre blanco nunca como texto. Nunca verde
+  sobre verde.
+- **Degradado** solo en cajas de fondo verde Ways: 135°, de `#7AA606` a
+  `#628A04`, muy sutil. CTA, etiquetas, subrayados, líneas y textos, planos.
+  Las cajas llevan sombra `0 8px 32px` grafito al 12 %; botones, etiquetas y
+  subrayados, sin sombra.
+- **CTA:** verde con letra blanca sobre blanco; sobre foto, blanco con letra
+  verde. Uno por pieza.
+- **Logo sobre foto, siempre en blanco.** Horizontal arriba a la izquierda,
+  sobre cielo o zona lisa, un cuarto del ancho; o isotipo pequeño arriba a la
+  derecha, nunca sobre caras. Sobre fondo blanco, en verde Ways. El logo no
+  cambia y no se escribe como texto.
+- **Shorts y reels (p. 34):** subtítulos con la palabra remarcada siempre en
+  fondo verde Ways y letra blanca. Miniatura siempre en YouTube Shorts y,
+  cuando se pueda, en Instagram y TikTok. La cartela de cierre es opcional:
+  contenido orgánico, no hace falta cerrar con logo.
+- **YouTube (p. 31-32):** cinco piezas animadas: cabecera (logo y web sobre
+  verde con la concha de marca de agua), capítulo (antetítulo + titular con
+  subrayado SW), etapa (tramo y km), texto sobre vídeo (frase clave con
+  subrayado SW) y mapa. Cierre: pantalla blanca con logo y un único CTA
+  (suscribirse o reservar). Miniaturas sobrias: titular grande con una sola
+  parte subrayada en verde.
+
+Al adaptar piezas antiguas al brandbook: cambiar lo mínimo. Mismo montaje,
+cortes, planos y textos; solo tipografía, color, mayúsculas, subrayado SW,
+logo y cierre.
+
 ## Cómo se ven los textos
 
 Las cartelas replican las del kit de motion graphics, no se inventan:
