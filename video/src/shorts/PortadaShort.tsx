@@ -76,7 +76,7 @@ export const PortadaShort: React.FC<{ id: string }> = ({ id }) => {
 const estiloTexto = (tam: number): React.CSSProperties => ({
   fontSize: tam,
   lineHeight: 1.08,
-  fontWeight: 900,
+  fontWeight: 800,
   letterSpacing: "-0.03em",
   whiteSpace: "nowrap",
 });
