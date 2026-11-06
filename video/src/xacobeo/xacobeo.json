@@ -2825,9 +2825,9 @@
   "duracion": 29.1,
   "inicio": 0,
   "titulo": [
-   "THIS DOOR",
-   "ISN'T OPEN",
-   "EVERY YEAR"
+   "This door",
+   "isn't open",
+   "every year"
   ],
   "acento": 0,
   "gancho": {
@@ -2835,9 +2835,9 @@
   },
   "portada": {
    "titulo": [
-    "THE DOOR THAT",
-    "ONLY OPENS IN",
-    "A HOLY YEAR"
+    "The door that",
+    "only opens in",
+    "a Holy Year"
    ],
    "acento": 2,
    "fotograma": 28.65
