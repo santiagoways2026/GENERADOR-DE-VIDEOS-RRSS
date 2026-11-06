@@ -152,14 +152,14 @@ const Titular: React.FC<{ lineas: string[]; dur: number }> = ({ lineas, dur }) =
           <div
             key={i}
             style={{
+              // Brandbook 2027: minúscula de frase y Montserrat 800.
               fontSize: 92,
-              lineHeight: 1.04,
-              fontWeight: 900,
-              textTransform: "uppercase",
+              lineHeight: 1.1,
+              fontWeight: 800,
               whiteSpace: "nowrap",
               color: brand.white,
-              // Brandbook 2027: la palabra clave va en placa verde sendero.
-              backgroundColor: acento ? paleta.sendero : "transparent",
+              // Brandbook 2027: el subrayado SW, placa verde Ways con letra blanca.
+              backgroundColor: acento ? paleta.verdeWays : "transparent",
               padding: acento ? "4px 18px 8px" : 0,
               borderRadius: 10,
               WebkitTextStroke: acento ? "0px" : `10px ${paleta.grafito}`,
