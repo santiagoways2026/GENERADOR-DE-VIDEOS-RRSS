@@ -75,7 +75,10 @@ export const Subtitulos: React.FC<{
   soloVerde?: boolean;
   /** Altura de la línea; por defecto, bajo el torso. */
   top?: number;
-}> = ({ palabras, soloVerde = false, top = 1280 }) => {
+  /** Tramos [desde, hasta] en segundos en los que la línea sube a `alto`. */
+  arriba?: [number, number][];
+  alto?: number;
+}> = ({ palabras, soloVerde = false, top = 1280, arriba, alto = 620 }) => {
   const frame = useCurrentFrame();
   const t = frame / fps;
   const paginas = paginar(tokens(palabras));
@@ -88,6 +91,7 @@ export const Subtitulos: React.FC<{
   if (idx < 0) return null;
   const pagina = paginas[idx];
   const desde = (pagina[0].en - 0.05) * fps;
+  const y = arriba?.some(([a, b]) => pagina[0].en >= a && pagina[0].en < b) ? alto : top;
   const entra = interpolate(frame, [desde, desde + 5], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
@@ -99,7 +103,7 @@ export const Subtitulos: React.FC<{
       style={{
         position: "absolute",
         // Por debajo de y 958 la columna derecha es de los botones de la red.
-        top,
+        top: y,
         // Centrado en 540: el mismo margen a los dos lados que pide la
         // columna de botones (x 855, plantilla de zonas seguras), así nada cae debajo de ellos.
         left: 1080 - 855,

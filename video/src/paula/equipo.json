@@ -2676,7 +2676,17 @@
   "musica": {
    "src": "musica/chill_Deliberate_Thought.mp3",
    "vol": 0.04
-  }
+  },
+  "subtitulosArriba": [
+   [
+    0,
+    1.82
+   ],
+   [
+    3.67,
+    30
+   ]
+  ]
  },
  {
   "id": "s7-xacobeo-2027",

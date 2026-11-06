@@ -74,7 +74,12 @@ export const ShortPaula: React.FC<{ id?: string }> = ({ id }) => {
       ))}
 
       {/* Arriba si en el plano la cara queda a la altura de los subtítulos. */}
-      <Subtitulos palabras={datos.palabras} soloVerde top={(datos as { subtitulosArriba?: boolean }).subtitulosArriba ? 620 : undefined} />
+      <Subtitulos
+        palabras={datos.palabras}
+        soloVerde
+        top={(datos as { subtitulosArriba?: unknown }).subtitulosArriba === true ? 620 : undefined}
+        arriba={Array.isArray((datos as { subtitulosArriba?: unknown }).subtitulosArriba) ? ((datos as unknown as { subtitulosArriba: [number, number][] }).subtitulosArriba) : undefined}
+      />
 
       <Sequence from={finVoz} name="Cierre">
         <Cierre duracion={total - finVoz} fondo={paleta.verdeWays} />

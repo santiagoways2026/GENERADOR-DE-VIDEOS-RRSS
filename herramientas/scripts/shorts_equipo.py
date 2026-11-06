@@ -69,6 +69,7 @@ SHORTS = {
         cartelas=[dict(frase=1, principal="20 a 25 km", secundaria="Por etapa desde Sarria"),
                   dict(frase=2, principal="5 o 6 horas", secundaria="Caminando")]),
     "s6-nadie-te-cuenta": dict(
+        subtitulos_arriba=[[0, 1.82], [3.67, 30]],  # arriba salvo en la toma de 0084 (cara alta)
         titulo=["Lo que nadie", "te cuenta del", "Camino"],
         musica="chill_Deliberate_Thought",
         frases=[("0083", 10.47, 12.09, None),
@@ -220,7 +221,7 @@ def main():
         datos.append(dict(id=sid, titulo=spec["titulo"], duracion=round(t + 1.4, 3), finVoz=round(t, 3),
                           planos=planos, recursos=recursos, palabras=palabras, cartelas=cartelas,
                           musica=dict(src=f"musica/{spec['musica']}.mp3", vol=0.0 if spec.get("sin_musica") else 0.04),
-                          **({"subtitulosArriba": True} if spec.get("subtitulos_arriba") else {}),
+                          **({"subtitulosArriba": spec["subtitulos_arriba"]} if spec.get("subtitulos_arriba") else {}),
                           **({"tituloTop": spec["titulo_top"]} if spec.get("titulo_top") else {})))
         print(sid, round(t, 1), " ".join(w["t"] for w in palabras)[:300])
     json.dump(datos, open(SALIDA, "w"), ensure_ascii=False, indent=1)
