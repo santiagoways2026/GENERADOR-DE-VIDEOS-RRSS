@@ -2254,26 +2254,7 @@
     "zoom": 1.15
    }
   ],
-  "recursos": [
-   {
-    "en": 1.82,
-    "dur": 1.85,
-    "src": "dji/DJI_20260929110228_0069_D.mp4",
-    "desde": 6.0
-   },
-   {
-    "en": 5.59,
-    "dur": 4.22,
-    "src": "dji/DJI_20260929073410_0040_D.mp4",
-    "desde": 0.0
-   },
-   {
-    "en": 15.33,
-    "dur": 2.4,
-    "src": "dji/DJI_20260929073931_0046_D.mp4",
-    "desde": 1.0
-   }
-  ],
+  "recursos": [],
   "palabras": [
    {
     "t": "Esto",
@@ -3234,7 +3215,8 @@
   "musica": {
    "src": "musica/chill_Backbay_Lounge.mp3",
    "vol": 0.04
-  }
+  },
+  "subtitulosArriba": true
  },
  {
   "id": "s8-puerta-santa",

@@ -72,13 +72,14 @@ SHORTS = {
         titulo=["Lo que nadie", "te cuenta del", "Camino"],
         musica="chill_Deliberate_Thought",
         frases=[("0083", 10.47, 12.09, None),
-                ("0084", 18.90, 20.55, D + "9110228_0069_D.mp4@6.0"),
+                ("0084", 18.90, 20.55, None),
                 ("0091", 35.26, 36.98, None),
-                ("0092", 4.80, 8.82, D + "9073410_0040_D.mp4@0.0"),
+                ("0092", 4.80, 8.82, None),
                 ("0093", 10.19, 15.51, None),
-                ("0099", 0.34, 2.54, D + "9073931_0046_D.mp4@1.0"),
+                ("0099", 0.34, 2.54, None),
                 ("0100", 1.62, 6.44, None)]),
     "s7-xacobeo-2027": dict(
+        subtitulos_arriba=True,  # la cara queda a la altura de los subtítulos
         titulo=["2027 no será", "un año", "normal"],
         musica="chill_Backbay_Lounge",
         frases=[("0101", 1.52, 4.40, None),
