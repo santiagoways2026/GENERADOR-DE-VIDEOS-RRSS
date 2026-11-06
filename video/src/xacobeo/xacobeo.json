@@ -3306,9 +3306,9 @@
   "duracion": 32.5,
   "inicio": 0.9,
   "titulo": [
-   "100 KM",
-   "IS NOT THE",
-   "INDULGENCE"
+   "100 km",
+   "is not the",
+   "indulgence"
   ],
   "acento": 2,
   "gancho": {
@@ -3316,9 +3316,9 @@
   },
   "portada": {
    "titulo": [
-    "100 KM",
-    "IS NOT THE",
-    "INDULGENCE"
+    "100 km",
+    "is not the",
+    "indulgence"
    ],
    "acento": 2,
    "fotograma": 32.95

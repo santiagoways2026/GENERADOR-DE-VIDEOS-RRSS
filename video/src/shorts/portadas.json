@@ -32,5 +32,6 @@
  {"id": "s9-credencial", "lineas": ["Sella tu", "credencial", "por el Camino"], "alto": 300, "foto": "fotograma de paula/0110.mp4 a 5.3 s"},
  {"id": "xacobeo-03-perdonar-pecados", "lineas": ["Can the Camino", "forgive", "your sins?"], "foto": "n1/f56cee61-93ab-4552-a7ca-7f59380a01ca.jpg", "alto": 330},
  {"id": "xacobeo-04-error-reservar", "lineas": ["The biggest", "2027 booking", "mistake"], "foto": "n1/0133500D-6948-4709-A9DF-64274D4D620D.jpg", "alto": 330},
- {"id": "xacobeo-06-puerta-santa", "lineas": ["The door that", "only opens in", "a Holy Year"], "foto": "n1/E1C2AC0D-C0AE-428D-9BAB-F4CA46C044E2.jpg", "alto": 330}
+ {"id": "xacobeo-06-puerta-santa", "lineas": ["The door that", "only opens in", "a Holy Year"], "foto": "n1/E1C2AC0D-C0AE-428D-9BAB-F4CA46C044E2.jpg", "alto": 330},
+ {"id": "xacobeo-07-100km-indulgencia", "lineas": ["100 km", "is not the", "indulgence"], "foto": "n1/6460c1c6-8e6e-419a-a110-b07da6e26049.jpg", "alto": 330}
 ]
