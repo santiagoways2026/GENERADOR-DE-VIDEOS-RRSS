@@ -94,9 +94,10 @@ SHORTS = {
         cartelas=[dict(frase=2, principal="25 de julio", secundaria="En domingo: año santo"),
                   dict(frase=6, principal="Reserva", secundaria="Con tiempo")]),
     "s8-puerta-santa": dict(
+        subtitulos_arriba=True,  # la cara queda a la altura de los subtítulos
         titulo=["La Puerta", "Santa", "se abre"],
         musica="chill_Late_Night_Radio",
-        frases=[("0104", 3.75, 4.95, None),
+        frases=[("0103", 14.98, 16.52, None)  # "Esta es la Puerta Santa",
                 ("0104", 8.35, 13.10, "dji/IMG_5542.mp4@0.3"),
                 ("0106", 31.71, 34.39, None)  # sin la pausa del arranque,
                 ("0106", 34.79, 36.95, "dji/IMG_5543.mp4@14.0")  # sin el "Así" repetido,
