@@ -73,7 +73,9 @@ export const Subtitulos: React.FC<{
   palabras: Palabra[];
   /** Paleta 2026: placa verde Ways en la palabra que suena, contorno grafito. */
   soloVerde?: boolean;
-}> = ({ palabras, soloVerde = false }) => {
+  /** Altura de la línea; por defecto, bajo el torso. */
+  top?: number;
+}> = ({ palabras, soloVerde = false, top = 1280 }) => {
   const frame = useCurrentFrame();
   const t = frame / fps;
   const paginas = paginar(tokens(palabras));
@@ -97,7 +99,7 @@ export const Subtitulos: React.FC<{
       style={{
         position: "absolute",
         // Por debajo de y 958 la columna derecha es de los botones de la red.
-        top: 1280,
+        top,
         // Centrado en 540: el mismo margen a los dos lados que pide la
         // columna de botones (x 855, plantilla de zonas seguras), así nada cae debajo de ellos.
         left: 1080 - 855,

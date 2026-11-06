@@ -53,13 +53,18 @@ export const ShortPaula: React.FC<{ id?: string }> = ({ id }) => {
             desde={r.desde}
             dur={f(r.dur)}
             // Pegado al anterior entra en seco: un fundido dejaba ver a Paula un fotograma.
-            seguido={i > 0 && r.en - (datos.recursos[i - 1].en + datos.recursos[i - 1].dur) < 0.1}
+            // Si arranca a la vez que una toma, también en seco: el fundido
+            // dejaba ver unos fotogramas de la toma nueva (un salto de plano).
+            seguido={
+              (i > 0 && r.en - (datos.recursos[i - 1].en + datos.recursos[i - 1].dur) < 0.1) ||
+              datos.planos.some((p) => Math.abs(p.en - r.en) < 0.05)
+            }
           />
         </Sequence>
       ))}
 
       <Sequence durationInFrames={f(3.4)} name="Titular">
-        <Titular lineas={datos.titulo} dur={f(3.4)} />
+        <Titular lineas={datos.titulo} dur={f(3.4)} top={(datos as { tituloTop?: number }).tituloTop} />
       </Sequence>
 
       {datos.cartelas.map((c, i) => (
@@ -68,7 +73,8 @@ export const ShortPaula: React.FC<{ id?: string }> = ({ id }) => {
         </Sequence>
       ))}
 
-      <Subtitulos palabras={datos.palabras} soloVerde />
+      {/* Arriba si en el plano la cara queda a la altura de los subtítulos. */}
+      <Subtitulos palabras={datos.palabras} soloVerde top={(datos as { subtitulosArriba?: boolean }).subtitulosArriba ? 620 : undefined} />
 
       <Sequence from={finVoz} name="Cierre">
         <Cierre duracion={total - finVoz} fondo={paleta.verdeWays} />
@@ -128,7 +134,7 @@ const Recurso: React.FC<{ src: string; desde: number; dur: number; seguido: bool
 };
 
 /** Titular de entrada, encima de la cabeza de Paula. */
-const Titular: React.FC<{ lineas: string[]; dur: number }> = ({ lineas, dur }) => {
+const Titular: React.FC<{ lineas: string[]; dur: number; top?: number }> = ({ lineas, dur, top = ARRIBA }) => {
   const frame = useCurrentFrame();
   const fuera = interpolate(frame, [dur - 8, dur], [0, 100], { ...clamp, easing: Easing.in(Easing.cubic) });
   return (
@@ -136,7 +142,7 @@ const Titular: React.FC<{ lineas: string[]; dur: number }> = ({ lineas, dur }) =
       name="Titular"
       style={{
         position: "absolute",
-        top: ARRIBA,
+        top,
         left: 60,
         right: 60,
         display: "flex",

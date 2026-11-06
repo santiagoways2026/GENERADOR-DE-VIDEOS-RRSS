@@ -1627,7 +1627,8 @@
   "musica": {
    "src": "musica/chill_Wallpaper.mp3",
    "vol": 0.04
-  }
+  },
+  "tituloTop": 860
  },
  {
   "id": "s5-cuanto-se-camina",
@@ -4291,7 +4292,8 @@
   "musica": {
    "src": "musica/chill_Dreamer.mp3",
    "vol": 0.0
-  }
+  },
+  "subtitulosArriba": true
  },
  {
   "id": "perderse-toma",

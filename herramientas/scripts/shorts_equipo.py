@@ -45,6 +45,7 @@ SHORTS = {
                 ("0072", 169.24, 172.36, None)],
         cartelas=[dict(frase=3, principal="Portomarín", secundaria="Trasladado piedra a piedra")]),
     "s4-bastones": dict(
+        titulo_top=860,  # el titular arriba tapaba la cara de Álvaro
         titulo=["¿Bastones", "en el", "Camino?"],
         musica="chill_Wallpaper",
         frases=[("0073", 2.89, 6.19, None),
@@ -107,6 +108,7 @@ SHORTS = {
         frases=[("0107", 19.20, 22.60, D + "9065826_0015_D.mp4@7.4"),
                 ("0110", 0.80, 5.74, None)]),
     "portomarin-toma": dict(
+        subtitulos_arriba=True,  # la cara queda a la altura de los subtítulos
         # Una sola toma limpia (1104.mov): se pega entera, sin márgenes ni cambios de encuadre.
         continuo=True,
         sin_musica=True,
@@ -216,7 +218,9 @@ def main():
         palabras = limpias
         datos.append(dict(id=sid, titulo=spec["titulo"], duracion=round(t + 1.4, 3), finVoz=round(t, 3),
                           planos=planos, recursos=recursos, palabras=palabras, cartelas=cartelas,
-                          musica=dict(src=f"musica/{spec['musica']}.mp3", vol=0.0 if spec.get("sin_musica") else 0.04)))
+                          musica=dict(src=f"musica/{spec['musica']}.mp3", vol=0.0 if spec.get("sin_musica") else 0.04),
+                          **({"subtitulosArriba": True} if spec.get("subtitulos_arriba") else {}),
+                          **({"tituloTop": spec["titulo_top"]} if spec.get("titulo_top") else {})))
         print(sid, round(t, 1), " ".join(w["t"] for w in palabras)[:300])
     json.dump(datos, open(SALIDA, "w"), ensure_ascii=False, indent=1)
 
