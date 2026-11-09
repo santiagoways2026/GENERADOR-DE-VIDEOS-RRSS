@@ -17,7 +17,7 @@ import { Calendario } from "../graficos/Calendario";
 import { Candado } from "../graficos/Candado";
 import { LineaTiempo } from "../graficos/LineaTiempo";
 import { Subtitulos } from "../shorts/Subtitulos";
-import { Dato } from "../shorts/Graficos";
+import { Dato, Requisitos } from "../shorts/Graficos";
 import datos from "./xacobeo.json";
 
 /**
@@ -36,7 +36,7 @@ import datos from "./xacobeo.json";
  */
 
 type Capa = {
-  tipo: "cartela" | "png" | "broll" | "grafico" | "mapa" | "tarjeta";
+  tipo: "cartela" | "png" | "broll" | "grafico" | "mapa" | "tarjeta" | "lista";
   en: number;
   dur: number;
   principal?: string;
@@ -82,10 +82,12 @@ export const ShortXacobeo: React.FC<{ id: string }> = ({ id }) => {
       </Sequence>
 
       {d.capas
-        .filter((c) => c.tipo === "cartela" || c.tipo === "png" || c.tipo === "tarjeta")
+        .filter((c) => c.tipo === "cartela" || c.tipo === "png" || c.tipo === "tarjeta" || c.tipo === "lista")
         .map((c, i) => (
           <Sequence key={`c${i}`} from={f(c.en)} durationInFrames={f(c.dur)} name={`Cartela ${i + 1}`}>
-            {c.tipo === "tarjeta" ? (
+            {c.tipo === "lista" ? (
+              <Requisitos dur={f(c.dur)} titulo={c.principal} pasos={(c as { pasos?: { texto: string; en: number }[] }).pasos ?? []} nota="" />
+            ) : c.tipo === "tarjeta" ? (
               <Dato dur={f(c.dur)} ante={(c as { ante?: string }).ante ?? ""} titulo={c.principal ?? ""} oscuro={(c as { oscuro?: boolean }).oscuro} />
             ) : c.tipo === "cartela" ? (
               <Cartela principal={c.principal ?? ""} secundaria={c.secundaria ?? undefined} top={ARRIBA} tinta={paleta.grafito} />

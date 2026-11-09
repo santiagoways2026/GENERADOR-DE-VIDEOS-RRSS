@@ -4433,14 +4433,6 @@
     "en": 6.28
    },
    {
-    "tipo": "cartela",
-    "principal": "NOT EVERY ROUTE",
-    "secundaria": "HAS THE SAME CROWDS",
-    "dur": 3.6,
-    "tono": "olivo",
-    "en": 7.78
-   },
-   {
     "tipo": "broll",
     "src": "xacobeo/stock/bosque-peregrinos.mp4",
     "dur": 2.4,
@@ -4455,6 +4447,13 @@
     "en": 18.82
    },
    {
+    "tipo": "mapa",
+    "src": "xacobeo/mapas/frances.mp4",
+    "desde": 16.0,
+    "dur": 2.6,
+    "en": 25.2
+   },
+   {
     "tipo": "png",
     "src": "hilary/cartelas/sw-tag-light.png",
     "ancho": 880,
@@ -4464,18 +4463,45 @@
     "dur": 7.49
    },
    {
-    "tipo": "cartela",
-    "principal": "PLAN IT WELL",
-    "secundaria": "ENJOY 2027",
-    "dur": 3.0,
-    "tono": "olivo",
-    "en": 30.88
+    "tipo": "tarjeta",
+    "oscuro": true,
+    "ante": "The catch",
+    "principal": "Not every route is crowded",
+    "en": 7.78,
+    "dur": 3.8
+   },
+   {
+    "tipo": "lista",
+    "principal": "Choose carefully",
+    "pasos": [
+     {
+      "texto": "Your dates",
+      "en": 0.8
+     },
+     {
+      "texto": "Your route",
+      "en": 1.3
+     },
+     {
+      "texto": "Your stages",
+      "en": 1.8
+     }
+    ],
+    "en": 12.7,
+    "dur": 3.4
+   },
+   {
+    "tipo": "tarjeta",
+    "ante": "Enjoy 2027",
+    "principal": "Plan it well",
+    "en": 30.88,
+    "dur": 2.8
    }
   ],
   "zooms": [
    {
     "en": 7.78,
-    "z": 1.1
+    "z": 1.08
    },
    {
     "en": 12.7,
@@ -4483,7 +4509,7 @@
    },
    {
     "en": 19.36,
-    "z": 1.1
+    "z": 1.08
    },
    {
     "en": 25.18,
