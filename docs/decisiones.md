@@ -127,9 +127,9 @@ Ni un gráfico, ni una tarjeta, ni una transición. Lo que se aplica:
 
 ## Redes al final
 
-Un banner con cuatro redes no se lee. Se deja **una red y la web**: en la
-pieza 03, "Subscribe on Facebook" y santiagoways.com, en una sola cápsula
-que tapa los dos banners quemados.
+Un banner con cuatro redes no se lee. Se deja **una sola petición**: la
+suscripción al canal de YouTube, que es lo que interesa. La web no se
+repite aquí porque ya sale en el cierre.
 - El orbit sirve de **transición**: sustituye al barrido de ese corte y
   termina fundiéndose con el plano original, así la vuelta no se nota.
 - El tramo del CTA queda **quieto y limpio**, sin zoom.

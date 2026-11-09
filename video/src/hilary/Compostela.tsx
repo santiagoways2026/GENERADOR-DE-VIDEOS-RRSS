@@ -42,7 +42,7 @@ import { Subtitulo } from "../componentes/Subtitulo";
  *   quemada de tres frases.
  * - 24,5 s: la lista de requisitos sobre el plano de la fuente.
  * - 33,6 s: orbit de vuelta a Hilary. El bloque final queda quieto: es el CTA.
- * - 34 s: "Subscribe on Facebook" y la web, en lugar de los banners quemados.
+ * - 34 s: "Subscribe to our YouTube channel", en lugar de los banners quemados.
  * - 36,2 s: "Ask us below", por detrás de Hilary, reforzando lo que dice.
  *
  * Por debajo van los recursos que no se notan: zoom de énfasis en las
@@ -291,7 +291,7 @@ export const HilaryCompostela: React.FC = () => {
         <OrbitaConSalida />
       </Sequence>
 
-      {/* Una red y la web, en lugar de los dos banners quemados del final. */}
+      {/* Suscripción al canal de YouTube, en lugar de los dos banners quemados. */}
       <Sequence from={1020} durationInFrames={CORTE.cierre - 1020} name="Suscríbete">
         <Suscribete />
       </Sequence>
