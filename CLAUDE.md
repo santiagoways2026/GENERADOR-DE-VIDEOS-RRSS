@@ -190,6 +190,8 @@ verdes de énfasis, y grafito. Nada de estilo pegatina ni vieira.
 
 ## Lo que no se hace
 
+- Escribir a mano un rótulo o cartela que antes era una imagen del kit (por
+  ejemplo "Camino Expert"). Si no está el archivo del kit, no se pone.
 - El gancho sobre fondo blanco con la persona recortada (la "cartela blanca
   del principio"). Se empieza con el plano real y el titular encima.
 - La placa blanca en las cartelas. Se mantiene la cartela, pero al estilo

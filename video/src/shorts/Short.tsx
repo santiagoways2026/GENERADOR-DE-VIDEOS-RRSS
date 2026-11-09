@@ -105,7 +105,7 @@ export const Short: React.FC<{ id: string }> = ({ id }) => {
         </Sequence>
       ))}
 
-      <ExpertoSiCabe d={d} />
+      {/* Sin rótulo "Camino Expert": no hay cartela del kit para él y no se escribe a mano. */}
 
       <Sequence durationInFrames={f(d.gancho.dur)} name="Gancho">
         <Gancho titulo={d.titulo} acento={d.acento} src={d.gancho.src} />
@@ -287,7 +287,8 @@ const CartelaPng: React.FC<{ src: string; ancho: number; dur: number }> = ({ src
 };
 
 /** El rótulo de experta del vídeo largo, solo si la franja superior está libre. */
-const ExpertoSiCabe: React.FC<{ d: DatosShort }> = ({ d }) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export const ExpertoSiCabe: React.FC<{ d: DatosShort }> = ({ d }) => {
   const a = d.gancho.dur + 0.3;
   const b = a + 3.2;
   const libre = d.capas.every((c) => c.en > b + 0.2 || c.en + c.dur < a);
