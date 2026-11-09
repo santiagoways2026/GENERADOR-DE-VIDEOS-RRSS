@@ -77,8 +77,14 @@ banners van quemados en la imagen. Lo que se añade encima no puede pisarlos:
 - La **transición olivo** solo en cambios de bloque. En cada corte cansaría.
 - Los tiempos salen de la transcripción por palabra y de los cortes medidos
   con detección de escena: `ffmpeg -vf "select='gt(scene,0.08)',showinfo"`.
-- Si una tarjeta quemada no se lee, se rehace encima, en la misma posición y
-  algo más grande, entrando antes y saliendo después que la original.
+- Si una tarjeta quemada no se lee o lleva demasiado texto, se rehace
+  encima, en la misma posición, tapándola entera. Aparece de golpe en el
+  corte donde entra la quemada, no con barrido, para que no asome.
+- **Una idea por tarjeta, dos líneas como mucho.** Las tarjetas con frase de
+  contexto debajo no se leen en el tiempo que están: la voz ya lo cuenta.
+  La de la credencial se quedó en "The credential / Included with Santiago
+  Ways" y el aviso de los sellos en "Last 100 km / 2 stamps a day", con los
+  dos sellos cayendo cuando la voz los nombra.
 
 ## Efectos con recorte de la persona
 
@@ -99,9 +105,12 @@ Lo que se aprendió al aplicarlo:
 
 - **Un efecto con firma por bloque**, y nunca dos en menos de seis segundos.
   El orbit, una sola vez por pieza.
-- La tarjeta de detrás va **a un lado de la cabeza**, no centrada: si el texto
+- La caja de detrás va **a un lado de la cabeza**, no centrada: si el texto
   queda tapado por la persona, no se lee. Asoma desde detrás y vuelve a
-  esconderse.
+  esconderse. Gustó mucho, con una condición: **sutil**. Poco texto, sombra
+  apenas marcada, entrada lenta y corta. Está en `CajaDetras`.
+- No se puede poner por detrás donde hay una tarjeta quemada encima de la
+  cabeza: debajo no queda pelo que recortar.
 - El orbit sirve de **transición**: sustituye al barrido de ese corte y
   termina fundiéndose con el plano original, así la vuelta no se nota.
 - El tramo del CTA queda **quieto y limpio**, sin zoom.

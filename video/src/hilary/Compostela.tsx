@@ -14,8 +14,9 @@ import { MEDIA, TOTAL, Transicion } from "../componentes/Transicion";
 import { Cierre } from "../escenas/Cierre";
 import { Credencial } from "../graficos/Credencial";
 import { DistanciaDetras } from "../graficos/DistanciaDetras";
+import { PreguntaDetras } from "../graficos/PreguntaDetras";
 import { Orbita } from "../componentes/Orbita";
-import { Sellos } from "../graficos/Sellos";
+import { AvisoSellos } from "../graficos/AvisoSellos";
 
 /**
  * Hilary · Cómo conseguir la Compostela (pieza 03).
@@ -25,12 +26,14 @@ import { Sellos } from "../graficos/Sellos";
  *
  * Efectos con firma, uno por bloque y nunca dos en menos de seis segundos:
  * - 0 s: zoom de entrada en el gancho.
- * - 2,4 s: tarjeta con los mínimos de distancia por detrás de Hilary.
+ * - 2,4 s: caja con los mínimos de distancia por detrás de Hilary.
  * - 8,7 s: la tarjeta de la credencial rehecha encima de la quemada, que
- *   tenía el texto a 26 px y no se leía en el móvil.
- * - 19,4 s: los dos sellos.
+ *   tenía demasiado texto y a 26 px.
+ * - 16 s: el aviso de los sellos rehecho encima del quemado, con la regla
+ *   sola y los dos sellos cayendo cuando la voz los dice.
  * - 24,5 s: la lista de requisitos sobre el plano de la fuente.
  * - 33,6 s: orbit de vuelta a Hilary. El bloque final queda quieto: es el CTA.
+ * - 36,2 s: "Ask us below", por detrás de Hilary, reforzando lo que dice.
  *
  * Por debajo van los recursos que no se notan: zoom de énfasis en las
  * palabras clave, empuje lento en los planos de recurso largos y barrido
@@ -44,6 +47,7 @@ const VIDEO = "hilary/03-compostela.mp4";
 /** Recortes de Hilary con fondo transparente, generados con
  *  herramientas/scripts/recortar.py, y el fondo sin ella para el orbit. */
 const RECORTE_DATO = { src: "hilary/03-recorte-dato.webm", desde: 70, dur: 126 };
+const RECORTE_FINAL = { src: "hilary/03-recorte-final.webm", desde: 1078, dur: 102 };
 const ORBIT = {
   figura: "hilary/03-recorte-orbit.webm",
   fondo: "hilary/03-fondo-orbit.mp4",
@@ -74,6 +78,8 @@ const VOZ = {
   two: 582, // "two" en "two stamps per day"
   stamps2: 591,
   justRemember: 828,
+  leaveThem: 1086, // "leave them below"
+  comments: 1171, // "the comments"
 };
 
 /**
@@ -204,11 +210,22 @@ export const HilaryCompostela: React.FC = () => {
           aPie={VOZ.cien}
           enBici={VOZ.doscientos}
           salida={CORTE.credencial - 16}
-          fuente="Source: Pilgrim's Office"
+          fuente="Pilgrim's Office"
         />
         <Sequence from={RECORTE_DATO.desde} durationInFrames={RECORTE_DATO.dur} name="Recorte de Hilary">
           <OffthreadVideo
             src={staticFile(RECORTE_DATO.src)}
+            transparent
+            muted
+            style={{ width: "100%", height: "100%" }}
+          />
+        </Sequence>
+
+        {/* Refuerzo del CTA de la voz, también por detrás de Hilary. */}
+        <PreguntaDetras entrada={VOZ.leaveThem} salida={VOZ.comments - 18} />
+        <Sequence from={RECORTE_FINAL.desde} durationInFrames={RECORTE_FINAL.dur} name="Recorte final">
+          <OffthreadVideo
+            src={staticFile(RECORTE_FINAL.src)}
             transparent
             muted
             style={{ width: "100%", height: "100%" }}
@@ -225,12 +242,8 @@ export const HilaryCompostela: React.FC = () => {
 
       <Credencial entrada={CORTE.credencialEntra} salida={CORTE.credencialSale} />
 
-      <Sellos
-        desde={VOZ.two - 12}
-        golpes={[VOZ.two, VOZ.stamps2 + 2]}
-        texto="Every day · last 100 km"
-        salida={627 - 10}
-      />
+      {/* Tapa el aviso quemado, que tenía dos frases largas, con la regla sola. */}
+      <AvisoSellos entrada={CORTE.sello2} golpes={[VOZ.two, VOZ.stamps2 + 2]} salida={606} />
 
       <Sequence from={CORTE.fuente + 4} durationInFrames={CORTE.final - CORTE.fuente - 4} name="Requisitos">
         <Requisitos salida={CORTE.final - CORTE.fuente - 4 - 16} aviso={VOZ.justRemember - CORTE.fuente - 4} />

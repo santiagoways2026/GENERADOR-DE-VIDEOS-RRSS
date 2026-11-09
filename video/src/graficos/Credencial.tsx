@@ -1,12 +1,13 @@
 import { Easing, Interactive, interpolate, useCurrentFrame } from "remotion";
-import { brand, color, easeOut, tracking, weight } from "../brand/theme";
+import { brand, color, easeOut, weight } from "../brand/theme";
 
 /**
  * Tarjeta de la credencial, legible en móvil.
  *
  * La pieza original traía esta tarjeta quemada con el texto a 26 px, que en
- * un teléfono no se lee. Esta la tapa entera en la misma posición: mismo
- * contenido y misma estructura, con el cuerpo a 34 px y el texto más corto.
+ * un teléfono no se lee. Esta la tapa entera en la misma posición con solo
+ * dos cosas: qué es y que va incluida. Lo de conseguirla por tu cuenta ya lo
+ * dice la voz.
  * Entra un poco antes que la quemada y sale un poco después, para que la de
  * debajo no asome nunca.
  */
@@ -55,25 +56,21 @@ export const Credencial: React.FC<{ entrada: number; salida: number }> = ({ entr
       >
         <Icono />
       </div>
-      <div style={{ padding: "26px 36px 28px", display: "flex", flexDirection: "column", gap: 6 }}>
+      <div
+        style={{
+          padding: "0 44px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          gap: 14,
+        }}
+      >
         <span
           style={{
-            fontSize: 24,
+            fontSize: 80,
+            lineHeight: 1,
             fontWeight: weight.extrabold,
-            letterSpacing: tracking.loose,
-            textTransform: "uppercase",
-            // Texto verde sobre blanco: verde sendero, nunca el olivo.
-            color: "#506718",
-          }}
-        >
-          Your pilgrim passport
-        </span>
-        <span
-          style={{
-            fontSize: 64,
-            lineHeight: 1.05,
-            fontWeight: weight.extrabold,
-            letterSpacing: "-0.015em",
+            letterSpacing: "-0.02em",
             color: brand.forest,
           }}
         >
@@ -81,14 +78,14 @@ export const Credencial: React.FC<{ entrada: number; salida: number }> = ({ entr
         </span>
         <span
           style={{
-            fontSize: 34,
-            lineHeight: 1.25,
+            fontSize: 40,
+            lineHeight: 1.15,
             fontWeight: weight.bold,
-            color: brand.forestSoft,
-            marginTop: 6,
+            // Texto verde sobre blanco: verde sendero, nunca el olivo.
+            color: "#506718",
           }}
         >
-          Included with Santiago Ways. Otherwise, get one before you start.
+          Included with Santiago Ways
         </span>
       </div>
     </Interactive.Div>
