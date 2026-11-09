@@ -101,6 +101,10 @@ export const Subtitulos: React.FC<{
     easing: Easing.bezier(...easeOut),
   });
 
+  // Tamaño que cabe en los 630 px de la línea: unos 0,62 em por carácter
+  // de Montserrat 800, más el relleno de cada palabra y los huecos.
+  const letras = pagina.reduce((n, w) => n + (w.logo ? 6 : limpiar(w.texto).length), 0);
+  const tam = Math.min(72, Math.floor((630 - 28 * pagina.length - 14 * (pagina.length - 1)) / (letras * 0.62)));
   return (
     <div
       style={{
@@ -112,7 +116,9 @@ export const Subtitulos: React.FC<{
         left: 1080 - 855,
         right: 1080 - 855,
         display: "flex",
-        flexWrap: "wrap",
+        // Siempre en una línea: si la página es larga, la letra baja.
+        flexWrap: "nowrap",
+        whiteSpace: "nowrap",
         justifyContent: "center",
         alignItems: "center",
         gap: "6px 14px",
@@ -140,7 +146,7 @@ export const Subtitulos: React.FC<{
           <span
             key={i}
             style={{
-              fontSize: 72,
+              fontSize: tam,
               lineHeight: 1.08,
               fontWeight: 800,
               letterSpacing: "-0.01em",

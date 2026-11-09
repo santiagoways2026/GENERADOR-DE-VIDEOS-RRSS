@@ -104,6 +104,7 @@ El texto vive en la mitad superior. Los gráficos, en la inferior.
 Los subtítulos no salen mientras está el titular del principio: empiezan
 cuando el titular se va (prop `trasTitular` de `Subtitulos`). Van en
 mayúsculas y minúsculas, tal como se habla; nunca todo en mayúsculas.
+Siempre en una sola línea: si no cabe, la letra se reduce.
 
 ## Reglas de montaje aprendidas
 
