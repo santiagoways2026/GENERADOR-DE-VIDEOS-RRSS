@@ -14,7 +14,7 @@ const curva = Easing.bezier(...easeOut);
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 const SOMBRA = "0 8px 32px rgba(46, 46, 45, 0.12), 0 2px 6px rgba(46, 46, 45, 0.08)";
 const IZQ = 64;
-const ARRIBA = 250;
+const ARRIBA = 200;
 
 /** Entrada y salida estándar: 10 fotogramas, 24 px de recorrido. */
 const useEntrada = (dur: number, retraso = 0) => {
@@ -33,7 +33,7 @@ const Tarjeta: React.FC<{ children: React.ReactNode; style?: React.CSSProperties
 );
 
 const Antetitulo: React.FC<{ children: React.ReactNode; color?: string }> = ({ children, color = paleta.verdeWays }) => (
-  <div style={{ fontSize: 22, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color }}>{children}</div>
+  <div style={{ fontSize: 28, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color }}>{children}</div>
 );
 
 /* ---------------------------------------------------------------- */
@@ -47,16 +47,16 @@ export const ExpertoDistancias: React.FC<{ dur: number }> = ({ dur }) => {
     const o = interpolate(frame, [d, d + 10], [0, 1], { ...clamp, easing: curva });
     return (
       <div style={{ display: "flex", alignItems: "baseline", gap: 10, opacity: o, translate: `${(1 - o) * -16}px 0px` }}>
-        <span style={{ fontSize: 64, fontWeight: 800, color: activo ? paleta.grafito : "#B9B9B6", letterSpacing: "-0.02em" }}>{n}</span>
-        <span style={{ fontSize: 28, fontWeight: 700, color: activo ? paleta.grafito : "#B9B9B6" }}>km</span>
-        <span style={{ fontSize: 22, fontWeight: 700, letterSpacing: "0.1em", color: activo ? paleta.verdeWays : "#B9B9B6" }}>{u}</span>
+        <span style={{ fontSize: 76, fontWeight: 800, color: activo ? paleta.grafito : "#B9B9B6", letterSpacing: "-0.02em" }}>{n}</span>
+        <span style={{ fontSize: 34, fontWeight: 700, color: activo ? paleta.grafito : "#B9B9B6" }}>km</span>
+        <span style={{ fontSize: 28, fontWeight: 700, letterSpacing: "0.1em", color: activo ? paleta.verdeWays : "#B9B9B6" }}>{u}</span>
       </div>
     );
   };
   return (
     <AbsoluteFill>
       <div style={{ position: "absolute", left: IZQ, top: ARRIBA, ...a }}>
-        <div style={{ fontSize: 64, fontWeight: 800, color: brand.white, WebkitTextStroke: `9px ${paleta.grafito}`, paintOrder: "stroke fill", lineHeight: 1.1 }}>
+        <div style={{ fontSize: 72, fontWeight: 800, color: brand.white, WebkitTextStroke: `9px ${paleta.grafito}`, paintOrder: "stroke fill", lineHeight: 1.1 }}>
           Camino Expert
         </div>
         <div style={{ display: "inline-block", marginTop: 6, backgroundColor: paleta.verdeWays, color: brand.white, fontSize: 32, fontWeight: 800, padding: "4px 16px 7px", borderRadius: 8 }}>
@@ -76,7 +76,7 @@ export const ExpertoDistancias: React.FC<{ dur: number }> = ({ dur }) => {
 
 /** Icono de credencial: dos páginas con un sello. */
 const IconoCredencial = () => (
-  <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke={brand.white} strokeWidth="4" strokeLinejoin="round">
+  <svg width="76" height="76" viewBox="0 0 64 64" fill="none" stroke={brand.white} strokeWidth="4" strokeLinejoin="round">
     <rect x="8" y="14" width="48" height="36" rx="5" />
     <line x1="32" y1="14" x2="32" y2="50" />
     <circle cx="44" cy="32" r="6" />
@@ -93,12 +93,12 @@ export const Credencial: React.FC<{ dur: number }> = ({ dur }) => {
   return (
     <AbsoluteFill>
       <Tarjeta style={{ position: "absolute", left: IZQ, right: IZQ, top: ARRIBA, display: "flex", overflow: "hidden", ...a }}>
-        <div style={{ backgroundColor: paleta.verdeWays, width: 132, display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg, #7AA606 0%, #628A04 100%)" }}>
+        <div style={{ width: 150, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", backgroundImage: "linear-gradient(135deg, #7AA606 0%, #628A04 100%)" }}>
           <IconoCredencial />
         </div>
         <div style={{ padding: "26px 34px 28px", opacity: t, translate: `${(1 - t) * 16}px 0px` }}>
-          <div style={{ fontSize: 58, fontWeight: 800, color: paleta.grafito, lineHeight: 1.1 }}>The credential</div>
-          <div style={{ fontSize: 30, fontWeight: 700, color: paleta.sendero, marginTop: 6 }}>Included with Santiago Ways</div>
+          <div style={{ fontSize: 66, fontWeight: 800, color: paleta.grafito, lineHeight: 1.1 }}>The credential</div>
+          <div style={{ fontSize: 38, fontWeight: 700, color: paleta.sendero, marginTop: 6 }}>Included with Santiago Ways</div>
         </div>
       </Tarjeta>
     </AbsoluteFill>
@@ -121,10 +121,10 @@ export const DosSellos: React.FC<{ dur: number }> = ({ dur }) => {
   };
   return (
     <AbsoluteFill>
-      <Tarjeta fondo={paleta.sendero} style={{ position: "absolute", left: IZQ, right: IZQ, top: ARRIBA, padding: "26px 36px 30px", display: "flex", alignItems: "center", justifyContent: "space-between", ...a }}>
+      <Tarjeta fondo={paleta.sendero} style={{ position: "absolute", left: IZQ, right: IZQ, top: ARRIBA, padding: "20px 32px 22px", display: "flex", alignItems: "center", justifyContent: "space-between", ...a }}>
         <div>
           <Antetitulo color="rgba(255,255,255,0.8)">Last 100 km</Antetitulo>
-          <div style={{ fontSize: 64, fontWeight: 800, color: brand.white, lineHeight: 1.05, marginTop: 6 }}>2 stamps a day</div>
+          <div style={{ fontSize: 66, fontWeight: 800, color: brand.white, lineHeight: 1.05, marginTop: 4 }}>2 stamps a day</div>
         </div>
         <div style={{ display: "flex", gap: 16 }}>
           {sello(f(1.0))}
@@ -143,14 +143,14 @@ export const DondeSellar: React.FC<{ dur: number }> = ({ dur }) => {
   return (
     <AbsoluteFill>
       <Tarjeta style={{ position: "absolute", left: IZQ, right: IZQ, top: ARRIBA, padding: "28px 36px 32px", ...a }}>
-        <div style={{ fontSize: 52, fontWeight: 800, color: paleta.grafito }}>Where to get it</div>
+        <div style={{ fontSize: 62, fontWeight: 800, color: paleta.grafito }}>Where to get it</div>
         <div style={{ marginTop: 14, display: "flex", flexDirection: "column", gap: 10 }}>
           {items.map((t, i) => {
             const o = interpolate(frame, [10 + i * 7, 20 + i * 7], [0, 1], { ...clamp, easing: curva });
             return (
               <div key={t} style={{ display: "flex", alignItems: "center", gap: 16, opacity: o, translate: `${(1 - o) * -16}px 0px` }}>
-                <div style={{ width: 14, height: 14, borderRadius: 7, backgroundColor: paleta.verdeWays }} />
-                <span style={{ fontSize: 34, fontWeight: i === 2 ? 800 : 600, color: i === 2 ? paleta.sendero : paleta.grafito }}>{t}</span>
+                <div style={{ width: 16, height: 16, borderRadius: 8, backgroundColor: paleta.verdeWays }} />
+                <span style={{ fontSize: 42, fontWeight: i === 2 ? 800 : 600, color: i === 2 ? paleta.sendero : paleta.grafito }}>{t}</span>
               </div>
             );
           })}
@@ -167,7 +167,7 @@ export const Requisitos: React.FC<{ dur: number; pasos: { texto: string; en: num
   return (
     <AbsoluteFill>
       <div style={{ position: "absolute", left: IZQ, right: IZQ, top: ARRIBA, ...a }}>
-        <div style={{ display: "inline-block", backgroundColor: paleta.sendero, color: brand.white, padding: "8px 18px", borderRadius: 8, fontSize: 24, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>
+        <div style={{ display: "inline-block", backgroundColor: paleta.sendero, color: brand.white, padding: "8px 18px", borderRadius: 8, fontSize: 28, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>
           To get your Compostela
         </div>
         <Tarjeta style={{ marginTop: 12, padding: "14px 0" }}>
@@ -178,39 +178,32 @@ export const Requisitos: React.FC<{ dur: number; pasos: { texto: string; en: num
                 <div style={{ width: 52, height: 52, borderRadius: 26, backgroundColor: o > 0.5 ? paleta.verdeWays : paleta.niebla, color: brand.white, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 28, fontWeight: 800, flexShrink: 0 }}>
                   {o > 0.5 ? "✓" : i + 1}
                 </div>
-                <span style={{ fontSize: 34, fontWeight: 700, color: paleta.grafito }}>{p.texto}</span>
+                <span style={{ fontSize: 40, fontWeight: 700, color: paleta.grafito }}>{p.texto}</span>
               </div>
             );
           })}
+          <div style={{ padding: "14px 30px 4px", borderTop: `1px solid ${paleta.niebla}`, fontSize: 28, fontWeight: 600, color: paleta.gris }}>{nota}</div>
         </Tarjeta>
-        <div style={{ marginTop: 12, fontSize: 24, fontWeight: 700, color: brand.white, textShadow: "0 2px 10px rgba(46,46,45,0.6)", opacity: interpolate(frame, [f(pasos[pasos.length - 1].en) + 10, f(pasos[pasos.length - 1].en) + 20], [0, 1], clamp) }}>
-          {nota}
-        </div>
       </div>
     </AbsoluteFill>
   );
 };
 
 /** CTA final: suscripción y "Ask us below". */
-export const Suscribete: React.FC<{ dur: number; pregunta: [number, number] }> = ({ dur, pregunta }) => {
-  const a = useEntrada(dur);
+export const Suscribete: React.FC<{ dur: number; pregunta: [number, number] }> = ({ pregunta }) => {
+  // Un solo CTA por pieza: el que Hildary dice en voz ("leave them below").
   const frame = useCurrentFrame();
   const q = interpolate(frame, [f(pregunta[0]), f(pregunta[0]) + 10, f(pregunta[1]) - 8, f(pregunta[1])], [0, 1, 1, 0], { ...clamp, easing: curva });
   return (
     <AbsoluteFill>
-      <Tarjeta style={{ position: "absolute", left: IZQ, top: ARRIBA - 70, borderRadius: 60, padding: "14px 34px 14px 16px", display: "flex", alignItems: "center", gap: 18, ...a }}>
-        <div style={{ width: 72, height: 72, borderRadius: 36, backgroundColor: paleta.verdeWays, display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <svg width="34" height="34" viewBox="0 0 34 34"><path d="M11 7 L28 17 L11 27 Z" fill={brand.white} /></svg>
-        </div>
-        <div style={{ fontSize: 34, fontWeight: 800, color: paleta.grafito, lineHeight: 1.15 }}>
-          Subscribe to our
-          <br />
-          YouTube channel
-        </div>
-      </Tarjeta>
-      <Tarjeta style={{ position: "absolute", right: IZQ + 160, top: ARRIBA + 70, padding: "16px 24px", opacity: q, translate: `0px ${(1 - q) * 16}px` }}>
+      <Tarjeta style={{ position: "absolute", left: IZQ, top: ARRIBA, padding: "20px 30px 24px", opacity: q, translate: `0px ${(1 - q) * 20}px` }}>
         <Antetitulo color={paleta.gris}>Questions?</Antetitulo>
-        <div style={{ fontSize: 36, fontWeight: 800, color: paleta.grafito, marginTop: 2 }}>Ask us below ↓</div>
+        <div style={{ display: "flex", alignItems: "center", gap: 16, marginTop: 4 }}>
+          <span style={{ fontSize: 56, fontWeight: 800, color: paleta.grafito }}>Ask us below</span>
+          <div style={{ width: 56, height: 56, borderRadius: 28, backgroundColor: paleta.verdeWays, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <svg width="28" height="28" viewBox="0 0 28 28"><path d="M14 5 V22 M7 15 L14 22 L21 15" fill="none" stroke={brand.white} strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          </div>
+        </div>
       </Tarjeta>
     </AbsoluteFill>
   );

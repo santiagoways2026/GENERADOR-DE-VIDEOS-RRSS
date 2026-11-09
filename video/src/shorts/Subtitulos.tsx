@@ -37,7 +37,11 @@ function tokens(palabras: Palabra[]): Token[] {
       out.push({ texto: "", en: w.en, fin: w.fin, logo: true });
       continue;
     }
-    out.push({ texto: w.t, en: w.en, fin: w.fin });
+    // Mayúscula al empezar cada frase, como en un texto bien escrito.
+    const previa = palabras[i - 1];
+    const inicio = !previa || /[.!?]["”]?$/.test(previa.t.trim());
+    const texto = inicio ? w.t.charAt(0).toUpperCase() + w.t.slice(1) : w.t;
+    out.push({ texto, en: w.en, fin: w.fin });
   }
   return out;
 }
