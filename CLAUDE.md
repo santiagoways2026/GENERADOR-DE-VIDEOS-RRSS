@@ -185,6 +185,9 @@ verde Ways y verde Ways con la vieira.
 
 ## Lo que no se hace
 
+- La cartela blanca del principio (gancho sobre fondo blanco con la persona
+  recortada). El equipo la descarta: se empieza directamente con el plano real.
+
 - Contadores de cuenta atrás ni "últimas plazas".
 - Cifras sin fuente en pantalla, sobre todo en piezas ancladas mucho tiempo.
 - Promesas de precio que no se puedan sostener.
