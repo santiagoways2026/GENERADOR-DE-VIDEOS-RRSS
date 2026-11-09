@@ -12,7 +12,7 @@ import {
 } from "remotion";
 import "../fuentes";
 import { brand, easeOut, fontFamily, format, fps, paleta, EFECTOS } from "../brand/theme";
-import { Cartela } from "../componentes/Cartela";
+import { Dato } from "../shorts/Graficos";
 import { Cierre } from "../escenas/Cierre";
 import { Subtitulos } from "../shorts/Subtitulos";
 import datosPaula from "./paula.json";
@@ -69,7 +69,8 @@ export const ShortPaula: React.FC<{ id?: string }> = ({ id }) => {
 
       {datos.cartelas.map((c, i) => (
         <Sequence key={`c${i}`} from={f(c.en)} durationInFrames={f(c.dur)} name={`Cartela ${i + 1}`}>
-          <Cartela principal={c.principal} secundaria={c.secundaria} top={ARRIBA} tinta={paleta.grafito} />
+          {/* Estilo aprobado (nov. 2026): tarjeta limpia, una en verde sendero y otra en blanco. */}
+          <Dato dur={f(c.dur)} ante={c.secundaria} titulo={c.principal} oscuro={i % 2 === 0} />
         </Sequence>
       ))}
 

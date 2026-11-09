@@ -3218,8 +3218,8 @@
    {
     "en": 20.98,
     "dur": 5.7,
-    "principal": "Reserva",
-    "secundaria": "Con tiempo"
+    "principal": "Reserva con tiempo",
+    "secundaria": "Para 2027"
    }
   ],
   "musica": {
@@ -3564,14 +3564,14 @@
    {
     "en": 6.07,
     "dur": 2.88,
-    "principal": "Año Xacobeo",
-    "secundaria": "2027"
+    "principal": "2027",
+    "secundaria": "Año Xacobeo"
    },
    {
     "en": 9.65,
     "dur": 3.0,
-    "principal": "El siguiente",
-    "secundaria": "2032"
+    "principal": "2032",
+    "secundaria": "El siguiente Año Santo"
    }
   ],
   "musica": {
