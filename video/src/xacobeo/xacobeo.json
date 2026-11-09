@@ -2324,14 +2324,6 @@
   },
   "capas": [
    {
-    "tipo": "cartela",
-    "principal": "2027",
-    "secundaria": "XACOBEO",
-    "dur": 3.2,
-    "tono": "olivo",
-    "en": 7.44
-   },
-   {
     "tipo": "broll",
     "src": "xacobeo/stock/multitud-camino.mp4",
     "dur": 1.8,
@@ -2353,35 +2345,39 @@
     "en": 13.06
    },
    {
-    "tipo": "cartela",
-    "principal": "MORE PEOPLE",
-    "secundaria": "A UNIQUE EXPERIENCE",
-    "dur": 3.2,
-    "tono": "olivo",
-    "en": 17.06
+    "tipo": "tarjeta",
+    "oscuro": true,
+    "ante": "2027",
+    "principal": "A Xacobeo year",
+    "en": 7.44,
+    "dur": 3.2
    },
    {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-tag-light.png",
-    "ancho": 880,
-    "web": true,
-    "hasta": null,
-    "en": 26.68,
-    "dur": 3.19
+    "tipo": "broll",
+    "src": "xacobeo/stock/catedral-fachada.mp4",
+    "dur": 2.2,
+    "encuadre": "50% 50%",
+    "en": 21.3
    },
    {
-    "tipo": "cartela",
-    "principal": "REQUEST",
-    "secundaria": "YOUR QUOTE",
-    "dur": 4.0,
-    "tono": "olivo",
-    "en": 29.92
+    "tipo": "tarjeta",
+    "ante": "Yes, more people",
+    "principal": "A unique experience",
+    "en": 17.06,
+    "dur": 3.6
+   },
+   {
+    "tipo": "tarjeta",
+    "ante": "No obligation",
+    "principal": "Request your quote",
+    "en": 29.92,
+    "dur": 4.0
    }
   ],
   "zooms": [
    {
     "en": 8.8,
-    "z": 1.1
+    "z": 1.08
    },
    {
     "en": 14.96,
@@ -2389,7 +2385,7 @@
    },
    {
     "en": 20.4,
-    "z": 1.1
+    "z": 1.08
    },
    {
     "en": 25.6,
