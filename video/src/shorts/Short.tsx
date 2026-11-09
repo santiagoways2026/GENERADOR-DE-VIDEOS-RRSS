@@ -144,13 +144,20 @@ type Golpe = { en: number; hasta: number; escala: number };
 
 /**
  * Acercamientos de cámara en las frases clave: el plano de Hildary se cierra
- * en 8 fotogramas con la curva de la marca y se mantiene hasta `hasta`.
+ * despacio, se mantiene y vuelve también despacio antes de `hasta`.
  */
 const Golpes: React.FC<{ golpes: Golpe[]; children: React.ReactNode }> = ({ golpes, children }) => {
   const frame = useCurrentFrame();
   const t = frame / fps;
   const g = golpes.find((x) => t >= x.en && t < x.hasta);
-  const escala = g ? interpolate(frame, [f(g.en), f(g.en) + 8], [1, g.escala], { ...clamp, easing: salida }) : 1;
+  // Entrada y salida lentas (1,2 s y 0,8 s) con la curva de la marca: se nota
+  // el acercamiento, pero nunca como un corte.
+  const escala = g
+    ? interpolate(frame, [f(g.en), f(g.en + 1.2), f(g.hasta - 0.8), f(g.hasta)], [1, g.escala, g.escala, 1], {
+        ...clamp,
+        easing: Easing.inOut(Easing.cubic),
+      })
+    : 1;
   return <AbsoluteFill style={{ scale: escala, transformOrigin: "50% 32%" }}>{children}</AbsoluteFill>;
 };
 
