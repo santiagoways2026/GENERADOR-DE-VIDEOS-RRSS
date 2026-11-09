@@ -67,11 +67,13 @@ export const Short: React.FC<{ id: string }> = ({ id }) => {
           descuadrarse. El B-roll va encima y la voz sigue sonando debajo.
           Cada tramo alterna el encuadre para que el corte se lea como un
           cambio de plano. */}
-      {d.video.map((v, i) => (
-        <Sequence key={`v${i}`} {...tramo(v.en, v.dur)} name={`Plano ${i + 1}`}>
-          <PlanoHabla src={v.src} zoom={v.zoom} dur={f(v.en + v.dur) - f(v.en)} />
-        </Sequence>
-      ))}
+      <Golpes golpes={(d as { golpes?: Golpe[] }).golpes ?? []}>
+        {d.video.map((v, i) => (
+          <Sequence key={`v${i}`} {...tramo(v.en, v.dur)} name={`Plano ${i + 1}`}>
+            <PlanoHabla src={v.src} zoom={v.zoom} dur={f(v.en + v.dur) - f(v.en)} />
+          </Sequence>
+        ))}
+      </Golpes>
 
       {d.broll.map((b, i) => (
         <Sequence key={`b${i}`} {...tramo(b.en, b.dur)} name={`B-roll ${i + 1}`}>
@@ -90,7 +92,16 @@ export const Short: React.FC<{ id: string }> = ({ id }) => {
 
       {d.capas.map((c, i) => (
         <Sequence key={`c${i}`} {...tramo(c.en, c.dur)} name={`Cartela ${i + 1}`}>
-          <CartelaPng src={c.src} ancho={c.ancho} dur={f(c.dur)} />
+          {(c as { tipo?: string }).tipo === "cartela" ? (
+            <Cartela
+              principal={(c as { principal?: string }).principal ?? ""}
+              secundaria={(c as { secundaria?: string }).secundaria}
+              top={SEGURA.arriba}
+              tinta={paleta.grafito}
+            />
+          ) : (
+            <CartelaPng src={c.src} ancho={c.ancho} dur={f(c.dur)} />
+          )}
         </Sequence>
       ))}
 
@@ -128,6 +139,20 @@ export const Short: React.FC<{ id: string }> = ({ id }) => {
 };
 
 /* ------------------------------------------------------------------ */
+
+type Golpe = { en: number; hasta: number; escala: number };
+
+/**
+ * Acercamientos de cámara en las frases clave: el plano de Hildary se cierra
+ * en 8 fotogramas con la curva de la marca y se mantiene hasta `hasta`.
+ */
+const Golpes: React.FC<{ golpes: Golpe[]; children: React.ReactNode }> = ({ golpes, children }) => {
+  const frame = useCurrentFrame();
+  const t = frame / fps;
+  const g = golpes.find((x) => t >= x.en && t < x.hasta);
+  const escala = g ? interpolate(frame, [f(g.en), f(g.en) + 8], [1, g.escala], { ...clamp, easing: salida }) : 1;
+  return <AbsoluteFill style={{ scale: escala, transformOrigin: "50% 32%" }}>{children}</AbsoluteFill>;
+};
 
 /** Un tramo ya cortado del vídeo limpio, con su voz. Se pega tal cual. */
 const PlanoHabla: React.FC<{ src: string; zoom: number; dur: number }> = ({ src, zoom, dur }) => {

@@ -1424,6 +1424,13 @@
     "vel": 0.72
    },
    {
+    "en": 9.9,
+    "dur": 2.94,
+    "src": "dji/DJI_20260929065826_0015_D.mp4",
+    "desde": 6.8,
+    "modo": "cubrir"
+   },
+   {
     "en": 12.84,
     "dur": 3.22,
     "src": "dji/DJI_20260929081752_0049_D.mp4",
@@ -1435,6 +1442,13 @@
     "dur": 2.8,
     "src": "dji/DJI_20260929090406_0053_D.mp4",
     "desde": 1.0,
+    "modo": "cubrir"
+   },
+   {
+    "en": 18.86,
+    "dur": 2.18,
+    "src": "dji/DJI_20260929071346_0021_D.mp4",
+    "desde": 3.0,
     "modo": "cubrir"
    },
    {
@@ -1463,25 +1477,40 @@
   ],
   "capas": [
    {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-card-credential.png",
-    "dur": 3.6,
-    "ancho": 960,
-    "en": 8.72
+    "tipo": "cartela",
+    "principal": "100 km on foot",
+    "secundaria": "or 200 km by bike",
+    "en": 2.6,
+    "dur": 3.2,
+    "src": "",
+    "ancho": 0
    },
    {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-notice-stamp-credential.png",
+    "tipo": "cartela",
+    "principal": "The credential",
+    "secundaria": "Your pilgrim passport",
+    "en": 8.72,
+    "dur": 3.6,
+    "src": "",
+    "ancho": 0
+   },
+   {
+    "tipo": "cartela",
+    "principal": "2 stamps a day",
+    "secundaria": "On the last 100 km",
+    "en": 16.06,
     "dur": 4.0,
-    "ancho": 880,
-    "en": 16.06
+    "src": "",
+    "ancho": 0
    },
    {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-card-credential-where.png",
-    "dur": 3.6,
-    "ancho": 900,
-    "en": 21.04
+    "tipo": "cartela",
+    "principal": "Stamps everywhere",
+    "secundaria": "Churches, cafés, albergues",
+    "en": 21.04,
+    "dur": 3.4,
+    "src": "",
+    "ancho": 0
    },
    {
     "tipo": "png",
@@ -2143,7 +2172,24 @@
    "src": "musica/chill_Dreamer.mp3",
    "vol": 0.0,
    "desde": 0
-  }
+  },
+  "golpes": [
+   {
+    "en": 1.6,
+    "hasta": 5.8,
+    "escala": 1.12
+   },
+   {
+    "en": 33.7,
+    "hasta": 36.2,
+    "escala": 1.1
+   },
+   {
+    "en": 37.5,
+    "hasta": 39.6,
+    "escala": 1.12
+   }
+  ]
  },
  {
   "id": "04-es-dificil",
