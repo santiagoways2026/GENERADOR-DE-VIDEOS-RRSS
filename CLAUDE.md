@@ -80,6 +80,31 @@ Al adaptar piezas antiguas al brandbook: cambiar lo mínimo. Mismo montaje,
 cortes, planos y textos; solo tipografía, color, mayúsculas, subrayado SW,
 logo y cierre.
 
+## Estilo de los shorts (aprobado en noviembre de 2026, se aplica siempre)
+
+La referencia es el short "How do you actually get the Compostela?"
+(`03-como-conseguir-compostela`). Cada short nuevo o rehecho sale así:
+
+- **Principio:** plano real con el titular encima (blanco con contorno
+  grafito y la parte clave en placa verde Ways). Sin fondo blanco y sin
+  subtítulos mientras está el titular.
+- **Gráficos limpios** (`video/src/shorts/Graficos.tsx`): tarjetas blancas de
+  esquinas 22 px con la sombra de la marca, o en verde sendero para el dato
+  clave; iconos sobre verde Ways con el degradado de 135°; listas que entran
+  escalonadas y pasos que se marcan con un check cuando se dicen. Arriba, en
+  la zona segura, y sin tapar caras. Textos grandes: nada por debajo de 28 px.
+- **Ritmo:** recursos del Camino cubriendo las frases que se pueden ilustrar,
+  cortinilla verde en algún cambio de bloque y acercamientos suaves (entran en
+  1,2 s y salen en 0,8 s, escala 1,08) en las frases clave.
+- **Un solo CTA:** el que la persona dice en voz (p. ej. "Ask us below").
+- **Subtítulos:** una línea, mayúsculas y minúsculas con mayúscula al empezar
+  frase, palabra activa en placa verde Ways, nunca encima de una cara.
+- **Sonido:** voz del propio plano y efectos al 65 % (`EFECTOS` en `theme.ts`).
+- **Portada:** siempre, con la tarjeta blanca de `PortadaShort.tsx` sobre una
+  foto propia que no se repita con otras portadas.
+- Antes de entregar: revisar el vídeo entero en hoja de fotogramas y ser
+  crítico (legibilidad en móvil, caras, un CTA, brandbook).
+
 ## Zonas seguras de reels y shorts (1080x1920)
 
 - Zona segura: x 60 a 1020, y 153 a 1452. Fuera de ella no va texto.
