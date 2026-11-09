@@ -36,9 +36,9 @@ En inglés: *The Camino de Santiago after 55: 7 things nobody tells you*.
 
 ## Locución
 
-Unas 760 palabras. A unas 107 palabras por minuto, que es el ritmo de Rick
-Steves y el más indicado para esta audiencia, sale una pieza de unos 7
-minutos. Frases cortas y declarativas: lo que perjudica la comprensión en
+679 palabras. A unas 107 palabras por minuto, que es el ritmo de Rick
+Steves y el más indicado para esta audiencia, salen unos 6:20 de voz y, con
+las pausas, una pieza de unos 7 minutos. Frases cortas y declarativas: lo que perjudica la comprensión en
 oyentes mayores es la velocidad combinada con frases complejas.
 
 Los corchetes no se leen. Medio segundo de pausa entre bloques.
