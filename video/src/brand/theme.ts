@@ -224,3 +224,6 @@ export const logo = {
   minHeight: 60,
   minWidth: 180,
 } as const;
+
+/** Volumen de los efectos de sonido respecto al original (noviembre de 2026: un poco más bajos). */
+export const EFECTOS = 0.65;

@@ -11,7 +11,7 @@ import {
   useCurrentFrame,
 } from "remotion";
 import "../fuentes";
-import { brand, easeOut, fontFamily, fps, paleta } from "../brand/theme";
+import { brand, easeOut, fontFamily, fps, paleta, EFECTOS } from "../brand/theme";
 import { Cartela } from "../componentes/Cartela";
 import { Calendario } from "../graficos/Calendario";
 import { Candado } from "../graficos/Candado";
@@ -101,7 +101,7 @@ export const ShortXacobeo: React.FC<{ id: string }> = ({ id }) => {
       />
       {d.sfx.map((s, i) => (
         <Sequence key={`s${i}`} from={f(s.en)} durationInFrames={f(1.5)} name={`Efecto ${i + 1}`}>
-          <Audio src={staticFile(s.src)} volume={s.vol} />
+          <Audio src={staticFile(s.src)} volume={s.vol * EFECTOS} />
         </Sequence>
       ))}
     </AbsoluteFill>

@@ -11,7 +11,7 @@ import {
   useCurrentFrame,
 } from "remotion";
 import "../fuentes";
-import { brand, easeOut, fontFamily, format, fps, paleta } from "../brand/theme";
+import { brand, easeOut, fontFamily, format, fps, paleta, EFECTOS } from "../brand/theme";
 import { Cartela } from "../componentes/Cartela";
 import { Cierre } from "../escenas/Cierre";
 import { Subtitulos } from "../shorts/Subtitulos";
@@ -93,10 +93,10 @@ export const ShortPaula: React.FC<{ id?: string }> = ({ id }) => {
           volume={(fr) => interpolate(fr, [0, 15, total - 20, total], [0, datos.musica.vol, datos.musica.vol, 0], clamp)}
         />
       ) : null}
-      <Audio src={staticFile("sfx/impacto.wav")} volume={0.4} />
+      <Audio src={staticFile("sfx/impacto.wav")} volume={0.4 * EFECTOS} />
       {datos.recursos.map((r, i) => (
         <Sequence key={`s${i}`} from={Math.max(0, f(r.en) - 6)} durationInFrames={f(1.5)}>
-          <Audio src={staticFile("sfx/whoosh-corto.wav")} volume={0.18} />
+          <Audio src={staticFile("sfx/whoosh-corto.wav")} volume={0.18 * EFECTOS} />
         </Sequence>
       ))}
     </AbsoluteFill>
