@@ -43,7 +43,12 @@ const ENTRADA = 5;
  */
 const PUENTE = 1.1;
 
-export const Subtitulos: React.FC<{ lista: Pie[] }> = ({ lista }) => {
+export const Subtitulos: React.FC<{
+  lista: Pie[];
+  /** Distancia al borde inferior. 320 en reels, para librar la interfaz. */
+  abajo?: number;
+  tamano?: number;
+}> = ({ lista, abajo = 320, tamano = 46 }) => {
   const frame = useCurrentFrame();
   const t = frame / fps;
 
@@ -65,7 +70,7 @@ export const Subtitulos: React.FC<{ lista: Pie[] }> = ({ lista }) => {
         position: "absolute",
         left: margin,
         right: margin,
-        bottom: 320,
+        bottom: abajo,
         display: "flex",
         justifyContent: "center",
       }}
@@ -76,7 +81,7 @@ export const Subtitulos: React.FC<{ lista: Pie[] }> = ({ lista }) => {
           color: brand.white,
           padding: `${space[4]}px ${space[5]}px`,
           borderRadius: radius.md,
-          fontSize: 46,
+          fontSize: tamano,
           lineHeight: lineHeight.subtitular,
           fontWeight: weight.bold,
           textAlign: "center",

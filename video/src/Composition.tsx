@@ -3,6 +3,7 @@ import { format, fps } from "./brand/theme";
 import { DURACION_CURIOSIDADES, ReelCuriosidades } from "./ReelCuriosidades";
 import { DURACION_REEL, ReelXacobeo } from "./ReelXacobeo";
 import { DURACION_PERFIL, PerfilSarria } from "./graficos/PerfilSarria";
+import { DURACION_YT55, YouTubeMayores55 } from "./YouTubeMayores55";
 
 /**
  * Cada <Composition> es un video registrado: que componente lo pinta,
@@ -34,6 +35,27 @@ export const MyComposition = () => {
         fps={fps}
         width={format.youtube.width}
         height={format.youtube.height}
+      />
+      {/* Máster limpio: los subtítulos van como pistas .srt en YouTube. */}
+      <Composition
+        id="YouTubeMayores55"
+        component={YouTubeMayores55}
+        durationInFrames={DURACION_YT55}
+        fps={fps}
+        width={format.youtube.width}
+        height={format.youtube.height}
+        defaultProps={{ subtitulos: false }}
+      />
+      {/* Versión guía, con la locución escrita en pantalla para revisar el
+          montaje mientras no hay audio grabado. */}
+      <Composition
+        id="YouTubeMayores55Guia"
+        component={YouTubeMayores55}
+        durationInFrames={DURACION_YT55}
+        fps={fps}
+        width={format.youtube.width}
+        height={format.youtube.height}
+        defaultProps={{ subtitulos: true }}
       />
     </>
   );

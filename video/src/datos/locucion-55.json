@@ -1,0 +1,32 @@
+{
+  "nota": "Tiempos estimados a unas 120 palabras por minuto. Cuando llegue la locución grabada se sustituyen por los medidos con silencedetect; de aquí salen el vídeo y los .srt.",
+  "pies": [
+    { "desde": 0.3, "hasta": 4.0, "es": "Hay viajes que se hacen.", "en": "Some trips you just take." },
+    { "desde": 4.0, "hasta": 8.8, "es": "Y hay uno que mucha gente guarda durante años, esperando el momento.", "en": "And there's one that many people save for years, waiting for the right moment." },
+    { "desde": 9.0, "hasta": 10.8, "es": "Una jubilación.", "en": "A retirement." },
+    { "desde": 11.0, "hasta": 12.8, "es": "Un cumpleaños redondo.", "en": "A milestone birthday." },
+    { "desde": 13.0, "hasta": 15.8, "es": "Los hijos que ya vuelan solos.", "en": "Children who have left the nest." },
+    { "desde": 16.0, "hasta": 22.8, "es": "Si ese momento ha llegado y te preguntas si aún estás a tiempo, un dato:", "en": "If that moment has come and you wonder whether it's too late, here's a fact:" },
+    { "desde": 23.0, "hasta": 30.5, "es": "casi la mitad de quienes llegan a Santiago tiene más de 45 años.", "en": "almost half of the people who reach Santiago are over 45." },
+    { "desde": 31.0, "hasta": 33.5, "es": "No vas a ser la excepción.", "en": "You won't be the exception." },
+    { "desde": 33.8, "hasta": 37.0, "es": "Esto es lo que conviene saber antes de ir.", "en": "Here's what's worth knowing before you go." },
+    { "desde": 39.5, "hasta": 42.0, "es": "Primera. No hace falta estar en forma.", "en": "First. You don't need to be fit." },
+    { "desde": 42.0, "hasta": 44.5, "es": "Hace falta haber caminado.", "en": "You need to have been walking." },
+    { "desde": 44.8, "hasta": 52.5, "es": "Sal a andar varias veces por semana, ve subiendo poco a poco, y haz algún día largo antes de ir.", "en": "Walk several times a week, build up little by little, and do a few long days before you go." },
+    { "desde": 52.8, "hasta": 56.5, "es": "Es la mejor preparación que hay.", "en": "It's the best preparation there is." },
+    { "desde": 57.0, "hasta": 59.5, "es": "Segunda. Y esta casi nadie la cuenta.", "en": "Second. And almost nobody mentions this one." },
+    { "desde": 59.8, "hasta": 64.8, "es": "Desde Sarria son cinco etapas y ningún puerto de montaña.", "en": "From Sarria it's five stages and no mountain passes." },
+    { "desde": 65.0, "hasta": 73.5, "es": "Pero la más larga, de Palas de Rei a Arzúa, son 28 kilómetros y medio de cuestas pequeñas que se notan.", "en": "But the longest, from Palas de Rei to Arzúa, is 28.5 kilometres of small hills that add up." },
+    { "desde": 74.0, "hasta": 78.0, "es": "Si quieres, se parte en dos, en Melide.", "en": "If you like, you can split it in two at Melide." },
+    { "desde": 78.5, "hasta": 84.8, "es": "Y ojo a la bajada a Portomarín: es la que más notan las rodillas.", "en": "And watch the descent into Portomarín: it's the one your knees feel most." },
+    { "desde": 85.0, "hasta": 87.5, "es": "Tercera. Los zapatos.", "en": "Third. Your shoes." },
+    { "desde": 87.8, "hasta": 94.5, "es": "Para unos días caminando sin mochila, lo mejor es el calzado con el que ya andas cómodo.", "en": "For a few days' walking without a backpack, the best shoes are the ones you already walk comfortably in." },
+    { "desde": 95.0, "hasta": 101.8, "es": "Y si compras, media talla más: con los kilómetros, los pies se hinchan.", "en": "And if you buy new ones, go half a size up: feet swell over the kilometres." },
+    { "desde": 102.5, "hasta": 107.0, "es": "Y lo que más se recuerda no cabe en ningún perfil de etapa.", "en": "And what people remember most doesn't fit on any stage profile." },
+    { "desde": 107.5, "hasta": 111.0, "es": "Quienes vuelven no hablan de kilómetros.", "en": "Those who come back don't talk about kilometres." },
+    { "desde": 111.3, "hasta": 117.5, "es": "Hablan de la gente que conocieron, y de la llegada.", "en": "They talk about the people they met, and about arriving." },
+    { "desde": 118.0, "hasta": 123.5, "es": "Si ya lo has hecho, cuéntanos en los comentarios desde dónde empezaste.", "en": "If you've done it, tell us in the comments where you started." },
+    { "desde": 124.0, "hasta": 128.0, "es": "Y si lo estás pensando, suscríbete: te acompañamos paso a paso.", "en": "And if you're thinking about it, subscribe: we'll guide you step by step." },
+    { "desde": 128.3, "hasta": 130.0, "es": "Buen Camino.", "en": "Buen Camino." }
+  ]
+}

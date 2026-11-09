@@ -43,9 +43,12 @@ export const Cartela: React.FC<{
   /** Segunda línea, sobre el subrayado Ways. Es la que lleva la promesa. */
   secundaria?: string;
   desde?: number;
-  /** Tamaño del titular. Por defecto, el del brandbook para pantalla. */
-  tamano?: number;
-}> = ({ antetitulo, principal, secundaria, desde = 0, tamano = videoSize.titular }) => {
+  /** 1 para vertical de 1080 de ancho; 2/3 para YouTube a 1280x720. */
+  escala?: number;
+  /** Posición de la cartela. Por defecto, arriba a la izquierda del reel. */
+  posicion?: React.CSSProperties;
+}> = ({ antetitulo, principal, secundaria, desde = 0, escala = 1, posicion }) => {
+  const tamano = videoSize.titular * escala;
   const frame = useCurrentFrame();
 
   const tAnte = desde;
@@ -60,6 +63,7 @@ export const Cartela: React.FC<{
         top: 200,
         left: margin,
         right: margin,
+        ...posicion,
         display: "flex",
         flexDirection: "column",
         alignItems: "flex-start",
@@ -71,11 +75,11 @@ export const Cartela: React.FC<{
           style={{
             backgroundColor: brand.green,
             color: brand.white,
-            fontSize: videoSize.etiqueta,
+            fontSize: videoSize.etiqueta * escala,
             fontWeight: weight.bold,
             letterSpacing: tracking.antetitulo,
             textTransform: "uppercase",
-            padding: "6px 14px",
+            padding: `${6 * escala}px ${14 * escala}px`,
             borderRadius: radius.md,
             clipPath: barrido(frame, tAnte),
           }}

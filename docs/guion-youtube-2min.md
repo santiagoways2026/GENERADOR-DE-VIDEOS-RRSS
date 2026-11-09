@@ -1,111 +1,121 @@
-# Guion · Camino de Santiago a partir de los 55, en dos minutos
+# Guion · Camino de Santiago a partir de los 55, para YouTube
 
-Pieza de YouTube **horizontal, 1280x720, de 2:00**, sin presentador. Sustituye
-como guion de trabajo a `guion-mayores-55.md`, que queda como versión larga
-para un vídeo futuro.
+Pieza **horizontal, 1280x720, de 2:18**, sin presentador. Composición
+`YouTubeMayores55` (máster limpio) y `YouTubeMayores55Guia` (con la locución
+escrita en pantalla para revisar el montaje sin audio).
 
-## Qué se queda y por qué
+## El planteamiento
 
-Dos minutos son unas 210 palabras a ritmo pausado. De las siete ideas de la
-versión larga se quedan las tres que más ayudan a decidir y que mejor se ven:
+Del briefing: un vídeo de verdadera utilidad para quien se lo está pensando,
+que toque el corazón porque el Camino no es un viaje cualquiera, con gente
+real, sin presentador y con gráficos solo donde expliquen algo.
 
-1. **No hace falta estar en forma, hace falta haber caminado.** Responde a la
-   duda que más frena: "¿puedo yo?".
-2. **El día largo y la bajada a Portomarín.** Es la información que nadie da y
-   tiene el gráfico de perfil ya hecho.
-3. **El calzado de siempre.** La corrección más útil frente a lo que dicen los
-   vídeos de equipo.
-
-Se caen el "por qué ahora", Sarria no es trampa, cuándo ir y la vuelta a casa.
-Quedan para Shorts o para la versión larga.
-
-Tono según el Brandbook 2027: experto cercano, sereno, sin urgencia ni
-dramatismo. El gancho tranquiliza en lugar de alarmar.
+1. **Gancho emocional.** El momento vital en que se decide ir: una
+   jubilación, un cumpleaños redondo, los hijos que ya vuelan solos. Es el
+   hallazgo central de la investigación de motivaciones (Kurrat, 2019;
+   Nelson-Becker y otros, 2020).
+2. **El dato que tranquiliza.** Casi la mitad de quienes llegan tiene más de
+   45 años.
+3. **Tres claves prácticas**, cada una con su capítulo: haber caminado antes,
+   el día más largo y la bajada a Portomarín, y el calzado de siempre.
+4. **Cierre emocional.** Lo que más se recuerda no son los kilómetros.
+5. **Un CTA de comentario con pregunta de experiencia** y pantalla final
+   blanca con "Suscríbete".
 
 ## Locución
 
-210 palabras. A unas 120 por minuto, por debajo del techo de 150 a 160 para
-subtítulo adulto, salen 1:45 de voz. Con las pausas y la pantalla final, 2:00.
+255 palabras a unas 120 por minuto, por debajo del techo de 150 a 160
+para subtítulo adulto. El texto y los tiempos viven en
+`video/src/datos/locucion-55.json`, del que salen el vídeo y los `.srt`.
 
 Los corchetes no se leen. Medio segundo de pausa entre bloques.
 
 > **[GANCHO · 0:00]**
-> Casi la mitad de quienes llegan a Santiago tiene más de cuarenta y cinco
-> años. Y más de cincuenta mil pasan de los sesenta y cinco.
-> Si lo estás pensando, no vas a ser la excepción. Estas son tres cosas que
-> conviene saber antes de ir.
+> Hay viajes que se hacen.
+> Y hay uno que mucha gente guarda durante años, esperando el momento.
+> Una jubilación.
+> Un cumpleaños redondo.
+> Los hijos que ya vuelan solos.
+> Si ese momento ha llegado y te preguntas si aún estás a tiempo, un dato:
+> casi la mitad de quienes llegan a Santiago tiene más de 45 años.
+> No vas a ser la excepción.
+> Esto es lo que conviene saber antes de ir.
 >
-> **[1 · ESTAR EN FORMA · 0:17]**
-> Primera. No hace falta estar en forma. Hace falta haber caminado.
-> Sal a andar varias veces por semana, ve subiendo poco a poco, y haz algún
-> día largo antes de ir. Es lo que mejor prepara para el Camino.
+> **[1 · ESTAR EN FORMA · 0:39]**
+> Primera. No hace falta estar en forma.
+> Hace falta haber caminado.
+> Sal a andar varias veces por semana, ve subiendo poco a poco, y haz algún día largo antes de ir.
+> Es la mejor preparación que hay.
 >
-> **[2 · EL DÍA LARGO · 0:40]**
-> Segunda. Desde Sarria son cinco etapas y ningún puerto de montaña.
-> Pero la más larga, de Palas de Rei a Arzúa, son veintiocho kilómetros de
-> cuestas pequeñas que se notan. Si quieres, se parte en dos, en Melide.
+> **[2 · EL DÍA MÁS LARGO · 0:57]**
+> Segunda. Y esta casi nadie la cuenta.
+> Desde Sarria son cinco etapas y ningún puerto de montaña.
+> Pero la más larga, de Palas de Rei a Arzúa, son 28 kilómetros y medio de cuestas pequeñas que se notan.
+> Si quieres, se parte en dos, en Melide.
 > Y ojo a la bajada a Portomarín: es la que más notan las rodillas.
 >
-> **[3 · LOS ZAPATOS · 1:10]**
+> **[3 · LOS ZAPATOS · 1:25]**
 > Tercera. Los zapatos.
-> Para unos días caminando sin mochila, lo mejor es el calzado con el que ya
-> andas cómodo. Y si compras, media talla más: con los kilómetros, los pies
-> se hinchan.
+> Para unos días caminando sin mochila, lo mejor es el calzado con el que ya andas cómodo.
+> Y si compras, media talla más: con los kilómetros, los pies se hinchan.
 >
-> **[CIERRE · 1:30]**
-> Si ya lo has hecho, cuéntanos en los comentarios desde dónde empezaste y qué
-> etapa te costó más.
-> Y si lo estás pensando, suscríbete. Te lo contamos todo, paso a paso.
+> **[LO QUE SE RECUERDA · 1:42]**
+> Y lo que más se recuerda no cabe en ningún perfil de etapa.
+> Quienes vuelven no hablan de kilómetros.
+> Hablan de la gente que conocieron, y de la llegada.
+>
+> **[CIERRE · 1:58]**
+> Si ya lo has hecho, cuéntanos en los comentarios desde dónde empezaste.
+> Y si lo estás pensando, suscríbete: te acompañamos paso a paso.
 > Buen Camino.
 
 ## Montaje
 
-Base de planos recurso de peregrinos reales, del Drive y del repositorio. Los
-gráficos solo donde explican algo. Ninguna pieza de motion encima de una cara.
+El metraje propio es casi todo vertical. No se estira: se enseña en
+**trípticos** y **pantallas divididas** sobre blanco, y el horizontal se usa a
+pantalla completa.
 
-| Tramo | Imagen | Encima |
-| --- | --- | --- |
-| 0:00 Gancho | Peregrinos mayores caminando, plano general | Texto sobre vídeo: "Casi la mitad tiene **más de 45**", con la fuente en pequeño |
-| 0:17 Primera | Pieza Capítulo (2 s), luego paseos, gente caminando en grupo | Texto sobre vídeo: "Haber **caminado**" |
-| 0:40 Segunda | Pieza Capítulo (2 s), luego el gráfico de perfil de Sarria a Santiago | El propio gráfico, con Melide y Portomarín |
-| 1:10 Tercera | Pieza Capítulo (2 s), luego detalle de pies y calzado, sello en la credencial | Texto sobre vídeo: "Tu calzado **de siempre**" |
-| 1:30 Cierre | Llegada a la plaza del Obradoiro | Nada hasta la pantalla final |
-| 1:52 Final | Pantalla final blanca: logo y botón "Suscríbete" | Zona libre para las tarjetas de pantalla final de YouTube |
-
-Metraje horizontal disponible: unos 40 s en 4K y 29 s en 720p del Drive, más
-42 s en 1080p del repositorio. Da para cubrir los 85 s de recurso que pide la
-pieza. Los planos verticales del Drive sirven para detalles, como pies y
-calzado, recortando una banda.
+| Tramo | Imagen |
+| --- | --- |
+| 0:00 | Grupo de peregrinos por el sendero, horizontal |
+| 0:09 | Tríptico: peregrina con bastones, la fuente, el sello en la credencial. Cada panel entra cuando la voz lo nombra |
+| 0:16 | Sendero al sol y peregrinos ante la iglesia |
+| 0:23 | Gráfico: casi la mitad tiene más de 45 años, con figuras que se encienden hasta 4,8 de 10 |
+| 0:31 | Texto sobre vídeo: "No vas a ser **la excepción**" |
+| 0:37 | Cabecera del brandbook: logo y web |
+| 0:39 | Capítulo 1 y pantalla dividida "Hace falta haber **caminado**" |
+| 0:57 | Capítulo 2, "5 etapas y **ningún puerto**" con las letras de Sarria, perfil de etapas y "Ojo a la **bajada**" con el puente de Portomarín |
+| 1:25 | Capítulo 3, "Tu calzado **de siempre**" con pies caminando |
+| 1:42 | Brindis, Compostela, sello; tríptico de mojón, vacas y Obradoiro |
+| 1:58 | Texto sobre vídeo: "¿Desde dónde **empezaste**?" |
+| 2:10 | Pantalla final blanca con logo y "Suscríbete" |
 
 ## Subtítulos y traducción
 
-- **Pista de subtítulos en español y otra en inglés**, como archivos `.srt`
-  para subir a YouTube, cuadradas con la locución grabada.
-- **Sin subtítulos quemados en el máster**: con una pista en inglés activada,
-  se pisarían con los quemados en español. Las frases clave ya van en pantalla
-  como texto sobre vídeo.
-- Título, descripción y miniatura traducidos al inglés. Si se graba locución
-  en inglés, se sube como pista de audio adicional.
+- Pistas `.srt` en español e inglés, generadas con
+  `herramientas/scripts/srt.py` desde el mismo JSON que el vídeo.
+- El máster va sin subtítulos quemados, para que la pista en inglés no se pise
+  con la española.
+- Al llegar la locución grabada: medir silencios, ajustar los tiempos del JSON
+  y de `T` en la composición, y regenerar los `.srt`.
 
-## Título y miniatura
+## Título, miniatura y capítulos
 
 - **Título:** *Camino de Santiago a partir de los 55: 3 cosas que debes saber*
 - **Inglés:** *The Camino de Santiago after 55: 3 things to know*
-- **Miniatura**, según el brandbook: titular grande y protagonista sobre foto
-  de peregrinos, con una sola parte subrayada en verde. Por ejemplo "A partir
-  de los **55**".
-
-## Capítulos para la descripción
+- **Miniatura:** titular grande sobre foto de peregrinos, con una sola parte
+  subrayada en verde, por ejemplo "A partir de los **55**".
 
 ```
-00:00 ¿Eres mayor para el Camino?
-00:17 No hace falta estar en forma
-00:40 El día más largo desde Sarria
-01:10 Qué zapatos llevar
+00:00 ¿Estás a tiempo?
+00:39 No hace falta estar en forma
+00:57 El día más largo desde Sarria
+01:25 Qué zapatos llevar
+01:42 Lo que de verdad se recuerda
 ```
 
-## Fuentes
+## Por confirmar antes de publicar
 
-Las de `guion-mayores-55.md`. Una a confirmar antes de publicar: las cifras de
-edad de 2025 salen del panel de la Oficina del Peregrino a través de la
-Federación de Amigos del Camino, y el panel no permite descargarlas.
+- La cifra de edad de 2025: sale del panel de la Oficina del Peregrino a
+  través de la Federación de Amigos del Camino, y el panel no permite
+  descargarla.
