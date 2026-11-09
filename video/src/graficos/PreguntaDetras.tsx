@@ -15,7 +15,18 @@ const Flecha: React.FC = () => (
 );
 
 export const PreguntaDetras: React.FC<{ entrada: number; salida: number }> = ({ entrada, salida }) => (
-  <CajaDetras nombre="Pregunta detrás" entrada={entrada} salida={salida} top={470} left={56} width={300}>
+  // Aquí Hilary está más a la izquierda: la caja va a su derecha y sale de
+  // detrás de la cabeza hacia ese lado.
+  <CajaDetras
+    nombre="Pregunta detrás"
+    entrada={entrada}
+    salida={salida}
+    top={470}
+    // El borde izquierdo, vacío, queda bajo el pelo (que llega hasta ~670 px).
+    left={610}
+    width={370}
+    lado={-1}
+  >
     <span
       style={{
         fontSize: 20,
@@ -30,7 +41,7 @@ export const PreguntaDetras: React.FC<{ entrada: number; salida: number }> = ({ 
     <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
       <span
         style={{
-          fontSize: 44,
+          fontSize: 40,
           lineHeight: 1.05,
           fontWeight: weight.extrabold,
           letterSpacing: "-0.02em",

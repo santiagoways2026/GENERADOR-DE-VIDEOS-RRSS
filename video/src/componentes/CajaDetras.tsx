@@ -21,7 +21,8 @@ export const CajaDetras: React.FC<{
   top: number;
   left: number;
   width: number;
-  /** Hacia dónde se esconde: +1 a la derecha, -1 a la izquierda. */
+  /** Hacia dónde se esconde: +1 a la derecha, -1 a la izquierda. La caja
+   *  sale del lado contrario a donde está, desde detrás de la cabeza. */
   lado?: 1 | -1;
   children: React.ReactNode;
 }> = ({ nombre, entrada, salida, top, left, width, lado = 1, children }) => {
@@ -43,6 +44,9 @@ export const CajaDetras: React.FC<{
         boxShadow: "0 6px 20px rgba(24, 72, 52, 0.12)",
         display: "flex",
         flexDirection: "column",
+        // El texto se aleja del lado por donde la tapa la persona.
+        alignItems: lado === 1 ? "flex-start" : "flex-end",
+        textAlign: lado === 1 ? "left" : "right",
         gap: 8,
         translate:
           frame < salida
