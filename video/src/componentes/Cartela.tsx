@@ -93,7 +93,8 @@ export const Cartela: React.FC<{
       <span
         style={{
           display: "block",
-          fontSize: 84,
+          // Cabe siempre en el ancho útil (unos 0,62 em por letra).
+          fontSize: Math.min(84, Math.floor(900 / (frase(principal).length * 0.62))),
           lineHeight: 1.1,
           fontWeight: weight.extrabold,
           letterSpacing: "-0.015em",

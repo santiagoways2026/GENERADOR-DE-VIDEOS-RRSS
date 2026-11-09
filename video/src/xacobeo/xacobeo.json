@@ -3804,6 +3804,14 @@
   },
   "capas": [
    {
+    "tipo": "tarjeta",
+    "oscuro": true,
+    "ante": "Before you choose",
+    "principal": "Don't just pick the famous one",
+    "en": 3.1,
+    "dur": 4.8
+   },
+   {
     "tipo": "mapa",
     "src": "xacobeo/mapas/frances.mp4",
     "desde": 16.0,
@@ -3812,7 +3820,7 @@
    },
    {
     "tipo": "cartela",
-    "principal": "FRENCH WAY",
+    "principal": "French Way",
     "secundaria": null,
     "dur": 3.2,
     "tono": "olivo",
@@ -3827,7 +3835,7 @@
    },
    {
     "tipo": "cartela",
-    "principal": "PORTUGUESE WAY",
+    "principal": "Portuguese Way",
     "secundaria": null,
     "dur": 1.05,
     "tono": "olivo",
@@ -3842,7 +3850,7 @@
    },
    {
     "tipo": "cartela",
-    "principal": "COASTAL PORTUGUESE",
+    "principal": "Coastal Portuguese",
     "secundaria": null,
     "dur": 1.11,
     "tono": "olivo",
@@ -3857,7 +3865,7 @@
    },
    {
     "tipo": "cartela",
-    "principal": "ENGLISH WAY",
+    "principal": "English Way",
     "secundaria": null,
     "dur": 0.97,
     "tono": "olivo",
@@ -3872,7 +3880,7 @@
    },
    {
     "tipo": "cartela",
-    "principal": "PRIMITIVE WAY",
+    "principal": "Primitive Way",
     "secundaria": null,
     "dur": 1.7,
     "tono": "olivo",
@@ -3893,12 +3901,19 @@
     "hasta": null,
     "en": 27.44,
     "dur": 7.8
+   },
+   {
+    "tipo": "broll",
+    "src": "xacobeo/stock/abrazo.mp4",
+    "dur": 1.6,
+    "encuadre": "50% 50%",
+    "en": 32.8
    }
   ],
   "zooms": [
    {
     "en": 6.28,
-    "z": 1.1
+    "z": 1.08
    },
    {
     "en": 13.46,
@@ -3906,7 +3921,7 @@
    },
    {
     "en": 20.36,
-    "z": 1.1
+    "z": 1.08
    },
    {
     "en": 25.66,
@@ -3914,7 +3929,7 @@
    },
    {
     "en": 30.7,
-    "z": 1.1
+    "z": 1.08
    }
   ],
   "palabras": [
