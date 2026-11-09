@@ -13,6 +13,7 @@ import {
 import "../fuentes";
 import { brand, easeOut, fontFamily, fps, margin, paleta } from "../brand/theme";
 import { Cartela } from "../componentes/Cartela";
+import { Barrido, Credencial, DondeSellar, DosSellos, ExpertoDistancias, Requisitos, Suscribete } from "./Graficos";
 import { Cierre } from "../escenas/Cierre";
 import { Subtitulos } from "./Subtitulos";
 import datos from "./shorts.json";
@@ -92,7 +93,9 @@ export const Short: React.FC<{ id: string }> = ({ id }) => {
 
       {d.capas.map((c, i) => (
         <Sequence key={`c${i}`} {...tramo(c.en, c.dur)} name={`Cartela ${i + 1}`}>
-          {(c as { tipo?: string }).tipo === "cartela" ? (
+          {(c as { tipo?: string }).tipo === "grafico" ? (
+            <Grafico c={c as unknown as CapaGrafico} />
+          ) : (c as { tipo?: string }).tipo === "cartela" ? (
             <Cartela
               principal={(c as { principal?: string }).principal ?? ""}
               secundaria={(c as { secundaria?: string }).secundaria}
@@ -139,6 +142,21 @@ export const Short: React.FC<{ id: string }> = ({ id }) => {
 };
 
 /* ------------------------------------------------------------------ */
+
+type CapaGrafico = { g: string; dur: number; pasos?: { texto: string; en: number }[]; nota?: string; pregunta?: [number, number] };
+
+/** Gráficos propios del short (Graficos.tsx), elegidos por nombre. */
+const Grafico: React.FC<{ c: CapaGrafico }> = ({ c }) => {
+  const dur = f(c.dur);
+  if (c.g === "experto") return <ExpertoDistancias dur={dur} />;
+  if (c.g === "credencial") return <Credencial dur={dur} />;
+  if (c.g === "sellos") return <DosSellos dur={dur} />;
+  if (c.g === "donde") return <DondeSellar dur={dur} />;
+  if (c.g === "requisitos") return <Requisitos dur={dur} pasos={c.pasos ?? []} nota={c.nota ?? ""} />;
+  if (c.g === "suscribete") return <Suscribete dur={dur} pregunta={c.pregunta ?? [0, 0]} />;
+  if (c.g === "barrido") return <Barrido />;
+  return null;
+};
 
 type Golpe = { en: number; hasta: number; escala: number };
 

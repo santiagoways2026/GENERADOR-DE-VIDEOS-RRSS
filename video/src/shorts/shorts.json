@@ -1424,13 +1424,6 @@
     "vel": 0.72
    },
    {
-    "en": 9.9,
-    "dur": 2.94,
-    "src": "dji/DJI_20260929065826_0015_D.mp4",
-    "desde": 6.8,
-    "modo": "cubrir"
-   },
-   {
     "en": 12.84,
     "dur": 3.22,
     "src": "dji/DJI_20260929081752_0049_D.mp4",
@@ -1442,13 +1435,6 @@
     "dur": 2.8,
     "src": "dji/DJI_20260929090406_0053_D.mp4",
     "desde": 1.0,
-    "modo": "cubrir"
-   },
-   {
-    "en": 18.86,
-    "dur": 2.18,
-    "src": "dji/DJI_20260929071346_0021_D.mp4",
-    "desde": 3.0,
     "modo": "cubrir"
    },
    {
@@ -1477,41 +1463,79 @@
   ],
   "capas": [
    {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-card-credential.png",
-    "dur": 3.6,
-    "ancho": 960,
-    "en": 8.72
+    "tipo": "grafico",
+    "src": "",
+    "ancho": 0,
+    "g": "experto",
+    "en": 2.5,
+    "dur": 3.9
    },
    {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-notice-stamp-credential.png",
-    "dur": 4.0,
-    "ancho": 880,
-    "en": 16.06
+    "tipo": "grafico",
+    "src": "",
+    "ancho": 0,
+    "g": "barrido",
+    "en": 6.22,
+    "dur": 0.45
    },
    {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-card-credential-where.png",
-    "dur": 3.6,
-    "ancho": 900,
-    "en": 21.04
+    "tipo": "grafico",
+    "src": "",
+    "ancho": 0,
+    "g": "credencial",
+    "en": 8.72,
+    "dur": 3.6
    },
    {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-social-bar.png",
+    "tipo": "grafico",
+    "src": "",
+    "ancho": 0,
+    "g": "sellos",
+    "en": 16.06,
+    "dur": 4.5
+   },
+   {
+    "tipo": "grafico",
+    "src": "",
+    "ancho": 0,
+    "g": "donde",
+    "en": 21.04,
+    "dur": 3.4
+   },
+   {
+    "tipo": "grafico",
+    "src": "",
+    "ancho": 0,
+    "g": "requisitos",
+    "en": 24.5,
+    "dur": 9.0,
+    "pasos": [
+     {
+      "texto": "Walk 100 km or cycle 200",
+      "en": 0.3
+     },
+     {
+      "texto": "Carry your credential",
+      "en": 1.6
+     },
+     {
+      "texto": "2 stamps a day, last 100 km",
+      "en": 3.0
+     }
+    ],
+    "nota": "Validate at the Pilgrim's Office · check before you go"
+   },
+   {
+    "tipo": "grafico",
+    "src": "",
+    "ancho": 0,
+    "g": "suscribete",
     "en": 33.9,
-    "dur": 8.0,
-    "ancho": 960,
-    "cta": true
-   },
-   {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-tag-light.png",
-    "en": 42.1,
-    "dur": 2.3999999999999773,
-    "ancho": 900,
-    "cta": true
+    "dur": 9.6,
+    "pregunta": [
+     2.3,
+     4.8
+    ]
    }
   ],
   "palabras": [
@@ -2160,18 +2184,13 @@
   },
   "golpes": [
    {
-    "en": 1.6,
-    "hasta": 5.8,
-    "escala": 1.08
-   },
-   {
     "en": 33.7,
     "hasta": 36.2,
     "escala": 1.08
    },
    {
     "en": 37.5,
-    "hasta": 39.6,
+    "hasta": 41.5,
     "escala": 1.08
    }
   ]
