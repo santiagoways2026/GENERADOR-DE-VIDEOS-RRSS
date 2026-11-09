@@ -77,6 +77,34 @@ banners van quemados en la imagen. Lo que se añade encima no puede pisarlos:
 - La **transición olivo** solo en cambios de bloque. En cada corte cansaría.
 - Los tiempos salen de la transcripción por palabra y de los cortes medidos
   con detección de escena: `ffmpeg -vf "select='gt(scene,0.08)',showinfo"`.
+- Si una tarjeta quemada no se lee, se rehace encima, en la misma posición y
+  algo más grande, entrando antes y saliendo después que la original.
+
+## Efectos con recorte de la persona
+
+Para poner una tarjeta **detrás** de quien habla, o para el **orbit**, hace
+falta separar a la persona del fondo:
+
+```bash
+python3 herramientas/scripts/recortar.py pieza.mp4 <desde> <hasta> recorte/
+python3 herramientas/scripts/fondo_limpio.py recorte/ fondo/
+```
+
+El primero saca a la persona con fondo transparente, fotograma a fotograma;
+se convierte a WebM con alfa y Remotion lo pone encima con `transparent`. El
+segundo borra a la persona del fondo; sin él, al girar el fondo asoma una
+segunda silueta.
+
+Lo que se aprendió al aplicarlo:
+
+- **Un efecto con firma por bloque**, y nunca dos en menos de seis segundos.
+  El orbit, una sola vez por pieza.
+- La tarjeta de detrás va **a un lado de la cabeza**, no centrada: si el texto
+  queda tapado por la persona, no se lee. Asoma desde detrás y vuelve a
+  esconderse.
+- El orbit sirve de **transición**: sustituye al barrido de ese corte y
+  termina fundiéndose con el plano original, así la vuelta no se nota.
+- El tramo del CTA queda **quieto y limpio**, sin zoom.
 
 ## Qué no se hace
 

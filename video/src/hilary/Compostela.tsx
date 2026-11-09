@@ -12,27 +12,43 @@ import { brand, color, easeOut, fontFamily, margin, tracking, weight } from "../
 import { Bullets } from "../componentes/Bullets";
 import { MEDIA, TOTAL, Transicion } from "../componentes/Transicion";
 import { Cierre } from "../escenas/Cierre";
-import { Distancias } from "../graficos/Distancias";
+import { Credencial } from "../graficos/Credencial";
+import { DistanciaDetras } from "../graficos/DistanciaDetras";
+import { Orbita } from "../componentes/Orbita";
 import { Sellos } from "../graficos/Sellos";
 
 /**
  * Hilary · Cómo conseguir la Compostela (pieza 03).
  *
  * La base es la pieza ya editada: subtítulos palabra a palabra, tarjetas y
- * banners van quemados en la imagen. Todo lo que se añade aquí respeta eso:
+ * banners van quemados en la imagen. Todo lo que se añade aquí respeta eso.
  *
- * - Los subtítulos ocupan de 1275 a 1450 px de alto. Los gráficos van debajo,
- *   desde 1480, sobre la camiseta oscura, que es la zona limpia.
- * - El zoom de énfasis solo entra en tramos sin tarjeta quemada ancha: un
- *   zoom ahí recortaría los bordes de la tarjeta.
- * - Los gráficos nuevos solo aparecen donde la parte de arriba o de abajo
- *   está libre, para no apilarse con lo que ya había.
+ * Efectos con firma, uno por bloque y nunca dos en menos de seis segundos:
+ * - 0 s: zoom de entrada en el gancho.
+ * - 2,4 s: tarjeta con los mínimos de distancia por detrás de Hilary.
+ * - 8,7 s: la tarjeta de la credencial rehecha encima de la quemada, que
+ *   tenía el texto a 26 px y no se leía en el móvil.
+ * - 19,4 s: los dos sellos.
+ * - 24,5 s: la lista de requisitos sobre el plano de la fuente.
+ * - 33,6 s: orbit de vuelta a Hilary. El bloque final queda quieto: es el CTA.
+ *
+ * Por debajo van los recursos que no se notan: zoom de énfasis en las
+ * palabras clave, empuje lento en los planos de recurso largos y barrido
+ * olivo en los cambios de bloque.
  *
  * Los tiempos salen de la transcripción por palabra y de los cortes medidos
  * con detección de escena, no a ojo.
  */
 
 const VIDEO = "hilary/03-compostela.mp4";
+/** Recortes de Hilary con fondo transparente, generados con
+ *  herramientas/scripts/recortar.py, y el fondo sin ella para el orbit. */
+const RECORTE_DATO = { src: "hilary/03-recorte-dato.webm", desde: 70, dur: 126 };
+const ORBIT = {
+  figura: "hilary/03-recorte-orbit.webm",
+  fondo: "hilary/03-fondo-orbit.mp4",
+  dur: 38,
+};
 export const DURACION_COMPOSTELA = 1380;
 
 /** Cortes de plano reales, en fotogramas a 30 fps. */
@@ -43,6 +59,8 @@ const CORTE = {
   fuente: 736,
   sellando2: 877,
   final: 1008,
+  credencialEntra: 261,
+  credencialSale: 370,
   cierre: 1335,
 };
 
@@ -77,19 +95,22 @@ const ZOOM: [number, number][] = [
   [CORTE.sellando2 - 0.01, 1.05],
   [CORTE.sellando2, 1],
   [CORTE.final - 0.01, 1.05],
+  // El bloque final entra con el orbit y luego queda quieto: es el CTA.
   [CORTE.final, 1],
   [DURACION_COMPOSTELA, 1],
 ];
 
-const Base: React.FC = () => {
+/**
+ * El metraje y todo lo que tiene que moverse con él. Lo que va dentro se
+ * escala junto: la tarjeta de detrás y el recorte siguen pegados a Hilary
+ * aunque haya un zoom de énfasis.
+ */
+const Base: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   const frame = useCurrentFrame();
   return (
     <AbsoluteFill style={{ overflow: "hidden" }}>
-      <OffthreadVideo
-        src={staticFile(VIDEO)}
+      <AbsoluteFill
         style={{
-          width: "100%",
-          height: "100%",
           // El origen va a la altura de la cara, así el acercamiento la centra.
           transformOrigin: "50% 40%",
           scale: interpolate(
@@ -103,7 +124,10 @@ const Base: React.FC = () => {
             },
           ),
         }}
-      />
+      >
+        <OffthreadVideo src={staticFile(VIDEO)} style={{ width: "100%", height: "100%" }} />
+        {children}
+      </AbsoluteFill>
     </AbsoluteFill>
   );
 };
@@ -171,21 +195,33 @@ const Requisitos: React.FC<{ salida: number; aviso: number }> = ({ salida, aviso
 export const HilaryCompostela: React.FC = () => {
   return (
     <AbsoluteFill style={{ backgroundColor: brand.forest, fontFamily }}>
-      <Base />
+      <Base>
+        {/* Dato detrás de Hilary: fondo, tarjeta y ella recortada encima. */}
+        <DistanciaDetras
+          entrada={RECORTE_DATO.desde + 2}
+          aPie={VOZ.cien}
+          enBici={VOZ.doscientos}
+          salida={CORTE.credencial - 16}
+          fuente="Source: Pilgrim's Office"
+        />
+        <Sequence from={RECORTE_DATO.desde} durationInFrames={RECORTE_DATO.dur} name="Recorte de Hilary">
+          <OffthreadVideo
+            src={staticFile(RECORTE_DATO.src)}
+            transparent
+            muted
+            style={{ width: "100%", height: "100%" }}
+          />
+        </Sequence>
+      </Base>
 
-      {/* Cambios de bloque. En el resto de cortes no: cansaría. */}
-      {[CORTE.credencial, CORTE.sellando, CORTE.fuente, CORTE.final].map((c) => (
+      {/* Cambios de bloque. El último lo hace el orbit. */}
+      {[CORTE.credencial, CORTE.sellando, CORTE.fuente].map((c) => (
         <Sequence key={c} from={c - MEDIA} durationInFrames={TOTAL} name={`Transición ${c}`}>
           <Transicion />
         </Sequence>
       ))}
 
-      <Distancias
-        aPie={VOZ.cien}
-        enBici={VOZ.doscientos}
-        salida={CORTE.credencial - 14}
-        fuente="Source: Pilgrim's Office, Santiago"
-      />
+      <Credencial entrada={CORTE.credencialEntra} salida={CORTE.credencialSale} />
 
       <Sellos
         desde={VOZ.two - 12}
@@ -198,10 +234,31 @@ export const HilaryCompostela: React.FC = () => {
         <Requisitos salida={CORTE.final - CORTE.fuente - 4 - 16} aviso={VOZ.justRemember - CORTE.fuente - 4} />
       </Sequence>
 
+      {/* Orbit de vuelta a Hilary: gira y se funde con el plano original. */}
+      <Sequence from={CORTE.final} durationInFrames={ORBIT.dur} name="Orbit">
+        <OrbitaConSalida />
+      </Sequence>
+
       {/* El cierre de la casa sustituye a la cartela verde plana del original. */}
       <Sequence from={CORTE.cierre} name="Cierre">
         <Cierre duracion={DURACION_COMPOSTELA - CORTE.cierre} />
       </Sequence>
+    </AbsoluteFill>
+  );
+};
+
+const OrbitaConSalida: React.FC = () => {
+  const frame = useCurrentFrame();
+  return (
+    <AbsoluteFill
+      style={{
+        opacity: interpolate(frame, [ORBIT.dur - 8, ORBIT.dur], [1, 0], {
+          extrapolateLeft: "clamp",
+          extrapolateRight: "clamp",
+        }),
+      }}
+    >
+      <Orbita fondo={ORBIT.fondo} figura={ORBIT.figura} duracion={ORBIT.dur - 10} />
     </AbsoluteFill>
   );
 };
