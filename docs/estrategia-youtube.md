@@ -35,15 +35,45 @@ hay pantallas finales.
 Esto cambia el objetivo. No se trata de optimizar un canal que funciona
 orgánicamente, sino de arrancar un canal que todavía no lo hace.
 
-## Dos carencias técnicas verificadas
+## La carencia técnica que sí importa
 
 De los 13 vídeos que devuelve la API con sus metadatos:
 
 - `video_has_captions` es `false` en **todos**.
 - `video_tags` es `null` en **todos**.
 
-No hay subtítulos ni etiquetas en ninguna pieza. Para un canal cuya audiencia es
-bilingüe, subtitular es lo más barato que se puede hacer.
+**De estas dos, solo una es un problema.** La documentación de YouTube clasifica
+las etiquetas como "Not important" y explica que sirven sobre todo para corregir
+faltas de ortografía frecuentes. Etiquetar el catálogo entero sería trabajo
+tirado; como mucho, añadirlas donde haya variantes mal escritas como "camino
+santiago", "jacobeo" o "Xacobeo".
+[YouTube performance FAQ](https://support.google.com/youtube/answer/141805?hl=en)
+
+Los subtítulos son otra cosa, y el argumento no es de posicionamiento sino de
+comprensión. La revisión del W3C recoge que el 47 % de las personas de 61 a 80
+años tiene alguna pérdida auditiva, y el 93 % de las mayores de 81, y que el
+ruido de fondo les resulta difícil de filtrar.
+[W3C, usuarios mayores](https://www.w3.org/WAI/older-users/literature/)
+Con una audiencia que en un 69 % pasa de 55 años, subtitular no es una táctica
+de alcance: es que se entienda.
+
+Y hay un segundo efecto, este sí de alcance. Para reforzar la pista de audio en
+otro idioma, YouTube publica que los creadores que subieron audio multiidioma
+vieron **más del 25 % de su tiempo de visionado venir del idioma no principal**.
+[Multi-language features](https://support.google.com/youtube/answer/13338784?hl=en)
+
+## Capítulos, que aquí valen doble
+
+Requisitos oficiales: al menos tres marcas de tiempo en orden ascendente, la
+primera obligatoriamente `00:00`, y mínimo 10 segundos por capítulo.
+[Chapters](https://support.google.com/youtube/answer/9884579?hl=en)
+
+Lo interesante es que no son solo un activo de YouTube. Google Search Central
+documenta los "key moments" y dice que si el vídeo está alojado en YouTube se
+pueden marcar desde la descripción.
+[Google Search Central, vídeo](https://developers.google.com/search/docs/appearance/video)
+Como 173.870 visualizaciones ya vienen de la web propia embebida, los capítulos
+hacen esas piezas direccionables desde la búsqueda de Google.
 
 ## La audiencia real
 
@@ -147,3 +177,101 @@ aquí. Tensión sí, en momentos marcados; frenesí no.
   metadatos sí se obtienen.
 - `pexels.com` y `pixabay.com` están bloqueados por la política de red. `coverr.co`
   y `mixkit.co` sí responden.
+
+## Qué busca la gente, de verdad
+
+Recogido en vivo del autocompletado de Google y de YouTube por idioma y país.
+Son cadenas de sugerencia reales, no suposiciones. **Sin volúmenes, porque
+Semrush está sin unidades de API.**
+
+### Lo que cambia la decisión
+
+**1. Existe demanda explícita por edad, y es exactamente el producto.**
+En Google en español: `camino de santiago para mayores de 65 años`, `para
+mayores de 60`, `para mayores de 50 años`, `para mayores de 70 años`, `para
+personas mayores` y `camino de santiago organizado para personas mayores`. En
+inglés: `camino de santiago for seniors` y `camino de santiago tours for
+seniors`.
+
+Esto coincide con la franja de edad que ya tiene el canal. No hay ni una pieza
+que ataque esas consultas.
+
+**2. El punto de partida es el modificador dominante.**
+En español, `desde sarria` aparece en casi todas las raíces. En inglés, `from
+porto`, `from sarria`, `from leon`, `from tui`. Y desde Irlanda, que es el 13,5 %
+de la audiencia, aparece `camino de santiago last 100km`, que es literalmente el
+producto de Sarria. Los títulos deberían nombrar el punto de partida.
+
+**3. La estación es un eje que el canal no usa.**
+`camino de santiago desde sarria en noviembre`, `en invierno`, `en octubre`,
+`en julio`; `mochila camino de santiago invierno / verano / otoño`. En inglés,
+`in september`, `in october`, `in march`.
+
+**4. Las consultas de comparación están mal servidas.**
+`camino frances vs camino portugues`, `qué camino de santiago elegir`, `which
+route`, `best camino route for first timers`.
+
+**5. En YouTube la demanda del Año Santo vive bajo "Xacobeo", no bajo "año
+santo".** `xacobeo 2027` es la primera sugerencia de su raíz, mientras que `año
+santo 2027` no devuelve prácticamente nada en YouTube. En la búsqueda web de
+Google ocurre lo contrario: ahí sí funcionan `año santo 2027`, `año santo
+compostelano 2027` y `año santo jacobeo 2027`.
+
+Conclusión operativa: titular a "Xacobeo" en YouTube y a "Año Santo" en la web.
+Los dos Shorts del canal sobre este tema retienen al 90,9 % y al 92,6 %, y no
+los encuentra nadie.
+
+### Inglés, modificadores más repetidos
+
+`packing list` es el más recurrente con diferencia, seguido de `what to pack`,
+`which route`, `best route`, `how to plan`, `training for`, `cost`, `alone`,
+`safety`.
+
+## Qué provoca comentarios
+
+No hay ningún estudio controlado que compare en YouTube un CTA específico contra
+un "comenta abajo" genérico. Lo más cercano y transferible:
+
+- Las publicaciones interactivas, en particular las preguntas, aumentan los
+  comentarios. Estudio sobre 106.316 mensajes de 782 empresas.
+  [SAGE Open](https://journals.sagepub.com/doi/10.1177/21582440231219096)
+- **El tipo de pregunta importa y depende del producto:** las preguntas de
+  experiencia funcionan mejor para productos hedónicos y las de búsqueda para
+  los utilitarios.
+  [Journal of Business Research](https://www.sciencedirect.com/science/article/abs/pii/S0148296322005306)
+
+El Camino es un producto hedónico, así que la pregunta debe ser de experiencia,
+no de especificación. "¿Desde dónde empezaste y en qué año?" tiene mejor apoyo
+que "¿qué mochila usas?".
+
+Un matiz honesto: puede que el problema de comentarios sea estructural y no de
+redacción. Una audiencia que llega desde un anuncio o desde un reproductor
+embebido en la web no está en disposición de comentar, y desde el embebido es
+más incómodo hacerlo.
+
+## Qué premia un jurado
+
+Criterios oficiales de los Webby en Video & Film, que es lo único verificado:
+concepto y escritura, calidad de oficio, integración, ejecución y experiencia
+global. Dicen expresamente que la calidad de oficio "means more than just a
+pretty looking film or video" y que no hace falta que sea puntera ni estar de
+moda. En las categorías de Branded Entertainment valoran que la marca esté
+"balanced rather than heavy-handed".
+[Webby judging criteria](https://www.webbyawards.com/judging-criteria/)
+
+**Nada en esos criterios premia la densidad de cortes ni de ganchos.** Lo que se
+juzga es el concepto, la coherencia del relato y el oficio. Eso respalda la regla
+de un solo CTA por pieza que ya tiene la marca.
+
+## Lo que se ha descartado por mala fuente
+
+- Las cifras de "un corte cada 30 a 60 segundos" o "cada 10 a 20 segundos" salen
+  de blogs de marketing que no citan estudio y se contradicen entre sí. No se
+  usan.
+- El "los subtítulos suben las visualizaciones un 7,32 %" es un estudio de 2014
+  publicado por un proveedor de subtitulado. Indicativo, no planificable.
+- La cifra de 160 a 180 ppm de la BBC no se ha podido verificar en el documento
+  oficial. Se usa la de la DCMP y la de Ofcom.
+- No se ha encontrado ninguna declaración de primera mano de divulgadores
+  conocidos sobre bucles abiertos o aperturas en frío. Lo que circula es
+  comentario de terceros.

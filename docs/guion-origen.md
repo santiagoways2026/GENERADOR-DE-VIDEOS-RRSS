@@ -108,8 +108,20 @@ donde cortará la imagen.
 > Una cosa antes de irte.
 > ¿A ti también te habían contado lo del campo de estrellas? Dímelo en los
 > comentarios, que tengo curiosidad por saber cuánta gente lo da por cierto.
-> Y si quieres la historia de una ruta concreta, dime cuál y la contamos.
+> Y si ya lo has hecho: ¿desde dónde empezaste, y en qué año? Me interesa de
+> verdad.
+> Si quieres la historia de una ruta concreta, dime cuál y la contamos.
 > Buen Camino.
+
+## Ritmo, medido
+
+678 palabras de locución. A 6:30 de pieza salen 104 palabras por minuto, y a
+7:00 salen 97. El techo de la DCMP para subtítulo de vídeo adulto está en 150 a
+160 palabras por minuto, y el de Ofcom en 160 a 180. El guion entra holgado, que
+es lo que hace falta con una audiencia que en un 69 % pasa de 55 años.
+
+Fuente del techo: [DCMP Captioning Key](https://dcmp.org/learn/597).
+
 
 ## De dónde sale cada afirmación
 
