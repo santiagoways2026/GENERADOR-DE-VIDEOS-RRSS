@@ -161,14 +161,14 @@ export const DondeSellar: React.FC<{ dur: number }> = ({ dur }) => {
 };
 
 /** Lista de requisitos: cada paso aparece cuando Hildary lo dice. */
-export const Requisitos: React.FC<{ dur: number; pasos: { texto: string; en: number }[]; nota: string }> = ({ dur, pasos, nota }) => {
+export const Requisitos: React.FC<{ dur: number; pasos: { texto: string; en: number }[]; nota: string; titulo?: string }> = ({ dur, pasos, nota, titulo = "To get your Compostela" }) => {
   const a = useEntrada(dur);
   const frame = useCurrentFrame();
   return (
     <AbsoluteFill>
       <div style={{ position: "absolute", left: IZQ, right: IZQ, top: ARRIBA, ...a }}>
         <div style={{ display: "inline-block", backgroundColor: paleta.sendero, color: brand.white, padding: "8px 18px", borderRadius: 8, fontSize: 28, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>
-          To get your Compostela
+          {titulo}
         </div>
         <Tarjeta style={{ marginTop: 12, padding: "14px 0" }}>
           {pasos.map((p, i) => {
@@ -182,7 +182,9 @@ export const Requisitos: React.FC<{ dur: number; pasos: { texto: string; en: num
               </div>
             );
           })}
-          <div style={{ padding: "14px 30px 4px", borderTop: `1px solid ${paleta.niebla}`, fontSize: 28, fontWeight: 600, color: paleta.gris }}>{nota}</div>
+          {nota ? (
+            <div style={{ padding: "14px 30px 4px", borderTop: `1px solid ${paleta.niebla}`, fontSize: 28, fontWeight: 600, color: paleta.gris }}>{nota}</div>
+          ) : null}
         </Tarjeta>
       </div>
     </AbsoluteFill>

@@ -13,7 +13,7 @@ import {
 import "../fuentes";
 import { brand, easeOut, fontFamily, fps, margin, paleta, EFECTOS } from "../brand/theme";
 import { Cartela } from "../componentes/Cartela";
-import { Barrido, Credencial, DondeSellar, DosSellos, ExpertoDistancias, Requisitos, Suscribete } from "./Graficos";
+import { Barrido, Credencial, Dato, DondeSellar, DosSellos, ExpertoDistancias, Requisitos, Suscribete } from "./Graficos";
 import { Cierre } from "../escenas/Cierre";
 import { Subtitulos } from "./Subtitulos";
 import datos from "./shorts.json";
@@ -87,6 +87,7 @@ export const Short: React.FC<{ id: string }> = ({ id }) => {
             dur={f(b.dur)}
             seguido={i > 0 && b.en - (d.broll[i - 1].en + d.broll[i - 1].dur) < 0.2}
             vel={"vel" in b ? (b.vel as number) : 1}
+            escala={"escala" in b ? (b.escala as number) : 1}
           />
         </Sequence>
       ))}
@@ -143,7 +144,7 @@ export const Short: React.FC<{ id: string }> = ({ id }) => {
 
 /* ------------------------------------------------------------------ */
 
-type CapaGrafico = { g: string; dur: number; pasos?: { texto: string; en: number }[]; nota?: string; pregunta?: [number, number] };
+type CapaGrafico = { g: string; dur: number; pasos?: { texto: string; en: number }[]; nota?: string; pregunta?: [number, number]; titulo?: string; ante?: string; oscuro?: boolean };
 
 /** Gráficos propios del short (Graficos.tsx), elegidos por nombre. */
 const Grafico: React.FC<{ c: CapaGrafico }> = ({ c }) => {
@@ -152,7 +153,8 @@ const Grafico: React.FC<{ c: CapaGrafico }> = ({ c }) => {
   if (c.g === "credencial") return <Credencial dur={dur} />;
   if (c.g === "sellos") return <DosSellos dur={dur} />;
   if (c.g === "donde") return <DondeSellar dur={dur} />;
-  if (c.g === "requisitos") return <Requisitos dur={dur} pasos={c.pasos ?? []} nota={c.nota ?? ""} />;
+  if (c.g === "requisitos") return <Requisitos dur={dur} pasos={c.pasos ?? []} nota={c.nota ?? ""} titulo={c.titulo} />;
+  if (c.g === "dato") return <Dato dur={dur} ante={c.ante ?? ""} titulo={c.titulo ?? ""} oscuro={c.oscuro} />;
   if (c.g === "suscribete") return <Suscribete dur={dur} pregunta={c.pregunta ?? [0, 0]} />;
   if (c.g === "barrido") return <Barrido />;
   return null;
@@ -202,7 +204,7 @@ const PlanoHabla: React.FC<{ src: string; zoom: number; dur: number }> = ({ src,
   );
 };
 
-const BRoll: React.FC<{ src: string; desde: number; modo: string; dur: number; seguido?: boolean; vel?: number }> = ({
+const BRoll: React.FC<{ src: string; desde: number; modo: string; dur: number; seguido?: boolean; vel?: number; escala?: number }> = ({
   src,
   desde,
   modo,
@@ -210,6 +212,7 @@ const BRoll: React.FC<{ src: string; desde: number; modo: string; dur: number; s
   seguido = false,
   // Un recurso alargado para enlazar con el siguiente va algo más lento.
   vel = 1,
+  escala = 1,
 }) => {
   const frame = useCurrentFrame();
   const entra = seguido ? 1 : interpolate(frame, [0, 3], [0, 1], clamp);
@@ -275,7 +278,8 @@ const BRoll: React.FC<{ src: string; desde: number; modo: string; dur: number; s
         width: "100%",
         height: "100%",
         objectFit: "cover",
-        scale: interpolate(frame, [0, dur], [1.02, 1.1], clamp),
+        // `escala` recorta las bandas negras de un clip que ya venía con ellas.
+        scale: interpolate(frame, [0, dur], [1.02, 1.1], clamp) * escala,
       })}
     </AbsoluteFill>
   );
