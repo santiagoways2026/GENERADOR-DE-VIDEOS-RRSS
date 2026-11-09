@@ -92,7 +92,7 @@ export const ShortXacobeo: React.FC<{ id: string }> = ({ id }) => {
           </Sequence>
         ))}
 
-      <Subtitulos palabras={d.palabras} soloVerde />
+      <Subtitulos palabras={d.palabras} soloVerde trasTitular={d.gancho.dur} />
 
       <Audio
         src={staticFile(d.musica.src)}

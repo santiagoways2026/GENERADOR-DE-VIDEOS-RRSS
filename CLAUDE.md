@@ -101,6 +101,9 @@ Las cartelas replican las del kit de motion graphics, no se inventan:
 
 El texto vive en la mitad superior. Los gráficos, en la inferior.
 
+Los subtítulos no salen mientras está el titular del principio: empiezan
+cuando el titular se va (prop `trasTitular` de `Subtitulos`).
+
 ## Reglas de montaje aprendidas
 
 Estas salieron de revisar piezas reales y ahorran repetir errores:
@@ -185,6 +188,8 @@ verde Ways y verde Ways con la vieira.
 
 ## Lo que no se hace
 
+- El gancho sobre fondo blanco con la persona recortada (la "cartela blanca
+  del principio"). Se empieza con el plano real y el titular encima.
 - La placa blanca en las cartelas. Se mantiene la cartela, pero al estilo
   del brandbook (texto sobre vídeo): el dato en blanco con contorno grafito y
   el complemento en placa verde Ways con letra blanca, en minúscula de frase.

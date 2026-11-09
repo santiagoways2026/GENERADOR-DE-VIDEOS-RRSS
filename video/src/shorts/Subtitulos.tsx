@@ -78,7 +78,9 @@ export const Subtitulos: React.FC<{
   /** Tramos [desde, hasta] en segundos en los que la línea sube a `alto`. */
   arriba?: [number, number][];
   alto?: number;
-}> = ({ palabras, soloVerde = false, top = 1280, arriba, alto = 620 }) => {
+  /** Segundo en que se va el titular del principio: antes no hay subtítulos. */
+  trasTitular?: number;
+}> = ({ palabras, soloVerde = false, top = 1280, arriba, alto = 620, trasTitular = 0 }) => {
   const frame = useCurrentFrame();
   const t = frame / fps;
   const paginas = paginar(tokens(palabras));
@@ -88,7 +90,8 @@ export const Subtitulos: React.FC<{
     const fin = sig ? Math.min(sig[0].en, p[p.length - 1].fin + 0.6) : p[p.length - 1].fin + 0.4;
     return t >= p[0].en - 0.05 && t < fin;
   });
-  if (idx < 0) return null;
+  // Nunca a la vez que el titular del principio: se ve raro.
+  if (idx < 0 || t < trasTitular) return null;
   const pagina = paginas[idx];
   const desde = (pagina[0].en - 0.05) * fps;
   const y = arriba?.some(([a, b]) => pagina[0].en >= a && pagina[0].en < b) ? alto : top;

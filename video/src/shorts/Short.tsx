@@ -102,7 +102,7 @@ export const Short: React.FC<{ id: string }> = ({ id }) => {
 
       {/* Los subtítulos acompañan toda la pieza, gancho incluido. */}
       <Sequence durationInFrames={finVoz} name="Subtítulos">
-        <Subtitulos palabras={d.palabras} soloVerde />
+        <Subtitulos palabras={d.palabras} soloVerde trasTitular={d.gancho.dur} />
       </Sequence>
 
       <Sequence from={finVoz} durationInFrames={total - finVoz} name="Cierre">
@@ -271,29 +271,32 @@ const ExpertoSiCabe: React.FC<{ d: DatosShort }> = ({ d }) => {
 /* ------------------------------------------------------------------ */
 
 /**
- * Gancho: el titular grande detrás de Hildary, recortada sin fondo sobre los
- * verdes de la marca. El texto queda por detrás de la cabeza para dar
- * profundidad, pero la frase se lee entera por encima.
+ * Gancho: el titular grande sobre el plano real de Hildary, sin cartela
+ * blanca (el equipo la descartó en noviembre de 2026).
  */
-const Gancho: React.FC<{ titulo: string[]; acento: number; src: string }> = ({ titulo, acento, src }) => {
+const Gancho: React.FC<{ titulo: string[]; acento: number; src: string }> = ({ titulo, acento }) => {
+  // Sin cartela blanca: el titular va sobre el plano real de Hildary, con un
+  // velo grafito suave arriba para que se lea sobre el fondo.
   const frame = useCurrentFrame();
   return (
-    <AbsoluteFill
-      style={{
-        // Paleta 2026: fondo blanco, titular en grafito y la línea clave en verde Ways.
-        backgroundColor: paleta.blanco,
-      }}
-    >
+    <AbsoluteFill>
+      <AbsoluteFill
+        style={{
+          background: "linear-gradient(180deg, rgba(46,46,45,0.5) 0%, rgba(46,46,45,0.28) 22%, rgba(46,46,45,0) 34%)",
+          opacity: interpolate(frame, [0, 6], [0, 1], clamp),
+        }}
+      />
       <Interactive.Div
         name="Titular del gancho"
         style={{
           position: "absolute",
-          top: 230,
+          top: 160,
           left: 56,
           right: 56,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          gap: 2,
           scale: interpolate(frame, [0, 10], [1.08, 1], { ...clamp, easing: salida }),
         }}
       >
@@ -302,16 +305,17 @@ const Gancho: React.FC<{ titulo: string[]; acento: number; src: string }> = ({ t
             key={i}
             style={{
               // Brandbook 2027: minúscula de frase, Montserrat 800 (unos 0,66 em por letra).
-              fontSize: Math.min(124, Math.floor(950 / (linea.length * 0.66))),
+              fontSize: Math.min(92, Math.floor(900 / (linea.length * 0.66))),
               lineHeight: 1.1,
               fontWeight: 800,
               letterSpacing: "-0.01em",
-              color: i === acento ? brand.white : paleta.grafito,
+              color: brand.white,
               backgroundColor: i === acento ? paleta.verdeWays : "transparent",
               padding: i === acento ? "2px 20px 8px" : 0,
               borderRadius: 10,
               whiteSpace: "nowrap",
-              textShadow: "0 6px 24px rgba(46, 46, 45, 0.3)",
+              WebkitTextStroke: i === acento ? "0px" : `10px ${paleta.grafito}`,
+              paintOrder: "stroke fill",
               clipPath: `inset(0 ${interpolate(frame, [i * 4, i * 4 + 12], [100, 0], { ...clamp, easing: salida })}% 0 0)`,
             }}
           >
@@ -319,21 +323,6 @@ const Gancho: React.FC<{ titulo: string[]; acento: number; src: string }> = ({ t
           </div>
         ))}
       </Interactive.Div>
-
-      <AbsoluteFill
-        style={{
-          opacity: interpolate(frame, [2, 10], [0, 1], clamp),
-          translate: `0px ${interpolate(frame, [2, 14], [330, 300], { ...clamp, easing: salida })}px`,
-          scale: 0.86,
-        }}
-      >
-        <OffthreadVideo
-          src={staticFile(src)}
-          transparent
-          muted
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
-        />
-      </AbsoluteFill>
     </AbsoluteFill>
   );
 };
