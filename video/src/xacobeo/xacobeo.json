@@ -4970,14 +4970,6 @@
   },
   "capas": [
    {
-    "tipo": "cartela",
-    "principal": "2027",
-    "secundaria": "A HOLY YEAR",
-    "dur": 2.8,
-    "tono": "olivo",
-    "en": 6.0
-   },
-   {
     "tipo": "broll",
     "src": "xacobeo/stock/catedral-siluetas.mp4",
     "dur": 2.4,
@@ -4999,12 +4991,11 @@
     "en": 13.04
    },
    {
-    "tipo": "cartela",
-    "principal": "START PLANNING",
-    "secundaria": "DON'T LEAVE IT LATE",
-    "dur": 3.6,
-    "tono": "olivo",
-    "en": 14.66
+    "tipo": "broll",
+    "src": "xacobeo/stock/hotel.mp4",
+    "dur": 1.8,
+    "encuadre": "50% 50%",
+    "en": 20.3
    },
    {
     "tipo": "png",
@@ -5014,12 +5005,27 @@
     "hasta": null,
     "en": 22.82,
     "dur": 6.88
+   },
+   {
+    "tipo": "tarjeta",
+    "oscuro": true,
+    "ante": "2027",
+    "principal": "A Holy Year",
+    "en": 6.0,
+    "dur": 2.8
+   },
+   {
+    "tipo": "tarjeta",
+    "ante": "Don't leave it late",
+    "principal": "Start planning",
+    "en": 14.66,
+    "dur": 3.6
    }
   ],
   "zooms": [
    {
     "en": 3.06,
-    "z": 1.1
+    "z": 1.08
    },
    {
     "en": 6.0,
@@ -5027,7 +5033,7 @@
    },
    {
     "en": 7.64,
-    "z": 1.1
+    "z": 1.08
    },
    {
     "en": 10.16,
@@ -5035,7 +5041,7 @@
    },
    {
     "en": 13.04,
-    "z": 1.1
+    "z": 1.08
    },
    {
     "en": 14.66,
@@ -5043,7 +5049,7 @@
    },
    {
     "en": 18.36,
-    "z": 1.1
+    "z": 1.08
    },
    {
     "en": 19.66,
@@ -5051,7 +5057,7 @@
    },
    {
     "en": 22.82,
-    "z": 1.1
+    "z": 1.08
    },
    {
     "en": 25.98,
