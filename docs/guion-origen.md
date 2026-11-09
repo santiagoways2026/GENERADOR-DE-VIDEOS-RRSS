@@ -1,5 +1,7 @@
 # Guion · El origen del Camino de Santiago
 
+> **Descartado.** Contaba una historia cuando hacía falta utilidad. Lo sustituye `guion-mayores-55.md`.
+
 Pieza de YouTube, horizontal, en español, con subtítulos quemados en español y
 pista de subtítulos en inglés. Duración objetivo: 6:30 a 7:00.
 
