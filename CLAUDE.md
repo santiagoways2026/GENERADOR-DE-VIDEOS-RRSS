@@ -182,9 +182,10 @@ Metraje propio del Camino en vertical (DJI e iPhone):
 `1f-jQx7NilhcomXzZgqJwDvVbGjz-Bcvs` las subcarpetas "Short N" y "Video
 youtube cliente" son Paula hablando a cámara: no son recurso de stock.
 
-Portadas de shorts: estilo pegatina (`video/src/shorts/PortadaShort.tsx`),
-foto a sangre y titular en tres líneas: grafito con contorno blanco, placa
-verde Ways y verde Ways con la vieira.
+Portadas de shorts (`video/src/shorts/PortadaShort.tsx`): foto a sangre y
+una tarjeta blanca redondeada, algo girada, con el titular en tres líneas:
+grafito, la línea clave en placa verde Ways con letra blanca y tres trazos
+verdes de énfasis, y grafito. Nada de estilo pegatina ni vieira.
 
 ## Lo que no se hace
 

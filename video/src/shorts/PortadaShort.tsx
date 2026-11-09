@@ -21,15 +21,15 @@ import portadas from "./portadas.json";
  */
 type Datos = { id: string; lineas: string[]; encuadre?: string; alto?: number };
 
-const CONTORNO = 30;
 
 export const PortadaShort: React.FC<{ id: string }> = ({ id }) => {
   const d = (portadas as Datos[]).find((x) => x.id === id) as Datos;
   const [uno, dos, tres] = d.lineas;
-  // Ancho medio de un carácter de Montserrat 900 en caja mixta: 0,66 em. La
-  // tercera línea cuenta además la vieira.
-  const tam = (t: string, max: number, extra = 0) => Math.min(max, Math.floor(900 / ((t.length + extra) * 0.66)));
 
+  // Tarjeta blanca (noviembre de 2026): titular en grafito con la línea clave
+  // en placa verde Ways y tres trazos de énfasis, sobre la foto a sangre.
+  const t = (x: string, max: number) => Math.min(max, Math.floor(820 / (x.length * 0.6)));
+  const base = Math.min(t(uno, 150), t(tres, 150));
   return (
     <AbsoluteFill style={{ backgroundColor: brand.green, fontFamily }}>
       <Img
@@ -40,37 +40,47 @@ export const PortadaShort: React.FC<{ id: string }> = ({ id }) => {
         name="Titular de la portada"
         style={{
           position: "absolute",
-          top: d.alto ?? 430,
-          left: 40,
-          right: 40,
+          top: d.alto ?? 330,
+          left: 0,
+          right: 0,
           display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          rotate: "-4deg",
-          filter: "drop-shadow(0 14px 26px rgba(46, 46, 45, 0.35))",
+          justifyContent: "center",
         }}
       >
-        <Linea texto={uno} tam={tam(uno, 160)} color={paleta.grafito} />
         <div
           style={{
-            backgroundColor: paleta.verdeWays,
-            border: `12px solid ${brand.white}`,
-            borderRadius: 30,
-            padding: "0px 34px 14px",
-            margin: "-6px 0",
-            position: "relative",
-            zIndex: 1,
+            backgroundColor: brand.white,
+            borderRadius: 44,
+            padding: "36px 52px 44px",
+            rotate: "-3deg",
+            boxShadow: "0 18px 40px rgba(46, 46, 45, 0.28)",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+            gap: 8,
           }}
         >
-          <span style={{ ...estiloTexto(tam(dos, 140, 1.5)), color: brand.white }}>{dos}</span>
-        </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-          <Linea texto={tres} tam={tam(tres, 160, 3)} color={paleta.verdeWays} />
-          <Vieira tam={tam(tres, 160, 3) * 1.05} />
+          <span style={{ ...estiloTexto(base), color: paleta.grafito }}>{uno}</span>
+          <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
+            <span
+              style={{
+                ...estiloTexto(Math.min(t(dos, 160), base * 1.15)),
+                color: brand.white,
+                backgroundColor: paleta.verdeWays,
+                borderRadius: 18,
+                padding: "2px 28px 12px",
+              }}
+            >
+              {dos}
+            </span>
+            <Trazos tam={base} />
+          </div>
+          <span style={{ ...estiloTexto(base), color: paleta.grafito }}>{tres}</span>
         </div>
       </Interactive.Div>
     </AbsoluteFill>
   );
+
 };
 
 const estiloTexto = (tam: number): React.CSSProperties => ({
@@ -81,54 +91,18 @@ const estiloTexto = (tam: number): React.CSSProperties => ({
   whiteSpace: "nowrap",
 });
 
-const Linea: React.FC<{ texto: string; tam: number; color: string }> = ({ texto, tam, color }) => (
-  <span
-    style={{
-      ...estiloTexto(tam),
-      color,
-      WebkitTextStroke: `${CONTORNO}px ${brand.white}`,
-      paintOrder: "stroke fill",
-      position: "relative",
-      zIndex: 2,
-    }}
-  >
-    {texto}
-  </span>
-);
 
-/** Vieira amarilla con contorno grafito y tres trazos verdes, como en la referencia. */
-const Vieira: React.FC<{ tam: number }> = ({ tam }) => (
-  <svg width={tam * 1.5} height={tam * 1.1} viewBox="0 0 150 110" style={{ overflow: "visible", marginTop: -tam * 0.1 }}>
-    <g transform="rotate(-8 55 60)">
-      {/* Halo blanco, para que la vieira se lea como pegatina. */}
-      <path d={CONCHA} fill={brand.white} stroke={brand.white} strokeWidth={22} strokeLinejoin="round" />
-      <path d={CONCHA} fill="#F4B63A" stroke={paleta.grafito} strokeWidth={5} strokeLinejoin="round" />
-      {[-52, -30, -10, 10, 30, 52].map((a) => (
-        <line
-          key={a}
-          x1={55}
-          y1={86}
-          x2={55 + Math.sin((a * Math.PI) / 180) * 70}
-          y2={86 - Math.cos((a * Math.PI) / 180) * 70}
-          stroke={paleta.grafito}
-          strokeWidth={3.5}
-          strokeLinecap="round"
-        />
-      ))}
-    </g>
+
+
+/** Tres trazos verdes de énfasis junto a la línea clave. */
+const Trazos: React.FC<{ tam: number }> = ({ tam }) => (
+  <svg width={tam * 0.9} height={tam * 0.9} viewBox="0 0 90 90" style={{ overflow: "visible" }}>
     {[
-      [118, 14, 140, -4],
-      [124, 46, 150, 42],
-      [116, 78, 138, 98],
+      [10, 22, 40, 4],
+      [14, 46, 54, 44],
+      [10, 70, 40, 88],
     ].map(([x1, y1, x2, y2], i) => (
-      <g key={i}>
-        <line x1={x1} y1={y1} x2={x2} y2={y2} stroke={brand.white} strokeWidth={17} strokeLinecap="round" />
-        <line x1={x1} y1={y1} x2={x2} y2={y2} stroke={paleta.verdeWays} strokeWidth={9} strokeLinecap="round" />
-      </g>
+      <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke={paleta.verdeWays} strokeWidth={10} strokeLinecap="round" />
     ))}
   </svg>
 );
-
-// Abanico de la concha y las dos orejas de la base.
-const CONCHA =
-  "M55 100 L36 96 L30 104 L20 98 L26 88 C6 70 0 40 14 22 C26 6 44 0 55 0 C66 0 84 6 96 22 C110 40 104 70 84 88 L90 98 L80 104 L74 96 Z";
