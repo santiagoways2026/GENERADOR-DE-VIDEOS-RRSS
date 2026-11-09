@@ -17,6 +17,7 @@ import { Calendario } from "../graficos/Calendario";
 import { Candado } from "../graficos/Candado";
 import { LineaTiempo } from "../graficos/LineaTiempo";
 import { Subtitulos } from "../shorts/Subtitulos";
+import { Dato } from "../shorts/Graficos";
 import datos from "./xacobeo.json";
 
 /**
@@ -35,7 +36,7 @@ import datos from "./xacobeo.json";
  */
 
 type Capa = {
-  tipo: "cartela" | "png" | "broll" | "grafico" | "mapa";
+  tipo: "cartela" | "png" | "broll" | "grafico" | "mapa" | "tarjeta";
   en: number;
   dur: number;
   principal?: string;
@@ -81,10 +82,12 @@ export const ShortXacobeo: React.FC<{ id: string }> = ({ id }) => {
       </Sequence>
 
       {d.capas
-        .filter((c) => c.tipo === "cartela" || c.tipo === "png")
+        .filter((c) => c.tipo === "cartela" || c.tipo === "png" || c.tipo === "tarjeta")
         .map((c, i) => (
           <Sequence key={`c${i}`} from={f(c.en)} durationInFrames={f(c.dur)} name={`Cartela ${i + 1}`}>
-            {c.tipo === "cartela" ? (
+            {c.tipo === "tarjeta" ? (
+              <Dato dur={f(c.dur)} ante={(c as { ante?: string }).ante ?? ""} titulo={c.principal ?? ""} oscuro={(c as { oscuro?: boolean }).oscuro} />
+            ) : c.tipo === "cartela" ? (
               <Cartela principal={c.principal ?? ""} secundaria={c.secundaria ?? undefined} top={ARRIBA} tinta={paleta.grafito} />
             ) : (
               <CartelaPng src={c.src ?? ""} ancho={c.ancho ?? 900} dur={f(c.dur)} />
@@ -124,9 +127,11 @@ const Base: React.FC<{ src: string; zooms: { en: number; z: number }[]; fin: num
   const t = frame / fps;
   const actual = [...zooms].reverse().find((z) => z.en <= t);
   const z = actual?.z ?? 1;
-  // Un salto de cuatro fotogramas, no un corte seco.
+  // Acercamiento suave (1,2 s), nunca un salto.
   const previo = zooms[zooms.indexOf(actual as (typeof zooms)[number]) - 1]?.z ?? 1;
-  const escala = actual ? interpolate(frame, [f(actual.en), f(actual.en) + 4], [previo, z], { ...clamp, easing: salida }) : 1;
+  const escala = actual
+    ? interpolate(frame, [f(actual.en), f(actual.en + 1.2)], [previo, z], { ...clamp, easing: Easing.inOut(Easing.cubic) })
+    : 1;
   return (
     <AbsoluteFill style={{ overflow: "hidden" }}>
       <OffthreadVideo

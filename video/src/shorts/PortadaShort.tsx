@@ -28,7 +28,7 @@ export const PortadaShort: React.FC<{ id: string }> = ({ id }) => {
 
   // Tarjeta blanca (noviembre de 2026): titular en grafito con la línea clave
   // en placa verde Ways y tres trazos de énfasis, sobre la foto a sangre.
-  const t = (x: string, max: number) => Math.min(max, Math.floor(820 / (x.length * 0.6)));
+  const t = (x: string, max: number, ancho = 760) => Math.min(max, Math.floor(ancho / (x.length * 0.6)));
   const base = Math.min(t(uno, 150), t(tres, 150));
   return (
     <AbsoluteFill style={{ backgroundColor: brand.green, fontFamily }}>
@@ -64,7 +64,7 @@ export const PortadaShort: React.FC<{ id: string }> = ({ id }) => {
           <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
             <span
               style={{
-                ...estiloTexto(Math.min(t(dos, 160), base * 1.15)),
+                ...estiloTexto(Math.min(t(dos, 160, 600), base * 1.15)),
                 color: brand.white,
                 backgroundColor: paleta.verdeWays,
                 borderRadius: 18,

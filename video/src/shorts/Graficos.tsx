@@ -209,6 +209,26 @@ export const Suscribete: React.FC<{ dur: number; pregunta: [number, number] }> =
   );
 };
 
+/** Dato clave genérico: antetítulo y titular, en blanco o en verde sendero. */
+export const Dato: React.FC<{ dur: number; ante: string; titulo: string; oscuro?: boolean }> = ({ dur, ante, titulo, oscuro }) => {
+  const a = useEntrada(dur);
+  const frame = useCurrentFrame();
+  const t = interpolate(frame, [5, 15], [0, 1], { ...clamp, easing: curva });
+  return (
+    <AbsoluteFill>
+      <Tarjeta
+        fondo={oscuro ? paleta.sendero : brand.white}
+        style={{ position: "absolute", left: IZQ, right: IZQ, top: ARRIBA, padding: "22px 34px 26px", ...a }}
+      >
+        <Antetitulo color={oscuro ? "rgba(255,255,255,0.8)" : paleta.verdeWays}>{ante}</Antetitulo>
+        <div style={{ fontSize: 66, fontWeight: 800, lineHeight: 1.08, marginTop: 6, color: oscuro ? brand.white : paleta.grafito, opacity: t, translate: `${(1 - t) * 16}px 0px` }}>
+          {titulo}
+        </div>
+      </Tarjeta>
+    </AbsoluteFill>
+  );
+};
+
 /** Cortinilla verde: un barrido de 12 fotogramas que tapa el corte. */
 export const Barrido: React.FC = () => {
   const frame = useCurrentFrame();
