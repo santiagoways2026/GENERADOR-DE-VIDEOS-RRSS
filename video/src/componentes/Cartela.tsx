@@ -1,7 +1,6 @@
 import { Easing, Interactive, interpolate, useCurrentFrame } from "remotion";
 import {
   brand,
-  color,
   easeOut,
   fontSize,
   margin,
@@ -53,12 +52,6 @@ export const Cartela: React.FC<{
 }> = ({ eyebrow, principal, secundaria, desde = 0, tono = "olivo", top = 200, tinta = brand.forest }) => {
   const frame = useCurrentFrame();
 
-  const inferior = {
-    olivo: { bg: brand.green, fg: color.fgInverse },
-    lima: { bg: brand.lime, fg: color.fgOnLime },
-    bosque: { bg: brand.forest, fg: color.fgInverse },
-  }[tono];
-
   const tEyebrow = desde;
   const tPrincipal = desde + (eyebrow ? RELEVO : 0);
   const tSecundaria = tPrincipal + RELEVO;
@@ -95,55 +88,49 @@ export const Cartela: React.FC<{
         </div>
       ) : null}
 
-      {/* Placa blanca: el dato, en bosque y peso 800. */}
-      <div
+      {/* Brandbook 2027, texto sobre vídeo: el dato en blanco y el complemento
+          con el subrayado SW (placa verde Ways, letra blanca). Sin placa blanca. */}
+      <span
         style={{
-          backgroundColor: color.bg1,
-          padding: "20px 44px 24px",
-          borderRadius: eyebrow ? "0 6px 6px 0" : "6px 6px 0 0",
+          display: "block",
+          fontSize: 84,
+          lineHeight: 1.1,
+          fontWeight: weight.extrabold,
+          letterSpacing: "-0.015em",
+          color: brand.white,
+          WebkitTextStroke: `10px ${paleta.grafito}`,
+          paintOrder: "stroke fill",
+          whiteSpace: "nowrap",
           clipPath: barrido(frame, tPrincipal),
         }}
       >
+        {frase(principal)}
+      </span>
+
+      {secundaria ? (
         <span
           style={{
             display: "block",
-            fontSize: 84,
-            lineHeight: 1,
+            marginTop: 6,
+            backgroundColor: paleta.verdeWays,
+            padding: "4px 18px 8px",
+            borderRadius: 8,
+            fontSize: 46,
+            lineHeight: 1.1,
             fontWeight: weight.extrabold,
-            letterSpacing: "-0.015em",
-            color: tinta,
+            color: brand.white,
             whiteSpace: "nowrap",
-          }}
-        >
-          {principal}
-        </span>
-      </div>
-
-      {secundaria ? (
-        <div
-          style={{
-            backgroundColor: inferior.bg,
-            padding: "16px 44px 20px",
-            borderRadius: "0 6px 6px 6px",
             clipPath: barrido(frame, tSecundaria),
           }}
         >
-          <span
-            style={{
-              display: "block",
-              fontSize: 42,
-              lineHeight: 1.15,
-              fontWeight: weight.extrabold,
-              letterSpacing: tracking.wide,
-              textTransform: "uppercase",
-              color: inferior.fg,
-              whiteSpace: "nowrap",
-            }}
-          >
-            {secundaria}
-          </span>
-        </div>
+          {frase(secundaria)}
+        </span>
       ) : null}
     </Interactive.Div>
   );
 };
+
+/** Brandbook 2027: minúscula de frase. Un texto escrito todo en mayúsculas
+ * pasa a "Primera mayúscula"; si ya mezcla, se respeta. */
+const frase = (t: string) =>
+  t === t.toUpperCase() && /[A-ZÁÉÍÓÚÑ]{2}/.test(t) ? t.charAt(0) + t.slice(1).toLowerCase() : t;

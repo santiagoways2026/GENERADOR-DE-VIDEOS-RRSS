@@ -185,9 +185,9 @@ verde Ways y verde Ways con la vieira.
 
 ## Lo que no se hace
 
-- Las cartelas de placa blanca arriba ("2027 / A HOLY YEAR", "START
-  PLANNING", "Camino Expert"...). El equipo las descarta por cutres: no se
-  ponen en piezas nuevas y se quitan al rehacer las antiguas.
+- La placa blanca en las cartelas. Se mantiene la cartela, pero al estilo
+  del brandbook (texto sobre vídeo): el dato en blanco con contorno grafito y
+  el complemento en placa verde Ways con letra blanca, en minúscula de frase.
 
 - Contadores de cuenta atrás ni "últimas plazas".
 - Cifras sin fuente en pantalla, sobre todo en piezas ancladas mucho tiempo.
