@@ -3326,12 +3326,11 @@
   },
   "capas": [
    {
-    "tipo": "cartela",
-    "principal": "100 KM",
-    "secundaria": "= THE COMPOSTELA",
-    "dur": 3.4,
-    "tono": "olivo",
-    "en": 7.48
+    "tipo": "broll",
+    "src": "brutos/catedral-b.mp4",
+    "dur": 2.0,
+    "encuadre": "50% 50%",
+    "en": 4.1
    },
    {
     "tipo": "broll",
@@ -3339,14 +3338,6 @@
     "dur": 2.0,
     "encuadre": "50% 50%",
     "en": 11.46
-   },
-   {
-    "tipo": "cartela",
-    "principal": "INDULGENCE",
-    "secundaria": "SOMETHING DIFFERENT",
-    "dur": 3.2,
-    "tono": "olivo",
-    "en": 14.18
    },
    {
     "tipo": "broll",
@@ -3370,12 +3361,27 @@
     "hasta": null,
     "en": 28.5,
     "dur": 2.98
+   },
+   {
+    "tipo": "tarjeta",
+    "ante": "100 km on foot",
+    "principal": "= The Compostela",
+    "en": 7.48,
+    "dur": 3.6
+   },
+   {
+    "tipo": "tarjeta",
+    "oscuro": true,
+    "ante": "Holy Year Indulgence",
+    "principal": "Something different",
+    "en": 14.18,
+    "dur": 3.4
    }
   ],
   "zooms": [
    {
     "en": 7.48,
-    "z": 1.1
+    "z": 1.08
    },
    {
     "en": 13.92,
@@ -3383,7 +3389,7 @@
    },
    {
     "en": 17.82,
-    "z": 1.1
+    "z": 1.08
    },
    {
     "en": 22.28,
@@ -3391,7 +3397,7 @@
    },
    {
     "en": 28.12,
-    "z": 1.1
+    "z": 1.08
    }
   ],
   "palabras": [
