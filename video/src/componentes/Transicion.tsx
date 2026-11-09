@@ -2,8 +2,8 @@ import { AbsoluteFill, Easing, interpolate, useCurrentFrame } from "remotion";
 import { brand, easeOut } from "../brand/theme";
 
 /**
- * Transición de bloque: una cortina olivo que cruza el plano de izquierda a
- * derecha y tapa el corte justo en su fotograma. Es el mismo barrido lateral
+ * Transición de bloque: una cortina olivo que se retira de izquierda a
+ * derecha y destapa el plano nuevo justo desde el corte. Es el mismo barrido lateral
  * de las cartelas, llevado a pantalla completa, con un filo lima delante.
  *
  * Se coloca en una <Sequence> que empieza `MEDIA` fotogramas antes del corte
@@ -29,10 +29,17 @@ const Capa: React.FC<{ fondo: string; retraso: number }> = ({ fondo, retraso }) 
   return <AbsoluteFill style={{ backgroundColor: fondo, clipPath: clip }} />;
 };
 
-export const Transicion: React.FC = () => (
+export const Transicion: React.FC = () => {
+  const frame = useCurrentFrame();
+  // Solo la mitad de salida: la cortina aparece entera en el corte y se
+  // retira destapando el plano nuevo. Así nunca tapa la cara de quien habla
+  // en el plano que se va.
+  if (frame < MEDIA) return null;
+  return (
   <AbsoluteFill>
     {/* El filo lima va dos fotogramas por delante y se asoma en el borde. */}
     <Capa fondo={brand.lime} retraso={-2} />
     <Capa fondo={brand.green} retraso={0} />
   </AbsoluteFill>
-);
+  );
+};

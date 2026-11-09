@@ -29,10 +29,12 @@ export const Credencial: React.FC<{ entrada: number; salida: number }> = ({ entr
       name="Credencial"
       style={{
         position: "absolute",
-        top: 232,
-        left: 44,
-        right: 44,
-        minHeight: 268,
+        // Lo justo para tapar la quemada (60-1020 x 250-486): ni un píxel más
+        // hacia la cara.
+        top: 244,
+        left: 54,
+        right: 54,
+        height: 248,
         display: "flex",
         borderRadius: 14,
         overflow: "hidden",

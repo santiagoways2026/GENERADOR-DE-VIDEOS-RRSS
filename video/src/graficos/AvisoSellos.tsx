@@ -17,7 +17,7 @@ const Hueco: React.FC<{ en: number; giro: number }> = ({ en, giro }) => {
   const frame = useCurrentFrame();
   const t = { extrapolateLeft: "clamp" as const, extrapolateRight: "clamp" as const };
   return (
-    <div style={{ position: "relative", width: 150, height: 150 }}>
+    <div style={{ position: "relative", width: 140, height: 140 }}>
       <div
         style={{
           position: "absolute",
@@ -72,11 +72,12 @@ export const AvisoSellos: React.FC<{
       name="Aviso de sellos"
       style={{
         position: "absolute",
-        // Tapa entera la tarjeta quemada: 72-952 px de ancho, 250-545 de alto.
-        top: 238,
-        left: 60,
-        width: 904,
-        height: 320,
+        // Tapa entera la tarjeta quemada (72-952 x 250-545) y nada más: debajo
+        // empieza la cara de Hilary.
+        top: 244,
+        left: 66,
+        width: 892,
+        height: 307,
         borderRadius: 14,
         backgroundColor: brand.forest,
         padding: "0 56px",

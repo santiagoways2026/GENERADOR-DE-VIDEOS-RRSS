@@ -111,6 +111,25 @@ Lo que se aprendió al aplicarlo:
   apenas marcada, entrada lenta y corta. Está en `CajaDetras`.
 - No se puede poner por detrás donde hay una tarjeta quemada encima de la
   cabeza: debajo no queda pelo que recortar.
+
+## La cara de quien habla no se tapa nunca
+
+Ni un gráfico, ni una tarjeta, ni una transición. Lo que se aplica:
+
+- Las tarjetas que tapan las quemadas miden **exactamente** lo mismo que
+  ellas, ni un píxel más hacia la cara.
+- Si una tarjeta quemada ya baja hasta la cara, ese tramo se cubre con un
+  **plano de recurso** mientras sigue la voz, y se reponen encima sus
+  subtítulos con el mismo aspecto (`Subtitulo`). En la pieza 03 de Hilary,
+  el aviso de los sellos cae sobre el plano del pórtico sellando.
+- Las transiciones solo **destapan** el plano nuevo desde el corte: nunca
+  tapan los últimos fotogramas de quien habla.
+
+## Redes al final
+
+Un banner con cuatro redes no se lee. Se deja **una red y la web**: en la
+pieza 03, "Subscribe on Facebook" y santiagoways.com, en una sola cápsula
+que tapa los dos banners quemados.
 - El orbit sirve de **transición**: sustituye al barrido de ese corte y
   termina fundiéndose con el plano original, así la vuelta no se nota.
 - El tramo del CTA queda **quieto y limpio**, sin zoom.

@@ -14,15 +14,22 @@ import { MEDIA, TOTAL, Transicion } from "../componentes/Transicion";
 import { Cierre } from "../escenas/Cierre";
 import { Credencial } from "../graficos/Credencial";
 import { DistanciaDetras } from "../graficos/DistanciaDetras";
+import { DondeConseguirla } from "../graficos/DondeConseguirla";
 import { PreguntaDetras } from "../graficos/PreguntaDetras";
 import { Orbita } from "../componentes/Orbita";
 import { AvisoSellos } from "../graficos/AvisoSellos";
+import { Suscribete } from "../graficos/Suscribete";
+import { Clip } from "../componentes/Clip";
+import { Subtitulo } from "../componentes/Subtitulo";
 
 /**
  * Hilary · Cómo conseguir la Compostela (pieza 03).
  *
  * La base es la pieza ya editada: subtítulos palabra a palabra, tarjetas y
  * banners van quemados en la imagen. Todo lo que se añade aquí respeta eso.
+ *
+ * Regla fija: nada de lo que se añade tapa la cara de Hilary en ningún
+ * momento. Las tarjetas que tapan las quemadas miden lo mismo que ellas.
  *
  * Efectos con firma, uno por bloque y nunca dos en menos de seis segundos:
  * - 0 s: zoom de entrada en el gancho.
@@ -31,8 +38,11 @@ import { AvisoSellos } from "../graficos/AvisoSellos";
  *   tenía demasiado texto y a 26 px.
  * - 16 s: el aviso de los sellos rehecho encima del quemado, con la regla
  *   sola y los dos sellos cayendo cuando la voz los dice.
+ * - 21 s: "Where to get it" en tres puntos cortos, encima de la tarjeta
+ *   quemada de tres frases.
  * - 24,5 s: la lista de requisitos sobre el plano de la fuente.
  * - 33,6 s: orbit de vuelta a Hilary. El bloque final queda quieto: es el CTA.
+ * - 34 s: "Subscribe on Facebook" y la web, en lugar de los banners quemados.
  * - 36,2 s: "Ask us below", por detrás de Hilary, reforzando lo que dice.
  *
  * Por debajo van los recursos que no se notan: zoom de énfasis en las
@@ -48,6 +58,9 @@ const VIDEO = "hilary/03-compostela.mp4";
  *  herramientas/scripts/recortar.py, y el fondo sin ella para el orbit. */
 const RECORTE_DATO = { src: "hilary/03-recorte-dato.webm", desde: 70, dur: 126 };
 const RECORTE_FINAL = { src: "hilary/03-recorte-final.webm", desde: 1078, dur: 102 };
+/** Plano de recurso que tapa a Hilary mientras el aviso quemado le cae
+ *  sobre las cejas: del corte hasta que el aviso ha salido. */
+const INSERTO = { src: "brutos/portico-sellado.mp4", desde: 566, hasta: 604 };
 const ORBIT = {
   figura: "hilary/03-recorte-orbit.webm",
   fondo: "hilary/03-fondo-orbit.mp4",
@@ -242,8 +255,32 @@ export const HilaryCompostela: React.FC = () => {
 
       <Credencial entrada={CORTE.credencialEntra} salida={CORTE.credencialSale} />
 
+      {/* El aviso quemado baja hasta las cejas de Hilary. Para que nada le tape
+          la cara, ese segundo se ve un plano de recurso de sellado mientras
+          sigue su voz, con sus subtítulos repuestos encima. */}
+      <Sequence from={INSERTO.desde} durationInFrames={INSERTO.hasta - INSERTO.desde} name="Inserto de sellado">
+        <Clip src={INSERTO.src} duracion={INSERTO.hasta - INSERTO.desde} encuadre="64% 50%" overlay={0} zoom={1.06} />
+        <Subtitulo
+          grupos={[
+            [
+              { palabra: "need", en: 0 },
+              { palabra: "at", en: 568 - INSERTO.desde },
+              { palabra: "least", en: 575 - INSERTO.desde },
+            ],
+            [
+              { palabra: "two", en: VOZ.two - INSERTO.desde },
+              { palabra: "stamps", en: VOZ.stamps2 - INSERTO.desde },
+              { palabra: "per", en: 603 - INSERTO.desde },
+            ],
+          ]}
+        />
+      </Sequence>
+
       {/* Tapa el aviso quemado, que tenía dos frases largas, con la regla sola. */}
-      <AvisoSellos entrada={CORTE.sello2} golpes={[VOZ.two, VOZ.stamps2 + 2]} salida={606} />
+      <AvisoSellos entrada={CORTE.sello2} golpes={[VOZ.two, VOZ.stamps2 + 2]} salida={597} />
+
+      {/* Tapa la tarjeta quemada de tres frases largas. */}
+      <DondeConseguirla entrada={627} salida={CORTE.fuente} />
 
       <Sequence from={CORTE.fuente + 4} durationInFrames={CORTE.final - CORTE.fuente - 4} name="Requisitos">
         <Requisitos salida={CORTE.final - CORTE.fuente - 4 - 16} aviso={VOZ.justRemember - CORTE.fuente - 4} />
@@ -252,6 +289,11 @@ export const HilaryCompostela: React.FC = () => {
       {/* Orbit de vuelta a Hilary: gira y se funde con el plano original. */}
       <Sequence from={CORTE.final} durationInFrames={ORBIT.dur} name="Orbit">
         <OrbitaConSalida />
+      </Sequence>
+
+      {/* Una red y la web, en lugar de los dos banners quemados del final. */}
+      <Sequence from={1020} durationInFrames={CORTE.cierre - 1020} name="Suscríbete">
+        <Suscribete />
       </Sequence>
 
       {/* El cierre de la casa sustituye a la cartela verde plana del original. */}
