@@ -30,7 +30,7 @@ export const Orbita: React.FC<{
     <AbsoluteFill style={{ perspective: 1300, overflow: "hidden" }}>
       <AbsoluteFill
         style={{
-          transform: `translateX(${(1 - p) * -70}px) rotateY(${(1 - p) * giro}deg) scale(${1.24 - 0.24 * p})`,
+          transform: `translateX(${(1 - p) * -34}px) rotateY(${(1 - p) * giro}deg) scale(${1.14 - 0.14 * p})`,
         }}
       >
         <OffthreadVideo src={staticFile(fondo)} muted style={{ width: "100%", height: "100%" }} />
@@ -38,7 +38,7 @@ export const Orbita: React.FC<{
       <AbsoluteFill
         style={{
           transformOrigin: "50% 60%",
-          transform: `translateX(${(1 - p) * 26}px) scale(${1.1 - 0.1 * p})`,
+          transform: `translateX(${(1 - p) * 20}px) scale(${1.08 - 0.08 * p})`,
         }}
       >
         <OffthreadVideo src={staticFile(figura)} transparent muted style={{ width: "100%", height: "100%" }} />

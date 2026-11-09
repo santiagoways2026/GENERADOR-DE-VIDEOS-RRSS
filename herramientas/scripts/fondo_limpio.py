@@ -18,12 +18,12 @@ def suave(x, k):  # x: 1xCxHxW, desenfoque en baja resolución
 for f in sorted(glob.glob(f"{src}/*.png")):
     im = Image.open(f)
     rgb = torch.from_numpy(np.asarray(im.convert("RGB")).copy()).permute(2, 0, 1).float()[None]
-    a = im.getchannel("A").filter(ImageFilter.MaxFilter(41)).filter(ImageFilter.GaussianBlur(8))
+    a = im.getchannel("A").filter(ImageFilter.MaxFilter(25)).filter(ImageFilter.GaussianBlur(4))
     m = torch.from_numpy(np.asarray(a).copy()).float()[None, None] / 255
     keep = 1 - m
     relleno = sum(suave(rgb * keep, k) / (suave(keep, k) + 1e-4) for k in (6, 15, 35)) / 3
     final = rgb * keep + relleno * m
-    final = gaussian_blur(final, kernel_size=21, sigma=5)
+    final = gaussian_blur(final, kernel_size=11, sigma=2.5)
     Image.fromarray(final[0].permute(1, 2, 0).clamp(0, 255).byte().numpy()).save(
         f"{out}/{os.path.basename(f)}", compress_level=1)
     print(os.path.basename(f), flush=True)

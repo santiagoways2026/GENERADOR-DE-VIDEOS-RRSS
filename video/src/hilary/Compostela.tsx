@@ -47,7 +47,9 @@ const RECORTE_DATO = { src: "hilary/03-recorte-dato.webm", desde: 70, dur: 126 }
 const ORBIT = {
   figura: "hilary/03-recorte-orbit.webm",
   fondo: "hilary/03-fondo-orbit.mp4",
-  dur: 38,
+  // Tiene que acabar antes de que entre el banner quemado de redes (fotograma
+  // 1022): si lo pilla, el banner gira desenfocado con el fondo.
+  dur: 22,
 };
 export const DURACION_COMPOSTELA = 1380;
 
@@ -252,13 +254,13 @@ const OrbitaConSalida: React.FC = () => {
   return (
     <AbsoluteFill
       style={{
-        opacity: interpolate(frame, [ORBIT.dur - 8, ORBIT.dur], [1, 0], {
+        opacity: interpolate(frame, [ORBIT.dur - 6, ORBIT.dur], [1, 0], {
           extrapolateLeft: "clamp",
           extrapolateRight: "clamp",
         }),
       }}
     >
-      <Orbita fondo={ORBIT.fondo} figura={ORBIT.figura} duracion={ORBIT.dur - 10} />
+      <Orbita fondo={ORBIT.fondo} figura={ORBIT.figura} duracion={ORBIT.dur - 6} giro={10} />
     </AbsoluteFill>
   );
 };
