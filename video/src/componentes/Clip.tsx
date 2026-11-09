@@ -6,7 +6,7 @@ import {
   staticFile,
   useCurrentFrame,
 } from "remotion";
-import { easeOut } from "../brand/theme";
+import { easeOut, velo } from "../brand/theme";
 
 /**
  * Un clip de metraje encajado en el lienzo del reel.
@@ -22,7 +22,7 @@ export const Clip: React.FC<{
   src: string;
   /** Segundo del archivo por el que entra el corte. */
   desdeSegundo?: number;
-  /** Oscurecido para que el texto encima se lea. El manual permite 0 a 40%. */
+  /** Velo grafito para que el texto blanco se lea encima. */
   overlay?: number;
   /** Zoom lento de principio a fin. 1 lo desactiva. */
   zoom?: number;
@@ -60,7 +60,7 @@ export const Clip: React.FC<{
       />
       {overlay > 0 ? (
         <AbsoluteFill
-          style={{ backgroundColor: `rgba(14, 44, 31, ${overlay})` }}
+          style={{ backgroundColor: velo(overlay) }}
         />
       ) : null}
     </AbsoluteFill>

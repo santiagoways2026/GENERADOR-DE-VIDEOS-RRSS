@@ -2,7 +2,8 @@
 
 | Archivo | Contenido |
 | --- | --- |
-| `guia-de-marca-santiago-ways.html` | Sistema de diseño oficial, edición 2026. Color, logo, tipografía, voz, componentes, fondos y checklist. |
+| `brandbook-2027.pdf` | **Brandbook 2027, el que manda.** Estrategia, logo, color, tipografía, imagen, tono y aplicaciones, incluidas las piezas de motion para YouTube. |
+| `guia-de-marca-santiago-ways.html` | Guía de 2026, superada por el brandbook. Se conserva como histórico. |
 
-Los tokens de esta guía están traducidos a código en `video/src/brand/theme.ts`.
-Si la guía cambia, ese archivo es lo único que hay que actualizar.
+Los tokens del brandbook están traducidos a código en `video/src/brand/theme.ts`.
+Si el brandbook cambia, ese archivo es lo único que hay que actualizar.

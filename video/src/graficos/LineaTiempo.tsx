@@ -48,7 +48,7 @@ export const LineaTiempo: React.FC<{ desde?: number }> = ({ desde = 0 }) => {
       style={{
         backgroundColor: color.bg1,
         borderRadius: radius.lg,
-        boxShadow: shadow.raised,
+        boxShadow: shadow.caja,
         padding: `${space[7]}px ${space[6]}px ${space[6]}px`,
         width: 980,
         opacity: entrada(frame, desde).opacity,
@@ -65,7 +65,7 @@ export const LineaTiempo: React.FC<{ desde?: number }> = ({ desde = 0 }) => {
             right: 70,
             height: 6,
             borderRadius: radius.pill,
-            backgroundColor: "#E6E2D6",
+            backgroundColor: brand.niebla,
           }}
         />
         {/* Tramo recorrido */}
@@ -110,15 +110,15 @@ export const LineaTiempo: React.FC<{ desde?: number }> = ({ desde = 0 }) => {
                   width: esActual ? 44 : 28,
                   height: esActual ? 44 : 28,
                   borderRadius: radius.pill,
-                  backgroundColor: esActual ? brand.green : "#CFCABB",
+                  backgroundColor: esActual ? brand.green : brand.gris,
                 }}
               />
               <div
                 style={{
                   marginTop: space[3],
-                  fontSize: esActual ? 60 : fontSize["2xl"],
-                  fontWeight: esActual ? weight.black : weight.medium,
-                  color: esActual ? brand.green : color.fg3,
+                  fontSize: esActual ? 60 : fontSize.h2,
+                  fontWeight: esActual ? weight.extrabold : weight.medium,
+                  color: esActual ? brand.green : color.fg2,
                 }}
               >
                 {anio}
@@ -149,11 +149,11 @@ export const LineaTiempo: React.FC<{ desde?: number }> = ({ desde = 0 }) => {
         style={{
           marginTop: space[4],
           textAlign: "center",
-          fontSize: fontSize.xl,
+          fontSize: fontSize.h3,
           fontWeight: weight.bold,
-          letterSpacing: tracking.loose,
+          letterSpacing: tracking.antetitulo,
           textTransform: "uppercase",
-          color: color.fg3,
+          color: color.fg2,
         }}
       >
         Cada 6, 5 u 11 años

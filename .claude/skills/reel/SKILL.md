@@ -75,8 +75,10 @@ Reglas de contenido:
 
 ## 6. Cerrar
 
-El cierre es siempre igual: degradado entre los verdes de la paleta, el logo
-en blanco y la web en Manrope debajo. Nada más.
+En reels el cierre es opcional. Si se pone, es la caja verde Ways con su
+degradado sutil, el logo en blanco y la web, todo en Montserrat. En YouTube es
+siempre una pantalla final blanca con logo y un único CTA: `Cierre
+variante="blanco"`.
 
 ## 7. Exportar y revisar
 
@@ -96,7 +98,7 @@ python3 herramientas/scripts/catalogar.py salida.mp4 /tmp/control.jpg 6 2
 
 | Componente | Para qué |
 | --- | --- |
-| `Cartela` | Texto de marca: placa blanca sobre placa olivo, con barrido |
+| `Cartela` | Texto sobre vídeo: titular blanco ExtraBold y subrayado Ways, con barrido |
 | `Bullets` | Lista de servicios, entrando de uno en uno |
 | `Clip` y `Planos` | Metraje encajado en vertical, con encuadre y zoom lento |
 | `Logo` | El archivo oficial, en blanco o verde |

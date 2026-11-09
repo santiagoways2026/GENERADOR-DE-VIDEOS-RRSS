@@ -9,41 +9,84 @@ mapas de ruta y gráficos de dato.
 | Carpeta | Qué hay |
 | --- | --- |
 | `video/` | El proyecto Remotion. Aquí se monta y se exporta |
-| `docs/` | La guía de marca oficial, edición 2026 |
+| `docs/` | El Brandbook 2027, que manda, y la guía de 2026, ya superada |
 | `herramientas/mapas-vfx/` | Los dos configuradores de mapas animados |
 | `herramientas/motion-kit/` | El kit de cartelas y overlays |
 | `herramientas/scripts/` | Utilidades para preparar metraje |
 
 ## La marca, en lo que afecta al vídeo
 
-Los tokens están en `video/src/brand/theme.ts`. Ese archivo es la traducción
-de la guía; si la guía cambia, se cambia ahí y nada más.
+Manda el **Brandbook 2027** (`docs/brandbook-2027.pdf`). Sustituye a la guía de
+2026, que se conserva solo como histórico. Los tokens están en
+`video/src/brand/theme.ts`: si el brandbook cambia, se cambia ahí y nada más.
 
-Reglas que condicionan cada pieza:
+Color, con paleta cerrada y sin escalas intermedias:
 
-- El protagonista es el verde olivo `#7AA606`. Blanco más verde en la mayoría.
-- Lima `#B0F808` y bosque `#184834` son complementarios, de uso puntual.
-- Nada de negro puro: la tinta es el bosque.
-- Texto blanco sobre olivo. Texto bosque sobre lima. Siempre.
+- Blanco `#FFFFFF` 50 %, verde Ways `#7AA606` 30 %, verde sendero `#506718`
+  10 %, grafito `#2E2E2D` 7 %, apoyo 3 % (gris `#6F6F6E`, niebla `#E8E8E6`,
+  brote `#FAFFEE`).
+- **Lima y bosque ya no existen.** La tinta del texto es el grafito.
+- Qué letra va sobre qué fondo: grafito sobre blanco para todo; sendero sobre
+  blanco para titulares y palabras en verde; blanco sobre sendero para cajas
+  oscuras; blanco sobre verde Ways **solo en negrita** (2,9:1); verde Ways
+  sobre blanco nunca como texto. Nunca verde sobre verde.
+- Degradado solo en cajas verde Ways: 135°, de `#7AA606` a `#628A04`, sutil.
+  Todo lo demás, plano.
+- Toda caja lleva sombra `0 8px 32px` grafito al 12 %. Botones, etiquetas y
+  subrayados, sin sombra.
+
+Tipografía:
+
+- **Montserrat, una sola familia**, pesos 400 a 800. No hay 900 ni otras
+  familias.
+- **Titulares en ExtraBold (800)** y en minúscula de frase. Mayúsculas solo en
+  antetítulos y etiquetas: 700 con +0,15 em.
+- Interlineado 1,1 en titulares y 1,5 en texto.
+
+Logo:
+
 - La marca nunca se escribe como texto. Se usa el archivo de logo.
+- En vídeo, **isotipo blanco como marca de agua arriba a la derecha**
+  (`MarcaDeAgua`), desde 24 px y nunca sobre caras.
+- Sobre blanco, en verde Ways; sobre cualquier otro fondo, en blanco.
+
+Imagen y tono:
+
+- Peregrinos reales y recursos propios, sin banco de imágenes. Buen tiempo,
+  luz natural, caras felices. Se evitan el sufrimiento, las rampas duras y las
+  mochilas enormes.
+- Tono de experto cercano: ilusión, claridad y seguridad tranquila. Sin
+  urgencia artificial, sin promesas absolutas, sin grandilocuencia.
+
+Más reglas que siguen en pie:
+
 - Un solo CTA por pieza.
 - Movimiento: fade más desplazamiento corto con `cubic-bezier(0.22,0.61,0.36,1)`.
   Nunca rebote.
-- Tipografía: Montserrat, Manrope, Poppins. Empaquetada con el proyecto.
 - Formatos: 1080x1920 reels, 1080x1080 feed, 1280x720 YouTube. Márgenes 56 px
   como mínimo.
 
 ## Cómo se ven los textos
 
-Las cartelas replican las del kit de motion graphics, no se inventan:
+Las cartelas son la pieza "Texto sobre vídeo" del brandbook:
 
-- Placa blanca arriba con el dato en bosque, peso 800, esquinas `6px 6px 0 0`.
-- Placa olivo debajo con el complemento en blanco, esquinas `0 6px 6px 6px`.
-  **En mayúsculas y peso negro**, nunca en minúsculas.
+- Titular en blanco, Montserrat ExtraBold, minúscula de frase.
+- La palabra o las dos palabras que llevan la promesa van sobre el **subrayado
+  Ways**: bloque verde Ways plano detrás del texto, girado -1,5°, sin
+  redondeo ni sombra. Una vez por titular y un solo tipo por pieza.
+- Antetítulo opcional encima, en etiqueta verde Ways, mayúsculas 700.
 - Entran con barrido lateral (`clip-path`), 27 fotogramas, con 14 de relevo
-  entre placas. No con un fundido.
+  entre líneas. No con un fundido.
 - Pocas por pieza. Si el bloque lleva un gráfico, el gráfico ya trae su
   titular y la cartela sobra.
+
+El brandbook define cinco piezas de motion para YouTube: cabecera (logo y
+web), capítulo (titular del bloque), etapa (tramo y km), texto sobre vídeo
+(frase clave) y mapa (ruta y km recorridos).
+
+El cierre de YouTube es una pantalla final **blanca** con logo y un único CTA
+(`Cierre variante="blanco"`). En reels el cierre es opcional; si se pone, es la
+caja verde con degradado, logo blanco y web.
 
 El texto vive en la mitad superior. Los gráficos, en la inferior.
 
@@ -77,8 +120,12 @@ Estas salieron de revisar piezas reales y ahorran repetir errores:
 - `interpolate` va dentro del `style`, para que se pueda editar desde Studio.
 - Las escenas usan `Interactive.Div` para que los textos se puedan cambiar en
   Studio y se escriban solos en el código.
-- Las fuentes se empaquetan con `@fontsource`, no se descargan de Google: así
-  el render sale igual en cualquier máquina y funciona sin conexión.
+- Las fuentes viven en `video/public/fuentes` y se cargan con `FontFace` en
+  `src/fuentes.ts`, importado en `Root.tsx`. No se descargan de Google.
+- **`src/fuentes.ts` debe seguir listado en `sideEffects` de `package.json`.**
+  Si no, el empaquetador lo elimina por no exportar nada y todo sale en la
+  fuente de reserva sin ningún aviso. Pasó hasta noviembre de 2026: ningún
+  render anterior salió en Montserrat.
 
 ## Comandos
 

@@ -3,7 +3,7 @@ import { Audio } from "@remotion/media";
 import "./fuentes";
 import { brand, fontFamily, margin } from "./brand/theme";
 import { Cartela } from "./componentes/Cartela";
-import { Logo } from "./componentes/Logo";
+import { MarcaDeAgua } from "./componentes/Logo";
 import { Planos } from "./componentes/Planos";
 import { Subtitulos, type Pie } from "./componentes/Subtitulos";
 import { Cierre } from "./escenas/Cierre";
@@ -82,17 +82,9 @@ const Inferior: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 
 export const ReelCuriosidades: React.FC = () => {
   return (
-    <AbsoluteFill style={{ backgroundColor: brand.forest, fontFamily }}>
+    <AbsoluteFill style={{ backgroundColor: brand.grafito, fontFamily }}>
       <Audio src={staticFile("locucion-curiosidades.mp3")} />
 
-      {/* La marca acompana la pieza hasta el cierre, que ya es todo marca. */}
-      <Sequence durationInFrames={f(B[5])} name="Marca">
-        <Logo
-          variante="blanco"
-          ancho={240}
-          style={{ position: "absolute", left: margin, bottom: margin, opacity: 0.92 }}
-        />
-      </Sequence>
 
       {/* 1 · Gancho */}
       <Sequence durationInFrames={dur(0)} name="1 · Gancho">
@@ -105,7 +97,7 @@ export const ReelCuriosidades: React.FC = () => {
             { src: "piernas", dura: 2.23 },
           ]}
         />
-        <Cartela principal="4 curiosidades" secundaria="Del Camino de Santiago" desde={4} />
+        <Cartela antetitulo="Camino de Santiago" principal="Cuatro" secundaria="curiosidades" desde={4} />
       </Sequence>
 
       {/* 2 · La primera guía de viajes de la historia */}
@@ -124,7 +116,7 @@ export const ReelCuriosidades: React.FC = () => {
             { src: "flecha", dura: 1.17, encuadre: "58% 50%" },
           ]}
         />
-        <Cartela principal="Siglo XII" secundaria="La primera guía de viajes" desde={8} />
+        <Cartela antetitulo="Siglo XII" principal="La primera guía" secundaria="de viajes" desde={8} />
       </Sequence>
 
       {/* 3 · Un gallo y una gallina dentro de la catedral */}
@@ -145,7 +137,7 @@ export const ReelCuriosidades: React.FC = () => {
             { src: "piernas", dura: 2.23 },
           ]}
         />
-        <Cartela principal="Un gallo vivo" secundaria="Dentro de la catedral" desde={8} />
+        <Cartela antetitulo="Santo Domingo de la Calzada" principal="Vive en la catedral:" secundaria="un gallo" desde={8} />
       </Sequence>
 
       {/* 4 · El Botafumeiro. Sin cartela: habla el gráfico. */}
@@ -184,12 +176,19 @@ export const ReelCuriosidades: React.FC = () => {
             { src: "plaza", dura: 1.03 },
           ]}
         />
-        <Cartela principal="Desde 1499" secundaria="Comida gratis al peregrino" desde={8} />
+        <Cartela antetitulo="Desde 1499" principal="Al peregrino, comida" secundaria="gratis" desde={8} />
       </Sequence>
 
       {/* Los pies acompañan toda la locución menos el cierre. */}
       <Sequence durationInFrames={f(B[5])} name="Subtítulos">
         <Subtitulos lista={PIES} />
+      </Sequence>
+
+      {/* La marca de agua va encima del metraje y hasta el cierre. Antes iba
+          debajo de los planos y no se veía. */}
+      <Sequence durationInFrames={f(B[5])} name="Marca">
+        {/* Brandbook 2027: en vídeo, isotipo blanco arriba a la derecha. */}
+        <MarcaDeAgua />
       </Sequence>
 
       {/* 6 · Cierre de marca */}

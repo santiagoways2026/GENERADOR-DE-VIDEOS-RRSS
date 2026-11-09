@@ -1,5 +1,12 @@
 # Accesibilidad de la paleta en vídeo
 
+> **Resuelto por el Brandbook 2027.** El brandbook nuevo mide el mismo 2,9:1 de
+> blanco sobre verde Ways, lo limita a titulares, CTA y cajas en negrita, e
+> introduce el verde sendero `#506718` para cajas oscuras, con 6,4:1. La
+> propuesta de `#4F6B0F` de este documento queda retirada: se usa sendero. Lima
+> y bosque, que aparecen abajo, ya no forman parte de la marca. Se conserva el
+> documento como registro de la medición.
+
 Medición de contraste de los tokens de marca con la fórmula de la WCAG, hecha
 porque el 69 % de la audiencia del canal tiene 55 años o más y el 88 % pasa de
 45.

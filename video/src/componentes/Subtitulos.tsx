@@ -2,6 +2,7 @@ import { Easing, Interactive, interpolate, useCurrentFrame } from "remotion";
 import {
   brand,
   easeOut,
+  velo,
   fps,
   lineHeight,
   margin,
@@ -17,8 +18,9 @@ import {
  * los cortes de imagen, asi que cada pie entra exactamente cuando empieza la
  * frase que transcribe.
  *
- * Van sobre una placa bosque translucida y no sobre el metraje a pelo: el
- * texto blanco sobre un plano claro se pierde, y la marca no admite negro.
+ * Van sobre una placa grafito translúcida y no sobre el metraje a pelo: el
+ * texto blanco sobre un plano claro se pierde. Grafito y no negro: es la
+ * tinta del Brandbook 2027.
  */
 
 export type Pie = {
@@ -70,12 +72,12 @@ export const Subtitulos: React.FC<{ lista: Pie[] }> = ({ lista }) => {
     >
       <span
         style={{
-          backgroundColor: "rgba(14, 44, 31, 0.72)",
+          backgroundColor: velo(0.72),
           color: brand.white,
           padding: `${space[4]}px ${space[5]}px`,
           borderRadius: radius.md,
           fontSize: 46,
-          lineHeight: lineHeight.snug,
+          lineHeight: lineHeight.subtitular,
           fontWeight: weight.bold,
           textAlign: "center",
           textWrap: "balance",

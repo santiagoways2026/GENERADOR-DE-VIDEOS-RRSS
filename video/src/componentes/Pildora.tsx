@@ -12,21 +12,21 @@ import { entrada } from "./entrada";
 
 /**
  * Pildora de dato del kit: ancho ajustado al texto, para subrayar una cifra
- * suelta sobre el metraje. En lima lleva texto bosque, nunca blanco.
+ * suelta sobre el metraje. Verde Ways o sendero, siempre con letra blanca y
+ * en negrita: blanco sobre verde Ways solo vale en negrita.
  */
 export const Pildora: React.FC<{
   etiqueta: string;
   texto: string;
-  tono?: "lima" | "olivo" | "bosque";
+  tono?: "verde" | "sendero";
   desde?: number;
   style?: React.CSSProperties;
-}> = ({ etiqueta, texto, tono = "lima", desde = 0, style }) => {
+}> = ({ etiqueta, texto, tono = "verde", desde = 0, style }) => {
   const frame = useCurrentFrame();
 
   const tonos = {
-    lima: { bg: brand.lime, fg: color.fgOnLime, chip: "rgba(24,72,52,0.16)" },
-    olivo: { bg: brand.green, fg: color.fgInverse, chip: "rgba(255,255,255,0.22)" },
-    bosque: { bg: brand.forest, fg: color.fgInverse, chip: "rgba(176,248,8,0.22)" },
+    verde: { bg: brand.green, fg: color.fgInverse, chip: "rgba(255,255,255,0.22)" },
+    sendero: { bg: brand.sendero, fg: color.fgInverse, chip: "rgba(255,255,255,0.18)" },
   }[tono];
 
   return (
@@ -51,15 +51,15 @@ export const Pildora: React.FC<{
           backgroundColor: tonos.chip,
           borderRadius: radius.pill,
           padding: `${space[1]}px ${space[3]}px`,
-          fontSize: fontSize.lg,
-          fontWeight: weight.black,
-          letterSpacing: tracking.loose,
+          fontSize: fontSize.h4,
+          fontWeight: weight.extrabold,
+          letterSpacing: tracking.antetitulo,
           textTransform: "uppercase",
         }}
       >
         {etiqueta}
       </span>
-      <span style={{ fontSize: fontSize["2xl"], fontWeight: weight.bold }}>
+      <span style={{ fontSize: fontSize.h2, fontWeight: weight.bold }}>
         {texto}
       </span>
     </Interactive.Div>

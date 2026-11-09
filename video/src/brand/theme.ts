@@ -1,125 +1,169 @@
 /**
- * Design system de Santiago Ways, edicion 2026, traducido a tokens de video.
- * Fuente: "Guia de marca - Santiago Ways", sistema de diseno oficial.
+ * Sistema de diseño de Santiago Ways, Brandbook 2027, traducido a tokens de
+ * vídeo. Fuente: `docs/brandbook-2027.pdf`.
  *
- * Regla de oro: el protagonista es el verde olivo. Blanco + olivo en la
- * mayoria de piezas. Lima y bosque son complementarios de uso puntual.
- * En caso de duda: pintalo verde, ponlo en bold y deja aire.
+ * Sustituye a la guía de 2026. El rebranding es continuista: se conserva el
+ * verde Ways y la concha, y se cierra la paleta. Lima y bosque desaparecen
+ * ("variantes de verde lima y oscuro sin aprobar"), la tinta pasa a ser el
+ * grafito y la tipografía es Montserrat sola.
+ *
+ * Proporción orientativa por pieza: blanco 50 %, verde Ways 30 %, verde
+ * sendero 10 %, grafito 7 %, apoyo 3 %. En piezas con foto cuenta el color de
+ * cajas y textos, no la imagen.
  */
 
 /* ------------------------------------------------------------------ *
- * COLOR
+ * COLOR · paleta cerrada, sin escalas intermedias
  * ------------------------------------------------------------------ */
 
 export const brand = {
-  /** Verde principal. Fondos, CTAs primarios, titulos sobre claro. */
-  green: "#7AA606",
-  /** Verde oscuro. Hover, pressed, sombras, verde con mas contraste. */
-  greenDark: "#668814",
+  /** Blanco. El principal, siempre: da aire a todas las piezas. */
   white: "#FFFFFF",
-
-  /** Lima. Brushstroke sobre foto, badge de oferta, CTA muy puntual.
-   *  Encima siempre texto bosque. Nunca protagonista. */
-  lime: "#B0F808",
-  limeSoft: "#C5F446",
-  limeDeep: "#9DDB07",
-
-  /** Bosque. Tinta por defecto: sustituye al negro. Footers, bloques oscuros. */
-  forest: "#184834",
-  forestSoft: "#2A6447",
-  forestDeep: "#0E2C1F",
-
-  /** Crema. Fondo alternativo para lecturas largas. */
-  cream: "#FAF8F2",
+  /** Verde Ways. Cajas, líneas, CTA y concha. Nunca texto sobre blanco. */
+  green: "#7AA606",
+  /** Final del degradado de las cajas verdes. Solo para eso. */
+  greenEnd: "#628A04",
+  /** Verde sendero. Resalte: cajas oscuras y palabras clave en verde. */
+  sendero: "#506718",
+  /** Grafito. Texto principal. Sustituye al bosque como tinta. */
+  grafito: "#2E2E2D",
+  /** Apoyo: gris para textos secundarios. */
+  gris: "#6F6F6E",
+  /** Apoyo: niebla para superficies y etiquetas. */
+  niebla: "#E8E8E6",
+  /** Apoyo: brote, superficie clara con un punto de verde. */
+  brote: "#FAFFEE",
 } as const;
-
-/** Escalas completas, por si hace falta un paso intermedio. */
-export const scale = {
-  green: ["#F4F8E6", "#E6F0CC", "#CDE199", "#B0CC66", "#94B833",
-          "#7AA606", "#668814", "#4F6B0F", "#38500B", "#243607"],
-  lime: ["#F5FDE0", "#ECFBC2", "#D7F784", "#C5F446", "#B0F808",
-         "#9DDB07", "#7DAE05", "#5E8404", "#3F5902", "#1F2C01"],
-  forest: ["#E8F0EC", "#CDDFD5", "#9BBFAA", "#68A07F", "#408561",
-           "#2A6447", "#184834", "#133A2A", "#0E2C1F", "#081B13"],
-  neutral: ["#FFFFFF", "#FAF8F2", "#F3F0E7", "#E6E2D6", "#CFCABB",
-            "#A8A498", "#76736A", "#4F4D47", "#353330", "#22211F", "#15140F"],
-} as const;
-
-/** Tokens semanticos. Usa estos en las escenas, no los colores crudos. */
-export const color = {
-  /** Texto: bosque, nunca negro puro. */
-  fg1: brand.forest,
-  fg2: brand.forestSoft,
-  fg3: "#76736A",
-  /** Texto sobre bloques verdes o bosque. */
-  fgInverse: brand.white,
-  /** Texto sobre lima: siempre bosque. */
-  fgOnLime: brand.forest,
-
-  bg1: brand.white,
-  bg2: brand.cream,
-  bgBrand: brand.green,
-  bgBrandStrong: brand.greenDark,
-  bgInk: brand.forest,
-  bgAccent: brand.lime,
-  bgWash: "#F4F8E6",
-
-  border1: "#E6E2D6",
-  borderBrand: brand.green,
-} as const;
-
-/* ------------------------------------------------------------------ *
- * TIPOGRAFIA
- * ------------------------------------------------------------------ */
 
 /**
- * Tahoma es la corporativa oficial para PDF y material legacy. En web y
- * video la cascada es Montserrat -> Manrope -> Poppins. Las fuentes se
- * empaquetan con el proyecto para que el render sea identico en cualquier
- * maquina y funcione sin conexion.
+ * Qué letra va sobre qué fondo, con los contrastes del brandbook,
+ * comprobados con la fórmula de la WCAG:
+ *
+ * - Grafito sobre blanco, 13,6:1: todo tipo de texto.
+ * - Verde sendero sobre blanco, 6,4:1: titulares y palabras en verde.
+ * - Blanco sobre verde sendero, 6,4:1: cajas oscuras, todo en blanco.
+ * - Grafito sobre niebla, 11,1:1: etiquetas y superficies.
+ * - Blanco sobre verde Ways, 2,9:1: SOLO titulares, CTA y cajas en negrita.
+ * - Verde Ways sobre blanco: cajas, líneas y concha; nunca texto.
+ * - Nunca verde sobre verde.
  */
-export const fontFamily = "Montserrat, Manrope, Poppins, Tahoma, sans-serif";
+export const color = {
+  fg1: brand.grafito,
+  fg2: brand.gris,
+  fgInverse: brand.white,
+  /** Palabras y titulares en verde sobre blanco. */
+  fgAccent: brand.sendero,
 
-/** Escala oficial: 12 · 14 · 16 · 18 · 22 · 28 · 36 · 48 · 64 · 88 px. */
-export const fontSize = {
-  xs: 12,
-  sm: 14,
-  base: 16,
-  md: 18,
-  lg: 22,
-  xl: 28,
-  "2xl": 36,
-  "3xl": 48,
-  "4xl": 64,
-  /** Titular de impacto para feed: mayusculas, peso 900. */
-  impact: 88,
+  bg1: brand.white,
+  bgSoft: brand.niebla,
+  bgBrote: brand.brote,
+  bgBrand: brand.green,
+  bgStrong: brand.sendero,
+
+  line: brand.green,
+  border: brand.niebla,
 } as const;
 
+/**
+ * Degradado: solo en cajas de fondo verde Ways, a 135°, de verde Ways arriba
+ * a la izquierda a #628A04 abajo a la derecha. Tan sutil que no se note como
+ * efecto. CTA, etiquetas, antetítulos, subrayados, líneas, barras, textos y
+ * concha van siempre planos, y el blanco y el sendero también.
+ */
+export const gradient = {
+  cajaVerde: `linear-gradient(135deg, ${brand.green} 0%, ${brand.greenEnd} 100%)`,
+} as const;
+
+/** Toda caja lleva esta sombra para separarse del blanco. Botones, etiquetas
+ *  y subrayados, sin sombra. */
+export const shadow = {
+  caja: "0 8px 32px rgba(46, 46, 45, 0.12)",
+} as const;
+
+/** Velo sobre metraje cuando el texto blanco no tiene contraste. Grafito, no
+ *  negro: el brandbook pide "un overlay oscuro suave". */
+export const velo = (opacidad: number) => `rgba(46, 46, 45, ${opacidad})`;
+
+/* ------------------------------------------------------------------ *
+ * TIPOGRAFÍA · Montserrat, una sola familia
+ * ------------------------------------------------------------------ */
+
+/** Empaquetada en `fuentes.ts` para que el render sea idéntico sin conexión. */
+export const fontFamily = "Montserrat, sans-serif";
+
+/** Pesos permitidos: de 400 a 800. No hay 900. */
 export const weight = {
   regular: 400,
   medium: 500,
   semibold: 600,
   bold: 700,
   extrabold: 800,
-  black: 900,
+} as const;
+
+/**
+ * Escala oficial para web, en px. Titulares siempre en minúscula de frase;
+ * mayúsculas solo en antetítulos y etiquetas.
+ */
+export const fontSize = {
+  /** Display · 800 · interlineado 1,05. */
+  display: 64,
+  /** H1 · 800 · 1,1. */
+  h1: 48,
+  /** H2 · 700 · 1,15. */
+  h2: 36,
+  /** H3 · 700 · 1,2. */
+  h3: 28,
+  /** H4 · 700 · 1,2. */
+  h4: 22,
+  /** Texto · 400 · 1,5. */
+  texto: 16,
+  /** Pie o legal · 400 · 1,4. */
+  pie: 13,
+  /** Antetítulo · MAYÚSCULAS · 700 · +0,15 em. */
+  antetitulo: 12,
+} as const;
+
+/**
+ * Escala para pantalla, la del propio brandbook: etiqueta 24 Bold, titular 72
+ * ExtraBold, titular de sección 44 Bold, lectura 32 Regular. Referida a un
+ * lienzo de 1920 px; en 1280x720 se multiplica por 2/3 y en vertical de 1080
+ * se usa tal cual.
+ */
+export const videoSize = {
+  titular: 72,
+  seccion: 44,
+  lectura: 32,
+  etiqueta: 24,
 } as const;
 
 export const lineHeight = {
-  tight: 1.1,
-  snug: 1.25,
-  normal: 1.5,
-  relaxed: 1.7,
+  titular: 1.1,
+  subtitular: 1.2,
+  texto: 1.5,
 } as const;
 
 export const tracking = {
-  tight: "-0.02em",
   normal: "0",
-  wide: "0.02em",
-  loose: "0.08em",
+  /** Antetítulos y etiquetas en mayúsculas. */
+  antetitulo: "0.15em",
+} as const;
+
+/**
+ * El subrayado Ways: un bloque de color plano detrás de una o dos palabras,
+ * una sola vez por titular, girado -1,5° como un trazo hecho a mano. Recto,
+ * sin redondeo ni sombra. Un solo tipo de subrayado por pieza:
+ *
+ * 1. Por defecto, sobre blanco o foto: bloque verde Ways, letra blanca.
+ * 2. En negativo, sobre caja verde Ways: bloque sendero, letra blanca.
+ * 3. Excepción, si la pieza ya lleva uno en negativo: letra verde Ways, sin
+ *    bloque.
+ */
+export const subrayado = {
+  giro: -1.5,
 } as const;
 
 /* ------------------------------------------------------------------ *
- * ESPACIADO, RADIOS, SOMBRAS
+ * ESPACIADO Y RADIOS
  * ------------------------------------------------------------------ */
 
 /** Grid de 8 pt. */
@@ -128,19 +172,10 @@ export const space = {
 } as const;
 
 export const radius = {
-  /** Componentes: botones, inputs. */
   md: 8,
-  /** Cards. */
+  /** Cajas. */
   lg: 12,
-  xl: 20,
   pill: 999,
-} as const;
-
-/** Sombras tintadas hacia bosque, nunca negro. */
-export const shadow = {
-  card: "0 4px 12px rgba(24, 72, 52, 0.10), 0 1px 2px rgba(24, 72, 52, 0.05)",
-  raised: "0 12px 28px rgba(24, 72, 52, 0.14), 0 2px 6px rgba(24, 72, 52, 0.06)",
-  brand: "0 12px 24px rgba(122, 166, 6, 0.28)",
 } as const;
 
 /* ------------------------------------------------------------------ *
@@ -148,11 +183,8 @@ export const shadow = {
  * ------------------------------------------------------------------ */
 
 /**
- * La guia define el movimiento en milisegundos, pensando en interfaz web:
- * 120 ms hover, 220 ms paneles, 420 ms pagina, con fade + slide-up de
- * 8 a 12 px y nunca bounce. En video esas duraciones son casi imperceptibles,
- * asi que se escalan a fotogramas manteniendo la regla: entradas cortas,
- * easing de salida, desplazamiento corto, cero rebote.
+ * El brandbook no fija el movimiento, así que se mantiene el criterio previo:
+ * entradas cortas, easing de salida, desplazamiento corto, cero rebote.
  */
 export const easeOut = [0.22, 0.61, 0.36, 1] as const;
 
@@ -163,15 +195,13 @@ export const duration = {
   slow: 18,
 } as const;
 
-/** Desplazamiento vertical de entrada. La guia pide 8-12 px en web;
- *  en un lienzo de 1080 px de ancho equivale a este rango. */
+/** Desplazamiento vertical de entrada, en un lienzo de 1080 de ancho. */
 export const slideUp = 24;
 
 /* ------------------------------------------------------------------ *
  * LIENZO
  * ------------------------------------------------------------------ */
 
-/** Formatos sociales oficiales. */
 export const format = {
   reels: { width: 1080, height: 1920 },
   feed: { width: 1080, height: 1080 },
@@ -180,7 +210,7 @@ export const format = {
 
 export const fps = 30;
 
-/** Margenes minimos 56 px. Se usa mas para dejar aire. */
+/** Márgenes mínimos 56 px. Se usa más para dejar aire. */
 export const margin = 72;
 
 /* ------------------------------------------------------------------ *
@@ -188,19 +218,23 @@ export const margin = 72;
  * ------------------------------------------------------------------ */
 
 /**
- * "Santiago Ways" nunca se escribe como texto: ni en mayusculas, ni junto
- * al isotipo, ni como lockup tipografico. La marca escrita es siempre el
- * archivo oficial. Nunca sobre lima, nunca full-color sobre imagen, nunca
- * delinear, rotar ni usar como mascara.
- * Tamano minimo digital: 60 px de alto, 180 px de ancho.
+ * La marca nunca se escribe como texto: siempre el archivo oficial.
+ *
+ * - Sobre blanco, en verde Ways; sobre cualquier otro fondo, en blanco.
+ * - Área de respeto: X, la mitad de la altura de la concha.
+ * - En vídeo (YouTube, reels), el isotipo funciona como marca de agua desde
+ *   24 px, arriba a la derecha. Nunca sobre caras.
+ * - La concha, siempre entera: nunca recortada, girada ni usada como trama.
+ *   Admite usarse como marca de agua muy suave.
+ *
+ * Anchos mínimos digitales: horizontal 140 px, vertical 160 px, isotipo
+ * 24 px.
  */
 export const logo = {
-  /** Sobre blanco o crema. */
   verde: "logo/santiago-ways-verde.png",
-  /** Sobre olivo, bosque o foto. */
   blanco: "logo/santiago-ways-blanco.png",
-  /** Isotipo suelto: favicon, avatar, sellos pequenos. */
   isotipo: "logo/isotipo-verde.png",
-  minHeight: 60,
-  minWidth: 180,
+  isotipoBlanco: "logo/isotipo-blanco.png",
+  minWidth: 140,
+  minWidthIsotipo: 24,
 } as const;

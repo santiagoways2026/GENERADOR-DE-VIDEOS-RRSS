@@ -41,7 +41,7 @@ export const Candado: React.FC<{ texto?: string; desde?: number }> = ({
         gap: space[5],
         backgroundColor: color.bg1,
         borderRadius: radius.lg,
-        boxShadow: shadow.raised,
+        boxShadow: shadow.caja,
         padding: `${space[5]}px ${space[6]}px`,
         opacity: entrada(frame, desde).opacity,
         translate: entrada(frame, desde).translate,
@@ -76,11 +76,11 @@ export const Candado: React.FC<{ texto?: string; desde?: number }> = ({
       <div style={{ maxWidth: 380 }}>
         <div
           style={{
-            fontSize: fontSize.md,
+            fontSize: fontSize.h4,
             fontWeight: weight.bold,
-            letterSpacing: tracking.loose,
+            letterSpacing: tracking.antetitulo,
             textTransform: "uppercase",
-            color: color.fg3,
+            color: color.fg2,
           }}
         >
           Reservando ahora
@@ -88,10 +88,10 @@ export const Candado: React.FC<{ texto?: string; desde?: number }> = ({
         <div
           style={{
             marginTop: space[2],
-            fontSize: fontSize["3xl"],
-            fontWeight: weight.black,
+            fontSize: fontSize.h1,
+            fontWeight: weight.extrabold,
             lineHeight: 1.15,
-            color: brand.forest,
+            color: color.fg1,
           }}
         >
           {texto}

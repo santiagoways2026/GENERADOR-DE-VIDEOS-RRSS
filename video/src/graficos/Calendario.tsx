@@ -1,6 +1,7 @@
 import { Easing, Interactive, interpolate, useCurrentFrame } from "remotion";
 import {
   brand,
+  gradient,
   color,
   easeOut,
   fontSize,
@@ -64,7 +65,7 @@ export const Calendario: React.FC<{ desde?: number; hasta?: number }> = ({
       style={{
         backgroundColor: color.bg1,
         borderRadius: radius.lg,
-        boxShadow: shadow.raised,
+        boxShadow: shadow.caja,
         overflow: "hidden",
         width: anchoRejilla + space[6] * 2,
         opacity:
@@ -79,15 +80,15 @@ export const Calendario: React.FC<{ desde?: number; hasta?: number }> = ({
         }),
       }}
     >
-      {/* Cabecera en placa olivo, como las cartelas del kit. */}
+      {/* Cabecera en caja verde Ways, con su degradado sutil. */}
       <div
         style={{
-          backgroundColor: brand.green,
+          background: gradient.cajaVerde,
           color: color.fgInverse,
           padding: `${space[4]}px ${space[6]}px`,
-          fontSize: fontSize.xl,
-          fontWeight: weight.black,
-          letterSpacing: tracking.loose,
+          fontSize: fontSize.h3,
+          fontWeight: weight.extrabold,
+          letterSpacing: tracking.antetitulo,
           textTransform: "uppercase",
         }}
       >
@@ -103,7 +104,7 @@ export const Calendario: React.FC<{ desde?: number; hasta?: number }> = ({
             top: space[6],
             width: CELDA + 12,
             borderRadius: radius.md,
-            backgroundColor: "#F4F8E6",
+            backgroundColor: brand.brote,
             height: interpolate(columna, [0, 1], [0, 6 * (CELDA + HUECO) + 8]),
           }}
         />
@@ -124,10 +125,10 @@ export const Calendario: React.FC<{ desde?: number; hasta?: number }> = ({
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                fontSize: fontSize.lg,
-                fontWeight: weight.black,
-                letterSpacing: tracking.loose,
-                color: i === COLUMNA_DOMINGO ? brand.green : color.fg3,
+                fontSize: fontSize.h4,
+                fontWeight: weight.extrabold,
+                letterSpacing: tracking.antetitulo,
+                color: i === COLUMNA_DOMINGO ? brand.green : color.fg2,
               }}
             >
               {d}
@@ -149,7 +150,7 @@ export const Calendario: React.FC<{ desde?: number; hasta?: number }> = ({
                   justifyContent: "center",
                   borderRadius: radius.pill,
                   fontSize: esDestacado ? 52 : 34,
-                  fontWeight: esDestacado || enColumna ? weight.black : weight.medium,
+                  fontWeight: esDestacado || enColumna ? weight.extrabold : weight.medium,
                   color: esDestacado
                     ? color.fgInverse
                     : enColumna
@@ -178,16 +179,15 @@ export const Calendario: React.FC<{ desde?: number; hasta?: number }> = ({
         </div>
       </div>
 
-      {/* Conclusion, en placa lima con texto bosque. */}
+      {/* Conclusión en caja sendero, en minúscula de frase. */}
       <div
         style={{
-          backgroundColor: brand.lime,
-          color: color.fgOnLime,
+          backgroundColor: brand.sendero,
+          color: color.fgInverse,
           padding: `${space[4]}px ${space[6]}px`,
-          fontSize: fontSize.xl,
-          fontWeight: weight.black,
-          letterSpacing: tracking.wide,
-          textTransform: "uppercase",
+          fontSize: fontSize.h3,
+          fontWeight: weight.extrabold,
+          letterSpacing: tracking.normal,
           textAlign: "center",
           clipPath: `inset(0 ${interpolate(t, [48, 68], [100, 0], {
             extrapolateLeft: "clamp",

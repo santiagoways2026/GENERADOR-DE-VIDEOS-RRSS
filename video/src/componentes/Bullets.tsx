@@ -40,7 +40,7 @@ export const Bullets: React.FC<{
               gap: space[6],
               backgroundColor: color.bg1,
               borderRadius: radius.lg,
-              boxShadow: shadow.raised,
+              boxShadow: shadow.caja,
               padding: `${space[4]}px ${space[6]}px ${space[4]}px ${space[4]}px`,
               opacity: interpolate(t, [0, 9], [0, 1], {
                 extrapolateLeft: "clamp",
@@ -59,13 +59,13 @@ export const Bullets: React.FC<{
                 width: 76,
                 height: 76,
                 borderRadius: radius.pill,
-                backgroundColor: brand.lime,
-                color: color.fgOnLime,
+                backgroundColor: brand.green,
+                color: color.fgInverse,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                fontSize: fontSize["2xl"],
-                fontWeight: weight.black,
+                fontSize: fontSize.h2,
+                fontWeight: weight.extrabold,
               }}
             >
               {i + 1}
@@ -74,9 +74,8 @@ export const Bullets: React.FC<{
               style={{
                 fontSize: 40,
                 fontWeight: weight.extrabold,
-                letterSpacing: tracking.tight,
-                color: brand.forest,
-                textTransform: "uppercase",
+                letterSpacing: tracking.normal,
+                color: color.fg1,
                 lineHeight: 1.1,
               }}
             >

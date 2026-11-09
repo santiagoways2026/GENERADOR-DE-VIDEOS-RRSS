@@ -1,31 +1,31 @@
 import { Easing, Interactive, interpolate, useCurrentFrame } from "remotion";
 import {
   brand,
-  color,
   easeOut,
-  fontSize,
   margin,
-  space,
+  radius,
   tracking,
+  videoSize,
   weight,
 } from "../brand/theme";
+import { Subrayado } from "./Subrayado";
 
 /**
- * Cartela de texto del reel, calcada del kit de motion graphics.
+ * Cartela de texto sobre vídeo, la pieza "Texto sobre vídeo" del Brandbook
+ * 2027: titular en blanco, Montserrat ExtraBold, en minúscula de frase, con
+ * la segunda línea sobre el subrayado Ways.
  *
- * Son dos placas encajadas: la de arriba blanca con el texto en bosque, la
- * de abajo olivo con el texto en blanco. Las esquinas se responden entre si
- * (6px arriba, 0 en el vertice donde se tocan) para que lean como una sola
- * pieza en dos tiempos.
+ * Sustituye a las dos placas encajadas de la guía de 2026 (placa blanca con
+ * el dato en bosque y placa lima u olivo debajo). El brandbook nuevo cierra
+ * la paleta, quita lima y bosque, y reserva las mayúsculas para antetítulos.
  *
- * Entran con el barrido del kit, `swWipe`: la placa se descubre de izquierda
- * a derecha con un clip-path, no con un fundido. La segunda entra medio
- * segundo despues, como en las cartelas originales.
+ * Se conserva el ritmo del kit: cada línea entra con un barrido lateral de 27
+ * fotogramas y 14 de relevo, no con un fundido.
  */
 
 /** 896 ms del kit, a 30 fps. */
 const BARRIDO = 27;
-/** 480 ms de retardo entre placas. */
+/** 480 ms de retardo entre líneas. */
 const RELEVO = 14;
 
 const barrido = (frame: number, desde: number) =>
@@ -36,26 +36,20 @@ const barrido = (frame: number, desde: number) =>
   })}% 0 0)`;
 
 export const Cartela: React.FC<{
-  /** Chip pequeno sobre las placas. Opcional. */
-  eyebrow?: string;
-  /** Placa blanca, texto en bosque. Es la que manda. */
+  /** Antetítulo pequeño en mayúsculas, sobre caja verde Ways. Opcional. */
+  antetitulo?: string;
+  /** Primera línea, en blanco. */
   principal: string;
-  /** Placa olivo, texto en blanco. */
+  /** Segunda línea, sobre el subrayado Ways. Es la que lleva la promesa. */
   secundaria?: string;
   desde?: number;
-  /** Tono de la placa inferior: olivo por defecto, lima para rematar. */
-  tono?: "olivo" | "lima" | "bosque";
-}> = ({ eyebrow, principal, secundaria, desde = 0, tono = "olivo" }) => {
+  /** Tamaño del titular. Por defecto, el del brandbook para pantalla. */
+  tamano?: number;
+}> = ({ antetitulo, principal, secundaria, desde = 0, tamano = videoSize.titular }) => {
   const frame = useCurrentFrame();
 
-  const inferior = {
-    olivo: { bg: brand.green, fg: color.fgInverse },
-    lima: { bg: brand.lime, fg: color.fgOnLime },
-    bosque: { bg: brand.forest, fg: color.fgInverse },
-  }[tono];
-
-  const tEyebrow = desde;
-  const tPrincipal = desde + (eyebrow ? RELEVO : 0);
+  const tAnte = desde;
+  const tPrincipal = desde + (antetitulo ? RELEVO : 0);
   const tSecundaria = tPrincipal + RELEVO;
 
   return (
@@ -69,75 +63,54 @@ export const Cartela: React.FC<{
         display: "flex",
         flexDirection: "column",
         alignItems: "flex-start",
+        gap: 10,
       }}
     >
-      {eyebrow ? (
+      {antetitulo ? (
         <div
           style={{
-            backgroundColor: brand.forest,
-            color: brand.lime,
-            fontSize: fontSize.lg,
-            fontWeight: weight.black,
-            letterSpacing: tracking.loose,
+            backgroundColor: brand.green,
+            color: brand.white,
+            fontSize: videoSize.etiqueta,
+            fontWeight: weight.bold,
+            letterSpacing: tracking.antetitulo,
             textTransform: "uppercase",
-            padding: `${space[2]}px ${space[4]}px`,
-            borderRadius: "6px 6px 0 0",
-            marginBottom: 2,
-            clipPath: barrido(frame, tEyebrow),
+            padding: "6px 14px",
+            borderRadius: radius.md,
+            clipPath: barrido(frame, tAnte),
           }}
         >
-          {eyebrow}
+          {antetitulo}
         </div>
       ) : null}
 
-      {/* Placa blanca: el dato, en bosque y peso 800. */}
       <div
         style={{
-          backgroundColor: color.bg1,
-          padding: "20px 44px 24px",
-          borderRadius: eyebrow ? "0 6px 6px 0" : "6px 6px 0 0",
+          fontSize: tamano,
+          lineHeight: 1.1,
+          fontWeight: weight.extrabold,
+          color: brand.white,
+          whiteSpace: "nowrap",
           clipPath: barrido(frame, tPrincipal),
         }}
       >
-        <span
-          style={{
-            display: "block",
-            fontSize: 84,
-            lineHeight: 1,
-            fontWeight: weight.extrabold,
-            letterSpacing: "-0.015em",
-            color: brand.forest,
-            whiteSpace: "nowrap",
-          }}
-        >
-          {principal}
-        </span>
+        {principal}
       </div>
 
       {secundaria ? (
-        <div
+        <Subrayado
+          frame={frame}
+          desde={tSecundaria}
+          dura={BARRIDO}
           style={{
-            backgroundColor: inferior.bg,
-            padding: "16px 44px 20px",
-            borderRadius: "0 6px 6px 6px",
-            clipPath: barrido(frame, tSecundaria),
+            fontSize: tamano,
+            lineHeight: 1.1,
+            fontWeight: weight.extrabold,
+            whiteSpace: "nowrap",
           }}
         >
-          <span
-            style={{
-              display: "block",
-              fontSize: 42,
-              lineHeight: 1.15,
-              fontWeight: weight.black,
-              letterSpacing: tracking.wide,
-              textTransform: "uppercase",
-              color: inferior.fg,
-              whiteSpace: "nowrap",
-            }}
-          >
-            {secundaria}
-          </span>
-        </div>
+          {secundaria}
+        </Subrayado>
       ) : null}
     </Interactive.Div>
   );

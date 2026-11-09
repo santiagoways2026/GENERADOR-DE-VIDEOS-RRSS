@@ -1,6 +1,7 @@
 import { Interactive, useCurrentFrame } from "remotion";
 import {
   brand,
+  gradient,
   color,
   fontSize,
   lineHeight,
@@ -13,32 +14,33 @@ import {
 import { entrada } from "./entrada";
 
 /**
- * Caja de dato del kit de motion graphics, en sus tres tonos.
+ * Caja de dato en los tres tonos del Brandbook 2027: blanca con texto
+ * grafito, verde Ways con su degradado y sendero. Nunca verde sobre verde.
  * Estructura fija: eyebrow, cifra grande, explicacion corta.
  */
 export const CajaDato: React.FC<{
   eyebrow: string;
   cifra: string;
   texto: string;
-  tono?: "claro" | "olivo" | "bosque";
+  tono?: "claro" | "verde" | "sendero";
   desde?: number;
   style?: React.CSSProperties;
-}> = ({ eyebrow, cifra, texto, tono = "olivo", desde = 0, style }) => {
+}> = ({ eyebrow, cifra, texto, tono = "verde", desde = 0, style }) => {
   const frame = useCurrentFrame();
 
   const tonos = {
-    claro: { bg: color.bg1, fg: color.fg1, sub: color.fg2, acc: brand.green },
-    olivo: { bg: brand.green, fg: color.fgInverse, sub: color.fgInverse, acc: color.fgInverse },
-    bosque: { bg: brand.forest, fg: color.fgInverse, sub: color.fgInverse, acc: brand.lime },
+    claro: { bg: color.bg1, fg: color.fg1, sub: color.fg2, acc: color.fgAccent },
+    verde: { bg: gradient.cajaVerde, fg: color.fgInverse, sub: color.fgInverse, acc: color.fgInverse },
+    sendero: { bg: brand.sendero, fg: color.fgInverse, sub: color.fgInverse, acc: color.fgInverse },
   }[tono];
 
   return (
     <Interactive.Div
       name="CajaDato"
       style={{
-        backgroundColor: tonos.bg,
+        background: tonos.bg,
         borderRadius: radius.lg,
-        boxShadow: shadow.card,
+        boxShadow: shadow.caja,
         padding: space[6],
         maxWidth: 620,
         display: "flex",
@@ -51,9 +53,9 @@ export const CajaDato: React.FC<{
     >
       <div
         style={{
-          fontSize: fontSize.base,
+          fontSize: fontSize.texto,
           fontWeight: weight.bold,
-          letterSpacing: tracking.loose,
+          letterSpacing: tracking.antetitulo,
           textTransform: "uppercase",
           color: tonos.acc,
         }}
@@ -62,10 +64,10 @@ export const CajaDato: React.FC<{
       </div>
       <div
         style={{
-          fontSize: fontSize["4xl"],
-          fontWeight: weight.black,
-          lineHeight: lineHeight.tight,
-          letterSpacing: tracking.tight,
+          fontSize: fontSize.display,
+          fontWeight: weight.extrabold,
+          lineHeight: lineHeight.titular,
+          letterSpacing: tracking.normal,
           color: tonos.fg,
         }}
       >
@@ -73,9 +75,9 @@ export const CajaDato: React.FC<{
       </div>
       <div
         style={{
-          fontSize: fontSize.lg,
+          fontSize: fontSize.h4,
           fontWeight: weight.regular,
-          lineHeight: lineHeight.normal,
+          lineHeight: lineHeight.texto,
           color: tonos.sub,
           opacity: tono === "claro" ? 1 : 0.86,
         }}

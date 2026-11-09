@@ -1,11 +1,11 @@
 import { Easing, Interactive, interpolate, useCurrentFrame } from "remotion";
 import {
   brand,
+  gradient,
   color,
   easeOut,
   fontSize,
   radius,
-  scale,
   shadow,
   space,
   tracking,
@@ -42,7 +42,7 @@ export const Velocimetro: React.FC<{
   cuenta?: number;
   /** Fotogramas que tarda en llegar al dato. */
   recorrido?: number;
-  /** Fotograma en que entra la placa lima de remate.
+  /** Fotograma en que entra la caja sendero de remate.
    *  Se separa de la cuenta porque la voz no siempre dice las dos cosas en
    *  el mismo orden que la esfera las muestra. */
   remate?: number;
@@ -65,7 +65,7 @@ export const Velocimetro: React.FC<{
       style={{
         backgroundColor: color.bg1,
         borderRadius: radius.lg,
-        boxShadow: shadow.raised,
+        boxShadow: shadow.caja,
         overflow: "hidden",
         width: 720,
         opacity: interpolate(t, [0, 10], [0, 1], {
@@ -79,15 +79,15 @@ export const Velocimetro: React.FC<{
         }),
       }}
     >
-      {/* Cabecera en placa olivo, como las cartelas del kit. */}
+      {/* Cabecera en caja verde Ways, con su degradado sutil. */}
       <div
         style={{
-          backgroundColor: brand.green,
+          background: gradient.cajaVerde,
           color: color.fgInverse,
           padding: `${space[4]}px ${space[6]}px`,
-          fontSize: fontSize.xl,
-          fontWeight: weight.black,
-          letterSpacing: tracking.loose,
+          fontSize: fontSize.h3,
+          fontWeight: weight.extrabold,
+          letterSpacing: tracking.antetitulo,
           textTransform: "uppercase",
         }}
       >
@@ -100,11 +100,11 @@ export const Velocimetro: React.FC<{
           <path
             d={`M ${CX - R} ${CY} A ${R} ${R} 0 0 1 ${CX + R} ${CY}`}
             fill="none"
-            stroke={scale.green[1]}
+            stroke={brand.niebla}
             strokeWidth={34}
             strokeLinecap="round"
           />
-          {/* Recorrido hecho, en olivo. */}
+          {/* Recorrido hecho, en verde Ways. */}
           <path
             d={`M ${CX - R} ${CY} A ${R} ${R} 0 0 1 ${CX + R} ${CY}`}
             fill="none"
@@ -124,7 +124,7 @@ export const Velocimetro: React.FC<{
                 x={CX + Math.cos(a) * EXTERIOR}
                 y={CY - Math.sin(a) * EXTERIOR + 12}
                 textAnchor="middle"
-                fill={color.fg3}
+                fill={color.fg2}
                 fontSize={26}
                 fontWeight={weight.bold}
               >
@@ -140,7 +140,7 @@ export const Velocimetro: React.FC<{
             cx={CX + Math.cos(angulo) * R}
             cy={CY - Math.sin(angulo) * R}
             r={23}
-            fill={brand.forest}
+            fill={brand.sendero}
           />
           <circle
             cx={CX + Math.cos(angulo) * R}
@@ -154,9 +154,9 @@ export const Velocimetro: React.FC<{
             x={CX}
             y={CY - 98}
             textAnchor="middle"
-            fill={brand.forest}
+            fill={color.fg1}
             fontSize={118}
-            fontWeight={weight.black}
+            fontWeight={weight.extrabold}
             letterSpacing="-0.02em"
           >
             {Math.round(valor)}
@@ -165,9 +165,9 @@ export const Velocimetro: React.FC<{
             x={CX}
             y={CY - 48}
             textAnchor="middle"
-            fill={color.fg3}
+            fill={color.fg2}
             fontSize={32}
-            fontWeight={weight.black}
+            fontWeight={weight.extrabold}
             letterSpacing="0.08em"
           >
             KM/H
@@ -178,25 +178,24 @@ export const Velocimetro: React.FC<{
           style={{
             marginTop: space[2],
             textAlign: "center",
-            fontSize: fontSize.base,
+            fontSize: fontSize.texto,
             fontWeight: weight.medium,
-            color: color.fg3,
+            color: color.fg2,
           }}
         >
           Fuente: Catedral de Santiago
         </div>
       </div>
 
-      {/* Conclusion, en placa lima con texto bosque. */}
+      {/* Conclusión en caja sendero: blanco sobre sendero da 6,4:1. */}
       <div
         style={{
-          backgroundColor: brand.lime,
-          color: color.fgOnLime,
+          backgroundColor: brand.sendero,
+          color: color.fgInverse,
           padding: `${space[4]}px ${space[6]}px`,
-          fontSize: fontSize.xl,
-          fontWeight: weight.black,
-          letterSpacing: tracking.wide,
-          textTransform: "uppercase",
+          fontSize: fontSize.h3,
+          fontWeight: weight.extrabold,
+          letterSpacing: tracking.normal,
           textAlign: "center",
           clipPath: `inset(0 ${interpolate(t, [tRemate, tRemate + 18], [100, 0], {
             extrapolateLeft: "clamp",

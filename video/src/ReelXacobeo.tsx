@@ -4,7 +4,7 @@ import "./fuentes";
 import { brand, fontFamily, margin } from "./brand/theme";
 import { Bullets } from "./componentes/Bullets";
 import { Cartela } from "./componentes/Cartela";
-import { Logo } from "./componentes/Logo";
+import { MarcaDeAgua } from "./componentes/Logo";
 import { Planos } from "./componentes/Planos";
 import { Cierre } from "./escenas/Cierre";
 import { Calendario } from "./graficos/Calendario";
@@ -44,17 +44,9 @@ const Inferior: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 
 export const ReelXacobeo: React.FC = () => {
   return (
-    <AbsoluteFill style={{ backgroundColor: brand.forest, fontFamily }}>
+    <AbsoluteFill style={{ backgroundColor: brand.grafito, fontFamily }}>
       <Audio src={staticFile("locucion.mp3")} />
 
-      {/* La marca acompana la pieza hasta el cierre, que ya es todo marca. */}
-      <Sequence durationInFrames={f(B[6])} name="Marca">
-        <Logo
-          variante="blanco"
-          ancho={240}
-          style={{ position: "absolute", left: margin, bottom: margin, opacity: 0.92 }}
-        />
-      </Sequence>
 
       {/* 1 · El año que viene es el año */}
       <Sequence durationInFrames={dur(0)} name="1 · Apertura">
@@ -67,7 +59,7 @@ export const ReelXacobeo: React.FC = () => {
             { src: "catedral-b", dura: 1.7 },
           ]}
         />
-        <Cartela principal="Xacobeo 2027" secundaria="Es Año Santo" desde={8} />
+        <Cartela principal="Xacobeo 2027:" secundaria="Año Santo" desde={8} />
       </Sequence>
 
       {/* 2 · El 25 de julio cae en domingo */}
@@ -119,7 +111,7 @@ export const ReelXacobeo: React.FC = () => {
             { src: "pareja-muros", dura: 1.55, encuadre: "40% 50%" },
           ]}
         />
-        <Cartela principal="Así se vive" secundaria="un Año Santo" desde={6} />
+        <Cartela principal="Así se vive un" secundaria="Año Santo" desde={6} />
       </Sequence>
 
       {/* 5 · Quien reserva ahora elige */}
@@ -172,6 +164,13 @@ export const ReelXacobeo: React.FC = () => {
             ]}
           />
         </AbsoluteFill>
+      </Sequence>
+
+      {/* La marca de agua va encima del metraje y hasta el cierre. Antes iba
+          debajo de los planos y no se veía. */}
+      <Sequence durationInFrames={f(B[6])} name="Marca">
+        {/* Brandbook 2027: en vídeo, isotipo blanco arriba a la derecha. */}
+        <MarcaDeAgua />
       </Sequence>
 
       {/* 7 · Cierre de marca */}

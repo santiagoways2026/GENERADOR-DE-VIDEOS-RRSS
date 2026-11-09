@@ -7,7 +7,7 @@ import { Calendario } from "./graficos/Calendario";
 const Banco: React.FC = () => (
   <AbsoluteFill
     style={{
-      backgroundColor: brand.forest,
+      backgroundColor: brand.grafito,
       fontFamily,
       alignItems: "center",
       justifyContent: "center",

@@ -5,7 +5,8 @@ import {
   interpolate,
   useCurrentFrame,
 } from "remotion";
-import { brand, easeOut, fontFamily, scale, weight } from "../brand/theme";
+import { brand, easeOut, fontFamily, radius, shadow, tracking, weight } from "../brand/theme";
+import { Subrayado } from "../componentes/Subrayado";
 
 /**
  * Perfil de altitud de Sarria a Santiago, para el bloque "El día duro no es
@@ -17,9 +18,9 @@ import { brand, easeOut, fontFamily, scale, weight } from "../brand/theme";
  * resto se apaga mientras habla cada foco, porque con esta audiencia dos
  * elementos informativos a la vez compiten.
  *
- * Contraste: el texto va en bosque sobre crema o en blanco sobre bosque, las
- * dos combinaciones por encima de 9:1. No se usa blanco sobre olivo, que se
- * queda en 2,88:1.
+ * Paleta del Brandbook 2027: fondo blanco, perfil y líneas en verde Ways,
+ * resaltes en verde sendero, texto en grafito (13,6:1) y placas sendero con
+ * letra blanca (6,4:1). El título lleva el subrayado Ways, una sola vez.
  *
  * Datos: los del configurador `herramientas/mapas-vfx`, ruta `cien`. Las
  * distancias por etapa coinciden con Gronze; las altitudes son aproximadas y
@@ -100,7 +101,7 @@ const avance = (f: number, desde: number, dur: number) =>
     easing: Easing.bezier(...easeOut),
   });
 
-/** Placa de texto del foco activo: blanco sobre bosque. */
+/** Placa del foco activo: blanco sobre verde sendero, 6,4:1. */
 const Placa: React.FC<{
   titulo: string;
   texto: string;
@@ -113,9 +114,10 @@ const Placa: React.FC<{
       top: 112,
       left: Math.min(Math.max(izquierda, X0), X1 - 520),
       width: 520,
-      backgroundColor: brand.forest,
+      backgroundColor: brand.sendero,
       color: brand.white,
-      borderRadius: 8,
+      borderRadius: radius.lg,
+      boxShadow: shadow.caja,
       padding: "16px 22px 18px",
       opacity: opacidad,
       translate: `0px ${interpolate(opacidad, [0, 1], [12, 0])}px`,
@@ -123,11 +125,11 @@ const Placa: React.FC<{
   >
     <div
       style={{
-        fontSize: 18,
-        fontWeight: weight.black,
-        letterSpacing: "0.08em",
+        fontSize: 16,
+        fontWeight: weight.bold,
+        letterSpacing: tracking.antetitulo,
         textTransform: "uppercase",
-        color: brand.lime,
+        color: brand.brote,
       }}
     >
       {titulo}
@@ -158,24 +160,28 @@ export const PerfilSarria: React.FC<{
   const apagado = 1 - 0.55 * Math.max(enDura, enBajada);
 
   return (
-    <AbsoluteFill style={{ backgroundColor: brand.cream, fontFamily }}>
+    <AbsoluteFill style={{ backgroundColor: brand.white, fontFamily }}>
       <Interactive.Div name="Título" style={{ position: "absolute", top: 40, left: X0 }}>
         <div
           style={{
-            fontSize: 40,
+            fontSize: 46,
+            lineHeight: 1.1,
             fontWeight: weight.extrabold,
-            color: brand.forest,
+            color: brand.grafito,
             opacity: fundido(f, 0, 15),
           }}
         >
-          De Sarria a Santiago
+          De Sarria a{" "}
+          <Subrayado frame={f} desde={10} dura={18}>
+            Santiago
+          </Subrayado>
         </div>
         <div
           style={{
-            marginTop: 4,
+            marginTop: 10,
             fontSize: 22,
-            fontWeight: weight.bold,
-            color: scale.forest[5],
+            fontWeight: weight.semibold,
+            color: brand.gris,
             opacity: fundido(f, 8, 15) * (1 - Math.max(enDura, enBajada)),
           }}
         >
@@ -204,28 +210,28 @@ export const PerfilSarria: React.FC<{
           y={Y_TECHO - 20}
           width={x(DURA.fin) - x(DURA.ini)}
           height={Y_SUELO - Y_TECHO + 20}
-          fill={scale.green[1]}
+          fill={brand.brote}
           opacity={enDura}
         />
 
         <g clipPath="url(#revelado)">
-          <path d={AREA} fill={brand.green} opacity={0.28 * apagado} />
+          <path d={AREA} fill={brand.green} opacity={0.2 * apagado} />
           <path
             d={LINEA}
             fill="none"
-            stroke={scale.green[7]}
+            stroke={brand.green}
             strokeWidth={5}
             strokeLinejoin="round"
             opacity={apagado}
           />
         </g>
 
-        {/* La etapa dura repasada en bosque, más gruesa. */}
+        {/* La etapa dura repasada en verde sendero, más gruesa. */}
         <path
           d={LINEA}
           clipPath="url(#tramoDura)"
           fill="none"
-          stroke={brand.forest}
+          stroke={brand.sendero}
           strokeWidth={8}
           opacity={enDura}
         />
@@ -235,7 +241,7 @@ export const PerfilSarria: React.FC<{
           d={LINEA}
           clipPath="url(#tramoBajada)"
           fill="none"
-          stroke={brand.forest}
+          stroke={brand.sendero}
           strokeWidth={8}
           opacity={enBajada}
         />
@@ -246,7 +252,7 @@ export const PerfilSarria: React.FC<{
           x2={x(MELIDE)}
           y1={Y_TECHO - 20}
           y2={Y_SUELO}
-          stroke={brand.forest}
+          stroke={brand.sendero}
           strokeWidth={3}
           strokeDasharray="8 8"
           opacity={enMelide}
@@ -256,15 +262,15 @@ export const PerfilSarria: React.FC<{
           y={Y_SUELO - 18}
           textAnchor="start"
           fontSize={22}
-          fontWeight={weight.extrabold}
-          fill={brand.forest}
+          fontWeight={weight.bold}
+          fill={brand.sendero}
           opacity={enMelide}
         >
           Melide
         </text>
 
         {/* Suelo y pueblos de final de etapa. */}
-        <line x1={X0} x2={X1} y1={Y_SUELO} y2={Y_SUELO} stroke={scale.forest[2]} strokeWidth={2} />
+        <line x1={X0} x2={X1} y1={Y_SUELO} y2={Y_SUELO} stroke={brand.niebla} strokeWidth={2} />
         {PUEBLOS.map(([km, nombre], i) => {
           const visible = fundido(f, dibujo + (km / TOTAL) * 90 - 4, 10);
           const ancla = i === 0 ? "start" : i === PUEBLOS.length - 1 ? "end" : "middle";
@@ -275,7 +281,7 @@ export const PerfilSarria: React.FC<{
                 x2={x(km)}
                 y1={Y_SUELO}
                 y2={Y_SUELO + 12}
-                stroke={brand.forest}
+                stroke={brand.sendero}
                 strokeWidth={2}
               />
               <text
@@ -284,7 +290,7 @@ export const PerfilSarria: React.FC<{
                 textAnchor={ancla}
                 fontSize={22}
                 fontWeight={weight.bold}
-                fill={brand.forest}
+                fill={brand.grafito}
               >
                 {nombre}
               </text>
@@ -293,8 +299,8 @@ export const PerfilSarria: React.FC<{
                 y={Y_SUELO + 68}
                 textAnchor={ancla}
                 fontSize={18}
-                fontWeight={weight.regular}
-                fill={scale.forest[5]}
+                fontWeight={weight.medium}
+                fill={brand.gris}
               >
                 {`km ${km.toLocaleString("es-ES")}`}
               </text>
@@ -330,7 +336,7 @@ export const PerfilSarria: React.FC<{
           left: X0,
           bottom: 28,
           fontSize: 16,
-          color: scale.forest[5],
+          color: brand.gris,
           opacity: fundido(f, dibujo + 90),
         }}
       >
