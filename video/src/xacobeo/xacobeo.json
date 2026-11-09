@@ -4922,14 +4922,6 @@
   },
   "capas": [
    {
-    "tipo": "cartela",
-    "principal": "2027",
-    "secundaria": "A HOLY YEAR",
-    "dur": 2.8,
-    "tono": "olivo",
-    "en": 6.0
-   },
-   {
     "tipo": "broll",
     "src": "xacobeo/stock/catedral-siluetas.mp4",
     "dur": 2.4,
@@ -4949,14 +4941,6 @@
     "dur": 1.5,
     "encuadre": "50% 50%",
     "en": 13.04
-   },
-   {
-    "tipo": "cartela",
-    "principal": "START PLANNING",
-    "secundaria": "DON'T LEAVE IT LATE",
-    "dur": 3.6,
-    "tono": "olivo",
-    "en": 14.66
    },
    {
     "tipo": "png",

@@ -185,8 +185,9 @@ verde Ways y verde Ways con la vieira.
 
 ## Lo que no se hace
 
-- La cartela blanca del principio (gancho sobre fondo blanco con la persona
-  recortada). El equipo la descarta: se empieza directamente con el plano real.
+- Las cartelas de placa blanca arriba ("2027 / A HOLY YEAR", "START
+  PLANNING", "Camino Expert"...). El equipo las descarta por cutres: no se
+  ponen en piezas nuevas y se quitan al rehacer las antiguas.
 
 - Contadores de cuenta atrás ni "últimas plazas".
 - Cifras sin fuente en pantalla, sobre todo en piezas ancladas mucho tiempo.
