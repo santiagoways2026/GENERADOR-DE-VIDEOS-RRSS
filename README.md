@@ -63,4 +63,5 @@ menudo. Para preparar material nuevo, mira el paso 2 de la skill `reel`.
 | Composición | Qué es |
 | --- | --- |
 | `ReelXacobeo` | Reel del Año Santo 2027, vertical, con locución |
+| `HilaryCompostela` | Hilary explica cómo conseguir la Compostela, con efectos sobre la pieza ya editada |
 | `Grafico` | Banco de pruebas para ver cada gráfico aislado |

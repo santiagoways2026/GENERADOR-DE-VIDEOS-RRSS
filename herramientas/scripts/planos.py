@@ -7,11 +7,21 @@ y acaba cada uno antes de elegir el trozo.
 
     python3 planos.py entrada.mp4 [paso_en_segundos] [umbral]
 """
-import subprocess, sys, tempfile, os, json
+import subprocess, sys, tempfile, os, json, shutil
 from PIL import Image
 
-FF = "/home/user/centrodecontrol/video/node_modules/@remotion/compositor-linux-x64-gnu/ffmpeg"
-FP = "/home/user/centrodecontrol/video/node_modules/@remotion/compositor-linux-x64-gnu/ffprobe"
+# El ffmpeg que trae Remotion, si el proyecto está instalado; si no, el del sistema.
+_REMOTION = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "video",
+                         "node_modules", "@remotion", "compositor-linux-x64-gnu")
+
+
+def _binario(nombre):
+    propio = os.path.join(_REMOTION, nombre)
+    return propio if os.path.exists(propio) else (shutil.which(nombre) or nombre)
+
+
+FF = _binario("ffmpeg")
+FP = _binario("ffprobe")
 
 
 def duracion(src):

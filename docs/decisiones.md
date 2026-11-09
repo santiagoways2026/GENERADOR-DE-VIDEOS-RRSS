@@ -64,6 +64,20 @@ Degradado entre los verdes de la paleta, logo en blanco y la web debajo. Nada
 más. El degradado gira muy despacio para que un plano fijo de varios segundos
 no se muera.
 
+## Efectos sobre una pieza ya editada
+
+Las piezas de Hilary llegan montadas: subtítulos palabra a palabra, tarjetas y
+banners van quemados en la imagen. Lo que se añade encima no puede pisarlos:
+
+- Los gráficos nuevos van **debajo de los subtítulos**, desde 1480 px de alto,
+  o arriba solo en los planos donde no hay tarjeta quemada.
+- El **zoom de énfasis** cae en la palabra que se subraya y solo en tramos sin
+  tarjeta ancha, porque el acercamiento recortaría sus bordes. Los saltos de
+  vuelta se esconden en los cortes de plano.
+- La **transición olivo** solo en cambios de bloque. En cada corte cansaría.
+- Los tiempos salen de la transcripción por palabra y de los cortes medidos
+  con detección de escena: `ffmpeg -vf "select='gt(scene,0.08)',showinfo"`.
+
 ## Qué no se hace
 
 Contadores de cuenta atrás, "últimas plazas", imágenes de masificación,

@@ -24,11 +24,11 @@ import {
  */
 
 /** 896 ms del kit, a 30 fps. */
-const BARRIDO = 27;
+export const BARRIDO = 27;
 /** 480 ms de retardo entre placas. */
-const RELEVO = 14;
+export const RELEVO = 14;
 
-const barrido = (frame: number, desde: number) =>
+export const barrido = (frame: number, desde: number) =>
   `inset(0 ${interpolate(frame, [desde, desde + BARRIDO], [100, 0], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",

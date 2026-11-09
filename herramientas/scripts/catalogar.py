@@ -7,11 +7,21 @@ uno.
 
     python3 catalogar.py entrada.mp4 salida.jpg [columnas] [filas]
 """
-import subprocess, sys, tempfile, os, json
+import subprocess, sys, tempfile, os, json, shutil
 from PIL import Image, ImageDraw
 
-FF = "/home/user/centrodecontrol/video/node_modules/@remotion/compositor-linux-x64-gnu/ffmpeg"
-FP = "/home/user/centrodecontrol/video/node_modules/@remotion/compositor-linux-x64-gnu/ffprobe"
+# El ffmpeg que trae Remotion, si el proyecto está instalado; si no, el del sistema.
+_REMOTION = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "video",
+                         "node_modules", "@remotion", "compositor-linux-x64-gnu")
+
+
+def _binario(nombre):
+    propio = os.path.join(_REMOTION, nombre)
+    return propio if os.path.exists(propio) else (shutil.which(nombre) or nombre)
+
+
+FF = _binario("ffmpeg")
+FP = _binario("ffprobe")
 
 
 def duracion(src):
