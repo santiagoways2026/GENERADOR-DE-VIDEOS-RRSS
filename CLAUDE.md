@@ -102,7 +102,8 @@ Las cartelas replican las del kit de motion graphics, no se inventan:
 El texto vive en la mitad superior. Los gráficos, en la inferior.
 
 Los subtítulos no salen mientras está el titular del principio: empiezan
-cuando el titular se va (prop `trasTitular` de `Subtitulos`).
+cuando el titular se va (prop `trasTitular` de `Subtitulos`). Van en
+mayúsculas y minúsculas, tal como se habla; nunca todo en mayúsculas.
 
 ## Reglas de montaje aprendidas
 

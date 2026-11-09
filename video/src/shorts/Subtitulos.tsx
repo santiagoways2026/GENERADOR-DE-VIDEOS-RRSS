@@ -143,7 +143,6 @@ export const Subtitulos: React.FC<{
               fontSize: 72,
               lineHeight: 1.08,
               fontWeight: 800,
-              textTransform: "uppercase",
               letterSpacing: "-0.01em",
               padding: "2px 14px 6px",
               borderRadius: 12,
