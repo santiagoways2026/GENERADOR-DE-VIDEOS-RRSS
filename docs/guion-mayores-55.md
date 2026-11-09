@@ -1,5 +1,7 @@
 # Guion · El Camino de Santiago a partir de los 55
 
+> Versión larga, de unos 7 minutos. El guion de trabajo es `guion-youtube-2min.md`.
+
 Sustituye a `guion-origen.md`, que se descarta: contaba una historia cuando lo
 que hace falta es utilidad. Pieza de YouTube horizontal, en español, con
 subtítulos en español y en inglés y, si se graba, pista de audio en inglés.
