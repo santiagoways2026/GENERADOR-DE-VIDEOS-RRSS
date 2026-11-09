@@ -2313,23 +2313,84 @@
     "src": "hilary/cartelas/sw-card-stages-question.png",
     "dur": 3.6,
     "ancho": 980,
-    "en": 1.68
+    "en": 2.5
    },
    {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-social-bar.png",
-    "en": 40.11,
-    "dur": 8.0,
-    "ancho": 960,
-    "cta": true
+    "tipo": "grafico",
+    "src": "",
+    "ancho": 0,
+    "g": "dato",
+    "oscuro": true,
+    "ante": "But",
+    "titulo": "Not flat or effortless",
+    "en": 6.9,
+    "dur": 4.2
    },
    {
-    "tipo": "png",
-    "src": "hilary/cartelas/sw-tag-light.png",
-    "en": 48.31,
-    "dur": 2.3999999999999986,
-    "ancho": 900,
-    "cta": true
+    "tipo": "grafico",
+    "src": "",
+    "ancho": 0,
+    "g": "requisitos",
+    "titulo": "The good news",
+    "pasos": [
+     {
+      "texto": "Extremely well signposted",
+      "en": 2.9
+     },
+     {
+      "texto": "Plenty of services",
+      "en": 4.3
+     }
+    ],
+    "nota": "",
+    "en": 22.7,
+    "dur": 6.9
+   },
+   {
+    "tipo": "grafico",
+    "src": "",
+    "ancho": 0,
+    "g": "requisitos",
+    "titulo": "What you need",
+    "pasos": [
+     {
+      "texto": "A normal level of fitness",
+      "en": 1.4
+     },
+     {
+      "texto": "Some preparation",
+      "en": 2.7
+     },
+     {
+      "texto": "A sensible itinerary",
+      "en": 4.8
+     }
+    ],
+    "nota": "",
+    "en": 30.1,
+    "dur": 5.6
+   },
+   {
+    "tipo": "grafico",
+    "src": "",
+    "ancho": 0,
+    "g": "dato",
+    "ante": "Honest answer",
+    "titulo": "Very achievable",
+    "en": 35.8,
+    "dur": 3.8
+   },
+   {
+    "tipo": "grafico",
+    "src": "",
+    "ancho": 0,
+    "g": "suscribete",
+    "en": 39.81,
+    "dur": 10.4,
+    "pregunta": [
+     2.5,
+     9.6
+    ]
    }
   ],
   "palabras": [
@@ -3080,7 +3141,19 @@
    "src": "musica/chill_Wallpaper.mp3",
    "vol": 0.0,
    "desde": 0
-  }
+  },
+  "golpes": [
+   {
+    "en": 39.9,
+    "hasta": 42.4,
+    "escala": 1.08
+   },
+   {
+    "en": 43.8,
+    "hasta": 47.3,
+    "escala": 1.08
+   }
+  ]
  },
  {
   "id": "05-lo-mas-duro",
