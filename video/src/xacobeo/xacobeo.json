@@ -2846,14 +2846,6 @@
   },
   "capas": [
    {
-    "tipo": "cartela",
-    "principal": "THE HOLY DOOR",
-    "secundaria": "SANTIAGO CATHEDRAL",
-    "dur": 3.4,
-    "tono": "olivo",
-    "en": 4.78
-   },
-   {
     "tipo": "broll",
     "src": "brutos/portico-sellado.mp4",
     "dur": 1.9,
@@ -2875,14 +2867,6 @@
     "en": 16.88
    },
    {
-    "tipo": "cartela",
-    "principal": "2027",
-    "secundaria": "CENTRE STAGE AGAIN",
-    "dur": 3.2,
-    "tono": "olivo",
-    "en": 18.62
-   },
-   {
     "tipo": "png",
     "src": "hilary/cartelas/sw-tag-light.png",
     "ancho": 880,
@@ -2890,12 +2874,27 @@
     "hasta": null,
     "en": 24.1,
     "dur": 4.54
+   },
+   {
+    "tipo": "tarjeta",
+    "ante": "Santiago Cathedral",
+    "principal": "The Holy Door",
+    "en": 4.78,
+    "dur": 3.4
+   },
+   {
+    "tipo": "tarjeta",
+    "oscuro": true,
+    "ante": "2027",
+    "principal": "Centre stage again",
+    "en": 18.62,
+    "dur": 3.2
    }
   ],
   "zooms": [
    {
     "en": 4.78,
-    "z": 1.1
+    "z": 1.08
    },
    {
     "en": 10.04,
@@ -2903,7 +2902,7 @@
    },
    {
     "en": 15.3,
-    "z": 1.1
+    "z": 1.08
    },
    {
     "en": 18.62,
@@ -2911,7 +2910,7 @@
    },
    {
     "en": 22.38,
-    "z": 1.1
+    "z": 1.08
    },
    {
     "en": 24.1,
