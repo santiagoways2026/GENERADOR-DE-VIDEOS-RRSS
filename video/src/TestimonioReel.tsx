@@ -62,7 +62,13 @@ export const TestimonioReel: React.FC = () => {
           escala={0.86}
         />
 
-        <Subtitulos palabras={datos.palabras} porFrase={3} top={1250} tamano={66} />
+        <Subtitulos
+          palabras={datos.palabras}
+          cortes={datos.cortes.map((c) => c.desde)}
+          porFrase={3}
+          top={1250}
+          tamano={66}
+        />
       </Sequence>
 
       <Sequence from={VIDEO} durationInFrames={CIERRE} name="Cierre">

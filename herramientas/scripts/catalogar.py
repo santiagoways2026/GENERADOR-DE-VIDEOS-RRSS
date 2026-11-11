@@ -10,8 +10,11 @@ uno.
 import subprocess, sys, tempfile, os, json
 from PIL import Image, ImageDraw
 
-FF = "/home/user/centrodecontrol/video/node_modules/@remotion/compositor-linux-x64-gnu/ffmpeg"
-FP = "/home/user/centrodecontrol/video/node_modules/@remotion/compositor-linux-x64-gnu/ffprobe"
+import shutil
+# Se usa el ffmpeg del sistema; si no lo hay, el que trae Remotion.
+_REMOTION = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "video", "node_modules", "@remotion", "compositor-linux-x64-gnu")
+FF = shutil.which("ffmpeg") or os.path.join(_REMOTION, "ffmpeg")
+FP = shutil.which("ffprobe") or os.path.join(_REMOTION, "ffprobe")
 
 
 def duracion(src):

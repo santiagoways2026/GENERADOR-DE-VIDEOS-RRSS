@@ -27,7 +27,9 @@ export const Subtitulos: React.FC<{
   /** Distancia desde arriba del lienzo, en px. */
   top?: number;
   tamano?: number;
-}> = ({ palabras, porFrase = 4, top = 1240, tamano = 64 }) => {
+  /** Tiempos de los cortes de montaje: ninguna frase cruza uno. */
+  cortes?: number[];
+}> = ({ palabras, porFrase = 4, top = 1240, tamano = 64, cortes = [] }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
@@ -38,7 +40,10 @@ export const Subtitulos: React.FC<{
   palabras.forEach((p, i) => {
     const anterior = palabras[i - 1];
     const pausa = anterior ? p.s - anterior.e > 0.45 : false;
-    if (actual.length && (actual.length >= porFrase || pausa)) {
+    const corte = anterior
+      ? cortes.some((c) => anterior.s < c && p.s >= c - 0.02)
+      : false;
+    if (actual.length && (actual.length >= porFrase || pausa || corte)) {
       frases.push(actual);
       actual = [];
     }
