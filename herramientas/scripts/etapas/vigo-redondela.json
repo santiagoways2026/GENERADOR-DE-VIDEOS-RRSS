@@ -1,0 +1,65 @@
+{
+  "id": "vigo-redondela",
+  "ancho": 1600,
+  "alto": 1000,
+  "encuadre": [
+    -8.745,
+    -8.545,
+    42.214,
+    42.307
+  ],
+  "municipios": [
+    "Vigo",
+    "Redondela",
+    "Moaña",
+    "Cangas",
+    "Vilaboa",
+    "Soutomaior",
+    "Pazos de Borbén",
+    "Mos",
+    "O Porriño"
+  ],
+  "puntos": [
+    [
+      -8.7087,
+      42.2303
+    ],
+    [
+      -8.6073,
+      42.2832
+    ]
+  ],
+  "paradas": [
+    [
+      "Vigo",
+      -8.7251,
+      42.2379
+    ],
+    [
+      "Teis",
+      -8.6863,
+      42.2574
+    ],
+    [
+      "A Formiga",
+      -8.6352,
+      42.2827
+    ],
+    [
+      "Cedeira",
+      -8.6247,
+      42.2759
+    ],
+    [
+      "Redondela",
+      -8.6073,
+      42.2832
+    ]
+  ],
+  "perfil": true,
+  "relacion": 12786089,
+  "enlace": [
+    -8.7251,
+    42.2379
+  ]
+}

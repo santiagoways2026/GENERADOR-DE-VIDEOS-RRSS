@@ -1,11 +1,12 @@
 import { AbsoluteFill } from "remotion";
-import { brand, fontFamily, radius, shadow, tracking, weight } from "../brand/theme";
-import { Logo } from "../componentes/Logo";
-import { Subrayado } from "../componentes/Subrayado";
+import { brand, fontFamily, radius, shadow, tracking, weight } from "../../brand/theme";
+import { Logo } from "../../componentes/Logo";
+import { Cabecera } from "./Cabecera";
+import type { Titular } from "./tipos";
 
 /**
- * Tabla de servicios por localidad de la etapa Baiona → Vigo, como imagen fija
- * (1600x1000) para web y redes.
+ * Tabla de servicios por localidad de una etapa, como imagen fija para la web.
+ * El alto del lienzo se ajusta al número de localidades: `altoServicios`.
  *
  * Paleta 2027: fondo blanco, tinta grafito, filas alternas en brote. El sí va
  * como círculo verde Ways con la marca en blanco: es un gráfico, no texto, así
@@ -89,15 +90,13 @@ const SERVICIOS: Servicio[] = [
   },
 ];
 
-/** Un 1 por servicio, en el orden de SERVICIOS. */
-const LOCALIDADES: { nombre: string; hay: number[] }[] = [
-  { nombre: "Baiona", hay: [1, 1, 1, 1, 1, 1, 1] },
-  { nombre: "Playa América", hay: [0, 1, 0, 0, 1, 1, 0] },
-  { nombre: "Saiáns", hay: [0, 1, 1, 1, 1, 1, 0] },
-  { nombre: "Canido", hay: [0, 1, 1, 1, 1, 1, 0] },
-  { nombre: "Paseo do Lagares", hay: [0, 1, 1, 0, 1, 1, 0] },
-  { nombre: "Vigo", hay: [1, 1, 1, 1, 1, 1, 1] },
-];
+/** Una localidad y un 1 por servicio que tiene, en el orden de SERVICIOS. */
+export type Localidad = { nombre: string; hay: number[] };
+
+const FILA = 90;
+/** Márgenes, titular y fila de iconos: todo lo que no son filas. */
+const FIJO = 460;
+export const altoServicios = (n: number) => FIJO + n * FILA;
 
 const COL_NOMBRE = 320;
 
@@ -110,38 +109,16 @@ const Si = () => (
 
 const No = () => <div style={{ width: 22, height: 4, borderRadius: 2, backgroundColor: brand.niebla }} />;
 
-export const ServiciosBaionaVigo: React.FC = () => (
+export const ServiciosEtapa: React.FC<Titular & { localidades: Localidad[] }> = ({
+  antetitulo,
+  titular,
+  destacado,
+  localidades,
+}) => (
   <AbsoluteFill style={{ backgroundColor: brand.white, fontFamily, padding: 72 }}>
     {/* Cabecera */}
     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-      <div>
-        <div
-          style={{
-            display: "inline-block",
-            backgroundColor: brand.green,
-            color: brand.white,
-            fontSize: 16,
-            fontWeight: weight.bold,
-            letterSpacing: tracking.antetitulo,
-            textTransform: "uppercase",
-            borderRadius: radius.md,
-            padding: "6px 12px",
-          }}
-        >
-          Etapa de Baiona a Vigo
-        </div>
-        <div
-          style={{
-            marginTop: 20,
-            fontSize: 64,
-            lineHeight: 1.1,
-            fontWeight: weight.extrabold,
-            color: brand.sendero,
-          }}
-        >
-          Qué encontrarás en <Subrayado frame={999}>cada parada</Subrayado>
-        </div>
-      </div>
+      <Cabecera antetitulo={antetitulo} titular={titular} destacado={destacado} />
       <Logo variante="verde" ancho={230} style={{ marginTop: 6 }} />
     </div>
 
@@ -149,7 +126,6 @@ export const ServiciosBaionaVigo: React.FC = () => (
     <div
       style={{
         marginTop: 44,
-        flex: 1,
         backgroundColor: brand.white,
         borderRadius: radius.lg,
         boxShadow: shadow.caja,
@@ -194,11 +170,11 @@ export const ServiciosBaionaVigo: React.FC = () => (
         ))}
       </div>
 
-      {LOCALIDADES.map((l, i) => (
+      {localidades.map((l, i) => (
         <div
           key={l.nombre}
           style={{
-            flex: 1,
+            height: FILA,
             display: "flex",
             alignItems: "center",
             backgroundColor: i % 2 === 1 ? brand.brote : brand.white,

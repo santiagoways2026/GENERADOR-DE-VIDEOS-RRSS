@@ -151,6 +151,24 @@ python3 herramientas/scripts/catalogar.py bruto.mp4 hoja.jpg   # verlo de un vis
 Los planos recortados viven en `video/public/brutos/`. Los brutos completos no
 entran en el repositorio: pesan y se sustituyen a menudo.
 
+## Imágenes de etapa para la web
+
+Mapa, tabla de servicios y perfil de cada etapa, en `video/src/graficos/etapa/`.
+
+1. Configuración en `herramientas/scripts/etapas/<id>.json`: encuadre,
+   municipios para pintar la costa, puntos y paradas. Con `relacion` se usa
+   el trazado oficial del Camino en OpenStreetMap; con `enlace`, un tramo a pie
+   desde el centro hasta donde empieza.
+2. `/usr/bin/python3 herramientas/scripts/mapa_etapa.py herramientas/scripts/etapas/<id>.json`
+   escribe `video/src/datos/etapa-<id>.json` (costa, ruta, paradas y perfil).
+3. Textos y servicios de cada etapa en `etapas.tsx`.
+4. Exportar a 1200 px y pasar a WebP, que pesa unos 30 KB por imagen:
+   `npx remotion still <Id> salida.png --scale=0.75` y convertir con PIL
+   (`quality=82`). Remotion no exporta WebP directamente.
+
+El mapa lleva siempre "© colaboradores de OpenStreetMap" (licencia ODbL) y el
+perfil, la fuente de distancia y altitud.
+
 ## Lo que no se hace
 
 - Contadores de cuenta atrás ni "últimas plazas".
