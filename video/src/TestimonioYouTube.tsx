@@ -29,7 +29,8 @@ import datos from "./testimonios/grace-armando-yt.json";
  *
  * Las cartelas van abajo a la izquierda, sobre el cuerpo: en este encuadre
  * las caras ocupan la mitad superior. Solo dos: quienes son y el unico
- * CTA, al final. Las preguntas van arriba a la derecha, sobre el fondo.
+ * CTA, al final. Las preguntas van abajo a la izquierda, debajo de las
+ * cartelas cuando coinciden, sin tapar caras.
  */
 
 const INTRO = Math.round(2.6 * fps);
@@ -93,7 +94,6 @@ const Rotulo: React.FC<{
  * inclusive). Su voz no esta en el montaje: se leen en la esquina.
  */
 const PREGUNTAS: [number, number, string][] = [
-  [0, 0, "What's your name and where are you from?"],
   [1, 1, "Who did you travel with?"],
   [2, 2, "How was the luggage transfer?"],
   [3, 4, "And the hotels?"],
@@ -130,9 +130,8 @@ export const TestimonioYouTube: React.FC = () => {
             <Pregunta
               texto={texto}
               duracion={duracion}
-              top={36}
-              right={40}
-              ancho={440}
+              bottom={36}
+              left={40}
               escala={0.55}
             />
           </Sequence>

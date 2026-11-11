@@ -12,7 +12,7 @@ import datos from "./testimonios/grace-armando-reel.json";
  *
  * Sigue el lenguaje de los reels ya publicados de la marca: titular de
  * arranque con la palabra clave en placa olivo, la pregunta de cada
- * respuesta en una tarjeta arriba a la derecha,
+ * respuesta en una tarjeta abajo a la izquierda,
  * subtitulos en caja normal con la palabra activa en olivo y cierre en
  * olivo liso. Sin logo encima del metraje: la marca va en el cierre. Todo
  * el texto queda dentro de la zona segura de TikTok e Instagram.
@@ -75,15 +75,16 @@ export const TestimonioReel: React.FC = () => {
           <Pregunta
             texto={texto}
             duracion={largo(i, 0.3)}
-            top={zonaSegura.top + 24}
-            right={zonaSegura.right}
-            ancho={620}
+            bottom={zonaSegura.bottom + 24}
+            left={zonaSegura.left}
           />
         </Sequence>
       ))}
 
       <Sequence durationInFrames={VIDEO} name="Subtítulos">
+        {/* Los subtitulos suben para dejar sitio a la pregunta debajo. */}
         <Subtitulos
+          bottom={zonaSegura.bottom + 150}
           palabras={datos.palabras}
           cortes={datos.cortes.map((c) => c.desde)}
         />
