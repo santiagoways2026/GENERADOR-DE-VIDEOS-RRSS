@@ -8,6 +8,7 @@ import {
 import "./fuentes";
 import { brand, fontFamily, fps } from "./brand/theme";
 import { Cartela } from "./componentes/Cartela";
+import { Pregunta } from "./componentes/Pregunta";
 import { Cierre } from "./escenas/Cierre";
 import { Intro } from "./escenas/Intro";
 import datos from "./testimonios/grace-armando-yt.json";
@@ -27,8 +28,8 @@ import datos from "./testimonios/grace-armando-yt.json";
  * fallo. El bruto es 4K, de modo que el plano cerrado no pierde definicion.
  *
  * Las cartelas van abajo a la izquierda, sobre el cuerpo: en este encuadre
- * las caras ocupan la mitad superior. Solo tres: quienes son, que ruta
- * hicieron y el unico CTA, al final.
+ * las caras ocupan la mitad superior. Solo dos: quienes son y el unico
+ * CTA, al final. Las preguntas van arriba a la derecha, sobre el fondo.
  */
 
 const INTRO = Math.round(2.6 * fps);
@@ -78,9 +79,32 @@ const Rotulo: React.FC<{
     durationInFrames={largo(i) - s2f(retardo)}
     name={`Cartela · ${principal}`}
   >
-    <Cartela principal={principal} secundaria={secundaria} top={478} escala={0.5} />
+    <Cartela
+      principal={principal}
+      secundaria={secundaria}
+      top={478}
+      escala={0.5}
+    />
   </Sequence>
 );
+
+/**
+ * Las preguntas de la entrevista, por fragmentos (primero y ultimo,
+ * inclusive). Su voz no esta en el montaje: se leen en la esquina.
+ */
+const PREGUNTAS: [number, number, string][] = [
+  [0, 0, "What's your name and where are you from?"],
+  [1, 1, "Who did you travel with?"],
+  [2, 2, "How was the luggage transfer?"],
+  [3, 4, "And the hotels?"],
+  [5, 5, "Why an organised Camino?"],
+  [6, 6, "What was your favourite moment?"],
+  [7, 7, "Any difficult moments?"],
+  [8, 8, "How did it feel to arrive?"],
+  [9, 10, "Why are you doing the Camino?"],
+  [12, 12, "Your Camino in one word?"],
+  [13, 13, "Would you do it again?"],
+];
 
 export const TestimonioYouTube: React.FC = () => {
   return (
@@ -93,8 +117,33 @@ export const TestimonioYouTube: React.FC = () => {
         <Metraje desdeSegundo={0} />
       </Sequence>
 
-      <Rotulo i={0} principal="Grace & Armando" secundaria="From Australia" />
-      <Rotulo i={1} principal="Portuguese Way" secundaria="From Tui to Santiago" />
+      {PREGUNTAS.map(([a, b, texto]) => {
+        const desde = inicio(a) + s2f(0.3);
+        const duracion = inicio(b) + largo(b) - desde;
+        return (
+          <Sequence
+            key={texto}
+            from={desde}
+            durationInFrames={duracion}
+            name={`Pregunta · ${texto}`}
+          >
+            <Pregunta
+              texto={texto}
+              duracion={duracion}
+              top={36}
+              right={40}
+              ancho={440}
+              escala={0.55}
+            />
+          </Sequence>
+        );
+      })}
+
+      <Rotulo
+        i={0}
+        principal="Grace & Armando"
+        secundaria="From Australia · Portuguese Way"
+      />
       <Rotulo
         i={cortes.length - 1}
         principal="Plan your Camino"

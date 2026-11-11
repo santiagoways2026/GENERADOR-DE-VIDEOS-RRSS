@@ -1,5 +1,5 @@
 import { Easing, Interactive, interpolate, useCurrentFrame } from "remotion";
-import { brand, easeOut, scale, shadow, weight } from "../brand/theme";
+import { brand, easeOut, scale, shadow, weight, zonaSegura } from "../brand/theme";
 
 /**
  * Tarjeta de dato de los reels publicados: un antetitulo pequeno en
@@ -15,7 +15,7 @@ export const TarjetaDato: React.FC<{
   dato: string;
   variante?: "blanca" | "olivo";
   top?: number;
-}> = ({ antetitulo, dato, variante = "blanca", top = 190 }) => {
+}> = ({ antetitulo, dato, variante = "blanca", top = zonaSegura.top + 24 }) => {
   const frame = useCurrentFrame();
   const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
   const blanca = variante === "blanca";
@@ -26,8 +26,8 @@ export const TarjetaDato: React.FC<{
       style={{
         position: "absolute",
         top,
-        left: 64,
-        right: 64,
+        left: zonaSegura.left,
+        right: zonaSegura.right,
         backgroundColor: blanca ? brand.white : scale.green[7],
         borderRadius: 14,
         padding: "26px 36px 30px",

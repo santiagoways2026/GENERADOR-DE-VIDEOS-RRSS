@@ -32,6 +32,10 @@ Reglas que condicionan cada pieza:
 - Tipografía: Montserrat, Manrope, Poppins. Empaquetada con el proyecto.
 - Formatos: 1080x1920 reels, 1080x1080 feed, 1280x720 YouTube. Márgenes 56 px
   como mínimo.
+- En los verticales, todo el texto y los gráficos van dentro de la zona segura
+  de TikTok e Instagram Reels (`zonaSegura` en `theme.ts`): 220 px arriba,
+  484 abajo, 140 a la derecha y 64 a la izquierda. Fuera de ella la interfaz
+  de la app lo tapa.
 
 ## Cómo se ven los textos
 

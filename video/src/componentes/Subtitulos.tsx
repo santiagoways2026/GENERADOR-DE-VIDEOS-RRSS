@@ -1,5 +1,5 @@
 import { Easing, Interactive, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
-import { brand, easeOut, weight } from "../brand/theme";
+import { brand, easeOut, weight, zonaSegura } from "../brand/theme";
 
 export type Palabra = {
   /** Texto de la palabra, tal cual se dice. */
@@ -23,12 +23,20 @@ export const Subtitulos: React.FC<{
   palabras: Palabra[];
   /** Maximo de palabras por frase. */
   porFrase?: number;
-  /** Distancia desde arriba del lienzo, en px. */
-  top?: number;
+  /** Distancia desde abajo del lienzo, en px. Por defecto, el borde de la
+   *  zona segura de TikTok e Instagram con algo de aire: si la frase ocupa
+   *  dos lineas, crece hacia arriba y no se mete bajo la interfaz. */
+  bottom?: number;
   tamano?: number;
   /** Tiempos de los cortes de montaje: ninguna frase cruza uno. */
   cortes?: number[];
-}> = ({ palabras, porFrase = 3, top = 1290, tamano = 66, cortes = [] }) => {
+}> = ({
+  palabras,
+  porFrase = 3,
+  bottom = zonaSegura.bottom + 40,
+  tamano = 66,
+  cortes = [],
+}) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
@@ -68,9 +76,9 @@ export const Subtitulos: React.FC<{
       name="Subtitulos"
       style={{
         position: "absolute",
-        top,
-        left: 72,
-        right: 72,
+        bottom,
+        left: zonaSegura.left,
+        right: zonaSegura.right,
         display: "flex",
         flexWrap: "wrap",
         justifyContent: "center",

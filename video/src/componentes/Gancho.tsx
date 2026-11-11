@@ -1,5 +1,5 @@
 import { Easing, Interactive, interpolate, useCurrentFrame } from "remotion";
-import { brand, easeOut, weight } from "../brand/theme";
+import { brand, easeOut, weight, zonaSegura } from "../brand/theme";
 
 /**
  * Titular de arranque de los reels, como en las piezas publicadas:
@@ -15,7 +15,7 @@ export const Gancho: React.FC<{
   duracion: number;
   top?: number;
   tamano?: number;
-}> = ({ lineas, destacado, duracion, top = 250, tamano = 92 }) => {
+}> = ({ lineas, destacado, duracion, top = zonaSegura.top + 40, tamano = 92 }) => {
   const frame = useCurrentFrame();
   const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
   const sombra =
@@ -27,8 +27,9 @@ export const Gancho: React.FC<{
       style={{
         position: "absolute",
         top,
-        left: 72,
-        right: 72,
+        // Centrado respecto a la zona segura, que es asimetrica.
+        left: zonaSegura.left,
+        right: zonaSegura.right,
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
