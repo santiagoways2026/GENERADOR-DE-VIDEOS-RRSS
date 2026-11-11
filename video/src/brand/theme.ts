@@ -180,6 +180,20 @@ export const format = {
 
 export const fps = 30;
 
+/**
+ * Zona segura de los verticales en TikTok e Instagram Reels, a 1080x1920.
+ * Fuera de ella la interfaz tapa el contenido: la cabecera de Instagram
+ * arriba, el usuario, el texto y la musica abajo en TikTok, y la columna de
+ * botones a la derecha en los dos. Es la combinacion de las dos, asi que la
+ * pieza sirve igual en cualquiera.
+ */
+export const zonaSegura = {
+  top: 220,
+  bottom: 484,
+  left: 64,
+  right: 140,
+} as const;
+
 /** Margenes minimos 56 px. Se usa mas para dejar aire. */
 export const margin = 72;
 

@@ -5,3 +5,11 @@ video/out/
 # Los planos ya recortados que usa cada pieza sí entran, en video/public/brutos/,
 # porque sin ellos el proyecto no se puede renderizar.
 brutos-originales/
+
+# Los testimonios ya montados pesan cientos de MB: GitHub no admite archivos
+# de más de 100 MB. Se regeneran con herramientas/scripts/montar_testimonio.py
+# y el plan de cada pieza, que sí está en el repositorio.
+video/public/testimonios/*.mp4
+
+# Exportaciones finales.
+entregas/

@@ -45,7 +45,19 @@ export const Cartela: React.FC<{
   desde?: number;
   /** Tono de la placa inferior: olivo por defecto, lima para rematar. */
   tono?: "olivo" | "lima" | "bosque";
-}> = ({ eyebrow, principal, secundaria, desde = 0, tono = "olivo" }) => {
+  /** Distancia desde arriba. 200 en vertical. */
+  top?: number;
+  /** Escala del bloque, para lienzos mas pequenos que el vertical. */
+  escala?: number;
+}> = ({
+  eyebrow,
+  principal,
+  secundaria,
+  desde = 0,
+  tono = "olivo",
+  top = 200,
+  escala = 1,
+}) => {
   const frame = useCurrentFrame();
 
   const inferior = {
@@ -63,9 +75,11 @@ export const Cartela: React.FC<{
       name="Cartela"
       style={{
         position: "absolute",
-        top: 200,
-        left: margin,
-        right: margin,
+        top,
+        left: margin * escala,
+        right: margin * escala,
+        scale: escala,
+        transformOrigin: "top left",
         display: "flex",
         flexDirection: "column",
         alignItems: "flex-start",
