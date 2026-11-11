@@ -10,6 +10,7 @@ export const Cabecera: React.FC<Titular & { tamano?: number }> = ({
   tamano = 64,
 }) => (
   <div>
+    {antetitulo ? (
     <div
       style={{
         display: "inline-block",
@@ -25,9 +26,10 @@ export const Cabecera: React.FC<Titular & { tamano?: number }> = ({
     >
       {antetitulo}
     </div>
+    ) : null}
     <div
       style={{
-        marginTop: 20,
+        marginTop: antetitulo ? 20 : 0,
         fontSize: tamano,
         lineHeight: 1.1,
         fontWeight: weight.extrabold,

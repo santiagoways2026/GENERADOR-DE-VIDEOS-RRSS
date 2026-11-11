@@ -13,9 +13,8 @@ import type { Ancla, DatosEtapa, Titular } from "./tipos";
  *
  * Dos estilos:
  * - `claro`: mar en niebla, tierra en blanco, ruta en verde Ways. Logo verde.
- * - `verde`: tierra en verde Ways, agua en el tono `mar`, ruta en blanco con
- *   borde sendero y rótulos blancos en negrita con halo sendero (blanco sobre
- *   verde solo en negrita). Logo blanco, porque cae sobre verde.
+ * - `verde`: tierra en brote, agua en el tono `mar`, ruta en verde Ways y
+ *   solo los ríos principales, para que se lea de un vistazo.
  * En los dos, salida y llegada en cajas sendero.
  */
 
@@ -23,14 +22,16 @@ const ESTILOS = {
   claro: {
     mar: brand.niebla, tierra: brand.white, rio: brand.niebla, rioBorde: brand.gris as string | null,
     via: brand.gris, ruta: brand.green, rutaBorde: brand.white, texto: brand.grafito, halo: brand.white,
-    rotuloAgua: brand.gris, rotuloAguaHalo: brand.white, referencia: brand.gris, norte: brand.grafito,
-    logo: "verde" as const,
+    rotuloAgua: brand.gris, referencia: brand.gris, norte: brand.grafito,
+    logo: "verde" as const, arroyos: true, vias: true,
   },
+  /** Tierra en brote, el verde claro del brandbook, y agua en `mar`. Sin
+   *  arroyos ni carreteras: solo costa, ríos principales y la ruta. */
   verde: {
-    mar, tierra: brand.green, rio: mar, rioBorde: null as string | null,
-    via: brand.sendero, ruta: brand.white, rutaBorde: brand.sendero, texto: brand.white, halo: brand.sendero,
-    rotuloAgua: brand.sendero, rotuloAguaHalo: mar, referencia: brand.white, norte: brand.white,
-    logo: "blanco" as const,
+    mar, tierra: brand.brote, rio: mar, rioBorde: null as string | null,
+    via: brand.gris, ruta: brand.green, rutaBorde: brand.white, texto: brand.grafito, halo: brand.white,
+    rotuloAgua: brand.sendero, referencia: brand.sendero, norte: brand.grafito,
+    logo: "verde" as const, arroyos: false, vias: false,
   },
 };
 type Estilo = keyof typeof ESTILOS;
@@ -178,13 +179,13 @@ export const MapaEtapa: React.FC<PropsMapa> = ({
         </g>
         ) : null}
         <g fill="none" stroke={E.rio} strokeLinecap="round" strokeLinejoin="round">
-          {(datos.rios ?? []).map((r, i) => (
+          {(datos.rios ?? []).filter((r) => r.principal || E.arroyos).map((r, i) => (
             <path key={i} d={r.d} strokeWidth={r.principal ? 10 : 3.5} />
           ))}
         </g>
 
         {/* Referencias: autopistas y tren, finos y en gris para no competir con la ruta. */}
-        <g fill="none" stroke={E.via} strokeLinecap="round" strokeLinejoin="round">
+        <g fill="none" stroke={E.via} strokeLinecap="round" strokeLinejoin="round" display={E.vias ? undefined : "none"}>
           {(datos.autopistas ?? []).map((a, i) => (
             <path key={i} d={a.d} strokeWidth={a.puente ? 4 : 2.5} />
           ))}

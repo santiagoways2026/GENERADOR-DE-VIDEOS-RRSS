@@ -168,7 +168,8 @@ Mapa, tabla de servicios y perfil de cada etapa, en `video/src/graficos/etapa/`.
    (`quality=82`). Remotion no exporta WebP directamente.
 
 Mapa y perfil tienen dos estilos: `claro` (mar niebla, tierra blanca) y
-`verde` (tierra verde Ways, agua en el token `mar` de `theme.ts`, ruta blanca).
+`verde` (tierra en brote, agua en el token `mar` de `theme.ts`, ruta verde Ways
+y solo ríos principales: sin arroyos ni carreteras, para que se lea bien).
 El tono `mar` está fuera de la paleta y es solo para agua de mapas en color.
 
 El mapa lleva siempre "© colaboradores de OpenStreetMap" (licencia ODbL) y el

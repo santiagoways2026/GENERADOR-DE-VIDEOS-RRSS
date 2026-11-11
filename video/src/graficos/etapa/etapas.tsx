@@ -203,7 +203,7 @@ export const StillsEtapas: React.FC = () => (
       defaultProps={{
         datos: donostiaZarautz,
         estilo: "verde",
-        antetitulo: "Camino del Norte",
+        antetitulo: "",
         titular: "De San Sebastián a",
         destacado: "Zarautz",
         entradilla: "El recorrido y los lugares por los que pasa la etapa, de La Concha a Getaria.",
@@ -238,8 +238,8 @@ export const StillsEtapas: React.FC = () => (
       height={ALTO_PERFIL}
       defaultProps={{
         datos: donostiaZarautz,
-        estilo: "verde",
-        antetitulo: "Perfil de la etapa",
+        estilo: "claro",
+        antetitulo: "",
         titular: "Dos subidas",
         destacado: "junto al mar",
       }}
