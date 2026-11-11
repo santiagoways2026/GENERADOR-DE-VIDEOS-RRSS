@@ -375,7 +375,7 @@
   "id": "paula-sarria-800km-toma",
   "lineas": [
    "¿Sabías que",
-   "no necesitas",
+   "[no necesitas]",
    "800 km?"
   ],
   "foto": "n1/f7e31c9b-3dd9-4f15-88e0-c4a53378145e.jpg",
@@ -385,17 +385,19 @@
   "id": "paula-perderse-toma",
   "lineas": [
    "¿Te puedes",
-   "perder en el",
+   "[perder] en el",
    "Camino?"
   ],
   "foto": "n1/3C6FAE7C-816B-4331-AB7F-19B7B9467317.jpg",
-  "alto": 330
+  "alto": 330,
+  "zoom": 1.18,
+  "origenZoom": "80% 0%"
  },
  {
   "id": "paula-portomarin-toma",
   "lineas": [
    "Un pueblo",
-   "trasladado",
+   "[trasladado]",
    "piedra a piedra"
   ],
   "foto": "dji/DJI_20260929110407_0070_D.mp4@2",
@@ -404,52 +406,48 @@
  {
   "id": "paula-s4-bastones",
   "lineas": [
-   "¿Bastones",
+   "¿[Bastones]",
    "en el",
    "Camino?"
   ],
   "foto": "n1/728a335b-e80f-4c09-936e-2ae48957a20a.jpg",
-  "alto": 330,
-  "acento": 2
+  "alto": 330
  },
  {
   "id": "paula-s5-cuanto-se-camina",
   "lineas": [
    "¿Cuánto se",
    "camina",
-   "de verdad?"
+   "[de verdad]?"
   ],
   "foto": "n1/6D0459CA-409E-4885-9AA2-59D77B5E3F1C.jpg",
-  "alto": 330,
-  "acento": 1
+  "alto": 330
  },
  {
   "id": "paula-s6-nadie-te-cuenta",
   "lineas": [
    "Lo que nadie",
-   "te cuenta del",
+   "[te cuenta] del",
    "Camino"
   ],
   "foto": "n1/CD0DB42A-43AA-445C-9F71-ADC9C2DE000E.jpg",
-  "alto": 330,
-  "acento": 2
+  "alto": 330
  },
  {
   "id": "paula-s7-xacobeo-2027",
   "lineas": [
    "2027 no será",
    "un año",
-   "normal"
+   "[normal]"
   ],
   "foto": "n1/f56cee61-93ab-4552-a7ca-7f59380a01ca.jpg",
-  "alto": 330,
-  "acento": 2
+  "alto": 330
  },
  {
   "id": "paula-s8-puerta-santa",
   "lineas": [
    "La Puerta",
-   "Santa",
+   "[Santa]",
    "se abre"
   ],
   "foto": "n1/E1C2AC0D-C0AE-428D-9BAB-F4CA46C044E2.jpg",
@@ -459,7 +457,7 @@
   "id": "paula-s9-credencial",
   "lineas": [
    "Sella tu",
-   "credencial",
+   "[credencial]",
    "por el Camino"
   ],
   "foto": "n1/4210715c-197c-4570-ba2e-f4e8cb5a97b6.jpg",

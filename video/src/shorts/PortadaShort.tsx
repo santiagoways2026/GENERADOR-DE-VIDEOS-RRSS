@@ -19,74 +19,77 @@ import portadas from "./portadas.json";
  * Todo lo que importa cae dentro del recorte 4:5 de la cuadrícula de
  * Instagram (y 285 a 1635).
  */
-type Datos = { id: string; lineas: string[]; encuadre?: string; alto?: number; acento?: number };
+type Datos = { id: string; lineas: string[]; encuadre?: string; alto?: number; acento?: number; zoom?: number; origenZoom?: string };
 
 
 export const PortadaShort: React.FC<{ id: string }> = ({ id }) => {
   const d = (portadas as Datos[]).find((x) => x.id === id) as Datos;
-  const [uno, dos, tres] = d.lineas;
-
-  // Tarjeta blanca (noviembre de 2026): titular en grafito con la línea clave
-  // en placa verde Ways y tres trazos de énfasis, sobre la foto a sangre.
-  const t = (x: string, max: number, ancho = 760) => Math.min(max, Math.floor(ancho / (x.length * 0.6)));
-  const base = Math.min(...[uno, dos, tres].filter((_, k) => k !== (d.acento ?? 1)).map((x) => t(x, 150)));
+  // Tarjeta blanca recta; el subrayado SW es un bloque verde girado -1,5° que
+  // marca una o dos palabras (entre corchetes en portadas.json). Si ninguna
+  // línea lleva corchetes, se subraya la línea `acento` entera.
+  const lineas = d.lineas.some((l) => l.includes("["))
+    ? d.lineas
+    : d.lineas.map((l, k) => (k === (d.acento ?? 1) ? `[${l}]` : l));
+  const limpio = (l: string) => l.replace(/[[\]]/g, "");
+  // Mismo tamaño para todo el titular: el de la línea más larga.
+  const tam = Math.min(150, ...lineas.map((l) => Math.floor(820 / (limpio(l).length * 0.6))));
   return (
     <AbsoluteFill style={{ backgroundColor: brand.green, fontFamily }}>
       <Img
         src={staticFile(`portadas/${d.id}.jpg`)}
-        style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: d.encuadre ?? "50% 50%" }}
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          objectPosition: d.encuadre ?? "50% 50%",
+          scale: d.zoom ?? 1,
+          transformOrigin: d.origenZoom ?? "50% 50%",
+        }}
       />
       <Interactive.Div
         name="Titular de la portada"
-        style={{
-          position: "absolute",
-          top: d.alto ?? 330,
-          left: 0,
-          right: 0,
-          display: "flex",
-          justifyContent: "center",
-        }}
+        style={{ position: "absolute", top: d.alto ?? 330, left: 0, right: 0, display: "flex", justifyContent: "center" }}
       >
         <div
           style={{
             backgroundColor: brand.white,
             borderRadius: 44,
             padding: "36px 52px 44px",
-            rotate: "-3deg",
             boxShadow: "0 18px 40px rgba(46, 46, 45, 0.28)",
             display: "flex",
             flexDirection: "column",
             alignItems: "flex-start",
-            gap: 8,
+            gap: 10,
           }}
         >
-          {[uno, dos, tres].map((linea, k) =>
-            k === (d.acento ?? 1) ? (
-              <div key={k} style={{ display: "flex", alignItems: "center", gap: 18 }}>
-                <span
-                  style={{
-                    ...estiloTexto(Math.min(t(linea, 160, 600), base * 1.15)),
-                    color: brand.white,
-                    backgroundColor: paleta.verdeWays,
-                    borderRadius: 18,
-                    padding: "2px 28px 12px",
-                  }}
-                >
-                  {linea}
-                </span>
-                <Trazos tam={base} />
-              </div>
-            ) : (
-              <span key={k} style={{ ...estiloTexto(base), color: paleta.grafito }}>
-                {linea}
-              </span>
-            ),
-          )}
+          {lineas.map((l, k) => (
+            <div key={k} style={{ ...estiloTexto(tam), color: paleta.grafito, display: "flex", alignItems: "baseline" }}>
+              {l.split(/(\[[^\]]+\])/).filter(Boolean).map((trozo, n) =>
+                trozo.startsWith("[") ? (
+                  <span
+                    key={n}
+                    style={{
+                      display: "inline-block",
+                      color: brand.white,
+                      backgroundColor: paleta.verdeWays,
+                      borderRadius: 16,
+                      padding: "0px 22px 10px",
+                      margin: "0 2px",
+                      rotate: "-1.5deg",
+                    }}
+                  >
+                    {trozo.slice(1, -1)}
+                  </span>
+                ) : (
+                  <span key={n} style={{ whiteSpace: "pre" }}>{trozo}</span>
+                ),
+              )}
+            </div>
+          ))}
         </div>
       </Interactive.Div>
     </AbsoluteFill>
   );
-
 };
 
 const estiloTexto = (tam: number): React.CSSProperties => ({
@@ -100,15 +103,3 @@ const estiloTexto = (tam: number): React.CSSProperties => ({
 
 
 
-/** Tres trazos verdes de énfasis junto a la línea clave. */
-const Trazos: React.FC<{ tam: number }> = ({ tam }) => (
-  <svg width={tam * 0.9} height={tam * 0.9} viewBox="0 0 90 90" style={{ overflow: "visible" }}>
-    {[
-      [10, 22, 40, 4],
-      [14, 46, 54, 44],
-      [10, 70, 40, 88],
-    ].map(([x1, y1, x2, y2], i) => (
-      <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke={paleta.verdeWays} strokeWidth={10} strokeLinecap="round" />
-    ))}
-  </svg>
-);
