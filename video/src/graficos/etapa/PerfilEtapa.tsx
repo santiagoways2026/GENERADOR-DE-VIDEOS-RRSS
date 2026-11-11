@@ -73,25 +73,36 @@ export const PerfilEtapa: React.FC<Titular & { datos: DatosEtapa }> = ({ datos, 
 
         {/* Paradas: rótulo arriba, en la fila libre, y guía hasta el punto. */}
         {(() => {
+          // Primero se colocan los rótulos: fila libre y caja aproximada.
           let anterior = -Infinity;
           let fila = 1;
-          return datos.paradas.map((p, i) => {
+          const pos = datos.paradas.map((p, i) => {
             const k = p.km ?? 0;
-            const a = altEn(k);
             const px = x(k);
             fila = px - anterior < 260 ? 1 - fila : 0;
             anterior = px;
-            const ty = FILAS[fila];
-            const ancla = i === 0 ? "start" : i === datos.paradas.length - 1 ? "end" : "middle";
-            const tx = i === 0 ? px - 10 : i === datos.paradas.length - 1 ? px + 10 : px;
+            const ultimo = i === datos.paradas.length - 1;
+            const ancla: "start" | "end" | "middle" = i === 0 ? "start" : ultimo ? "end" : "middle";
+            const tx = i === 0 ? px - 10 : ultimo ? px + 10 : px;
+            const w = Math.max(p.nombre.length * 15, 150);
+            const izq = ancla === "start" ? tx : ancla === "end" ? tx - w : tx - w / 2;
+            return { p, k, px, ty: FILAS[fila], ancla, tx, izq, der: izq + w };
+          });
+          return pos.map(({ p, k, px, ty, ancla, tx }) => {
+            const a = altEn(k);
+            // La guía empieza bajo cualquier rótulo de más abajo que cruce.
+            const inicio = Math.max(
+              ty + 12,
+              ...pos.filter((o) => o.ty > ty && px > o.izq - 8 && px < o.der + 8).map((o) => o.ty + 12),
+            );
             return (
               <g key={p.nombre}>
-                <line x1={px} x2={px} y1={ty + 12} y2={Y1} stroke={brand.sendero} strokeWidth={2} strokeDasharray="4 6" />
+                <line x1={px} x2={px} y1={inicio} y2={Y1} stroke={brand.sendero} strokeWidth={2} strokeDasharray="4 6" />
                 <circle cx={px} cy={y(a)} r={10} fill={brand.sendero} stroke={brand.white} strokeWidth={4} />
-                <text x={tx} y={ty - 26} textAnchor={ancla} fontFamily="Montserrat" fontWeight={700} fontSize={24} fill={brand.grafito}>
+                <text x={tx} y={ty - 26} textAnchor={ancla} fontFamily="Montserrat" fontWeight={700} fontSize={24} fill={brand.grafito} stroke={brand.white} strokeWidth={8} paintOrder="stroke">
                   {p.nombre}
                 </text>
-                <text x={tx} y={ty} textAnchor={ancla} fontFamily="Montserrat" fontWeight={500} fontSize={20} fill={brand.gris}>
+                <text x={tx} y={ty} textAnchor={ancla} fontFamily="Montserrat" fontWeight={500} fontSize={20} fill={brand.gris} stroke={brand.white} strokeWidth={8} paintOrder="stroke">
                   {a} m · km {km(k)}
                 </text>
               </g>

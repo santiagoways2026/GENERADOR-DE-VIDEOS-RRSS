@@ -1,0 +1,73 @@
+{
+  "id": "olveiroa-cee",
+  "ancho": 1600,
+  "alto": 1000,
+  "provincia": "A Coruña",
+  "encuadre": [
+    -9.225,
+    -9.005,
+    42.91,
+    43.01
+  ],
+  "municipios": [
+    "Dumbría",
+    "Cee",
+    "Corcubión",
+    "Fisterra",
+    "Mazaricos",
+    "Vimianzo",
+    "Muxía",
+    "Carnota",
+    "Zas"
+  ],
+  "relacion": 385098,
+  "puntos": [
+    [
+      -9.03965,
+      42.96685
+    ],
+    [
+      -9.18901,
+      42.95484
+    ]
+  ],
+  "paradas": [
+    [
+      "Olveiroa",
+      -9.03965,
+      42.96685
+    ],
+    [
+      "O Logoso",
+      -9.06723,
+      42.9736
+    ],
+    [
+      "Hospital",
+      -9.07659,
+      42.98407
+    ],
+    [
+      "Marco do Couto",
+      -9.11822,
+      42.98637
+    ],
+    [
+      "Ermida das Neves",
+      -9.12697,
+      42.97978
+    ],
+    [
+      "San Pedro Mártir",
+      -9.16411,
+      42.98083
+    ],
+    [
+      "Cee",
+      -9.18901,
+      42.95484
+    ]
+  ],
+  "capas": true,
+  "perfil": true
+}

@@ -1,5 +1,6 @@
 import { Still } from "remotion";
 import baionaVigo from "../../datos/etapa-baiona-vigo.json";
+import olveiroaCee from "../../datos/etapa-olveiroa-cee.json";
 import vigoRedondela from "../../datos/etapa-vigo-redondela.json";
 import { MapaEtapa } from "./MapaEtapa";
 import { ALTO_PERFIL, ANCHO_PERFIL, PerfilEtapa } from "./PerfilEtapa";
@@ -20,6 +21,13 @@ const LOC_BAIONA_VIGO: Localidad[] = [
   { nombre: "Canido", hay: [0, 1, 1, 1, 1, 1, 0] },
   { nombre: "Paseo do Lagares", hay: [0, 1, 1, 0, 1, 1, 0] },
   { nombre: "Vigo", hay: [1, 1, 1, 1, 1, 1, 1] },
+];
+
+const LOC_OLVEIROA_CEE: Localidad[] = [
+  { nombre: "Olveiroa", hay: [1, 1, 1, 1, 1, 1, 1] },
+  { nombre: "O Logoso", hay: [0, 1, 0, 0, 1, 1, 0] },
+  { nombre: "Hospital", hay: [0, 1, 0, 0, 0, 0, 0] },
+  { nombre: "Cee", hay: [1, 1, 1, 1, 1, 1, 1] },
 ];
 
 const LOC_VIGO_REDONDELA: Localidad[] = [
@@ -126,6 +134,62 @@ export const StillsEtapas: React.FC = () => (
         antetitulo: "Perfil de la etapa",
         titular: "Subes, llaneas y",
         destacado: "bajas",
+      }}
+    />
+
+    <Still
+      id="MapaOlveiroaCee"
+      component={MapaEtapa}
+      width={olveiroaCee.ancho}
+      height={olveiroaCee.alto}
+      defaultProps={{
+        datos: olveiroaCee,
+        antetitulo: "Camino a Fisterra",
+        titular: "De Olveiroa a",
+        destacado: "Cee",
+        entradilla: "El recorrido y los lugares por los que pasa la etapa, del monte hasta el mar.",
+        rotulos: {
+          "O Logoso": { dx: -26, dy: 12, ancla: "end" },
+          Hospital: { dx: 0, dy: -30, ancla: "middle" },
+          "Marco do Couto": { dx: 0, dy: -30, ancla: "middle" },
+          "Ermida das Neves": { dx: 0, dy: 58, ancla: "middle" },
+          "San Pedro Mártir": { dx: 0, dy: -30, ancla: "middle" },
+        },
+        ladoSalida: "der",
+        ladoLlegada: "izq",
+        aguas: [{ x: 150, y: 790, texto: "RÍA DE CORCUBIÓN", giro: -62 }],
+        caja: { left: 480, bottom: 72 },
+        norte: { x: 1490, y: 150 },
+        rotulosRios: {
+          "Rego de Fumes do Cal": null,
+          "Rego de Vilarcovo": null,
+          "Río de Buxantes das Pozas": null,
+        },
+        lugares: [],
+      }}
+    />
+    <Still
+      id="ServiciosOlveiroaCee"
+      component={ServiciosEtapa}
+      width={1600}
+      height={altoServicios(LOC_OLVEIROA_CEE.length)}
+      defaultProps={{
+        antetitulo: "Etapa de Olveiroa a Cee",
+        titular: "Qué encontrarás en",
+        destacado: "cada parada",
+        localidades: LOC_OLVEIROA_CEE,
+      }}
+    />
+    <Still
+      id="PerfilOlveiroaCee"
+      component={PerfilEtapa}
+      width={ANCHO_PERFIL}
+      height={ALTO_PERFIL}
+      defaultProps={{
+        datos: olveiroaCee,
+        antetitulo: "Perfil de la etapa",
+        titular: "Del monte",
+        destacado: "al mar",
       }}
     />
   </>

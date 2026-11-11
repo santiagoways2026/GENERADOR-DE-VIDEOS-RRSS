@@ -36,8 +36,8 @@ def get(url):
         return json.load(r)
 
 
-def municipio(nombre):
-    q = urllib.parse.quote(f"{nombre}, Pontevedra, Galicia")
+def municipio(nombre, provincia="Pontevedra"):
+    q = urllib.parse.quote(f"{nombre}, {provincia}, Galicia")
     d = get(f"https://nominatim.openstreetmap.org/search?q={q}&format=geojson"
             "&polygon_geojson=1&polygon_threshold=0.0003&limit=1&featureType=settlement")
     time.sleep(1.1)
@@ -136,7 +136,7 @@ def main(ruta_cfg):
     def anillo(r):
         return "M" + "L".join(f"{x},{y}" for x, y in (p(*c) for c in r)) + "Z"
 
-    tierra = [" ".join(anillo(r) for poly in municipio(m) for r in poly) for m in cfg["municipios"]]
+    tierra = [" ".join(anillo(r) for poly in municipio(m, cfg.get("provincia", "Pontevedra")) for r in poly) for m in cfg["municipios"]]
 
     def dist(a, b):
         dx = (b[0] - a[0]) * math.cos(math.radians(a[1])) * 111.32
