@@ -1831,10 +1831,11 @@
    },
    {
     "tipo": "broll",
-    "src": "dji/DJI_20260929073931_0046_D.mp4",
+    "src": "cesar/v113.mp4",
     "dur": 2.0,
     "encuadre": "50% 50%",
-    "en": 3.0
+    "en": 3.0,
+    "desde": 0.5
    },
    {
     "tipo": "broll",

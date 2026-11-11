@@ -98,8 +98,8 @@
    {
     "en": 2.36,
     "dur": 1.6,
-    "src": "dji/DJI_20260929073931_0046_D.mp4",
-    "desde": 1.0
+    "src": "cesar/v113.mp4",
+    "desde": 0.5
    },
    {
     "en": 6.12,
@@ -122,13 +122,13 @@
    {
     "en": 19.04,
     "dur": 2.5,
-    "src": "dji/DJI_20260929071346_0021_D.mp4",
-    "desde": 2.0
+    "src": "cesar/v115.mp4",
+    "desde": 0.5
    },
    {
     "en": 27.62,
     "dur": 3.57,
-    "src": "dji/DJI_20260929072030_0030_D.mp4",
+    "src": "cesar/v116.mp4",
     "desde": 0.5
    }
   ],
@@ -704,20 +704,20 @@
    {
     "en": 3.92,
     "dur": 2.38,
-    "src": "dji/DJI_20260929110228_0069_D.mp4",
-    "desde": 3.0
+    "src": "cesar/v75.mp4",
+    "desde": 0.5
    },
    {
     "en": 8.88,
     "dur": 4.4,
-    "src": "dji/DJI_20260929110126_0068_D.mp4",
+    "src": "cesar/v78.mp4",
     "desde": 0.5
    },
    {
     "en": 13.28,
     "dur": 3.2,
-    "src": "dji/DJI_20260929110407_0070_D.mp4",
-    "desde": 2.0
+    "src": "cesar/v79.mp4",
+    "desde": 0.5
    },
    {
     "en": 20.98,
@@ -1218,20 +1218,20 @@
    {
     "en": 3.5,
     "dur": 3.82,
-    "src": "dji/DJI_20260929074037_0047_D.mp4",
-    "desde": 1.0
+    "src": "cesar/v113.mp4",
+    "desde": 0.5
    },
    {
     "en": 10.64,
     "dur": 4.86,
-    "src": "dji/DJI_20260929074051_0048_D.mp4",
-    "desde": 1.0
+    "src": "cesar/v115.mp4",
+    "desde": 0.5
    },
    {
     "en": 18.84,
     "dur": 5.7,
-    "src": "dji/DJI_20260929090338_0051_D.mp4",
-    "desde": 1.0
+    "src": "cesar/v82.mp4",
+    "desde": 0.5
    }
   ],
   "palabras": [
@@ -1701,8 +1701,8 @@
    {
     "en": 2.34,
     "dur": 4.32,
-    "src": "dji/DJI_20260929072925_0036_D.mp4",
-    "desde": 3.0
+    "src": "cesar/v113.mp4",
+    "desde": 0.5
    },
    {
     "en": 9.46,
@@ -1713,14 +1713,14 @@
    {
     "en": 17.48,
     "dur": 3.12,
-    "src": "dji/DJI_20260929073713_0044_D.mp4",
-    "desde": 3.0
+    "src": "cesar/v115.mp4",
+    "desde": 0.5
    },
    {
     "en": 24.7,
     "dur": 3.7,
-    "src": "dji/DJI_20260929070236_0016_D.mp4",
-    "desde": 5.0
+    "src": "cesar/v116.mp4",
+    "desde": 0.5
    }
   ],
   "palabras": [
@@ -2771,8 +2771,8 @@
    {
     "en": 18.0,
     "dur": 2.78,
-    "src": "dji/DJI_20260929072047_0031_D.mp4",
-    "desde": 3.0
+    "src": "cesar/v113.mp4",
+    "desde": 0.5
    },
    {
     "en": 26.48,
@@ -3845,20 +3845,20 @@
    {
     "en": 3.45,
     "dur": 4.2,
-    "src": "dji/DJI_20260929110228_0069_D.mp4",
-    "desde": 3.0
+    "src": "cesar/v75.mp4",
+    "desde": 0.5
    },
    {
     "en": 7.65,
     "dur": 2.75,
-    "src": "dji/DJI_20260929110126_0068_D.mp4",
+    "src": "cesar/v78.mp4",
     "desde": 0.5
    },
    {
     "en": 10.4,
     "dur": 3.45,
-    "src": "dji/DJI_20260929110407_0070_D.mp4",
-    "desde": 2.0
+    "src": "cesar/v79.mp4",
+    "desde": 0.5
    },
    {
     "en": 17.6,
@@ -4364,8 +4364,8 @@
    {
     "en": 3.67,
     "dur": 1.78,
-    "src": "dji/DJI_20260929073931_0046_D.mp4",
-    "desde": 1.0
+    "src": "cesar/v113.mp4",
+    "desde": 0.5
    },
    {
     "en": 5.45,
@@ -4388,7 +4388,7 @@
    {
     "en": 24.22,
     "dur": 2.76,
-    "src": "dji/DJI_20260929072030_0030_D.mp4",
+    "src": "cesar/v115.mp4",
     "desde": 0.5
    }
   ],
@@ -4972,8 +4972,8 @@
    {
     "en": 18.21,
     "dur": 4.73,
-    "src": "dji/DJI_20260929073931_0046_D.mp4",
-    "desde": 1.0
+    "src": "cesar/v113.mp4",
+    "desde": 0.5
    }
   ],
   "palabras": [
