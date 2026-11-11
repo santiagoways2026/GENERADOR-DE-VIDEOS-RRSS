@@ -28,6 +28,10 @@ export type PropsMapa = Titular & {
   /** Esquina de la caja del titular. */
   caja: React.CSSProperties;
   norte: { x: number; y: number };
+  /** Ríos que no se rotulan (fuera de cuadro o sin interés) y rótulos movidos a mano. */
+  rotulosRios?: Record<string, { x: number; y: number; giro?: number } | null>;
+  /** Rótulos de lugares de referencia, en gris. */
+  lugares?: { x: number; y: number; texto: string }[];
 };
 
 type Lado = "izq" | "der" | "abajo";
@@ -102,6 +106,8 @@ export const MapaEtapa: React.FC<PropsMapa> = ({
   aguas,
   caja,
   norte,
+  rotulosRios = {},
+  lugares = [],
 }) => {
   const { ancho: W, alto: H } = datos;
   const ruta = "M" + datos.ruta.map(([x, y]) => `${x},${y}`).join("L");
@@ -118,6 +124,78 @@ export const MapaEtapa: React.FC<PropsMapa> = ({
             <path key={i} d={d} />
           ))}
         </g>
+
+        {/* Agua dulce: embalses y ríos en el mismo niebla que el mar. */}
+        <g fill={brand.niebla}>
+          {(datos.agua ?? []).map((d, i) => (
+            <path key={i} d={d} />
+          ))}
+        </g>
+        {/* Ríos como cauce: borde gris fino y agua niebla, para que no se
+            confundan con las carreteras, que van en una sola línea gris. */}
+        <g fill="none" stroke={brand.gris} strokeLinecap="round" strokeLinejoin="round">
+          {(datos.rios ?? []).map((r, i) => (
+            <path key={i} d={r.d} strokeWidth={r.principal ? 13 : 6} />
+          ))}
+        </g>
+        <g fill="none" stroke={brand.niebla} strokeLinecap="round" strokeLinejoin="round">
+          {(datos.rios ?? []).map((r, i) => (
+            <path key={i} d={r.d} strokeWidth={r.principal ? 10 : 3.5} />
+          ))}
+        </g>
+
+        {/* Referencias: autopistas y tren, finos y en gris para no competir con la ruta. */}
+        <g fill="none" stroke={brand.gris} strokeLinecap="round" strokeLinejoin="round">
+          {(datos.autopistas ?? []).map((a, i) => (
+            <path key={i} d={a.d} strokeWidth={a.puente ? 4 : 2.5} />
+          ))}
+          {(datos.tren ?? []).map((d, i) => (
+            <path key={i} d={d} strokeWidth={1.6} strokeDasharray="6 5" />
+          ))}
+        </g>
+
+        {(datos.rotulosRios ?? []).map((r) => {
+          const ajuste = rotulosRios[r.nombre];
+          if (ajuste === null) return null;
+          const { x, y, giro } = { ...r, ...ajuste };
+          return (
+            <text
+              key={r.nombre}
+              x={x}
+              y={y}
+              textAnchor="middle"
+              dominantBaseline="central"
+              fontFamily="Montserrat"
+              fontWeight={600}
+              fontSize={19}
+              fill={brand.gris}
+              stroke={brand.white}
+              strokeWidth={6}
+              paintOrder="stroke"
+              transform={`rotate(${giro ?? 0} ${x} ${y})`}
+            >
+              {r.nombre}
+            </text>
+          );
+        })}
+
+        {lugares.map((l) => (
+          <text
+            key={l.texto}
+            x={l.x}
+            y={l.y}
+            textAnchor="middle"
+            fontFamily="Montserrat"
+            fontWeight={600}
+            fontSize={22}
+            fill={brand.gris}
+            stroke={brand.white}
+            strokeWidth={6}
+            paintOrder="stroke"
+          >
+            {l.texto}
+          </text>
+        ))}
 
         {aguas.map((a) => (
           <text
@@ -181,7 +259,18 @@ export const MapaEtapa: React.FC<PropsMapa> = ({
       </div>
 
       {/* Atribución obligatoria de la licencia ODbL de OpenStreetMap. */}
-      <div style={{ position: "absolute", left: 72, bottom: 40, fontSize: 16, color: brand.gris }}>
+      <div
+        style={{
+          position: "absolute",
+          left: 64,
+          bottom: 34,
+          fontSize: 16,
+          color: brand.gris,
+          backgroundColor: brand.white,
+          padding: "4px 8px",
+          borderRadius: radius.md,
+        }}
+      >
         Mapa: © colaboradores de OpenStreetMap
       </div>
 

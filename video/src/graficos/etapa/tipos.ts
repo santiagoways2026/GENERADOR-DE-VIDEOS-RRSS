@@ -10,6 +10,12 @@ export type DatosEtapa = {
   tierra: string[];
   ruta: number[][];
   paradas: { nombre: string; x: number; y: number; km?: number }[];
+  /** Capas de OpenStreetMap, si la configuración pidió `capas`. */
+  rios?: { d: string; principal: boolean }[];
+  autopistas?: { d: string; puente: boolean; nombre: string }[];
+  tren?: string[];
+  agua?: string[];
+  rotulosRios?: { nombre: string; x: number; y: number; giro: number }[];
   /** [km, metros] cada ~100 m, si se pidió. */
   perfil?: number[][];
 };

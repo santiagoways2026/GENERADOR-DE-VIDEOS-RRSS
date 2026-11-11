@@ -11,3 +11,4 @@ __pycache__/
 
 # La salida del render no se versiona.
 salida/
+herramientas/scripts/etapas/.cache/

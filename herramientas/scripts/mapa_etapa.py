@@ -14,6 +14,10 @@ escribe `video/src/datos/etapa-<id>.json` con:
   `enlace` añade delante un tramo a pie desde un punto (el centro de la
   ciudad) hasta el inicio del trazado oficial.
 - `paradas`: cada parada colocada sobre la ruta, con su km.
+- `rios`, `autopistas`, `tren`, `agua`: si la configuración pide `capas`, los
+  ríos, autopistas y autovías, vías de tren y embalses de OpenStreetMap,
+  descargados por cuadrículas de la API principal (Overpass no es accesible
+  desde la nube) y guardados en `herramientas/scripts/etapas/.cache/`.
 - `perfil`: altitud cada ~100 m (EU-DEM 25 m, vía OpenTopoData), si se pide.
 
 Todo en píxeles del lienzo `ancho` x `alto`. Los datos de OpenStreetMap
@@ -72,6 +76,51 @@ def trazado_oficial(relacion, desde, hasta, dist):
     return [list(nodos[n]) for n in reversed(camino)]
 
 
+INTERES = {"waterway": {"river", "stream", "canal"},
+           "highway": {"motorway", "trunk"},
+           "railway": {"rail"}, "natural": {"water"}}
+
+
+def capas_osm(id_, lon0, lon1, lat0, lat1):
+    """Vías de interés del encuadre, por cuadrículas de 0,025° con caché."""
+    import urllib.error
+    cache = Path(__file__).parent / "etapas" / ".cache" / f"osm-{id_}.json"
+    if cache.exists():
+        return json.load(open(cache))
+    keep = {}
+
+    def bajar(a, b, c, d, nivel=0):
+        url = f"https://api.openstreetmap.org/api/0.6/map.json?bbox={a},{c},{b},{d}"
+        try:
+            els = get(url)["elements"]
+        except urllib.error.HTTPError as e:
+            if e.code == 400 and nivel < 3:  # demasiados nodos: se parte en cuatro
+                m, n = (a + b) / 2, (c + d) / 2
+                for q in [(a, m, c, n), (m, b, c, n), (a, m, n, d), (m, b, n, d)]:
+                    bajar(*q, nivel + 1)
+                return
+            raise
+        nodos = {e["id"]: (e["lon"], e["lat"]) for e in els if e["type"] == "node"}
+        for e in els:
+            t = e.get("tags", {})
+            if e["type"] == "way" and any(t.get(k) in v for k, v in INTERES.items()):
+                co = [nodos[n] for n in e["nodes"] if n in nodos]
+                if len(co) > len(keep.get(str(e["id"]), {}).get("co", [])):
+                    keep[str(e["id"])] = {"tags": t, "co": co}
+        time.sleep(1)
+
+    paso, x = 0.025, lon0
+    while x < lon1 - 1e-9:
+        y = lat0
+        while y < lat1 - 1e-9:
+            bajar(round(x, 4), round(min(x + paso, lon1), 4), round(y, 4), round(min(y + paso, lat1), 4))
+            y += paso
+        x += paso
+    cache.parent.mkdir(exist_ok=True)
+    json.dump(keep, open(cache, "w"))
+    return keep
+
+
 def main(ruta_cfg):
     cfg = json.load(open(ruta_cfg))
     W, H = cfg["ancho"], cfg["alto"]
@@ -127,6 +176,61 @@ def main(ruta_cfg):
 
     salida = {"ancho": W, "alto": H, "km": round(total, 1), "tierra": tierra,
               "ruta": [list(x) for x in pts], "paradas": paradas}
+
+    if cfg.get("capas"):
+        # El encuadre visible real, que es más ancho que el pedido si el lienzo lo es.
+        vlon = W / 2 / (k * esc); vlat = H / 2 / esc
+        vias = capas_osm(cfg["id"], clon - vlon, clon + vlon, clat - vlat, clat + vlat)
+
+        def linea(co):
+            q = [p(*c) for c in co]
+            sim = [q[0]]
+            for r in q[1:]:
+                if math.dist(r, sim[-1]) >= 1.5:
+                    sim.append(r)
+            if len(q) > 1 and sim[-1] != q[-1]:
+                sim.append(q[-1])
+            return sim
+
+        def d(sim, cerrar=False):
+            return "M" + "L".join(f"{x},{y}" for x, y in sim) + ("Z" if cerrar else "")
+
+        rios, autopistas, tren, agua = [], [], [], []
+        etiquetas = {}
+        for v in vias.values():
+            t, sim = v["tags"], linea(v["co"])
+            if len(sim) < 2 or t.get("tunnel") in ("yes", "culvert") or t.get("layer", "0").startswith("-"):
+                continue
+            if t.get("waterway"):
+                nombre = t.get("name")
+                principal = t["waterway"] in ("river", "canal") or nombre in cfg.get("rios_extra", [])
+                if not principal and not nombre:
+                    continue
+                rios.append({"d": d(sim), "principal": principal})
+                # Rótulo en el tramo visible más largo de cada río con nombre.
+                dentro = [r for r in sim if 40 < r[0] < W - 40 and 40 < r[1] < H - 40]
+                if principal and nombre and len(dentro) > len(etiquetas.get(nombre, [])):
+                    etiquetas[nombre] = dentro
+            elif t.get("highway") in ("motorway", "trunk"):
+                autopistas.append({"d": d(sim), "puente": t.get("bridge") == "yes", "nombre": t.get("name", "")})
+            elif t.get("railway") == "rail":
+                if t.get("service") or t.get("usage") == "industrial":
+                    continue
+                tren.append(d(sim))
+            elif t.get("natural") == "water" and v["co"][0] == v["co"][-1]:
+                agua.append(d(sim, True))
+
+        rotulos = []
+        for nombre, pts_ in etiquetas.items():
+            if len(pts_) < 6:
+                continue
+            m = len(pts_) // 2
+            a, b = pts_[max(0, m - 3)], pts_[min(len(pts_) - 1, m + 3)]
+            giro = math.degrees(math.atan2(b[1] - a[1], b[0] - a[0]))
+            if giro > 90: giro -= 180
+            if giro < -90: giro += 180
+            rotulos.append({"nombre": nombre, "x": pts_[m][0], "y": pts_[m][1], "giro": round(giro)})
+        salida.update(rios=rios, autopistas=autopistas, tren=tren, agua=agua, rotulosRios=rotulos)
 
     if cfg.get("perfil"):
         n = max(20, int(total * 10))

@@ -92,6 +92,16 @@ export const StillsEtapas: React.FC = () => (
         aguas: [{ x: 640, y: 250, texto: "RÍA DE VIGO", giro: -18 }],
         caja: { right: 72, bottom: 150 },
         norte: { x: 1490, y: 150 },
+        rotulosRios: {
+          "Rego do Inferno": null,
+          "Río Louro": null,
+          "Río Maceiras": { x: 1040, y: 420, giro: -78 },
+          "Río Pexegueiro": { x: 1180, y: 130, giro: -62 },
+        },
+        lugares: [
+          { x: 800, y: 150, texto: "Puente de Rande" },
+          { x: 120, y: 190, texto: "Moaña" },
+        ],
       }}
     />
     <Still

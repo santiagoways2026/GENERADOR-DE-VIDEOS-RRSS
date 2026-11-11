@@ -158,7 +158,8 @@ Mapa, tabla de servicios y perfil de cada etapa, en `video/src/graficos/etapa/`.
 1. Configuración en `herramientas/scripts/etapas/<id>.json`: encuadre,
    municipios para pintar la costa, puntos y paradas. Con `relacion` se usa
    el trazado oficial del Camino en OpenStreetMap; con `enlace`, un tramo a pie
-   desde el centro hasta donde empieza.
+   desde el centro hasta donde empieza; con `capas`, ríos, autopistas y tren
+   (la descarga tarda unos minutos y se guarda en `etapas/.cache/`).
 2. `/usr/bin/python3 herramientas/scripts/mapa_etapa.py herramientas/scripts/etapas/<id>.json`
    escribe `video/src/datos/etapa-<id>.json` (costa, ruta, paradas y perfil).
 3. Textos y servicios de cada etapa en `etapas.tsx`.
