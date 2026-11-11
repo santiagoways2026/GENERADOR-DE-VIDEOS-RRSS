@@ -1,6 +1,5 @@
-import { Interactive, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
+import { Easing, Interactive, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import { brand, easeOut, weight } from "../brand/theme";
-import { Easing } from "remotion";
 
 export type Palabra = {
   /** Texto de la palabra, tal cual se dice. */
@@ -11,14 +10,14 @@ export type Palabra = {
 };
 
 /**
- * Subtitulos de marca para piezas verticales.
+ * Subtitulos de los reels de la marca, calcados de las piezas publicadas.
  *
- * Se agrupan en frases cortas de pocas palabras, porque en movil se leen de
- * un vistazo. El texto es blanco con sombra tintada hacia bosque, nunca
- * negra. La palabra que se esta diciendo se marca con un fondo lima y texto
- * bosque, la unica combinacion permitida sobre lima.
+ * Frases cortas de dos o tres palabras, en caja normal (no en mayusculas),
+ * Montserrat en peso 800, blanco con una sombra suave. La palabra que se
+ * esta diciendo se marca con una placa olivo y texto blanco.
  *
- * Cada frase entra con un fade corto y un desplazamiento minimo, sin rebote.
+ * Ninguna frase cruza un corte de montaje: al cambiar de toma cambia
+ * tambien la frase.
  */
 export const Subtitulos: React.FC<{
   palabras: Palabra[];
@@ -29,12 +28,12 @@ export const Subtitulos: React.FC<{
   tamano?: number;
   /** Tiempos de los cortes de montaje: ninguna frase cruza uno. */
   cortes?: number[];
-}> = ({ palabras, porFrase = 4, top = 1240, tamano = 64, cortes = [] }) => {
+}> = ({ palabras, porFrase = 3, top = 1290, tamano = 66, cortes = [] }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
 
-  // Frases: se cortan por numero de palabras, por pausa o por puntuacion.
+  // Frases: se cortan por numero de palabras, por pausa, por puntuacion o por corte.
   const frases: Palabra[][] = [];
   let actual: Palabra[] = [];
   palabras.forEach((p, i) => {
@@ -55,11 +54,13 @@ export const Subtitulos: React.FC<{
   });
   if (actual.length) frases.push(actual);
 
-  const frase = frases.find(
-    (f, i) => t >= f[0].s - 0.05 && t < Math.max(f[f.length - 1].e + 0.25, frases[i + 1] ? Math.min(frases[i + 1][0].s - 0.05, f[f.length - 1].e + 0.6) : f[f.length - 1].e + 0.6),
-  );
-  if (!frase) return null;
-
+  const indice = frases.findIndex((f, i) => {
+    const fin = f[f.length - 1].e;
+    const siguiente = frases[i + 1]?.[0].s ?? Infinity;
+    return t >= f[0].s - 0.05 && t < Math.min(fin + 0.5, siguiente - 0.05);
+  });
+  if (indice === -1) return null;
+  const frase = frases[indice];
   const entrada = Math.round((frase[0].s - 0.05) * fps);
 
   return (
@@ -73,12 +74,13 @@ export const Subtitulos: React.FC<{
         display: "flex",
         flexWrap: "wrap",
         justifyContent: "center",
-        gap: "6px 14px",
-        opacity: interpolate(frame, [entrada, entrada + 5], [0, 1], {
+        alignItems: "center",
+        gap: "4px 10px",
+        opacity: interpolate(frame, [entrada, entrada + 4], [0, 1], {
           extrapolateLeft: "clamp",
           extrapolateRight: "clamp",
         }),
-        translate: interpolate(frame, [entrada, entrada + 7], ["0px 12px", "0px 0px"], {
+        translate: interpolate(frame, [entrada, entrada + 6], ["0px 10px", "0px 0px"], {
           extrapolateLeft: "clamp",
           extrapolateRight: "clamp",
           easing: Easing.bezier(...easeOut),
@@ -92,17 +94,16 @@ export const Subtitulos: React.FC<{
             key={`${p.s}-${i}`}
             style={{
               fontSize: tamano,
-              lineHeight: 1.15,
-              fontWeight: weight.black,
-              textTransform: "uppercase",
-              letterSpacing: "0.01em",
-              color: activa ? brand.forest : brand.white,
-              backgroundColor: activa ? brand.lime : "transparent",
-              borderRadius: 6,
-              padding: "2px 12px 6px",
+              lineHeight: 1.2,
+              fontWeight: weight.extrabold,
+              letterSpacing: "-0.01em",
+              color: brand.white,
+              backgroundColor: activa ? brand.green : "transparent",
+              borderRadius: 8,
+              padding: "0px 12px 4px",
               textShadow: activa
                 ? "none"
-                : "0 3px 14px rgba(14, 44, 31, 0.75), 0 1px 3px rgba(14, 44, 31, 0.9)",
+                : "0 2px 10px rgba(14, 44, 31, 0.55), 0 1px 2px rgba(14, 44, 31, 0.6)",
             }}
           >
             {p.w.trim().replace(/[.,]$/, "")}

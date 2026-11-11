@@ -8,16 +8,20 @@ import { Logo } from "../componentes/Logo";
  * El degradado va entre dos verdes de la paleta, no entre colores ajenos:
  * el manual descarta los gradientes que no salen de la marca.
  */
-export const Cierre: React.FC<{ duracion: number; ancho?: number }> = ({
-  duracion,
-  ancho = 620,
-}) => {
+export const Cierre: React.FC<{
+  duracion: number;
+  ancho?: number;
+  /** Olivo liso, como el cierre de los reels publicados. */
+  plano?: boolean;
+}> = ({ duracion, ancho = 620, plano = false }) => {
   const frame = useCurrentFrame();
 
   return (
     <AbsoluteFill
       style={{
-        background: `linear-gradient(${interpolate(frame, [0, duracion], [150, 178], {
+        background: plano
+          ? brand.green
+          : `linear-gradient(${interpolate(frame, [0, duracion], [150, 178], {
           extrapolateLeft: "clamp",
           extrapolateRight: "clamp",
         })}deg, ${brand.green} 0%, ${brand.greenDark} 46%, ${brand.forest} 100%)`,

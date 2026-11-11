@@ -23,3 +23,10 @@ python3 herramientas/scripts/montar_testimonio.py herramientas/scripts/planes/gr
 - `transcripcion.json`: faster-whisper `medium.en` con tiempos por palabra.
   Las palabras que entiende mal se corrigen en `correcciones` del plan
   ("Kamehameha" es Camino; "Waze", Ways).
+- `voz3.wav`: la misma voz con la entrevistadora fuera. Ella no lleva micro,
+  así que llega unos 15 dB más baja que ellos (-31 frente a -16 dB por
+  palabra). Se mantiene a nivel lo que dicen ellos y el resto se baja 12 dB
+  con transiciones de 60 ms. Así sus «mhm» de fondo desaparecen sin que el
+  ambiente de la plaza bombee.
+- Las preguntas no entran en ningún fragmento: las dos piezas empiezan por
+  «Hola, I'm Grace» y encadenan solo las respuestas.

@@ -1,6 +1,6 @@
 {
  "video": "../../../brutos-originales/grace-armando/vertical.mp4",
- "audio": "../../../brutos-originales/grace-armando/voz2.wav",
+ "audio": "../../../brutos-originales/grace-armando/voz3.wav",
  "transcripcion": "../../../brutos-originales/grace-armando/transcripcion.json",
  "desfase": 0.286,
  "escala": "scale=1080:1920:flags=lanczos",
@@ -16,12 +16,12 @@
  },
  "fragmentos": [
   [
-   95.96,
-   108.05
-  ],
-  [
    8.77,
    13.98
+  ],
+  [
+   23.53,
+   31.58
   ],
   [
    36.71,
@@ -30,6 +30,10 @@
   [
    173.72,
    183.29
+  ],
+  [
+   95.96,
+   108.05
   ],
   [
    263.0,

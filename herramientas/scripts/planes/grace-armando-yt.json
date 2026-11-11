@@ -1,6 +1,6 @@
 {
  "video": "../../../brutos-originales/grace-armando/master1080.mp4",
- "audio": "../../../brutos-originales/grace-armando/voz2.wav",
+ "audio": "../../../brutos-originales/grace-armando/voz3.wav",
  "transcripcion": "../../../brutos-originales/grace-armando/transcripcion.json",
  "desfase": 0,
  "escala": "scale=1920:1080",
@@ -15,10 +15,6 @@
   "dreis": "Reis"
  },
  "fragmentos": [
-  [
-   95.96,
-   108.05
-  ],
   [
    8.77,
    18.96
@@ -48,7 +44,7 @@
    206.15
   ],
   [
-   108.79,
+   95.96,
    127.05
   ],
   [

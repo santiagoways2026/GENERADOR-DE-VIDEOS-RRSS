@@ -1,29 +1,39 @@
-import { AbsoluteFill, Interactive, OffthreadVideo, Sequence, staticFile } from "remotion";
+import { AbsoluteFill, OffthreadVideo, Sequence, staticFile } from "remotion";
 import "./fuentes";
-import { brand, fontFamily, fps, margin } from "./brand/theme";
-import { Cartela } from "./componentes/Cartela";
-import { Logo } from "./componentes/Logo";
+import { brand, fontFamily, fps } from "./brand/theme";
+import { Gancho } from "./componentes/Gancho";
 import { Subtitulos } from "./componentes/Subtitulos";
+import { TarjetaDato } from "./componentes/TarjetaDato";
 import { Cierre } from "./escenas/Cierre";
 import datos from "./testimonios/grace-armando-reel.json";
 
 /**
- * Reel del testimonio de Grace y Armando, Camino Portugués desde Tui.
+ * Reel del testimonio de Grace y Armando, Camino Portugues desde Tui.
  *
- * Imagen de la cámara vertical y voz del horizontal, que tiene los micros de
- * solapa limpios; las dos cámaras se sincronizan midiendo el audio. El
- * metraje ya viene cortado, corregido de color y con la voz normalizada
- * desde `herramientas/scripts/montar_testimonio.py`.
+ * Sigue el lenguaje de los reels ya publicados de la marca: titular de
+ * arranque con la palabra clave en placa olivo, tarjetas de dato arriba,
+ * subtitulos en caja normal con la palabra activa en olivo y cierre en
+ * olivo liso. Sin logo encima del metraje: la marca va en el cierre.
  *
- * El titular vive arriba, sobre la fachada, y los subtítulos a la altura del
- * pecho: ninguno de los dos tapa una cara.
+ * Imagen de la camara vertical y voz del horizontal, que tiene los micros
+ * de solapa limpios; las dos camaras se sincronizan midiendo el audio. El
+ * metraje llega cortado, corregido de color y con la voz limpia desde
+ * `herramientas/scripts/montar_testimonio.py`.
  */
 
 const CIERRE = 3 * fps;
 const VIDEO = Math.round(datos.duracion * fps);
 export const DURACION_TESTIMONIO_REEL = VIDEO + CIERRE;
 
+const s2f = (s: number) => Math.round(s * fps);
+const corte = (i: number) => datos.cortes[i];
+const desde = (i: number, retardo = 0.4) => s2f(corte(i).desde + retardo);
+const largo = (i: number, retardo = 0.4) =>
+  s2f(corte(i).hasta) - s2f(corte(i).desde + retardo);
+
 export const TestimonioReel: React.FC = () => {
+  const gancho = Math.min(s2f(corte(0).hasta), s2f(4.6));
+
   return (
     <AbsoluteFill style={{ backgroundColor: brand.forest, fontFamily }}>
       <Sequence durationInFrames={VIDEO} name="Testimonio">
@@ -31,48 +41,36 @@ export const TestimonioReel: React.FC = () => {
           src={staticFile("testimonios/grace-armando-reel.mp4")}
           style={{ width: "100%", height: "100%", objectFit: "cover" }}
         />
+      </Sequence>
 
-        {/* Velo bosque arriba para que el logo blanco se lea sobre el cielo. */}
-        <AbsoluteFill
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(14,44,31,0.55) 0%, rgba(14,44,31,0.18) 26%, rgba(14,44,31,0) 40%)",
-          }}
+      {/* 1 · Hola, I'm Grace: el titular de arranque. */}
+      <Sequence durationInFrames={gancho} name="Gancho">
+        <Gancho lineas={["How was your"]} destacado="Camino?" duracion={gancho} />
+      </Sequence>
+
+      {/* 2 · La ruta. */}
+      <Sequence from={desde(1)} durationInFrames={largo(1)} name="Dato · ruta">
+        <TarjetaDato antetitulo="Portuguese Way" dato="From Tui to Santiago" />
+      </Sequence>
+
+      {/* 4 · El equipaje. */}
+      <Sequence from={desde(3)} durationInFrames={largo(3)} name="Dato · equipaje">
+        <TarjetaDato
+          antetitulo="Luggage transfer"
+          dato="Hotel to hotel, every stage"
+          variante="olivo"
         />
-        {/* Y abajo, para que los subtitulos no dependan del fondo. */}
-        <AbsoluteFill
-          style={{
-            background:
-              "linear-gradient(0deg, rgba(14,44,31,0.45) 0%, rgba(14,44,31,0.12) 34%, rgba(14,44,31,0) 48%)",
-          }}
-        />
+      </Sequence>
 
-        <Interactive.Div
-          name="Logo"
-          style={{ position: "absolute", top: 110, left: margin }}
-        >
-          <Logo variante="blanco" ancho={300} />
-        </Interactive.Div>
-
-        <Cartela
-          principal="How was your Camino?"
-          secundaria="Grace & Armando · from Tui"
-          desde={10}
-          top={210}
-          escala={0.86}
-        />
-
+      <Sequence durationInFrames={VIDEO} name="Subtítulos">
         <Subtitulos
           palabras={datos.palabras}
           cortes={datos.cortes.map((c) => c.desde)}
-          porFrase={3}
-          top={1250}
-          tamano={66}
         />
       </Sequence>
 
       <Sequence from={VIDEO} durationInFrames={CIERRE} name="Cierre">
-        <Cierre duracion={CIERRE} />
+        <Cierre duracion={CIERRE} plano />
       </Sequence>
     </AbsoluteFill>
   );

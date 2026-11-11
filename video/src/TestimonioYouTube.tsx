@@ -15,10 +15,12 @@ import datos from "./testimonios/grace-armando-yt.json";
 /**
  * Testimonio de Grace y Armando para YouTube, en ingles y sin subtitulos.
  *
- * Arranca en frio con su mejor frase, como pide el brief de YouTube: una
- * vivencia, sin saludo ni logo. Despues entra la cabecera de marca y el
- * resto de la entrevista. El metraje ya viene cortado, corregido de color y
- * con la voz limpia desde `herramientas/scripts/montar_testimonio.py`.
+ * Abre con la cabecera de marca y entra directo con su presentacion,
+ * "Hola, I'm Grace". Solo quedan sus respuestas, encadenadas como si fuera
+ * un unico relato: las preguntas de la entrevista se han quitado y los
+ * murmullos de fondo entre frases se bajan al preparar la voz. El metraje
+ * llega cortado, corregido de color y con la voz limpia desde
+ * `herramientas/scripts/montar_testimonio.py`.
  *
  * Es un plano fijo, asi que cada corte alterna entre el plano abierto y uno
  * algo mas cerrado: el salto se lee como un cambio de plano y no como un
@@ -33,14 +35,11 @@ const INTRO = Math.round(2.6 * fps);
 const CIERRE = 4 * fps;
 const s2f = (s: number) => Math.round(s * fps);
 const cortes = datos.cortes;
-/** El arranque en frio es el primer fragmento. */
-const FRIO = s2f(cortes[0].hasta);
-const RESTO = s2f(datos.duracion) - FRIO;
-export const DURACION_TESTIMONIO_YT = FRIO + INTRO + RESTO + CIERRE;
+const VIDEO = s2f(datos.duracion);
+export const DURACION_TESTIMONIO_YT = INTRO + VIDEO + CIERRE;
 
 /** Fotograma de la pieza en el que empieza el fragmento i. */
-const inicio = (i: number) =>
-  i === 0 ? 0 : s2f(cortes[i].desde) + INTRO;
+const inicio = (i: number) => s2f(cortes[i].desde) + INTRO;
 const largo = (i: number) => s2f(cortes[i].hasta) - s2f(cortes[i].desde);
 
 /** El metraje, con el plano cerrado en los cortes impares. */
@@ -86,20 +85,16 @@ const Rotulo: React.FC<{
 export const TestimonioYouTube: React.FC = () => {
   return (
     <AbsoluteFill style={{ backgroundColor: brand.forest, fontFamily }}>
-      <Sequence durationInFrames={FRIO} name="Arranque en frío">
+      <Sequence durationInFrames={INTRO} name="Cabecera">
+        <Intro duracion={INTRO} ancho={460} plano />
+      </Sequence>
+
+      <Sequence from={INTRO} durationInFrames={VIDEO} name="Entrevista">
         <Metraje desdeSegundo={0} />
       </Sequence>
 
-      <Sequence from={FRIO} durationInFrames={INTRO} name="Cabecera">
-        <Intro duracion={INTRO} ancho={460} />
-      </Sequence>
-
-      <Sequence from={FRIO + INTRO} durationInFrames={RESTO} name="Entrevista">
-        <Metraje desdeSegundo={cortes[0].hasta} />
-      </Sequence>
-
-      <Rotulo i={1} principal="Grace & Armando" secundaria="From Australia" />
-      <Rotulo i={2} principal="Portuguese Way" secundaria="From Tui to Santiago" />
+      <Rotulo i={0} principal="Grace & Armando" secundaria="From Australia" />
+      <Rotulo i={1} principal="Portuguese Way" secundaria="From Tui to Santiago" />
       <Rotulo
         i={cortes.length - 1}
         principal="Plan your Camino"
@@ -107,8 +102,8 @@ export const TestimonioYouTube: React.FC = () => {
         retardo={1.2}
       />
 
-      <Sequence from={FRIO + INTRO + RESTO} durationInFrames={CIERRE} name="Cierre">
-        <Cierre duracion={CIERRE} ancho={460} />
+      <Sequence from={INTRO + VIDEO} durationInFrames={CIERRE} name="Cierre">
+        <Cierre duracion={CIERRE} ancho={460} plano />
       </Sequence>
     </AbsoluteFill>
   );
