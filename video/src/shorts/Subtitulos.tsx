@@ -90,7 +90,7 @@ export const Subtitulos: React.FC<{
   trasTitular?: number;
   /** Segundos en que cambia la toma: la línea de subtítulos empieza de nuevo. */
   cortes?: number[];
-}> = ({ palabras, soloVerde = false, top = 1280, arriba, alto = 620, trasTitular = 0, cortes = [] }) => {
+}> = ({ palabras, soloVerde = false, top = 1200, arriba, alto = 620, trasTitular = 0, cortes = [] }) => {
   const frame = useCurrentFrame();
   const t = frame / fps;
   const paginas = paginar(tokens(palabras), cortes);

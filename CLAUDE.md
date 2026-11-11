@@ -105,12 +105,17 @@ La referencia es el short "How do you actually get the Compostela?"
 - Antes de entregar: revisar el vídeo entero en hoja de fotogramas y ser
   crítico (legibilidad en móvil, caras, un CTA, brandbook).
 
-## Zonas seguras de reels y shorts (1080x1920)
+## Zonas seguras de reels y shorts (1080x1920), plantilla TikTok/Instagram
 
-- Zona segura: x 60 a 1020, y 153 a 1452. Fuera de ella no va texto.
-- Botones de interacción: x 855 a 1020 desde y 853 hacia abajo.
-- Por debajo de y 853 el texto se centra en x 540 con 225 px a cada lado
-  (subtítulos: de 225 a 855), así queda centrado y libre de botones.
+A rajatabla, ningún texto ni gráfico fuera de la zona blanca:
+
+- Arriba: y 219 como mínimo. Lados: x 85 a 1018.
+- Desde y 1088 hacia abajo, nada pasa de x 885 (botones de la red).
+- Abajo: el texto no baja de y 1365 (entre x 498 y 885 se puede llegar a 1475).
+- Subtítulos: de x 225 a 855, con la línea en y 1200 (o arriba, en 620, si
+  tapan una cara). Gráficos: margen lateral 96 y arriba 230.
+- Al final de cada short, uno o dos segundos de plano después de la última
+  palabra, antes del cierre.
 
 ## Cómo se ven los textos
 

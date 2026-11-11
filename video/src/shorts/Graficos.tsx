@@ -13,8 +13,8 @@ import { brand, easeOut, fps, paleta } from "../brand/theme";
 const curva = Easing.bezier(...easeOut);
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 const SOMBRA = "0 8px 32px rgba(46, 46, 45, 0.12), 0 2px 6px rgba(46, 46, 45, 0.08)";
-const IZQ = 64;
-const ARRIBA = 200;
+const IZQ = 96; // zona segura: x 85 a 1018
+const ARRIBA = 230; // zona segura: y desde 219
 
 /** Entrada y salida estándar: 10 fotogramas, 24 px de recorrido. */
 const useEntrada = (dur: number, retraso = 0) => {
