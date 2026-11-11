@@ -38,6 +38,9 @@ export const ShortPaula: React.FC<{ id?: string }> = ({ id }) => {
   const datos = (id ? (equipo as unknown as Datos[]).find((x) => (x as unknown as { id: string }).id === id) : datosPaula) as Datos;
   const total = f(datos.duracion);
   const finVoz = f(datos.finVoz);
+  // El titular dura 3,4 s salvo que el short pida menos (si la primera frase
+  // se dice muy pronto, así entra con subtítulos).
+  const durTitular = (datos as { tituloDur?: number }).tituloDur ?? 3.4;
   return (
     <AbsoluteFill style={{ backgroundColor: paleta.verdeWays, fontFamily }}>
       {datos.planos.map((p, i) => (
@@ -63,8 +66,8 @@ export const ShortPaula: React.FC<{ id?: string }> = ({ id }) => {
         </Sequence>
       ))}
 
-      <Sequence durationInFrames={f(3.4)} name="Titular">
-        <Titular lineas={datos.titulo} dur={f(3.4)} top={(datos as { tituloTop?: number }).tituloTop} />
+      <Sequence durationInFrames={f(durTitular)} name="Titular">
+        <Titular lineas={datos.titulo} dur={f(durTitular)} top={(datos as { tituloTop?: number }).tituloTop} />
       </Sequence>
 
       {datos.cartelas.map((c, i) => (
@@ -78,7 +81,7 @@ export const ShortPaula: React.FC<{ id?: string }> = ({ id }) => {
       <Subtitulos
         palabras={datos.palabras}
         soloVerde
-        trasTitular={3.4}
+        trasTitular={durTitular}
         top={(datos as { subtitulosArriba?: unknown }).subtitulosArriba === true ? 620 : undefined}
         arriba={Array.isArray((datos as { subtitulosArriba?: unknown }).subtitulosArriba) ? ((datos as unknown as { subtitulosArriba: [number, number][] }).subtitulosArriba) : undefined}
       />

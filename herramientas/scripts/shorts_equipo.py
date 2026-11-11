@@ -105,6 +105,7 @@ SHORTS = {
         cartelas=[dict(frase=2, principal="Año Xacobeo", secundaria="2027"),
                   dict(frase=3, principal="El siguiente", secundaria="2032")]),
     "s9-credencial": dict(
+        titulo_dur=1.5,  # la primera frase va enseguida: titular corto para que lleve subtítulos
         titulo=["Sella tu", "credencial", "por el Camino"],
         musica="chill_Bossa_Antigua",
         # El sellado va sobre la primera frase; la Oficina del Peregrino se ve con ella delante.
@@ -223,7 +224,8 @@ def main():
                           planos=planos, recursos=recursos, palabras=palabras, cartelas=cartelas,
                           musica=dict(src=f"musica/{spec['musica']}.mp3", vol=0.0 if spec.get("sin_musica") else 0.04),
                           **({"subtitulosArriba": spec["subtitulos_arriba"]} if spec.get("subtitulos_arriba") else {}),
-                          **({"tituloTop": spec["titulo_top"]} if spec.get("titulo_top") else {})))
+                          **({"tituloTop": spec["titulo_top"]} if spec.get("titulo_top") else {}),
+                          **({"tituloDur": spec["titulo_dur"]} if spec.get("titulo_dur") else {})))
         print(sid, round(t, 1), " ".join(w["t"] for w in palabras)[:300])
     json.dump(datos, open(SALIDA, "w"), ensure_ascii=False, indent=1)
 

@@ -3779,7 +3779,8 @@
   "musica": {
    "src": "musica/chill_Bossa_Antigua.mp3",
    "vol": 0.04
-  }
+  },
+  "tituloDur": 1.5
  },
  {
   "id": "portomarin-toma",
