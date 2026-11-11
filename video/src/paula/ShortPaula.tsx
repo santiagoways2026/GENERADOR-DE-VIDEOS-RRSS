@@ -82,6 +82,7 @@ export const ShortPaula: React.FC<{ id?: string }> = ({ id }) => {
         palabras={datos.palabras}
         soloVerde
         trasTitular={durTitular}
+        cortes={datos.planos.map((q) => q.en)}
         top={(datos as { subtitulosArriba?: unknown }).subtitulosArriba === true ? 620 : undefined}
         arriba={Array.isArray((datos as { subtitulosArriba?: unknown }).subtitulosArriba) ? ((datos as unknown as { subtitulosArriba: [number, number][] }).subtitulosArriba) : undefined}
       />

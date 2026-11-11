@@ -46,7 +46,7 @@ function tokens(palabras: Palabra[]): Token[] {
   return out;
 }
 
-function paginar(ts: Token[]): Token[][] {
+function paginar(ts: Token[], cortes: number[] = []): Token[][] {
   const paginas: Token[][] = [];
   let actual: Token[] = [];
   const cerrar = () => {
@@ -60,6 +60,10 @@ function paginar(ts: Token[]): Token[][] {
       actual.length >= MAX_PALABRAS ||
       largo + limpiar(t.texto).length > MAX_CARACTERES ||
       (previa && t.en - previa.fin > 0.35) ||
+      // Cambio de toma entre las dos palabras.
+      (previa && cortes.some((c) => c > previa.en + 0.02 && c <= t.en + 0.02)) ||
+      // Frase nueva (empieza en mayúscula tras una pausa): nunca en la página de la anterior.
+      (previa && t.en - previa.fin > 0.12 && /^[¿¡]?[A-ZÁÉÍÓÚÑ]/.test(t.texto) && !/^\d/.test(t.texto)) ||
       t.logo ||
       actual.some((x) => x.logo)
     ) {
@@ -84,10 +88,12 @@ export const Subtitulos: React.FC<{
   alto?: number;
   /** Segundo en que se va el titular del principio: antes no hay subtítulos. */
   trasTitular?: number;
-}> = ({ palabras, soloVerde = false, top = 1280, arriba, alto = 620, trasTitular = 0 }) => {
+  /** Segundos en que cambia la toma: la línea de subtítulos empieza de nuevo. */
+  cortes?: number[];
+}> = ({ palabras, soloVerde = false, top = 1280, arriba, alto = 620, trasTitular = 0, cortes = [] }) => {
   const frame = useCurrentFrame();
   const t = frame / fps;
-  const paginas = paginar(tokens(palabras));
+  const paginas = paginar(tokens(palabras), cortes);
 
   const idx = paginas.findIndex((p, i) => {
     const sig = paginas[i + 1];

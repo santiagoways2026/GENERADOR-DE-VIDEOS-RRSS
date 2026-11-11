@@ -19,7 +19,7 @@ import portadas from "./portadas.json";
  * Todo lo que importa cae dentro del recorte 4:5 de la cuadrícula de
  * Instagram (y 285 a 1635).
  */
-type Datos = { id: string; lineas: string[]; encuadre?: string; alto?: number };
+type Datos = { id: string; lineas: string[]; encuadre?: string; alto?: number; acento?: number };
 
 
 export const PortadaShort: React.FC<{ id: string }> = ({ id }) => {
@@ -29,7 +29,7 @@ export const PortadaShort: React.FC<{ id: string }> = ({ id }) => {
   // Tarjeta blanca (noviembre de 2026): titular en grafito con la línea clave
   // en placa verde Ways y tres trazos de énfasis, sobre la foto a sangre.
   const t = (x: string, max: number, ancho = 760) => Math.min(max, Math.floor(ancho / (x.length * 0.6)));
-  const base = Math.min(t(uno, 150), t(tres, 150));
+  const base = Math.min(...[uno, dos, tres].filter((_, k) => k !== (d.acento ?? 1)).map((x) => t(x, 150)));
   return (
     <AbsoluteFill style={{ backgroundColor: brand.green, fontFamily }}>
       <Img
@@ -60,22 +60,28 @@ export const PortadaShort: React.FC<{ id: string }> = ({ id }) => {
             gap: 8,
           }}
         >
-          <span style={{ ...estiloTexto(base), color: paleta.grafito }}>{uno}</span>
-          <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
-            <span
-              style={{
-                ...estiloTexto(Math.min(t(dos, 160, 600), base * 1.15)),
-                color: brand.white,
-                backgroundColor: paleta.verdeWays,
-                borderRadius: 18,
-                padding: "2px 28px 12px",
-              }}
-            >
-              {dos}
-            </span>
-            <Trazos tam={base} />
-          </div>
-          <span style={{ ...estiloTexto(base), color: paleta.grafito }}>{tres}</span>
+          {[uno, dos, tres].map((linea, k) =>
+            k === (d.acento ?? 1) ? (
+              <div key={k} style={{ display: "flex", alignItems: "center", gap: 18 }}>
+                <span
+                  style={{
+                    ...estiloTexto(Math.min(t(linea, 160, 600), base * 1.15)),
+                    color: brand.white,
+                    backgroundColor: paleta.verdeWays,
+                    borderRadius: 18,
+                    padding: "2px 28px 12px",
+                  }}
+                >
+                  {linea}
+                </span>
+                <Trazos tam={base} />
+              </div>
+            ) : (
+              <span key={k} style={{ ...estiloTexto(base), color: paleta.grafito }}>
+                {linea}
+              </span>
+            ),
+          )}
         </div>
       </Interactive.Div>
     </AbsoluteFill>
