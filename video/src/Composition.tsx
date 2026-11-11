@@ -1,8 +1,10 @@
-import { Composition } from "remotion";
+import { Composition, Still } from "remotion";
 import { format, fps } from "./brand/theme";
 import { DURACION_CURIOSIDADES, ReelCuriosidades } from "./ReelCuriosidades";
 import { DURACION_REEL, ReelXacobeo } from "./ReelXacobeo";
 import { DURACION_PERFIL, PerfilSarria } from "./graficos/PerfilSarria";
+import { MapaBaionaVigo } from "./graficos/MapaBaionaVigo";
+import { ServiciosBaionaVigo } from "./graficos/ServiciosBaionaVigo";
 import { DURACION_YT55, YouTubeMayores55 } from "./YouTubeMayores55";
 
 /**
@@ -57,6 +59,9 @@ export const MyComposition = () => {
         height={format.youtube.height}
         defaultProps={{ subtitulos: true }}
       />
+      {/* Imágenes fijas de la etapa Baiona → Vigo, para web y redes. */}
+      <Still id="MapaBaionaVigo" component={MapaBaionaVigo} width={1600} height={1600} />
+      <Still id="ServiciosBaionaVigo" component={ServiciosBaionaVigo} width={1600} height={1000} />
     </>
   );
 };
