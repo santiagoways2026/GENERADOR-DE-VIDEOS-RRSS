@@ -1,5 +1,6 @@
 import { Still } from "remotion";
 import baionaVigo from "../../datos/etapa-baiona-vigo.json";
+import donostiaZarautz from "../../datos/etapa-donostia-zarautz.json";
 import olveiroaCee from "../../datos/etapa-olveiroa-cee.json";
 import vigoRedondela from "../../datos/etapa-vigo-redondela.json";
 import { MapaEtapa } from "./MapaEtapa";
@@ -190,6 +191,57 @@ export const StillsEtapas: React.FC = () => (
         antetitulo: "Perfil de la etapa",
         titular: "Del monte",
         destacado: "al mar",
+      }}
+    />
+
+    {/* Versión en color: tierra verde y mar, a petición para el Camino del Norte. */}
+    <Still
+      id="MapaDonostiaZarautz"
+      component={MapaEtapa}
+      width={donostiaZarautz.ancho}
+      height={donostiaZarautz.alto}
+      defaultProps={{
+        datos: donostiaZarautz,
+        estilo: "verde",
+        antetitulo: "Camino del Norte",
+        titular: "De San Sebastián a",
+        destacado: "Zarautz",
+        entradilla: "El recorrido y los lugares por los que pasa la etapa, de La Concha a Getaria.",
+        rotulos: {
+          Marabieta: { dx: 0, dy: -30, ancla: "middle" },
+          Arritxulo: { dx: 0, dy: 60, ancla: "middle" },
+          Buztintxuri: { dx: -20, dy: -28, ancla: "end" },
+          Munioetazar: { dx: 24, dy: 46, ancla: "start" },
+          Orio: { dx: 30, dy: 44, ancla: "start" },
+          Zarautz: { dx: 0, dy: 60, ancla: "middle" },
+        },
+        ladoSalida: "arriba",
+        ladoLlegada: "der",
+        aguas: [{ x: 1100, y: 160, texto: "MAR CANTÁBRICO" }],
+        caja: { top: 56, left: 72, maxWidth: 780 },
+        norte: { x: 1490, y: 760 },
+        rotulosRios: {
+          "San Pelaio ibaia": null,
+          Abendaño: null,
+          Elutzar: null,
+          "Santio erreka": null,
+          Urumea: null,
+        },
+        lugares: [],
+        tamanoTitular: 64,
+      }}
+    />
+    <Still
+      id="PerfilDonostiaZarautz"
+      component={PerfilEtapa}
+      width={ANCHO_PERFIL}
+      height={ALTO_PERFIL}
+      defaultProps={{
+        datos: donostiaZarautz,
+        estilo: "verde",
+        antetitulo: "Perfil de la etapa",
+        titular: "Dos subidas",
+        destacado: "junto al mar",
       }}
     />
   </>

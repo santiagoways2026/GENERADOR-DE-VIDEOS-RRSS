@@ -11,8 +11,8 @@ import type { DatosEtapa, Titular } from "./tipos";
  * EU-DEM de 25 m (Copernicus), suavizada. Ambas fuentes van al pie: son
  * cifras en pantalla y el brandbook no admite cifras sin fuente.
  *
- * Área en brote con la línea en verde Ways, que es gráfico y no texto. Las
- * paradas en sendero, con su altitud.
+ * Claro: área en brote con la línea en verde Ways (gráfico, no texto).
+ * Verde: área en verde Ways con la línea en sendero. Paradas en sendero.
  */
 
 export const ANCHO_PERFIL = 1600;
@@ -21,14 +21,23 @@ export const ALTO_PERFIL = 760;
 const M = 72;
 const X0 = M + 70;
 const X1 = ANCHO_PERFIL - M;
-const Y0 = 410;
-/** Dos filas de rótulos por encima del gráfico, para que no se pisen. */
-const FILAS = [300, 364];
+const Y0 = 450;
+/** Tres filas de rótulos por encima del gráfico, para que no se pisen. */
+const FILAS = [290, 346, 402];
 const Y1 = ALTO_PERFIL - 120;
 
 const km = (n: number) => n.toLocaleString("es-ES", { maximumFractionDigits: 1 });
 
-export const PerfilEtapa: React.FC<Titular & { datos: DatosEtapa }> = ({ datos, antetitulo, titular, destacado }) => {
+export const PerfilEtapa: React.FC<Titular & { datos: DatosEtapa; estilo?: "claro" | "verde" }> = ({
+  datos,
+  antetitulo,
+  titular,
+  destacado,
+  estilo = "claro",
+}) => {
+  // En verde, el monte en verde Ways y la línea en sendero, como el mapa en color.
+  const relleno = estilo === "verde" ? brand.green : brand.brote;
+  const trazo = estilo === "verde" ? brand.sendero : brand.green;
   const perfil = datos.perfil ?? [];
   const total = perfil[perfil.length - 1][0];
   const maxAlt = Math.max(...perfil.map((p) => p[1]));
@@ -60,8 +69,8 @@ export const PerfilEtapa: React.FC<Titular & { datos: DatosEtapa }> = ({ datos, 
           </g>
         ))}
 
-        <path d={area} fill={brand.brote} />
-        <path d={linea} fill="none" stroke={brand.green} strokeWidth={6} strokeLinejoin="round" strokeLinecap="round" />
+        <path d={area} fill={relleno} />
+        <path d={linea} fill="none" stroke={trazo} strokeWidth={6} strokeLinejoin="round" strokeLinecap="round" />
 
         {/* Kilómetros */}
         {Array.from({ length: Math.floor(total / pasoKm) + 1 }, (_, i) => i * pasoKm).map((k) => (
@@ -73,20 +82,22 @@ export const PerfilEtapa: React.FC<Titular & { datos: DatosEtapa }> = ({ datos, 
 
         {/* Paradas: rótulo arriba, en la fila libre, y guía hasta el punto. */}
         {(() => {
-          // Primero se colocan los rótulos: fila libre y caja aproximada.
-          let anterior = -Infinity;
-          let fila = 1;
+          // Primero se colocan los rótulos: cada uno en la fila más alta en la
+          // que no choca con otro ya colocado, con su caja aproximada.
+          const ocupadas: { izq: number; der: number }[][] = FILAS.map(() => []);
           const pos = datos.paradas.map((p, i) => {
             const k = p.km ?? 0;
             const px = x(k);
-            fila = px - anterior < 260 ? 1 - fila : 0;
-            anterior = px;
             const ultimo = i === datos.paradas.length - 1;
             const ancla: "start" | "end" | "middle" = i === 0 ? "start" : ultimo ? "end" : "middle";
             const tx = i === 0 ? px - 10 : ultimo ? px + 10 : px;
             const w = Math.max(p.nombre.length * 15, 150);
             const izq = ancla === "start" ? tx : ancla === "end" ? tx - w : tx - w / 2;
-            return { p, k, px, ty: FILAS[fila], ancla, tx, izq, der: izq + w };
+            const caja = { izq, der: izq + w };
+            const libre = ocupadas.findIndex((f) => f.every((o) => caja.izq > o.der + 16 || caja.der < o.izq - 16));
+            const fila = libre === -1 ? FILAS.length - 1 : libre;
+            ocupadas[fila].push(caja);
+            return { p, k, px, ty: FILAS[fila], ancla, tx, ...caja };
           });
           return pos.map(({ p, k, px, ty, ancla, tx }) => {
             const a = altEn(k);
@@ -97,8 +108,9 @@ export const PerfilEtapa: React.FC<Titular & { datos: DatosEtapa }> = ({ datos, 
             );
             return (
               <g key={p.nombre}>
-                <line x1={px} x2={px} y1={inicio} y2={Y1} stroke={brand.sendero} strokeWidth={2} strokeDasharray="4 6" />
-                <circle cx={px} cy={y(a)} r={10} fill={brand.sendero} stroke={brand.white} strokeWidth={4} />
+                <line x1={px} x2={px} y1={inicio} y2={y(altEn(k))} stroke={brand.sendero} strokeWidth={2} strokeDasharray="4 6" />
+                <line x1={px} x2={px} y1={y(altEn(k))} y2={Y1} stroke={estilo === "verde" ? brand.white : brand.sendero} strokeWidth={2} strokeDasharray="4 6" />
+                <circle cx={px} cy={y(a)} r={10} fill={estilo === "verde" ? brand.white : brand.sendero} stroke={estilo === "verde" ? brand.sendero : brand.white} strokeWidth={4} />
                 <text x={tx} y={ty - 26} textAnchor={ancla} fontFamily="Montserrat" fontWeight={700} fontSize={24} fill={brand.grafito} stroke={brand.white} strokeWidth={8} paintOrder="stroke">
                   {p.nombre}
                 </text>

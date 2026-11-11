@@ -13,7 +13,9 @@ escribe `video/src/datos/etapa-<id>.json` con:
   relación); si no, una ruta a pie por los puntos de paso (FOSSGIS, foot).
   `enlace` añade delante un tramo a pie desde un punto (el centro de la
   ciudad) hasta el inicio del trazado oficial.
-- `paradas`: cada parada colocada sobre la ruta, con su km.
+- `paradas`: cada parada colocada sobre la ruta, con su km. Una parada sin
+  coordenadas (`["Nombre", null, km, total]`) se sitúa por su km en otra
+  fuente, escalado a la longitud del trazado.
 - `rios`, `autopistas`, `tren`, `agua`: si la configuración pide `capas`, los
   ríos, autopistas y autovías, vías de tren y embalses de OpenStreetMap,
   descargados por cuadrículas de la API principal (Overpass no es accesible
@@ -36,8 +38,8 @@ def get(url):
         return json.load(r)
 
 
-def municipio(nombre, provincia="Pontevedra"):
-    q = urllib.parse.quote(f"{nombre}, {provincia}, Galicia")
+def municipio(nombre, provincia="Pontevedra, Galicia"):
+    q = urllib.parse.quote(f"{nombre}, {provincia}")
     d = get(f"https://nominatim.openstreetmap.org/search?q={q}&format=geojson"
             "&polygon_geojson=1&polygon_threshold=0.0003&limit=1&featureType=settlement")
     time.sleep(1.1)
@@ -136,7 +138,7 @@ def main(ruta_cfg):
     def anillo(r):
         return "M" + "L".join(f"{x},{y}" for x, y in (p(*c) for c in r)) + "Z"
 
-    tierra = [" ".join(anillo(r) for poly in municipio(m, cfg.get("provincia", "Pontevedra")) for r in poly) for m in cfg["municipios"]]
+    tierra = [" ".join(anillo(r) for poly in municipio(m, cfg.get("provincia", "Pontevedra, Galicia")) for r in poly) for m in cfg["municipios"]]
 
     def dist(a, b):
         dx = (b[0] - a[0]) * math.cos(math.radians(a[1])) * 111.32
@@ -169,9 +171,16 @@ def main(ruta_cfg):
     pts.append(p(*co[-1])); kms.append(total)
 
     paradas = []
-    for nombre, lon, lat in cfg["paradas"]:
-        t = p(lon, lat)
-        i = min(range(len(pts)), key=lambda j: math.dist(pts[j], t))
+    for parada in cfg["paradas"]:
+        nombre, lon, lat = parada[:3]
+        if lon is None:
+            # Sin coordenadas: se coloca por su km en una referencia
+            # (["Nombre", null, km, km_total_de_la_referencia]).
+            objetivo = lat * total / parada[3]
+            i = min(range(len(kms)), key=lambda j: abs(kms[j] - objetivo))
+        else:
+            t = p(lon, lat)
+            i = min(range(len(pts)), key=lambda j: math.dist(pts[j], t))
         paradas.append({"nombre": nombre, "x": pts[i][0], "y": pts[i][1], "km": round(kms[i], 2)})
 
     salida = {"ancho": W, "alto": H, "km": round(total, 1), "tierra": tierra,

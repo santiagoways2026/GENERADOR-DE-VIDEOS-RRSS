@@ -1,5 +1,5 @@
 import { AbsoluteFill } from "remotion";
-import { brand, fontFamily, radius, shadow, tracking, weight } from "../../brand/theme";
+import { brand, fontFamily, mar, radius, shadow, tracking, weight } from "../../brand/theme";
 import { Logo } from "../../componentes/Logo";
 import { Cabecera } from "./Cabecera";
 import type { Ancla, DatosEtapa, Titular } from "./tipos";
@@ -11,9 +11,29 @@ import type { Ancla, DatosEtapa, Titular } from "./tipos";
  * OpenStreetMap y el trazado, del Camino en OpenStreetMap o de una ruta a pie
  * por las paradas. Los datos los prepara `herramientas/scripts/mapa_etapa.py`.
  *
- * Paleta 2027: mar en niebla, tierra en blanco, ruta en verde Ways, salida y
- * llegada en cajas sendero. El logo va en verde porque cae sobre blanco.
+ * Dos estilos:
+ * - `claro`: mar en niebla, tierra en blanco, ruta en verde Ways. Logo verde.
+ * - `verde`: tierra en verde Ways, agua en el tono `mar`, ruta en blanco con
+ *   borde sendero y rótulos blancos en negrita con halo sendero (blanco sobre
+ *   verde solo en negrita). Logo blanco, porque cae sobre verde.
+ * En los dos, salida y llegada en cajas sendero.
  */
+
+const ESTILOS = {
+  claro: {
+    mar: brand.niebla, tierra: brand.white, rio: brand.niebla, rioBorde: brand.gris as string | null,
+    via: brand.gris, ruta: brand.green, rutaBorde: brand.white, texto: brand.grafito, halo: brand.white,
+    rotuloAgua: brand.gris, rotuloAguaHalo: brand.white, referencia: brand.gris, norte: brand.grafito,
+    logo: "verde" as const,
+  },
+  verde: {
+    mar, tierra: brand.green, rio: mar, rioBorde: null as string | null,
+    via: brand.sendero, ruta: brand.white, rutaBorde: brand.sendero, texto: brand.white, halo: brand.sendero,
+    rotuloAgua: brand.sendero, rotuloAguaHalo: mar, referencia: brand.white, norte: brand.white,
+    logo: "blanco" as const,
+  },
+};
+type Estilo = keyof typeof ESTILOS;
 
 export type PropsMapa = Titular & {
   datos: DatosEtapa;
@@ -32,11 +52,21 @@ export type PropsMapa = Titular & {
   rotulosRios?: Record<string, { x: number; y: number; giro?: number } | null>;
   /** Rótulos de lugares de referencia, en gris. */
   lugares?: { x: number; y: number; texto: string }[];
+  estilo?: Estilo;
+  /** Cuerpo del titular; bajarlo si el nombre es largo y la caja crece. */
+  tamanoTitular?: number;
 };
 
-type Lado = "izq" | "der" | "abajo";
+type Lado = "izq" | "der" | "abajo" | "arriba";
 
-const Rotulo: React.FC<{ x: number; y: number; texto: string; ancla: Ancla }> = ({ x, y, texto, ancla }) => (
+const Rotulo: React.FC<{ x: number; y: number; texto: string; ancla: Ancla; color: string; halo: string }> = ({
+  x,
+  y,
+  texto,
+  ancla,
+  color,
+  halo,
+}) => (
   <text
     x={x}
     y={y}
@@ -44,8 +74,8 @@ const Rotulo: React.FC<{ x: number; y: number; texto: string; ancla: Ancla }> = 
     fontFamily="Montserrat"
     fontWeight={700}
     fontSize={32}
-    fill={brand.grafito}
-    stroke={brand.white}
+    fill={color}
+    stroke={halo}
     strokeWidth={10}
     strokeLinejoin="round"
     paintOrder="stroke"
@@ -55,10 +85,11 @@ const Rotulo: React.FC<{ x: number; y: number; texto: string; ancla: Ancla }> = 
 );
 
 /** Caja sendero de salida o llegada, con antetítulo en brote. */
-const Extremo: React.FC<{ x: number; y: number; ancho: number; etiqueta: string; nombre: string; lado: Lado }> = ({
+const Extremo: React.FC<{ x: number; y: number; ancho: number; alto: number; etiqueta: string; nombre: string; lado: Lado }> = ({
   x,
   y,
   ancho,
+  alto,
   etiqueta,
   nombre,
   lado,
@@ -67,10 +98,13 @@ const Extremo: React.FC<{ x: number; y: number; ancho: number; etiqueta: string;
     style={{
       position: "absolute",
       ...(lado === "abajo"
-        ? { top: y + 40, left: x, translate: "-50% 0" }
-        : lado === "der"
-          ? { top: y - 52, left: x + 40 }
-          : { top: y - 52, right: ancho - x + 40 }),
+        ? { top: y + 40, left: Math.min(Math.max(x, 170), ancho - 170), translate: "-50% 0" }
+        : lado === "arriba"
+          ? // Encima del punto, sin salirse por la derecha.
+            { bottom: alto - y + 40, right: Math.max(56, ancho - x - 120) }
+          : lado === "der"
+            ? { top: y - 52, left: x + 40 }
+            : { top: y - 52, right: ancho - x + 40 }),
       backgroundColor: brand.sendero,
       color: brand.white,
       borderRadius: radius.md,
@@ -108,7 +142,10 @@ export const MapaEtapa: React.FC<PropsMapa> = ({
   norte,
   rotulosRios = {},
   lugares = [],
+  estilo = "claro",
+  tamanoTitular = 76,
 }) => {
+  const E = ESTILOS[estilo];
   const { ancho: W, alto: H } = datos;
   const ruta = "M" + datos.ruta.map(([x, y]) => `${x},${y}`).join("L");
   const inicio = datos.paradas[0];
@@ -116,36 +153,38 @@ export const MapaEtapa: React.FC<PropsMapa> = ({
   const intermedias = datos.paradas.slice(1, -1);
 
   return (
-    <AbsoluteFill style={{ backgroundColor: brand.niebla, fontFamily }}>
+    <AbsoluteFill style={{ backgroundColor: E.mar, fontFamily }}>
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ position: "absolute" }}>
         {/* Tierra: el trazo del mismo color tapa las costuras entre municipios. */}
-        <g fill={brand.white} stroke={brand.white} strokeWidth={1.5} fillRule="evenodd">
+        <g fill={E.tierra} stroke={E.tierra} strokeWidth={1.5} fillRule="evenodd">
           {datos.tierra.map((d, i) => (
             <path key={i} d={d} />
           ))}
         </g>
 
         {/* Agua dulce: embalses y ríos en el mismo niebla que el mar. */}
-        <g fill={brand.niebla}>
+        <g fill={E.rio}>
           {(datos.agua ?? []).map((d, i) => (
             <path key={i} d={d} />
           ))}
         </g>
         {/* Ríos como cauce: borde gris fino y agua niebla, para que no se
             confundan con las carreteras, que van en una sola línea gris. */}
-        <g fill="none" stroke={brand.gris} strokeLinecap="round" strokeLinejoin="round">
+        {E.rioBorde ? (
+        <g fill="none" stroke={E.rioBorde} strokeLinecap="round" strokeLinejoin="round">
           {(datos.rios ?? []).map((r, i) => (
             <path key={i} d={r.d} strokeWidth={r.principal ? 13 : 6} />
           ))}
         </g>
-        <g fill="none" stroke={brand.niebla} strokeLinecap="round" strokeLinejoin="round">
+        ) : null}
+        <g fill="none" stroke={E.rio} strokeLinecap="round" strokeLinejoin="round">
           {(datos.rios ?? []).map((r, i) => (
             <path key={i} d={r.d} strokeWidth={r.principal ? 10 : 3.5} />
           ))}
         </g>
 
         {/* Referencias: autopistas y tren, finos y en gris para no competir con la ruta. */}
-        <g fill="none" stroke={brand.gris} strokeLinecap="round" strokeLinejoin="round">
+        <g fill="none" stroke={E.via} strokeLinecap="round" strokeLinejoin="round">
           {(datos.autopistas ?? []).map((a, i) => (
             <path key={i} d={a.d} strokeWidth={a.puente ? 4 : 2.5} />
           ))}
@@ -168,8 +207,8 @@ export const MapaEtapa: React.FC<PropsMapa> = ({
               fontFamily="Montserrat"
               fontWeight={600}
               fontSize={19}
-              fill={brand.gris}
-              stroke={brand.white}
+              fill={E.referencia}
+              stroke={E.halo}
               strokeWidth={6}
               paintOrder="stroke"
               transform={`rotate(${giro ?? 0} ${x} ${y})`}
@@ -188,8 +227,8 @@ export const MapaEtapa: React.FC<PropsMapa> = ({
             fontFamily="Montserrat"
             fontWeight={600}
             fontSize={22}
-            fill={brand.gris}
-            stroke={brand.white}
+            fill={E.referencia}
+            stroke={E.halo}
             strokeWidth={6}
             paintOrder="stroke"
           >
@@ -207,7 +246,7 @@ export const MapaEtapa: React.FC<PropsMapa> = ({
             fontWeight={700}
             fontSize={20}
             letterSpacing="0.3em"
-            fill={brand.gris}
+            fill={E.rotuloAgua}
             transform={`rotate(${a.giro ?? 0} ${a.x} ${a.y})`}
           >
             {a.texto}
@@ -215,15 +254,15 @@ export const MapaEtapa: React.FC<PropsMapa> = ({
         ))}
 
         {/* Ruta: verde Ways con un borde blanco para separarla de la costa. */}
-        <path d={ruta} fill="none" stroke={brand.white} strokeWidth={22} strokeLinejoin="round" strokeLinecap="round" />
-        <path d={ruta} fill="none" stroke={brand.green} strokeWidth={11} strokeLinejoin="round" strokeLinecap="round" />
+        <path d={ruta} fill="none" stroke={E.rutaBorde} strokeWidth={22} strokeLinejoin="round" strokeLinecap="round" />
+        <path d={ruta} fill="none" stroke={E.ruta} strokeWidth={11} strokeLinejoin="round" strokeLinecap="round" />
 
         {intermedias.map((p) => {
           const l = rotulos[p.nombre] ?? { dx: 30, dy: 10, ancla: "start" as const };
           return (
             <g key={p.nombre}>
               <circle cx={p.x} cy={p.y} r={13} fill={brand.white} stroke={brand.sendero} strokeWidth={6} />
-              <Rotulo x={p.x + l.dx} y={p.y + l.dy} texto={p.nombre} ancla={l.ancla} />
+              <Rotulo x={p.x + l.dx} y={p.y + l.dy} texto={p.nombre} ancla={l.ancla} color={E.texto} halo={E.halo} />
             </g>
           );
         })}
@@ -233,15 +272,15 @@ export const MapaEtapa: React.FC<PropsMapa> = ({
         ))}
 
         <g transform={`translate(${norte.x} ${norte.y})`}>
-          <path d="M0,-46 L18,14 L0,4 L-18,14 Z" fill={brand.grafito} />
-          <text y={50} textAnchor="middle" fontFamily="Montserrat" fontWeight={700} fontSize={24} fill={brand.grafito}>
+          <path d="M0,-46 L18,14 L0,4 L-18,14 Z" fill={E.norte} />
+          <text y={50} textAnchor="middle" fontFamily="Montserrat" fontWeight={700} fontSize={24} fill={E.norte}>
             N
           </text>
         </g>
       </svg>
 
-      <Extremo x={inicio.x} y={inicio.y} ancho={W} etiqueta="Salida" nombre={inicio.nombre} lado={ladoSalida} />
-      <Extremo x={fin.x} y={fin.y} ancho={W} etiqueta="Llegada" nombre={fin.nombre} lado={ladoLlegada} />
+      <Extremo x={inicio.x} y={inicio.y} ancho={W} alto={H} etiqueta="Salida" nombre={inicio.nombre} lado={ladoSalida} />
+      <Extremo x={fin.x} y={fin.y} ancho={W} alto={H} etiqueta="Llegada" nombre={fin.nombre} lado={ladoLlegada} />
 
       <div
         style={{
@@ -254,7 +293,7 @@ export const MapaEtapa: React.FC<PropsMapa> = ({
           ...caja,
         }}
       >
-        <Cabecera antetitulo={antetitulo} titular={titular} destacado={destacado} tamano={76} />
+        <Cabecera antetitulo={antetitulo} titular={titular} destacado={destacado} tamano={tamanoTitular} />
         <div style={{ marginTop: 20, fontSize: 26, lineHeight: 1.5, color: brand.grafito }}>{entradilla}</div>
       </div>
 
@@ -274,7 +313,7 @@ export const MapaEtapa: React.FC<PropsMapa> = ({
         Mapa: © colaboradores de OpenStreetMap
       </div>
 
-      <Logo variante="verde" ancho={260} style={{ position: "absolute", right: 72, bottom: 72 }} />
+      <Logo variante={E.logo} ancho={260} style={{ position: "absolute", right: 72, bottom: 72 }} />
     </AbsoluteFill>
   );
 };

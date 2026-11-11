@@ -16,6 +16,13 @@
  * COLOR · paleta cerrada, sin escalas intermedias
  * ------------------------------------------------------------------ */
 
+/**
+ * Agua de los mapas en color. Fuera de la paleta del brandbook: se añadió para
+ * los mapas de etapa en versión verde, donde se pidió que el mar se viera como
+ * mar. Solo para agua; nunca en cajas, texto ni fondos.
+ */
+export const mar = "#C4DEE4";
+
 export const brand = {
   /** Blanco. El principal, siempre: da aire a todas las piezas. */
   white: "#FFFFFF",

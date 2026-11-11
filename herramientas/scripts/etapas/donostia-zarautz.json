@@ -1,0 +1,90 @@
+{
+  "id": "donostia-zarautz",
+  "ancho": 1600,
+  "alto": 1000,
+  "provincia": "Gipuzkoa",
+  "encuadre": [
+    -2.222,
+    -1.962,
+    43.257,
+    43.357
+  ],
+  "municipios": [
+    "Donostia / San Sebastián",
+    "Usurbil",
+    "Orio",
+    "Zarautz",
+    "Getaria",
+    "Aia",
+    "Lasarte-Oria",
+    "Hernani",
+    "Zumaia",
+    "Andoain",
+    "Urnieta",
+    "Astigarraga",
+    "Errenteria",
+    "Pasaia",
+    "Zizurkil",
+    "Villabona",
+    "Asteasu",
+    "Aizarnazabal",
+    "Zestoa"
+  ],
+  "relacion": 1116809,
+  "puntos": [
+    [
+      -1.98153,
+      43.31668
+    ],
+    [
+      -2.20373,
+      43.30445
+    ]
+  ],
+  "paradas": [
+    [
+      "San Sebastián",
+      -1.98153,
+      43.31668
+    ],
+    [
+      "Marabieta",
+      -2.0357,
+      43.3125
+    ],
+    [
+      "Arritxulo",
+      -2.048,
+      43.3073
+    ],
+    [
+      "Buztintxuri",
+      null,
+      7.5,
+      26.53
+    ],
+    [
+      "Munioetazar",
+      null,
+      10.2,
+      24.7
+    ],
+    [
+      "Orio",
+      -2.12726,
+      43.27604
+    ],
+    [
+      "Zarautz",
+      -2.17234,
+      43.28348
+    ],
+    [
+      "Getaria",
+      -2.20373,
+      43.30445
+    ]
+  ],
+  "capas": true,
+  "perfil": true
+}

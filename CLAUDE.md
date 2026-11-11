@@ -167,6 +167,10 @@ Mapa, tabla de servicios y perfil de cada etapa, en `video/src/graficos/etapa/`.
    `npx remotion still <Id> salida.png --scale=0.75` y convertir con PIL
    (`quality=82`). Remotion no exporta WebP directamente.
 
+Mapa y perfil tienen dos estilos: `claro` (mar niebla, tierra blanca) y
+`verde` (tierra verde Ways, agua en el token `mar` de `theme.ts`, ruta blanca).
+El tono `mar` está fuera de la paleta y es solo para agua de mapas en color.
+
 El mapa lleva siempre "© colaboradores de OpenStreetMap" (licencia ODbL) y el
 perfil, la fuente de distancia y altitud.
 
