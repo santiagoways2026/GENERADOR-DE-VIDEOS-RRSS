@@ -8,7 +8,10 @@ import { Logo } from "../componentes/Logo";
  * El degradado va entre dos verdes de la paleta, no entre colores ajenos:
  * el manual descarta los gradientes que no salen de la marca.
  */
-export const Cierre: React.FC<{ duracion: number }> = ({ duracion }) => {
+export const Cierre: React.FC<{ duracion: number; ancho?: number }> = ({
+  duracion,
+  ancho = 620,
+}) => {
   const frame = useCurrentFrame();
 
   return (
@@ -24,7 +27,7 @@ export const Cierre: React.FC<{ duracion: number }> = ({ duracion }) => {
     >
       <Logo
         variante="blanco"
-        ancho={620}
+        ancho={ancho}
         style={{
           opacity: interpolate(frame, [4, 20], [0, 1], {
             extrapolateLeft: "clamp",
