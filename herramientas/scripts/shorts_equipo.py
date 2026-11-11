@@ -52,7 +52,7 @@ SHORTS = {
                 ("0074", 1.96, 5.58, D + "9074037_0047_D.mp4@1.0"),
                 ("0075", 9.28, 12.40, None),
                 ("0076", 2.48, 7.14, D + "9074051_0048_D.mp4@1.0"),
-                ("0078", 0.00, 3.22, None),
+                ("0078", 0.85, 3.22, None),  # sin la cuenta atrás "3, 2, 1"
                 ("0079", 26.45, 31.95, D + "9090338_0051_D.mp4@1.0")],
         cartelas=[dict(frase=4, principal="Ajústalos", secundaria="A tu medida")]),
     "s5-cuanto-se-camina": dict(
