@@ -93,15 +93,15 @@ const SERVICIOS: Servicio[] = [
 /** Una localidad y un 1 por servicio que tiene, en el orden de SERVICIOS. */
 export type Localidad = { nombre: string; hay: number[] };
 
-const FILA = 90;
+const FILA = 96;
 /** Márgenes, titular y fila de iconos: todo lo que no son filas. */
-const FIJO = 460;
+const FIJO = 480;
 export const altoServicios = (n: number) => FIJO + n * FILA;
 
-const COL_NOMBRE = 320;
+const COL_NOMBRE = 230;
 
 const Si = () => (
-  <svg width={40} height={40} viewBox="0 0 40 40">
+  <svg width={46} height={46} viewBox="0 0 40 40">
     <circle cx={20} cy={20} r={18} fill={brand.green} />
     <path d="M12 20.5l5.5 5.5L28.5 14" fill="none" stroke={brand.white} strokeWidth={4} strokeLinecap="round" strokeLinejoin="round" />
   </svg>
@@ -134,12 +134,12 @@ export const ServiciosEtapa: React.FC<Titular & { localidades: Localidad[] }> = 
         flexDirection: "column",
       }}
     >
-      <div style={{ display: "flex", alignItems: "flex-end", padding: "26px 0 20px", borderBottom: `2px solid ${brand.niebla}` }}>
+      <div style={{ display: "flex", alignItems: "flex-end", padding: "26px 16px 20px 0", borderBottom: `2px solid ${brand.niebla}` }}>
         <div
           style={{
             width: COL_NOMBRE,
             paddingLeft: 36,
-            fontSize: 15,
+            fontSize: 18,
             fontWeight: weight.bold,
             letterSpacing: tracking.antetitulo,
             textTransform: "uppercase",
@@ -160,10 +160,10 @@ export const ServiciosEtapa: React.FC<Titular & { localidades: Localidad[] }> = 
               textAlign: "center",
             }}
           >
-            <svg width={40} height={40} viewBox="0 0 40 40">
+            <svg width={52} height={52} viewBox="0 0 40 40">
               {s.icono}
             </svg>
-            <div style={{ fontSize: 17, lineHeight: 1.2, fontWeight: weight.semibold, color: brand.grafito, maxWidth: 140 }}>
+            <div style={{ fontSize: 23, lineHeight: 1.15, fontWeight: weight.bold, padding: "0 4px", color: brand.grafito }}>
               {s.nombre}
             </div>
           </div>
@@ -175,12 +175,13 @@ export const ServiciosEtapa: React.FC<Titular & { localidades: Localidad[] }> = 
           key={l.nombre}
           style={{
             height: FILA,
+            paddingRight: 16,
             display: "flex",
             alignItems: "center",
             backgroundColor: i % 2 === 1 ? brand.brote : brand.white,
           }}
         >
-          <div style={{ width: COL_NOMBRE, paddingLeft: 36, fontSize: 26, fontWeight: weight.bold, color: brand.grafito }}>
+          <div style={{ width: COL_NOMBRE, paddingLeft: 36, fontSize: 30, fontWeight: weight.bold, color: brand.grafito }}>
             {l.nombre}
           </div>
           {l.hay.map((h, j) => (
