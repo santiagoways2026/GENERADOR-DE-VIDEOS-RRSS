@@ -4,6 +4,7 @@ import { PruebaGrafico } from "./PruebaGrafico";
 import { ComposicionesShorts } from "./shorts/Composiciones";
 import { ComposicionPaula } from "./paula/ShortPaula";
 import { ComposicionesXacobeo } from "./xacobeo/Composiciones";
+import { ComposicionesWebinar } from "./webinar/Webinar";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ export const RemotionRoot: React.FC = () => {
       <ComposicionesShorts />
       <ComposicionPaula />
       <ComposicionesXacobeo />
+      <ComposicionesWebinar />
     </>
   );
 };
