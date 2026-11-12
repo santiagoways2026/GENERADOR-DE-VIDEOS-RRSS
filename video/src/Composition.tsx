@@ -1,5 +1,6 @@
 import { Composition } from "remotion";
 import { format, fps } from "./brand/theme";
+import { DURACION_APP, ReelApp } from "./ReelApp";
 import { DURACION_CURIOSIDADES, ReelCuriosidades } from "./ReelCuriosidades";
 import { DURACION_REEL, ReelXacobeo } from "./ReelXacobeo";
 import { DURACION_PERFIL, PerfilSarria } from "./graficos/PerfilSarria";
@@ -20,6 +21,15 @@ export const MyComposition = () => {
         fps={fps}
         width={format.reels.width}
         height={format.reels.height}
+      />
+      <Composition
+        id="ReelApp"
+        component={ReelApp}
+        durationInFrames={DURACION_APP}
+        fps={fps}
+        width={format.reels.width}
+        height={format.reels.height}
+        defaultProps={{ provisional: true }}
       />
       <Composition
         id="ReelCuriosidades"
