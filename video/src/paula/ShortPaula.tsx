@@ -68,7 +68,7 @@ export const ShortPaula: React.FC<{ id?: string }> = ({ id }) => {
 
       <Sequence durationInFrames={f(durTitular)} name="Titular">
         {(datos as { tituloCaja?: string[] }).tituloCaja ? (
-          <TitularCaja lineas={(datos as unknown as { tituloCaja: string[] }).tituloCaja} ante={(datos as { tituloAnte?: string }).tituloAnte} dur={f(durTitular)} />
+          <TitularCaja lineas={(datos as unknown as { tituloCaja: string[] }).tituloCaja} ante={(datos as { tituloAnte?: string }).tituloAnte} dur={f(durTitular)} top={(datos as { tituloTop?: number }).tituloTop} maxTam={(datos as { tituloTam?: number }).tituloTam} />
         ) : (
           <Titular lineas={datos.titulo} dur={f(durTitular)} top={(datos as { tituloTop?: number }).tituloTop} />
         )}
@@ -204,14 +204,14 @@ const Titular: React.FC<{ lineas: string[]; dur: number; top?: number }> = ({ li
  * parte entre corchetes en placa verde Ways girada -1,5°. Antetítulo opcional
  * en verde sendero.
  */
-const TitularCaja: React.FC<{ lineas: string[]; ante?: string; dur: number }> = ({ lineas, ante, dur }) => {
+const TitularCaja: React.FC<{ lineas: string[]; ante?: string; dur: number; top?: number; maxTam?: number }> = ({ lineas, ante, dur, top = 260, maxTam = 84 }) => {
   const frame = useCurrentFrame();
   const e = interpolate(frame, [0, 12], [0, 1], { ...clamp, easing: salida });
   const s = interpolate(frame, [dur - 9, dur], [1, 0], { ...clamp, easing: Easing.in(Easing.cubic) });
   const limpio = (l: string) => l.replace(/[[\]]/g, "");
-  const tam = Math.min(84, ...lineas.map((l) => Math.floor(700 / (limpio(l).length * 0.6))));
+  const tam = Math.min(maxTam, ...lineas.map((l) => Math.floor(700 / (limpio(l).length * 0.6))));
   return (
-    <Interactive.Div name="Titular" style={{ position: "absolute", top: 260, left: 96, right: 96, display: "flex", justifyContent: "center", opacity: Math.min(e, s), translate: `0px ${(1 - e) * 24}px` }}>
+    <Interactive.Div name="Titular" style={{ position: "absolute", top, left: 96, right: 96, display: "flex", justifyContent: "center", opacity: Math.min(e, s), translate: `0px ${(1 - e) * 24}px` }}>
       <div style={{ backgroundColor: brand.white, borderRadius: 32, boxShadow: "0 8px 32px rgba(46, 46, 45, 0.12)", padding: "26px 40px 32px", display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 6 }}>
         {ante ? <div style={{ fontSize: 32, fontWeight: 700, color: paleta.sendero, marginBottom: 6 }}>{ante}</div> : null}
         {lineas.map((l, k) => (

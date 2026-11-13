@@ -2180,7 +2180,7 @@
       {
         "en": 3.5,
         "dur": 3.36,
-        "principal": "Entre 20 y 30 km",
+        "principal": "Entre 20 y 25 km",
         "secundaria": "Por etapa desde Sarria"
       },
       {
@@ -4927,7 +4927,9 @@
       "[perder] en el",
       "Camino?"
     ],
-    "sinCierre": true
+    "sinCierre": true,
+    "tituloTop": 225,
+    "tituloTam": 66
   },
   {
     "id": "sarria-800km-toma",
