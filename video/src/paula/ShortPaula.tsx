@@ -67,7 +67,11 @@ export const ShortPaula: React.FC<{ id?: string }> = ({ id }) => {
       ))}
 
       <Sequence durationInFrames={f(durTitular)} name="Titular">
-        <Titular lineas={datos.titulo} dur={f(durTitular)} top={(datos as { tituloTop?: number }).tituloTop} />
+        {(datos as { tituloCaja?: string[] }).tituloCaja ? (
+          <TitularCaja lineas={(datos as unknown as { tituloCaja: string[] }).tituloCaja} ante={(datos as { tituloAnte?: string }).tituloAnte} dur={f(durTitular)} />
+        ) : (
+          <Titular lineas={datos.titulo} dur={f(durTitular)} top={(datos as { tituloTop?: number }).tituloTop} />
+        )}
       </Sequence>
 
       {datos.cartelas.map((c, i) => (
@@ -87,9 +91,12 @@ export const ShortPaula: React.FC<{ id?: string }> = ({ id }) => {
         arriba={Array.isArray((datos as { subtitulosArriba?: unknown }).subtitulosArriba) ? ((datos as unknown as { subtitulosArriba: [number, number][] }).subtitulosArriba) : undefined}
       />
 
-      <Sequence from={finVoz} name="Cierre">
-        <Cierre duracion={total - finVoz} fondo={paleta.verdeWays} />
-      </Sequence>
+      {/* Sin cartela final en los shorts que lo piden: el último plano cierra y el bucle sigue. */}
+      {(datos as { sinCierre?: boolean }).sinCierre ? null : (
+        <Sequence from={finVoz} name="Cierre">
+          <Cierre duracion={total - finVoz} fondo={paleta.verdeWays} />
+        </Sequence>
+      )}
 
       {/* Sin música si el volumen es 0: solo voz y efectos. */}
       {datos.musica.vol > 0 ? (
@@ -188,6 +195,37 @@ const Titular: React.FC<{ lineas: string[]; dur: number; top?: number }> = ({ li
           </div>
         );
       })}
+    </Interactive.Div>
+  );
+};
+
+/**
+ * Titular del gancho en tarjeta blanca, igual que la portada: grafito, y la
+ * parte entre corchetes en placa verde Ways girada -1,5°. Antetítulo opcional
+ * en verde sendero.
+ */
+const TitularCaja: React.FC<{ lineas: string[]; ante?: string; dur: number }> = ({ lineas, ante, dur }) => {
+  const frame = useCurrentFrame();
+  const e = interpolate(frame, [0, 12], [0, 1], { ...clamp, easing: salida });
+  const s = interpolate(frame, [dur - 9, dur], [1, 0], { ...clamp, easing: Easing.in(Easing.cubic) });
+  const limpio = (l: string) => l.replace(/[[\]]/g, "");
+  const tam = Math.min(84, ...lineas.map((l) => Math.floor(700 / (limpio(l).length * 0.6))));
+  return (
+    <Interactive.Div name="Titular" style={{ position: "absolute", top: 260, left: 96, right: 96, display: "flex", justifyContent: "center", opacity: Math.min(e, s), translate: `0px ${(1 - e) * 24}px` }}>
+      <div style={{ backgroundColor: brand.white, borderRadius: 32, boxShadow: "0 8px 32px rgba(46, 46, 45, 0.12)", padding: "26px 40px 32px", display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 6 }}>
+        {ante ? <div style={{ fontSize: 32, fontWeight: 700, color: paleta.sendero, marginBottom: 6 }}>{ante}</div> : null}
+        {lineas.map((l, k) => (
+          <div key={k} style={{ fontSize: tam, lineHeight: 1.1, fontWeight: 800, letterSpacing: "-0.02em", whiteSpace: "nowrap", color: paleta.grafito }}>
+            {l.split(/(\[[^\]]+\])/).filter(Boolean).map((t, n) =>
+              t.startsWith("[") ? (
+                <span key={n} style={{ display: "inline-block", color: brand.white, backgroundColor: paleta.verdeWays, borderRadius: 12, padding: "0px 16px 6px", margin: "0 2px", rotate: "-1.5deg" }}>{t.slice(1, -1)}</span>
+              ) : (
+                <span key={n} style={{ whiteSpace: "pre" }}>{t}</span>
+              ),
+            )}
+          </div>
+        ))}
+      </div>
     </Interactive.Div>
   );
 };

@@ -34,7 +34,7 @@ const Tarjeta: React.FC<{ children: React.ReactNode; style?: React.CSSProperties
 
 // Brandbook 2027: verde Ways sobre blanco nunca como texto; el antetítulo va en sendero.
 const Antetitulo: React.FC<{ children: React.ReactNode; color?: string }> = ({ children, color = paleta.sendero }) => (
-  <div style={{ fontSize: 28, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color }}>{children}</div>
+  <div style={{ fontSize: 30, fontWeight: 700, letterSpacing: "0.01em", color }}>{children}</div>
 );
 
 /* ---------------------------------------------------------------- */

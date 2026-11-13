@@ -1168,7 +1168,7 @@
       "en el",
       "Camino?"
     ],
-    "duracion": 25.84,
+    "duracion": 25.54,
     "finVoz": 24.44,
     "planos": [
       {
@@ -1207,9 +1207,9 @@
         "zoom": 1.15
       },
       {
-        "src": "paula/0079.mp4",
+        "src": "paula/0079_cola.mp4",
         "desde": 26.37,
-        "dur": 6.45,
+        "dur": 7.55,
         "en": 17.99,
         "zoom": 1.25
       }
@@ -1218,20 +1218,14 @@
       {
         "en": 3.5,
         "dur": 3.82,
-        "src": "cesar/v113.mp4",
-        "desde": 0.5
+        "src": "cesar/v69.mp4",
+        "desde": 0.2
       },
       {
         "en": 10.64,
         "dur": 4.86,
-        "src": "cesar/v115.mp4",
-        "desde": 0.5
-      },
-      {
-        "en": 17.99,
-        "dur": 5.7,
-        "src": "cesar/v82.mp4",
-        "desde": 0.5
+        "src": "cesar/v73.mp4",
+        "desde": 0.3
       }
     ],
     "palabras": [
@@ -1628,7 +1622,14 @@
       "src": "musica/chill_Wallpaper.mp3",
       "vol": 0.04
     },
-    "tituloTop": 860
+    "tituloTop": 860,
+    "tituloCaja": [
+      "¿[Bastones]",
+      "en el",
+      "Camino?"
+    ],
+    "sinCierre": true,
+    "cartelasTop": 260
   },
   {
     "id": "s5-cuanto-se-camina",
@@ -1637,7 +1638,7 @@
       "camina de",
       "verdad?"
     ],
-    "duracion": 30.78,
+    "duracion": 30.48,
     "finVoz": 29.38,
     "planos": [
       {
@@ -1690,19 +1691,19 @@
         "zoom": 1.15
       },
       {
-        "src": "paula/0082.mp4",
+        "src": "paula/0082_cola.mp4",
         "desde": 98.86,
-        "dur": 4.68,
+        "dur": 5.78,
         "en": 24.7,
         "zoom": 1.25
       }
     ],
     "recursos": [
       {
-        "en": 2.34,
-        "dur": 4.32,
-        "src": "cesar/v113.mp4",
-        "desde": 0.5
+        "en": 3.4,
+        "dur": 2.6,
+        "src": "cesar/v196.mp4",
+        "desde": 0.0
       },
       {
         "en": 9.46,
@@ -1713,12 +1714,12 @@
       {
         "en": 17.48,
         "dur": 3.12,
-        "src": "cesar/v115.mp4",
-        "desde": 0.5
+        "src": "cesar/v192.mp4",
+        "desde": 0.2
       },
       {
         "en": 24.7,
-        "dur": 3.7,
+        "dur": 2.3,
         "src": "cesar/v116.mp4",
         "desde": 0.5
       }
@@ -1765,7 +1766,7 @@
         "fin": 2.22
       },
       {
-        "t": "¿En",
+        "t": "En",
         "en": 2.42,
         "fin": 2.7
       },
@@ -1835,12 +1836,12 @@
         "fin": 5.94
       },
       {
-        "t": "km?",
+        "t": "km,",
         "en": 5.94,
         "fin": 6.54
       },
       {
-        "t": "¿Que",
+        "t": "que",
         "en": 6.74,
         "fin": 7.22
       },
@@ -1875,7 +1876,7 @@
         "fin": 8.64
       },
       {
-        "t": "caminando?",
+        "t": "caminando,",
         "en": 8.64,
         "fin": 9.34
       },
@@ -2179,7 +2180,7 @@
       {
         "en": 3.5,
         "dur": 3.36,
-        "principal": "20 a 25 km",
+        "principal": "Entre 20 y 30 km",
         "secundaria": "Por etapa desde Sarria"
       },
       {
@@ -2193,7 +2194,13 @@
       "src": "musica/chill_Smooth_Lovin.mp3",
       "vol": 0.04
     },
-    "cartelasTop": 260
+    "cartelasTop": 260,
+    "tituloCaja": [
+      "¿Cuánto se",
+      "camina",
+      "[de verdad]?"
+    ],
+    "sinCierre": true
   },
   {
     "id": "s6-nadie-te-cuenta",
@@ -2202,7 +2209,7 @@
       "te cuenta del",
       "Camino"
     ],
-    "duracion": 25.68,
+    "duracion": 25.38,
     "finVoz": 24.28,
     "planos": [
       {
@@ -2248,9 +2255,9 @@
         "zoom": 1.25
       },
       {
-        "src": "paula/0100.mp4",
+        "src": "paula/0100_cola.mp4",
         "desde": 1.54,
-        "dur": 6.55,
+        "dur": 7.65,
         "en": 17.73,
         "zoom": 1.15
       }
@@ -2687,7 +2694,15 @@
         3.67,
         30
       ]
-    ]
+    ],
+    "tituloCaja": [
+      "Vas a comer",
+      "a horas",
+      "[rarísimas]"
+    ],
+    "tituloAnte": "Lo que nadie te cuenta",
+    "sinCierre": true,
+    "cartelasTop": 260
   },
   {
     "id": "s7-xacobeo-2027",
@@ -2696,7 +2711,7 @@
       "un año",
       "normal"
     ],
-    "duracion": 31.1,
+    "duracion": 30.8,
     "finVoz": 29.7,
     "planos": [
       {
@@ -2756,9 +2771,9 @@
         "zoom": 1.15
       },
       {
-        "src": "paula/0102.mp4",
+        "src": "paula/0102_cola.mp4",
         "desde": 85.71,
-        "dur": 5.725,
+        "dur": 6.825,
         "en": 23.975,
         "zoom": 1.25
       }
@@ -2779,14 +2794,8 @@
       {
         "en": 16.065,
         "dur": 2.72,
-        "src": "cesar/v113.mp4",
-        "desde": 0.5
-      },
-      {
-        "en": 23.975,
-        "dur": 4.755,
-        "src": "dji/IMG_5520.mp4",
-        "desde": 0.5
+        "src": "cesar/v43.mp4",
+        "desde": 0.2
       }
     ],
     "palabras": [
@@ -3219,7 +3228,14 @@
       "src": "musica/chill_Backbay_Lounge.mp3",
       "vol": 0.04
     },
-    "subtitulosArriba": true
+    "subtitulosArriba": true,
+    "tituloCaja": [
+      "2027 no será",
+      "un año",
+      "[normal]"
+    ],
+    "sinCierre": true,
+    "cartelasTop": 260
   },
   {
     "id": "s8-puerta-santa",
@@ -3778,7 +3794,7 @@
       "trasladado",
       "piedra a piedra"
     ],
-    "duracion": 27.16,
+    "duracion": 26.86,
     "finVoz": 25.76,
     "planos": [
       {
@@ -3824,9 +3840,9 @@
         "zoom": 1.15
       },
       {
-        "src": "paula/1104.mp4",
+        "src": "paula/1104_cola.mp4",
         "desde": 21.05,
-        "dur": 4.71,
+        "dur": 5.81,
         "en": 21.05,
         "zoom": 1.15
       }
@@ -3834,9 +3850,15 @@
     "recursos": [
       {
         "en": 3.45,
-        "dur": 4.2,
+        "dur": 2.1,
         "src": "cesar/v75.mp4",
         "desde": 0.5
+      },
+      {
+        "en": 5.55,
+        "dur": 2.1,
+        "src": "cesar/v76.mp4",
+        "desde": 0.3
       },
       {
         "en": 7.65,
@@ -3846,9 +3868,15 @@
       },
       {
         "en": 10.4,
-        "dur": 3.45,
+        "dur": 1.75,
         "src": "cesar/v79.mp4",
         "desde": 0.5
+      },
+      {
+        "en": 12.15,
+        "dur": 1.7,
+        "src": "cesar/v05.mp4",
+        "desde": 0.3
       },
       {
         "en": 17.6,
@@ -4281,7 +4309,14 @@
       "src": "musica/chill_Dreamer.mp3",
       "vol": 0.0
     },
-    "subtitulosArriba": true
+    "subtitulosArriba": true,
+    "tituloCaja": [
+      "Un pueblo",
+      "[trasladado]",
+      "piedra a piedra"
+    ],
+    "sinCierre": true,
+    "cartelasTop": 260
   },
   {
     "id": "perderse-toma",
@@ -4290,8 +4325,8 @@
       "perder en el",
       "Camino?"
     ],
-    "duracion": 29.58,
-    "finVoz": 28.18,
+    "duracion": 28.02,
+    "finVoz": 26.72,
     "planos": [
       {
         "src": "paula/v2.mp4",
@@ -4345,7 +4380,7 @@
       {
         "src": "paula/v2.mp4",
         "desde": 24.22,
-        "dur": 3.96,
+        "dur": 3.8,
         "en": 24.22,
         "zoom": 1.15
       }
@@ -4354,8 +4389,8 @@
       {
         "en": 3.67,
         "dur": 1.78,
-        "src": "cesar/v113.mp4",
-        "desde": 0.5
+        "src": "cesar/v111.mp4",
+        "desde": 0.3
       },
       {
         "en": 5.45,
@@ -4374,12 +4409,6 @@
         "dur": 4.11,
         "src": "dji/DJI_20260929073410_0040_D.mp4",
         "desde": 0.0
-      },
-      {
-        "en": 24.22,
-        "dur": 2.76,
-        "src": "cesar/v115.mp4",
-        "desde": 0.5
       }
     ],
     "palabras": [
@@ -4892,7 +4921,13 @@
       "src": "musica/chill_Lobby_Time.mp3",
       "vol": 0.0
     },
-    "cartelasTop": 260
+    "cartelasTop": 260,
+    "tituloCaja": [
+      "¿Te puedes",
+      "[perder] en el",
+      "Camino?"
+    ],
+    "sinCierre": true
   },
   {
     "id": "sarria-800km-toma",
@@ -4901,8 +4936,8 @@
       "no necesitas",
       "800 km?"
     ],
-    "duracion": 27.84,
-    "finVoz": 26.44,
+    "duracion": 25.06,
+    "finVoz": 23.56,
     "planos": [
       {
         "src": "paula/v3.mp4",
@@ -4941,10 +4976,10 @@
       },
       {
         "src": "paula/v3.mp4",
-        "desde": 22.94,
-        "dur": 3.5,
+        "desde": 24.42,
+        "dur": 2.12,
         "en": 22.94,
-        "zoom": 1.15
+        "zoom": 1.25
       }
     ],
     "recursos": [
@@ -4962,9 +4997,15 @@
       },
       {
         "en": 18.21,
-        "dur": 4.73,
-        "src": "cesar/v113.mp4",
-        "desde": 0.5
+        "dur": 2.4,
+        "src": "cesar/v58.mp4",
+        "desde": 0.3
+      },
+      {
+        "en": 20.61,
+        "dur": 2.33,
+        "src": "cesar/v192.mp4",
+        "desde": 0.2
       }
     ],
     "palabras": [
@@ -5344,49 +5385,14 @@
         "fin": 22.9
       },
       {
-        "t": "Te",
-        "en": 22.98,
-        "fin": 23.14
-      },
-      {
-        "t": "dejamos",
-        "en": 23.14,
-        "fin": 23.44
-      },
-      {
-        "t": "el",
-        "en": 23.44,
-        "fin": 23.56
-      },
-      {
-        "t": "link",
-        "en": 23.56,
-        "fin": 23.82
-      },
-      {
-        "t": "en",
-        "en": 23.82,
-        "fin": 24.08
-      },
-      {
-        "t": "la",
-        "en": 24.08,
-        "fin": 24.22
-      },
-      {
-        "t": "bio.",
-        "en": 24.22,
-        "fin": 24.38
-      },
-      {
         "t": "Buen",
-        "en": 24.54,
-        "fin": 24.74
+        "en": 23.06,
+        "fin": 23.26
       },
       {
         "t": "camino.",
-        "en": 24.74,
-        "fin": 25.04
+        "en": 23.26,
+        "fin": 23.56
       }
     ],
     "cartelas": [
@@ -5407,7 +5413,13 @@
       "src": "musica/chill_Bossa_Antigua.mp3",
       "vol": 0.0
     },
-    "cartelasTop": 260
+    "cartelasTop": 260,
+    "tituloCaja": [
+      "¿Sabías que",
+      "[no necesitas]",
+      "800 km?"
+    ],
+    "sinCierre": true
   },
   {
     "id": "c1-grace-armando",
