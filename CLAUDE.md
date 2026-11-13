@@ -154,7 +154,11 @@ Estas salieron de revisar piezas reales y ahorran repetir errores:
    error de montaje.
 5. **Los cortes se apoyan en la locución.** Se miden los silencios del audio y
    cada bloque arranca cuando empieza la frase que ilustra.
-6. **Un gráfico no puede tapar una cara.** Si el plano tiene gente en el
+6. **Cortar la voz en un silencio real, nunca por los tiempos de Whisper.**
+   Whisper da finales de palabra demasiado pronto ("Camino" acababa 0,5 s
+   después de lo que decía). Medir la energía del audio y cortar donde baja
+   de verdad, con unas décimas de margen. Si no hay pausa, elegir otra frase.
+7. **Un gráfico no puede tapar una cara.** Si el plano tiene gente en el
    centro, va donde el gráfico ya se ha retirado.
 
 ## Reglas técnicas de Remotion
