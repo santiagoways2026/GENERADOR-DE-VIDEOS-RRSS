@@ -5414,7 +5414,8 @@
     "musica": {
       "src": "musica/chill_Bossa_Antigua.mp3",
       "vol": 0.0
-    }
+    },
+    "cartelasTop": 260
   },
   {
     "id": "c1-grace-armando",

@@ -73,7 +73,7 @@ export const ShortPaula: React.FC<{ id?: string }> = ({ id }) => {
       {datos.cartelas.map((c, i) => (
         <Sequence key={`c${i}`} from={f(c.en)} durationInFrames={f(c.dur)} name={`Cartela ${i + 1}`}>
           {/* Estilo aprobado (nov. 2026): tarjeta limpia, una en verde sendero y otra en blanco. */}
-          <Dato dur={f(c.dur)} ante={c.secundaria} titulo={c.principal} oscuro={i % 2 === 0} />
+          <Dato dur={f(c.dur)} ante={c.secundaria} titulo={c.principal} oscuro={i % 2 === 0} top={(datos as { cartelasTop?: number }).cartelasTop} />
         </Sequence>
       ))}
 
