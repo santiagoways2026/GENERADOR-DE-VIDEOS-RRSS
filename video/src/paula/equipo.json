@@ -2192,7 +2192,8 @@
     "musica": {
       "src": "musica/chill_Smooth_Lovin.mp3",
       "vol": 0.04
-    }
+    },
+    "cartelasTop": 260
   },
   {
     "id": "s6-nadie-te-cuenta",
