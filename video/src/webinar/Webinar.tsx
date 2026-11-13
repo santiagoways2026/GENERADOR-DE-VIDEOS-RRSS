@@ -18,6 +18,7 @@ type Version = {
   dur: number;
   audio: string | null;
   audioEn?: number;
+  voces?: (string | number)[][];
   musica: string;
   musicaVol: number;
   musicaFinal?: number;
@@ -44,7 +45,7 @@ const useAparece = (dur: number, retraso = 0) => {
   return { opacity: Math.min(e, s), translate: `0px ${(1 - e) * 24}px` };
 };
 
-const Plano: React.FC<{ src: string; desde: number; dur: number; voz?: boolean }> = ({ src, desde, dur, voz }) => {
+const Plano: React.FC<{ src: string; desde: number; dur: number; voz?: boolean; borroso?: boolean }> = ({ src, desde, dur, voz, borroso }) => {
   const frame = useCurrentFrame();
   return (
     <AbsoluteFill style={{ overflow: "hidden" }}>
@@ -53,7 +54,7 @@ const Plano: React.FC<{ src: string; desde: number; dur: number; voz?: boolean }
         trimBefore={f(desde)}
         muted={!voz}
         volume={voz ? (fr) => interpolate(fr, [0, 2, dur - 2, dur], [0, 1, 1, 0], clamp) : undefined}
-        style={{ width: "100%", height: "100%", objectFit: "cover", scale: interpolate(frame, [0, dur], [voz ? 1.0 : 1.02, voz ? 1.03 : 1.08], clamp) }}
+        style={{ width: "100%", height: "100%", objectFit: "cover", scale: borroso ? 1.2 : interpolate(frame, [0, dur], [voz ? 1.0 : 1.02, voz ? 1.03 : 1.08], clamp), filter: borroso ? "blur(36px) brightness(0.85)" : undefined }}
       />
     </AbsoluteFill>
   );
@@ -61,16 +62,17 @@ const Plano: React.FC<{ src: string; desde: number; dur: number; voz?: boolean }
 
 
 /** Ventana de webcam del webinar: tarjeta redondeada con la sombra de la marca, voz incluida. */
-const Webcam: React.FC<{ src: string; desde: number; dur: number; primera: boolean }> = ({ src, desde, dur, primera }) => {
+const Webcam: React.FC<{ src: string; desde: number; dur: number; primera: boolean; mudo?: boolean; top?: number }> = ({ src, desde, dur, primera, mudo, top = 240 }) => {
   const frame = useCurrentFrame();
   const e = primera ? interpolate(frame, [0, 12], [0, 1], { ...clamp, easing: curva }) : 1;
   return (
     <AbsoluteFill>
-      <div style={{ position: "absolute", left: 72, right: 72, top: 240, aspectRatio: "16 / 9", borderRadius: 22, overflow: "hidden", boxShadow: "0 8px 32px rgba(46, 46, 45, 0.12)", border: "6px solid #FFFFFF", opacity: e, translate: `0px ${(1 - e) * 24}px` }}>
+      <div style={{ position: "absolute", left: 72, right: 72, top, aspectRatio: "16 / 9", borderRadius: 22, overflow: "hidden", boxShadow: "0 8px 32px rgba(46, 46, 45, 0.12)", border: "6px solid #FFFFFF", opacity: e, translate: `0px ${(1 - e) * 24}px` }}>
         <OffthreadVideo
           src={staticFile(src)}
           trimBefore={f(desde)}
-          volume={(fr) => interpolate(fr, [0, 2, dur - 2, dur], [0, 1, 1, 0], clamp)}
+          muted={mudo}
+          volume={mudo ? undefined : (fr) => interpolate(fr, [0, 2, dur - 2, dur], [0, 1, 1, 0], clamp)}
           style={{ width: "100%", height: "100%", objectFit: "cover" }}
         />
       </div>
@@ -191,7 +193,7 @@ export const Webinar: React.FC<{ id: string }> = ({ id }) => {
     <AbsoluteFill style={{ backgroundColor: paleta.sendero, fontFamily }}>
       {d.planos.map(([src, desde, en, dur, voz], i) => (
         <Sequence key={`p${i}`} from={f(en as number)} durationInFrames={f((en as number) + (dur as number)) - f(en as number)}>
-          <Plano src={src as string} desde={desde as number} dur={f(dur as number)} voz={Boolean(voz)} />
+          <Plano src={src as string} desde={desde as number} dur={f(dur as number)} voz={voz === true} borroso={voz === "borroso"} />
         </Sequence>
       ))}
       {(d.recursos ?? []).map(([src, desde, en, dur], i) => (
@@ -199,9 +201,9 @@ export const Webinar: React.FC<{ id: string }> = ({ id }) => {
           <Plano src={src as string} desde={desde as number} dur={f(dur as number)} />
         </Sequence>
       ))}
-      {(d.cams ?? []).map(([src, desde, en, dur], i) => (
+      {(d.cams ?? []).map(([src, desde, en, dur, mudo, top], i) => (
         <Sequence key={`w${i}`} from={f(en as number)} durationInFrames={f((en as number) + (dur as number)) - f(en as number)}>
-          <Webcam src={src as string} desde={desde as number} dur={f(dur as number)} primera={i === 0} />
+          <Webcam src={src as string} desde={desde as number} dur={f(dur as number)} primera={i === 0 || Boolean(mudo)} mudo={Boolean(mudo)} top={top as number | undefined} />
         </Sequence>
       ))}
       {d.textos.map((t, i) => (
@@ -210,15 +212,20 @@ export const Webinar: React.FC<{ id: string }> = ({ id }) => {
           {t.tipo === "titular" ? <Titular t={t} dur={f(t.dur)} /> : null}
           {t.tipo === "rutas" ? <Rutas dur={f(t.dur)} /> : null}
           {t.tipo === "fecha" ? <Fecha dur={f(t.dur)} /> : null}
-          {t.tipo === "cta" ? <Cta dur={f(t.dur)} /> : null}
+          {t.tipo === "cta" ? <Cta dur={f(t.dur) + 30} /> : null}
         </Sequence>
       ))}
-      <Subtitulos palabras={palabras} soloVerde cortes={[...d.planos.filter((p) => p[4]).map((p) => p[2] as number), ...(d.cams ?? []).map((c) => c[2] as number)]} />
+      <Subtitulos palabras={palabras} soloVerde cortes={[...d.planos.filter((p) => p[4]).map((p) => p[2] as number), ...(d.cams ?? []).filter((c) => !c[4]).map((c) => c[2] as number)]} />
       {d.audio ? (
         <Sequence from={f(d.audioEn ?? 0)}>
           <Audio src={staticFile(d.audio)} />
         </Sequence>
       ) : null}
+      {(d.voces ?? []).map(([src, en], i) => (
+        <Sequence key={`v${i}`} from={f(en as number)}>
+          <Audio src={staticFile(src as string)} />
+        </Sequence>
+      ))}
       <Audio
         src={staticFile(d.musica)}
         volume={(fr) => interpolate(fr, [0, 15, fv, fv + 15, total - 20, total], [0, mv, mv, mf, mf, 0], clamp)}
