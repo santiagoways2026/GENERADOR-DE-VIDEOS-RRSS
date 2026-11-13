@@ -3103,11 +3103,10 @@
     0.6
    ],
    [
-    "webinar/slide390.mp4",
-    0,
+    "webinar/v09.mp4",
+    0.5,
     11.2,
-    2.2,
-    "borroso"
+    2.2
    ],
    [
     "webinar/v117.mp4",
@@ -3116,11 +3115,10 @@
     2.4
    ],
    [
-    "webinar/slide600.mp4",
+    "webinar/panel-camino.mp4",
     0,
     15.8,
-    1.4,
-    "borroso"
+    1.4
    ],
    [
     "webinar/v113.mp4",
@@ -3169,24 +3167,7 @@
     "borroso"
    ]
   ],
-  "cams": [
-   [
-    "webinar/slide390.mp4",
-    0,
-    11.2,
-    2.2,
-    true,
-    640
-   ],
-   [
-    "webinar/slide600.mp4",
-    0,
-    15.8,
-    1.4,
-    true,
-    640
-   ]
-  ],
+  "cams": [],
   "textos": [
    {
     "tipo": "grande",
