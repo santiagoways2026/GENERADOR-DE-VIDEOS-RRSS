@@ -5419,7 +5419,13 @@
       "[no necesitas]",
       "800 km?"
     ],
-    "sinCierre": true
+    "sinCierre": true,
+    "subtitulosArriba": [
+      [
+        7.9,
+        11.6
+      ]
+    ]
   },
   {
     "id": "c1-grace-armando",
