@@ -32,7 +32,8 @@ const Tarjeta: React.FC<{ children: React.ReactNode; style?: React.CSSProperties
   <div style={{ backgroundColor: fondo, borderRadius: 22, boxShadow: SOMBRA, ...style }}>{children}</div>
 );
 
-const Antetitulo: React.FC<{ children: React.ReactNode; color?: string }> = ({ children, color = paleta.verdeWays }) => (
+// Brandbook 2027: verde Ways sobre blanco nunca como texto; el antetítulo va en sendero.
+const Antetitulo: React.FC<{ children: React.ReactNode; color?: string }> = ({ children, color = paleta.sendero }) => (
   <div style={{ fontSize: 28, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color }}>{children}</div>
 );
 
@@ -222,7 +223,7 @@ export const Dato: React.FC<{ dur: number; ante: string; titulo: string; oscuro?
         fondo={oscuro ? paleta.sendero : brand.white}
         style={{ position: "absolute", left: IZQ, right: IZQ, top, padding: "22px 34px 26px", ...a }}
       >
-        <Antetitulo color={oscuro ? "rgba(255,255,255,0.8)" : paleta.verdeWays}>{ante}</Antetitulo>
+        <Antetitulo color={oscuro ? "rgba(255,255,255,0.8)" : paleta.sendero}>{ante}</Antetitulo>
         <div style={{ fontSize: 66, fontWeight: 800, lineHeight: 1.08, marginTop: 6, color: oscuro ? brand.white : paleta.grafito, opacity: t, translate: `${(1 - t) * 16}px 0px` }}>
           {titulo}
         </div>

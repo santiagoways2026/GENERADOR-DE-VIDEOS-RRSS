@@ -4883,14 +4883,15 @@
       {
         "en": 19.09,
         "dur": 5.33,
-        "principal": "App sin conexión",
-        "secundaria": "Y asistencia 24 h"
+        "principal": "App sin conexión y asistencia 24 h",
+        "secundaria": "Incluido"
       }
     ],
     "musica": {
       "src": "musica/chill_Lobby_Time.mp3",
       "vol": 0.0
-    }
+    },
+    "cartelasTop": 260
   },
   {
     "id": "sarria-800km-toma",
@@ -5217,18 +5218,8 @@
         "fin": 13.34
       },
       {
-        "t": "108",
+        "t": "108,7 kilómetros",
         "en": 13.34,
-        "fin": 13.98
-      },
-      {
-        "t": ",741",
-        "en": 13.98,
-        "fin": 15.6
-      },
-      {
-        "t": "kilómetros",
-        "en": 15.6,
         "fin": 16.2
       },
       {
