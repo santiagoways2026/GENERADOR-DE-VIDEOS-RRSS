@@ -2653,5 +2653,589 @@
     38.27
    ]
   ]
+ },
+ {
+  "id": "vozenoff",
+  "dur": 36.5,
+  "audio": null,
+  "voces": [
+   [
+    "webinar/s1.wav",
+    0
+   ],
+   [
+    "webinar/s2.wav",
+    5.2
+   ],
+   [
+    "webinar/s3.wav",
+    11.2
+   ],
+   [
+    "webinar/s4.wav",
+    20.5
+   ],
+   [
+    "webinar/s6.wav",
+    24.3
+   ],
+   [
+    "webinar/s7.wav",
+    28.4
+   ]
+  ],
+  "musica": "musica/chill_Dreamer.mp3",
+  "musicaVol": 0.06,
+  "musicaFinal": 0.1,
+  "finVoz": 31.2,
+  "palabras": [
+   {
+    "t": "If",
+    "en": 0.1,
+    "fin": 0.35
+   },
+   {
+    "t": "walking",
+    "en": 0.37,
+    "fin": 0.72
+   },
+   {
+    "t": "the",
+    "en": 0.74,
+    "fin": 0.82
+   },
+   {
+    "t": "Camino",
+    "en": 0.83,
+    "fin": 1.36
+   },
+   {
+    "t": "is",
+    "en": 1.38,
+    "fin": 1.52
+   },
+   {
+    "t": "on",
+    "en": 1.54,
+    "fin": 1.64
+   },
+   {
+    "t": "your",
+    "en": 1.66,
+    "fin": 1.8
+   },
+   {
+    "t": "list,",
+    "en": 1.82,
+    "fin": 2.21
+   },
+   {
+    "t": "pay",
+    "en": 2.52,
+    "fin": 2.73
+   },
+   {
+    "t": "attention",
+    "en": 2.75,
+    "fin": 3.33
+   },
+   {
+    "t": "to",
+    "en": 3.34,
+    "fin": 3.45
+   },
+   {
+    "t": "2027.",
+    "en": 3.46,
+    "fin": 4.66
+   },
+   {
+    "t": "It's",
+    "en": 5.3,
+    "fin": 5.54
+   },
+   {
+    "t": "a",
+    "en": 5.55,
+    "fin": 5.62
+   },
+   {
+    "t": "Xacobeo,",
+    "en": 5.63,
+    "fin": 6.42
+   },
+   {
+    "t": "as",
+    "en": 6.52,
+    "fin": 6.74
+   },
+   {
+    "t": "we",
+    "en": 6.75,
+    "fin": 6.87
+   },
+   {
+    "t": "call",
+    "en": 6.88,
+    "fin": 7.14
+   },
+   {
+    "t": "the",
+    "en": 7.15,
+    "fin": 7.25
+   },
+   {
+    "t": "Holy",
+    "en": 7.27,
+    "fin": 7.72
+   },
+   {
+    "t": "Year",
+    "en": 7.73,
+    "fin": 7.99
+   },
+   {
+    "t": "in",
+    "en": 8.0,
+    "fin": 8.08
+   },
+   {
+    "t": "Galicia,",
+    "en": 8.09,
+    "fin": 8.72
+   },
+   {
+    "t": "and",
+    "en": 9.0,
+    "fin": 9.16
+   },
+   {
+    "t": "the",
+    "en": 9.18,
+    "fin": 9.26
+   },
+   {
+    "t": "whole",
+    "en": 9.28,
+    "fin": 9.64
+   },
+   {
+    "t": "region",
+    "en": 9.65,
+    "fin": 10.06
+   },
+   {
+    "t": "celebrates.",
+    "en": 10.07,
+    "fin": 10.94
+   },
+   {
+    "t": "In",
+    "en": 11.3,
+    "fin": 11.53
+   },
+   {
+    "t": "our",
+    "en": 11.54,
+    "fin": 11.66
+   },
+   {
+    "t": "free",
+    "en": 11.67,
+    "fin": 11.98
+   },
+   {
+    "t": "webinar,",
+    "en": 11.99,
+    "fin": 12.62
+   },
+   {
+    "t": "we'll",
+    "en": 12.88,
+    "fin": 13.04
+   },
+   {
+    "t": "show",
+    "en": 13.06,
+    "fin": 13.28
+   },
+   {
+    "t": "you",
+    "en": 13.29,
+    "fin": 13.4
+   },
+   {
+    "t": "how",
+    "en": 13.41,
+    "fin": 13.55
+   },
+   {
+    "t": "to",
+    "en": 13.56,
+    "fin": 13.67
+   },
+   {
+    "t": "plan",
+    "en": 13.68,
+    "fin": 14.0
+   },
+   {
+    "t": "your",
+    "en": 14.01,
+    "fin": 14.16
+   },
+   {
+    "t": "Camino",
+    "en": 14.17,
+    "fin": 14.62
+   },
+   {
+    "t": "well",
+    "en": 14.64,
+    "fin": 14.89
+   },
+   {
+    "t": "in",
+    "en": 14.9,
+    "fin": 15.06
+   },
+   {
+    "t": "such",
+    "en": 15.08,
+    "fin": 15.26
+   },
+   {
+    "t": "a",
+    "en": 15.28,
+    "fin": 15.34
+   },
+   {
+    "t": "busy",
+    "en": 15.36,
+    "fin": 15.66
+   },
+   {
+    "t": "year,",
+    "en": 15.67,
+    "fin": 16.06
+   },
+   {
+    "t": "and",
+    "en": 16.49,
+    "fin": 16.71
+   },
+   {
+    "t": "how",
+    "en": 16.86,
+    "fin": 16.99
+   },
+   {
+    "t": "to",
+    "en": 17.0,
+    "fin": 17.1
+   },
+   {
+    "t": "find",
+    "en": 17.11,
+    "fin": 17.42
+   },
+   {
+    "t": "quiet",
+    "en": 17.43,
+    "fin": 17.84
+   },
+   {
+    "t": "moments",
+    "en": 17.86,
+    "fin": 18.41
+   },
+   {
+    "t": "without",
+    "en": 18.44,
+    "fin": 18.79
+   },
+   {
+    "t": "missing",
+    "en": 18.8,
+    "fin": 19.17
+   },
+   {
+    "t": "the",
+    "en": 19.19,
+    "fin": 19.24
+   },
+   {
+    "t": "atmosphere.",
+    "en": 19.25,
+    "fin": 19.98
+   },
+   {
+    "t": "Plus,",
+    "en": 20.6,
+    "fin": 21.12
+   },
+   {
+    "t": "a",
+    "en": 21.23,
+    "fin": 21.38
+   },
+   {
+    "t": "few",
+    "en": 21.4,
+    "fin": 21.7
+   },
+   {
+    "t": "surprises",
+    "en": 21.72,
+    "fin": 22.34
+   },
+   {
+    "t": "you'd",
+    "en": 22.36,
+    "fin": 22.57
+   },
+   {
+    "t": "never",
+    "en": 22.58,
+    "fin": 22.9
+   },
+   {
+    "t": "expect!",
+    "en": 22.91,
+    "fin": 23.55
+   },
+   {
+    "t": "Join",
+    "en": 24.4,
+    "fin": 24.79
+   },
+   {
+    "t": "us",
+    "en": 24.8,
+    "fin": 25.73
+   },
+   {
+    "t": "on",
+    "en": 25.74,
+    "fin": 25.93
+   },
+   {
+    "t": "Wednesday,",
+    "en": 25.94,
+    "fin": 26.56
+   },
+   {
+    "t": "November",
+    "en": 26.56,
+    "fin": 27.17
+   },
+   {
+    "t": "25.",
+    "en": 27.17,
+    "fin": 27.79
+   },
+   {
+    "t": "Tap",
+    "en": 28.5,
+    "fin": 28.79
+   },
+   {
+    "t": "below,",
+    "en": 28.81,
+    "fin": 29.3
+   },
+   {
+    "t": "and",
+    "en": 29.34,
+    "fin": 29.62
+   },
+   {
+    "t": "save",
+    "en": 29.64,
+    "fin": 29.92
+   },
+   {
+    "t": "your",
+    "en": 29.94,
+    "fin": 30.06
+   },
+   {
+    "t": "free",
+    "en": 30.07,
+    "fin": 30.26
+   },
+   {
+    "t": "spot.",
+    "en": 30.27,
+    "fin": 30.77
+   }
+  ],
+  "planos": [
+   [
+    "webinar/obradoiro-alvaro.mp4",
+    0,
+    0,
+    3.4
+   ],
+   [
+    "webinar/plaza-obradoiro.mp4",
+    0,
+    3.4,
+    1.8
+   ],
+   [
+    "webinar/soportales.mp4",
+    1.0,
+    5.2,
+    1.4
+   ],
+   [
+    "webinar/quintana.mp4",
+    0,
+    6.6,
+    2.4
+   ],
+   [
+    "webinar/berenguela.mp4",
+    0,
+    9.0,
+    1.6
+   ],
+   [
+    "webinar/plaza-obradoiro-b.mp4",
+    0,
+    10.6,
+    0.6
+   ],
+   [
+    "webinar/slide390.mp4",
+    0,
+    11.2,
+    2.2,
+    "borroso"
+   ],
+   [
+    "webinar/v117.mp4",
+    0,
+    13.4,
+    2.4
+   ],
+   [
+    "webinar/slide600.mp4",
+    0,
+    15.8,
+    1.4,
+    "borroso"
+   ],
+   [
+    "webinar/v113.mp4",
+    1.0,
+    17.2,
+    1.6
+   ],
+   [
+    "webinar/v24.mp4",
+    0,
+    18.8,
+    1.6
+   ],
+   [
+    "webinar/fuegos.mp4",
+    0,
+    20.4,
+    3.8
+   ],
+   [
+    "webinar/obradoiro-alvaro.mp4",
+    14.0,
+    24.2,
+    4.1,
+    "borroso"
+   ],
+   [
+    "webinar/v105.mp4",
+    0,
+    28.3,
+    3.3,
+    "borroso"
+   ],
+   [
+    "webinar/plaza-obradoiro.mp4",
+    0,
+    31.6,
+    2.4,
+    "borroso"
+   ],
+   [
+    "webinar/obradoiro-alvaro.mp4",
+    18.0,
+    34.0,
+    2.5,
+    "borroso"
+   ]
+  ],
+  "cams": [
+   [
+    "webinar/slide390.mp4",
+    0,
+    11.2,
+    2.2,
+    true,
+    640
+   ],
+   [
+    "webinar/slide600.mp4",
+    0,
+    15.8,
+    1.4,
+    true,
+    640
+   ]
+  ],
+  "textos": [
+   {
+    "tipo": "grande",
+    "texto": "2027",
+    "en": 0.2,
+    "dur": 3.1
+   },
+   {
+    "tipo": "titular",
+    "antes": "",
+    "clave": "Holy Year",
+    "despues": "",
+    "en": 7.1,
+    "dur": 2.5
+   },
+   {
+    "tipo": "rutas",
+    "en": 13.5,
+    "dur": 2.3
+   },
+   {
+    "tipo": "titular",
+    "antes": "",
+    "clave": "Surprises",
+    "despues": " included",
+    "en": 20.6,
+    "dur": 3.5
+   },
+   {
+    "tipo": "fecha",
+    "en": 24.3,
+    "dur": 4.0
+   },
+   {
+    "tipo": "cta",
+    "en": 28.4,
+    "dur": 8.1
+   }
+  ],
+  "sinSubs": [
+   [
+    28.3,
+    36.5
+   ]
+  ]
  }
 ]
