@@ -17,6 +17,7 @@ type Version = {
   id: string;
   dur: number;
   audio: string | null;
+  audioEn?: number;
   musica: string;
   musicaVol: number;
   musicaFinal?: number;
@@ -24,6 +25,7 @@ type Version = {
   palabras: { t: string; en: number; fin: number }[];
   planos: (string | number | boolean)[][];
   recursos?: (string | number)[][];
+  cams?: (string | number)[][];
   textos: Texto[];
   sinSubs: number[][];
 };
@@ -57,6 +59,25 @@ const Plano: React.FC<{ src: string; desde: number; dur: number; voz?: boolean }
   );
 };
 
+
+/** Ventana de webcam del webinar: tarjeta redondeada con la sombra de la marca, voz incluida. */
+const Webcam: React.FC<{ src: string; desde: number; dur: number; primera: boolean }> = ({ src, desde, dur, primera }) => {
+  const frame = useCurrentFrame();
+  const e = primera ? interpolate(frame, [0, 12], [0, 1], { ...clamp, easing: curva }) : 1;
+  return (
+    <AbsoluteFill>
+      <div style={{ position: "absolute", left: 72, right: 72, top: 240, aspectRatio: "16 / 9", borderRadius: 22, overflow: "hidden", boxShadow: "0 8px 32px rgba(46, 46, 45, 0.12)", border: "6px solid #FFFFFF", opacity: e, translate: `0px ${(1 - e) * 24}px` }}>
+        <OffthreadVideo
+          src={staticFile(src)}
+          trimBefore={f(desde)}
+          volume={(fr) => interpolate(fr, [0, 2, dur - 2, dur], [0, 1, 1, 0], clamp)}
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+        />
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 /** Texto sobre vídeo: blanco con contorno grafito. */
 const sobreVideo: React.CSSProperties = {
   color: brand.white,
@@ -84,7 +105,7 @@ const Grande: React.FC<{ texto: string; dur: number }> = ({ texto, dur }) => {
 const Titular: React.FC<{ t: Texto; dur: number }> = ({ t, dur }) => {
   const a = useAparece(dur);
   return (
-    <AbsoluteFill style={{ alignItems: "center", paddingTop: 300 }}>
+    <AbsoluteFill style={{ alignItems: "center", paddingTop: (t as { top?: number }).top ?? 300 }}>
       <div style={{ display: "flex", alignItems: "baseline", whiteSpace: "pre", fontSize: 104, lineHeight: 1.1, ...a }}>
         {t.antes ? <span style={sobreVideo}>{t.antes}</span> : null}
         <Placa tam={104}>{t.clave}</Placa>
@@ -178,6 +199,11 @@ export const Webinar: React.FC<{ id: string }> = ({ id }) => {
           <Plano src={src as string} desde={desde as number} dur={f(dur as number)} />
         </Sequence>
       ))}
+      {(d.cams ?? []).map(([src, desde, en, dur], i) => (
+        <Sequence key={`w${i}`} from={f(en as number)} durationInFrames={f((en as number) + (dur as number)) - f(en as number)}>
+          <Webcam src={src as string} desde={desde as number} dur={f(dur as number)} primera={i === 0} />
+        </Sequence>
+      ))}
       {d.textos.map((t, i) => (
         <Sequence key={`t${i}`} from={f(t.en)} durationInFrames={f(t.dur)}>
           {t.tipo === "grande" ? <Grande texto={t.texto as string} dur={f(t.dur)} /> : null}
@@ -187,8 +213,12 @@ export const Webinar: React.FC<{ id: string }> = ({ id }) => {
           {t.tipo === "cta" ? <Cta dur={f(t.dur)} /> : null}
         </Sequence>
       ))}
-      <Subtitulos palabras={palabras} soloVerde cortes={d.planos.filter((p) => p[4]).map((p) => p[2] as number)} />
-      {d.audio ? <Audio src={staticFile(d.audio)} /> : null}
+      <Subtitulos palabras={palabras} soloVerde cortes={[...d.planos.filter((p) => p[4]).map((p) => p[2] as number), ...(d.cams ?? []).map((c) => c[2] as number)]} />
+      {d.audio ? (
+        <Sequence from={f(d.audioEn ?? 0)}>
+          <Audio src={staticFile(d.audio)} />
+        </Sequence>
+      ) : null}
       <Audio
         src={staticFile(d.musica)}
         volume={(fr) => interpolate(fr, [0, 15, fv, fv + 15, total - 20, total], [0, mv, mv, mf, mf, 0], clamp)}
