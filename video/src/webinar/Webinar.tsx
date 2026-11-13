@@ -106,11 +106,14 @@ const Grande: React.FC<{ texto: string; dur: number }> = ({ texto, dur }) => {
 
 const Titular: React.FC<{ t: Texto; dur: number }> = ({ t, dur }) => {
   const a = useAparece(dur);
+  // Zona segura x 85 a 1018: el titular entero cabe en 800 px (Montserrat 800, ~0,62 em por letra + placa).
+  const letras = ((t.antes ?? "") + (t.clave ?? "") + (t.despues ?? "")).length;
+  const tam = Math.min(104, Math.floor(760 / (letras * 0.62)));
   return (
     <AbsoluteFill style={{ alignItems: "center", paddingTop: (t as { top?: number }).top ?? 300 }}>
-      <div style={{ display: "flex", alignItems: "baseline", whiteSpace: "pre", fontSize: 104, lineHeight: 1.1, ...a }}>
+      <div style={{ display: "flex", alignItems: "baseline", whiteSpace: "pre", fontSize: tam, lineHeight: 1.1, ...a }}>
         {t.antes ? <span style={sobreVideo}>{t.antes}</span> : null}
-        <Placa tam={104}>{t.clave}</Placa>
+        <Placa tam={tam}>{t.clave}</Placa>
         {t.despues ? <span style={sobreVideo}>{t.despues}</span> : null}
       </div>
     </AbsoluteFill>
