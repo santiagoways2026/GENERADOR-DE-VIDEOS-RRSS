@@ -67,7 +67,7 @@ Etiquetas: portomarín, embalse de belesar, camino francés, etapa sarria portom
 **Instagram**
 ¿Bastones en el Camino? Respuesta corta: sí. 🥾
 En llano casi no los notas, pero en las subidas te ayudan a empujar y en las bajadas quitan mucha carga de las rodillas. Y en Galicia, con suelo mojado y piedras sueltas, dan una seguridad que ni te imaginas.
-Lo importante: ajústalos a tu medida. Guarda este vídeo para cuando prepares la mochila.
+Lo importante: ajústalos a tu medida. Guarda este vídeo para cuando prepares la mochila y, para más curiosidades, síguenos.
 
 #CaminoDeSantiago #BastonesDeTrekking #MochilaCamino #Peregrino #ConsejosCamino #Senderismo #Galicia
 
