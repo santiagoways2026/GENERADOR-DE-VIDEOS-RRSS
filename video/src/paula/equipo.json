@@ -1168,8 +1168,8 @@
       "en el",
       "Camino?"
     ],
-    "duracion": 25.54,
-    "finVoz": 24.44,
+    "duracion": 24.2,
+    "finVoz": 24.2,
     "planos": [
       {
         "src": "paula/0073.mp4",
@@ -1209,7 +1209,7 @@
       {
         "src": "paula/0079_cola.mp4",
         "desde": 26.37,
-        "dur": 7.55,
+        "dur": 6.21,
         "en": 17.99,
         "zoom": 1.25
       }
@@ -1638,8 +1638,8 @@
       "camina de",
       "verdad?"
     ],
-    "duracion": 30.48,
-    "finVoz": 29.38,
+    "duracion": 28.47,
+    "finVoz": 28.47,
     "planos": [
       {
         "src": "paula/0082.mp4",
@@ -1693,7 +1693,7 @@
       {
         "src": "paula/0082_cola.mp4",
         "desde": 98.86,
-        "dur": 5.78,
+        "dur": 3.77,
         "en": 24.7,
         "zoom": 1.25
       }
@@ -2209,8 +2209,8 @@
       "te cuenta del",
       "Camino"
     ],
-    "duracion": 25.38,
-    "finVoz": 24.28,
+    "duracion": 22.8,
+    "finVoz": 22.8,
     "planos": [
       {
         "src": "paula/0083.mp4",
@@ -2257,7 +2257,7 @@
       {
         "src": "paula/0100_cola.mp4",
         "desde": 1.54,
-        "dur": 7.65,
+        "dur": 5.07,
         "en": 17.73,
         "zoom": 1.15
       }
@@ -2711,8 +2711,8 @@
       "un año",
       "normal"
     ],
-    "duracion": 30.8,
-    "finVoz": 29.7,
+    "duracion": 29.0,
+    "finVoz": 29.0,
     "planos": [
       {
         "src": "paula/0101.mp4",
@@ -2773,7 +2773,7 @@
       {
         "src": "paula/0102_cola.mp4",
         "desde": 85.71,
-        "dur": 6.825,
+        "dur": 5.025,
         "en": 23.975,
         "zoom": 1.25
       }
@@ -3794,8 +3794,8 @@
       "trasladado",
       "piedra a piedra"
     ],
-    "duracion": 26.86,
-    "finVoz": 25.76,
+    "duracion": 24.53,
+    "finVoz": 24.53,
     "planos": [
       {
         "src": "paula/1104.mp4",
@@ -3842,7 +3842,7 @@
       {
         "src": "paula/1104_cola.mp4",
         "desde": 21.05,
-        "dur": 5.81,
+        "dur": 3.48,
         "en": 21.05,
         "zoom": 1.15
       }
@@ -4325,7 +4325,7 @@
       "perder en el",
       "Camino?"
     ],
-    "duracion": 28.02,
+    "duracion": 27.1,
     "finVoz": 26.72,
     "planos": [
       {
@@ -4380,7 +4380,7 @@
       {
         "src": "paula/v2.mp4",
         "desde": 24.22,
-        "dur": 3.8,
+        "dur": 2.88,
         "en": 24.22,
         "zoom": 1.15
       }
@@ -4938,7 +4938,7 @@
       "no necesitas",
       "800 km?"
     ],
-    "duracion": 25.06,
+    "duracion": 23.93,
     "finVoz": 23.56,
     "planos": [
       {
@@ -4979,7 +4979,7 @@
       {
         "src": "paula/v3.mp4",
         "desde": 24.42,
-        "dur": 2.12,
+        "dur": 0.99,
         "en": 22.94,
         "zoom": 1.25
       }

@@ -114,8 +114,9 @@ A rajatabla, ningún texto ni gráfico fuera de la zona blanca:
 - Abajo: el texto no baja de y 1365 (entre x 498 y 885 se puede llegar a 1475).
 - Subtítulos: de x 225 a 855, con la línea en y 1200 (o arriba, en 620, si
   tapan una cara). Gráficos: margen lateral 96 y arriba 230.
-- Al final de cada short, uno o dos segundos de plano después de la última
-  palabra, antes del cierre.
+- Sin pausa al final: el short acaba 0,25 s después de la última palabra
+  (medida en el audio, no con Whisper), sin cartela verde. Así no se va la
+  gente y el bucle sigue.
 
 ## Cómo se ven los textos
 
