@@ -12,7 +12,7 @@
 
 On the Camino, you learn to be thankful for the little things. 🐚
 
-A helping hand, a kind word, a friend along the way. We asked pilgrims what the Camino de Santiago gave them, and the answer was always the same: people, and gratitude.
+A helping hand, a kind word, a friend along the way. We asked pilgrims about their Camino de Santiago, and the people they met and the gratitude they felt kept coming up.
 
 This Thanksgiving, we're grateful for every step, and for everyone we walk with. Happy Thanksgiving, and Buen Camino! 🧡
 
