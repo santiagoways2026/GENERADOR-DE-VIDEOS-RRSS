@@ -7,11 +7,11 @@ y acaba cada uno antes de elegir el trozo.
 
     python3 planos.py entrada.mp4 [paso_en_segundos] [umbral]
 """
-import subprocess, sys, tempfile, os, json
+import subprocess, sys, tempfile, os, json, shutil
 from PIL import Image
 
-FF = "/home/user/centrodecontrol/video/node_modules/@remotion/compositor-linux-x64-gnu/ffmpeg"
-FP = "/home/user/centrodecontrol/video/node_modules/@remotion/compositor-linux-x64-gnu/ffprobe"
+FF = shutil.which("ffmpeg") or "ffmpeg"
+FP = shutil.which("ffprobe") or "ffprobe"
 
 
 def duracion(src):

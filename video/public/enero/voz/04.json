@@ -1,0 +1,393 @@
+{
+ "duracion": 25.128,
+ "segmentos": [
+  {
+   "voz": "Este Camino empieza con un baño termal y casi nadie lo conoce. Estas son sus 6 etapas.",
+   "clave": [
+    "baño termal",
+    "6 etapas"
+   ],
+   "ini": 0.05,
+   "fin": 6.002,
+   "palabras": [
+    {
+     "t": "Este",
+     "ini": 0.08,
+     "fin": 0.404
+    },
+    {
+     "t": "Camino",
+     "ini": 0.417,
+     "fin": 0.717
+    },
+    {
+     "t": "empieza",
+     "ini": 0.729,
+     "fin": 1.126
+    },
+    {
+     "t": "con",
+     "ini": 1.138,
+     "fin": 1.282
+    },
+    {
+     "t": "un",
+     "ini": 1.294,
+     "fin": 1.378
+    },
+    {
+     "t": "baño",
+     "ini": 1.39,
+     "fin": 1.618
+    },
+    {
+     "t": "termal",
+     "ini": 1.631,
+     "fin": 1.991
+    },
+    {
+     "t": "y",
+     "ini": 2.003,
+     "fin": 2.051
+    },
+    {
+     "t": "casi",
+     "ini": 2.063,
+     "fin": 2.328
+    },
+    {
+     "t": "nadie",
+     "ini": 2.34,
+     "fin": 2.58
+    },
+    {
+     "t": "lo",
+     "ini": 2.592,
+     "fin": 2.676
+    },
+    {
+     "t": "conoce",
+     "ini": 2.688,
+     "fin": 3.205
+    },
+    {
+     "t": "Estas",
+     "ini": 4.031,
+     "fin": 4.416
+    },
+    {
+     "t": "son",
+     "ini": 4.428,
+     "fin": 4.608
+    },
+    {
+     "t": "sus",
+     "ini": 4.62,
+     "fin": 4.789
+    },
+    {
+     "t": "6 etapas",
+     "ini": 4.801,
+     "fin": 5.702
+    }
+   ]
+  },
+  {
+   "voz": "Ourense a Cea, la villa del pan.",
+   "clave": [
+    "Ourense"
+   ],
+   "ini": 6.152,
+   "fin": 8.537,
+   "palabras": [
+    {
+     "t": "Ourense",
+     "ini": 6.182,
+     "fin": 6.711
+    },
+    {
+     "t": "a",
+     "ini": 6.723,
+     "fin": 6.771
+    },
+    {
+     "t": "Cea",
+     "ini": 6.783,
+     "fin": 7.084
+    },
+    {
+     "t": "la",
+     "ini": 7.324,
+     "fin": 7.408
+    },
+    {
+     "t": "villa",
+     "ini": 7.42,
+     "fin": 7.648
+    },
+    {
+     "t": "del",
+     "ini": 7.66,
+     "fin": 7.817
+    },
+    {
+     "t": "pan",
+     "ini": 7.829,
+     "fin": 8.237
+    }
+   ]
+  },
+  {
+   "voz": "Cea a Casarellos, pasando por el Monasterio de Oseira.",
+   "clave": [
+    "Oseira"
+   ],
+   "ini": 8.687,
+   "fin": 12.141,
+   "palabras": [
+    {
+     "t": "Cea",
+     "ini": 8.716,
+     "fin": 9.089
+    },
+    {
+     "t": "a",
+     "ini": 9.101,
+     "fin": 9.137
+    },
+    {
+     "t": "Casarellos",
+     "ini": 9.149,
+     "fin": 9.81
+    },
+    {
+     "t": "pasando",
+     "ini": 10.002,
+     "fin": 10.411
+    },
+    {
+     "t": "por",
+     "ini": 10.423,
+     "fin": 10.567
+    },
+    {
+     "t": "el",
+     "ini": 10.579,
+     "fin": 10.652
+    },
+    {
+     "t": "Monasterio",
+     "ini": 10.664,
+     "fin": 11.144
+    },
+    {
+     "t": "de",
+     "ini": 11.156,
+     "fin": 11.229
+    },
+    {
+     "t": "Oseira",
+     "ini": 11.24,
+     "fin": 11.841
+    }
+   ]
+  },
+  {
+   "voz": "Casarellos a Lalín.",
+   "clave": [
+    "Lalín"
+   ],
+   "ini": 12.291,
+   "fin": 13.725,
+   "palabras": [
+    {
+     "t": "Casarellos",
+     "ini": 12.32,
+     "fin": 12.92
+    },
+    {
+     "t": "a",
+     "ini": 12.932,
+     "fin": 12.969
+    },
+    {
+     "t": "Lalín",
+     "ini": 12.981,
+     "fin": 13.425
+    }
+   ]
+  },
+  {
+   "voz": "Lalín a Silleda.",
+   "clave": [
+    "Silleda"
+   ],
+   "ini": 13.875,
+   "fin": 15.214,
+   "palabras": [
+    {
+     "t": "Lalín",
+     "ini": 13.904,
+     "fin": 14.313
+    },
+    {
+     "t": "a",
+     "ini": 14.325,
+     "fin": 14.361
+    },
+    {
+     "t": "Silleda",
+     "ini": 14.373,
+     "fin": 14.914
+    }
+   ]
+  },
+  {
+   "voz": "Silleda a Ponte Ulla.",
+   "clave": [
+    "Ponte Ulla"
+   ],
+   "ini": 15.364,
+   "fin": 17.088,
+   "palabras": [
+    {
+     "t": "Silleda",
+     "ini": 15.394,
+     "fin": 15.923
+    },
+    {
+     "t": "a",
+     "ini": 15.935,
+     "fin": 15.995
+    },
+    {
+     "t": "Ponte",
+     "ini": 16.007,
+     "fin": 16.307
+    },
+    {
+     "t": "Ulla",
+     "ini": 16.319,
+     "fin": 16.788
+    }
+   ]
+  },
+  {
+   "voz": "Y Ponte Ulla a Santiago.",
+   "clave": [
+    "Santiago"
+   ],
+   "ini": 17.238,
+   "fin": 19.034,
+   "palabras": [
+    {
+     "t": "Y",
+     "ini": 17.267,
+     "fin": 17.435
+    },
+    {
+     "t": "Ponte",
+     "ini": 17.448,
+     "fin": 17.748
+    },
+    {
+     "t": "Ulla",
+     "ini": 17.76,
+     "fin": 17.976
+    },
+    {
+     "t": "a",
+     "ini": 17.988,
+     "fin": 18.012
+    },
+    {
+     "t": "Santiago",
+     "ini": 18.024,
+     "fin": 18.734
+    }
+   ]
+  },
+  {
+   "voz": "Unos ciento diecinueve kilómetros y medio y tu Compostela. Guárdalo para tu próximo Camino.",
+   "texto": "Unos 119,5 km y tu Compostela. Guárdalo para tu próximo Camino.",
+   "clave": [
+    "119,5 km",
+    "Guárdalo"
+   ],
+   "ini": 19.184,
+   "fin": 25.1,
+   "palabras": [
+    {
+     "t": "Unos",
+     "ini": 19.214,
+     "fin": 19.574
+    },
+    {
+     "t": "ciento",
+     "ini": 19.586,
+     "fin": 19.875
+    },
+    {
+     "t": "diecinueve",
+     "ini": 19.887,
+     "fin": 20.379
+    },
+    {
+     "t": "kilómetros",
+     "ini": 20.391,
+     "fin": 20.956
+    },
+    {
+     "t": "y",
+     "ini": 20.968,
+     "fin": 21.016
+    },
+    {
+     "t": "medio",
+     "ini": 21.028,
+     "fin": 21.305
+    },
+    {
+     "t": "y",
+     "ini": 21.317,
+     "fin": 21.365
+    },
+    {
+     "t": "tu",
+     "ini": 21.377,
+     "fin": 21.473
+    },
+    {
+     "t": "Compostela",
+     "ini": 21.485,
+     "fin": 22.218
+    },
+    {
+     "t": "Guárdalo",
+     "ini": 23.045,
+     "fin": 23.55
+    },
+    {
+     "t": "para",
+     "ini": 23.562,
+     "fin": 23.754
+    },
+    {
+     "t": "tu",
+     "ini": 23.766,
+     "fin": 23.874
+    },
+    {
+     "t": "próximo",
+     "ini": 23.886,
+     "fin": 24.271
+    },
+    {
+     "t": "Camino",
+     "ini": 24.283,
+     "fin": 24.8
+    }
+   ]
+  }
+ ]
+}

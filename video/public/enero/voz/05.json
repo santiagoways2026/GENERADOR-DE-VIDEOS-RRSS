@@ -1,0 +1,386 @@
+{
+ "duracion": 23.904,
+ "segmentos": [
+  {
+   "voz": "Si quieres llegar a Santiago en la Semana Santa del Año Santo, este es el momento de reservar.",
+   "clave": [
+    "Semana Santa"
+   ],
+   "ini": 0.05,
+   "fin": 5.343,
+   "palabras": [
+    {
+     "t": "Si",
+     "ini": 0.079,
+     "fin": 0.331
+    },
+    {
+     "t": "quieres",
+     "ini": 0.343,
+     "fin": 0.632
+    },
+    {
+     "t": "llegar",
+     "ini": 0.644,
+     "fin": 0.884
+    },
+    {
+     "t": "a",
+     "ini": 0.896,
+     "fin": 0.944
+    },
+    {
+     "t": "Santiago",
+     "ini": 0.956,
+     "fin": 1.509
+    },
+    {
+     "t": "en",
+     "ini": 1.521,
+     "fin": 1.593
+    },
+    {
+     "t": "la",
+     "ini": 1.605,
+     "fin": 1.69
+    },
+    {
+     "t": "Semana",
+     "ini": 1.702,
+     "fin": 2.062
+    },
+    {
+     "t": "Santa",
+     "ini": 2.074,
+     "fin": 2.387
+    },
+    {
+     "t": "del",
+     "ini": 2.399,
+     "fin": 2.531
+    },
+    {
+     "t": "Año",
+     "ini": 2.543,
+     "fin": 2.723
+    },
+    {
+     "t": "Santo",
+     "ini": 2.735,
+     "fin": 3.168
+    },
+    {
+     "t": "este",
+     "ini": 3.42,
+     "fin": 3.661
+    },
+    {
+     "t": "es",
+     "ini": 3.673,
+     "fin": 3.793
+    },
+    {
+     "t": "el",
+     "ini": 3.805,
+     "fin": 3.889
+    },
+    {
+     "t": "momento",
+     "ini": 3.901,
+     "fin": 4.286
+    },
+    {
+     "t": "de",
+     "ini": 4.298,
+     "fin": 4.394
+    },
+    {
+     "t": "reservar",
+     "ini": 4.406,
+     "fin": 5.043
+    }
+   ]
+  },
+  {
+   "voz": "Mayo, junio y septiembre son los primeros meses en llenarse. Y este año, la Semana Santa también.",
+   "clave": [
+    "Semana Santa"
+   ],
+   "ini": 5.493,
+   "fin": 12.298,
+   "palabras": [
+    {
+     "t": "Mayo",
+     "ini": 5.522,
+     "fin": 6.027
+    },
+    {
+     "t": "junio",
+     "ini": 6.219,
+     "fin": 6.508
+    },
+    {
+     "t": "y",
+     "ini": 6.52,
+     "fin": 6.568
+    },
+    {
+     "t": "septiembre",
+     "ini": 6.58,
+     "fin": 7.072
+    },
+    {
+     "t": "son",
+     "ini": 7.084,
+     "fin": 7.265
+    },
+    {
+     "t": "los",
+     "ini": 7.277,
+     "fin": 7.421
+    },
+    {
+     "t": "primeros",
+     "ini": 7.433,
+     "fin": 7.83
+    },
+    {
+     "t": "meses",
+     "ini": 7.842,
+     "fin": 8.166
+    },
+    {
+     "t": "en",
+     "ini": 8.178,
+     "fin": 8.262
+    },
+    {
+     "t": "llenarse",
+     "ini": 8.274,
+     "fin": 8.887
+    },
+    {
+     "t": "Y",
+     "ini": 9.715,
+     "fin": 9.907
+    },
+    {
+     "t": "este",
+     "ini": 9.919,
+     "fin": 10.159
+    },
+    {
+     "t": "año",
+     "ini": 10.171,
+     "fin": 10.448
+    },
+    {
+     "t": "la",
+     "ini": 10.7,
+     "fin": 10.772
+    },
+    {
+     "t": "Semana",
+     "ini": 10.784,
+     "fin": 11.133
+    },
+    {
+     "t": "Santa",
+     "ini": 11.145,
+     "fin": 11.434
+    },
+    {
+     "t": "también",
+     "ini": 11.446,
+     "fin": 11.998
+    }
+   ]
+  },
+  {
+   "voz": "Cinco etapas desde Sarria, con tu habitación reservada cada noche.",
+   "texto": "5 etapas desde Sarria, con tu habitación reservada cada noche.",
+   "clave": [
+    "habitación"
+   ],
+   "ini": 12.448,
+   "fin": 16.335,
+   "palabras": [
+    {
+     "t": "Cinco",
+     "ini": 12.477,
+     "fin": 12.898
+    },
+    {
+     "t": "etapas",
+     "ini": 12.91,
+     "fin": 13.259
+    },
+    {
+     "t": "desde",
+     "ini": 13.271,
+     "fin": 13.475
+    },
+    {
+     "t": "Sarria",
+     "ini": 13.487,
+     "fin": 13.908
+    },
+    {
+     "t": "con",
+     "ini": 14.148,
+     "fin": 14.328
+    },
+    {
+     "t": "tu",
+     "ini": 14.34,
+     "fin": 14.413
+    },
+    {
+     "t": "habitación",
+     "ini": 14.425,
+     "fin": 14.857
+    },
+    {
+     "t": "reservada",
+     "ini": 14.869,
+     "fin": 15.35
+    },
+    {
+     "t": "cada",
+     "ini": 15.362,
+     "fin": 15.542
+    },
+    {
+     "t": "noche",
+     "ini": 15.554,
+     "fin": 16.035
+    }
+   ]
+  },
+  {
+   "voz": "Y tu equipaje viaja por ti de un alojamiento al siguiente.",
+   "clave": [
+    "equipaje"
+   ],
+   "ini": 16.485,
+   "fin": 19.796,
+   "palabras": [
+    {
+     "t": "Y",
+     "ini": 16.515,
+     "fin": 16.683
+    },
+    {
+     "t": "tu",
+     "ini": 16.695,
+     "fin": 16.828
+    },
+    {
+     "t": "equipaje",
+     "ini": 16.84,
+     "fin": 17.296
+    },
+    {
+     "t": "viaja",
+     "ini": 17.308,
+     "fin": 17.681
+    },
+    {
+     "t": "por",
+     "ini": 17.693,
+     "fin": 17.885
+    },
+    {
+     "t": "ti",
+     "ini": 17.897,
+     "fin": 17.993
+    },
+    {
+     "t": "de",
+     "ini": 18.005,
+     "fin": 18.102
+    },
+    {
+     "t": "un",
+     "ini": 18.114,
+     "fin": 18.222
+    },
+    {
+     "t": "alojamiento",
+     "ini": 18.234,
+     "fin": 18.775
+    },
+    {
+     "t": "al",
+     "ini": 18.787,
+     "fin": 18.859
+    },
+    {
+     "t": "siguiente",
+     "ini": 18.871,
+     "fin": 19.496
+    }
+   ]
+  },
+  {
+   "voz": "Pide tu presupuesto hoy. Tienes el enlace en la bio.",
+   "clave": [
+    "presupuesto"
+   ],
+   "ini": 19.946,
+   "fin": 23.868,
+   "palabras": [
+    {
+     "t": "Pide",
+     "ini": 19.975,
+     "fin": 20.239
+    },
+    {
+     "t": "tu",
+     "ini": 20.251,
+     "fin": 20.36
+    },
+    {
+     "t": "presupuesto",
+     "ini": 20.372,
+     "fin": 20.936
+    },
+    {
+     "t": "hoy",
+     "ini": 20.948,
+     "fin": 21.261
+    },
+    {
+     "t": "Tienes",
+     "ini": 22.089,
+     "fin": 22.498
+    },
+    {
+     "t": "el",
+     "ini": 22.51,
+     "fin": 22.594
+    },
+    {
+     "t": "enlace",
+     "ini": 22.606,
+     "fin": 22.979
+    },
+    {
+     "t": "en",
+     "ini": 22.991,
+     "fin": 23.063
+    },
+    {
+     "t": "la",
+     "ini": 23.075,
+     "fin": 23.171
+    },
+    {
+     "t": "bio",
+     "ini": 23.183,
+     "fin": 23.568
+    }
+   ]
+  }
+ ]
+}

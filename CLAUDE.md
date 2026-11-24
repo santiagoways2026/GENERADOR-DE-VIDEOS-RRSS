@@ -79,6 +79,12 @@ Estas salieron de revisar piezas reales y ahorran repetir errores:
   Studio y se escriban solos en el código.
 - Las fuentes se empaquetan con `@fontsource`, no se descargan de Google: así
   el render sale igual en cualquier máquina y funciona sin conexión.
+- `src/fuentes.ts` carga Montserrat desde `public/fuentes/` con `FontFace` y
+  `delayRender`, y figura en `sideEffects` de `package.json`. Sin eso el
+  bundler descarta el import y el render sale con la letra de sistema sin
+  avisar.
+- Para que el MP4 salga en `yuv420p` de rango estándar hay que renderizar con
+  `--color-space=bt709`; si no, sale `yuvj420p`.
 
 ## Comandos
 
@@ -93,6 +99,19 @@ No hace falta pasar ninguna opción de navegador: `remotion.config.ts` detecta
 un Chromium ya instalado si lo hay, que es lo que permite renderizar en las
 sesiones de Claude Code en la web, donde la descarga del Chrome de Remotion
 está bloqueada.
+
+## Verticales de enero 2027
+
+Están en `video/src/enero/` (composiciones `Enero01PuertaSanta` a
+`Enero05SemanaSanta` y las miniaturas `Mini01` a `Mini05`). Siguen el
+Brandbook 2027 (`video/src/enero/marca.ts`): grafito como tinta, minúscula de
+frase y subtítulos con la palabra clave en caja verde. La voz se genera con
+`herramientas/scripts/voz.py` desde `video/src/enero/guiones.json`, y la
+entrega completa (vídeo a −14 LUFS, SRT, voz y miniatura) con:
+
+```bash
+bash herramientas/scripts/render-enero.sh videos_enero_2027_ES
+```
 
 ## Preparar metraje
 

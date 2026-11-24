@@ -5,3 +5,9 @@ video/out/
 # Los planos ya recortados que usa cada pieza sí entran, en video/public/brutos/,
 # porque sin ellos el proyecto no se puede renderizar.
 brutos-originales/
+
+# Entregables pesados de los verticales: viven en Drive. En el repositorio se
+# quedan el README, los copys, el inventario y los SRT.
+videos_enero_2027_ES/*.mp4
+videos_enero_2027_ES/miniaturas/
+videos_enero_2027_ES/voz/

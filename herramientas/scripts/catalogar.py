@@ -7,11 +7,11 @@ uno.
 
     python3 catalogar.py entrada.mp4 salida.jpg [columnas] [filas]
 """
-import subprocess, sys, tempfile, os, json
+import subprocess, sys, tempfile, os, json, shutil
 from PIL import Image, ImageDraw
 
-FF = "/home/user/centrodecontrol/video/node_modules/@remotion/compositor-linux-x64-gnu/ffmpeg"
-FP = "/home/user/centrodecontrol/video/node_modules/@remotion/compositor-linux-x64-gnu/ffprobe"
+FF = shutil.which("ffmpeg") or "ffmpeg"
+FP = shutil.which("ffprobe") or "ffprobe"
 
 
 def duracion(src):
