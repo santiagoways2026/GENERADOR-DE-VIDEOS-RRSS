@@ -107,14 +107,28 @@ const Grande: React.FC<{ texto: string; dur: number }> = ({ texto, dur }) => {
 const Titular: React.FC<{ t: Texto; dur: number }> = ({ t, dur }) => {
   const a = useAparece(dur);
   // Zona segura x 85 a 1018: el titular entero cabe en 800 px (Montserrat 800, ~0,62 em por letra + placa).
-  const letras = ((t.antes ?? "") + (t.clave ?? "") + (t.despues ?? "")).length;
-  const tam = Math.min(104, Math.floor(760 / (letras * 0.62)));
+  const dos = (t as { dos?: boolean }).dos;
+  const letras = dos ? Math.max((t.antes ?? "").length, (t.clave ?? "").length) : ((t.antes ?? "") + (t.clave ?? "") + (t.despues ?? "")).length;
+  const tam = Math.min(dos ? 112 : 104, Math.floor(760 / (letras * 0.62)));
   return (
     <AbsoluteFill style={{ alignItems: "center", paddingTop: (t as { top?: number }).top ?? 300 }}>
-      <div style={{ display: "flex", alignItems: "baseline", whiteSpace: "pre", fontSize: tam, lineHeight: 1.1, ...a }}>
+      <div style={{ display: "flex", flexDirection: dos ? "column" : "row", alignItems: dos ? "center" : "baseline", gap: dos ? 10 : 0, whiteSpace: "pre", fontSize: tam, lineHeight: 1.1, ...a }}>
         {t.antes ? <span style={sobreVideo}>{t.antes}</span> : null}
         <Placa tam={tam}>{t.clave}</Placa>
         {t.despues ? <span style={sobreVideo}>{t.despues}</span> : null}
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+/** Cartela de nombre: placa blanca con el nombre en grafito y el lugar en placa verde Ways. */
+const Nombre: React.FC<{ t: Texto; dur: number }> = ({ t, dur }) => {
+  const a = useAparece(dur);
+  return (
+    <AbsoluteFill>
+      <div style={{ position: "absolute", left: 150, right: 150, top: 980, display: "flex", flexDirection: "column", alignItems: "center", gap: 8, ...a }}>
+        <div style={{ backgroundColor: brand.white, color: paleta.grafito, fontWeight: 800, fontSize: 46, padding: "8px 24px 12px", borderRadius: 12, boxShadow: SOMBRA }}>{t.texto}</div>
+        <div style={{ backgroundColor: paleta.verdeWays, color: brand.white, fontWeight: 700, fontSize: 32, padding: "6px 18px 9px", borderRadius: 10 }}>{t.clave}</div>
       </div>
     </AbsoluteFill>
   );
@@ -213,6 +227,7 @@ export const Webinar: React.FC<{ id: string }> = ({ id }) => {
         <Sequence key={`t${i}`} from={f(t.en)} durationInFrames={f(t.dur)}>
           {t.tipo === "grande" ? <Grande texto={t.texto as string} dur={f(t.dur)} /> : null}
           {t.tipo === "titular" ? <Titular t={t} dur={f(t.dur)} /> : null}
+          {t.tipo === "nombre" ? <Nombre t={t} dur={f(t.dur)} /> : null}
           {t.tipo === "rutas" ? <Rutas dur={f(t.dur)} /> : null}
           {t.tipo === "fecha" ? <Fecha dur={f(t.dur)} /> : null}
           {t.tipo === "cta" ? <Cta dur={f(t.dur) + 30} /> : null}

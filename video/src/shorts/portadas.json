@@ -478,5 +478,14 @@
       "Free webinar · Nov 25"
     ],
     "alto": 1180
+  },
+  {
+    "id": "thanksgiving",
+    "lineas": [
+      "A lesson in",
+      "[gratitude]",
+      "on the Camino"
+    ],
+    "alto": 300
   }
 ]
