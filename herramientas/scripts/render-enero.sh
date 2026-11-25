@@ -8,8 +8,8 @@ RAIZ="$(cd "$(dirname "$0")/../.." && pwd)"
 SALIDA="$(mkdir -p "$1" && cd "$1" && pwd)"; shift
 IDS=("${@:-01 02 03 04 05}"); IDS=(${IDS[@]})
 cd "$RAIZ/video"
-declare -A COMP=([01]=Enero01PuertaSanta [02]=Enero02Curiosidades [03]=Enero03Caminos [04]=Enero04Ourense [05]=Enero05SemanaSanta)
-declare -A NOMBRE=([01]=01_2027-01-01_puerta-santa_ES [02]=02_2027-01-08_curiosidades-ano-santo_ES [03]=03_2027-01-13_4-caminos-5-dias_ES [04]=04_2027-01-20_etapas-ourense_ES [05]=05_2027-01-22_semana-santa-ano-santo_ES)
+declare -A COMP=([01]=Enero01PuertaSanta [02]=Enero02Curiosidades [03]=Enero03Caminos [04]=Enero04Sarria [05]=Enero05SemanaSanta)
+declare -A NOMBRE=([01]=01_2027-01-01_puerta-santa_ES [02]=02_2027-01-08_curiosidades-ano-santo_ES [03]=03_2027-01-13_4-caminos-5-dias_ES [04]=04_2027-01-20_etapas-sarria_ES [05]=05_2027-01-22_semana-santa-ano-santo_ES)
 TMP="$(mktemp -d)"
 mkdir -p "$SALIDA/miniaturas" "$SALIDA/subtitulos" "$SALIDA/voz"
 npx remotion bundle --out-dir="$TMP/bundle" --log=error >/dev/null

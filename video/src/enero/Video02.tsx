@@ -607,7 +607,16 @@ const Resumen: React.FC = () => {
  * Fondo: planos del Camino (ninguno de la Catedral), desenfocados y
  * oscurecidos para que las cifras en blanco destaquen.
  */
-const PLANOS_FONDO = ["v177", "v192", "v49", "v100", "v183", "v99", "v43", "v46"];
+const PLANOS_FONDO = [
+  "v177",
+  "v192",
+  "v49",
+  "v100",
+  "v183",
+  "v99",
+  "v43",
+  "v46",
+];
 const Fondo: React.FC = () => {
   const tramo = DURACION_02 / 30 / PLANOS_FONDO.length;
   return (

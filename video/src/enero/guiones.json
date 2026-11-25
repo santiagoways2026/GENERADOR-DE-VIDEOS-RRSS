@@ -120,53 +120,48 @@
       "pausa": 0.15,
       "segmentos": [
         {
-          "voz": "Este Camino empieza con un baño termal y casi nadie lo conoce. Estas son sus 6 etapas.",
+          "voz": "¿Vas a hacer el Camino desde Sarria? Estas son sus 5 etapas.",
           "clave": [
-            "baño termal",
-            "6 etapas"
+            "Sarria",
+            "5 etapas"
           ]
         },
         {
-          "voz": "Ourense a Cea, la villa del pan.",
+          "voz": "Sarria a Portomarín: 22 kilómetros entre aldeas y caminos rurales.",
+          "texto": "Sarria a Portomarín: 22 km entre aldeas y caminos rurales.",
           "clave": [
-            "Ourense"
+            "Portomarín"
           ]
         },
         {
-          "voz": "Cea a Casarellos, pasando por el Monasterio de Oseira.",
+          "voz": "Portomarín a Palas de Rei, con suaves subidas y pueblos pequeños.",
           "clave": [
-            "Oseira"
+            "Palas de Rei"
           ]
         },
         {
-          "voz": "Casarellos a Lalín.",
+          "voz": "Palas de Rei a Arzúa, la más larga. Si quieres, la partes con una noche en Melide.",
           "clave": [
-            "Lalín"
+            "Melide"
           ]
         },
         {
-          "voz": "Lalín a Silleda.",
+          "voz": "Arzúa a A Rúa, entre bosques y aldeas.",
           "clave": [
-            "Silleda"
+            "A Rúa"
           ]
         },
         {
-          "voz": "Silleda a Ponte Ulla.",
-          "clave": [
-            "Ponte Ulla"
-          ]
-        },
-        {
-          "voz": "Y Ponte Ulla a Santiago.",
+          "voz": "Y de A Rúa a Santiago, hasta la Catedral.",
           "clave": [
             "Santiago"
           ]
         },
         {
-          "voz": "Unos ciento diecinueve kilómetros y medio y tu Compostela. Guárdalo para tu próximo Camino.",
-          "texto": "Unos 119,5 km y tu Compostela. Guárdalo para tu próximo Camino.",
+          "voz": "Ciento once kilómetros y tu Compostela. Guárdalo para tu Camino.",
+          "texto": "111 km y tu Compostela. Guárdalo para tu Camino.",
           "clave": [
-            "119,5 km",
+            "111 km",
             "Guárdalo"
           ]
         }

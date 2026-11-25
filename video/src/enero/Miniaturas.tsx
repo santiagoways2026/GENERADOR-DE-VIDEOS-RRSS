@@ -107,9 +107,9 @@ export const Mini03: React.FC = () => (
 
 export const Mini04: React.FC = () => (
   <AbsoluteFill style={{ fontFamily: fuente }}>
-    <Fondo src="enero/clips/vertical-v115.mp4" desde={3} />
+    <Fondo src="enero/clips/vertical-v79.mp4" desde={3} />
     <Velo fuerza={1.2} />
-    <Titulo texto="Las 6 etapas desde [Ourense]" />
+    <Titulo texto="Las 5 etapas desde [Sarria]" />
   </AbsoluteFill>
 );
 

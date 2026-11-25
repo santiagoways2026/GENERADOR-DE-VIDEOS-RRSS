@@ -32,7 +32,7 @@ export const ComposicionesEnero: React.FC = () => (
       {...comun}
     />
     <Composition
-      id="Enero04Ourense"
+      id="Enero04Sarria"
       component={Video04}
       durationInFrames={DURACION_04}
       {...comun}
