@@ -60,7 +60,7 @@ export const TOMAS_05: Toma[] = [
     src: "enero/clips/sarria-215.mp4",
     ini: S[2],
     fin: S[2] + 2.0,
-    encuadre: "52% 50%",
+    encuadre: "66% 50%",
     volumen: 0.1,
   },
   {

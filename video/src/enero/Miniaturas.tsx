@@ -82,13 +82,18 @@ export const Mini03: React.FC = () => (
   <AbsoluteFill style={{ fontFamily: fuente }}>
     <Mapa
       camara={(() => {
-        // Se baja el mapa para que el titular no pise el número de Ferrol.
+        // Se baja el mapa para que el titular no pise el número de Ferrol, y se
+        // desplaza a la izquierda para dejar libre la franja derecha.
         const cam = encuadrar(
           ["sarria", "ferrol", "finisterre", "lugo"],
-          900,
-          760,
+          780,
+          720,
         );
-        return { ...cam, y: cam.y - 230 / cam.escala };
+        return {
+          ...cam,
+          x: cam.x + 40 / cam.escala,
+          y: cam.y - 230 / cam.escala,
+        };
       })()}
       rutas={["sarria", "ferrol", "finisterre", "lugo"].map((id, i) => ({
         id,

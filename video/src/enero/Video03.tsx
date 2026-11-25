@@ -74,7 +74,12 @@ const ACERCAR: Record<string, [number, number]> = {
 };
 
 const TODAS = RUTAS.map((r) => r.id);
-const GENERAL: Camara = encuadrar(TODAS, 900, 760);
+/** Plano general: algo más estrecho y desplazado a la izquierda para que el
+ *  número de Sarria no caiga en la franja derecha que tapa la interfaz. */
+const GENERAL: Camara = (() => {
+  const cam = encuadrar(TODAS, 780, 720);
+  return { ...cam, x: cam.x + 40 / cam.escala };
+})();
 const ease = Easing.bezier(...curva);
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
@@ -174,7 +179,14 @@ const BloqueRuta: React.FC<{ i: number; dura: number }> = ({ i, dura }) => {
           </AbsoluteFill>
         </Sequence>
       )}
-      <Tarjeta numero={i + 1} titulo={r.titulo} dato={r.dato} desde={4} />
+      {/* Con paisaje, la tarjeta se retira al entrar el plano: no tapa caras. */}
+      <Tarjeta
+        numero={i + 1}
+        titulo={r.titulo}
+        dato={r.dato}
+        desde={4}
+        hasta={soloMapa ? undefined : finMapa + 2}
+      />
     </>
   );
 };

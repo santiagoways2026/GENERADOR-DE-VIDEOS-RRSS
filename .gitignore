@@ -6,8 +6,5 @@ video/out/
 # porque sin ellos el proyecto no se puede renderizar.
 brutos-originales/
 
-# Entregables pesados de los verticales: viven en Drive. En el repositorio se
-# quedan el README, los copys, el inventario y los SRT.
-videos_enero_2027_ES/*.mp4
-videos_enero_2027_ES/miniaturas/
+# La voz sola de cada vertical ya está en video/public/enero/voz/.
 videos_enero_2027_ES/voz/
