@@ -120,7 +120,7 @@ export const Video05: React.FC = () => (
       <Fechas />
     </Sequence>
     <Sequence from={s2f(S[4])} name="CTA">
-      <Boton texto="Pide tu presupuesto" arriba={340} tam={62} />
+      <Boton texto="Pide tu presupuesto" arriba={980} tam={62} />
     </Sequence>
     <Subtitulos voz={V} arriba={1220} />
   </AbsoluteFill>

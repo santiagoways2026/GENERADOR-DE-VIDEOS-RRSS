@@ -11,7 +11,7 @@ export const Boton: React.FC<{
   texto: string;
   arriba?: number;
   tam?: number;
-}> = ({ texto, arriba = 330, tam = 56 }) => {
+}> = ({ texto, arriba = 980, tam = 56 }) => {
   const e = useEntrada(0, 9, 18);
   return (
     <div

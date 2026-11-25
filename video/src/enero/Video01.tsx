@@ -93,7 +93,7 @@ export const Video01: React.FC = () => (
       />
     </Sequence>
     <Sequence from={s2f(V.segmentos[3].ini + 0.4)} name="CTA">
-      <Boton texto="Cuéntanos en comentarios" arriba={330} tam={50} />
+      <Boton texto="Cuéntanos en comentarios" arriba={980} tam={50} />
     </Sequence>
     <Subtitulos voz={V} arriba={1220} />
   </AbsoluteFill>
