@@ -1,10 +1,10 @@
 import React from "react";
-import { AbsoluteFill, Sequence, staticFile } from "remotion";
-import { Audio } from "@remotion/media";
+import { AbsoluteFill, Sequence } from "remotion";
 import voz from "../../public/enero/voz/05.json";
 import { c, cajaPlana, fuente, s2f, seguro, sombraTexto } from "./marca";
 import { Boton } from "./Boton";
 import { Montaje, type Toma, Velo } from "./Montaje";
+import { VozEnOff } from "./VozEnOff";
 import { Subtitulos, Titular, useEntrada } from "./Texto";
 import type { Voz } from "./subtitulos";
 
@@ -112,7 +112,7 @@ const Fechas: React.FC = () => {
 
 export const Video05: React.FC = () => (
   <AbsoluteFill style={{ backgroundColor: "#2E2E2D", fontFamily: fuente }}>
-    <Audio src={staticFile("enero/voz/05.mp3")} />
+    <VozEnOff id="05" />
     <Montaje tomas={TOMAS_05} />
     <Velo />
     <Sequence durationInFrames={s2f(S[1]) - 2} name="Gancho">

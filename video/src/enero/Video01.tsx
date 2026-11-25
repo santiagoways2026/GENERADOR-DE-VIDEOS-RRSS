@@ -5,6 +5,7 @@ import voz from "../../public/enero/voz/01.json";
 import { fuente, s2f } from "./marca";
 import { Boton } from "./Boton";
 import { Montaje, type Toma, Velo } from "./Montaje";
+import { VozEnOff } from "./VozEnOff";
 import { Subtitulos, Titular } from "./Texto";
 import type { Voz } from "./subtitulos";
 
@@ -66,7 +67,7 @@ export const TOMAS_01: Toma[] = [
 
 export const Video01: React.FC = () => (
   <AbsoluteFill style={{ backgroundColor: "#2E2E2D", fontFamily: fuente }}>
-    <Audio src={staticFile("enero/voz/01.mp3")} />
+    <VozEnOff id="01" />
     {/* Campanas sintetizadas: presentes al principio y al final, bajas bajo la voz. */}
     <Audio
       src={staticFile("enero/audio/campanas.wav")}

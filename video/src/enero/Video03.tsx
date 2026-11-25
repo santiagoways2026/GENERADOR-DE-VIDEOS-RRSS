@@ -4,10 +4,8 @@ import {
   Easing,
   interpolate,
   Sequence,
-  staticFile,
   useCurrentFrame,
 } from "remotion";
-import { Audio } from "@remotion/media";
 import voz from "../../public/enero/voz/03.json";
 import { curva, fuente, s2f } from "./marca";
 import {
@@ -20,6 +18,7 @@ import {
 } from "./Mapa";
 import { Montaje, type Toma, Velo } from "./Montaje";
 import { Tarjeta } from "./Tarjeta";
+import { VozEnOff } from "./VozEnOff";
 import { Subtitulos, Titular } from "./Texto";
 import type { Voz } from "./subtitulos";
 
@@ -213,7 +212,7 @@ export const Video03: React.FC = () => {
   const b = [0, ...S.slice(1).map((s) => s2f(s) - 4), DURACION_03];
   return (
     <AbsoluteFill style={{ backgroundColor: "#0d1b2a", fontFamily: fuente }}>
-      <Audio src={staticFile("enero/voz/03.mp3")} />
+      <VozEnOff id="03" />
       <Sequence from={b[0]} durationInFrames={b[1] - b[0]} name="Gancho">
         <Gancho />
       </Sequence>

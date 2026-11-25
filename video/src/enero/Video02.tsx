@@ -4,12 +4,11 @@ import {
   Easing,
   interpolate,
   Sequence,
-  staticFile,
   useCurrentFrame,
 } from "remotion";
-import { Audio } from "@remotion/media";
 import voz from "../../public/enero/voz/02.json";
 import { c, cajaGrafico, curva, fuente, s2f, seguro } from "./marca";
+import { VozEnOff } from "./VozEnOff";
 import { Subtitulos, Titular, useEntrada } from "./Texto";
 import type { Voz } from "./subtitulos";
 
@@ -613,7 +612,7 @@ export const Video02: React.FC = () => {
         fontFamily: fuente,
       }}
     >
-      <Audio src={staticFile("enero/voz/02.mp3")} />
+      <VozEnOff id="02" />
       {bloques.map(([Bloque, titulo], i) => {
         const desde = inicioBloque(i);
         const hasta =

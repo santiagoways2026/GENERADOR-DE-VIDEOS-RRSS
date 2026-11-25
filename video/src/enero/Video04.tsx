@@ -1,10 +1,10 @@
 import React from "react";
-import { AbsoluteFill, Sequence, staticFile } from "remotion";
-import { Audio } from "@remotion/media";
+import { AbsoluteFill, Sequence } from "remotion";
 import voz from "../../public/enero/voz/04.json";
 import { fuente, s2f } from "./marca";
 import { Montaje, type Toma, Velo } from "./Montaje";
 import { Tarjeta } from "./Tarjeta";
+import { VozEnOff } from "./VozEnOff";
 import { Subtitulos, Titular } from "./Texto";
 import type { Voz } from "./subtitulos";
 
@@ -81,7 +81,7 @@ const ETAPAS = [
 
 export const Video04: React.FC = () => (
   <AbsoluteFill style={{ backgroundColor: "#2E2E2D", fontFamily: fuente }}>
-    <Audio src={staticFile("enero/voz/04.mp3")} />
+    <VozEnOff id="04" />
     <Montaje tomas={TOMAS_04} />
     <Velo />
     <Sequence durationInFrames={s2f(S[1]) - 2} name="Titular">
