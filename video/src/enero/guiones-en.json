@@ -1,0 +1,207 @@
+{
+  "voz": "en-US-EmmaMultilingualNeural",
+  "videos": {
+    "01": {
+      "rate": "+8%",
+      "pausa": 0.25,
+      "segmentos": [
+        {
+          "voz": "This door only opens in a Holy Year. And as of today, it is open.",
+          "clave": [
+            "Holy Year"
+          ]
+        },
+        {
+          "voz": "It happens when July 25, Saint James' Day, falls on a Sunday.",
+          "clave": [
+            "Sunday"
+          ]
+        },
+        {
+          "voz": "In 2027, it does. Thousands of pilgrims will walk here this year.",
+          "clave": [
+            "2027"
+          ]
+        },
+        {
+          "voz": "Is 2027 your Camino year?",
+          "clave": [
+            "Camino year?"
+          ]
+        }
+      ]
+    },
+    "02": {
+      "rate": "+16%",
+      "pausa": 0.06,
+      "segmentos": [
+        {
+          "voz": "A Holy Year doesn't come every 5 years. Or every 10. Here's why it's 2027.",
+          "clave": [
+            "2027."
+          ]
+        },
+        {
+          "voz": "One: it only happens when July 25 falls on a Sunday.",
+          "clave": [
+            "Sunday."
+          ]
+        },
+        {
+          "voz": "Two: that's why it follows an odd rhythm: every 6, 5, 6 and 11 years.",
+          "clave": [
+            "6, 5, 6 and 11"
+          ]
+        },
+        {
+          "voz": "Three: the last one lasted two years, 2021 and 2022, because of the pandemic.",
+          "clave": [
+            "2021 and 2022,"
+          ]
+        },
+        {
+          "voz": "Four: after 2027, the next one isn't until 2032.",
+          "clave": [
+            "2032."
+          ]
+        },
+        {
+          "voz": "Which one surprised you? Tell me in the comments.",
+          "clave": [
+            "comments."
+          ]
+        }
+      ]
+    },
+    "03": {
+      "rate": "+16%",
+      "pausa": 0.06,
+      "segmentos": [
+        {
+          "voz": "Only have a week off? Pick one of these 4 Caminos.",
+          "clave": [
+            "4 Caminos."
+          ]
+        },
+        {
+          "voz": "One: the French Way from Sarria. The classic, and the liveliest.",
+          "clave": [
+            "Sarria."
+          ]
+        },
+        {
+          "voz": "Two: the English Way from Ferrol. Estuaries, harbours and very few people.",
+          "clave": [
+            "Ferrol."
+          ]
+        },
+        {
+          "voz": "Three: Santiago to Finisterre. It ends at the sea, where the world once ended.",
+          "clave": [
+            "Finisterre."
+          ]
+        },
+        {
+          "voz": "Four: the Primitive Way from Lugo. The oldest Camino, through inland Galicia.",
+          "clave": [
+            "Lugo."
+          ]
+        },
+        {
+          "voz": "Comment your number and we'll tell you more.",
+          "clave": [
+            "number"
+          ]
+        }
+      ]
+    },
+    "04": {
+      "rate": "+16%",
+      "pausa": 0.06,
+      "segmentos": [
+        {
+          "voz": "Walking the Camino from Sarria? These are its 5 stages.",
+          "clave": [
+            "Sarria?",
+            "5 stages."
+          ]
+        },
+        {
+          "voz": "Sarria to Portomarín: 14 miles of villages and country lanes.",
+          "clave": [
+            "Portomarín:"
+          ]
+        },
+        {
+          "voz": "Portomarín to Palas de Rei, with gentle climbs and small villages.",
+          "clave": [
+            "Palas de Rei,"
+          ]
+        },
+        {
+          "voz": "Palas de Rei to Arzúa, the longest. If you like, split it with a night in Melide.",
+          "clave": [
+            "Melide."
+          ]
+        },
+        {
+          "voz": "Arzúa to A Rúa, through woods and hamlets.",
+          "clave": [
+            "A Rúa,"
+          ]
+        },
+        {
+          "voz": "And A Rúa to Santiago, all the way to the Cathedral.",
+          "clave": [
+            "Cathedral."
+          ]
+        },
+        {
+          "voz": "69 miles and your Compostela. Save this for your Camino.",
+          "clave": [
+            "69 miles",
+            "Save"
+          ]
+        }
+      ]
+    },
+    "05": {
+      "rate": "+16%",
+      "pausa": 0.06,
+      "segmentos": [
+        {
+          "voz": "Want to arrive in Santiago at Easter in the Holy Year? Now is the time to book.",
+          "clave": [
+            "Easter"
+          ]
+        },
+        {
+          "voz": "May, June and September are the first months to fill up. And this year, Easter too.",
+          "clave": [
+            "Easter"
+          ]
+        },
+        {
+          "voz": "Five stages from Sarria, with your room booked every night.",
+          "texto": "5 stages from Sarria, with your room booked every night.",
+          "clave": [
+            "room"
+          ]
+        },
+        {
+          "voz": "And your luggage travels for you, from one stay to the next.",
+          "clave": [
+            "luggage"
+          ]
+        },
+        {
+          "voz": "Get your quote today. The link is in our bio.",
+          "clave": [
+            "quote"
+          ]
+        }
+      ]
+    }
+  },
+  "tono": "+4Hz"
+}

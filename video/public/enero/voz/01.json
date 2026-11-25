@@ -1,0 +1,280 @@
+{
+ "duracion": 20.664,
+ "segmentos": [
+  {
+   "voz": "Esta puerta solo se abre en Año Santo. Y ya está abierta.",
+   "clave": [
+    "Año Santo"
+   ],
+   "ini": 0.05,
+   "fin": 5.128,
+   "palabras": [
+    {
+     "t": "Esta",
+     "ini": 0.082,
+     "fin": 0.449
+    },
+    {
+     "t": "puerta",
+     "ini": 0.463,
+     "fin": 0.816
+    },
+    {
+     "t": "solo",
+     "ini": 0.829,
+     "fin": 1.128
+    },
+    {
+     "t": "se",
+     "ini": 1.142,
+     "fin": 1.319
+    },
+    {
+     "t": "abre",
+     "ini": 1.332,
+     "fin": 1.55
+    },
+    {
+     "t": "en",
+     "ini": 1.563,
+     "fin": 1.672
+    },
+    {
+     "t": "Año",
+     "ini": 1.685,
+     "fin": 1.903
+    },
+    {
+     "t": "Santo",
+     "ini": 1.916,
+     "fin": 2.596
+    },
+    {
+     "t": "Y",
+     "ini": 3.538,
+     "fin": 3.714
+    },
+    {
+     "t": "ya",
+     "ini": 3.728,
+     "fin": 3.904
+    },
+    {
+     "t": "está",
+     "ini": 3.918,
+     "fin": 4.149
+    },
+    {
+     "t": "abierta",
+     "ini": 4.163,
+     "fin": 4.828
+    }
+   ]
+  },
+  {
+   "voz": "El Año Santo llega cuando el 25 de julio, día del Apóstol, cae en domingo.",
+   "clave": [
+    "domingo"
+   ],
+   "ini": 5.628,
+   "fin": 11.409,
+   "palabras": [
+    {
+     "t": "El",
+     "ini": 5.661,
+     "fin": 5.905
+    },
+    {
+     "t": "Año",
+     "ini": 5.919,
+     "fin": 6.122
+    },
+    {
+     "t": "Santo",
+     "ini": 6.136,
+     "fin": 6.503
+    },
+    {
+     "t": "llega",
+     "ini": 6.517,
+     "fin": 6.856
+    },
+    {
+     "t": "cuando",
+     "ini": 6.87,
+     "fin": 7.155
+    },
+    {
+     "t": "el",
+     "ini": 7.169,
+     "fin": 7.237
+    },
+    {
+     "t": "25",
+     "ini": 7.25,
+     "fin": 7.875
+    },
+    {
+     "t": "de",
+     "ini": 7.889,
+     "fin": 8.011
+    },
+    {
+     "t": "julio",
+     "ini": 8.025,
+     "fin": 8.5
+    },
+    {
+     "t": "día",
+     "ini": 8.813,
+     "fin": 9.016
+    },
+    {
+     "t": "del",
+     "ini": 9.03,
+     "fin": 9.166
+    },
+    {
+     "t": "Apóstol",
+     "ini": 9.18,
+     "fin": 9.764
+    },
+    {
+     "t": "cae",
+     "ini": 10.063,
+     "fin": 10.334
+    },
+    {
+     "t": "en",
+     "ini": 10.348,
+     "fin": 10.457
+    },
+    {
+     "t": "domingo",
+     "ini": 10.47,
+     "fin": 11.109
+    }
+   ]
+  },
+  {
+   "voz": "Y en 2027 toca. Miles de peregrinos caminarán este año hasta aquí.",
+   "clave": [
+    "2027"
+   ],
+   "ini": 11.909,
+   "fin": 17.884,
+   "palabras": [
+    {
+     "t": "Y",
+     "ini": 11.941,
+     "fin": 12.118
+    },
+    {
+     "t": "en",
+     "ini": 12.131,
+     "fin": 12.24
+    },
+    {
+     "t": "2027",
+     "ini": 12.254,
+     "fin": 13.259
+    },
+    {
+     "t": "toca",
+     "ini": 13.273,
+     "fin": 13.83
+    },
+    {
+     "t": "Miles",
+     "ini": 14.772,
+     "fin": 15.206
+    },
+    {
+     "t": "de",
+     "ini": 15.22,
+     "fin": 15.315
+    },
+    {
+     "t": "peregrinos",
+     "ini": 15.329,
+     "fin": 15.886
+    },
+    {
+     "t": "caminarán",
+     "ini": 15.899,
+     "fin": 16.416
+    },
+    {
+     "t": "este",
+     "ini": 16.429,
+     "fin": 16.687
+    },
+    {
+     "t": "año",
+     "ini": 16.701,
+     "fin": 16.932
+    },
+    {
+     "t": "hasta",
+     "ini": 16.945,
+     "fin": 17.149
+    },
+    {
+     "t": "aquí",
+     "ini": 17.163,
+     "fin": 17.584
+    }
+   ]
+  },
+  {
+   "voz": "¿Qué le pides tú a este Año Santo?",
+   "clave": [
+    "Año Santo"
+   ],
+   "ini": 18.384,
+   "fin": 20.63,
+   "palabras": [
+    {
+     "t": "Qué",
+     "ini": 18.414,
+     "fin": 18.631
+    },
+    {
+     "t": "le",
+     "ini": 18.645,
+     "fin": 18.767
+    },
+    {
+     "t": "pides",
+     "ini": 18.781,
+     "fin": 19.107
+    },
+    {
+     "t": "tú",
+     "ini": 19.121,
+     "fin": 19.243
+    },
+    {
+     "t": "a",
+     "ini": 19.256,
+     "fin": 19.324
+    },
+    {
+     "t": "este",
+     "ini": 19.338,
+     "fin": 19.569
+    },
+    {
+     "t": "Año",
+     "ini": 19.582,
+     "fin": 19.759
+    },
+    {
+     "t": "Santo",
+     "ini": 19.773,
+     "fin": 20.33
+    }
+   ]
+  }
+ ]
+}

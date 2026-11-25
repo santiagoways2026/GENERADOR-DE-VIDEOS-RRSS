@@ -1,0 +1,454 @@
+{
+ "duracion": 30.24,
+ "segmentos": [
+  {
+   "voz": "¿Vas a hacer el Camino desde Sarria? Estas son sus 5 etapas.",
+   "clave": [
+    "Sarria",
+    "5 etapas"
+   ],
+   "ini": 0.05,
+   "fin": 4.74,
+   "palabras": [
+    {
+     "t": "Vas",
+     "ini": 0.08,
+     "fin": 0.417
+    },
+    {
+     "t": "a",
+     "ini": 0.429,
+     "fin": 0.465
+    },
+    {
+     "t": "hacer",
+     "ini": 0.477,
+     "fin": 0.681
+    },
+    {
+     "t": "el",
+     "ini": 0.693,
+     "fin": 0.765
+    },
+    {
+     "t": "Camino",
+     "ini": 0.777,
+     "fin": 1.102
+    },
+    {
+     "t": "desde",
+     "ini": 1.114,
+     "fin": 1.318
+    },
+    {
+     "t": "Sarria",
+     "ini": 1.33,
+     "fin": 1.871
+    },
+    {
+     "t": "Estas",
+     "ini": 2.697,
+     "fin": 3.094
+    },
+    {
+     "t": "son",
+     "ini": 3.106,
+     "fin": 3.286
+    },
+    {
+     "t": "sus",
+     "ini": 3.298,
+     "fin": 3.479
+    },
+    {
+     "t": "5 etapas",
+     "ini": 3.491,
+     "fin": 4.44
+    }
+   ]
+  },
+  {
+   "voz": "Sarria a Portomarín: 22 kilómetros entre aldeas y caminos rurales.",
+   "texto": "Sarria a Portomarín: 22 km entre aldeas y caminos rurales.",
+   "clave": [
+    "Portomarín"
+   ],
+   "ini": 4.89,
+   "fin": 9.307,
+   "palabras": [
+    {
+     "t": "Sarria",
+     "ini": 4.92,
+     "fin": 5.425
+    },
+    {
+     "t": "a",
+     "ini": 5.437,
+     "fin": 5.473
+    },
+    {
+     "t": "Portomarín",
+     "ini": 5.485,
+     "fin": 6.05
+    },
+    {
+     "t": "22 kilómetros",
+     "ini": 6.314,
+     "fin": 7.348
+    },
+    {
+     "t": "entre",
+     "ini": 7.36,
+     "fin": 7.564
+    },
+    {
+     "t": "aldeas",
+     "ini": 7.576,
+     "fin": 7.961
+    },
+    {
+     "t": "y",
+     "ini": 7.973,
+     "fin": 8.009
+    },
+    {
+     "t": "caminos",
+     "ini": 8.021,
+     "fin": 8.394
+    },
+    {
+     "t": "rurales",
+     "ini": 8.406,
+     "fin": 9.007
+    }
+   ]
+  },
+  {
+   "voz": "Portomarín a Palas de Rei, con suaves subidas y pueblos pequeños.",
+   "clave": [
+    "Palas de Rei"
+   ],
+   "ini": 9.457,
+   "fin": 13.416,
+   "palabras": [
+    {
+     "t": "Portomarín",
+     "ini": 9.487,
+     "fin": 10.088
+    },
+    {
+     "t": "a",
+     "ini": 10.1,
+     "fin": 10.148
+    },
+    {
+     "t": "Palas",
+     "ini": 10.16,
+     "fin": 10.448
+    },
+    {
+     "t": "de",
+     "ini": 10.46,
+     "fin": 10.532
+    },
+    {
+     "t": "Rei",
+     "ini": 10.544,
+     "fin": 10.845
+    },
+    {
+     "t": "con",
+     "ini": 11.073,
+     "fin": 11.253
+    },
+    {
+     "t": "suaves",
+     "ini": 11.265,
+     "fin": 11.638
+    },
+    {
+     "t": "subidas",
+     "ini": 11.65,
+     "fin": 12.047
+    },
+    {
+     "t": "y",
+     "ini": 12.059,
+     "fin": 12.107
+    },
+    {
+     "t": "pueblos",
+     "ini": 12.119,
+     "fin": 12.443
+    },
+    {
+     "t": "pequeños",
+     "ini": 12.455,
+     "fin": 13.116
+    }
+   ]
+  },
+  {
+   "voz": "Palas de Rei a Arzúa, la más larga. Si quieres, la partes con una noche en Melide.",
+   "clave": [
+    "Melide"
+   ],
+   "ini": 13.566,
+   "fin": 19.459,
+   "palabras": [
+    {
+     "t": "Palas",
+     "ini": 13.595,
+     "fin": 13.944
+    },
+    {
+     "t": "de",
+     "ini": 13.956,
+     "fin": 14.028
+    },
+    {
+     "t": "Rei",
+     "ini": 14.04,
+     "fin": 14.256
+    },
+    {
+     "t": "a",
+     "ini": 14.269,
+     "fin": 14.305
+    },
+    {
+     "t": "Arzúa",
+     "ini": 14.317,
+     "fin": 14.749
+    },
+    {
+     "t": "la",
+     "ini": 15.014,
+     "fin": 15.098
+    },
+    {
+     "t": "más",
+     "ini": 15.11,
+     "fin": 15.314
+    },
+    {
+     "t": "larga",
+     "ini": 15.326,
+     "fin": 15.819
+    },
+    {
+     "t": "Si",
+     "ini": 16.647,
+     "fin": 16.924
+    },
+    {
+     "t": "quieres",
+     "ini": 16.936,
+     "fin": 17.32
+    },
+    {
+     "t": "la",
+     "ini": 17.501,
+     "fin": 17.621
+    },
+    {
+     "t": "partes",
+     "ini": 17.633,
+     "fin": 17.969
+    },
+    {
+     "t": "con",
+     "ini": 17.982,
+     "fin": 18.126
+    },
+    {
+     "t": "una",
+     "ini": 18.138,
+     "fin": 18.27
+    },
+    {
+     "t": "noche",
+     "ini": 18.282,
+     "fin": 18.582
+    },
+    {
+     "t": "en",
+     "ini": 18.595,
+     "fin": 18.667
+    },
+    {
+     "t": "Melide",
+     "ini": 18.679,
+     "fin": 19.159
+    }
+   ]
+  },
+  {
+   "voz": "Arzúa a A Rúa, entre bosques y aldeas.",
+   "clave": [
+    "A Rúa"
+   ],
+   "ini": 19.609,
+   "fin": 22.511,
+   "palabras": [
+    {
+     "t": "Arzúa",
+     "ini": 19.639,
+     "fin": 20.132
+    },
+    {
+     "t": "a",
+     "ini": 20.144,
+     "fin": 20.192
+    },
+    {
+     "t": "A",
+     "ini": 20.204,
+     "fin": 20.252
+    },
+    {
+     "t": "Rúa",
+     "ini": 20.264,
+     "fin": 20.613
+    },
+    {
+     "t": "entre",
+     "ini": 20.889,
+     "fin": 21.142
+    },
+    {
+     "t": "bosques",
+     "ini": 21.154,
+     "fin": 21.538
+    },
+    {
+     "t": "y",
+     "ini": 21.55,
+     "fin": 21.586
+    },
+    {
+     "t": "aldeas",
+     "ini": 21.599,
+     "fin": 22.212
+    }
+   ]
+  },
+  {
+   "voz": "Y de A Rúa a Santiago, hasta la Catedral.",
+   "clave": [
+    "Santiago"
+   ],
+   "ini": 22.662,
+   "fin": 25.406,
+   "palabras": [
+    {
+     "t": "Y",
+     "ini": 22.691,
+     "fin": 22.859
+    },
+    {
+     "t": "de",
+     "ini": 22.871,
+     "fin": 23.003
+    },
+    {
+     "t": "A",
+     "ini": 23.015,
+     "fin": 23.063
+    },
+    {
+     "t": "Rúa",
+     "ini": 23.075,
+     "fin": 23.316
+    },
+    {
+     "t": "a",
+     "ini": 23.328,
+     "fin": 23.376
+    },
+    {
+     "t": "Santiago",
+     "ini": 23.388,
+     "fin": 23.953
+    },
+    {
+     "t": "hasta",
+     "ini": 24.121,
+     "fin": 24.361
+    },
+    {
+     "t": "la",
+     "ini": 24.373,
+     "fin": 24.433
+    },
+    {
+     "t": "Catedral",
+     "ini": 24.445,
+     "fin": 25.106
+    }
+   ]
+  },
+  {
+   "voz": "Ciento once kilómetros y tu Compostela. Guárdalo para tu Camino.",
+   "texto": "111 km y tu Compostela. Guárdalo para tu Camino.",
+   "clave": [
+    "111 km",
+    "Guárdalo"
+   ],
+   "ini": 25.556,
+   "fin": 30.211,
+   "palabras": [
+    {
+     "t": "Ciento",
+     "ini": 25.586,
+     "fin": 26.043
+    },
+    {
+     "t": "once",
+     "ini": 26.055,
+     "fin": 26.296
+    },
+    {
+     "t": "kilómetros",
+     "ini": 26.308,
+     "fin": 26.86
+    },
+    {
+     "t": "y",
+     "ini": 26.872,
+     "fin": 26.92
+    },
+    {
+     "t": "tu",
+     "ini": 26.933,
+     "fin": 27.029
+    },
+    {
+     "t": "Compostela",
+     "ini": 27.041,
+     "fin": 27.738
+    },
+    {
+     "t": "Guárdalo",
+     "ini": 28.565,
+     "fin": 29.082
+    },
+    {
+     "t": "para",
+     "ini": 29.094,
+     "fin": 29.274
+    },
+    {
+     "t": "tu",
+     "ini": 29.286,
+     "fin": 29.383
+    },
+    {
+     "t": "Camino",
+     "ini": 29.395,
+     "fin": 29.911
+    }
+   ]
+  }
+ ]
+}

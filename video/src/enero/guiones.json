@@ -1,0 +1,208 @@
+{
+  "voz": "es-ES-AlvaroNeural",
+  "videos": {
+    "01": {
+      "rate": "-8%",
+      "pausa": 0.5,
+      "segmentos": [
+        {
+          "voz": "Esta puerta solo se abre en Año Santo. Y ya está abierta.",
+          "clave": [
+            "Año Santo"
+          ]
+        },
+        {
+          "voz": "El Año Santo llega cuando el 25 de julio, día del Apóstol, cae en domingo.",
+          "clave": [
+            "domingo"
+          ]
+        },
+        {
+          "voz": "Y en 2027 toca. Miles de peregrinos caminarán este año hasta aquí.",
+          "clave": [
+            "2027"
+          ]
+        },
+        {
+          "voz": "¿Qué le pides tú a este Año Santo?",
+          "clave": [
+            "Año Santo"
+          ]
+        }
+      ]
+    },
+    "02": {
+      "rate": "+8%",
+      "pausa": 0.18,
+      "segmentos": [
+        {
+          "voz": "El Año Santo no llega cada 5 años. Ni cada 10. Te explico por qué toca en 2027.",
+          "clave": [
+            "2027"
+          ]
+        },
+        {
+          "voz": "Uno: solo hay Año Santo cuando el 25 de julio cae en domingo.",
+          "clave": [
+            "domingo"
+          ]
+        },
+        {
+          "voz": "Dos: por eso llega con una cadencia rara: cada 6, 5, 6 y 11 años.",
+          "clave": [
+            "6, 5, 6 y 11"
+          ]
+        },
+        {
+          "voz": "Tres: el anterior duró dos años, 2021 y 2022, por la pandemia.",
+          "clave": [
+            "2021 y 2022"
+          ]
+        },
+        {
+          "voz": "Cuatro: después de 2027, el siguiente no llega hasta 2032.",
+          "clave": [
+            "2032"
+          ]
+        },
+        {
+          "voz": "¿Cuál no conocías? Dímelo en comentarios.",
+          "clave": [
+            "comentarios"
+          ]
+        }
+      ]
+    },
+    "03": {
+      "rate": "+6%",
+      "pausa": 0.2,
+      "segmentos": [
+        {
+          "voz": "¿Solo tienes una semana? Elige uno de estos 4 Caminos.",
+          "clave": [
+            "4 Caminos"
+          ]
+        },
+        {
+          "voz": "Uno: el Francés desde Sarria. El clásico, y el que te da la Compostela.",
+          "clave": [
+            "Sarria"
+          ]
+        },
+        {
+          "voz": "Dos: el Inglés desde Ferrol. Rías, puertos y muy poca gente.",
+          "clave": [
+            "Ferrol"
+          ]
+        },
+        {
+          "voz": "Tres: de Santiago a Finisterre. Termina en el mar, donde acababa el mundo.",
+          "clave": [
+            "Finisterre"
+          ]
+        },
+        {
+          "voz": "Cuatro: el Primitivo desde Lugo. El Camino más antiguo, por la Galicia de interior.",
+          "clave": [
+            "Lugo"
+          ]
+        },
+        {
+          "voz": "Comenta el número del tuyo y te contamos más.",
+          "clave": [
+            "número"
+          ]
+        }
+      ]
+    },
+    "04": {
+      "rate": "+4%",
+      "pausa": 0.15,
+      "segmentos": [
+        {
+          "voz": "¿Vas a hacer el Camino desde Sarria? Estas son sus 5 etapas.",
+          "clave": [
+            "Sarria",
+            "5 etapas"
+          ]
+        },
+        {
+          "voz": "Sarria a Portomarín: 22 kilómetros entre aldeas y caminos rurales.",
+          "texto": "Sarria a Portomarín: 22 km entre aldeas y caminos rurales.",
+          "clave": [
+            "Portomarín"
+          ]
+        },
+        {
+          "voz": "Portomarín a Palas de Rei, con suaves subidas y pueblos pequeños.",
+          "clave": [
+            "Palas de Rei"
+          ]
+        },
+        {
+          "voz": "Palas de Rei a Arzúa, la más larga. Si quieres, la partes con una noche en Melide.",
+          "clave": [
+            "Melide"
+          ]
+        },
+        {
+          "voz": "Arzúa a A Rúa, entre bosques y aldeas.",
+          "clave": [
+            "A Rúa"
+          ]
+        },
+        {
+          "voz": "Y de A Rúa a Santiago, hasta la Catedral.",
+          "clave": [
+            "Santiago"
+          ]
+        },
+        {
+          "voz": "Ciento once kilómetros y tu Compostela. Guárdalo para tu Camino.",
+          "texto": "111 km y tu Compostela. Guárdalo para tu Camino.",
+          "clave": [
+            "111 km",
+            "Guárdalo"
+          ]
+        }
+      ]
+    },
+    "05": {
+      "rate": "+4%",
+      "pausa": 0.15,
+      "segmentos": [
+        {
+          "voz": "Si quieres llegar a Santiago en la Semana Santa del Año Santo, este es el momento de reservar.",
+          "clave": [
+            "Semana Santa"
+          ]
+        },
+        {
+          "voz": "Mayo, junio y septiembre son los primeros meses en llenarse. Y este año, la Semana Santa también.",
+          "clave": [
+            "Semana Santa"
+          ]
+        },
+        {
+          "voz": "Cinco etapas desde Sarria, con tu habitación reservada cada noche.",
+          "texto": "5 etapas desde Sarria, con tu habitación reservada cada noche.",
+          "clave": [
+            "habitación"
+          ]
+        },
+        {
+          "voz": "Y tu equipaje viaja por ti de un alojamiento al siguiente.",
+          "clave": [
+            "equipaje"
+          ]
+        },
+        {
+          "voz": "Pide tu presupuesto hoy. Tienes el enlace en la bio.",
+          "clave": [
+            "presupuesto"
+          ]
+        }
+      ]
+    }
+  }
+}

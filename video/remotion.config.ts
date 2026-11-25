@@ -5,7 +5,7 @@
  * All configuration options: https://remotion.dev/docs/config
  */
 
-import { existsSync } from "node:fs";
+import { existsSync, readdirSync } from "node:fs";
 import { Config } from "@remotion/cli/config";
 import { enableTailwind } from '@remotion/tailwind-v4';
 
@@ -22,9 +22,20 @@ Config.overrideBundlerConfig(enableTailwind);
  * Si encontramos un Chromium ya instalado, lo usamos y el render funciona
  * sin que haya que pasar ninguna opcion a mano.
  */
+const PW = "/opt/pw-browsers";
+/** La versión de Playwright cambia el nombre de la carpeta, así que se busca
+ *  cualquier chromium_headless_shell-NNNN o chromium-NNNN que haya. */
+const instalados = existsSync(PW) ? readdirSync(PW) : [];
 const CHROMIUM = [
-  "/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell",
-  "/opt/pw-browsers/chromium-1194/chrome-linux/chrome",
+  ...instalados
+    .filter((d) => d.startsWith("chromium_headless_shell-"))
+    .flatMap((d) => [
+      `${PW}/${d}/chrome-headless-shell-linux64/chrome-headless-shell`,
+      `${PW}/${d}/chrome-linux/headless_shell`,
+    ]),
+  ...instalados
+    .filter((d) => /^chromium-\d+$/.test(d))
+    .flatMap((d) => [`${PW}/${d}/chrome-linux64/chrome`, `${PW}/${d}/chrome-linux/chrome`]),
   process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH,
 ].filter(Boolean) as string[];
 

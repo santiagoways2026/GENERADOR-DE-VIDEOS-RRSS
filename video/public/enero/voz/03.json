@@ -1,0 +1,415 @@
+{
+ "duracion": 29.64,
+ "segmentos": [
+  {
+   "voz": "¿Solo tienes una semana? Elige uno de estos 4 Caminos.",
+   "clave": [
+    "4 Caminos"
+   ],
+   "ini": 0.05,
+   "fin": 4.468,
+   "palabras": [
+    {
+     "t": "Solo",
+     "ini": 0.079,
+     "fin": 0.432
+    },
+    {
+     "t": "tienes",
+     "ini": 0.444,
+     "fin": 0.751
+    },
+    {
+     "t": "una",
+     "ini": 0.763,
+     "fin": 0.904
+    },
+    {
+     "t": "semana",
+     "ini": 0.916,
+     "fin": 1.435
+    },
+    {
+     "t": "Elige",
+     "ini": 2.246,
+     "fin": 2.67
+    },
+    {
+     "t": "uno",
+     "ini": 2.682,
+     "fin": 2.847
+    },
+    {
+     "t": "de",
+     "ini": 2.859,
+     "fin": 2.953
+    },
+    {
+     "t": "estos",
+     "ini": 2.965,
+     "fin": 3.248
+    },
+    {
+     "t": "4 Caminos",
+     "ini": 3.26,
+     "fin": 4.168
+    }
+   ]
+  },
+  {
+   "voz": "Uno: el Francés desde Sarria. El clásico, y el que te da la Compostela.",
+   "clave": [
+    "Sarria"
+   ],
+   "ini": 4.668,
+   "fin": 9.97,
+   "palabras": [
+    {
+     "t": "Uno",
+     "ini": 4.696,
+     "fin": 5.085
+    },
+    {
+     "t": "el",
+     "ini": 5.298,
+     "fin": 5.404
+    },
+    {
+     "t": "Francés",
+     "ini": 5.416,
+     "fin": 5.793
+    },
+    {
+     "t": "desde",
+     "ini": 5.805,
+     "fin": 6.005
+    },
+    {
+     "t": "Sarria",
+     "ini": 6.017,
+     "fin": 6.548
+    },
+    {
+     "t": "El",
+     "ini": 7.359,
+     "fin": 7.571
+    },
+    {
+     "t": "clásico",
+     "ini": 7.583,
+     "fin": 8.09
+    },
+    {
+     "t": "y",
+     "ini": 8.349,
+     "fin": 8.396
+    },
+    {
+     "t": "el",
+     "ini": 8.408,
+     "fin": 8.502
+    },
+    {
+     "t": "que",
+     "ini": 8.514,
+     "fin": 8.62
+    },
+    {
+     "t": "te",
+     "ini": 8.632,
+     "fin": 8.726
+    },
+    {
+     "t": "da",
+     "ini": 8.738,
+     "fin": 8.833
+    },
+    {
+     "t": "la",
+     "ini": 8.844,
+     "fin": 8.927
+    },
+    {
+     "t": "Compostela",
+     "ini": 8.939,
+     "fin": 9.67
+    }
+   ]
+  },
+  {
+   "voz": "Dos: el Inglés desde Ferrol. Rías, puertos y muy poca gente.",
+   "clave": [
+    "Ferrol"
+   ],
+   "ini": 10.17,
+   "fin": 15.179,
+   "palabras": [
+    {
+     "t": "Dos",
+     "ini": 10.198,
+     "fin": 10.611
+    },
+    {
+     "t": "el",
+     "ini": 10.835,
+     "fin": 10.93
+    },
+    {
+     "t": "Inglés",
+     "ini": 10.941,
+     "fin": 11.224
+    },
+    {
+     "t": "desde",
+     "ini": 11.236,
+     "fin": 11.448
+    },
+    {
+     "t": "Ferrol",
+     "ini": 11.46,
+     "fin": 11.979
+    },
+    {
+     "t": "Rías",
+     "ini": 12.791,
+     "fin": 13.334
+    },
+    {
+     "t": "puertos",
+     "ini": 13.546,
+     "fin": 13.888
+    },
+    {
+     "t": "y",
+     "ini": 13.9,
+     "fin": 13.947
+    },
+    {
+     "t": "muy",
+     "ini": 13.959,
+     "fin": 14.136
+    },
+    {
+     "t": "poca",
+     "ini": 14.148,
+     "fin": 14.36
+    },
+    {
+     "t": "gente",
+     "ini": 14.372,
+     "fin": 14.879
+    }
+   ]
+  },
+  {
+   "voz": "Tres: de Santiago a Finisterre. Termina en el mar, donde acababa el mundo.",
+   "clave": [
+    "Finisterre"
+   ],
+   "ini": 15.379,
+   "fin": 20.87,
+   "palabras": [
+    {
+     "t": "Tres",
+     "ini": 15.407,
+     "fin": 15.82
+    },
+    {
+     "t": "de",
+     "ini": 16.056,
+     "fin": 16.162
+    },
+    {
+     "t": "Santiago",
+     "ini": 16.174,
+     "fin": 16.669
+    },
+    {
+     "t": "a",
+     "ini": 16.681,
+     "fin": 16.728
+    },
+    {
+     "t": "Finisterre",
+     "ini": 16.74,
+     "fin": 17.471
+    },
+    {
+     "t": "Termina",
+     "ini": 18.282,
+     "fin": 18.706
+    },
+    {
+     "t": "en",
+     "ini": 18.718,
+     "fin": 18.789
+    },
+    {
+     "t": "el",
+     "ini": 18.801,
+     "fin": 18.895
+    },
+    {
+     "t": "mar",
+     "ini": 18.907,
+     "fin": 19.154
+    },
+    {
+     "t": "donde",
+     "ini": 19.402,
+     "fin": 19.603
+    },
+    {
+     "t": "acababa",
+     "ini": 19.614,
+     "fin": 19.98
+    },
+    {
+     "t": "el",
+     "ini": 19.992,
+     "fin": 20.074
+    },
+    {
+     "t": "mundo",
+     "ini": 20.086,
+     "fin": 20.57
+    }
+   ]
+  },
+  {
+   "voz": "Cuatro: el Primitivo desde Lugo. El Camino más antiguo, por la Galicia de interior.",
+   "clave": [
+    "Lugo"
+   ],
+   "ini": 21.07,
+   "fin": 26.714,
+   "palabras": [
+    {
+     "t": "Cuatro",
+     "ini": 21.1,
+     "fin": 21.595
+    },
+    {
+     "t": "el",
+     "ini": 21.842,
+     "fin": 21.949
+    },
+    {
+     "t": "Primitivo",
+     "ini": 21.96,
+     "fin": 22.409
+    },
+    {
+     "t": "desde",
+     "ini": 22.42,
+     "fin": 22.621
+    },
+    {
+     "t": "Lugo",
+     "ini": 22.633,
+     "fin": 23.034
+    },
+    {
+     "t": "El",
+     "ini": 23.843,
+     "fin": 24.043
+    },
+    {
+     "t": "Camino",
+     "ini": 24.055,
+     "fin": 24.374
+    },
+    {
+     "t": "más",
+     "ini": 24.385,
+     "fin": 24.562
+    },
+    {
+     "t": "antiguo",
+     "ini": 24.574,
+     "fin": 25.058
+    },
+    {
+     "t": "por",
+     "ini": 25.246,
+     "fin": 25.364
+    },
+    {
+     "t": "la",
+     "ini": 25.376,
+     "fin": 25.447
+    },
+    {
+     "t": "Galicia",
+     "ini": 25.459,
+     "fin": 25.777
+    },
+    {
+     "t": "de",
+     "ini": 25.789,
+     "fin": 25.848
+    },
+    {
+     "t": "interior",
+     "ini": 25.859,
+     "fin": 26.414
+    }
+   ]
+  },
+  {
+   "voz": "Comenta el número del tuyo y te contamos más.",
+   "clave": [
+    "número"
+   ],
+   "ini": 26.914,
+   "fin": 29.602,
+   "palabras": [
+    {
+     "t": "Comenta",
+     "ini": 26.944,
+     "fin": 27.38
+    },
+    {
+     "t": "el",
+     "ini": 27.392,
+     "fin": 27.463
+    },
+    {
+     "t": "número",
+     "ini": 27.474,
+     "fin": 27.746
+    },
+    {
+     "t": "del",
+     "ini": 27.757,
+     "fin": 27.934
+    },
+    {
+     "t": "tuyo",
+     "ini": 27.946,
+     "fin": 28.194
+    },
+    {
+     "t": "y",
+     "ini": 28.206,
+     "fin": 28.264
+    },
+    {
+     "t": "te",
+     "ini": 28.276,
+     "fin": 28.371
+    },
+    {
+     "t": "contamos",
+     "ini": 28.382,
+     "fin": 28.866
+    },
+    {
+     "t": "más",
+     "ini": 28.878,
+     "fin": 29.302
+    }
+   ]
+  }
+ ]
+}

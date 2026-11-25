@@ -1,0 +1,79 @@
+1
+00:00:00,000 --> 00:00:01,352
+Only have a week off?
+
+2
+00:00:01,352 --> 00:00:03,207
+Pick one of these 4 Caminos.
+
+3
+00:00:03,207 --> 00:00:04,455
+One: the French Way
+
+4
+00:00:04,455 --> 00:00:05,532
+from Sarria.
+
+5
+00:00:05,532 --> 00:00:06,190
+The classic,
+
+6
+00:00:06,190 --> 00:00:07,452
+and the liveliest.
+
+7
+00:00:07,452 --> 00:00:08,624
+Two: the English Way
+
+8
+00:00:08,624 --> 00:00:09,616
+from Ferrol.
+
+9
+00:00:09,616 --> 00:00:10,704
+Estuaries, harbours
+
+10
+00:00:10,704 --> 00:00:12,052
+and very few people.
+
+11
+00:00:12,052 --> 00:00:13,311
+Three: Santiago
+
+12
+00:00:13,311 --> 00:00:14,421
+to Finisterre.
+
+13
+00:00:14,421 --> 00:00:15,638
+It ends at the sea,
+
+14
+00:00:15,638 --> 00:00:17,138
+where the world once ended.
+
+15
+00:00:17,138 --> 00:00:18,245
+Four: the Primitive Way
+
+16
+00:00:18,245 --> 00:00:19,247
+from Lugo.
+
+17
+00:00:19,247 --> 00:00:20,476
+The oldest Camino,
+
+18
+00:00:20,476 --> 00:00:21,943
+through inland Galicia.
+
+19
+00:00:21,943 --> 00:00:22,942
+Comment your number
+
+20
+00:00:22,942 --> 00:00:24,216
+and we'll tell you more.

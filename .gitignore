@@ -5,3 +5,6 @@ video/out/
 # Los planos ya recortados que usa cada pieza sí entran, en video/public/brutos/,
 # porque sin ellos el proyecto no se puede renderizar.
 brutos-originales/
+
+# La voz sola de cada vertical ya está en video/public/enero/voz/.
+videos_enero_2027_ES/voz/

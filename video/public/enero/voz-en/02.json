@@ -1,0 +1,405 @@
+{
+ "duracion": 28.08,
+ "segmentos": [
+  {
+   "voz": "A Holy Year doesn't come every 5 years. Or every 10. Here's why it's 2027.",
+   "clave": [
+    "2027."
+   ],
+   "ini": 0.05,
+   "fin": 5.668,
+   "palabras": [
+    {
+     "t": "A",
+     "ini": 0.055,
+     "fin": 0.098
+    },
+    {
+     "t": "Holy",
+     "ini": 0.109,
+     "fin": 0.443
+    },
+    {
+     "t": "Year",
+     "ini": 0.454,
+     "fin": 0.648
+    },
+    {
+     "t": "doesn't",
+     "ini": 0.659,
+     "fin": 0.961
+    },
+    {
+     "t": "come",
+     "ini": 0.971,
+     "fin": 1.155
+    },
+    {
+     "t": "every",
+     "ini": 1.219,
+     "fin": 1.467
+    },
+    {
+     "t": "5 years",
+     "ini": 1.478,
+     "fin": 2.254
+    },
+    {
+     "t": "Or",
+     "ini": 2.609,
+     "fin": 2.739
+    },
+    {
+     "t": "every",
+     "ini": 2.749,
+     "fin": 2.976
+    },
+    {
+     "t": "10",
+     "ini": 2.986,
+     "fin": 3.385
+    },
+    {
+     "t": "Here's",
+     "ini": 3.752,
+     "fin": 3.999
+    },
+    {
+     "t": "why",
+     "ini": 4.01,
+     "fin": 4.15
+    },
+    {
+     "t": "it's",
+     "ini": 4.161,
+     "fin": 4.323
+    },
+    {
+     "t": "2027",
+     "ini": 4.333,
+     "fin": 5.368
+    }
+   ]
+  },
+  {
+   "voz": "One: it only happens when July 25 falls on a Sunday.",
+   "clave": [
+    "Sunday."
+   ],
+   "ini": 5.728,
+   "fin": 9.363,
+   "palabras": [
+    {
+     "t": "One",
+     "ini": 5.744,
+     "fin": 6.078
+    },
+    {
+     "t": "it",
+     "ini": 6.38,
+     "fin": 6.455
+    },
+    {
+     "t": "only",
+     "ini": 6.466,
+     "fin": 6.692
+    },
+    {
+     "t": "happens",
+     "ini": 6.703,
+     "fin": 7.113
+    },
+    {
+     "t": "when",
+     "ini": 7.123,
+     "fin": 7.264
+    },
+    {
+     "t": "July 25",
+     "ini": 7.274,
+     "fin": 8.061
+    },
+    {
+     "t": "falls",
+     "ini": 8.072,
+     "fin": 8.395
+    },
+    {
+     "t": "on",
+     "ini": 8.406,
+     "fin": 8.503
+    },
+    {
+     "t": "a",
+     "ini": 8.514,
+     "fin": 8.567
+    },
+    {
+     "t": "Sunday",
+     "ini": 8.578,
+     "fin": 9.063
+    }
+   ]
+  },
+  {
+   "voz": "Two: that's why it follows an odd rhythm: every 6, 5, 6 and 11 years.",
+   "clave": [
+    "6, 5, 6 and 11"
+   ],
+   "ini": 9.423,
+   "fin": 14.567,
+   "palabras": [
+    {
+     "t": "Two",
+     "ini": 9.439,
+     "fin": 9.687
+    },
+    {
+     "t": "that's",
+     "ini": 10.248,
+     "fin": 10.452
+    },
+    {
+     "t": "why",
+     "ini": 10.463,
+     "fin": 10.614
+    },
+    {
+     "t": "it",
+     "ini": 10.625,
+     "fin": 10.711
+    },
+    {
+     "t": "follows",
+     "ini": 10.722,
+     "fin": 11.034
+    },
+    {
+     "t": "an",
+     "ini": 11.045,
+     "fin": 11.153
+    },
+    {
+     "t": "odd",
+     "ini": 11.163,
+     "fin": 11.357
+    },
+    {
+     "t": "rhythm",
+     "ini": 11.368,
+     "fin": 11.691
+    },
+    {
+     "t": "every",
+     "ini": 12.144,
+     "fin": 12.338
+    },
+    {
+     "t": "6",
+     "ini": 12.349,
+     "fin": 12.704
+    },
+    {
+     "t": "5",
+     "ini": 12.726,
+     "fin": 13.017
+    },
+    {
+     "t": "6",
+     "ini": 13.049,
+     "fin": 13.34
+    },
+    {
+     "t": "and",
+     "ini": 13.351,
+     "fin": 13.459
+    },
+    {
+     "t": "11 years",
+     "ini": 13.469,
+     "fin": 14.267
+    }
+   ]
+  },
+  {
+   "voz": "Three: the last one lasted two years, 2021 and 2022, because of the pandemic.",
+   "clave": [
+    "2021 and 2022,"
+   ],
+   "ini": 14.627,
+   "fin": 20.557,
+   "palabras": [
+    {
+     "t": "Three",
+     "ini": 14.643,
+     "fin": 14.977
+    },
+    {
+     "t": "the",
+     "ini": 15.365,
+     "fin": 15.462
+    },
+    {
+     "t": "last",
+     "ini": 15.473,
+     "fin": 15.785
+    },
+    {
+     "t": "one",
+     "ini": 15.796,
+     "fin": 16.012
+    },
+    {
+     "t": "lasted",
+     "ini": 16.022,
+     "fin": 16.41
+    },
+    {
+     "t": "two",
+     "ini": 16.421,
+     "fin": 16.583
+    },
+    {
+     "t": "years",
+     "ini": 16.594,
+     "fin": 17.003
+    },
+    {
+     "t": "2021",
+     "ini": 17.219,
+     "fin": 17.93
+    },
+    {
+     "t": "and",
+     "ini": 17.941,
+     "fin": 18.027
+    },
+    {
+     "t": "2022",
+     "ini": 18.037,
+     "fin": 18.867
+    },
+    {
+     "t": "because",
+     "ini": 19.18,
+     "fin": 19.46
+    },
+    {
+     "t": "of",
+     "ini": 19.471,
+     "fin": 19.535
+    },
+    {
+     "t": "the",
+     "ini": 19.546,
+     "fin": 19.622
+    },
+    {
+     "t": "pandemic",
+     "ini": 19.632,
+     "fin": 20.257
+    }
+   ]
+  },
+  {
+   "voz": "Four: after 2027, the next one isn't until 2032.",
+   "clave": [
+    "2032."
+   ],
+   "ini": 20.617,
+   "fin": 25.136,
+   "palabras": [
+    {
+     "t": "Four",
+     "ini": 20.623,
+     "fin": 21.011
+    },
+    {
+     "t": "after 2027",
+     "ini": 21.302,
+     "fin": 22.509
+    },
+    {
+     "t": "the",
+     "ini": 22.746,
+     "fin": 22.821
+    },
+    {
+     "t": "next",
+     "ini": 22.832,
+     "fin": 23.144
+    },
+    {
+     "t": "one",
+     "ini": 23.155,
+     "fin": 23.349
+    },
+    {
+     "t": "isn't",
+     "ini": 23.36,
+     "fin": 23.64
+    },
+    {
+     "t": "until 2032",
+     "ini": 23.651,
+     "fin": 24.836
+    }
+   ]
+  },
+  {
+   "voz": "Which one surprised you? Tell me in the comments.",
+   "clave": [
+    "comments."
+   ],
+   "ini": 25.196,
+   "fin": 28.055,
+   "palabras": [
+    {
+     "t": "Which",
+     "ini": 25.212,
+     "fin": 25.385
+    },
+    {
+     "t": "one",
+     "ini": 25.396,
+     "fin": 25.59
+    },
+    {
+     "t": "surprised",
+     "ini": 25.6,
+     "fin": 26.074
+    },
+    {
+     "t": "you",
+     "ini": 26.085,
+     "fin": 26.311
+    },
+    {
+     "t": "Tell",
+     "ini": 26.656,
+     "fin": 26.807
+    },
+    {
+     "t": "me",
+     "ini": 26.818,
+     "fin": 26.926
+    },
+    {
+     "t": "in",
+     "ini": 26.936,
+     "fin": 27.023
+    },
+    {
+     "t": "the",
+     "ini": 27.033,
+     "fin": 27.098
+    },
+    {
+     "t": "comments",
+     "ini": 27.109,
+     "fin": 27.755
+    }
+   ]
+  }
+ ]
+}
