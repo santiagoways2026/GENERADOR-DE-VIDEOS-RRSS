@@ -15,11 +15,12 @@ import edge_tts
 PROXY = os.environ.get("HTTPS_PROXY")
 INICIO = 0.05  # la voz arranca casi en el primer fotograma
 RECORTE_INI = 0.07  # silencio que edge-tts deja delante de cada frase
-COLA = 0.3  # lo que se deja tras la última palabra (edge-tts deja casi 0,9 s)
+COLA = 0.3
+TONO = "+0Hz"  # lo que se deja tras la última palabra (edge-tts deja casi 0,9 s)
 
 
-async def sintetiza(texto, voz, rate, destino):
-    c = edge_tts.Communicate(texto, voz, rate=rate, boundary="WordBoundary", proxy=PROXY)
+async def sintetiza(texto, voz, rate, destino, pitch="+0Hz"):
+    c = edge_tts.Communicate(texto, voz, rate=rate, pitch=pitch, boundary="WordBoundary", proxy=PROXY)
     palabras = []
     with open(destino, "wb") as f:
         async for chunk in c.stream():
@@ -43,7 +44,7 @@ async def video(vid, cfg, voz, salida):
     sil = os.path.join(tmp, "sil.wav")
     for i, s in enumerate(cfg["segmentos"]):
         mp3 = os.path.join(tmp, f"s{i}.mp3")
-        palabras = await sintetiza(s["voz"], voz, cfg["rate"], mp3)
+        palabras = await sintetiza(s["voz"], voz, cfg["rate"], mp3, TONO)
         wav = os.path.join(tmp, f"s{i}.wav")
         fin = palabras[-1]["fin"] + COLA
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", mp3, "-af",
@@ -75,7 +76,9 @@ async def video(vid, cfg, voz, salida):
 
 
 async def main():
+    global TONO
     guiones = json.load(open(sys.argv[1]))
+    TONO = guiones.get("tono", "+0Hz")
     salida = sys.argv[2]
     os.makedirs(salida, exist_ok=True)
     ids = sys.argv[3:] or list(guiones["videos"])
