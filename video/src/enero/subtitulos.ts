@@ -62,7 +62,7 @@ function marcasClave(fichas: string[], clave: string[]): Set<number> {
 }
 
 const DEBILES = new Set(
-  "el la los las un una unos de del a al en y o por para con sin que se te le lo me nos tu tus su sus mi este esta es".split(" "),
+  "el la los las un una unos de del a al en y o por para con sin que se te le lo me nos tu tus su sus mi este esta es the a an of to in and or for with from at on by your our you is it its this that".split(" "),
 );
 const esNumero = (f: string) => /^\d/.test(f);
 const mayus = (f: string) => /^[A-ZÁÉÍÓÚÑ]/.test(f.replace(/^[¿¡]/, ""));

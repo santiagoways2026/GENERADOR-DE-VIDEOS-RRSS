@@ -1,0 +1,405 @@
+{
+ "duracion": 28.056,
+ "segmentos": [
+  {
+   "voz": "Only have a week off? Pick one of these 4 Caminos.",
+   "clave": [
+    "4 Caminos."
+   ],
+   "ini": 0.05,
+   "fin": 3.633,
+   "palabras": [
+    {
+     "t": "Only",
+     "ini": 0.064,
+     "fin": 0.292
+    },
+    {
+     "t": "have",
+     "ini": 0.304,
+     "fin": 0.509
+    },
+    {
+     "t": "a",
+     "ini": 0.521,
+     "fin": 0.581
+    },
+    {
+     "t": "week",
+     "ini": 0.593,
+     "fin": 0.845
+    },
+    {
+     "t": "off",
+     "ini": 0.857,
+     "fin": 1.218
+    },
+    {
+     "t": "Pick",
+     "ini": 1.603,
+     "fin": 1.783
+    },
+    {
+     "t": "one",
+     "ini": 1.795,
+     "fin": 1.951
+    },
+    {
+     "t": "of",
+     "ini": 1.963,
+     "fin": 2.047
+    },
+    {
+     "t": "these",
+     "ini": 2.059,
+     "fin": 2.288
+    },
+    {
+     "t": "4",
+     "ini": 2.3,
+     "fin": 2.528
+    },
+    {
+     "t": "Caminos",
+     "ini": 2.54,
+     "fin": 3.333
+    }
+   ]
+  },
+  {
+   "voz": "One: the French Way from Sarria. The classic, and the liveliest.",
+   "clave": [
+    "Sarria."
+   ],
+   "ini": 3.833,
+   "fin": 8.595,
+   "palabras": [
+    {
+     "t": "One",
+     "ini": 3.847,
+     "fin": 4.208
+    },
+    {
+     "t": "the",
+     "ini": 4.569,
+     "fin": 4.665
+    },
+    {
+     "t": "French",
+     "ini": 4.677,
+     "fin": 5.013
+    },
+    {
+     "t": "Way",
+     "ini": 5.025,
+     "fin": 5.182
+    },
+    {
+     "t": "from",
+     "ini": 5.194,
+     "fin": 5.41
+    },
+    {
+     "t": "Sarria",
+     "ini": 5.422,
+     "fin": 5.975
+    },
+    {
+     "t": "The",
+     "ini": 6.371,
+     "fin": 6.444
+    },
+    {
+     "t": "classic",
+     "ini": 6.456,
+     "fin": 7.081
+    },
+    {
+     "t": "and",
+     "ini": 7.261,
+     "fin": 7.345
+    },
+    {
+     "t": "the",
+     "ini": 7.357,
+     "fin": 7.465
+    },
+    {
+     "t": "liveliest",
+     "ini": 7.477,
+     "fin": 8.295
+    }
+   ]
+  },
+  {
+   "voz": "Two: the English Way from Ferrol. Estuaries, harbours and very few people.",
+   "clave": [
+    "Ferrol."
+   ],
+   "ini": 8.795,
+   "fin": 14.145,
+   "palabras": [
+    {
+     "t": "Two",
+     "ini": 8.821,
+     "fin": 9.157
+    },
+    {
+     "t": "the",
+     "ini": 9.482,
+     "fin": 9.566
+    },
+    {
+     "t": "English",
+     "ini": 9.578,
+     "fin": 9.975
+    },
+    {
+     "t": "Way",
+     "ini": 9.987,
+     "fin": 10.167
+    },
+    {
+     "t": "from",
+     "ini": 10.179,
+     "fin": 10.395
+    },
+    {
+     "t": "Ferrol",
+     "ini": 10.407,
+     "fin": 10.924
+    },
+    {
+     "t": "Estuaries",
+     "ini": 11.309,
+     "fin": 12.066
+    },
+    {
+     "t": "harbours",
+     "ini": 12.246,
+     "fin": 12.667
+    },
+    {
+     "t": "and",
+     "ini": 12.679,
+     "fin": 12.799
+    },
+    {
+     "t": "very",
+     "ini": 12.811,
+     "fin": 13.1
+    },
+    {
+     "t": "few",
+     "ini": 13.112,
+     "fin": 13.316
+    },
+    {
+     "t": "people",
+     "ini": 13.328,
+     "fin": 13.845
+    }
+   ]
+  },
+  {
+   "voz": "Three: Santiago to Finisterre. It ends at the sea, where the world once ended.",
+   "clave": [
+    "Finisterre."
+   ],
+   "ini": 14.345,
+   "fin": 20.104,
+   "palabras": [
+    {
+     "t": "Three",
+     "ini": 14.359,
+     "fin": 14.695
+    },
+    {
+     "t": "Santiago",
+     "ini": 15.14,
+     "fin": 15.813
+    },
+    {
+     "t": "to",
+     "ini": 15.825,
+     "fin": 15.957
+    },
+    {
+     "t": "Finisterre",
+     "ini": 15.969,
+     "fin": 16.727
+    },
+    {
+     "t": "It",
+     "ini": 17.111,
+     "fin": 17.232
+    },
+    {
+     "t": "ends",
+     "ini": 17.244,
+     "fin": 17.46
+    },
+    {
+     "t": "at",
+     "ini": 17.472,
+     "fin": 17.568
+    },
+    {
+     "t": "the",
+     "ini": 17.58,
+     "fin": 17.676
+    },
+    {
+     "t": "sea",
+     "ini": 17.688,
+     "fin": 18.049
+    },
+    {
+     "t": "where",
+     "ini": 18.469,
+     "fin": 18.602
+    },
+    {
+     "t": "the",
+     "ini": 18.614,
+     "fin": 18.722
+    },
+    {
+     "t": "world",
+     "ini": 18.734,
+     "fin": 19.07
+    },
+    {
+     "t": "once",
+     "ini": 19.082,
+     "fin": 19.371
+    },
+    {
+     "t": "ended",
+     "ini": 19.383,
+     "fin": 19.804
+    }
+   ]
+  },
+  {
+   "voz": "Four: the Primitive Way from Lugo. The oldest Camino, through inland Galicia.",
+   "clave": [
+    "Lugo."
+   ],
+   "ini": 20.304,
+   "fin": 25.437,
+   "palabras": [
+    {
+     "t": "Four",
+     "ini": 20.318,
+     "fin": 20.57
+    },
+    {
+     "t": "the",
+     "ini": 20.606,
+     "fin": 20.714
+    },
+    {
+     "t": "Primitive",
+     "ini": 20.726,
+     "fin": 21.195
+    },
+    {
+     "t": "Way",
+     "ini": 21.207,
+     "fin": 21.375
+    },
+    {
+     "t": "from",
+     "ini": 21.387,
+     "fin": 21.628
+    },
+    {
+     "t": "Lugo",
+     "ini": 21.64,
+     "fin": 22.109
+    },
+    {
+     "t": "The",
+     "ini": 22.505,
+     "fin": 22.601
+    },
+    {
+     "t": "oldest",
+     "ini": 22.613,
+     "fin": 23.046
+    },
+    {
+     "t": "Camino",
+     "ini": 23.058,
+     "fin": 23.587
+    },
+    {
+     "t": "through",
+     "ini": 23.875,
+     "fin": 24.044
+    },
+    {
+     "t": "inland",
+     "ini": 24.056,
+     "fin": 24.476
+    },
+    {
+     "t": "Galicia",
+     "ini": 24.488,
+     "fin": 25.137
+    }
+   ]
+  },
+  {
+   "voz": "Comment your number and we'll tell you more.",
+   "clave": [
+    "number"
+   ],
+   "ini": 25.637,
+   "fin": 28.031,
+   "palabras": [
+    {
+     "t": "Comment",
+     "ini": 25.652,
+     "fin": 26.036
+    },
+    {
+     "t": "your",
+     "ini": 26.048,
+     "fin": 26.156
+    },
+    {
+     "t": "number",
+     "ini": 26.168,
+     "fin": 26.541
+    },
+    {
+     "t": "and",
+     "ini": 26.721,
+     "fin": 26.841
+    },
+    {
+     "t": "we'll",
+     "ini": 26.853,
+     "fin": 26.998
+    },
+    {
+     "t": "tell",
+     "ini": 27.01,
+     "fin": 27.202
+    },
+    {
+     "t": "you",
+     "ini": 27.214,
+     "fin": 27.31
+    },
+    {
+     "t": "more",
+     "ini": 27.322,
+     "fin": 27.731
+    }
+   ]
+  }
+ ]
+}

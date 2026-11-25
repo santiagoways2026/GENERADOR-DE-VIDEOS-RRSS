@@ -1,0 +1,250 @@
+{
+ "duracion": 19.608,
+ "segmentos": [
+  {
+   "voz": "This door only opens in a Holy Year. And as of today, it is open.",
+   "clave": [
+    "Holy Year"
+   ],
+   "ini": 0.05,
+   "fin": 5.014,
+   "palabras": [
+    {
+     "t": "This",
+     "ini": 0.086,
+     "fin": 0.312
+    },
+    {
+     "t": "door",
+     "ini": 0.326,
+     "fin": 0.632
+    },
+    {
+     "t": "only",
+     "ini": 0.645,
+     "fin": 1.004
+    },
+    {
+     "t": "opens",
+     "ini": 1.017,
+     "fin": 1.443
+    },
+    {
+     "t": "in",
+     "ini": 1.456,
+     "fin": 1.562
+    },
+    {
+     "t": "a",
+     "ini": 1.576,
+     "fin": 1.616
+    },
+    {
+     "t": "Holy",
+     "ini": 1.629,
+     "fin": 1.988
+    },
+    {
+     "t": "Year",
+     "ini": 2.001,
+     "fin": 2.44
+    },
+    {
+     "t": "And",
+     "ini": 2.879,
+     "fin": 3.025
+    },
+    {
+     "t": "as",
+     "ini": 3.038,
+     "fin": 3.251
+    },
+    {
+     "t": "of",
+     "ini": 3.265,
+     "fin": 3.371
+    },
+    {
+     "t": "today",
+     "ini": 3.384,
+     "fin": 3.85
+    },
+    {
+     "t": "it",
+     "ini": 3.89,
+     "fin": 4.023
+    },
+    {
+     "t": "is",
+     "ini": 4.036,
+     "fin": 4.222
+    },
+    {
+     "t": "open",
+     "ini": 4.235,
+     "fin": 4.714
+    }
+   ]
+  },
+  {
+   "voz": "It happens when July 25, Saint James' Day, falls on a Sunday.",
+   "clave": [
+    "Sunday"
+   ],
+   "ini": 5.514,
+   "fin": 10.518,
+   "palabras": [
+    {
+     "t": "It",
+     "ini": 5.537,
+     "fin": 5.617
+    },
+    {
+     "t": "happens",
+     "ini": 5.63,
+     "fin": 6.096
+    },
+    {
+     "t": "when",
+     "ini": 6.109,
+     "fin": 6.268
+    },
+    {
+     "t": "July 25",
+     "ini": 6.282,
+     "fin": 7.439
+    },
+    {
+     "t": "Saint James",
+     "ini": 7.678,
+     "fin": 8.356
+    },
+    {
+     "t": "Day",
+     "ini": 8.383,
+     "fin": 8.715
+    },
+    {
+     "t": "falls",
+     "ini": 9.034,
+     "fin": 9.407
+    },
+    {
+     "t": "on",
+     "ini": 9.42,
+     "fin": 9.526
+    },
+    {
+     "t": "a",
+     "ini": 9.54,
+     "fin": 9.606
+    },
+    {
+     "t": "Sunday",
+     "ini": 9.62,
+     "fin": 10.218
+    }
+   ]
+  },
+  {
+   "voz": "In 2027, it does. Thousands of pilgrims will walk here this year.",
+   "clave": [
+    "2027"
+   ],
+   "ini": 11.018,
+   "fin": 16.474,
+   "palabras": [
+    {
+     "t": "In 2027",
+     "ini": 11.054,
+     "fin": 12.371
+    },
+    {
+     "t": "it",
+     "ini": 12.397,
+     "fin": 12.53
+    },
+    {
+     "t": "does",
+     "ini": 12.544,
+     "fin": 13.089
+    },
+    {
+     "t": "Thousands",
+     "ini": 13.528,
+     "fin": 14.06
+    },
+    {
+     "t": "of",
+     "ini": 14.073,
+     "fin": 14.206
+    },
+    {
+     "t": "pilgrims",
+     "ini": 14.219,
+     "fin": 14.818
+    },
+    {
+     "t": "will",
+     "ini": 14.831,
+     "fin": 14.991
+    },
+    {
+     "t": "walk",
+     "ini": 15.004,
+     "fin": 15.27
+    },
+    {
+     "t": "here",
+     "ini": 15.283,
+     "fin": 15.483
+    },
+    {
+     "t": "this",
+     "ini": 15.496,
+     "fin": 15.749
+    },
+    {
+     "t": "year",
+     "ini": 15.762,
+     "fin": 16.174
+    }
+   ]
+  },
+  {
+   "voz": "Is 2027 your Camino year?",
+   "clave": [
+    "Camino year?"
+   ],
+   "ini": 16.974,
+   "fin": 19.571,
+   "palabras": [
+    {
+     "t": "Is",
+     "ini": 17.01,
+     "fin": 17.143
+    },
+    {
+     "t": "2027",
+     "ini": 17.157,
+     "fin": 18.221
+    },
+    {
+     "t": "your",
+     "ini": 18.234,
+     "fin": 18.393
+    },
+    {
+     "t": "Camino",
+     "ini": 18.407,
+     "fin": 18.872
+    },
+    {
+     "t": "year",
+     "ini": 18.885,
+     "fin": 19.271
+    }
+   ]
+  }
+ ]
+}

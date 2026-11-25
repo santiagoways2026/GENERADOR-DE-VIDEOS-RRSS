@@ -1,0 +1,381 @@
+{
+ "duracion": 21.024,
+ "segmentos": [
+  {
+   "voz": "Want to arrive in Santiago at Easter in the Holy Year? Now is the time to book.",
+   "clave": [
+    "Easter"
+   ],
+   "ini": 0.05,
+   "fin": 5.028,
+   "palabras": [
+    {
+     "t": "Want",
+     "ini": 0.076,
+     "fin": 0.268
+    },
+    {
+     "t": "to",
+     "ini": 0.28,
+     "fin": 0.401
+    },
+    {
+     "t": "arrive",
+     "ini": 0.413,
+     "fin": 0.809
+    },
+    {
+     "t": "in",
+     "ini": 0.821,
+     "fin": 0.942
+    },
+    {
+     "t": "Santiago",
+     "ini": 0.954,
+     "fin": 1.639
+    },
+    {
+     "t": "at",
+     "ini": 1.651,
+     "fin": 1.807
+    },
+    {
+     "t": "Easter",
+     "ini": 1.819,
+     "fin": 2.204
+    },
+    {
+     "t": "in",
+     "ini": 2.216,
+     "fin": 2.324
+    },
+    {
+     "t": "the",
+     "ini": 2.336,
+     "fin": 2.396
+    },
+    {
+     "t": "Holy",
+     "ini": 2.408,
+     "fin": 2.756
+    },
+    {
+     "t": "Year",
+     "ini": 2.768,
+     "fin": 3.069
+    },
+    {
+     "t": "Now",
+     "ini": 3.454,
+     "fin": 3.682
+    },
+    {
+     "t": "is",
+     "ini": 3.694,
+     "fin": 3.802
+    },
+    {
+     "t": "the",
+     "ini": 3.814,
+     "fin": 3.91
+    },
+    {
+     "t": "time",
+     "ini": 3.922,
+     "fin": 4.211
+    },
+    {
+     "t": "to",
+     "ini": 4.223,
+     "fin": 4.331
+    },
+    {
+     "t": "book",
+     "ini": 4.343,
+     "fin": 4.728
+    }
+   ]
+  },
+  {
+   "voz": "May, June and September are the first months to fill up. And this year, Easter too.",
+   "clave": [
+    "Easter"
+   ],
+   "ini": 5.178,
+   "fin": 10.107,
+   "palabras": [
+    {
+     "t": "May",
+     "ini": 5.204,
+     "fin": 5.432
+    },
+    {
+     "t": "June",
+     "ini": 5.456,
+     "fin": 5.733
+    },
+    {
+     "t": "and",
+     "ini": 5.745,
+     "fin": 5.865
+    },
+    {
+     "t": "September",
+     "ini": 5.877,
+     "fin": 6.502
+    },
+    {
+     "t": "are",
+     "ini": 6.514,
+     "fin": 6.622
+    },
+    {
+     "t": "the",
+     "ini": 6.634,
+     "fin": 6.718
+    },
+    {
+     "t": "first",
+     "ini": 6.73,
+     "fin": 7.091
+    },
+    {
+     "t": "months",
+     "ini": 7.103,
+     "fin": 7.391
+    },
+    {
+     "t": "to",
+     "ini": 7.403,
+     "fin": 7.511
+    },
+    {
+     "t": "fill",
+     "ini": 7.524,
+     "fin": 7.776
+    },
+    {
+     "t": "up",
+     "ini": 7.788,
+     "fin": 8.088
+    },
+    {
+     "t": "And",
+     "ini": 8.497,
+     "fin": 8.605
+    },
+    {
+     "t": "this",
+     "ini": 8.617,
+     "fin": 8.858
+    },
+    {
+     "t": "year",
+     "ini": 8.87,
+     "fin": 9.098
+    },
+    {
+     "t": "Easter",
+     "ini": 9.122,
+     "fin": 9.447
+    },
+    {
+     "t": "too",
+     "ini": 9.459,
+     "fin": 9.807
+    }
+   ]
+  },
+  {
+   "voz": "Five stages from Sarria, with your room booked every night.",
+   "texto": "5 stages from Sarria, with your room booked every night.",
+   "clave": [
+    "room"
+   ],
+   "ini": 10.257,
+   "fin": 13.985,
+   "palabras": [
+    {
+     "t": "Five",
+     "ini": 10.271,
+     "fin": 10.56
+    },
+    {
+     "t": "stages",
+     "ini": 10.572,
+     "fin": 11.04
+    },
+    {
+     "t": "from",
+     "ini": 11.053,
+     "fin": 11.233
+    },
+    {
+     "t": "Sarria",
+     "ini": 11.245,
+     "fin": 11.786
+    },
+    {
+     "t": "with",
+     "ini": 12.038,
+     "fin": 12.182
+    },
+    {
+     "t": "your",
+     "ini": 12.194,
+     "fin": 12.363
+    },
+    {
+     "t": "room",
+     "ini": 12.375,
+     "fin": 12.603
+    },
+    {
+     "t": "booked",
+     "ini": 12.615,
+     "fin": 12.879
+    },
+    {
+     "t": "every",
+     "ini": 12.976,
+     "fin": 13.216
+    },
+    {
+     "t": "night",
+     "ini": 13.228,
+     "fin": 13.685
+    }
+   ]
+  },
+  {
+   "voz": "And your luggage travels for you, from one stay to the next.",
+   "clave": [
+    "luggage"
+   ],
+   "ini": 14.135,
+   "fin": 17.838,
+   "palabras": [
+    {
+     "t": "And",
+     "ini": 14.161,
+     "fin": 14.281
+    },
+    {
+     "t": "your",
+     "ini": 14.293,
+     "fin": 14.437
+    },
+    {
+     "t": "luggage",
+     "ini": 14.449,
+     "fin": 14.834
+    },
+    {
+     "t": "travels",
+     "ini": 14.846,
+     "fin": 15.279
+    },
+    {
+     "t": "for",
+     "ini": 15.291,
+     "fin": 15.459
+    },
+    {
+     "t": "you",
+     "ini": 15.471,
+     "fin": 15.723
+    },
+    {
+     "t": "from",
+     "ini": 16.0,
+     "fin": 16.216
+    },
+    {
+     "t": "one",
+     "ini": 16.228,
+     "fin": 16.457
+    },
+    {
+     "t": "stay",
+     "ini": 16.469,
+     "fin": 16.709
+    },
+    {
+     "t": "to",
+     "ini": 16.721,
+     "fin": 16.865
+    },
+    {
+     "t": "the",
+     "ini": 16.877,
+     "fin": 16.973
+    },
+    {
+     "t": "next",
+     "ini": 16.985,
+     "fin": 17.538
+    }
+   ]
+  },
+  {
+   "voz": "Get your quote today. The link is in our bio.",
+   "clave": [
+    "quote"
+   ],
+   "ini": 17.988,
+   "fin": 20.983,
+   "palabras": [
+    {
+     "t": "Get",
+     "ini": 18.002,
+     "fin": 18.147
+    },
+    {
+     "t": "your",
+     "ini": 18.159,
+     "fin": 18.267
+    },
+    {
+     "t": "quote",
+     "ini": 18.279,
+     "fin": 18.531
+    },
+    {
+     "t": "today",
+     "ini": 18.543,
+     "fin": 19.024
+    },
+    {
+     "t": "The",
+     "ini": 19.421,
+     "fin": 19.505
+    },
+    {
+     "t": "link",
+     "ini": 19.517,
+     "fin": 19.769
+    },
+    {
+     "t": "is",
+     "ini": 19.781,
+     "fin": 19.913
+    },
+    {
+     "t": "in",
+     "ini": 19.925,
+     "fin": 20.046
+    },
+    {
+     "t": "our",
+     "ini": 20.058,
+     "fin": 20.19
+    },
+    {
+     "t": "bio",
+     "ini": 20.202,
+     "fin": 20.683
+    }
+   ]
+  }
+ ]
+}

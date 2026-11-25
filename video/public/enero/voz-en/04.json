@@ -1,0 +1,442 @@
+{
+ "duracion": 29.88,
+ "segmentos": [
+  {
+   "voz": "Walking the Camino from Sarria? These are its 5 stages.",
+   "clave": [
+    "Sarria?",
+    "5 stages."
+   ],
+   "ini": 0.05,
+   "fin": 3.982,
+   "palabras": [
+    {
+     "t": "Walking",
+     "ini": 0.076,
+     "fin": 0.413
+    },
+    {
+     "t": "the",
+     "ini": 0.425,
+     "fin": 0.521
+    },
+    {
+     "t": "Camino",
+     "ini": 0.533,
+     "fin": 0.978
+    },
+    {
+     "t": "from",
+     "ini": 0.99,
+     "fin": 1.206
+    },
+    {
+     "t": "Sarria",
+     "ini": 1.218,
+     "fin": 1.795
+    },
+    {
+     "t": "These",
+     "ini": 2.179,
+     "fin": 2.396
+    },
+    {
+     "t": "are",
+     "ini": 2.408,
+     "fin": 2.516
+    },
+    {
+     "t": "its",
+     "ini": 2.528,
+     "fin": 2.696
+    },
+    {
+     "t": "5",
+     "ini": 2.708,
+     "fin": 2.985
+    },
+    {
+     "t": "stages",
+     "ini": 2.997,
+     "fin": 3.682
+    }
+   ]
+  },
+  {
+   "voz": "Sarria to Portomarín: 14 miles of villages and country lanes.",
+   "clave": [
+    "Portomarín:"
+   ],
+   "ini": 4.132,
+   "fin": 8.617,
+   "palabras": [
+    {
+     "t": "Sarria",
+     "ini": 4.146,
+     "fin": 4.591
+    },
+    {
+     "t": "to",
+     "ini": 4.603,
+     "fin": 4.711
+    },
+    {
+     "t": "Portomarín",
+     "ini": 4.723,
+     "fin": 5.444
+    },
+    {
+     "t": "14 miles of villages",
+     "ini": 5.769,
+     "fin": 7.235
+    },
+    {
+     "t": "and",
+     "ini": 7.247,
+     "fin": 7.403
+    },
+    {
+     "t": "country",
+     "ini": 7.415,
+     "fin": 7.776
+    },
+    {
+     "t": "lanes",
+     "ini": 7.788,
+     "fin": 8.317
+    }
+   ]
+  },
+  {
+   "voz": "Portomarín to Palas de Rei, with gentle climbs and small villages.",
+   "clave": [
+    "Palas de Rei,"
+   ],
+   "ini": 8.767,
+   "fin": 13.083,
+   "palabras": [
+    {
+     "t": "Portomarín",
+     "ini": 8.793,
+     "fin": 9.358
+    },
+    {
+     "t": "to",
+     "ini": 9.37,
+     "fin": 9.466
+    },
+    {
+     "t": "Palas",
+     "ini": 9.478,
+     "fin": 9.887
+    },
+    {
+     "t": "de",
+     "ini": 9.899,
+     "fin": 10.019
+    },
+    {
+     "t": "Rei",
+     "ini": 10.031,
+     "fin": 10.319
+    },
+    {
+     "t": "with",
+     "ini": 10.584,
+     "fin": 10.764
+    },
+    {
+     "t": "gentle",
+     "ini": 10.776,
+     "fin": 11.173
+    },
+    {
+     "t": "climbs",
+     "ini": 11.185,
+     "fin": 11.629
+    },
+    {
+     "t": "and",
+     "ini": 11.641,
+     "fin": 11.774
+    },
+    {
+     "t": "small",
+     "ini": 11.786,
+     "fin": 12.074
+    },
+    {
+     "t": "villages",
+     "ini": 12.086,
+     "fin": 12.783
+    }
+   ]
+  },
+  {
+   "voz": "Palas de Rei to Arzúa, the longest. If you like, split it with a night in Melide.",
+   "clave": [
+    "Melide."
+   ],
+   "ini": 13.233,
+   "fin": 18.535,
+   "palabras": [
+    {
+     "t": "Palas",
+     "ini": 13.259,
+     "fin": 13.632
+    },
+    {
+     "t": "de",
+     "ini": 13.644,
+     "fin": 13.764
+    },
+    {
+     "t": "Rei",
+     "ini": 13.776,
+     "fin": 13.945
+    },
+    {
+     "t": "to",
+     "ini": 13.957,
+     "fin": 14.113
+    },
+    {
+     "t": "Arzúa",
+     "ini": 14.125,
+     "fin": 14.654
+    },
+    {
+     "t": "the",
+     "ini": 14.69,
+     "fin": 14.786
+    },
+    {
+     "t": "longest",
+     "ini": 14.798,
+     "fin": 15.447
+    },
+    {
+     "t": "If",
+     "ini": 15.844,
+     "fin": 15.964
+    },
+    {
+     "t": "you",
+     "ini": 15.976,
+     "fin": 16.096
+    },
+    {
+     "t": "like",
+     "ini": 16.108,
+     "fin": 16.456
+    },
+    {
+     "t": "split",
+     "ini": 16.613,
+     "fin": 16.949
+    },
+    {
+     "t": "it",
+     "ini": 16.961,
+     "fin": 17.057
+    },
+    {
+     "t": "with",
+     "ini": 17.07,
+     "fin": 17.226
+    },
+    {
+     "t": "a",
+     "ini": 17.238,
+     "fin": 17.274
+    },
+    {
+     "t": "night",
+     "ini": 17.286,
+     "fin": 17.574
+    },
+    {
+     "t": "in",
+     "ini": 17.586,
+     "fin": 17.694
+    },
+    {
+     "t": "Melide",
+     "ini": 17.707,
+     "fin": 18.235
+    }
+   ]
+  },
+  {
+   "voz": "Arzúa to A Rúa, through woods and hamlets.",
+   "clave": [
+    "A Rúa,"
+   ],
+   "ini": 18.685,
+   "fin": 21.644,
+   "palabras": [
+    {
+     "t": "Arzúa",
+     "ini": 18.699,
+     "fin": 19.084
+    },
+    {
+     "t": "to",
+     "ini": 19.096,
+     "fin": 19.264
+    },
+    {
+     "t": "A",
+     "ini": 19.276,
+     "fin": 19.348
+    },
+    {
+     "t": "Rúa",
+     "ini": 19.361,
+     "fin": 19.769
+    },
+    {
+     "t": "through",
+     "ini": 20.034,
+     "fin": 20.226
+    },
+    {
+     "t": "woods",
+     "ini": 20.238,
+     "fin": 20.526
+    },
+    {
+     "t": "and",
+     "ini": 20.538,
+     "fin": 20.635
+    },
+    {
+     "t": "hamlets",
+     "ini": 20.647,
+     "fin": 21.344
+    }
+   ]
+  },
+  {
+   "voz": "And A Rúa to Santiago, all the way to the Cathedral.",
+   "clave": [
+    "Cathedral."
+   ],
+   "ini": 21.794,
+   "fin": 25.233,
+   "palabras": [
+    {
+     "t": "And",
+     "ini": 21.82,
+     "fin": 21.94
+    },
+    {
+     "t": "A",
+     "ini": 21.952,
+     "fin": 22.012
+    },
+    {
+     "t": "Rúa",
+     "ini": 22.024,
+     "fin": 22.313
+    },
+    {
+     "t": "to",
+     "ini": 22.325,
+     "fin": 22.433
+    },
+    {
+     "t": "Santiago",
+     "ini": 22.445,
+     "fin": 23.25
+    },
+    {
+     "t": "all",
+     "ini": 23.527,
+     "fin": 23.695
+    },
+    {
+     "t": "the",
+     "ini": 23.707,
+     "fin": 23.815
+    },
+    {
+     "t": "way",
+     "ini": 23.827,
+     "fin": 23.983
+    },
+    {
+     "t": "to",
+     "ini": 23.995,
+     "fin": 24.128
+    },
+    {
+     "t": "the",
+     "ini": 24.14,
+     "fin": 24.248
+    },
+    {
+     "t": "Cathedral",
+     "ini": 24.26,
+     "fin": 24.933
+    }
+   ]
+  },
+  {
+   "voz": "69 miles and your Compostela. Save this for your Camino.",
+   "clave": [
+    "69 miles",
+    "Save"
+   ],
+   "ini": 25.383,
+   "fin": 29.856,
+   "palabras": [
+    {
+     "t": "69 miles",
+     "ini": 25.409,
+     "fin": 26.587
+    },
+    {
+     "t": "and",
+     "ini": 26.611,
+     "fin": 26.731
+    },
+    {
+     "t": "your",
+     "ini": 26.743,
+     "fin": 26.863
+    },
+    {
+     "t": "Compostela",
+     "ini": 26.875,
+     "fin": 27.741
+    },
+    {
+     "t": "Save",
+     "ini": 28.125,
+     "fin": 28.45
+    },
+    {
+     "t": "this",
+     "ini": 28.462,
+     "fin": 28.678
+    },
+    {
+     "t": "for",
+     "ini": 28.69,
+     "fin": 28.81
+    },
+    {
+     "t": "your",
+     "ini": 28.822,
+     "fin": 28.955
+    },
+    {
+     "t": "Camino",
+     "ini": 28.967,
+     "fin": 29.556
+    }
+   ]
+  }
+ ]
+}

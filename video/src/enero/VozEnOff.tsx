@@ -7,7 +7,10 @@ import { Audio } from "@remotion/media";
  * la versión sin voz: mismos planos, subtítulos y ambiente, para grabar
  * encima una locución propia siguiendo el texto en pantalla.
  */
-export const VozEnOff: React.FC<{ id: string }> = ({ id }) =>
+export const VozEnOff: React.FC<{ id: string; carpeta?: string }> = ({
+  id,
+  carpeta = "voz",
+}) =>
   getInputProps().sinVoz ? null : (
-    <Audio src={staticFile(`enero/voz/${id}.mp3`)} />
+    <Audio src={staticFile(`enero/${carpeta}/${id}.mp3`)} />
   );
