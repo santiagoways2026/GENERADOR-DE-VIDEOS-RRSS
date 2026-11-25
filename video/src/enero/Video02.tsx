@@ -9,6 +9,7 @@ import {
 import voz from "../../public/enero/voz/02.json";
 import { c, cajaGrafico, curva, fuente, s2f, seguro } from "./marca";
 import { VozEnOff } from "./VozEnOff";
+import { Montaje } from "./Montaje";
 import { Subtitulos, Titular, useEntrada } from "./Texto";
 import type { Voz } from "./subtitulos";
 
@@ -70,7 +71,7 @@ const Cabecera: React.FC<{ n: number; texto: string }> = ({ n, texto }) => {
       </div>
       <div
         style={{
-          color: c.grafito,
+          color: c.blanco,
           fontSize: 56,
           fontWeight: 800,
           lineHeight: 1.15,
@@ -97,7 +98,7 @@ const Centro: React.FC<{ children: React.ReactNode }> = ({ children }) => (
       alignItems: "center",
       justifyContent: "center",
       fontFamily: fuente,
-      color: c.grafito,
+      color: c.blanco,
     }}
   >
     {children}
@@ -126,7 +127,7 @@ const Gancho: React.FC = () => {
         position: "relative",
         fontSize: 110,
         fontWeight: 800,
-        color: c.grafito,
+        color: c.blanco,
         ...aparece(f, d),
       }}
     >
@@ -148,7 +149,7 @@ const Gancho: React.FC = () => {
     <>
       <Titular
         texto="4 curiosidades del [Año Santo]"
-        tema="claro"
+        tema="foto"
         tam={80}
         arriba={290}
       />
@@ -296,7 +297,7 @@ const Calendario: React.FC = () => {
           marginTop: 30,
           fontSize: 46,
           fontWeight: 800,
-          color: c.grafito,
+          color: c.blanco,
           opacity: marca,
         }}
       >
@@ -344,7 +345,7 @@ const Cadencia: React.FC = () => {
               top: i * alto + 8,
               fontSize: 64,
               fontWeight: 800,
-              color: c.grafito,
+              color: c.blanco,
               ...aparece(f, i * 6, 8),
             }}
           >
@@ -386,7 +387,13 @@ const Cadencia: React.FC = () => {
             >
               {s}
             </span>
-            <span style={{ fontSize: 34, fontWeight: 700, color: "#6b6b68" }}>
+            <span
+              style={{
+                fontSize: 34,
+                fontWeight: 700,
+                color: "rgba(255,255,255,0.85)",
+              }}
+            >
               años
             </span>
           </div>
@@ -437,7 +444,7 @@ const DosAnios: React.FC = () => {
             marginTop: 18,
             fontSize: 46,
             fontWeight: 700,
-            color: "#5d5d5a",
+            color: "rgba(255,255,255,0.85)",
             ...aparece(f, pand - 2, 8),
           }}
         >
@@ -469,7 +476,7 @@ const Siguiente: React.FC = () => {
           style={{
             fontSize: 150,
             fontWeight: 800,
-            color: c.grafito,
+            color: c.blanco,
             ...aparece(f, 4, 9),
           }}
         >
@@ -513,7 +520,7 @@ const Siguiente: React.FC = () => {
               whiteSpace: "nowrap",
               fontSize: 38,
               fontWeight: 700,
-              color: "#5d5d5a",
+              color: "rgba(255,255,255,0.85)",
               opacity: flecha,
             }}
           >
@@ -547,7 +554,7 @@ const Resumen: React.FC = () => {
   ];
   return (
     <>
-      <Titular texto="¿Cuál no conocías?" tema="claro" tam={84} arriba={300} />
+      <Titular texto="¿Cuál no conocías?" tema="foto" tam={84} arriba={300} />
       <Centro>
         <div
           style={{
@@ -596,6 +603,37 @@ const Resumen: React.FC = () => {
   );
 };
 
+/**
+ * Fondo: planos del Camino (ninguno de la Catedral), desenfocados y
+ * oscurecidos para que las cifras en blanco destaquen.
+ */
+const PLANOS_FONDO = ["v177", "v192", "v49", "v100", "v183", "v99", "v43", "v46"];
+const Fondo: React.FC = () => {
+  const tramo = DURACION_02 / 30 / PLANOS_FONDO.length;
+  return (
+    <AbsoluteFill
+      style={{ filter: "blur(7px) saturate(0.9)", transform: "scale(1.06)" }}
+    >
+      <Montaje
+        fundido={12}
+        tomas={PLANOS_FONDO.map((v, i) => ({
+          src: `enero/clips/vertical-${v}.mp4`,
+          ini: i * tramo,
+          fin: (i + 1) * tramo,
+          volumen: 0.1,
+          velocidad: 0.7,
+        }))}
+      />
+      <AbsoluteFill
+        style={{
+          backgroundImage:
+            "linear-gradient(180deg, rgba(20,22,20,0.72) 0%, rgba(20,22,20,0.55) 45%, rgba(20,22,20,0.75) 100%)",
+        }}
+      />
+    </AbsoluteFill>
+  );
+};
+
 export const Video02: React.FC = () => {
   const bloques: [React.FC, string | null][] = [
     [Gancho, null],
@@ -606,13 +644,9 @@ export const Video02: React.FC = () => {
     [Resumen, null],
   ];
   return (
-    <AbsoluteFill
-      style={{
-        backgroundImage: `linear-gradient(180deg, ${c.blanco} 0%, ${c.niebla} 100%)`,
-        fontFamily: fuente,
-      }}
-    >
+    <AbsoluteFill style={{ backgroundColor: c.grafito, fontFamily: fuente }}>
       <VozEnOff id="02" />
+      <Fondo />
       {bloques.map(([Bloque, titulo], i) => {
         const desde = inicioBloque(i);
         const hasta =
@@ -629,7 +663,7 @@ export const Video02: React.FC = () => {
           </Sequence>
         );
       })}
-      <Subtitulos voz={V} tema="claro" arriba={1235} tam={58} />
+      <Subtitulos voz={V} tema="foto" arriba={1235} tam={58} />
     </AbsoluteFill>
   );
 };
