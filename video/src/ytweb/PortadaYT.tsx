@@ -183,3 +183,44 @@ export const PortadaPaula: React.FC = () => {
 export const ComposicionPortadaPaula: React.FC = () => (
   <Composition id="PortadaYT-paula" component={PortadaPaula} durationInFrames={1} fps={25} width={1280} height={720} />
 );
+
+/**
+ * La portada del canal "Real stories" (papel rasgado arriba, peregrina,
+ * catedral y mojón abajo) adaptada al Brandbook 2027, con el titular del
+ * webinar. `conNahema` añade a Nahema recortada sobre el mojón.
+ */
+export const PortadaPeregrina: React.FC<{ conNahema: boolean }> = ({ conNahema }) => {
+  const linea = { fontFamily, fontWeight: 800, lineHeight: 1.05, color: paleta.blanco, whiteSpace: "nowrap" as const };
+  const caja = conNahema
+    ? { left: 60, top: 150, alignItems: "flex-start" as const }
+    : { left: 0, right: 0, top: 140, alignItems: "center" as const, paddingLeft: 100 };
+  return (
+    <AbsoluteFill>
+      <Img src={staticFile("portadas/yt-ref7-fondo.png")} style={{ width: "100%", height: "100%" }} />
+      {conNahema ? (
+        <Img src={staticFile("portadas/yt-nahema-sticker.png")} style={{ position: "absolute", right: -40, bottom: 0, height: 600, rotate: "2deg", transformOrigin: "50% 100%", filter: "drop-shadow(0 8px 32px rgba(46,46,45,0.25))" }} />
+      ) : null}
+      <div style={{ position: "absolute", display: "flex", flexDirection: "column", ...caja }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 14, background: paleta.blanco, borderRadius: 14, padding: "8px 22px", fontFamily, fontWeight: 800, fontSize: 34, letterSpacing: 3, color: paleta.sendero, marginBottom: 10 }}>
+          <Portatil /> FREE WEBINAR
+        </div>
+        <div style={{ ...linea, fontSize: conNahema ? 96 : 112 }}>The Camino’s</div>
+        <div style={{ position: "relative", marginTop: 10 }}>
+          <div style={{ ...linea, fontSize: conNahema ? 96 : 118, color: paleta.sendero, background: paleta.blanco, borderRadius: 18, padding: "0 30px 12px", rotate: "-1.5deg" }}>big year 2027</div>
+          <svg width="60" height="64" viewBox="0 0 44 50" style={{ position: "absolute", right: -64, top: -36 }}>
+            {[[6, 44, 14, 24], [18, 46, 34, 20], [24, 50, 42, 40]].map(([x1, y1, x2, y2], k) => (
+              <line key={k} x1={x1} y1={y1} x2={x2} y2={y2} stroke={paleta.blanco} strokeWidth={6} strokeLinecap="round" />
+            ))}
+          </svg>
+        </div>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+export const ComposicionesPortadaPeregrina: React.FC = () => (
+  <>
+    <Composition id="PortadaYT-peregrina" component={PortadaPeregrina} defaultProps={{ conNahema: false }} durationInFrames={1} fps={25} width={1280} height={720} />
+    <Composition id="PortadaYT-peregrina-nahema" component={PortadaPeregrina} defaultProps={{ conNahema: true }} durationInFrames={1} fps={25} width={1280} height={720} />
+  </>
+);
