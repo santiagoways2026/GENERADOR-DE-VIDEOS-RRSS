@@ -150,3 +150,36 @@ export const PortadaCanal: React.FC = () => {
 export const ComposicionPortadaCanal: React.FC = () => (
   <Composition id="PortadaYT-canal" component={PortadaCanal} durationInFrames={1} fps={25} width={1280} height={720} />
 );
+
+/**
+ * La portada que propuso Paula (Nahema con portátil, catedral y papel
+ * rasgado) adaptada al Brandbook 2027: fondo verde Ways con el degradado de
+ * 135°, etiqueta en mayúsculas, titular en minúscula de frase y la parte
+ * clave en placa. Sin amarillo.
+ */
+export const PortadaPaula: React.FC = () => {
+  const linea = { fontFamily, fontWeight: 800, fontSize: 104, lineHeight: 1.05, color: paleta.blanco, whiteSpace: "nowrap" as const };
+  return (
+    <AbsoluteFill>
+      <Img src={staticFile("portadas/yt-ref-fondo.png")} style={{ width: "100%", height: "100%" }} />
+      <div style={{ position: "absolute", left: 60, top: 46, display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 14, background: paleta.blanco, borderRadius: 14, padding: "8px 22px", fontFamily, fontWeight: 800, fontSize: 38, letterSpacing: 3, color: paleta.sendero, marginBottom: 14 }}>
+          <Portatil /> WEBINAR
+        </div>
+        <div style={linea}>The Camino’s</div>
+        <div style={{ position: "relative", marginTop: 10 }}>
+          <div style={{ ...linea, color: paleta.sendero, background: paleta.blanco, borderRadius: 18, padding: "0 26px 10px", marginLeft: -8, rotate: "-1.5deg" }}>big year</div>
+          <svg width="60" height="64" viewBox="0 0 44 50" style={{ position: "absolute", right: -70, top: -34 }}>
+            {[[6, 44, 14, 24], [18, 46, 34, 20], [24, 50, 42, 40]].map(([x1, y1, x2, y2], k) => (
+              <line key={k} x1={x1} y1={y1} x2={x2} y2={y2} stroke={paleta.blanco} strokeWidth={6} strokeLinecap="round" />
+            ))}
+          </svg>
+        </div>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+export const ComposicionPortadaPaula: React.FC = () => (
+  <Composition id="PortadaYT-paula" component={PortadaPaula} durationInFrames={1} fps={25} width={1280} height={720} />
+);
