@@ -99,15 +99,12 @@ export const Suscribir: React.FC = () => (
 
 /** 2 y 3. Redes con el QR del final, que así sale antes. */
 export const Redes: React.FC = () => (
-  <Tarjeta top={560} ancho={520}>
+  <Tarjeta top={560} ancho={440}>
     <Antetitulo>KEEP IN TOUCH</Antetitulo>
     <div style={{ fontSize: 34, fontWeight: 800, lineHeight: 1.1 }}>Follow us on social media</div>
     <div style={{ display: "flex", alignItems: "center", gap: 22, marginTop: 20 }}>
-      <Img src={staticFile("ytweb/qr.png")} style={{ width: 150, height: 150, borderRadius: 10 }} />
-      <div style={{ fontSize: 24, lineHeight: 1.4, color: paleta.gris }}>
-        Scan the code or visit
-        <div style={{ fontSize: 25, fontWeight: 800, color: paleta.sendero, marginTop: 6, whiteSpace: "nowrap" }}>{URL_CORTA}</div>
-      </div>
+      <Img src={staticFile("ytweb/qr.png")} style={{ width: 170, height: 170, borderRadius: 10 }} />
+      <div style={{ fontSize: 26, lineHeight: 1.4, color: paleta.gris }}>Scan the code</div>
     </div>
   </Tarjeta>
 );
