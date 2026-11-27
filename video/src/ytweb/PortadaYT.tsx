@@ -8,6 +8,9 @@ import { fontFamily, paleta } from "../brand/theme";
  * en placa verde Ways. Misma tarjeta blanca que las portadas de los shorts.
  * Tres propuestas para "Probar y comparar" de YouTube; una con Nahema.
  */
+/** Amarillo de las miniaturas del canal (decisión de Paula; fuera de la paleta). */
+const AMARILLO = "#FFC20E";
+
 type Datos = { id: string; foto: string; lineas: [string, string, string]; encuadre?: string; lado?: "izq" | "der" };
 
 const PORTADAS: Datos[] = [
@@ -42,8 +45,8 @@ export const PortadaYT: React.FC<{ id: string }> = ({ id }) => {
         {/* Etiqueta: deja claro que es un webinar */}
         <div
           style={{
-            background: paleta.sendero,
-            color: paleta.blanco,
+            background: AMARILLO,
+            color: paleta.grafito,
             fontSize: 26,
             fontWeight: 700,
             letterSpacing: 3,
@@ -59,8 +62,8 @@ export const PortadaYT: React.FC<{ id: string }> = ({ id }) => {
           <div
             style={{
               ...linea,
-              color: paleta.blanco,
-              background: paleta.verdeWays,
+              color: paleta.grafito,
+              background: AMARILLO,
               borderRadius: 14,
               padding: "0 20px 8px",
               marginLeft: -6,
@@ -113,7 +116,7 @@ const Rasgado: React.FC<{ arriba?: boolean }> = ({ arriba }) => {
 };
 
 const Portatil: React.FC = () => (
-  <svg width="40" height="30" viewBox="0 0 40 30" fill="none" stroke={paleta.sendero} strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="40" height="30" viewBox="0 0 40 30" fill="none" stroke={paleta.grafito} strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round">
     <rect x="6" y="3" width="28" height="18" rx="2" />
     <path d="M2 27h36" />
     <path d="M15 14a7 7 0 0 1 10 0" />
@@ -129,12 +132,12 @@ export const PortadaCanal: React.FC = () => {
       <Rasgado arriba />
       <Rasgado />
       <div style={{ position: "absolute", left: 60, top: 78, display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 14, background: paleta.blanco, borderRadius: 16, padding: "10px 24px", fontFamily, fontWeight: 800, fontSize: 40, letterSpacing: 3, color: paleta.sendero, marginBottom: 16 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 14, background: AMARILLO, borderRadius: 16, padding: "10px 24px", fontFamily, fontWeight: 800, fontSize: 40, letterSpacing: 3, color: paleta.grafito, marginBottom: 16 }}>
           <Portatil /> FREE WEBINAR
         </div>
         <div style={linea}>The Camino’s</div>
         <div style={{ position: "relative", marginTop: 8 }}>
-          <div style={{ ...linea, color: paleta.sendero, background: paleta.blanco, borderRadius: 18, padding: "0 26px 10px", marginLeft: -8, rotate: "-1.5deg", textShadow: "none", boxShadow: "0 8px 32px rgba(46,46,45,0.12)" }}>big year</div>
+          <div style={{ ...linea, color: AMARILLO, background: "transparent", padding: 0, textShadow: "0 6px 18px rgba(46,46,45,0.25)" }}>big year</div>
           <svg width="60" height="64" viewBox="0 0 44 50" style={{ position: "absolute", right: -70, top: -34 }}>
             {[[6, 44, 14, 24], [18, 46, 34, 20], [24, 50, 42, 40]].map(([x1, y1, x2, y2], k) => (
               <line key={k} x1={x1} y1={y1} x2={x2} y2={y2} stroke={paleta.blanco} strokeWidth={6} strokeLinecap="round" />
@@ -163,12 +166,12 @@ export const PortadaPaula: React.FC = () => {
     <AbsoluteFill>
       <Img src={staticFile("portadas/yt-ref-fondo.png")} style={{ width: "100%", height: "100%" }} />
       <div style={{ position: "absolute", left: 60, top: 46, display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 14, background: paleta.blanco, borderRadius: 14, padding: "8px 22px", fontFamily, fontWeight: 800, fontSize: 38, letterSpacing: 3, color: paleta.sendero, marginBottom: 14 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 14, background: AMARILLO, borderRadius: 14, padding: "8px 22px", fontFamily, fontWeight: 800, fontSize: 38, letterSpacing: 3, color: paleta.grafito, marginBottom: 14 }}>
           <Portatil /> WEBINAR
         </div>
         <div style={linea}>The Camino’s</div>
         <div style={{ position: "relative", marginTop: 10 }}>
-          <div style={{ ...linea, color: paleta.sendero, background: paleta.blanco, borderRadius: 18, padding: "0 26px 10px", marginLeft: -8, rotate: "-1.5deg" }}>big year</div>
+          <div style={{ ...linea, color: AMARILLO, background: "transparent", padding: 0, textShadow: "0 6px 18px rgba(46,46,45,0.25)" }}>big year</div>
           <svg width="60" height="64" viewBox="0 0 44 50" style={{ position: "absolute", right: -70, top: -34 }}>
             {[[6, 44, 14, 24], [18, 46, 34, 20], [24, 50, 42, 40]].map(([x1, y1, x2, y2], k) => (
               <line key={k} x1={x1} y1={y1} x2={x2} y2={y2} stroke={paleta.blanco} strokeWidth={6} strokeLinecap="round" />
@@ -201,12 +204,12 @@ export const PortadaPeregrina: React.FC<{ conNahema: boolean }> = ({ conNahema }
         <Img src={staticFile("portadas/yt-nahema-sticker.png")} style={{ position: "absolute", right: -40, bottom: 0, height: 600, rotate: "2deg", transformOrigin: "50% 100%", filter: "drop-shadow(0 8px 32px rgba(46,46,45,0.25))" }} />
       ) : null}
       <div style={{ position: "absolute", display: "flex", flexDirection: "column", ...caja }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 14, background: paleta.blanco, borderRadius: 14, padding: "8px 22px", fontFamily, fontWeight: 800, fontSize: 34, letterSpacing: 3, color: paleta.sendero, marginBottom: 10 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 14, background: AMARILLO, borderRadius: 14, padding: "8px 22px", fontFamily, fontWeight: 800, fontSize: 34, letterSpacing: 3, color: paleta.grafito, marginBottom: 10 }}>
           <Portatil /> FREE WEBINAR
         </div>
         <div style={{ ...linea, fontSize: conNahema ? 96 : 112 }}>The Camino’s</div>
         <div style={{ position: "relative", marginTop: 10 }}>
-          <div style={{ ...linea, fontSize: conNahema ? 96 : 118, color: paleta.sendero, background: paleta.blanco, borderRadius: 18, padding: "0 30px 12px", rotate: "-1.5deg" }}>big year 2027</div>
+          <div style={{ ...linea, fontSize: conNahema ? 96 : 118, color: AMARILLO, background: "transparent", padding: 0, textShadow: "0 6px 18px rgba(46,46,45,0.25)" }}>big year 2027</div>
           <svg width="60" height="64" viewBox="0 0 44 50" style={{ position: "absolute", right: -64, top: -36 }}>
             {[[6, 44, 14, 24], [18, 46, 34, 20], [24, 50, 42, 40]].map(([x1, y1, x2, y2], k) => (
               <line key={k} x1={x1} y1={y1} x2={x2} y2={y2} stroke={paleta.blanco} strokeWidth={6} strokeLinecap="round" />
