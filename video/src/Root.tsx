@@ -6,7 +6,7 @@ import { ComposicionPaula } from "./paula/ShortPaula";
 import { ComposicionesXacobeo } from "./xacobeo/Composiciones";
 import { ComposicionesWebinar } from "./webinar/Webinar";
 import { ComposicionesYtWebinar } from "./ytweb/Ventanas";
-import { ComposicionesPortadaYT } from "./ytweb/PortadaYT";
+import { ComposicionesPortadaYT, ComposicionPortadaCanal } from "./ytweb/PortadaYT";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -19,6 +19,7 @@ export const RemotionRoot: React.FC = () => {
       <ComposicionesWebinar />
       <ComposicionesYtWebinar />
       <ComposicionesPortadaYT />
+      <ComposicionPortadaCanal />
     </>
   );
 };

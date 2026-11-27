@@ -93,3 +93,31 @@ export const ComposicionesPortadaYT: React.FC = () => (
     ))}
   </>
 );
+
+/**
+ * Variante con el estilo de las miniaturas del canal: fondo verde liso, papel
+ * rasgado blanco arriba, titular en mayúsculas (primera línea en amarillo,
+ * el resto en blanco) y Nahema recortada abajo a la derecha.
+ */
+export const PortadaCanal: React.FC = () => {
+  const base = { fontFamily, fontWeight: 900, fontSize: 84, lineHeight: 1.02, color: "#FFFFFF", textShadow: "0 6px 0 rgba(46,46,45,0.35), 0 10px 24px rgba(0,0,0,0.25)" };
+  // Borde rasgado: picos irregulares deterministas.
+  const pts = Array.from({ length: 65 }, (_, k) => `${k * 20},${70 + ((k * 37) % 23) - ((k * 13) % 9)}`).join(" ");
+  return (
+    <AbsoluteFill style={{ backgroundColor: paleta.verdeWays }}>
+      <svg width="1280" height="110" style={{ position: "absolute", top: 0, left: 0 }}>
+        <polygon points={`0,0 1280,0 1280,80 ${pts.split(" ").reverse().join(" ")} 0,80`} fill="#F4F4F2" />
+      </svg>
+      <Img src={staticFile("portadas/yt-nahema-recorte2.png")} style={{ position: "absolute", right: -30, bottom: 0, height: 600, filter: "drop-shadow(0 10px 24px rgba(46,46,45,0.35))" }} />
+      <div style={{ position: "absolute", left: 52, top: 170, display: "flex", flexDirection: "column", gap: 4 }}>
+        <div style={{ ...base, color: "#FFC20E", fontSize: 76 }}>FREE WEBINAR:</div>
+        <div style={{ ...base, fontSize: 104 }}>CAMINO 2027</div>
+        <div style={{ ...base, fontSize: 104 }}>HOLY YEAR</div>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+export const ComposicionPortadaCanal: React.FC = () => (
+  <Composition id="PortadaYT-canal" component={PortadaCanal} durationInFrames={1} fps={25} width={1280} height={720} />
+);
