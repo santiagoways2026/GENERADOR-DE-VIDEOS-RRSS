@@ -26,7 +26,7 @@ export const PortadaYT: React.FC<{ id: string }> = ({ id }) => {
       <div
         style={{
           position: "absolute",
-          top: 150,
+          top: 120,
           ...(d.lado === "der" ? { right: 56 } : { left: 56 }),
           background: paleta.blanco,
           borderRadius: 30,
@@ -39,6 +39,21 @@ export const PortadaYT: React.FC<{ id: string }> = ({ id }) => {
           gap: 8,
         }}
       >
+        {/* Etiqueta: deja claro que es un webinar */}
+        <div
+          style={{
+            background: paleta.sendero,
+            color: paleta.blanco,
+            fontSize: 26,
+            fontWeight: 700,
+            letterSpacing: 3,
+            padding: "6px 16px",
+            borderRadius: 8,
+            marginBottom: 6,
+          }}
+        >
+          FREE WEBINAR
+        </div>
         <div style={linea}>{d.lineas[0]}</div>
         <div style={{ position: "relative" }}>
           <div
