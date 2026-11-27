@@ -8,10 +8,9 @@ dentro del vídeo: subida, capítulos, horario, difusión y medición.
 | Minuto | Qué sale | Tarea de la lista |
 | --- | --- | --- |
 | 0:54 a 1:03 | Ventana "Planning your Camino? · Subscribe" | Suscripción tras el primer gancho, no en el segundo 1 |
-| 17:42 a 17:54 | Ventana de contacto: info@santiagoways.com, US +1 347 897 9603, Canada +1 437 886 3265 | Datos de contacto en un momento clave (justo cuando Nahema dice "Ask us for your personalized Camino plan") |
+| 17:42 a 17:54 | Ventana de contacto: "Questions about your Camino?" e info@santiagoways.com (sin teléfonos) | Datos de contacto en un momento clave (justo cuando Nahema dice "Ask us for your personalized Camino plan") |
 | 23:04 a 23:16 | Ventana "Follow us on social media" con el QR (solo el QR, sin URL) | CTA cuando pide seguir en redes ("keep an eye on our socials") y QR mucho antes del final |
 | 29:04 a 29:15 | Diapositiva final fija (Buen Camino y QR), unos 10,5 s, sobre la música de cierre | Alargar la diapositiva final a 8 o 10 s como mínimo |
-| 0:09 a 29:04 | Música de fondo muy baja bajo la voz | Música con licencia |
 
 - **URL corta junto al QR:** descartada por decisión de Paula; el QR va solo.
 - **El QR es el mismo del vídeo:** lleva a `https://www.canvaqr.com/RGS8jv-XE-`, que redirige a
@@ -19,13 +18,12 @@ dentro del vídeo: subida, capítulos, horario, difusión y medición.
 - **Marca de agua:** las ventanas van a la izquierda, en la pared libre junto a Nahema. La
   esquina inferior derecha, donde YouTube pone la marca de agua del canal, queda libre. Tampoco
   tapan su cara ni las diapositivas: solo salen cuando ella está en plano.
-- **Música:** "Dreamer" de Kevin MacLeod (incompetech.com), licencia CC BY 4.0. La licencia
-  obliga a citarla en la descripción (ya va en el texto de abajo).
+- **Música:** sin música de fondo añadida (decisión de Paula); el audio es el del original.
 - **Pantalla final de YouTube:** los 10,5 s finales sirven para poner los elementos de pantalla
   final (suscribirse y un vídeo). Colocarlos arriba a la derecha para que no tapen el QR.
 
 > **Pendiente de Vir:** validar el texto de la ventana de contacto ("Questions about your
-> Camino?", correo y teléfonos de EE. UU. y Canadá). Son los mismos datos que salen en el vídeo.
+> Camino?" y el correo).
 
 ## Subida
 
@@ -71,8 +69,6 @@ Chapters
 16:46 Your thank-you gift
 17:57 Live Q&A
 27:33 Buen Camino
-
-Music: "Dreamer" by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0.
 
 #CaminoDeSantiago #HolyYear2027 #Xacobeo2027
 ```

@@ -116,8 +116,6 @@ export const Contacto: React.FC = () => (
     <div style={{ fontSize: 34, fontWeight: 800, lineHeight: 1.1 }}>Questions about your Camino?</div>
     <div style={{ fontSize: 26, lineHeight: 1.5, marginTop: 14 }}>
       <div style={{ fontWeight: 800, color: paleta.sendero }}>info@santiagoways.com</div>
-      <div>US +1 347 897 9603</div>
-      <div>Canada +1 437 886 3265</div>
     </div>
   </Tarjeta>
 );
