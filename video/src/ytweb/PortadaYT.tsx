@@ -160,18 +160,18 @@ export const ComposicionPortadaCanal: React.FC = () => (
  * 135°, etiqueta en mayúsculas, titular en minúscula de frase y la parte
  * clave en placa. Sin amarillo.
  */
-export const PortadaPaula: React.FC = () => {
+export const PortadaPaula: React.FC<{ amarillo: boolean }> = ({ amarillo }) => {
   const linea = { fontFamily, fontWeight: 800, fontSize: 104, lineHeight: 1.05, color: paleta.blanco, whiteSpace: "nowrap" as const };
   return (
     <AbsoluteFill>
       <Img src={staticFile("portadas/yt-ref-fondo.png")} style={{ width: "100%", height: "100%" }} />
       <div style={{ position: "absolute", left: 60, top: 46, display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 14, background: AMARILLO, borderRadius: 14, padding: "8px 22px", fontFamily, fontWeight: 800, fontSize: 38, letterSpacing: 3, color: paleta.grafito, marginBottom: 14 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 14, background: amarillo ? AMARILLO : paleta.blanco, borderRadius: 14, padding: "8px 22px", fontFamily, fontWeight: 800, fontSize: 38, letterSpacing: 3, color: amarillo ? paleta.grafito : paleta.sendero, marginBottom: 14 }}>
           <Portatil /> WEBINAR
         </div>
         <div style={linea}>The Camino’s</div>
         <div style={{ position: "relative", marginTop: 10 }}>
-          <div style={{ ...linea, color: AMARILLO, background: "transparent", padding: 0, textShadow: "0 6px 18px rgba(46,46,45,0.25)" }}>big year</div>
+          <div style={amarillo ? { ...linea, color: AMARILLO, textShadow: "0 6px 18px rgba(46,46,45,0.25)" } : { ...linea, color: paleta.sendero, background: paleta.blanco, borderRadius: 18, padding: "0 26px 10px", marginLeft: -8, rotate: "-1.5deg" }}>big year</div>
           <svg width="60" height="64" viewBox="0 0 44 50" style={{ position: "absolute", right: -70, top: -34 }}>
             {[[6, 44, 14, 24], [18, 46, 34, 20], [24, 50, 42, 40]].map(([x1, y1, x2, y2], k) => (
               <line key={k} x1={x1} y1={y1} x2={x2} y2={y2} stroke={paleta.blanco} strokeWidth={6} strokeLinecap="round" />
@@ -184,7 +184,10 @@ export const PortadaPaula: React.FC = () => {
 };
 
 export const ComposicionPortadaPaula: React.FC = () => (
-  <Composition id="PortadaYT-paula" component={PortadaPaula} durationInFrames={1} fps={25} width={1280} height={720} />
+  <>
+    <Composition id="PortadaYT-paula" component={PortadaPaula} defaultProps={{ amarillo: true }} durationInFrames={1} fps={25} width={1280} height={720} />
+    <Composition id="PortadaYT-paula-blanca" component={PortadaPaula} defaultProps={{ amarillo: false }} durationInFrames={1} fps={25} width={1280} height={720} />
+  </>
 );
 
 /**
